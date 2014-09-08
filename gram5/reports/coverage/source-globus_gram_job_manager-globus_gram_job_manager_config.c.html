@@ -1,0 +1,4275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_job_manager_config.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2009 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#ifndef GLOBUS_DONT_DOCUMENT_INTERNAL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @file globus_job_manager.c Resource Allocation Job Manager</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * CVS Information:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Source: /home/ec2-user/alliance-web/alliance/toolkit/docs/5.2/5.2.5/gram5/reports/coverage/source-globus_gram_job_manager-globus_gram_job_manager_config.c.html,v $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Date: 2013/06/19 18:13:36 $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Revision: 1.1 $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Author: bester $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_gram_job_manager.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_common.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_tokenize(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              command,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char **                             args,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int *                               n);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#endif /* GLOBUS_DONT_DOCUMENT_INTERNAL */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Initialize configuration based on command-line arguments</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param config</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     LRMA-specific configuration state</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param argc</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Count of command-line arguments to the job manager.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param argv</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Array of command-line arguments to the job manager.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_SUCCESS</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Success</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_GRAM_PROTOCOL_ERROR_GATEKEEPER_MISCONFIGURED</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">53</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Command-line includes -help</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_config_init(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">57</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_config_t *  config,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">58</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 argc,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char **                             argv)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">60</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">61</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 i;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">62</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char                                hostname[MAXHOSTNAMELEN];</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              conf_path;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">66</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    memset(config, 0, sizeof(globus_gram_job_manager_config_t));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">67</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* if -conf is passed then get the arguments from the file</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * specified</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">71</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (argc &gt; 2 &amp;&amp; !strcmp(argv[1],&quot;-conf&quot;))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        char ** newargv;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        char * newbuf;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">75</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        int newargc = 52;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">76</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        int length;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        FILE *fp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">79</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        newargv = (char**) malloc(newargc * sizeof(char *)); /* not freed */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">80</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        newargv[0] = argv[0];</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">82</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        /* get file length via fseek &amp; ftell */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">83</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        if ((fp = fopen(argv[2], &quot;r&quot;)) == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">84</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">85</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">86</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_FATAL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">88</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.config.end level=FATAL path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;status=-1 msg=\&quot;%s\&quot; errno=%d reason=\&quot;%s\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">90</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    conf_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">91</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Error opening configuration file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    errno,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">93</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    strerror(errno));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">94</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            exit(1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">95</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">96</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        conf_path = argv[2];</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">97</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        fseek(fp, 0, SEEK_END);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">98</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        length = ftell(fp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">99</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        if (length &lt;=0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">100</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">101</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">102</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_FATAL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">104</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.config.end level=FATAL path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">105</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;status=-1 msg=\&quot;%s\&quot; errno=%d reason=\&quot;%s\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">106</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    conf_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">107</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Error determining config file length&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">108</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    errno,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">109</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    strerror(errno));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">110</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">           exit(1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">111</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">112</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        rewind(fp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">113</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">114</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        newbuf = (char *) malloc(length+1);  /* dont free */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">115</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        i = fread(newbuf, 1, length, fp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">116</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        if (i &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">117</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">118</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">119</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">120</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_FATAL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">121</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.config.end level=FATAL path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">122</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;status=-1 msg=\&quot;%s\&quot; errno=%d reason=\&quot;%s\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">123</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    conf_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">124</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Error reading configuration file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    errno,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">126</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    strerror(errno));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">127</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            exit(1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">129</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        newbuf[i] = &#39;\0&#39;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">130</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        fclose(fp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">131</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">132</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        newargv[0] = argv[0];</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">133</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        newargc--;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">134</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        globus_l_gram_tokenize(newbuf, &amp;newargv[1], &amp;newargc);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">135</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">136</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        for (i=3; i&lt;argc; i++)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">137</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            newargv[++newargc] = strdup(argv[i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">138</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">139</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        argv = newargv;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">140</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        argc = newargc + 1;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">141</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Default log level if nothing specified on command-line or config file */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">143</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    config-&gt;log_levels = GLOBUS_GRAM_JOB_MANAGER_LOG_FATAL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">144</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                       | GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">146</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Default to sending usage stats to the globus.org service. This can be</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * disabled by using -disable-usagestats in the configuration or</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">148</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * by setting a different usagestats target by using </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">149</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * -usagestats-targets in the configuration</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">150</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">151</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    config-&gt;usage_targets = strdup(&quot;usage-stats.globus.org:4810&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">152</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">153</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * Parse the command line arguments</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">154</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">155</td>
+          <td class="coverageCount">4299</td>
+          <td class="srcCell"><span class="srcLine">    for (i = 1; i &lt; argc; i++)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">156</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">157</td>
+          <td class="coverageCount">3981</td>
+          <td class="srcCell"><span class="srcLine">        if (strcmp(argv[i], &quot;-k&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">159</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;kerberos = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">161</td>
+          <td class="coverageCount">4299</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-home&quot;) == 0) &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">162</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">163</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_location = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">164</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">165</td>
+          <td class="coverageCount">3663</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-target-globus-location&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">168</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;target_globus_location = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">170</td>
+          <td class="coverageCount">3981</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-type&quot;) == 0) &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">172</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;jobmanager_type = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">174</td>
+          <td class="coverageCount">3345</td>
+          <td class="srcCell"><span class="srcLine">        else if((strcmp(argv[i], &quot;-history&quot;) == 0) &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">175</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">176</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;job_history_dir = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">177</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">178</td>
+          <td class="coverageCount">3345</td>
+          <td class="srcCell"><span class="srcLine">        else if (strcmp(argv[i], &quot;-cache-location&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">180</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;cache_location = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">181</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">182</td>
+          <td class="coverageCount">3345</td>
+          <td class="srcCell"><span class="srcLine">        else if (strcmp(argv[i], &quot;-scratch-dir-base&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">183</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">184</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;scratch_dir_base = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">185</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">186</td>
+          <td class="coverageCount">3345</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-condor-arch&quot;) == 0) &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">187</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">188</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;condor_arch = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">190</td>
+          <td class="coverageCount">3345</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-condor-os&quot;) == 0) &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">191</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">192</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;condor_os = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">193</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">194</td>
+          <td class="coverageCount">3663</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-gatekeeper-host&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">195</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">196</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">197</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_gatekeeper_host = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">198</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">199</td>
+          <td class="coverageCount">3345</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-gatekeeper-port&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">200</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">202</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_gatekeeper_port = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">203</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">204</td>
+          <td class="coverageCount">3027</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-gatekeeper-subject&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">205</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">206</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">207</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_gatekeeper_subject = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">208</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">209</td>
+          <td class="coverageCount">2709</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-host-manufacturer&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">210</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">211</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">212</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_host_manufacturer = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">213</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">214</td>
+          <td class="coverageCount">2391</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-host-cputype&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">215</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">216</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">217</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_host_cputype = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">218</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">219</td>
+          <td class="coverageCount">2073</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-host-osname&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">220</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">221</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">222</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_host_osname = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">223</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">224</td>
+          <td class="coverageCount">1755</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-host-osversion&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">225</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">226</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">227</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_host_osversion = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">228</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">229</td>
+          <td class="coverageCount">1119</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-tcp-port-range&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">230</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">231</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">232</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;tcp_port_range = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">233</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">234</td>
+          <td class="coverageCount">1437</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-state-file-dir&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">235</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">236</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">237</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;job_state_file_dir = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">238</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">239</td>
+          <td class="coverageCount">801</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-x509-cert-dir&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">240</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">241</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">242</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;x509_cert_dir = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">243</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">244</td>
+          <td class="coverageCount">801</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-extra-envvars&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">245</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">246</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">247</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;extra_envvars = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">248</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">249</td>
+          <td class="coverageCount">966</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcasecmp(argv[i], &quot;-seg-module&quot; ) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">250</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 &amp;&amp; (i + 1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">251</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">252</td>
+          <td class="coverageCount">165</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;seg_module = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">253</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">254</td>
+          <td class="coverageCount">636</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-audit-directory&quot;) == 0) </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">255</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;&amp; (i+1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">256</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">257</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;auditing_dir = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">258</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">259</td>
+          <td class="coverageCount">954</td>
+          <td class="srcCell"><span class="srcLine">        else if ((strcmp(argv[i], &quot;-globus-toolkit-version&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">260</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;&amp; (i+1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">261</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">262</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;globus_version = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">263</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">264</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        else if (strcmp(argv[i], &quot;-disable-streaming&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">265</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">266</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;streaming_disabled = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">267</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">268</td>
+          <td class="coverageCount">636</td>
+          <td class="srcCell"><span class="srcLine">        else if (strcmp(argv[i], &quot;-service-tag&quot;) == 0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">269</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;&amp; (i+1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">270</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">271</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">            config-&gt;service_tag = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">272</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">273</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        else if (strcmp(argv[i], &quot;-enable-syslog&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">274</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">275</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;syslog_enabled = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">276</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            i++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">277</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">278</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        else if (strcmp(argv[i], &quot;-stdio-log&quot;) == 0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">279</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;&amp; (i+1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">280</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">281</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;stdiolog_enabled = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">282</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;stdiolog_directory = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">283</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">284</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        else if (strcmp(argv[i], &quot;-log-levels&quot;) == 0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">285</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;&amp; (i+1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">286</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">287</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            char *                  log_level_string = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">288</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            char *                  level_string = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">289</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">290</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            while ((level_string = strsep(&amp;log_level_string, &quot;|&quot;)) != NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">291</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">292</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                if (strcmp(level_string, &quot;FATAL&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">293</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">294</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    config-&gt;log_levels |= GLOBUS_GRAM_JOB_MANAGER_LOG_FATAL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">295</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">296</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                else if (strcmp(level_string, &quot;ERROR&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">297</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">298</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    config-&gt;log_levels |= GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">299</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">300</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                else if (strcmp(level_string, &quot;WARN&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">301</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">302</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    config-&gt;log_levels |= GLOBUS_GRAM_JOB_MANAGER_LOG_WARN;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">303</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">304</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                else if (strcmp(level_string, &quot;INFO&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">305</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">306</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    config-&gt;log_levels |= GLOBUS_GRAM_JOB_MANAGER_LOG_INFO;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">307</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">308</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                else if (strcmp(level_string, &quot;DEBUG&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">309</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">310</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    config-&gt;log_levels |= GLOBUS_GRAM_JOB_MANAGER_LOG_DEBUG;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">311</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">312</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                else if (strcmp(level_string, &quot;TRACE&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">313</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">314</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    config-&gt;log_levels |= GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">315</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">316</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">317</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">318</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        else if (strcmp(argv[i], &quot;-disable-usagestats&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">319</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">320</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;usage_disabled = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">321</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">322</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        else if (strcmp(argv[i], &quot;-usagestats-targets&quot;) == 0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">323</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;&amp; (i+1 &lt; argc))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">324</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">325</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (config-&gt;usage_targets)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">326</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">327</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                free(config-&gt;usage_targets);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">328</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                config-&gt;usage_targets = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">329</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">330</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            config-&gt;usage_targets = strdup(argv[++i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">331</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">332</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        else if ((strcasecmp(argv[i], &quot;-help&quot; ) == 0) ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">333</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 (strcasecmp(argv[i], &quot;--help&quot;) == 0))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">334</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">335</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            fprintf(stderr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">336</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Usage: globus-gram-jobmanager\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">337</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">338</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Required Arguments:\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">339</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-type jobmanager type, i.e. fork, lsf ...\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">340</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-host-manufacturer manufacturer\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">341</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-host-cputype cputype\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">342</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-host-osname osname\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">343</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-host-osversion osversion\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">344</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-gatekeeper-host host\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">345</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-gatekeeper-port port\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">346</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-gatekeeper-subject subject\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">347</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">348</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Options:\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">349</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-home globus_location\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">350</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-target-globus-location globus_location\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">351</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-condor-arch arch, i.e. SUN4x\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">352</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-condor-os os, i.e. SOLARIS26\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">353</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-history job-history-directory\n&quot; </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">354</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-scratch-dir-base scratch-directory\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">355</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-enable-syslog\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">356</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-stdio-log DIRECTORY\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">357</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-log-levels TRACE|INFO|DEBUG|WARN|ERROR|FATAL\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">358</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-state-file-dir state-directory\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">359</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-tcp-port-range &lt;min port #&gt;,&lt;max port #&gt;\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">360</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-x509-cert-dir DIRECTORY\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">361</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-cache-location PATH\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">362</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-k\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">363</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-extra-envvars VAR1,VAR2,...\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">364</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-seg-module SEG-MODULE\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">365</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-audit-directory DIRECTORY\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">366</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-globus-toolkit-version VERSION\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">367</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\t-usagestats-targets &lt;host:port&gt;[!&lt;default | all&gt;],...\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">368</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">369</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Note: if type=condor then\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">370</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;      -condor-os &amp; -condor-arch are required.\n&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">371</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">372</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_GATEKEEPER_MISCONFIGURED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">373</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">374</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">375</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">376</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">377</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">378</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">379</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">380</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;event=gram.config level=ERROR path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">381</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;argument=%s reason=\&quot;Invalid command-line option\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">382</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                conf_path ? conf_path : &quot;ARGV&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">383</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                argv[i] ? argv[i] : &quot;&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">384</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">385</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">386</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">387</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Verify that required values are present */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">388</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if(config-&gt;jobmanager_type == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">389</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">390</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">391</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">392</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">393</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.config level=ERROR path=\&quot;%s\&quot; argument=\&quot;-type\&quot; reason=\&quot;Missing -type command-line option\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">394</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            conf_path ? conf_path : &quot;ARGV&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">395</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">396</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_GATEKEEPER_MISCONFIGURED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">397</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">398</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">399</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">400</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;service_tag == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">401</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">402</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        config-&gt;service_tag = strdup(&quot;untagged&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">403</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">404</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">405</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if(strcasecmp(config-&gt;jobmanager_type, &quot;condor&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">406</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">407</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(config-&gt;condor_arch == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">408</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">409</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">410</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">411</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">412</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;event=gram.config level=ERROR path=\&quot;%s\&quot; argument=\&quot;-condor-arch\&quot; reason=\&quot;Missing -condor-arch command-line option for condor LRM\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">413</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                conf_path ? conf_path : &quot;ARGV&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">414</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">415</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_CONDOR_ARCH;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">416</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">417</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">418</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(config-&gt;condor_os == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">419</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">420</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">421</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">422</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">423</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;event=gram.config level=ERROR path=\&quot;%s\&quot; argument=\&quot;-condor-os\&quot; reason=\&quot;Missing -condor-os command-line option for condor LRM\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">424</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                conf_path ? conf_path : &quot;ARGV&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">425</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_CONDOR_OS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">426</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">427</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">428</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">429</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">430</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Now initialize values from our environment */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">431</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    config-&gt;home = strdup(getenv(&quot;HOME&quot;));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">432</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;home == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">433</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">434</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">435</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">436</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">437</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">438</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">439</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    config-&gt;logname = strdup(getenv(&quot;LOGNAME&quot;));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">440</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;home == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">441</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">442</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">443</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">444</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">445</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">446</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">447</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_location == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">448</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">449</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_location(&amp;config-&gt;globus_location);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">450</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">451</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">452</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">453</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">454</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">455</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">456</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">457</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;target_globus_location == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">458</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">459</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        config-&gt;target_globus_location = strdup(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">460</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                config-&gt;globus_location);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">461</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        if (config-&gt;target_globus_location == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">462</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">463</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">464</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">465</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">466</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">467</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">468</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;scratch_dir_base == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">469</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">470</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        config-&gt;scratch_dir_base = strdup(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">471</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                config-&gt;home);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">472</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        if (config-&gt;scratch_dir_base == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">473</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">474</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">475</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">476</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">477</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">478</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">479</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">480</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_libc_gethostname(hostname, sizeof(hostname));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">481</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">482</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">483</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">484</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">485</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">486</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">487</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    config-&gt;hostname = strdup(hostname);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">488</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;hostname == GLOBUS_NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">489</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">490</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">491</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">492</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">493</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">494</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_module_activate(GLOBUS_GSI_GSSAPI_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">495</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">496</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">497</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">498</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">499</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">500</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_gram_job_manager_gsi_get_subject(&amp;config-&gt;subject);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">501</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">502</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">503</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">504</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">505</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">506</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    config-&gt;proxy_timeout = 10*60;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">507</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">508</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">509</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">510</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">511</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_config_init() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">512</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">513</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">514</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Free all memory allocated when the globus_gram_job_manager_config_init() was called.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">515</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">516</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param config</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">517</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Configuration structure destroy.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">518</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">519</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">520</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_config_destroy(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">521</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_config_t *  config)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">522</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">523</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_location)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">524</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">525</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_location);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">526</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">527</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;target_globus_location)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">528</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">529</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;target_globus_location);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">530</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">531</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;jobmanager_type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">532</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">533</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;jobmanager_type);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">534</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">535</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;job_history_dir)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">536</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">537</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;job_history_dir);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">538</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">539</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;cache_location)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">540</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">541</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;cache_location);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">542</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">543</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;scratch_dir_base)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">544</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">545</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;scratch_dir_base);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">546</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">547</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;condor_arch)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">548</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">549</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;condor_arch);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">550</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">551</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;condor_os)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">552</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">553</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;condor_os);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">554</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">555</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_gatekeeper_host)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">556</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">557</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_gatekeeper_host);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">558</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">559</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_gatekeeper_port)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">560</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">561</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_gatekeeper_port);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">562</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">563</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_gatekeeper_subject)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">564</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">565</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_gatekeeper_subject);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">566</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">567</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_host_manufacturer)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">568</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">569</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_host_manufacturer);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">570</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">571</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_host_cputype)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">572</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">573</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_host_cputype);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">574</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">575</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_host_osname)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">576</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">577</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_host_osname);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">578</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">579</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_host_osversion)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">580</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">581</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_host_osversion);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">582</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">583</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;tcp_port_range)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">584</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">585</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;tcp_port_range);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">586</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">587</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;job_state_file_dir)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">588</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">589</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;job_state_file_dir);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">590</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">591</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;x509_cert_dir)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">592</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">593</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;x509_cert_dir);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">594</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">595</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;extra_envvars)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">596</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">597</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;extra_envvars);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">598</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">599</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;seg_module)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">600</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">601</td>
+          <td class="coverageCount">165</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;seg_module);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">602</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">603</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;auditing_dir)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">604</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">605</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(config-&gt;auditing_dir);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">606</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">607</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;globus_version)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">608</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">609</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;globus_version);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">610</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">611</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;subject)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">612</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">613</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;subject);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">614</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">615</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;home)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">616</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">617</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;home);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">618</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">619</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;logname)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">620</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">621</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;logname);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">622</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">623</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    if (config-&gt;hostname)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">624</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">625</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">        free(config-&gt;hostname);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">626</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">627</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">628</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_config_destroy() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">629</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">630</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#ifndef GLOBUS_DONT_DOCUMENT_INTERNAL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">631</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">632</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Split string into command-line arguments</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">633</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">634</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * The @a command string is split into whitespace-delimited strings and adds</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">635</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * them to the @a args array. If the string begins with single quote or double</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">636</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * quote it will be combined with following strings until the closing quote is</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">637</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * found. At most *n-1 arguments can be parsed from the @a command string. *n</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">638</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * will be modified to contain the number of tokens in the @a args array when</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">639</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * this function returns.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">640</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">641</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param command</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">642</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     String to tokenize</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">643</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param args</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">644</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Pointer to array of strings of at most *n elements.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">645</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param n</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">646</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     In: maximum number of lements in @a args. Out: actual number of </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">647</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     elements in @a args.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">648</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">649</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval 0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">650</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Success</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">651</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval -1</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">652</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Too many arguments</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">653</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">654</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">655</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">656</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_tokenize(char * command, char ** args, int * n)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">657</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">658</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  int i, x;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">659</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  char * cp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">660</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  char * cp2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">661</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  char ** arg;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">662</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">  char * tmp_str = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">663</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">664</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">  arg = args;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">665</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">  i = *n - 1;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">666</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">667</td>
+          <td class="coverageCount">8598</td>
+          <td class="srcCell"><span class="srcLine">  for (cp = strtok(command, &quot; \t\n&quot;); cp != 0; )</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">668</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">669</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">      if ( cp[0] == &#39;\&#39;&#39; &amp;&amp; cp[strlen(cp) - 1] != &#39;\&#39;&#39; )</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">670</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">671</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">         cp2 = strtok(NULL, &quot;&#39;\n&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">672</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">         tmp_str = malloc(sizeof(char *) * (strlen(cp) + strlen(cp2) + 2));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">673</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">         sprintf(tmp_str, &quot;%s %s&quot;, &amp;cp[1], cp2);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">674</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">675</td>
+          <td class="coverageCount">8280</td>
+          <td class="srcCell"><span class="srcLine">      else if ( cp[0] == &#39;&quot;&#39; &amp;&amp; cp[strlen(cp) - 1] != &#39;&quot;&#39; )</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">676</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">677</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">         cp2 = strtok(NULL, &quot;\&quot;\n&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">678</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">         tmp_str = malloc(sizeof(char *) * (strlen(cp) + strlen(cp2) + 2));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">679</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">         sprintf(tmp_str, &quot;%s %s&quot;, &amp;cp[1], cp2);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">680</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">681</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">682</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">683</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">         if (( cp[0] == &#39;&quot;&#39; &amp;&amp; cp[strlen(cp) - 1] == &#39;&quot;&#39; ) ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">684</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             ( cp[0] == &#39;\&#39;&#39; &amp;&amp; cp[strlen(cp) - 1] == &#39;\&#39;&#39; ))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">685</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">686</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">             tmp_str = malloc(sizeof(char *) * strlen(cp));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">687</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">             x = strlen(cp)-2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">688</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">             strncpy(tmp_str, &amp;cp[1], x);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">689</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">             tmp_str[x] = &#39;\0&#39;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">690</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">691</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">692</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">693</td>
+          <td class="coverageCount">7326</td>
+          <td class="srcCell"><span class="srcLine">             tmp_str = cp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">694</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">695</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">696</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">697</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">      *arg = tmp_str;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">698</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">      i--;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">699</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">      if (i == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">700</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">          return(-1); /* too many args */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">701</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">      arg++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">702</td>
+          <td class="coverageCount">7962</td>
+          <td class="srcCell"><span class="srcLine">      cp = strtok(NULL, &quot; \t\n&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">703</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">704</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">705</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">  *arg = (char *) 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">706</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">  *n = *n - i - 1;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">707</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">  return(0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">708</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">709</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">710</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_tokenize() */</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+<book id="xioDeveloper">
+  <title>GT <replaceable role="entity">version</replaceable> XIO : Developer's Guide</title>
+  <titleabbrev> Developer's Guide</titleabbrev>
+
+  <bookinfo id="xio-developer-introduction">
+    <abstract>
+      <title>Introduction</title>
+      <para>This guide contains information of interest to developers working with XIO. It provides
+        reference information for application developers, including APIs, architecture, procedures
+        for using the APIs and code samples. </para>
+    </abstract>
+  </bookinfo>
+
+  <chapter id="xio-developer-beforeyoubegin">
+    <title>Before you begin</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../XIO_Feature_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../XIO_Platform_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Compatibility_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Dependencies_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Security_Considerations_Frag.xml"/>
+
+  </chapter>
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="UserQuickStart.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DriverQuickStart.xml"/>
+
+  <chapter id="xio-developer-tutorials">
+    <title>Tutorials</title>
+    <itemizedlist>
+      <listitem>
+        <simpara>
+          <ulink url="../xio.ppt">PowerPoint Tutorial</ulink>
+        </simpara>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xio_arch.xml"/>
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../XIO_Interface_API_Frag.xml"/>
+
+  <!-- n/a
+  
+  <chapter id="xio-developer-cmd"><title>Command-Line Tools</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Interface_Commandline_Frag.xml"/>
+
+  </chapter>
+  
+  <chapter id="xio-developer-guis"><title>Overview of Graphical User Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Interface_GUI_Frag.xml"/>
+
+  </chapter>
+  
+  <chapter id="xio-developer-domain"><title>Semantics and Syntax of Domain-Specific Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Interface_Domain_Frag.xml"/>
+
+  </chapter>
+  
+  <chapter id="xio-developer-config"><title>Configuration Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../XIO_Interface_Config_Frag.xml"/>
+ 
+  </chapter>
+  -->
+
+  <chapter id="xio-developer-env">
+    <title>Environment Variable Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../XIO_Interface_Env_Frag.xml"/>
+  </chapter>
+
+  <chapter id="xio-developer-debugging">
+    <title>Debugging</title>
+    <para> All standard C debugging techniques apply to debugging XIO applications. Also, Globus XIO
+      provides users with some additional debugging information. If the environment variable
+      GLOBUS_XIO_DEBUG is set debugging information will be written to a file or stdout. The
+      information generated is particularly useful to identify a suspect bug in Globus XIO.
+      GLOBUS_XIO_DEBUG is set in the following way: </para>
+    <screen>
+GLOBUS_XIO_DEBUG="&lt;level&gt;  [,[[#]&lt;file name&gt;][,&lt;flag&gt;[,&lt;timestamp_levels&gt;]]"
+</screen>
+    <para> The value of <computeroutput>&lt;level&gt;</computeroutput> can take on the
+      logical OR of any of the following: </para>
+    <itemizedlist>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_ERROR = 1</simpara>
+      </listitem>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_WARNING = 2</simpara>
+      </listitem>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_TRACE = 4</simpara>
+      </listitem>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_INTERNAL_TRACE = 8</simpara>
+      </listitem>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_INFO = 16</simpara>
+      </listitem>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_STATE = 32</simpara>
+      </listitem>
+      <listitem>
+        <simpara>GLOBUS_XIO_DEBUG_INFO_VERBOSE = 64</simpara>
+      </listitem>
+    </itemizedlist>
+    <para>
+      <computeroutput>&lt;file name&gt;</computeroutput> is a debug output file, if empty
+      stderr will be used by default. If a '#' precedes the filename, the file will be overwritten
+      on each run. Otherwise, the output will be appended to the existing file. </para>
+    <para>
+      <computeroutput>&lt;flags&gt;</computeroutput>
+    </para>
+    <itemizedlist>
+      <listitem>
+        <simpara> 0 = default </simpara>
+      </listitem>
+      <listitem>
+        <simpara> 1 = show thread ids </simpara>
+      </listitem>
+      <listitem>
+        <simpara> 2 = append the pid to debug filename </simpara>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  
+<!-- pulling in troubleshooting from admin guide -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../admin/index.xml" xpointer="xio-admin-troubleshooting"/>
+
+  <chapter id="xio-developer-relateddocs">
+    <title>Related Documentation</title>
+    <itemizedlist>
+      <listitem>
+        <simpara>
+          <ulink url="http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf"> Performance
+          </ulink>
+        </simpara>
+      </listitem>
+      <listitem>
+        <simpara>
+          <ulink url="http://www-unix.mcs.anl.gov/~bresnaha/xio">Previous HTML doc </ulink>
+        </simpara>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../drivers/index.xml"/>
+
+</book>

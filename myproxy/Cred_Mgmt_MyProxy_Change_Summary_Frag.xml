@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<section id="myproxy-changessummary">
+  <title>Summary of Changes in MyProxy</title>
+
+  <para>GT <replaceable role="entity">version</replaceable> contains
+  <olink targetdoc="myproxy">MyProxy</olink> 5.9.
+  See the <ulink url="http://grid.ncsa.illinois.edu/myproxy/dl/VERSION">MyProxy Release Notes</ulink> for more details on this and other MyProxy versions.</para>
+</section>

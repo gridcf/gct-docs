@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gsicPI">
+<title>GT <replaceable role="entity">version</replaceable> GSI C Public Interfaces</title>
+<titleabbrev>Public Interfaces</titleabbrev>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_API_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_Protocol_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_Commandline_Frag.xml"/>
+
+    <!--n/a 
+<chapter id="gsic-pi-guis"><title>Overview of Graphical User Interfaces</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_GUI_Frag.xml"/>
+</chapter>
+<chapter id="gsic-pi-domain"><title>Semantics and syntax of domain-specific interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_Domain_Frag.xml"/>
+</chapter>
+    -->
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_Config_Frag.xml"/>
+
+<chapter id="gsic-pi-env"><title>Environment variable interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GSIC_Interface_Env_Frag.xml"/>
+</chapter>
+    <appendix id="gsic-error-codes">
+        <title>Errors</title>
+            <indexterm type="gsic">
+    <primary>errors</primary>
+    </indexterm>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../../Credential_Troubleshooting_Frag.xml" xpointer="credential-errors-table"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../../Gridmap_Troubleshooting_Frag.xml" xpointer="gridmap-errors-table"/>
+    </appendix>
+    <glossary role="auto" id="glossary-gsicPI">
+        <!-- 
+        <remark>some terms not in the docs but wanted in glossary: 
+        <glossterm>scheduler</glossterm>
+        </remark>
+        -->
+        <glossdiv><title>A</title>
+            <glossentry>
+                <glossterm>Dummy term</glossterm>
+                <glossdef>
+                    <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+                </glossdef>
+            </glossentry>
+        </glossdiv>
+    </glossary>
+</book>

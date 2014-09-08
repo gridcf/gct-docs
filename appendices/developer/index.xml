@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gtdeveloper">
+            <title>Globus Toolkit <replaceable role="entity">version</replaceable> Developer's Guide</title>
+            <bookinfo>
+                        <abstract>
+                                    <title>Introduction</title>
+                                    <para><note><simpara>Please note that the Best Practices need to be 
+                                                updated for GT5 and are not being published at this time. 
+                                    </simpara></note></para>
+                                    <para>You can download the <ulink url="gtDeveloperGuide.pdf">PDF version here</ulink>. Following are some docs you should be familiar with as well:</para>
+                                    <para>
+                                                <itemizedlist>
+                                                  <listitem>
+                                                  <para>
+                                                  <olink
+                                                  targetdoc="gtadmin"
+                                                  >Installation
+                                                  Guide</olink>
+                                                  </para>
+                                                  </listitem>
+                                                  <listitem>
+                                                  <para>
+                                                  <olink
+                                                  targetdoc="quickstart"
+                                                  >Quickstart</olink>
+                                                  </para>
+                                                  </listitem>
+
+                                                            <listitem><para>All GT command line clients are listed <olink targetdoc="gtcommands">here</olink>.</para></listitem>
+                                                </itemizedlist>
+                                                
+                                    </para>
+                        </abstract>
+            </bookinfo>
+            <!--
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                                    href="best_practices.xml"/>
+
+              fixme not ready for prime time yet         
+            
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples.xml"
+                                   />
+
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="debugging.xml"
+                                   />
+ -->
+            <part>
+                        <title>Asynchronous Event Handling with Examples</title>
+                        
+                                    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                                                href="globus-async.xml"
+                                               />
+                        
+                                    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                                                href="globus-async-example1.xml"
+                                               />
+
+                                    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                                                href="globus-async-example2.xml"
+                                               />
+
+                                    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                                                href="globus-async-example3.xml"
+                                               />
+
+            </part>
+            
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../user/public_interfaces.xml"/>
+
+            <glossary role="auto" id="glossary-gtDeveloper">
+                        <glossdiv>
+                                    <title>A</title>
+                                    <glossentry>
+                                                <glossterm>Dummy term</glossterm>
+                                                <glossdef>
+                                                  <para>This is a dummy entry for the
+                                                  automatic glossary database.
+                                                  Do not edit.</para>
+                                                </glossdef>
+                                    </glossentry>
+                        </glossdiv>
+            </glossary>
+</book>

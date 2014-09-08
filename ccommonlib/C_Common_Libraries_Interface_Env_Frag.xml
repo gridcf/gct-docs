@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="ccommonlib-env-var">
+  <title>Environment variables for C Common Libraries</title>
+
+  <variablelist>
+
+  <varlistentry>
+    <term>GLOBUS_HOSTNAME</term>
+    <listitem>
+        <simpara>Set this variable to the fully qualified name of the local
+        machine's hostname.</simpara>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>GLOBUS_DOMAIN_NAME</term>
+    <listitem>
+        <simpara>Set this variable to the domain name to be used to qualify the local
+        machine's hostname.</simpara>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>GLOBUS_ERROR_OUTPUT</term>
+    <listitem>
+        <simpara>Set this variable to 1 to cause Globus libraries to display error information
+        to stderr.</simpara>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>GLOBUS_ERROR_VERBOSE</term>
+    <listitem>
+        <simpara>Set this variable to 1 to enable verbose error messages.</simpara>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>GLOBUS_I18N</term>
+    <listitem>
+        <simpara>Set this variable to 1 to attempt to use localized messages.
+        (Currently not working)</simpara>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>GLOBUS_LOCATION</term>
+    <listitem>
+        <simpara>Set this variable to the path where the Globus Toolkit is installed, so
+        that Globus tools can find libraries and data files. This is only needed if the
+        Globus Toolkit was built with the source installer.</simpara>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>GLOBUS_THREAD_MODEL</term>
+    <listitem>
+        <simpara>Set to the name of a thread model to control the operation of the Globus
+        event driver. Valid values are (depending on the platform) <literal>none</literal>
+        for non-threaded operation (the default), <literal>pthread</literal> for POSIX
+        threads, or <literal>windows</literal> for Windows threads.</simpara>
+    </listitem>
+  </varlistentry>
+  </variablelist>
+</section>

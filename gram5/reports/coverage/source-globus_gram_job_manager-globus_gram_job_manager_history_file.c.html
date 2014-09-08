@@ -1,0 +1,1251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_job_manager_history_file.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2009 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_gram_job_manager.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;string.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Determine the name of the job history file for this job request</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param request</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Job to create file name for. The request&#39;s @a job_history_file member</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     is modified by this function.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_SUCCESS</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Success.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_history_file_set(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">34</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">35</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">37</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">    if (! request-&gt;config-&gt;job_history_dir)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">39</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">        request-&gt;job_history_file = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">40</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">        goto no_history;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">43</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    request-&gt;job_history_file = globus_common_create_string(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             &quot;%s/history.%s-%s_%s&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             request-&gt;config-&gt;job_history_dir,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             request-&gt;config-&gt;hostname,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             request-&gt;config-&gt;jobmanager_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             request-&gt;uniq_id );</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">50</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (request-&gt;job_history_file == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">52</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">53</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto history_file_malloc_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">56</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">history_file_malloc_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">57</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">no_history:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">58</td>
+          <td class="coverageCount">114</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_history_file_set() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">61</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">62</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Create job or update the job history file</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param request</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">66</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Job to create or update the job history file for. If the file exists,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">67</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     information about the new job state is appended to it. Otherwise, </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     the file is created and information about the RSL, job contact, and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     client identity are recorded along with the new job state data.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_SUCCESS</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Success.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">75</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_history_file_create(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">76</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">77</td>
+          <td class="coverageCount">370</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    FILE *                              history_fp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              status_str;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">80</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    unsigned long                       timestamp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">82</td>
+          <td class="coverageCount">370</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">84</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">85</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.history_file_create.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">86</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">88</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">90</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">91</td>
+          <td class="coverageCount">370</td>
+          <td class="srcCell"><span class="srcLine">    timestamp = time(0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">93</td>
+          <td class="coverageCount">370</td>
+          <td class="srcCell"><span class="srcLine">    if(!request-&gt;config-&gt;job_history_dir)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">94</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">95</td>
+          <td class="coverageCount">370</td>
+          <td class="srcCell"><span class="srcLine">        return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">96</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">97</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">98</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    switch(request-&gt;status)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">100</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_PENDING:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">101</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;PENDING    &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">102</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_ACTIVE:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">104</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;ACTIVE     &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">105</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">106</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_FAILED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">107</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(request-&gt;jobmanager_state == GLOBUS_GRAM_JOB_MANAGER_STATE_STOP)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">108</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            status_str = &quot;JOBMANAGER_STOP&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">109</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">110</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            status_str = &quot;FAILED     &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">111</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">112</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">113</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;DONE       &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">114</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">115</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_SUSPENDED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">116</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;SUSPENDED  &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">117</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">118</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_UNSUBMITTED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">119</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;UNSUBMITTED &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">120</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">121</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_STAGE_IN:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">122</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;STAGE_IN    &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">123</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">124</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_PROTOCOL_JOB_STATE_STAGE_OUT:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">125</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;STAGE_OUT   &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">126</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">127</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      default:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">128</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        status_str = &quot;UNKNOWN     &quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">129</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">130</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">131</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">132</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if(access(request-&gt;job_history_file, F_OK) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">133</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">134</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        /* the file exists, so just append a line which has the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">135</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         * job status and timestamp</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">136</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">137</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        history_fp = fopen(request-&gt;job_history_file, &quot;a+&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">138</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">139</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(history_fp == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">140</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">141</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">143</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_WARN,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">144</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.history_file_create.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;level=WARN &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">146</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">148</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">149</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;errno=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">150</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;reason=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">151</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;status=-1 &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">152</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">153</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">154</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Error opening job history file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">155</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request-&gt;job_history_file,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">156</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    errno,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">157</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    strerror(errno));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">159</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">161</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        fprintf(history_fp, &quot;%s\t%10ld\n&quot;, status_str,timestamp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">162</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">163</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    else if((history_fp = fopen(request-&gt;job_history_file, &quot;w&quot;)) == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">164</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">165</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_JOB_MANAGER_LOG_WARN,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">168</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;event=gram.history_file_create.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;level=WARN &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">170</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">172</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;errno=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">174</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;reason=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">175</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;status=-1\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">176</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">177</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_history_file,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">178</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                errno,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                strerror(errno));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">180</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">181</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">183</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">184</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">185</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        fprintf(history_fp, &quot;%s\n%s\n%s\n%s\t%10ld\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">186</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;rsl_spec,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">187</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_contact,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">188</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;config-&gt;subject,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                status_str,timestamp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">190</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">191</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    fclose(history_fp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">192</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">193</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">194</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">195</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">196</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.history_file_create.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">197</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">198</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">199</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;path=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">200</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;status=%d\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">202</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_history_file,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">203</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">204</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">205</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">206</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

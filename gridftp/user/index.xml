@@ -1,0 +1,499 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+<book id="gridftpUser">
+ <title>GT <replaceable role="entity">version</replaceable> GridFTP: User's Guide</title>
+ <titleabbrev>User's Guide </titleabbrev>
+ <bookinfo>
+  <abstract>
+   <title>Introduction</title>
+   <para>The GridFTP User's Guide provides general end user-oriented information.</para>
+  </abstract>
+ </bookinfo>
+ <chapter id="gridftp-user-quickstart">
+  <title>Using GridFTP for Data Movement</title>
+  <section id="gridftp-user-quickstart-building">
+   <title>GridFTP clients</title>
+   <para> <ulink url="http://www.globusonline.org">Globus Online</ulink> is the
+   recommended interface to move data to and from
+   GridFTP servers. Globus Online provides a web GUI, command line interface and
+   a
+   REST API for GridFTP data movement. It provides automatic fault recovery and
+   automatic tuning of optimization parameters to achieve high performance.
+   </para> 
+   <para>
+   The Globus Toolkit provides a GridFTP client called
+   <computeroutput>globus-url-copy</computeroutput>, a command line interface,
+   suitable for scripting. For example,
+   the following command:</para>
+   <screen>globus-url-copy gsiftp://remote.host.edu/path/to/file
+   file:///path/on/local/host</screen>
+   <para>would transfer a file from a remote host to the locally accessible path
+   specified
+   in the second URL.</para>
+   <para> The Globus Toolkit also provides <ulink
+   url="http://www.globus.org/api/c-globus-{$version}/globus_ftp_client/html/index.html">FTP
+   client libraries in C</ulink> and the
+   <ulink url="http://www.globus.org/toolkit/jglobus/">jGlobus</ulink> provides
+   Java client libraries for building custom GridFTP clients.
+    </para>
+  </section>
+  <section id="gridftp-user-quickstart-config">
+   <title>Configuring the GridFTP client</title>
+   <section id="gridftp-user-config-client-firewall"><title>If client is behind a firewall</title>
+   <xi:include href="../GridFTP_Interface_Config_Frag.xml"
+   xpointer="gridftp-client-firewall-intro" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="../GridFTP_Interface_Config_Frag.xml"
+     xpointer="gridftp-client-firewall-config" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="../GridFTP_Interface_Config_Frag.xml"
+     xpointer="gridftp-client-firewall-moreinfo" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+   </section>
+   <section id="gridftp-user-quickstart-config-security">
+    <title>Configuring security</title>
+    <section>
+     <title>SSH Security</title>
+     <para>There is no additional configuration required to use GridFTP in conjunction with
+      SSH.</para>
+    </section>
+    <section>
+     <title>GSI Security</title>
+     <para>In order to use GSI security for the transfers, you need to obtain and install a user
+      certificate from a certificate authority trusted by the GridFTP servers that you wish to move
+      data in and out of, and configure the client to trust the certificate authority that signed
+      the certificates of the GridFTP server(s)</para>
+     <itemizedlist>
+      <listitem>
+       <para><olink targetdoc="gtadmin" targetptr="gtadmin-basic-host">Obtaining user
+         certificates</olink></para>
+      </listitem>
+      <listitem>
+       <para><olink targetdoc="gsicAdmin" targetptr="gsic-configuring-trustCA">Configuring the
+         client to trust a particular certificate authority</olink></para>
+      </listitem>
+      <listitem>
+       <para><olink targetdoc="gsicUser" targetptr="grid-proxy-init">Creating a proxy
+         credential</olink></para>
+      </listitem>
+     </itemizedlist>
+    </section>
+   </section>
+  </section>
+  <section id="gridftp-user-basic"><title>Basic procedure for using
+    globus-url-copy</title>
+   <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>basic
+     procedure</secondary></indexterm>
+   <indexterm type="gridftp"><primary>moving files</primary><secondary>basic
+    procedure</secondary></indexterm>
+   <para>If you just want the "rules of thumb" on getting started (without all the details), the
+    following options using <computeroutput>globus-url-copy</computeroutput> will normally give
+    acceptable performance: </para>
+   <para>For a single file transfer:</para>
+   <screen>globus-url-copy -vb -p 4 <replaceable>source_url</replaceable> <replaceable>destination_url</replaceable></screen>
+   <para>where: <variablelist>
+     <varlistentry>
+      <term>-vb</term>
+      <listitem>
+       <para>specifies verbose mode and displays: <itemizedlist>
+         <listitem>
+          <simpara> number of bytes transferred, </simpara>
+         </listitem>
+         <listitem>
+          <simpara> performance since the last update (currently every 5 seconds), and </simpara>
+         </listitem>
+         <listitem>
+          <simpara> average performance for the whole transfer. </simpara>
+         </listitem>
+        </itemizedlist></para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>-p</term>
+      <listitem>
+       <para> Specifies the number of parallel data connections that should be used. This is one of
+        the most commonly used options. </para>
+       <para><olink targetdoc="gridftpUser" targetptr="globus-url-copy-parallelismvalue">How do I
+         pick a value?</olink></para>
+      </listitem>
+     </varlistentry>
+   </variablelist></para>
+   
+   
+   <para>For a directory transfer:</para>
+   <screen>globus-url-copy -vb -p 4  -r -cd - cc 4 <replaceable>source_url</replaceable> <replaceable>destination_url</replaceable></screen>
+   <para>where: <variablelist>
+    <varlistentry id="concurrent">
+     <term>-cc</term>
+     <listitem>
+      <para>Specifies the number of concurrent FTP connections to use for multiple transfers.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>-cd</term>
+     <listitem>
+      <para>Creates destination directories, if needed.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>-r</term>
+     <listitem>
+      <para>Copies files in subdirectories.</para>
+     </listitem>
+    </varlistentry>
+   </variablelist></para>
+   
+   <para>The source/destination URLs will normally be one of the
+    following:</para><itemizedlist>
+    <listitem>
+     <simpara><replaceable>file:///path/to/my/file</replaceable> if you are accessing a file on a
+      file system accessible by the host on which you are running your
+      <glossterm>client</glossterm>.</simpara>
+    </listitem>
+    <listitem>
+     <simpara><replaceable>gsiftp://hostname/path/to/remote/file</replaceable> if you are accessing
+      a file from a GridFTP <glossterm>server</glossterm>.</simpara>
+    </listitem>
+    </itemizedlist>
+   <section id="gridftp-user-putting"><title>Uploading files to a server</title>
+    <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>from your file system
+      to the server</secondary></indexterm>
+    <indexterm type="gridftp"><primary>moving files</primary><secondary>from your file system to the
+      server</secondary></indexterm>
+    <para>One of the most basic tasks in GridFTP is to "put" files, i.e., moving a file from your
+     file system to the server. So for example, if you want to move the file <filename
+      >/tmp/foo</filename> from a file system accessible to the host on which you are running your
+     client to a file name <filename>/tmp/bar</filename> on a host named <filename
+      >remote.machine.my.edu</filename> running a GridFTP server, you would use this command:</para><screen>globus-url-copy -vb -p 4 file:///tmp/foo gsiftp://remote.machine.my.edu/tmp/bar</screen><para>
+     <note>
+      <simpara>In theory, <filename>remote.machine.my.edu</filename> could be the same host as the
+       one on which you are running your client, but that is normally only done in testing
+       situations. </simpara>
+     </note>
+      </para></section>
+   <section id="gridftp-user-getting"><title>Downloading files from a server</title>
+    <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>from a server to your
+      file system</secondary></indexterm>
+    <indexterm type="gridftp"><primary>moving files</primary><secondary>from a server to your file
+      system</secondary></indexterm>
+    <para>A get, i.e, moving a file from a server to your file system, would just reverse the source
+     and destination URLs:</para><para>
+     <tip>
+      <simpara> Remember <replaceable>file:</replaceable> always refers to your file
+       system.</simpara>
+     </tip>
+     </para><screen>globus-url-copy -vb -p 4 gsiftp://remote.machine.my.edu/tmp/bar file:///tmp/foo</screen></section>
+   <section
+    id="gridftp-user-thirdpartytransfers"><title>Third party transfers between
+    two remote servers</title>
+    <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>between two GridFTP
+      servers (a third party transfer)</secondary></indexterm>
+    <indexterm type="gridftp"><primary>moving files</primary><secondary>between two GridFTP servers
+      (a third party transfer)</secondary></indexterm>
+    <para>Finally, if you want to move a file between two GridFTP servers (a <glossterm
+      baseform="third party transfers">third party transfer</glossterm>), both URLs would use
+      <filename>gsiftp:</filename> as the
+      protocol:</para><screen>globus-url-copy -vb -p 4 gsiftp://<replaceable>other.machine.my.edu</replaceable>/tmp/foo gsiftp://<replaceable>remote.machine.my.edu</replaceable>/tmp/bar</screen></section>
+   <section
+    id="gridftp-user-forinfo">
+    <title>For more information</title>
+    <para>If you want more information and details on URLs and the <olink targetdoc="gridftpUser"
+      targetptr="globus-url-copy-commandlineoptions">command line options</olink>, the <olink
+      targetdoc="gridftpKey"/> gives basic definitions and an overview of the GridFTP protocol as well
+     as our implementation of it.</para>
+   </section></section>
+ 
+ 
+ <section id="gridftp-user-ftp">
+  <title>Using standard FTP clients with GridFTP server</title>
+  
+  <para>You can use any standard FTP client to communicate with the GridFTP server in the following
+  cases:</para>
+  <itemizedlist>
+  <listitem><para>GridFTP server is configured to allow anonymous access or username/password based
+  authentication. Note that this method is not secure but if the data on the GridFTP server is
+  world readable or if the GridFTP server is accessible only to the clients on a trusted internal
+  network, the GridFTP server may be configured to allow anonymous access or username/password based authentication</para></listitem>
+  <listitem><para>Your local system administrator has installed "GridFTP Where There is FTP (GWTFTP)", which
+   acts as a proxy between standard FTP clients and GridFTP servers. More information on GWTFTP is available at <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-gwtftp"/>.</para></listitem>
+  </itemizedlist>
+ </section>
+  
+  
+  <section id="gridftp-user-advanced">
+   <title>Advanced Features</title>
+   
+   <section id="gridftp-user-advanced-failures"><title>Failures and retries</title>
+    
+    <para>To retry a transfer after a server or network failure, use the <option>-rst</option> option. 
+     To store the untransferred 
+     urls for restarting the transfer after a client failure, use the <option>-df</option> option. 
+     More information about these
+     options is available <olink targetptr="globus-url-copy-reliability">here</olink>.</para>
+    
+    <para>For example, <command>globus-url-copy</command> can be invoked in a loop for long running transfers, 
+     as shown in the script below:</para>  
+    
+    <screen>
+     #!/bin/sh
+     STATEFILE=/path/to/statefile; 
+     while  [ ! -e $STATEFILE -o -s $STATEFILE ]; 
+     do 
+     globus-url-copy -rst -p 4  -cc 4 -cd -vb -r -df $STATEFILE gsiftp://srchost/srcdirpath/ gsiftp://dsthost/dstdirpath/; 
+     sleep 10; 
+     done;</screen>
+    
+   </section>
+   
+   <section id="gridftp-user-advanced-load-balancing"><title> Load Balancing</title>
+    <para>When there are multiple GridFTP servers avalibale at endpoints,
+    <option>-af</option> option allows concurrent transfers to be spread across
+    multiple GridFTP servers rather than multiple connections to a single
+    GridFTP server.</para>
+    
+    <para>For example, <command>globus-url-copy</command> can be invoked
+     as shown below:</para>  
+    
+    <screen>
+     globus-url-copy -cc 4 -af /tmp/alias-file -f /tmp/xfer-file
+     </screen>
+     <para>
+     Contents of /tmp/alias-file look something like this: </para>
+     <screen>
+     @source
+     gridftp1.source-cluster.org
+     gridftp2.source-cluster.org
+     @destination
+     gridftp1.destination-cluster.org
+     gridftp2.destination-cluster.org
+     gridftp3.destination-cluster.org
+     gridftp4.destination-cluster.org
+     </screen>
+     <note>
+     <para>
+     Each line should either be an alias (noted with the @ symbol), or a
+     hostname[:port]. Currently, only the aliases @source and @destination are
+     valid,
+     and they are used for every source or destination url.
+     </para>
+     </note>
+
+<para> Contents of /tmp/xfer-file look something like this: </para>
+     <screen>
+     gsiftp:///tmp/x1 gsiftp:///tmp/x1
+     gsiftp:///tmp/x2 gsiftp:///tmp/x2
+     gsiftp:///tmp/x3 gsiftp:///tmp/x3
+     gsiftp:///tmp/x4 gsiftp:///tmp/x4
+     </screen>
+     <note>
+     <para> The host part in the url is ignored. 
+     </para></note>
+    
+     <para> In the above example, the following transfers will happen
+     concurrently: </para>
+     <screen>
+     gsiftp://gridftp1.source-cluster.org/tmp/x1 gsiftp://gridftp1.destination-cluster.org/tmp/x1
+     gsiftp://gridftp2.source-cluster.org/tmp/x2 gsiftp://gridftp2.destination-cluster.org/tmp/x2
+     gsiftp://gridftp1.source-cluster.org/tmp/x3 gsiftp://gridftp3.destination-cluster.org/tmp/x3
+     gsiftp://gridftp2.source-cluster.org/tmp/x4 gsiftp://gridftp4.destination-cluster.org/tmp/x4
+     </screen>
+   </section>
+   
+   
+   <section id="gridftp-user-advanced-udt">
+    <title>Using UDT as an alternative transport protocol for TCP</title>
+    
+    <para>UDT is an application-level protocol that uses UDP for data transport. It addresses some of the
+     limitations of TCP in high-bandwidth and high-delay networks and achieves better performance
+     than TCP on those networks. To use UDT as the underlying transport protocol for the GridFTP
+     transfers, use the <option>-udt</option> option.</para>
+    
+    <note><para>Note: In order to use this for a third-party transfer, the server must be configured to 
+     <olink targetdoc="gridftpAdmin" targetptr="gridftp-config-udt">enable UDT</olink>. 
+     In order to use this for a client-server transfer, you
+     need to enable multi-threading in <command>globus-url-copy</command>. 
+     To switch to threaded flavor, set the environment variable
+     'GLOBUS_THREAD_MODEL=pthread'.
+      </para></note>
+    
+   </section>
+   
+   <section id="gridftp-user-advanced-encryption">
+    <title>Encryption and Integrity protection</title>
+    <para>The data channel is authenticated by default. Integrity protection and encryption are optional. 
+     To integrity protect the data, use the <option>-dcsafe</option> option. For encrypted data transfer, use the <option>-dcpriv</option> option.</para>
+   </section>
+   
+   <section id="gridftp-user-advanced-striping">
+    <title>Striping</title>
+    <para>The striping functionality enables one to use a set of computers at both ends of a network to transfer data. 
+     At both the source and destination ends, the computers need to have a shared file system so that the dataset 
+     is accessible from any computer.</para>
+    <para>This feature is especially useful in configurations where individual nodes 
+     at the source and destination clusters have significantly less network capacity when compared to the network 
+     capacity available between the clusters. An example would be clusters with the individual nodes connected by 
+     1 Gbit/s Ethernet connections to a switch that is itself connected to the external network at 10 Gbit/s or faster.</para> 
+    <para>To perform striped data movement, use the <option>-stripe</option> option. </para>
+    
+    <note><para>This option is useful only if the server is <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-striped">configured for striped data movement</olink>.</para></note>
+    
+   </section>
+   </section>
+
+  <section id="gridftp-user-experimental">
+   <title>Experimental Features</title>
+   <section id="gridftp-user-experimental-multicasting">
+    <title>Multicasting</title>
+    
+    <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>single file to many
+     destinations</secondary></indexterm>
+    <indexterm type="gridftp"><primary>moving files</primary><secondary>single file to many
+     destinations</secondary></indexterm>
+    <para>To transfer a single file to many destinations in a multicast/broadcast, use the new
+     <option>-mc</option> option.</para><note>
+      <para>To use this option, the admin must enable multicasting. Click <olink
+       targetdoc="gridftpAdmin" targetptr="gridftp-config-multi">here</olink> for more
+       information.</para>
+     </note>
+     <warning> <para> This option is EXPERIMENTAL </para> </warning>
+     <screen>globus-url-copy -vb -p 4 -mc <replaceable>filename</replaceable> <replaceable>source_url</replaceable></screen><para>The
+      <replaceable>filename</replaceable> must contain a line-separated list of destination urls. For
+      example:
+      <screen>gsiftp://localhost:5000/home/user/tst1
+       gsiftp://localhost:5000/home/user/tst3
+       gsiftp://localhost:5000/home/user/tst4
+      </screen>
+      For more flexibility, you can also specify a single destination url on the command line in
+      addition to the urls in the file. Examples are:
+      <screen>globus-url-copy -MC multicast.file gsiftp://localhost/home/user/src_file</screen> or
+      <screen>globus-url-copy -MC multicast.file gsiftp://localhost/home/user/src_file gsiftp://localhost/home/user/dest_file1</screen></para>
+    
+    <section id="gridftp-user-multicasting-advanced"><title>Advanced multicasting options</title>
+     <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>single file to many
+      destinations</secondary><tertiary>advanced options</tertiary></indexterm>
+     <indexterm type="gridftp"><primary>moving files</primary><secondary>single file to many
+      destinations</secondary><tertiary>advanced options</tertiary></indexterm>
+     <para>Along with specifying the list of destination urls in a file, a set of options for each
+      url can be specified. This is done by appending a <computeroutput>?</computeroutput> to the
+      resource string in the url followed by semicolon-separated key value pairs. For
+      example:</para><screen>gsiftp://dst1.domain.com:5000/home/user/tst1?cc=1;tcpbs=10M;P=4</screen><para>This
+       indicates that the receiving host <filename>dst1.domain.com</filename> will use 4 parallel
+       stream, a tcp buffer size of 10 MB, and will select 1 host when forwarding on data blocks. This
+       url is specified in the <option>-mc</option> file as described above.</para><para>The following
+        is a list of key=value options and their meanings:</para>
+     <!-- fixme: xinclude from admin guide or vice versa? -->
+     <variablelist>
+      <varlistentry>
+       <term>P=<replaceable>integer</replaceable></term>
+       <listitem>
+        <simpara>The number of parallel streams this node will use when forwarding.</simpara>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>cc=<replaceable>integer</replaceable></term>
+       <listitem>
+        <simpara>The number of urls to which this node will forward data.</simpara>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>tcpbs=<replaceable>formatted integer</replaceable></term>
+       <listitem>
+        <simpara>The TCP buffer size this node will use when forwarding.</simpara>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>urls=<replaceable>string list</replaceable></term>
+       <listitem>
+        <simpara>The list of urls that must be children of this node when the spanning tree is
+         complete.</simpara>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>local_write=<replaceable>boolean: y|n</replaceable></term>
+       <listitem>
+        <simpara>Determines if this data will be written to a local disk, or just forwarded on to the
+         next hop. This is explained more in the <olink targetptr="gridftp-multicast-networkoverlay"
+          >Network Overlay</olink> section.</simpara>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>subject=<replaceable>string</replaceable></term>
+       <listitem>
+        <simpara>The DN name to expect from the servers this node is connecting to.</simpara>
+       </listitem>
+      </varlistentry>
+     </variablelist></section><section id="gridftp-multicast-networkoverlay"><title>Network
+      Overlay</title>
+      <indexterm type="gridftp-howto"><primary>moving files</primary><secondary>single file to many
+       destinations</secondary><tertiary>user-defined network routes</tertiary></indexterm>
+      <indexterm type="gridftp"><primary>moving files</primary><secondary>single file to many
+       destinations</secondary><tertiary>user-defined network routes</tertiary></indexterm>
+      <para>In addition to allowing multicast, this function also allows for creating user-defined
+       network routes. </para><para>If the <option>local_write</option> option is set to
+        <computeroutput>n</computeroutput>, then no data will be written to the local disk, the data
+        will only be forwarded on. </para><para>If the <option>local_write</option> option is set to
+         <computeroutput>n</computeroutput> and is used with the <option>cc=1</option> option, the data
+         will be forwarded on to exactly one location. </para><para>This allows the user to create a
+          network overlay of data hops using each GridFTP server as a router to the ultimate
+          destination.</para></section>
+   </section>
+   <section id="gridftp-user-advanced-bottleneck">
+    <title>Bottleneck detection</title>
+    
+    <para>To determine whether the disk or the network is the bottleneck for the file transfer, 
+     use the <option>-nlb</option> option.
+     This option uses NetLogger to estimate speeds of disk and network read/write system calls, 
+     and attempt to determine the bottleneck component.</para>
+    
+    <note><para>In order to use this, the server must be configured to 
+     <ulink url="http://www.cedps.net/index.php/Gridftp-netlogger">enable netlogger bottleneck detection</ulink>.</para></note>
+    
+    <para>Example:
+     <screen>globus-url-copy -p 2 -nlb -vb  gsiftp://host1:port/path/myfile gsiftp://host2:port/path/myfile</screen>
+    </para>
+    
+    <para>This will output something like the following:</para>
+    <screen>
+     Total instantaneous throughput:
+     disk read    = 17022.2 Mbits/s
+     disk write   = 26630.8 Mbits/s
+     net read     = 509.0 Mbits/s
+     net write    = 1053.4 Mbits/s
+     Bottleneck: network
+    </screen>
+   </section>
+   
+  </section>
+  
+  
+ </chapter>
+ <chapter id="gridftp-user-command">
+  <title>GridFTP Client Tool</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+   href="../GridFTP_Interface_Commandline_Client_Frag.xml" xpointer="globus-url-copy"/>
+ </chapter>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_GUI_Frag.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Troubleshooting_Frag.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Usage_Statistics_Frag.xml"/>
+ <glossary role="auto" id="glossary-gridftpUser">
+  <!-- 
+  <remark>some terms not in the docs but wanted in glossary: 
+  <glossterm>scheduler</glossterm>
+  </remark>
+  -->
+  <glossdiv>
+   <title>A</title>
+   <glossentry>
+    <glossterm>Dummy term</glossterm>
+    <glossdef>
+     <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+    </glossdef></glossentry>
+  </glossdiv>
+ </glossary>
+ <index type="gridftp">
+  <title>Index</title>
+ </index>
+</book>

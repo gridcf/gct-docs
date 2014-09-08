@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+
+<appendix id="gtadmin-config-usage-stats" xreflabel="Usage Statistics in GT">
+	<title>Usage Statistics</title>
+
+	<para>The following components collect usage statistics as outlined here (along with information
+		about how to opt-out): <ulink url="../../Usage_Stats.html">Usage Statistics in
+		GT</ulink></para>
+
+	<section>
+		<title>Data Management Usage Statistics</title>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../gridftp/GridFTP_Usage_Statistics_Frag.xml"
+			xpointer="gridftp-usage-stats"/>
+
+	</section>
+
+	<section>
+		<title>Execution Management Usage Statistics</title>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../gram5/GRAM5_Usage_Statistics_Frag.xml"
+			xpointer="gram5-usage-stats"/>
+
+	</section>
+
+</appendix>

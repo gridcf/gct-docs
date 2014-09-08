@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+
+<para> Globus XIO is an extensible input/output 
+library written in C for the Globus Toolkit. It provides a single API 
+(open/close/read/write) that supports multiple wire protocols, with protocol
+ implementations encapsulated as drivers. The XIO drivers distributed with
+  <replaceable role="entity">version</replaceable> include TCP, UDP, file, HTTP, GSI, GSSAPI_FTP, TELNET and queuing. 
+ In addition, Globus XIO provides a driver development interface for use by
+  protocol developers. This interface allows the developer to concentrate on
+  writing protocol code rather than infrastructure, as XIO provides a framework
+  for error handling, asynchronous message delivery, timeouts, etc.
+ The XIO driver-based approach maximizes the reuse of code by supporting the
+  notion of a driver stack. XIO drivers can be written as atomic units and stacked
+  on top of one another. This modularization provides maximum flexibility and
+  simplifies the design and evaluation of individual protocols. <!-- point to clusterworld article? http://www.globus.org/alliance/publications/clusterworld/0404GridFinal.pdf  --></para>
+  

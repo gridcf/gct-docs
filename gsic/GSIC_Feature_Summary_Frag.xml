@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <section id="gsic-features">
+    <title>Feature summary</title>
+<para>Features new in GT <replaceable role="entity">version</replaceable>
+<itemizedlist>
+    <listitem>
+      <simpara>None.</simpara>
+    </listitem>
+  </itemizedlist> 
+</para>
+<para>Other Supported Features
+<itemizedlist>
+    <listitem>
+      <simpara>Uses internet-standard GSSAPI for security operations.</simpara>
+    </listitem>
+    <listitem>
+        <simpara>Supports certificate-based authentication, using both standard
+        X.509 End Entity and <glossterm baseform="proxy certificate">Proxy
+        Certificates</glossterm>.</simpara>
+    </listitem>
+    <listitem>
+      <simpara>Supports delegation of user rights to services using standard
+      X.509 Proxy Certificates.</simpara>
+    </listitem>
+    <listitem>
+      <simpara>Supports authorization based on client certificate chains, including support for X.509v3 certificate extensions.</simpara>
+    </listitem>
+    <listitem>
+      <simpara>Provides tools for managing certificates, proxies, trust roots, and credential identity mapping tables.</simpara>
+    </listitem>
+  </itemizedlist>
+</para>
+<para>Deprecated Features
+<itemizedlist>
+    <listitem>
+      <simpara>None</simpara>
+    </listitem>
+  </itemizedlist>
+</para>
+</section>

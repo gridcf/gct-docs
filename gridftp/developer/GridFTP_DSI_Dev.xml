@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod">
+%xinclude;
+]>
+<appendix id="gridftp-developer-dsi">
+  <title>Developing DSIs for GridFTP</title>
+
+ <para>The GridFTP server provides high speed remote access to data 
+stores.  There are many different types of data storage systems from 
+standard file systems to arrays of magnetic tape.  To allow GridFTP to 
+be a transfer interface to as many data storage systems as possible the 
+Data Storage Interface (DSI) was created.</para>
+
+<para>The DSI presents a modular abstraction layer to a storage system.  It 
+consists of several function signatures and a set of semantics. </para>
+<itemizedlist>
+<listitem><simpara>When a new DSI is created, a programmer implements the functions to provide the 
+semantics associated with them.</simpara></listitem>  
+<listitem><simpara>DSIs can be loaded and switched at runtime. </simpara></listitem>
+<listitem><simpara>When the server requires action from the storage system (be it data, meta-data, directory creation, etc), it passes a request to the 
+loaded DSI module. </simpara></listitem>
+<listitem><simpara>The DSI then services that request and tells the function when it is finished.</simpara></listitem>
+</itemizedlist>
+  
+<para>This document provides an introduction to the DSI and how to create one.</para>
+
+<section><title>DSI Interface</title>
+  
+  <para>The set of interface functions that define the DSI can be found in <computeroutput>globus_gridftp_server.h</computeroutput>.</para>
+  <para>All type definitions starting with <computeroutput>globus_gfs_storage_*()</computeroutput> are part of the DSI interface.</para>
+
+</section>
+
+<section><title>DSI utility API</title>
+
+<para>An API is provided to the DSI author to assist in implementation.  The most interesting parts of this API provide functions that abstract away 
+the details of sending data across the data channel. The DSI author is 
+not expected to know the intimate details of the data channel protocols 
+involved in a GridFTP transfer.  Instead this API provides functions for 
+reading and writing data to and from the net.</para>
+  <para>FIXME - link to api doc</para>
+</section>
+
+<section><title>Implementation</title>
+
+<para>The following is a brief description of part of the DSI implementation process.</para>
+
+<para>An FTP session is defined from the time a client is authorized to use the 
+server until the time the connection is disconnected (disconnect can 
+happen due to the client sending QUIT, error, or timeout, etc).  In the 
+lifetime of the session, the client issues various commands to the FTP 
+server.  Some of these commands require access to the storage system, 
+and thus require action by the DSI. Whenever such a command is received, 
+the server calls out to the appropriate DSI interface function 
+requesting that the specific operation be performed.</para>
+
+<para>The server passes a <screen>globus_gfs_operation_t</screen> data type as a parameter to 
+all DSI request functions.  When the DSI is finished performing that 
+operation, it calls a corresponding 
+<screen>globus_gridftp_server_finished_&lt;type&gt;()</screen> function, passing it this 
+<computeroutput>globus_gfs_operation_t</computeroutput> structure (and whatever other data is needed for 
+any given operation).  This lets the server know that the operation 
+is completed and it can respond to the client appropriately.</para>
+
+<para>As an example we will look at how a simple unix file system DSI would 
+implement the <computeroutput>stat</computeroutput> function.</para>
+
+<para>The DSI's function signature for <computeroutput>stat</computeroutput> is:</para>
+<screen>
+void
+(*globus_gfs_storage_stat_t)(
+    globus_gfs_operation_t              op,
+    globus_gfs_stat_info_t *            stat_info,
+    void *                              user_arg);
+</screen>
+  
+<para>When it is called, the DSI is expected to:
+  <itemizedlist>
+<listitem><para>determine all information associated with the path: <computeroutput>stat_info->pathname</computeroutput>,</para></listitem> 
+<listitem><para>fill in a <computeroutput>globus_gfs_stat_t</computeroutput> with that information, </para></listitem>
+<listitem><para>and then call <computeroutput>globus_gridftp_server_finished_stat()</computeroutput> with that structure.</para></listitem>
+  </itemizedlist>
+</para>
+  <screen>
+static
+void
+globus_gfs_storage_example_stat(
+    globus_gfs_operation_t              op,
+    globus_gfs_stat_info_t *            stat_info,
+    void *                              user_arg)
+{
+    globus_gfs_stat_t                   stat_out;
+    struct stat                         stat_in;
+
+    stat(stat_info->pathname, &amp;stat_in);
+
+    stat_out.mode     = stat_in.st_mode;
+    stat_out.nlink    = stat_in.st_nlink;
+    stat_out.uid      = stat_in.st_uid;
+    stat_out.gid      = stat_in.st_gid;
+    stat_out.size     = stat_in.st_size;
+    stat_out.mtime    = stat_in.st_mtime;
+    stat_out.atime    = stat_in.st_atime;
+    stat_out.ctime    = stat_in.st_ctime;
+    stat_out.dev      = stat_in.st_dev;
+    stat_out.ino      = stat_in.st_ino;
+
+    stat_out.name = strdup(stat_info->pathname);
+
+    globus_gridftp_server_finished_stat(op, GLOBUS_SUCCESS, &amp;stat_out, 1);
+}
+</screen>
+<para>This is obviously a very basic example but it should serve for the purposes of
+understanding.</para>
+</section>
+
+<section><title>DSI Bones</title>
+
+<para>Every DSI must register itself with the Globus extensions module 
+properly.  This can be a tedious task yet must be done properly. For this reason, we created a distribution that provides a skeleton DSI upon 
+which a developer can build.</para> 
+
+<para>The distribution includes a script to generate C stubs for a DSI with all of the proper shared library hooks 
+and names needed to work with the <command>globus-gridftp-server</command>. The DSI 
+implementor must fill in the stubbed-out functions with the necessary 
+code specific to their needs.</para>
+
+<screen>% ./generate-stubs.sh <replaceable>dsi name</replaceable> <replaceable>flavor</replaceable></screen>
+
+<para>This command will generate the c source file.  "dsi name" is the string 
+that will be associated with the DSI.  It must be unique to your Globus 
+installation.  To load it into the server use the <option>-dsi <replaceable>dsi name</replaceable></option> option 
+to the server.</para>
+
+<screen>% make</screen>
+
+<para>This will compile the DSI and create the dynamically loadable library. 
+To include additional compile dependencies or libraries, open <filename>Makefile</filename> 
+and add them to the appropriate MACRO line.</para>
+
+<screen>% make install</screen>
+
+<para>This will copy the library to <filename>$GLOBUS_LOCATION/lib</filename>, thereby making it 
+ready for use.</para>
+
+</section>
+</appendix>

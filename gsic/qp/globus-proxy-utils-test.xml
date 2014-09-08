@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="grid_proxy_utils_test_pl_gcc64" errors="0" failures="0" tests="11" time="0.737646102905273">
+    <system-out>1..11
+ok 1 - default_proxy_type
+ok 2 - draft_proxy_type
+ok 3 - rfc_proxy_type
+ok 4 - legacy_proxy_type
+ok 5 - default_limited_proxy_type
+ok 6 - draft_limited_proxy_type
+ok 7 - rfc_limited_proxy_type
+ok 8 - old_limited_proxy_type
+ok 9 - independent_proxy_type
+ok 10 - draft_independent_proxy_type
+ok 11 - rfc_independent_proxy_type
+</system-out>
+    <testcase name="default_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0685431957244873" />
+    <testcase name="draft_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0671780109405518" />
+    <testcase name="rfc_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0553278923034668" />
+    <testcase name="legacy_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.104384899139404" />
+    <testcase name="default_limited_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0545530319213867" />
+    <testcase name="draft_limited_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0539009571075439" />
+    <testcase name="rfc_limited_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.055927038192749" />
+    <testcase name="old_limited_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0561161041259766" />
+    <testcase name="independent_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0539560317993164" />
+    <testcase name="draft_independent_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0537388324737549" />
+    <testcase name="rfc_independent_proxy_type" classname="grid_proxy_utils_test_pl_gcc64" time="0.0529890060424805" />
+  </testsuite>
+  <testsuite name="proxy_order_test_pl_gcc64" errors="0" failures="0" tests="12" time="0.422688007354736">
+    <system-out>1..12
+ok 1 - proxy order proxy_cert:proxy_key:id_cert
+ok 2 - proxy order proxy_cert:id_cert:proxy_key
+ok 3 - proxy order proxy_key:proxy_cert:id_cert
+ok 4 - proxy order proxy_key:id_cert:proxy_cert
+ok 5 - proxy order id_cert:proxy_cert:proxy_key
+ok 6 - proxy order id_cert:proxy_key:proxy_cert
+ok 7 - proxy order proxy_cert:proxy_key.pkcs8:id_cert
+ok 8 - proxy order proxy_cert:id_cert:proxy_key.pkcs8
+ok 9 - proxy order proxy_key.pkcs8:proxy_cert:id_cert
+ok 10 - proxy order proxy_key.pkcs8:id_cert:proxy_cert
+ok 11 - proxy order id_cert:proxy_cert:proxy_key.pkcs8
+ok 12 - proxy order id_cert:proxy_key.pkcs8:proxy_cert
+</system-out>
+    <testcase name="proxy order proxy_cert:proxy_key:id_cert" classname="proxy_order_test_pl_gcc64" time="0.0244719982147217" />
+    <testcase name="proxy order proxy_cert:id_cert:proxy_key" classname="proxy_order_test_pl_gcc64" time="0.0289199352264404" />
+    <testcase name="proxy order proxy_key:proxy_cert:id_cert" classname="proxy_order_test_pl_gcc64" time="0.0268239974975586" />
+    <testcase name="proxy order proxy_key:id_cert:proxy_cert" classname="proxy_order_test_pl_gcc64" time="0.0281579494476318" />
+    <testcase name="proxy order id_cert:proxy_cert:proxy_key" classname="proxy_order_test_pl_gcc64" time="0.0269050598144531" />
+    <testcase name="proxy order id_cert:proxy_key:proxy_cert" classname="proxy_order_test_pl_gcc64" time="0.0259308815002441" />
+    <testcase name="proxy order proxy_cert:proxy_key.pkcs8:id_cert" classname="proxy_order_test_pl_gcc64" time="0.0252301692962646" />
+    <testcase name="proxy order proxy_cert:id_cert:proxy_key.pkcs8" classname="proxy_order_test_pl_gcc64" time="0.0242879390716553" />
+    <testcase name="proxy order proxy_key.pkcs8:proxy_cert:id_cert" classname="proxy_order_test_pl_gcc64" time="0.0242960453033447" />
+    <testcase name="proxy order proxy_key.pkcs8:id_cert:proxy_cert" classname="proxy_order_test_pl_gcc64" time="0.0242729187011719" />
+    <testcase name="proxy order id_cert:proxy_cert:proxy_key.pkcs8" classname="proxy_order_test_pl_gcc64" time="0.0249960422515869" />
+    <testcase name="proxy order id_cert:proxy_key.pkcs8:proxy_cert" classname="proxy_order_test_pl_gcc64" time="0.0256938934326172" />
+  </testsuite>
+</testsuites>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <chapter id="gsic-protocol"><title>Protocol Specifications</title>
+<section><title>GSI Message Specification</title>
+<para>The GSSAPI implementation contained in this component produces
+    security tokens that follow an extended version of the SSL/TLS
+    protocol. More information about the protocol can be found 
+    <ulink url="../GSI-message-specification-02.doc">here</ulink>.</para>
+</section></chapter>

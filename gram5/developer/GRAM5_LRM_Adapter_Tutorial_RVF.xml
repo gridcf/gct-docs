@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY GRAM "GRAM5" >
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod">
+%xinclude;
+]>
+
+<section id="gram5-lrma-tutorial-rvf">
+<title>RSL Validation File</title>
+
+    <para>
+    Each LRM Adapter can have a custom RSL validation file (RVF) which
+    indicates which RSL attributes are valid for that LRM, what their default
+    values are, and when they can be used during a job lifecycle.
+    </para>
+
+    <para>
+    The RVF entries consist of a set of records containing attribute-value
+    pairs, with a blank line separating records. Each attribute-value pair
+    is separated by the colon character. The value may be quoted with the
+    double-quote character, in which case, the value continues until a
+    second quote character is found; otherwise, the value terminates at
+    end of line.
+    </para>
+    
+    <section>
+    <title>RVF Attributes</title>
+    <para>
+    The attribute names understood by the &GRAM; RVF parser are:
+    <variablelist>
+        <varlistentry>
+            <term>Attribute</term>
+            <listitem><simpara>The name of an RSL
+            attribute.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>Description</term>
+            <listitem><simpara>A textual description of the
+            attribute.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>RequiredWhen</term>
+            <listitem><simpara>A sequence of <olink
+            targetptr="gram5-lrma-tutorial-rvf-when-values">WHEN-VALUES</olink>
+            describing when this RSL attribute must be
+            present.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>DefaultWhen</term>
+            <listitem><simpara>A sequence of <olink
+            targetptr="gram5-lrma-tutorial-rvf-when-values">WHEN-VALUES</olink>
+            describing when the default RSL value will be applied if it's not
+            present in the RSL.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>ValidWhen</term>
+            <listitem><simpara>A sequence of <olink
+            targetptr="gram5-lrma-tutorial-rvf-when-values">WHEN-VALUES</olink>
+            describing when the RSL attribute may be
+            present.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>Default</term>
+            <listitem><simpara>A literal RSL value sequence containing the
+            default value of the attribute, applied to the RSL when the
+            attribute is not present, but the RSL use matches the
+            <literal>DefaultWhen</literal> value.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>Values</term>
+            <listitem><simpara>A sequence of strings enumerating the legal
+            values for the RSL attribute.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term>Publish</term>
+            <listitem><simpara>When set to <literal>true</literal>, the
+            RSL attribute will be added to the documentation for the LRM
+            Adapter if the RVF is processed by the
+            <command>create_rsl_documentation.pl</command> script. Otherwise,
+            it will not be mentioned.</simpara></listitem>
+        </varlistentry>
+    </variablelist>
+    </para>
+
+    <section id="gram5-lrma-tutorial-rvf-when-values">
+    <title>RVF When Values</title>
+    <para>The <replaceable>WHEN-VALUES</replaceable> used by the RVF parser are
+    described in this list:
+
+    <variablelist>
+        <varlistentry>
+            <term><literal>GLOBUS_GRAM_JOB_SUBMIT</literal></term>
+            <listitem><simpara>RSL Attribute used in a &GRAM; job request
+            to submit a job to an LRM Adapter.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term><literal>GLOBUS_GRAM_JOB_RESTART</literal></term>
+            <listitem><simpara>RSL Attribute used in a &GRAM; job request
+            to restart a job which was stopped due to a two-phase commit
+            timeout.</simpara></listitem>
+        </varlistentry>
+
+        <varlistentry>
+            <term><literal>GLOBUS_GRAM_JOB_STDIO_UPDATE</literal></term>
+            <listitem><simpara>RSL Attribute used in a &GRAM; STDIO_UPDATE 
+            signal, which may be sent to a job during the two-phase end
+            state.</simpara></listitem>
+        </varlistentry>
+    </variablelist>
+    </para>
+    </section> <!-- RVF When Values -->
+
+    <section>
+        <title>Common RSL Attributes</title>
+    <para>
+    The &GRAM; service by default implements a common set of RSL attributes for
+    all jobs.  Not all of these may be relevant to all LRM types, but are
+    included in the common set so that the same concept will be processed by
+    the same attribute for each LRM. LRM Adapters can disable particular RSL
+    attributes if they want by adding the attribute to their RVF file with
+    <programlisting>Attribute: <replaceable>AttributeName</replaceable>
+ValidWhen: ""</programlisting>
+    The common list of attributes is described in <olink targetdoc="gram5PI"
+    targetptr="gram5-rsl-attribute-summary"/>.
+    </para>
+    </section> <!-- Common RSL Attributes -->
+    </section> <!-- RVF Attributes -->
+
+    <section>
+    <title>Creating a RSL Validation File for the Fake LRM</title>
+    <para>
+    Normally, the RVF for a new LRM Adapter will add any LRM-specific
+    RSL attributes and perhaps change the DefaultValue for some. For the 
+    <literal>fake</literal> LRM, we'll be a bit more complicated and
+    disable most of the GRAM common RSL attributes and reduce
+    things to indicate the queue and execution time for the fake jobs.
+    The <filename>fake.rvf</filename> will do the following:
+
+    <itemizedlist>
+        <listitem><simpara>Remove <literal>executable</literal>,
+        <literal>arguments</literal>, <literal>directory</literal>,
+        <literal>environment</literal>, <literal>file_clean_up</literal>,
+        <literal>file_stage_in</literal>, <literal>file_stage_out</literal>,
+        <literal>file_stage_in_shared</literal>, <literal>gass_cache</literal>,
+        <literal>gram_my_job</literal>, <literal>host_count</literal>,
+        <literal>library_path</literal>, <literal>max_cpu_time</literal>,
+        <literal>min_memory</literal>, <literal>project</literal>,
+        <literal>queue</literal>, <literal>remote_io_url</literal>,
+        <literal>scratch_dir</literal>, <literal>stdin</literal>,
+        <literal>stdout</literal>, and <literal>stderr</literal> attributes.</simpara></listitem>
+
+        <listitem><simpara>Add a <literal>max_queue_time</literal> attribute,
+        which will be the maximum time a particular fake job will be in the
+        <literal>PENDING</literal> state. This will have a default of 20
+        minutes.</simpara></listitem>
+
+        <listitem><simpara>Add a default value to the
+        <literal>max_wall_time</literal> attribute of 5
+        minutes.</simpara></listitem>
+    </itemizedlist>
+    </para>
+
+    <para>
+    <example>
+        <title>fake.rvf</title>
+        <para>Here is the <ulink url="fake.rvf">complete RVF</ulink> for the
+        <literal>fake</literal> LRM Adapter:
+
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="fake.rvf" parse="text"/></programlisting>
+        </para>
+    </example>
+    </para>
+    </section>
+</section> <!-- RSL Validation File -->
+

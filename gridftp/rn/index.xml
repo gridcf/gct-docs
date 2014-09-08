@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+<article id="gridftpRN">
+  <title> GT <replaceable role="entity">version</replaceable> Release Notes: GridFTP</title>
+  <titleabbrev>Release Notes</titleabbrev>
+  <indexterm type="gridftp">
+    <primary>release notes (GridFTP)</primary>
+  </indexterm>
+  <section id="gridftp-rn-overview">
+    <title>Component Overview</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Overview_Brief_Frag.xml"
+    />
+  </section>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Feature_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Change_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Fixed_Bugs_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Known_Problems_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../GridFTP_Dependencies_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Platform_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../GridFTP_Compatibility_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../GridFTP_Associated_Standards_Frag.xml"/>
+
+  <section id="gridftp-rn-formoreinfo">
+    <title>For More Information </title>
+    <para>See <olink targetdoc="gridftp"/> for more information about this component. </para>
+  </section>
+  <glossary role="auto" id="glossary-gridftpRN">
+    <!-- 
+    <remark>some terms not in the docs but wanted in glossary: 
+    <glossterm>scheduler</glossterm>
+    </remark>
+    -->
+    <glossdiv>
+      <title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</article>

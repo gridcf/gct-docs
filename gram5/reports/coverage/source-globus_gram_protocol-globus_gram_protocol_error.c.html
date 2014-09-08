@@ -1,0 +1,2379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_protocol_error.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2006 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_common.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_i_gram_protocol.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_gram_protocol_constants.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @defgroup globus_gram_protocol_error_messages Error Translation</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_functions</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Functions in this section handle translating GRAM error codes to</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * strings which can help the user diagnose GRAM problems. </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static char *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_protocol_error_strings[GLOBUS_GRAM_PROTOCOL_ERROR_LAST] =</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">  /* </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">   * these error strings are phrased to fit grammatically into </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">   * a sentence of the form &quot;the job failed because &lt;string&gt;&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">   */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   0 */     &quot;Success&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   1 */     &quot;one of the RSL parameters is not supported&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   2 */     &quot;the RSL length is greater than the maximum allowed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   3 */     &quot;an I/O operation failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   4 */     &quot;jobmanager unable to set default to the directory requested&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   5 */     &quot;the executable does not exist&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   6 */     &quot;of an unused INSUFFICIENT_FUNDS&quot;,   /* NEEDS EDITING */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   7 */     &quot;authentication with the remote server failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   8 */     &quot;the user cancelled the job&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*   9 */     &quot;the system cancelled the job&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  10 */     &quot;data transfer to the server failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  11 */     &quot;the stdin file does not exist&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  12 */     &quot;the connection to the server failed (check host and port)&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  13 */     &quot;the provided RSL &#39;maxtime&#39; value is not an integer&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  14 */     &quot;the provided RSL &#39;count&#39; value is not an integer&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  15 */     &quot;the job manager received an invalid RSL&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  16 */     &quot;the job manager failed in allowing others to make contact&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">53</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  17 */     &quot;the job failed when the job manager attempted to run it&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  18 */     &quot;an invalid paradyn was specified&quot;,  /* NEEDS EDITING */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  19 */     &quot;the provided RSL &#39;jobtype&#39; value is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  20 */     &quot;the provided RSL &#39;myjob&#39; value is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">57</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  21 */     &quot;the job manager failed to locate an internal script argument file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">58</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  22 */     &quot;the job manager failed to create an internal script argument file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  23 */     &quot;the job manager detected an invalid job state&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  24 */     &quot;the job manager detected an invalid script response&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">61</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  25 */     &quot;the job manager detected an invalid script status&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">62</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  26 */     &quot;the provided RSL &#39;jobtype&#39; value is not supported by this job manager&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  27 */     &quot;unused ERROR_UNIMPLEMENTED&quot;,  /* NEEDS EDITING */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  28 */     &quot;the job manager failed to create an internal script submission file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  29 */     &quot;the job manager cannot find the user proxy&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">66</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  30 */     &quot;the job manager failed to open the user proxy&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">67</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  31 */     &quot;the job manager failed to cancel the job as requested&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  32 */     &quot;system memory allocation failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  33 */     &quot;the interprocess job communication initialization failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  34 */     &quot;the interprocess job communication setup failed&quot;,  /* REDUNDANT? */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  35 */     &quot;the provided RSL &#39;host count&#39; value is invalid&quot;,  /* REDUNDANT? */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  36 */     &quot;one of the provided RSL parameters is unsupported&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  37 */     &quot;the provided RSL &#39;queue&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  38 */     &quot;the provided RSL &#39;project&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">75</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  39 */     &quot;the provided RSL string includes variables that could not be identified&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">76</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  40 */     &quot;the provided RSL &#39;environment&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  41 */     &quot;the provided RSL &#39;dryrun&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  42 */     &quot;the provided RSL is invalid (an empty string)&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  43 */     &quot;the job manager failed to stage the executable&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">80</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  44 */     &quot;the job manager failed to stage the stdin file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  45 */     &quot;the requested job manager type is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">82</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  46 */     &quot;the provided RSL &#39;arguments&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  47 */     &quot;the gatekeeper failed to run the job manager&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">84</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  48 */     &quot;the provided RSL could not be properly parsed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">85</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  49 */     &quot;there is a version mismatch between GRAM components&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">86</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  50 */     &quot;the provided RSL &#39;arguments&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  51 */     &quot;the provided RSL &#39;count&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">88</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  52 */     &quot;the provided RSL &#39;directory&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  53 */     &quot;the provided RSL &#39;dryrun&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">90</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  54 */     &quot;the provided RSL &#39;environment&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">91</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  55 */     &quot;the provided RSL &#39;executable&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  56 */     &quot;the provided RSL &#39;host_count&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">93</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  57 */     &quot;the provided RSL &#39;jobtype&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">94</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  58 */     &quot;the provided RSL &#39;maxtime&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">95</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  59 */     &quot;the provided RSL &#39;myjob&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">96</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  60 */     &quot;the provided RSL &#39;paradyn&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">97</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  61 */     &quot;the provided RSL &#39;project&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">98</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  62 */     &quot;the provided RSL &#39;queue&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  63 */     &quot;the provided RSL &#39;stderr&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">100</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  64 */     &quot;the provided RSL &#39;stdin&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">101</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  65 */     &quot;the provided RSL &#39;stdout&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">102</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  66 */     &quot;the job manager failed to locate an internal script&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  67 */     &quot;the job manager failed on the system call pipe()&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">104</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  68 */     &quot;the job manager failed on the system call fcntl()&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">105</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  69 */     &quot;the job manager failed to create the temporary stdout filename&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">106</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  70 */     &quot;the job manager failed to create the temporary stderr filename&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">107</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  71 */     &quot;the job manager failed on the system call fork()&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">108</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  72 */     &quot;the executable file permissions do not allow execution&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">109</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  73 */     &quot;the job manager failed to open stdout&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">110</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  74 */     &quot;the job manager failed to open stderr&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">111</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  75 */     &quot;the cache file could not be opened in order to relocate the user proxy&quot;,  /* NEEDS EDITING */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">112</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  76 */     &quot;cannot access cache files in ~/.globus/.gass_cache, check permissions, quota, and disk space&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">113</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  77 */     &quot;the job manager failed to insert the contact in the client contact list&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">114</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  78 */     &quot;the contact was not found in the job manager&#39;s client contact list&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">115</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  79 */     &quot;connecting to the job manager failed.  Possible reasons: job terminated, invalid job contact, network problems, ...&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">116</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  80 */     &quot;the syntax of the job contact is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">117</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  81 */     &quot;the executable parameter in the RSL is undefined&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">118</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  82 */     &quot;the job manager service is misconfigured.  condor arch undefined&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">119</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  83 */     &quot;the job manager service is misconfigured.  condor os undefined&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">120</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  84 */     &quot;the provided RSL &#39;min_memory&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">121</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  85 */     &quot;the provided RSL &#39;max_memory&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">122</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  86 */     &quot;the RSL &#39;min_memory&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">123</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  87 */     &quot;the RSL &#39;max_memory&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">124</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  88 */     &quot;the creation of a HTTP message failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  89 */     &quot;parsing incoming HTTP message failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">126</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  90 */     &quot;the packing of information into a HTTP message failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">127</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  91 */     &quot;an incoming HTTP message did not contain the expected information&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  92 */     &quot;the job manager does not support the service that the client requested&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">129</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  93 */     &quot;the gatekeeper failed to find the requested service&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">130</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  94 */     &quot;the jobmanager does not accept any new requests (shutting down)&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">131</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  95 */     &quot;the client failed to close the listener associated with the callback URL&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">132</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  96 */     &quot;the gatekeeper contact cannot be parsed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">133</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  97 */     &quot;the job manager could not find the &#39;poe&#39; command&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">134</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  98 */     &quot;the job manager could not find the &#39;mpirun&#39; command&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">135</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*  99 */     &quot;the provided RSL &#39;start_time&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">136</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 100 */     &quot;the provided RSL &#39;reservation_handle&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">137</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 101 */     &quot;the provided RSL &#39;max_wall_time&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">138</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 102 */     &quot;the RSL &#39;max_wall_time&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">139</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 103 */     &quot;the provided RSL &#39;max_cpu_time&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">140</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 104 */     &quot;the RSL &#39;max_cpu_time&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">141</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 105 */     &quot;the job manager is misconfigured, a scheduler script is missing&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 106 */     &quot;the job manager is misconfigured, a scheduler script has invalid permissions&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">143</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 107 */     &quot;the job manager failed to signal the job&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">144</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 108 */     &quot;the job manager did not recognize/support the signal type&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 109 */     &quot;the job manager failed to get the job id from the local scheduler&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">146</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 110 */     &quot;the job manager is waiting for a commit signal&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 111 */     &quot;the job manager timed out while waiting for a commit signal&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">148</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 112 */     &quot;the provided RSL &#39;save_state&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">149</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 113 */     &quot;the provided RSL &#39;restart&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">150</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 114 */     &quot;the provided RSL &#39;two_phase&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">151</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 115 */     &quot;the RSL &#39;two_phase&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">152</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 116 */     &quot;the provided RSL &#39;stdout_position&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">153</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 117 */     &quot;the RSL &#39;stdout_position&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">154</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 118 */     &quot;the provided RSL &#39;stderr_position&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">155</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 119 */     &quot;the RSL &#39;stderr_position&#39; value is not zero or greater&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">156</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 120 */     &quot;the job manager restart attempt failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">157</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 121 */     &quot;the job state file doesn&#39;t exist&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 122 */     &quot;could not read the job state file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">159</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 123 */     &quot;could not write the job state file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 124 */     &quot;old job manager is still alive&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">161</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 125 */     &quot;job manager state file TTL expired&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">162</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 126 */     &quot;it is unknown if the job was submitted&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">163</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 127 */     &quot;the provided RSL &#39;remote_io_url&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">164</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 128 */     &quot;could not write the remote io url file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">165</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 129 */     &quot;the standard output/error size is different&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 130 */     &quot;the job manager was sent a stop signal (job is still running)&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 131 */     &quot;the user proxy expired (job is still running)&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">168</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 132 */     &quot;the job was not submitted by original jobmanager&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 133 */     &quot;the job manager is not waiting for that commit signal&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">170</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 134 */     &quot;the provided RSL scheduler specific parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 135 */     &quot;the job manager could not stage in a file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">172</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 136 */     &quot;the scratch directory could not be created&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 137 */     &quot;the provided &#39;gass_cache&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">174</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 138 */     &quot;the RSL contains attributes which are not valid for job submission&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">175</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 139 */     &quot;the RSL contains attributes which are not valid for stdio update&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">176</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 140 */     &quot;the RSL contains attributes which are not valid for job restart&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">177</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 141 */     &quot;the provided RSL &#39;file_stage_in&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">178</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 142 */     &quot;the provided RSL &#39;file_stage_in_shared&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 143 */     &quot;the provided RSL &#39;file_stage_out&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">180</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 144 */     &quot;the provided RSL &#39;gass_cache&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">181</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 145 */     &quot;the provided RSL &#39;file_cleanup&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 146 */     &quot;the provided RSL &#39;scratch_dir&#39; parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">183</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 147 */     &quot;the provided scheduler-specific RSL parameter is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">184</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 148 */     &quot;a required RSL attribute was not defined in the RSL spec&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">185</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 149 */     &quot;the gass_cache attribute points to an invalid cache directory&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">186</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 150 */     &quot;the provided RSL &#39;save_state&#39; parameter has an invalid value&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">187</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 151 */     &quot;the job manager could not open the RSL attribute validation file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">188</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 152 */     &quot;the  job manager could not read the RSL attribute validation file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 153 */     &quot;the provided RSL &#39;proxy_timeout&#39; is invalid&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">190</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 154 */     &quot;the RSL &#39;proxy_timeout&#39; value is not greater than zero&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">191</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 155 */     &quot;the job manager could not stage out a file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">192</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 156 */     &quot;the job contact string does not match any which the job manager is handling&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">193</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 157 */     &quot;proxy delegation failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">194</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 158 */     &quot;the job manager could not lock the state lock file&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">195</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 159 */     &quot;an invalid globus_io_clientattr_t was used.&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">196</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 160 */     &quot;an null parameter was passed to the gram library&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">197</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 161 */     &quot;the job manager is still streaming output&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">198</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 162 */     &quot;the authorization system denied the request&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">199</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 163 */     &quot;the authorization system reported a failure&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">200</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 164 */     &quot;the authorization system denied the request - invalid job id&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 165 */     &quot;the authorization system denied the request - not authorized to run the specified executable&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">202</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 166 */     &quot;the provided RSL &#39;user_name&#39; parameter is invalid.&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">203</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* 167 */     &quot;the job is not running in the account named by the &#39;user_name&#39; parameter.&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">204</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">};</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">205</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">206</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_thread_key_t                     globus_i_gram_protocol_error_key = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">207</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">208</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">enum { GLOBUS_L_HACK_MESSAGE_MAX = 1024 };</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">209</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">210</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">211</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Error code translation.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">212</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_error_messages</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">213</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">214</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * This function takes the error code value and returns the associated error</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">215</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * code string. The string is statically allocated by the Globus GRAM Protocol</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">216</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * library and should not be modified or freed.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">217</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">218</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param error_code</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">219</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The error code to look up.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">220</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">221</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @return An error string containing the reason for the error. The error</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">222</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *         string is written to be used in the context</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">223</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *         &quot;[operation] failed because [error_string]&quot;.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">224</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">225</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">226</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">const char *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">227</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_error_string(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">228</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 error_code)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">229</td>
+          <td class="coverageCount">1098</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">230</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_hashtable_t *                hacktable;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">231</td>
+          <td class="coverageCount">1098</td>
+          <td class="srcCell"><span class="srcLine">    char *                              str = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">232</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">233</td>
+          <td class="coverageCount">1098</td>
+          <td class="srcCell"><span class="srcLine">    if (error_code&lt;0 || error_code&gt;=GLOBUS_GRAM_PROTOCOL_ERROR_LAST)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">234</td>
+          <td class="coverageCount">15</td>
+          <td class="srcCell"><span class="srcLine">        return(&quot;Invalid error code&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">235</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">236</td>
+          <td class="coverageCount">1083</td>
+          <td class="srcCell"><span class="srcLine">    hacktable = globus_thread_getspecific(globus_i_gram_protocol_error_key);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">237</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">238</td>
+          <td class="coverageCount">1083</td>
+          <td class="srcCell"><span class="srcLine">    if (hacktable != NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">239</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">240</td>
+          <td class="coverageCount">39</td>
+          <td class="srcCell"><span class="srcLine">        str = globus_hashtable_lookup(hacktable, (void *) error_code);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">241</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">242</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">243</td>
+          <td class="coverageCount">1083</td>
+          <td class="srcCell"><span class="srcLine">    if (str == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">244</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">245</td>
+          <td class="coverageCount">1044</td>
+          <td class="srcCell"><span class="srcLine">        str = globus_l_gram_protocol_error_strings[error_code];</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">246</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">247</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">248</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">249</td>
+          <td class="coverageCount">1083</td>
+          <td class="srcCell"><span class="srcLine">    return str;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">250</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">251</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_protocol_error_string() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">252</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">253</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">254</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">255</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * GSI specific error code hack.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">256</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_error_messages</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">257</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">258</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * This function creates a custom version of the error message for the error</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">259</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION.  &lt;b&gt;This function should really</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">260</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * only used by the GRAM client library.&lt;/b&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">261</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">262</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param message</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">263</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The new message to be associated with error code 7.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">264</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">265</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @note</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">266</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Since Globus 4.2.2 this function uses thread-specific storage, so that</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">267</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     the value returned by globus_gram_protocol_error_string() for </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">268</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION is that for the last</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">269</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     authorization error where</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">270</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     globus_gram_protocol_error_7_hack_replace_message() was called from</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">271</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     this thread.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">272</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">273</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">274</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_error_7_hack_replace_message(const char * message)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">275</td>
+          <td class="coverageCount">482</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">276</td>
+          <td class="coverageCount">482</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_error_hack_replace_message(7, message);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">277</td>
+          <td class="coverageCount">482</td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">278</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_protocol_error_7_hack_replace_message() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">279</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">280</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">281</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * GSI specific error code hack.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">282</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_error_messages</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">283</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">284</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * This function creates a custom version of the error message for the error</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">285</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * GLOBUS_GRAM_PROTOCOL_ERROR_PROTOCOL_FAILED.  &lt;b&gt;This function should really</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">286</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * only used by the GRAM client library.&lt;/b&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">287</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">288</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * This function uses thread-specific storage, so that</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">289</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * the value returned by globus_gram_protocol_error_string() for </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">290</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * GLOBUS_GRAM_PROTOCOL_ERROR_PROTOCOL_FAILED is that for the last</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">291</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * protocol error where</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">292</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * globus_gram_protocol_error_10_hack_replace_message() was called from</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">293</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * this thread.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">294</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">295</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param message</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">296</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The new message to be associated with error code 10.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">297</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">298</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @since Globus 4.2.2</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">299</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">300</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">301</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_error_10_hack_replace_message(const char * message)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">302</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">303</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_i_gram_protocol_error_hack_replace_message(10, message);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">304</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">305</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">306</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">307</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Replace an error code context-specific error message with a new message</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">308</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">309</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param errorcode</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">310</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Integer error code to associate the context-specific message with</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">311</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param message</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">312</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     The new message string.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">313</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">314</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">315</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_i_gram_protocol_error_hack_replace_message(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">316</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 errorcode,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">317</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const char *                        message)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">318</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">319</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_hashtable_t *                hacktable;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">320</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              old;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">321</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">322</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">323</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    hacktable = globus_thread_getspecific(globus_i_gram_protocol_error_key);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">324</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    if (!hacktable)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">325</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">326</td>
+          <td class="coverageCount">468</td>
+          <td class="srcCell"><span class="srcLine">        hacktable = malloc(sizeof(globus_hashtable_t));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">327</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">328</td>
+          <td class="coverageCount">468</td>
+          <td class="srcCell"><span class="srcLine">        if (hacktable != NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">329</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">330</td>
+          <td class="coverageCount">468</td>
+          <td class="srcCell"><span class="srcLine">            rc = globus_hashtable_init(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">331</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    hacktable,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">332</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    17,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">333</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    globus_hashtable_int_hash,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">334</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    globus_hashtable_int_keyeq);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">335</td>
+          <td class="coverageCount">468</td>
+          <td class="srcCell"><span class="srcLine">            if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">336</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">337</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                free(hacktable);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">338</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                hacktable = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">339</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">340</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">341</td>
+          <td class="coverageCount">468</td>
+          <td class="srcCell"><span class="srcLine">            globus_thread_setspecific(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">342</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                globus_i_gram_protocol_error_key, hacktable);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">343</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">344</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">345</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">346</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    if (hacktable == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">347</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">348</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">349</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">350</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">351</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    old = globus_hashtable_remove(hacktable, (void *) errorcode);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">352</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    if (old)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">353</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">354</td>
+          <td class="coverageCount">14</td>
+          <td class="srcCell"><span class="srcLine">        free(old);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">355</td>
+          <td class="coverageCount">14</td>
+          <td class="srcCell"><span class="srcLine">        old = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">356</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">357</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">358</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    if (message)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">359</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">360</td>
+          <td class="coverageCount">61</td>
+          <td class="srcCell"><span class="srcLine">        old = strdup(message);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">361</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">362</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">363</td>
+          <td class="coverageCount">486</td>
+          <td class="srcCell"><span class="srcLine">    if (old)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">364</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">365</td>
+          <td class="coverageCount">61</td>
+          <td class="srcCell"><span class="srcLine">        rc = globus_hashtable_insert(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">366</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                hacktable,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">367</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                (void *) errorcode,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">368</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                old);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">369</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">370</td>
+          <td class="coverageCount">61</td>
+          <td class="srcCell"><span class="srcLine">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">371</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">372</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            free(old);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">373</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">374</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">375</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">376</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_error_hack_replace_message() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">377</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">378</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">379</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">380</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_protocol_errors_destroy(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">381</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              str)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">382</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">383</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (str)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">384</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">385</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">386</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">387</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">388</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_protocol_errors_destroy() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">389</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">390</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">391</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_i_gram_protocol_error_destroy(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">392</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              arg)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">393</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">394</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_hashtable_destroy_all(arg, globus_l_gram_protocol_errors_destroy);</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

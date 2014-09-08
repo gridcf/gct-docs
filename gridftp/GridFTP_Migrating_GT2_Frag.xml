@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="gridftp-migrating-GT2">
+ <title>Migrating GridFTP from GT2</title>
+<para>If you are running a version 2.2 or earlier, it is deprecated, unsupported, has major bugs leading to stability 
+ problems, has known potential security exploits via the wuftpd <glossterm>server</glossterm>, and has a protocol incompatibility with 
+ later versions due to an error in the security code.  Your GT 2.2 <glossterm baseform="client">clients</glossterm> will not work with newer servers (GT 2.4.0 
+    and greater) and new clients will not work with GT 2.2 servers.  You should immediately upgrade to GT <replaceable role="entity">version</replaceable>.</para>
+
+<para> If you are running GT 2.4.0 or greater, the migration for GridFTP is relatively painless.  There were only new 
+ features added.  No changes were made to the existing protocol or APIs, so any existing client or application 
+ built using our client APIs will work unchanged.  You may install new clients and servers on an as-opportunity-permits basis and will have no problems.  Any combination of old/new client/server will work.</para>
+ 
+<para> To upgrade your server, either install it in a $GLOBUS_LOCATION different than the GT 2 installation (either as 
+ part of an entire GT 4 installation or by just doing <computeroutput>make gridftp</computeroutput>).  Alternately, you can statically link the new 
+ server to avoid versioning issues and replace the existing executable.  The configuration files are very different, 
+ so you will need to update the configuration.</para>
+ 
+<para> To upgrade your client, simply build the client and use the new client as you would the old one. </para>
+ 
+<para> Below is a list of new functionality available in GT 3.2 and higher (note that the MLST/MLSD feature is used by 
+ RFT in GT 3.2 and higher and is required if you want to be able to specify a directory to move):</para>
+
+ <para>New Functionality in 3.2:</para>
+ <itemizedlist>
+
+	 <listitem><para>Server Improvements
+ <itemizedlist>
+     <listitem><simpara>Structured File Info</simpara></listitem>
+     <listitem><simpara>MLST, MLSD</simpara></listitem>
+     <listitem><simpara>checksum support</simpara></listitem>
+     <listitem><simpara>chmod support</simpara></listitem>
+     </itemizedlist>
+</para>
+     </listitem>
+<listitem><para>globus-url-copy changes
+    <itemizedlist>
+     <listitem><simpara>File globbing support</simpara></listitem>
+     <listitem><simpara>Recursive dir moves</simpara></listitem>
+     <listitem><simpara>RFC 1738 support</simpara></listitem>
+     <listitem><simpara>Control of restart</simpara></listitem>
+     <listitem><simpara>Control of DC security</simpara></listitem>
+    </itemizedlist>
+</para>
+</listitem>
+ </itemizedlist>
+
+
+</section>

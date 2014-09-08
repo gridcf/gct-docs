@@ -1,0 +1,835 @@
+<?php include_once( "/nfs/globus.org/include/globus_header.inc" ); ?>
+<!-- Include some useful php functions and the standard globus page header -->
+<?php
+    $title="GRAM Scheduler Interface Tutorial (Perl Module)";
+    include_once("scheduler-tutorial-utils.php");
+?>
+
+<h1><?php echo $title; ?></h1>
+    <p>The Perl-language scheduler module provides the job submission and
+    cancelling interface between the Managed Job Service and the underlying
+    scheduler. Very little has been added to this part of the scheduler
+    interface since GT 2---if you have a version for an older Globus Toolkit
+    release, you can ignore most of this tutorial and jump to the
+    <a href="#changes">changes from GT 2</a> section of this tutorial.</p>
+
+    <h2>Perl Scheduler Module</h2>
+    <p>The scheduler interface is implemented as a Perl module which is a
+    subclass of the <code>Globus::GRAM::JobManager</code> module. Its name
+    must match the scheduler type string used when the service is installed,
+    but in all lower case: for the LSF scheduler, the module name is
+    <code>Globus::GRAM::JobManager::lsf</code> and it is stored in the file
+    <code>lsf.pm</code>.  Though there are several methods in the 
+    <code><a href="<?php print perldoc_path() ?>/Globus/GRAM/JobManager">
+    Globus::GRAM::JobManager interface</a></code>, the only ones which
+    absolutely need to be implemented in a scheduler module are
+    <code>submit</code> and <code>cancel</code>.</p>
+
+    <p>We'll begin by looking at the start of the lsf source module,
+    <code>lsf.in</code> (the transformation to <code>lsf.pm</code> happens
+    when a setup script is run. To begin the script, we import the GRAM
+    support modules into the scheduler module's namespace, declare the
+    module's namespace, and declare this
+    module as a subclass of the <code>Globus::GRAM::JobManager</code> module.
+    All scheduler packages will need to do this, substituting the name of the
+    scheduler type being implemented where we see <em>lsf</em> below.</p>
+
+    <pre>
+use Globus::GRAM::Error;
+use Globus::GRAM::JobState;
+use Globus::GRAM::JobManager;
+use Globus::Core::Paths;
+
+...
+
+package Globus::GRAM::JobManager::lsf;
+
+@ISA = qw(Globus::GRAM::JobManager);</pre>
+
+    <p>Next, we declare any system-specific values which will be substituted
+    when the setup package scripts are run. In the LSF case, we need the know
+    the paths to a few programs which interact with the scheduler:</p>
+
+<pre>my ($mpirun, $bsub, $bjobs, $bkill);
+
+BEGIN
+{
+    $mpirun = '@MPIRUN@';
+    $bsub   = '@BSUB@';
+    $bjobs  = '@BJOBS@';
+    $bkill  = '@BKILL@';
+}
+</pre>
+
+    <p>The values surrounded by the @-sign (such as <code>@MPIRUN@</code>)
+    will be replaced by with the path to the named programs by
+    the <code>find-lsf-tools</code> script described
+    below.</p>
+
+    <h3>Writing a Constructor</h3>
+    <p>For scheduler interfaces which need to setup some data before calling
+    their other methods, they can overload the <code>new</code> method which
+    acts as a constructor. Scheduler scripts which don't need any
+    per-instance initialization will not need to provide a constructor, the
+    default <code>Globus::GRAM::JobManager::new</code> constructor will do
+    the job.</p>
+
+    <p>If you do need to overloaded this method, be sure to call the
+    parent module's constructor to allow it to do its initialization, as
+    in this example:</p>
+
+    <pre>
+# Example-only implementation of the module's constructor. You won't find
+# this code in lsf.in
+sub new
+{
+    my $proto = shift;
+    my $class = ref($proto) || $proto;
+    my $self = $class-&gt;SUPER::new(@_);
+
+    ## Insert scheduler-specific startup code here
+    $self-&gt;{foo} = 1;
+    $self-&gt;{bar} = 'baz';
+    ## End of scheduler-specific startup code
+
+    return $self;
+}
+    </pre>
+
+    <p>The job interface methods are called with only one argument: the
+    scheduler object itself. That object contains a
+    Globus::GRAM::JobDescription object
+    (<code>$self-&gt;{JobDescription}</code>) which includes the values from
+    the RSL associated with the request, as well as a few extra
+    values:</p>
+    <dl>
+      <dt>job_id</dt>
+      <dd>
+        The string returned as the value of JOB_ID in the return hash from
+        submit.  This won't be present for methods called before the job is
+        submitted.
+      </dd>
+      <dt>uniq_id</dt>
+      <dd>
+        A string associated with this job request by the job manager
+        program. It will be unique for all jobs on a host for all time and
+        might be useful in creating temporary files or scheduler-specific
+        processing.
+      </dd>
+    </dl>
+
+    Now, let's look at the methods which will interface to the scheduler.
+
+    <h3>Submitting Jobs</h3>
+    <p>All scheduler modules must implement the submit method. This method is
+    called when the job manager wishes to submit the job to the scheduler.
+    The information in the original job request RSL string is available to
+    the scheduler interface through the <code>JobDescription</code> data
+    member of it's hash.</p>
+
+    <p>For most schedulers, this is the longest method to be implemented, as
+    it must decide what to do with the job description, and convert RSL
+    elements to something which the scheduler can understand.</p>
+
+    <p>We'll look at some of the steps in the LSF manager code to see how
+    the scheduler interface is implemented.</p>
+
+    <p>In the beginning of the submit method, we'll get our parameters and
+    look up the job description in the manager-specific object:</p>
+
+    <pre>
+sub submit
+{
+    my $self = shift;
+    my $description = $self-&gt;{JobDescription};
+
+    </pre>
+
+    <p>Then we will check for values of the job parameters that we will be
+    handling. For example, this is how we check for a valid job type in the
+    LSF scheduler interface:</p>
+
+    <pre>
+if(defined($description-&gt;jobtype())
+{
+    if($description-&gt;jobtype !~ /^(mpi|single|multiple)$/)
+    {
+        return Globus::GRAM::Error::JOBTYPE_NOT_SUPPORTED;
+    }
+    elsif($description-&gt;jobtype() eq 'mpi' &ampt;&ampt; $mpirun eq "no")
+    {
+        return Globus::GRAM::Error::JOBTYPE_NOT_SUPPORTED;
+    }
+}
+    </pre>
+
+    <p>The lsf module supports most of the core RSL elements, so it does
+    quite a bit more processing to determine what to do with the values in
+    the job description.</p>
+
+    <p>Once we've inspected the JobDescription we'll know what we need to
+    tell the scheduler about so that it'll start the job properly. For LSF,
+    we will construct a job description script and pass that to the
+    <code>bsub</code> command. This script is a Bourne Shell script with some
+    special comments which LSF uses to decide what constraints to use when
+    scheduling the job.</p>
+
+    <p>First, we'll open the new file, and write the file header:</p>
+
+    <pre>
+    local(*JOB);
+    open(JOB, '&gt;' . $lfs_job_script_name);
+    print JOB&lt;&lt;"EOF"
+#! /bin/sh
+#
+# LSF batch job script built by Globus Job Manager
+#
+EOF
+    </pre>
+
+    <p>Then, we'll add some comments to pass job constraints to
+    LSF, such as the queue and project names:</p>
+
+    <pre>
+if(defined($queue))
+{
+    print JOB "#BSUB -q $queue\n";
+}
+if(defined($description-&gt;project()))
+{
+    print JOB "#BSUB -P " . $description-&gt;project() . "\n");
+}
+    </pre>
+
+    <p>At the end of the job description script, we actually run the
+    executable named in the JobDescription. For LSF, we support a few
+    different job types which require different startup commands. Here, we
+    will quote and escape the strings in the argument list so that the values
+    of the arguments will be identical to those in the initial job request
+    string. For this Bourne-shell syntax script, we will double-quote each
+    argument, and escaping the backslash (\), dollar-sign ($), double-quote
+    ("), and single-quote (') characters. We will use this new string later
+    in the script.</p>
+
+    <pre>
+    @arguments = $description-&gt;arguments();
+
+    foreach(@arguments)
+    {
+        if(ref($_))
+        {
+            return Globus::GRAM::Error::RSL_ARGUMENTS;
+        }
+    }
+    if($#arguments &gt; 0)
+    {
+        foreach(@arguments)
+        {
+             $_ =~ s/\\/\\\\/g;
+             $_ =~ s/\$/\\\$/g;
+             $_ =~ s/"/\\\"/g;
+             $_ =~ s/`/\\\`/g;
+
+             $args .= '"' . $_ . '" ';
+        }
+    }
+    else
+    {
+        $args = "";
+    }
+    </pre>
+
+
+    <p>To end the LSF job description script, we will write the command line
+    of the executable to the script. Depending on the job type of this
+    submission, we will need to start either one or more instances of the
+    executable, or the mpirun program which will start the job with the
+    executable count in the <code>JobDescription</code>:</p>
+
+    <pre>
+    if($description-&gt;jobtype() eq 'mpi')
+    {
+        print JOB "$mpirun -np ", $description-&gt;count(), ' ';
+        print JOB $description-&gt;executable(), " $args \n";
+    }
+    elsif($description-&gt;jobtype() eq 'multiple')
+    {
+        for(my $i = 0; $i &lt; $description-&gt;count(); $i++)
+        {
+            print JOB $description-&gt;executable(), " $args &amp;\n";
+        }
+        print JOB "wait\n";
+    }
+    else
+    {
+        print JOB $description-&gt;executable(), " $args\n";
+    }
+    </pre>
+
+    <p>Next, we submit the job to the scheduler. Be sure to close the script
+    file before trying to redirect it into the submit command, or some of the
+    script file may be buffered and things will fail in strange ways!</p>
+
+    <p>When the submission command returns, we check its output for the
+    scheduler-specific job identifier. We will use this value to 
+    poll or cancel the job.</p>
+
+    <p>The return value of the script should be either a GRAM error object or
+    a reference to a hash of values. The <code>Globus::GRAM::JobManager</code>
+    documentation lists the valid keys to that hash. For the submit method,
+    we'll return the job identifier as the value of <code>JOB_ID</code> in
+    the hash. If the scheduler returned a job status result, we could return
+    that as well.  LSF does not, so we'll return the PENDING state along
+    with the job ID, or if the job fails, we'll return an error object. We'll
+    include the standard error output from the scheduler submission program
+    as the GT3_FAILURE_MESSAGE hash value. This failure message is used to
+    provide context into the failure for the user.  </p>
+
+    <pre>
+    close(JOB);
+    chmod 0755, $lsf_job_script_name;
+
+    $lsf_job_err_name = $self-&gt;job_dir() . '/scheduler_bsub_stderr';
+    $self-&gt;log("job err is at $lsf_job_err_name");
+
+    $self-&gt;log("about to submit job");
+    $self-&gt;nfssync( $lsf_job_script_name );
+    $self-&gt;nfssync( $lsf_job_err_name );
+    $job_id = (grep(/is submitted/,
+                   split(/\n/, `$bsub &lt; $lsf_job_script_name 2&gt; $lsf_job_err_name`)))[0];
+
+    if($? == 0)
+    {
+        $job_id =~ m/&lt;([^&gt;]*)&gt;/;
+        $job_id = $1;
+
+        return {
+                   JOB_ID =&gt; $job_id,
+                   JOB_STATE =&gt; Globus::GRAM::JobState::PENDING
+                };
+    }
+    else
+    {
+        $self-&gt;log("job submission failed, checking $lsf_job_err_name");
+
+        my $stderr;
+        local(*ERR);
+        $self-&gt;nfssync( $lsf_job_err_name );
+        open(ERR, "&lt;$lsf_job_err_name");
+        local $/;
+        $stderr = &lt;ERR&gt;;
+        close(ERR);
+
+        open(ERR, '&gt;' . $description-&gt;stderr());
+        print ERR $stderr;
+        close(ERR);
+
+        $stderr =~ s/\n/ /g;
+
+        $self-&gt;respond({ GT3_FAILURE_MESSAGE =&gt; $stderr });
+    }
+    </pre>
+
+    <p>That finishes the submit method. Most of the functionality for the
+    scheduler interface is now written. We just have one more (much
+    shorter) method to implement.</p>
+
+    <h3>Cancelling Jobs</h3>
+
+    <p>All scheduler modules must also implement the cancel method. The
+    purpose of this method is to cancel a scheduled job, whether it's already
+    running or waiting in a queue.</p>
+
+    <p>This method will be given the job ID as part of the JobDescription
+    object in the manager object.  If the scheduler interface provides
+    feedback that the job was cancelled successfully, then we can return a
+    JOB_STATE change to the FAILED state.  Otherwise we can return an empty
+    hash reference, and let the scheduler event generator record the state
+    change next when it occurs.</p>
+
+    <p>To process a cancel in the LSF case, we will run the bkill command
+    with the job ID.</p>
+
+    <pre>
+sub cancel
+{
+    my $self = shift;
+    my $description = $self-&gt;{JobDescription};
+    my $job_id = $description-&gt;jobid();
+
+    $self-&gt;log("cancel job $job_id");
+
+    system("$bkill $job_id &gt;/dev/null 2&gt;/dev/null");
+
+    if($? == 0)
+    {
+        return { JOB_STATE =&gt; Globus::GRAM::JobState::FAILED }
+    }
+    return Globus::GRAM::Error::JOB_CANCEL_FAILED;
+
+}
+    </pre>
+
+    <h3>End of the script</h3>
+
+    <p>It is required that all perl modules return a non-zero value when they
+    are parsed. To do this, make sure the last line of your module consists
+    of:</p>
+
+    <pre>
+1;
+    </pre>
+
+    <h2>Scheduler Setup Package</h2>
+    <p>Once we've written the job manager script, we need to get it installed
+    so that the Managed Job Service will be able to access the scheduler. We
+    do this by writing a setup script. For LSF, we will write the script
+    <code>setup-globus-job-manager-lsf.pl</code>, which we will list in the
+    LSF package as the <code>Post_Install_Program</code>.<p>
+
+    <p>To set up the Gatekeeper service, our LSF setup script
+    does the following:</p>
+    <ol>
+      <li>Perform system-specific configuration.</li>
+      <li>Install the GRAM scheduler Perl module (and register as a gatekeeper
+      service for pre-WS GRAM compatibility).</li>
+      <li><b>(Optional)</b> Install an RSL validation file defining extra
+       scheduler-specific RSL attributes which the scheduler interface will
+       support (pre-WS GRAM only).</li>
+      <li>Update the GPT metadata to indicate that the job manager service
+      has been set up.</li>
+    </ol>
+
+    <h2>LSF Setup Script </h2>
+    <p>The LSF setup script begins by checking the environment for the
+    location where GPT and the Globus Toolkit are installed. Both of
+    these are needed to successfully set up the LSF scheduler module.
+
+    <pre>
+my $gpath = $ENV{GPT_LOCATION};
+
+if (!defined($gpath))
+{
+    $gpath = $ENV{GLOBUS_LOCATION};
+}
+
+if (!defined($gpath))
+{
+    die "GPT_LOCATION or GLOBUS_LOCATION needs to be set before running this script";
+}
+
+@INC = (@INC, "$gpath/lib/perl");
+    </pre>
+
+    <p>After this is some option-parsing code and default values of the
+    options to handle system-specific changes to the scheduler name and
+    whether the pre-WS GRAM service will validate the list of queues
+    at RSL parsing time, or defer to the scheduler script's submit method's
+    error handling.</p>
+
+    <pre>
+require Grid::GPT::Setup;
+use Getopt::Long;
+
+my $name                = 'jobmanager-lsf';
+my $manager_type        = 'lsf';
+my $cmd;
+my $validate_queues     = 1;
+
+GetOptions('service-name|s=s' =&gt; \$name,
+           'validate-queues=s' =&gt; \$validate_queues,
+           'help|h' =&gt; \$help);
+
+&amp;usage if $help;
+    </pre>
+
+    <p>Next, the script constructs a metadata object for the setup package.
+    This object will be used to write a GPT file which will indicate that the
+    dependency described in the GRAM service is met. The meaning of the
+    setup package dependency is: a scheduler script has been deployed
+    into the perl path and a pre-WS GRAM service entry has been created for
+    the scheduler. Note that the second part of this is not relevant
+    to the WS-GRAM service, but is still required to keep the metadata
+    meaningful. The <code>package_name</code> hash value must match the name
+    of the setup package in its GPT metadata.</p>
+
+    <pre>
+my $metadata =
+    new Grid::GPT::Setup(package_name =&gt; "globus_gram_job_manager_setup_lsf");
+    </pre>
+
+    <h3>System-specific Configuration</h3>
+    <p>The system-specific configuration for lsf involves finding the
+    paths to the LSF tools. This is done in the <a href="#find-lsf-tools">
+    find-lsf-tools configure script</a> described below. Note that this
+    script is invoked with the argument <code>--cache-file=/dev/null</code>:
+    this makes the script not cache values between invocations, so that if
+    something in the system environment changes, rerunning the script will
+    behave as expected.</p> 
+
+    <pre>
+print `./find-lsf-tools --cache-file=/dev/null`;
+if($? != 0)
+{
+    print STDERR "Error locating LSF commands, aborting!\n";
+    exit 2;
+}
+    </pre>
+
+    <h3>Registering as a Gatekeeper Service</h3>
+
+    Next, the setup script installs its perl module into the perl library
+    directory and registers an entry in the Globus Gatekeeper's service
+    directory. The program
+    <code><a href="../../perl/globus-job-manager-service.html">
+    globus-job-manager-service</a></code> (distributed in the job manager
+    program setup package) performs both of these tasks.  When run, it expects
+    the scheduler perl module to be located in the 
+    <code>$GLOBUS_LOCATION/setup/globus</code> directory. If this is
+    successful, we can write the setup package metadata to let GPT know
+    that the package is configured properly.</p>
+
+    <pre>
+# Create service
+$cmd = "$libexecdir/globus-job-manager-service -add -m lsf -s \"$name\"";
+system("$cmd &gt;/dev/null 2&gt;/dev/null");
+    </pre>
+
+    <h3>Installing an RSL Validation File (pre-WS GRAM only)</h3>
+
+    <p>If the scheduler script implements RSL attributes which are not part
+    of the core set supported by the job manager, it must publish them in the
+    job manager's data directory. If the scheduler script wants to set some
+    default values of RSL attributes, it may also set those as the default
+    values in the validation file. This is not used by the ws-GRAM service,
+    and is only applicable to scripts which are used in both pre-WS GRAM
+    and WS-GRAM contexts.</p>
+
+    <p>The format of the validation file is
+    described in the <a href="<?php print
+    doxygen_path()?>/globus_gram_job_manager/html/globus_gram_job_manager_rsl_validation_file.html">RSL
+    Validation Section</a> of the pre-WS GRAM documentation. The validation
+    file must be named
+    <code><em>scheduler-type</em>.rvf</code> and installed in the
+    <code>$GLOBUS_LOCATION/share/globus_gram_job_manager</code>
+    directory.</p>
+
+    <p>In the LSF setup script, we check the list of queues supported by the
+    local LSF installation, and add a section of acceptable values for the
+    <em>queue</em> RSL attribute:</p>
+
+    <pre>
+open(VALIDATION_FILE,
+     "&gt;$ENV{GLOBUS_LOCATION}/share/globus_gram_job_manager/lsf.rvf");
+
+# Customize validation file with queue info
+open(BQUEUES, "bqueues -w |");
+
+# discard header
+$_ = <BQUEUES>;
+my @queues = ();
+
+while(<BQUEUES>)
+{
+    chomp;
+
+    $_ =~ m/^(\S+)/;
+
+    push(@queues, $1);
+}
+close(BQUEUES);
+
+if(@queues)
+{
+    print VALIDATION_FILE "Attribute: queue\n";
+    print VALIDATION_FILE join(" ", "Values:", @queues);
+    print VALIDATION_FILE "\n";
+}
+close VALIDATION_FILE;
+    </pre>
+
+    <h3>Updating GPT Metadata</h3>
+    Finally, the setup package should finalize a
+    <code>Grid::GPT::Setup</code>.  If the <code>finish()</code> methods
+    fail, then it is considered good practice to clean up any files created
+    by the setup script. From <code>setup-globus-job-manager-lsf.pl</code>:
+
+@code
+$metadata-&gt;finish();
+@endcode
+
+    <h2>System-Specific Configuration Script</h2>
+    <p>First, our scheduler setup script probes for any system-specific
+    information needed to interface with the local scheduler. For example,
+    the LSF scheduler uses the <code>mpirun</code>, <code>bsub</code>,
+    <code>bqueues</code>, <code>bjobs</code>, and <code>bkill</code> commands
+    to submit, poll, and cancel jobs. We'll assume that the administrator who
+    is installing the package has these commands in their path. We'll use an
+    autoconf script to locate the executable paths for these commands and
+    substitute them into our scheduler Perl module.  In the LSF package, we
+    have the <code>find-lsf-tools</code> script, which is generated during
+    bootstrap by autoconf from the <code>find-lsf-tools.in</code> file:</p>
+
+    <pre>
+## Required Prolog
+
+AC_REVISION($Revision: 1.1 $)
+AC_INIT(lsf.in)
+
+# checking for the GLOBUS_LOCATION
+
+if test "x$GLOBUS_LOCATION" = "x"; then
+    echo "ERROR Please specify GLOBUS_LOCATION" &gt;&amp;2
+    exit 1
+fi
+
+...
+
+## Check for optional tools, warn if not found
+
+AC_PATH_PROG(MPIRUN, mpirun, no)
+if test "$MPIRUN" = "no" ; then
+    AC_MSG_WARN([Cannot locate mpirun])
+fi
+
+...
+
+## Check for required tools, error if not found
+
+AC_PATH_PROG(BSUB, bsub, no)
+if test "$BSUB" = "no" ; then
+    AC_MSG_ERROR([Cannot locate bsub])
+fi
+
+...
+
+## Required epilog - update scheduler specific module
+
+prefix='$(GLOBUS_LOCATION)'
+exec_prefix='$(GLOBUS_LOCATION)'
+libexecdir=${prefix}/libexec
+
+AC_OUTPUT(
+    lsf.pm:lsf.in
+)
+    </pre>
+
+    <p>If this script exits with a non-zero error code, then the setup script
+    propagates the error to the caller and exits without installing the
+    service.</p>
+
+    <h2>Packaging</h2>
+    <p>Now that we've written a job manager scheduler interface, we'll package
+    it using GPT to make it easy for our users to build and install. We'll
+    start by gathering the different files we've written above into a single
+    directory: <code>lsf</code>.</p>
+    <ul>
+      <li>lsf.in</li>
+      <li>ind-lsf-tools.in</li>
+      <li>setup-globus-job-manager.pl</li>
+    </ul>
+
+    <h3>Package Documentation</h3>
+    <p>If there are any scheduler-specific options defined for this scheduler
+    module, or if there any any optional setup items, then it is good to
+    provide a documentation page which describes these. For LSF, we describe
+    the changes since the last version of this package in the file
+    <code>globus_gram_job_manager_lsf.dox</code>. This file consists of a
+    doxygen mainpage.  See <a
+    href="http://www.doxygen.org">http://www.doxygen.org</a> for information
+    on how to write documentation with that tool.</p>
+
+    <h3>configure.in</h3>
+    <p>Now, we'll write our <code>configure.in</code> script. This file is
+    converted to the configure shell script by the bootstrap script below.
+    Since we don't do any probes for compile-time tools or system
+    characteristics, we just call the various initialization macros used by
+    GPT, declare that we may provide doxygen documentation, and then output
+    the files we need substitutions done on.</p>
+
+    <pre>
+AC_REVISION($Revision: 1.1 $)
+AC_INIT(Makefile.am)
+
+GLOBUS_INIT
+AM_PROG_LIBTOOL
+
+dnl Initialize the automake rules the last argument
+AM_INIT_AUTOMAKE($GPT_NAME, $GPT_VERSION)
+
+LAC_DOXYGEN("../", "*.dox")
+
+GLOBUS_FINALIZE
+
+AC_OUTPUT(
+        Makefile
+        pkgdata/Makefile
+        pkgdata/pkg_data_src.gpt
+        doxygen/Doxyfile
+        doxygen/Doxyfile-internal
+        doxygen/Makefile
+)
+    </pre>
+
+    <h3>Package Metadata</h3>
+    <p>Now we'll write our metadata file, and put it in the pkgdata
+    subdirectory of our package. The important things to note in this file
+    are the package name and version, the post_install_program, and the setup
+    sections. These define how the package distribution will be named, what
+    command will be run by <code>gpt-postinstall</code> when this package is
+    installed, and what the setup dependencies will be written when the
+    <code>Grid::GPT::Setup</code> object is finalized.</p>
+
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE gpt_package_metadata SYSTEM "package.dtd"&gt;
+
+&lt;gpt_package_metadata Format_Version="0.02" Name="globus_gram_job_manager_setup_lsf" &gt;
+
+  &lt;Aging_Version Age="0" Major="1" Minor="0" /&gt;
+  &lt;Description &gt;LSF Job Manager Setup&lt;/Description&gt;
+  &lt;Functional_Group &gt;ResourceManagement&lt;/Functional_Group&gt;
+  &lt;Version_Stability Release="Beta" /&gt;
+  &lt;src_pkg &gt;
+
+    &lt;With_Flavors build="no" /&gt;
+    &lt;Source_Setup_Dependency PkgType="pgm" &gt;
+      &lt;Setup_Dependency Name="globus_gram_job_manager_setup" &gt;
+        &lt;Version &gt;
+          &lt;Simple_Version Major="3" /&gt;
+        &lt;/Version&gt;
+      &lt;/Setup_Dependency&gt;
+      &lt;Setup_Dependency Name="globus_common_setup" &gt;
+        &lt;Version &gt;
+          &lt;Simple_Version Major="2" /&gt;
+        &lt;/Version&gt;
+      &lt;/Setup_Dependency&gt;
+    &lt;/Source_Setup_Dependency&gt;
+
+    &lt;Build_Environment &gt;
+      &lt;cflags &gt;@GPT_CFLAGS@&lt;/cflags&gt;
+      &lt;external_includes &gt;@GPT_EXTERNAL_INCLUDES@&lt;/external_includes&gt;
+      &lt;pkg_libs &gt; &lt;/pkg_libs&gt;
+      &lt;external_libs &gt;@GPT_EXTERNAL_LIBS@&lt;/external_libs&gt;
+    &lt;/Build_Environment&gt;
+
+    &lt;Post_Install_Message &gt;
+      Run the setup-globus-job-manager-lsf setup script to configure an
+      lsf job manager.
+    &lt;/Post_Install_Message&gt;
+
+    &lt;Post_Install_Program &gt;
+      setup-globus-job-manager-lsf
+    &lt;/Post_Install_Program&gt;
+
+    &lt;Setup Name="globus_gram_job_manager_service_setup" &gt;
+      &lt;Aging_Version Age="0" Major="1" Minor="0" /&gt;
+    &lt;/Setup&gt;
+
+  &lt;/src_pkg&gt;
+
+&lt;/gpt_package_metadata&gt;
+    </pre>
+
+    <h3>Automake Makefile.am</h3>
+    <p>The automake file <code>Makefile.am</code> for this package is short
+    because there isn't
+    any compilation needed for this package. We just need to define what
+    needs to be installed into which directory, and what source files need to
+    be put into our source distribution. For the LSF package, we need to list
+    the <code>lsf.in</code>, <code>find-lsf-tools</code>, and
+    <code>setup-globus-job-manager-lsf.pl</code> scripts as files to be
+    installed into the setup directory. We need to add those files plus our
+    documentation source file to the EXTRA_LIST variable so that they will be
+    included in source distributions. The rest of the lines in the file are
+    needed for proper interaction with GPT.</p>
+
+    <pre>
+include $(top_srcdir)/globus_automake_pre
+include $(top_srcdir)/globus_automake_pre_top
+
+SUBDIRS = pkgdata doxygen
+
+setup_SCRIPTS = \
+    lsf.in \
+    find-lsf-tools \
+    setup-globus-job-manager-lsf.pl
+
+EXTRA_DIST = $(setup_SCRIPTS) globus_gram_job_manager_lsf.dox
+
+include $(top_srcdir)/globus_automake_post
+include $(top_srcdir)/globus_automake_post_top
+    </pre>
+
+    <h3>Bootstrap</h3>
+
+    <p>The final piece we need to write for our package is the
+    <code>bootstrap</code> script. This script is the standard bootstrap
+    script for a globus package, with an extra line to generate the
+    <code>fine-lsf-tools</code> script using autoconf.</p>
+
+    <pre>
+#!/bin/sh
+
+# checking for the GLOBUS_LOCATION
+
+if test "x$GLOBUS_LOCATION" = "x"; then
+    echo "ERROR Please specify GLOBUS_LOCATION" &gt;&amp;2
+    exit 1
+fi
+
+if [ ! -f ${GLOBUS_LOCATION}/libexec/globus-bootstrap.sh ]; then
+    echo "ERROR: Unable to locate \${GLOBUS_LOCATION}/libexec/globus-bootstrap.sh"
+    echo "       Please ensure that you have installed the globus-core package and"
+    echo "       that GLOBUS_LOCATION is set to the proper directory"
+    exit
+fi
+
+. ${GLOBUS_LOCATION}/libexec/globus-bootstrap.sh
+
+autoconf find-lsf-tools.in &gt; find-lsf-tools
+chmod 755 find-lsf-tools
+
+exit 0
+    </pre>
+
+    <h2><a name="changes">Changes In GT 4.0</a></h2>
+    <h3>Module Methods</h3>
+    <p>The GT-4.0 ws-GRAM service only calls a subset of the Perl methods
+    which were used by the pre-ws GRAM services. Most importantly for script
+    implementors, the polling method is no longer used. Instead, the
+    scheduler-event-generator monitors jobs to signal the service when job
+    change changes occur. Staging is now done via the Reliable File Transfer
+    service, so the file_stage_in and file_stage_out methods are no longer
+    called. Schedulers typically did not implement the staging methods,
+    so this shouldn't affect most scheduler modules.
+    </p>
+
+    <p>That being said, scheduler implementers which would like to have
+    their scheduler both with pre-ws GRAM and WS-GRAM should definitely
+    implement the poll() method described in the pre-WS version of this
+    tutorial.</p>
+
+    <h3>GASS Cache</h3>
+    <p>The GT-4.0 ws-GRAM service does not use the GASS cache for storing
+    temporary files or for staging files. </p>
+
+    <h2>Changes in GT 3.2</h2>
+    In GT 3.2, additional error message context info was added. Scripts can
+    optionally add one of these fields to the return hash from an operation
+    to provide extra error information to the client:<p>
+    <dl>
+      <dt>GT3_FAILURE_MESSAGE</dt>
+      <dd>Error message from underlying script processing indicating what
+      caused a job request to fail</dd>
+      <dt>GT3_FAILURE_TYPE</dt>
+      <dd>One of <code>filestagein</code>, <code>filestageout</code>,
+      <code>filestageinshared</code>, <code>executable</code>,
+      <code>stdin</code> indicating what job request element caused a staging
+      fault.</dd>
+      <dt>GT3_FAILURE_SOURCE</dt>
+      <dd>Source URL or file for a failed staging operation</dd>
+      <dt>GT3_FAILURE_DESTINATION</dt>
+      <dd>Destination URL or file for a failed staging operation</dd>
+    </dl>
+<?php include("/nfs/globus.org/include/globus_footer.inc"); ?>

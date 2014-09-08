@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="ccommonlibDeveloper">
+<title>GT <replaceable role="entity">version</replaceable> C Common Libraries: Developer's Guide</title>
+<titleabbrev>Developer's Guide</titleabbrev>
+
+
+<bookinfo><abstract><title>Introduction</title>
+<para>
+The C Common Libraries provide an abstraction layer for data types, libc system
+calls, and data structures used throughout the Globus Toolkit and useful for
+applications that use the Globus Toolkit.
+</para>
+</abstract></bookinfo>
+
+<chapter id="ccommonlib-developer-beforeyoubegin">
+<title>Before you begin</title>
+  
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Feature_Summary_Frag.xml"/>
+    
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../C_Common_Libraries_Platform_Summary_Frag.xml"/>
+  
+  
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Compatibility_Summary_Frag.xml"/>
+  
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Dependencies_Summary_Frag.xml"/>
+  
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Security_Considerations_Frag.xml"/>
+
+</chapter>
+  <chapter id="ccommonlib-developer-scenarios"><title>Usage scenarios </title>
+    <para>C Common libraries will need to be used if virtually any other toolkit component is used, since many 
+      data types are abstract and require the C common libraries to manipulate.</para>
+  </chapter>
+<chapter id="ccommonlib-developer-archdes"><title>Architecture and design overview</title>
+<para>Not available at this time.</para>
+</chapter>
+
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Interface_API_Frag.xml"/>
+
+  
+  <!-- n/a 
+  
+  <chapter id="ccommonlib-developer-cmd"><title>Command-line tools</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../C_Common_Libraries_Interface_Commandline_Frag.xml"/>
+  </chapter>
+  
+  <chapter id="ccommonlib-developer-guis"><title>Overview of Graphical User Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../C_Common_Libraries_Interface_GUI_Frag.xml"/>
+  </chapter>
+
+  <chapter id="ccommonlib-developer-domain"><title>Semantics and syntax of domain-specific interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../C_Common_Libraries_Interface_Domain_Frag.xml"/>
+  </chapter>
+
+  <chapter id="ccommonlib-developer-config"><title>Configuration interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Feature_Summary_Frag.xml"/>
+    &C_Common_Libraries_Interface_Config_Frag;
+  </chapter>
+  -->
+  <chapter id="ccommonlib-developer-env"><title>Environment variable interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../C_Common_Libraries_Interface_Env_Frag.xml"/>
+  </chapter>
+
+<chapter id="ccommonlib-developer-debugging"><title>Debugging</title>
+<para>General C debugging techniques apply when developing with the C common libraries.</para>
+</chapter>
+
+<chapter id="ccommonlib-developer-troubleshooting"><title>Troubleshooting</title>
+<para>There are no specific troubleshooting techniques for the C common libraries.</para>
+</chapter>
+
+<chapter id="ccommonlib-developer-relateddocs"><title>Related Documentation</title>
+  <para>See the <ulink url="http://www.globus.org/api/c-globus-{$version}/">C API pages</ulink> for more information about this component. </para>
+</chapter>
+
+
+
+
+
+
+
+
+</book>

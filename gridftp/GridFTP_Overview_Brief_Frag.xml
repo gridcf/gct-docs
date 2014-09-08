@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<para>GridFTP is a high-performance, secure, reliable data transfer protocol optimized for
+  high-bandwidth wide-area networks. The GridFTP protocol is based on FTP, the highly-popular
+  Internet file transfer protocol. We have selected a set of protocol features and extensions
+  defined already in IETF RFCs and added a few additional features to meet requirements from current
+  data grid projects. </para>

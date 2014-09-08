@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="security-gridmap-troubleshooting"><title>Grid map Troubleshooting</title>
+<section>
+  <title>Grid map errors</title>
+  <para>The following are some common problems that may cause clients or
+      servers to report that user are not authorized:
+  </para>
+  
+  <table frame='all' id="gridmap-errors-table"><title>Gridmap Errors</title>
+<tgroup cols='3' align='left' colsep='1' rowsep='1'>
+<colspec colname='c1' />
+<colspec colname='c2' />
+<colspec colname='c3' />
+<thead>
+<row>
+  <entry>Error Code</entry>
+  <entry>Definition</entry>
+  <entry>Possible Solutions</entry>
+</row>
+</thead>
+<tbody>
+   <row>
+  <entry><code>The content of the grid map file does not conform to the expected format</code></entry>
+  <entry>The content of the grid map file does not conform to the expected format</entry>
+  <entry>
+Run <olink targetdoc="gsicPI" targetptr="grid-mapfile-check-consistency">grid-mapfile-check-consistency</olink> to make sure that your 
+   gridmap file conforms to the expected format.
+  </entry>
+ </row>
+ <row>
+  <entry><code>The grid map file does not contain a entry for your DN</code></entry>
+  <entry>The grid map file does not contain a entry for your DN</entry>
+  <entry>
+Use <olink targetdoc="gsicPI" targetptr="grid-mapfile-add-entry">grid-mapfile-add-entry</olink> to add the relevant entry.
+  </entry>
+</row>
+ <!-- just copy the <row> block above for each row you need to add -->
+</tbody>
+</tgroup>
+   </table>
+  <!-- 
+  <section>
+    <title>The content of the <glossterm>grid map file</glossterm> does not conform to the expected format</title>
+    <para>Use <command>grid-mapfile-check-consistency</command> to make sure that your
+gridmap conforms to the expected format.
+
+</para>
+  </section>
+  <section>
+    <title>The grid map file does not contain a entry for your DN</title>
+    <para>Use <command>grid-mapfile-add-entry</command> to add the relevant entry.
+</para>
+  </section>
+  -->
+</section>
+</section>

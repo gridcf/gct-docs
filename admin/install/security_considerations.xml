@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+
+<appendix id="gtadmin-sec-considerations"
+	xreflabel="Security Considerations in GT">
+	<title>Security Considerations in GT <replaceable role="entity">version</replaceable></title>
+
+
+	<section id="gtadmin-sec-consid-common-runtime">
+		<title>Common Runtime</title>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../xio/XIO_Security_Considerations_Frag.xml"/>
+
+	</section>
+
+	<section id="gtadmin-sec-consid-security">
+		<title>Security</title>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../gsic/GSIC_Security_Considerations_Frag.xml"/>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../myproxy/Cred_Mgmt_MyProxy_Security_Considerations_Frag.xml"/>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../gsiopenssh/Util_OpenSSH_Security_Considerations_Frag.xml"/>
+
+	</section>
+
+
+
+	<section id="gtadmin-sec-consid-data">
+		<title>Data Management</title>
+		
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+				href="../../gridftp/GridFTP_Security_Considerations_Frag.xml"/>
+
+	</section>
+
+	<section>
+		<title>Execution Management</title>
+
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+			href="../../gram5/GRAM5_Security_Considerations_Frag.xml"/>
+
+	</section>
+
+</appendix>

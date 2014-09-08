@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="simpleca-configuring"><title>Configuring </title>
+
+	<section id="simpleca-multiplemachines">
+	    <title>Configure SimpleCA for multiple machines </title>
+	    <para>So far, you have a single machine configured with SimpleCA
+	        certificates. Recall that in <olink targetdoc="simplecaAdmin" targetptr="simpleca-confirmcert"/>
+	        a
+	        CA setup package was created in <filename>.globus/simpleCA/globus_simple_ca_HASH_setup-0.17.tar.gz</filename>.
+	        If you want to use your certificates on another machine, you
+	        must install that CA setup package on that machine.             
+	    </para>
+	    <para>To install it, copy that package to the second machine and run:
+<screen>$GLOBUS_LOCATION/sbin/gpt-build globus_simple_ca_HASH_setup-0.17.tar.gz gcc32dbg
+$GLOBUS_LOCATION/sbin/gpt-postinstall</screen>
+	    </para>
+	    <para>Then you will have to perform <command>setup-gsi -default</command> from 
+	    	<olink targetdoc="simplecaAdmin" targetptr="simpleca-finalizing"/>.
+	    </para>
+	    <para>If you are going to run services on the second host, it will need
+	    	its own host certificate (<olink targetdoc="simplecaAdmin"  targetptr="simpleca-hostcert"/>)
+	        and grid-mapfile (as described in the basic configuration instructions
+	        in <olink targetdoc="gtadmin" targetptr="gtadmin-basic-gridmap"/>).
+	    </para>
+		<para>You may re-use your <glossterm baseform="user certificate">user certificates</glossterm> on the new host. You will
+	        need to copy the requests to the host where the SimpleCA was
+	        first installed in order to sign them.
+	    </para>
+	</section>
+</chapter>

@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+<book id="gridftpDeveloper">
+  <title>GT <replaceable role="entity">version</replaceable> GridFTP : Developer's Guide</title>
+  <titleabbrev>Developer's Guide</titleabbrev>
+
+  <bookinfo>
+    <abstract>
+      <title>Introduction</title>
+      <para>This guide contains information of interest to developers working with GridFTP. It
+        provides reference information for application developers, including APIs, architecture,
+        procedures for using the APIs and code samples.</para>
+    </abstract>
+  </bookinfo>
+
+
+  <chapter id="gridftp-developer-beforeyoubegin">
+    <title>Before you begin</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../GridFTP_Feature_Summary_Frag.xml"/>
+
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../GridFTP_Platform_Summary_Frag.xml"/>
+
+
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../GridFTP_Compatibility_Summary_Frag.xml"/>
+
+
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../GridFTP_Dependencies_Summary_Frag.xml"/>
+
+  </chapter>
+  <chapter id="gridftp-developer-scenarios">
+    <title>Usage Scenarios</title>
+    <!-- fixme - need more howtos/code sample info for these - as it is this section is a bit on the marketing side -->
+    <para>Do you have a need to move large quantities of data rapidly and reliably to remote locations? 
+    Globus GridFTP is a software suite optimized for the gamut of data access issues — from bulk file transfer 
+    to the details of getting data out of complex storage systems within sites. </para>
+    
+    <para>Are you concerned about authenticating and authorizing the users? Globus GridFTP supports various authentication 
+    and authorization mechanisms. In fact, it is easy to plugin in different authorization mechanism. </para>
+    
+    <para>Do you need to move data in and out of a complex storage systems? In addition to the POSIX file systems, Globus GridFTP 
+    can move data in and out of HPSS and SRB. Capability to access other storage systems can be easily added by implementing 
+    a well-defined pluggable interface called Data Storage Interface (DSI). </para>
+    
+    <para>Do you need transfer huge volume of data and you do not want to babysit the transfer? Use the GridFTP client 'Reliable File Transfer Service'.</para> 
+    
+    <para>Do you need to protect the data while moving it to the remote location? Globus GridFTP provides support for data integrity and data encryption.</para> 
+    
+    <para>Do you need move your data to remote location that is far away and TCP limits the performance? Globus GridFTP supports UDT as an alternate 
+    transport protocol for UDT. GridFTP also allows you to use parallel TCP streams. </para>
+    
+    <para>Do you want to move data from one location to many locations efficiently? Multicasting capability in Globus GridFTP allows you to do it.</para>
+    
+<para>Do you have a network link between source and destination that supports much higher data rate than the data rate supported by individual 
+nodes at either end? GridFTP supports cluster-to-cluster data movement – coordinated data transfer using multiple computer nodes at 
+source and destination.</para>
+
+<para>Do you want to limit the resources used for each client connection on the server node? Globus GridFTP can be configured to run with 
+GFork to limit the resource usage. Customized resource control modules can be plugged in easily.</para> 
+
+<para>Globus GridFTP has pervasive use in the e-Science Grid community. The high energy physics community in particular has been a huge 
+user from the start. The Relativistic Heavy Ion Collider (RHIC) community in Brookhaven used Globus GridFTP to sustain 600 megabytes 
+per second of data transfer (from Long Island, New York, to Japan) over 11 days. </para>
+
+<para>Frequent large file transfer demands for the British Broadcasting Corporation (BBC) are met by GridFTP. Typical broadcast hour today requires 
+280 GB for all pre-processed media streams. "Everything in Gridcast is built using Globus Toolkit," said Terry Harmer, Technical Director at the Belfast e-Science Centre, in an interview (http://www.globusconsortium.org/journal/20050816/harmer.html) in '05 with the Globus Consortium Journal. "We use it as a means by which we create, define, and deploy services. We are big users of GridFTP."</para> 
+
+<para>Recently, US Department of Energy's Advanced Photon Source user facility at Argonne transferred more than a terabyte of data (partitioned into lots of small files) to Australia using GridFTP at a rate 30 times faster than traditional data transfer mechanisms such as SCP. The Laser Interferometer Gravitational Wave Observatory (LIGO) project moved 1.5 Terabytes of data from University of Wisconsin at Milwaukee, USA to Hannover, Germany at a sustained rate of 80 MB/s.</para> 
+    
+  </chapter>
+
+  <chapter id="gridftp-developer-tutorials">
+    <title>Tutorials</title>
+    <indexterm type="gridftp"><primary>tutorial</primary></indexterm>
+    <para>There is an online tutorial available at: <ulink url="http://gridftp.globus.org/tutorials/">http://gridftp.globus.org/tutorials/</ulink>.</para>
+  </chapter>
+
+  <chapter id="gridftp-developer-Spec">
+    <title>Command Specifications</title>
+    <indexterm type="gridftp"><primary>specification</primary></indexterm>
+    <para>
+    Globus implemention of GridFTP is based on the following standards: RFC 959,
+    RFC 2228, RFC 2389, IETF Draft MLST-16 , OGF GFD.020. In addition to these
+    standards, some additional commands are implemented as well. The
+    specification for one such command Data Channel Security Context (DCSC) is
+    available at <olink targetdoc="gridftpDeveloper"
+    targetptr="gridftp-developer-dcsc-spec"/>.
+    </para>
+  </chapter>
+
+  <chapter id="gridftp-developer-archdes">
+    <title>Architecture and design overview</title>
+    <indexterm type="gridftp">
+      <primary>architecture (GridFTP)</primary>
+    </indexterm>
+    <para>GridFTP represents a service that a host is providing. Therefore, the service must be
+      listening on a port waiting for <glossterm>client</glossterm> to request access to that
+      service. This is generally handled one of two ways:</para>
+    <itemizedlist>
+      <listitem>
+        <simpara>Either an application daemon is running listening for connections, or </simpara>
+      </listitem>
+      <listitem>
+        <simpara>inetd/xinetd is used.</simpara>
+      </listitem>
+    </itemizedlist>
+    <section>
+      <title>GridFTP Listening</title>
+      <para>The following list describes the process between the service listening for connection
+        and an exchange of data taking place:</para>
+
+      <orderedlist>
+        <listitem>
+          <simpara>These services (application daemon or inetd/xinetd) listen for
+          connections.</simpara>
+        </listitem>
+        <listitem>
+          <simpara> When a connection is received on a "well known" port such as 2811 for GridFTP,
+            inetd does a fork/exec to start up a GridFTP <glossterm>server</glossterm> process and
+            then does a Switch User (SU) so that the server is running in a user account rather than
+            as root for security reasons. At this point, the client has established a control
+            channel to the server. </simpara>
+        </listitem>
+        <listitem>
+          <simpara>The client will then send a series of commands to configure or describe the
+            transfer that it wants to take place. </simpara>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>GridFTP Transfer</title>
+      <para>There are basically four important components of the exchange:</para>
+
+      <orderedlist>
+        <listitem>
+          <simpara>The first is security. You must authenticate, and for GridFTP, you must establish
+            encryption on the control channel. The control channel is encrypted by default, though
+            it can be switched off (see the security section for more detail). </simpara>
+        </listitem>
+        <listitem>
+          <simpara>The second is setup and informational exchanges. The client may specify the type
+            of the file (Binary or ASCII), the <glossterm baseform="MODE command">MODE</glossterm>
+            of the transfer, he might request the size of a file before transferring it, etc..
+          </simpara>
+        </listitem>
+        <listitem>
+          <simpara>Third, the information and negotiation for the data channel must be done. How
+            this is handled, depends on whether you are doing a <glossterm>client/server transfer</glossterm> or 
+            <glossterm baseform="third party transfers">third party transfer</glossterm>.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Finally, a store (STOR), retrieve (RETR), extended store (ESTO) or extended
+            retrieve (ERET) to indicate direction of the transfer and to start data
+          moving.</simpara>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>GridFTP Server and DSIs</title>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_DSI_General_Frag.xml"/>
+
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_DSI_HPSS_Frag.xml"/>
+
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_DSI_SRB_Frag.xml"/>
+    </section>
+
+  </chapter>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_API_Frag.xml"/>
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_Commandline_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_GUI_Frag.xml"/>
+
+<!-- n/a 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_Domain_Frag.xml"/>
+-->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_Config_Frag.xml"/>
+
+  <chapter id="gridftp-developer-env-var"><title>Environment variable interface</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Interface_Env_Frag.xml"/>
+</chapter>
+
+  <chapter id="gridftp-developer-debugging">
+    <title>Debugging</title>
+    <indexterm type="gridftp"><primary>logging</primary></indexterm>
+    
+    <para>You can  find information on sys admin logs in <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-debugging"/>.</para>
+  </chapter>
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Troubleshooting_Frag.xml"/>
+
+  <chapter id="gridftp-developer-relateddocs">
+    <title>Related Documentation</title>
+    <itemizedlist>
+      <listitem>
+        <simpara>
+          <ulink url="http://www.globus.org/alliance/publications/papers/gridftp_final.pdf">The
+            Globus Striped GridFTP Framework and Server</ulink>
+        </simpara>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DCSC_Spec.xml"/>
+  
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="GridFTP_DSI_Dev.xml"/>
+  
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="GridFTP_Multicast.xml"/>
+  
+  <glossary role="auto" id="glossary-gridftpDeveloper">
+
+    <remark>some terms not in the docs but wanted in glossary: 
+      <glossterm>client/server transfer</glossterm>
+      <glossterm>stream mode (MODE S)</glossterm>
+      <glossterm>improved extended block mode (MODE X)</glossterm>
+     
+    </remark>
+
+    <glossdiv>
+      <title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+  <index type="gridftp">
+    <title>Index</title>
+</index>
+</book>

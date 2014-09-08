@@ -1,0 +1,1239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for tg_gateway.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Portions of this file Copyright 1999-2009 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Portions of this file Copyright 1999-2009 The University of Southern Californ</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">ia.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * This file or a portion of this file is licensed under the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * terms of the Globus Toolkit Public License, found at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.globus.org/toolkit/download/license.html.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * If you redistribute this file, with or without</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * modifications, you must include this notice in the file.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_common.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;gssapi.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;libxml/parser.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;libxml/xpath.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;libxml/xpathInternals.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;libxml/tree.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;openssl/x509.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_gram_protocol.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static gss_OID_desc  globus_l_saml_oid_desc = </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {11, (void *) &quot;\x2B\x06\x01\x04\x01\x9B\x50\x01\x01\x01\x0C&quot; };</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">gss_OID globus_saml_oid = &amp;globus_l_saml_oid_desc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_bool_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_tg_saml_assertion_is_self_issued(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    gss_ctx_id_t                        ctx,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const char *                        entity_id)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">31</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* TODO: Process trusted authorities entities map */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">33</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    return GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_tg_saml_assertion_is_self_issued() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_i_gram_get_tg_gateway_user(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    gss_ctx_id_t                        context,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char **                             gateway_user)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">41</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    OM_uint32                           maj_stat, min_stat;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    gss_buffer_set_t                    data_set;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    ASN1_UTF8STRING *                   asn1_str;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              assertion_string;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    unsigned char *                     p;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    long                                pl;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    xmlDocPtr                           doc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    xmlXPathContextPtr                  xpath_ctx;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    xmlXPathObjectPtr                   xresult;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">53</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">    *gateway_user = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">55</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">    maj_stat =  gss_inquire_sec_context_by_oid(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;min_stat,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">57</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            context,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">58</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            globus_saml_oid,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;data_set);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">61</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">    if (GSS_ERROR(maj_stat))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">62</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">63</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_protocol_error_7_hack_replace_message(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;Error extracting SAML assertion&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">66</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">67</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">68</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto inquire_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* We&#39;ll process only the first SAML assertion bound in the X.509 chain */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">72</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">    if (data_set-&gt;count &lt; 1)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">74</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">        rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">75</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">76</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">        goto empty_data_set;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">79</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    p = data_set-&gt;elements[0].value;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">80</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    pl = data_set-&gt;elements[0].length;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">82</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Convert DER-Encoded string to UTF8 */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">83</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    asn1_str = d2i_ASN1_UTF8STRING(NULL, (void *) &amp;p, pl);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">84</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (!asn1_str)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">85</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">86</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_protocol_error_7_hack_replace_message(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;Error decoding SAML assertion&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">88</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">90</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto utfstring_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">91</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">93</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    assertion_string = malloc(asn1_str-&gt;length + 1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">94</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (assertion_string == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">95</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">96</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">97</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">98</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto assertion_string_malloc_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">100</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    memcpy(assertion_string, asn1_str-&gt;data, asn1_str-&gt;length);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">101</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    assertion_string[asn1_str-&gt;length] = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">102</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Parse SAML assertion */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">104</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    doc = xmlParseDoc(BAD_CAST assertion_string);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">105</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (doc == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">106</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">107</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_protocol_error_7_hack_replace_message(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">108</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;Error parsing SAML assertion&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">109</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">110</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">111</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto parse_assertion_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">112</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">113</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">114</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xmlXPathInit();</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">115</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">116</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Use XPATH to extract Issuer */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">117</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xpath_ctx = xmlXPathNewContext(doc);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">118</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (xpath_ctx == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">119</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">120</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">121</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">122</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto xpath_ctx_init_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">123</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">124</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    rc = xmlXPathRegisterNs(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            xpath_ctx,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">126</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (xmlChar *) &quot;s&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">127</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (xmlChar *) &quot;urn:oasis:names:tc:SAML:1.0:assertion&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">129</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (rc != 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">130</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">131</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">132</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">133</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto xpath_register_ns_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">134</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">135</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">136</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xresult = xmlXPathEvalExpression(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">137</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (const xmlChar *) &quot;string(/s:Assertion/@Issuer)&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">138</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            xpath_ctx);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">139</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">140</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (xresult == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">141</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">142</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_protocol_error_7_hack_replace_message(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">143</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;Error processing SAML assertion: no \&quot;Issuer\&quot; attribute&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">144</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">146</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto xpath_eval_issuer_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">148</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">149</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (! globus_l_tg_saml_assertion_is_self_issued(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">150</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                context,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">151</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                (const char *) xresult-&gt;stringval))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">152</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">153</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        /* Ignore non-self issued assertions */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">154</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">155</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">156</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto non_self_issued;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">157</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">159</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xmlXPathFreeObject(xresult);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">161</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Use XPATH to extract the sender-vouches, self-issued, TG principal name</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">162</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * Subject attribute from the Assertion&#39;s AuthenticationStatement</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">163</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">164</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xresult = xmlXPathEvalExpression(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">165</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (const xmlChar *) &quot;string(/s:Assertion/s:AuthenticationStatement/s:Subject[string(s:SubjectConfirmation/s:ConfirmationMethod) = &#39;urn:oasis:names:tc:SAML:1.0:cm:sender-vouches&#39; and s:NameIdentifier/@Format = &#39;http://teragrid.org/names/nameid-format/principalname&#39;]/s:NameIdentifier[1])&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            xpath_ctx);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">168</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (xresult == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">170</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_protocol_error_7_hack_replace_message(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;Error processing SAML assertion: no teragrid principal&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">172</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">174</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto get_gateway_name_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">175</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">176</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">177</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (xresult != NULL &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">178</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        xresult-&gt;stringval != NULL &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        *(xresult-&gt;stringval) != 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">180</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">181</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        *gateway_user = strdup((char *) xresult-&gt;stringval);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">183</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">184</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">get_gateway_name_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">185</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">non_self_issued:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">186</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    if (xresult != NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">187</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">188</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        xmlXPathFreeObject(xresult);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">190</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">xpath_eval_issuer_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">191</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">xpath_register_ns_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">192</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xmlXPathFreeContext(xpath_ctx);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">193</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">xpath_ctx_init_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">194</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    xmlFreeDoc(doc);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">195</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">parse_assertion_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">196</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    free(assertion_string);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">197</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">assertion_string_malloc_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">198</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    ASN1_UTF8STRING_free(asn1_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">199</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">utfstring_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">200</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">empty_data_set:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">201</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">    gss_release_buffer_set(&amp;min_stat, &amp;data_set);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">202</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">inquire_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">203</td>
+          <td class="coverageCount">147</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">204</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

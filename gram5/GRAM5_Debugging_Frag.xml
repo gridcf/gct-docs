@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../xinclude.mod" >
+<!ENTITY prompt "<prompt>&#37; </prompt>" >
+%xinclude;
+
+]>
+
+<chapter id="gram5-debugging"><title>Debugging</title>
+    <indexterm type="gram5"><primary>debugging</primary></indexterm>
+    <para>Log output from GRAM5 is a useful tool for debugging issues.
+    GRAM5 can log to either local files or syslog. See the
+    <olink targetdoc="gram5Admin" targetptr="gram5-troubleshooting-admin">Admin
+    Guide</olink> for information about how to configure logging.</para>
+
+    <para>In most cases, logging at the <literal>INFO</literal> level will
+    produce enough information to show progress of most operations. Adding
+    <literal>DEBUG</literal> will also allow log information from the GRAM
+    LRM scripts.
+    </para>
+
+    <section>
+        <title>Basic Debugging Methods</title>
+        <para>
+        The first thing to determine when debugging unexpected failures is
+        to determine whether the gatekeeper service is running, reachable
+        from the client, and properly configured.
+        </para>
+        <para>
+        First, determine that the gatekeeper is running by using a tool such
+        as <command>telnet</command> to connect to the TCP/IP port that the
+        gatekeeper is listening on. From the GRAM service node, using a
+        default configuration, use a command like:
+        <screen>&prompt;<command>telnet localhost 2119</command>
+<computeroutput>Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'</computeroutput></screen>
+        </para>
+        <para>
+        An error message like the following indicates that the gatekeeper 
+        service is not starting:
+        <screen><computeroutput>telnet: connect to address 127.0.0.1: Connection refused
+telnet: Unable to connect to remote host</computeroutput></screen>
+        </para>
+        <para>
+        If the telnet command exits immediately, then the gatekeeper service
+        is being started but not running. Check the gatekeeper log (by default
+        <filename><envar>$GLOBUS_LOCATION</envar>/var/globus-gatekeeper.log</filename>)
+        to see if there is an error message. A common error is having a missing
+        library path environment variable in the gatekeeper's environment or
+        having a malformed configuration file. See <olink targetdoc="gram5PI" targetptr="gram5-globus-gatekeeper">the <command>globus-gatekeeper</command></olink> for information
+        on the configuration options.
+        </para>
+        <para> 
+        The next recommended diagnostic is to run the same telnet command from
+        the machine which is acting as the GRAM client if it is distinct from
+        the GRAM service node. Be sure to replace <literal>localhost</literal>
+        with the actual host name of the GRAM service. Again, check for log
+        entries in the case of immediate exit or refused connection. If the
+        connection does not work, then there may be some network connectivity
+        or firewall issues preventing access.
+        </para>
+        <para>
+        Next use a tool like <command>globusrun</command> to diagnose whether
+        the client is authorized to contact the gatekeeper service. This is
+        done by using the <option>-a</option> command-line option. For example:
+
+        <screen>&prompt;<command>globusrun -a -r grid.example.org</command>
+<computeroutput>
+GRAM Authentication test successful
+</computeroutput></screen>
+        </para>
+        
+        <para>
+        If you do not get the success message above, then check the gatekeeper
+        log to see if there is a diagnostic message. A common problem is
+        that the identity of the client is not in the grid mapfile used by
+        the gatekeeper.
+        </para>
+
+        <para>
+        The next test is to use the <option>-dryrun</option> option to
+        <command>globusrun</command> to verify that the job manager service
+        is properly configured. To do so, try the following:
+        <screen>&prompt;<command>globusrun -dryrun -r grid.example.org "&amp;(executable=/bin/sh)"</command>
+<computeroutput>globus_gram_client_callback_allow successful
+Dryrun successful</computeroutput></screen>
+        </para>
+
+        <para>
+        If you do not get the success message above, first check the error
+        number in the <olink targetptr="gram5-error-codes">GRAM5 Error codes
+        table</olink> to determine how to proceed. If the result is unclear,
+        check the job manager log (default
+        <filename><envar>$HOME</envar>/gram_<replaceable>DATE</replaceable>.log</filename>)
+        to see if there are any further details of the error.
+        </para>
+
+        <para>
+        The final test is to submit a test job to the GRAM5 service and wait
+        for it to terminate, such as this example shows:
+
+        <screen>&prompt;<command>globus-job-run grid.example.org /bin/sh -c 'echo "hello, grid"'</command>
+<computeroutput>hello, grid</computeroutput></screen>
+        </para>
+
+        <para>
+        If the process appears to hang, it might be that the job manager is
+        unable to send state callbacks to the client. Check that there
+        are no firewalls or network issues that would prevent the job manager
+        process from connecting from the GRAM service node to the client node.
+        </para>
+    </section>
+
+    <section>
+        <title>Advanced Debugging Methods</title>
+
+        <para>
+        The methods described in this section are intended for debugging
+        problems in the GRAM code, not in the user environment. 
+        </para>
+
+        <section><title>Debugging the Job Manager</title>
+        <para>
+        To debug the GRAM5 job manager, run the command located in 
+        <filename><envar>$GLOBUS_LOCATION</envar>/etc/grid-services/jobmnager-<replaceable>LRM</replaceable></filename>
+        (ignoring the first 3 fields). For example:
+
+        <screen>&prompt;<command>$GLOBUS_LOCATION/libexec/globus-job-manager \
+    -conf $GLOBUS_LOCATION/etc/globus-job-manager.conf -type fork</command></screen>
+        </para>
+        <para>
+        When the job manager is started in this way, it will log messages to
+        standard error and will terminate 60 seconds after its last job has
+        completed. This only works if there are no job managers
+        running for this particular user. The job manager can be started in a
+        debugger such as <command>gdb</command> or <command>valgrind</command>
+        using a similar command-line.
+        </para>
+        </section>
+    </section>
+</chapter>

@@ -1,0 +1,309 @@
+<?php 
+
+$title = "Unit Test Results.";
+
+include_once( "/nfs/globus.org/include/globus_header.inc" ); 
+?>
+
+<style type="text/css">
+  
+      table tr td, table tr th {
+          font-size: 100%;
+      }
+      table.details tr th{
+        font-weight: bold;
+        text-align:left;
+        background:#a6caf0;
+      }
+      table.details tr td{
+        background:#eeeee0;
+      }
+
+      p {
+        line-height:1.5em;
+        margin-top:0.5em; margin-bottom:1.0em;
+      }
+		
+	  h3 {
+	  font-size: 14px;
+	  color: #333333;
+	  font-weight: bold;
+	  }
+		
+      .Error {
+        font-weight:bold; color:red;
+      }
+      .Failure {
+        font-weight:bold; color:purple;
+      }
+      .Properties {
+        text-align:right;
+      }
+      </style>
+<script type="text/javascript" language="JavaScript">
+        var TestCases = new Array();
+        var cur;
+        </script><script type="text/javascript" language="JavaScript">
+        function displayProperties (name) {
+          var win = window.open('','JUnitSystemProperties','scrollbars=1,resizable=1');
+          var doc = win.document;
+          doc.open();
+          doc.write("<html><head><title>Properties of " + name + "</title>");
+          doc.write("<style>")
+          doc.write("body {font:normal 68% verdana,arial,helvetica; color:#000000; }");
+          doc.write("table tr td, table tr th { font-size: 68%; }");
+          doc.write("table.properties { border-collapse:collapse; border-left:solid 1 #cccccc; border-top:solid 1 #cccccc; padding:5px; }");
+          doc.write("table.properties th { text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#eeeeee; }");
+          doc.write("table.properties td { font:normal; text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#fffffff; }");
+          doc.write("h3 { margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica }");
+          doc.write("</style>");
+          doc.write("</head><body>");
+          doc.write("<h3>Properties of " + name + "</h3>");
+          doc.write("<div align=\"right\"><a href=\"javascript:window.close();\">Close</a></div>");
+          doc.write("<table class='properties'>");
+          doc.write("<tr><th>Name</th><th>Value</th></tr>");
+          for (prop in TestCases[name]) {
+            doc.write("<tr><th>" + prop + "</th><td>" + TestCases[name][prop] + "</td></tr>");
+          }
+          doc.write("</table>");
+          doc.write("</body></html>");
+          doc.close();
+          win.focus();
+        }
+      
+      </script>
+
+<h1 class="first"><?php echo $title; ?></h1>
+<a name="top"></a>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"></td>
+</tr></table>
+<hr size="1">
+<h2>Summary</h2>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Tests</th>
+<th>Failures</th>
+<th>Errors</th>
+<th>Success rate</th>
+<th>Time</th>
+</tr>
+<tr valign="top" class="">
+<td>23</td>
+<td>0</td>
+<td>0</td>
+<td>100.00%</td>
+<td>1.892</td>
+</tr>
+</table>
+<table border="0" width="95%"><tr><td style="text-align: justify;">
+        Note: <i>failures</i> are anticipated and checked for with assertions while <i>errors</i> are unanticipated.
+        </td></tr></table>
+<hr size="1" width="95%" align="left">
+<a name="gridmap_test_pl_gcc64"></a><h3>TestCase gridmap_test_pl_gcc64</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th>
+<th>Status</th>
+<th width="80%">Type</th>
+<th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="">
+<td>gridmap_bad_params_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>userok_bad_params_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>map_local_user_bad_params_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>lookup_all_globusid_bad_params_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>map_and_authorize_bad_params_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>gridmap_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>userok_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>map_local_user_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>lookup_all_globusid_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>long_line_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>blank_line_test</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+</table>
+<div class="Properties"><a href="javascript:displayProperties('.gridmap_test_pl_gcc64');">
+                    Properties &#187;
+                </a></div>
+<p></p>
+<a href="#top">Back to top</a><a name="gridmap_tools_test_pl_gcc64"></a><h3>TestCase gridmap_tools_test_pl_gcc64</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th>
+<th>Status</th>
+<th width="80%">Type</th>
+<th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="">
+<td>add_test</td>
+<td>Success</td>
+<td></td>
+<td>0.204</td>
+</tr>
+<tr valign="top" class="">
+<td>delete_empty_test</td>
+<td>Success</td>
+<td></td>
+<td>0.099</td>
+</tr>
+<tr valign="top" class="">
+<td>delete_entry_test</td>
+<td>Success</td>
+<td></td>
+<td>0.558</td>
+</tr>
+</table>
+<div class="Properties"><a href="javascript:displayProperties('.gridmap_tools_test_pl_gcc64');">
+                    Properties &#187;
+                </a></div>
+<p></p>
+<a href="#top">Back to top</a><a name="gss_assist_auth_test_pl_gcc64"></a><h3>TestCase gss_assist_auth_test_pl_gcc64</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th>
+<th>Status</th>
+<th width="80%">Type</th>
+<th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="">
+<td>auth-with-default-environment</td>
+<td>Success</td>
+<td></td>
+<td>0.095</td>
+</tr>
+<tr valign="top" class="">
+<td>auth-with-bogus-cert-dir</td>
+<td>Success</td>
+<td></td>
+<td>0.041</td>
+</tr>
+<tr valign="top" class="">
+<td>auth-with-bogus-proxy</td>
+<td>Success</td>
+<td></td>
+<td>0.040</td>
+</tr>
+</table>
+<div class="Properties"><a href="javascript:displayProperties('.gss_assist_auth_test_pl_gcc64');">
+                    Properties &#187;
+                </a></div>
+<p></p>
+<a href="#top">Back to top</a><a name="gss_assist_gridmap_test_pl_gcc64"></a><h3>TestCase gss_assist_gridmap_test_pl_gcc64</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th>
+<th>Status</th>
+<th width="80%">Type</th>
+<th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="">
+<td>globus_gss_assist_gridmap</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>default_user_match</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+<tr valign="top" class="">
+<td>userok</td>
+<td>Success</td>
+<td></td>
+<td>0.000</td>
+</tr>
+</table>
+<div class="Properties"><a href="javascript:displayProperties('.gss_assist_gridmap_test_pl_gcc64');">
+                    Properties &#187;
+                </a></div>
+<p></p>
+<a href="#top">Back to top</a><a name="gss_assist_impexp_test_pl_gcc64"></a><h3>TestCase gss_assist_impexp_test_pl_gcc64</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th>
+<th>Status</th>
+<th width="80%">Type</th>
+<th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="">
+<td>default-sec-env</td>
+<td>Success</td>
+<td></td>
+<td>0.091</td>
+</tr>
+<tr valign="top" class="">
+<td>unset-x509-cert-dir</td>
+<td>Success</td>
+<td></td>
+<td>0.042</td>
+</tr>
+<tr valign="top" class="">
+<td>unsetx509-user-proxy</td>
+<td>Success</td>
+<td></td>
+<td>0.041</td>
+</tr>
+</table>
+<div class="Properties"><a href="javascript:displayProperties('.gss_assist_impexp_test_pl_gcc64');">
+                    Properties &#187;
+                </a></div>
+<p></p>
+<a href="#top">Back to top</a>
+<p>&nbsp; </p>
+<?php include_once( "/nfs/globus.org/include/globus_footer.inc" ); ?>

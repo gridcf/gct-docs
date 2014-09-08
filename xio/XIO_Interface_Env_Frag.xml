@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="xio-env-var">
+  <title>Environmental variables for XIO</title>
+<para>
+  The vast majority of the environment variables that affect the Globus XIO
+  framework are defined by the driver in use.  The following are links to descriptions
+    of the more common driver environment variables:</para>
+<itemizedlist>
+  <listitem><simpara>
+    <ulink url="http://www.globus.org/api/c-globus-${version}/globus_xio/html/group__tcp__driver__envs.html">TCP Driver Environment Variables</ulink></simpara></listitem>
+  <listitem><simpara>
+    <ulink url="http://www.globus.org/api/c-globus-${version}/globus_xio/html/group__file__driver__envs.html">File Driver Environment Variables</ulink>  </simpara></listitem>
+  <listitem><simpara><ulink url="http://www.globus.org/api/c-globus-${version}/globus_xio/html/group__gsi__driver__envs.html">GSI Driver Environment Variables</ulink></simpara></listitem>
+  <listitem><simpara><ulink url="http://www.globus.org/api/c-globus-${version}/globus_xio/html/group__udp__driver__envs.html">UDP Driver Environment Variables</ulink></simpara></listitem>
+</itemizedlist>
+</section>

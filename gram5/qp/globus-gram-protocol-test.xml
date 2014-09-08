@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="globus_gram_protocol_allow_attach_test_pl_gcc64" errors="0" failures="0" tests="4" time="0.46186900138855">
+    <system-out>1..4
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 18:26:28 2012
+# Current time GMT:   Mon Jul 16 22:26:28 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+ok 3
+ok 4
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_protocol_allow_attach_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_protocol_allow_attach_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_protocol_allow_attach_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_protocol_allow_attach_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_protocol_error_test_pl_gcc64" errors="0" failures="0" tests="2" time="0.46186900138855">
+    <system-out>1..2
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 18:26:28 2012
+# Current time GMT:   Mon Jul 16 22:26:28 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_protocol_error_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_protocol_error_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_protocol_io_test_pl_gcc64" errors="0" failures="0" tests="2" time="0.46186900138855">
+    <system-out>1..2
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 18:26:28 2012
+# Current time GMT:   Mon Jul 16 22:26:28 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_protocol_io_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_protocol_io_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_protocol_pack_test_pl_gcc64" errors="0" failures="0" tests="6" time="0.46186900138855">
+    <system-out>1..6
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 18:26:28 2012
+# Current time GMT:   Mon Jul 16 22:26:28 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+ok 3
+ok 4
+ok 5
+ok 6
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_protocol_pack_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_protocol_pack_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_protocol_pack_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_protocol_pack_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 5" classname="globus_gram_protocol_pack_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 6" classname="globus_gram_protocol_pack_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="pack_with_extensions_test_pl_gcc64" errors="0" failures="0" tests="4" time="0.46186900138855">
+    <system-out>1..4
+ok
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="pack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="pack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="pack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="pack_with_extensions_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="create_extensions_test_pl_gcc64" errors="0" failures="0" tests="2" time="0.46186900138855">
+    <system-out>1..2
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="create_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="create_extensions_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="unpack_message_test_pl_gcc64" errors="0" failures="0" tests="4" time="0.46186900138855">
+    <system-out>1..4
+ok
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="unpack_message_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="unpack_message_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="unpack_message_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="unpack_message_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="unpack_with_extensions_test_pl_gcc64" errors="0" failures="0" tests="6" time="0.46186900138855">
+    <system-out>1..6
+ok
+ok
+ok
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="unpack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="unpack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="unpack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="unpack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 5" classname="unpack_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 6" classname="unpack_with_extensions_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="unpack_job_request_reply_with_extensions_test_pl_gcc64" errors="0" failures="0" tests="6" time="0.46186900138855">
+    <system-out>1..6
+ok
+ok
+ok
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="unpack_job_request_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="unpack_job_request_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="unpack_job_request_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="unpack_job_request_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 5" classname="unpack_job_request_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 6" classname="unpack_job_request_reply_with_extensions_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="unpack_status_reply_with_extensions_test_pl_gcc64" errors="0" failures="0" tests="6" time="0.46186900138855">
+    <system-out>1..6
+ok
+ok
+ok
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="unpack_status_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="unpack_status_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="unpack_status_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="unpack_status_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 5" classname="unpack_status_reply_with_extensions_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 6" classname="unpack_status_reply_with_extensions_test_pl_gcc64" time="0" />
+  </testsuite>
+</testsuites>

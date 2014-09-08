@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<section id="gsic-env-var">
+  <title>Environmental Variables for GSI C</title>
+  <section id="gsic-env-credentials">
+    <title>Credentials</title>
+    <para>Credentials are looked for in the following order:</para>
+    <orderedlist>
+      <listitem>
+        <para>service credential</para>
+      </listitem>
+      <listitem>
+        <para>host credential</para>
+      </listitem>
+      <listitem>
+        <para>proxy credential</para>
+      </listitem>
+      <listitem>
+        <para>user credential</para>
+      </listitem>
+    </orderedlist>
+    <para><envar>X509_USER_PROXY</envar> specifies the path to the 
+      <glossterm baseform="proxy credentials">proxy credential</glossterm>. If <envar>X509_USER_PROXY</envar> is not set, the
+      proxy credential is created (by <command>grid-proxy-init</command>) and searched for (by
+      client programs) in an operating-system-dependent local temporary file.</para>
+    <para><envar>X509_USER_CERT</envar> and <envar>X509_USER_KEY</envar> specify the path to the end
+      entity (user, service, or host) certificate and corresponding <glossterm>private key</glossterm>. The paths to the certificate and key files are determined as follows:</para>
+    <para>For <glossterm>service credentials</glossterm>:</para>
+    <orderedlist>
+      <listitem>
+        <simpara>If <envar>X509_USER_CERT</envar> and <envar>X509_USER_KEY</envar> exist and contain
+          a valid certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename
+            >/etc/grid-security/<replaceable>service/service</replaceable>cert.pem</filename> and
+            <filename>/etc/grid-security/<replaceable>service/service</replaceable>key.pem</filename>
+          exist and contain a valid certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename
+              >$GLOBUS_LOCATION/etc/grid-security/<replaceable>service/service</replaceable>cert.pem</filename>
+          and <filename
+            >$GLOBUS_LOCATION/etc/grid-security/<replaceable>service/service</replaceable>key.pem</filename>
+          exist and contain a valid certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename
+          ><replaceable>service/service</replaceable>cert.pem</filename> and <filename
+              ><replaceable>service/service</replaceable>key.pem</filename> in the user's <filename
+            >.globus</filename> directory exist and contain a valid certificate and key, those files
+          are used.</simpara>
+      </listitem>
+    </orderedlist>
+    <para>For <glossterm>host credentials</glossterm>:</para>
+    <orderedlist>
+      <listitem>
+        <simpara>If <envar>X509_USER_CERT</envar> and <envar>X509_USER_KEY</envar> exist and
+          contain a valid certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename>/etc/grid-security/hostcert.pem</filename> and
+            <filename>/etc/grid-security/hostkey.pem</filename> exist and contain a valid
+          certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename
+          >$GLOBUS_LOCATION/etc/hostcert.pem</filename> and <filename
+            >$GLOBUS_LOCATION/etc/hostkey.pem</filename> exist and contain a valid
+          certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename>hostcert.pem</filename> and <filename
+          >hostkey.pem</filename> in the user's <filename>.globus</filename> directory, exist and
+          contain a valid certificate and key, those files are used.</simpara>
+      </listitem>
+    </orderedlist>
+    <para>For <glossterm>user credentials</glossterm>:</para>
+    <orderedlist>
+      <listitem>
+        <simpara>If <envar>X509_USER_CERT</envar> and <envar>X509_USER_KEY</envar> exist and contain
+          a valid certificate and key, those files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if the files <filename>usercert.pem</filename> and <filename
+          >userkey.pem</filename> exist in the user's <filename>.globus</filename> directory, those
+          files are used.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Otherwise, if a PKCS-12 file called <filename>usercred.p12</filename> exists in the
+          user's <filename>.globus</filename> directory, the certificate and key are read from that
+          file.</simpara>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="gsic-env-gridmapfile">
+    <title>Gridmap file</title>
+    <para><envar>GRIDMAP</envar> specifies the path to the <glossterm>grid map file</glossterm>,
+      which is used to map distinguished names (found in certificates) to local names (such as login
+      accounts). The location of the grid map file is determined as follows: <orderedlist>
+        <listitem>
+          <simpara>If the <envar>GRIDMAP</envar> environment variable is set, the grid map file
+            location is the value of that environment variable.</simpara>
+        </listitem>
+        <listitem>
+          <para>Otherwise: <itemizedlist>
+              <listitem>
+                <simpara>If the user is root (uid 0), then the grid map file is <filename
+                    >/etc/grid-security/grid-mapfile</filename>.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Otherwise, the grid map file is <filename
+                >$HOME/.gridmap</filename>.</simpara>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+      </orderedlist></para>
+  </section>
+  <section id="gsic-env-trustedca">
+    <title>Trusted CAs directory</title>
+    <para><envar>X509_CERT_DIR</envar> is used to specify the path to the trusted certificates
+      directory. This directory contains information about which CAs are trusted (including the
+        <glossterm baseform="CA Certificate">CA certificates</glossterm> themselves) and, in some
+      cases, configuration information used by <command>grid-cert-request</command> to formulate
+      certificate requests. The location of the trusted certificates directory is determined as
+      follows: <orderedlist>
+        <listitem>
+          <simpara>If the <envar>X509_CERT_DIR</envar> environment variable is set, the trusted
+            certificates directory is the value of that environment variable.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Otherwise, if <filename>$HOME/.globus/certificates</filename> exists, that
+            directory is the trusted certificates directory.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Otherwise, if <filename>/etc/grid-security/certificates</filename> exists, that
+            directory is the trusted certificates directory.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Finally, if <filename>$GLOBUS_LOCATION/share/certificates</filename> exists, then
+            it is the trusted certificates directory.</simpara>
+        </listitem>
+      </orderedlist></para>
+  </section>
+  <section id="gsic-env-gsiauthz">
+    <title>GSI authorization callout configuration file</title>
+    <para><envar>GSI_AUTHZ_CONF</envar> is used to specify the path to the 
+      <glossterm>GSI authorization callout configuration file</glossterm>. This file is used to configure
+      authorization callouts used by both the gridmap and the authorization API. The location of the
+      GSI authorization callout configuration file is determined as follows:<orderedlist>
+        <listitem>
+          <simpara>If the <envar>GSI_AUTHZ_CONF</envar> environment variable is set, the
+            authorization callout configuration file location is the value of this environment
+            variable.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Otherwise, if <filename>/etc/grid-security/gsi-authz.conf</filename> exists, then
+            this file is used.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Otherwise, if <filename>$GLOBUS_LOCATION/etc/gsi-authz.conf</filename> exists,
+            then this file is used.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Finally, if <filename>$HOME/.gsi-authz.conf</filename> exists, then this file is
+            used.</simpara>
+        </listitem>
+      </orderedlist></para>
+  </section>
+  <section id="gsic-env-gaaauthz">
+    <title>GAA (Generic Authorization and Access control) configuration file</title>
+    <para><envar>GSI_GAA_CONF</envar> is used to specify the path to the GSI <glossterm
+        baseform="GAA configuration file">GAA (Generic Authorization and Access control)
+        configuration file</glossterm>. This file is used to configure policy language specific
+      plugins to the GAA-API. The location of the GSI GAA configuration file is determined as
+        follows:<orderedlist>
+        <listitem>
+          <simpara>If the <envar>GSI_GAA_CONF</envar> environment variable is set, the GAA
+            configuration file location is the value of this environment variable.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Otherwise, if <filename>/etc/grid-security/gsi-gaa.conf</filename> exists, then
+            this file is used.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Otherwise, if <filename>$GLOBUS_LOCATION/etc/gsi-gaa.conf</filename> exists, then
+            this file is used.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>Finally, if <filename>$HOME/.gsi-gaa.conf</filename> exists, then this file is
+            used.</simpara>
+        </listitem>
+      </orderedlist></para>
+  </section>
+  <section id="gsic-env-gridsecurity">
+    <title>Grid security directory</title>
+    <para><envar>GRID_SECURITY_DIR</envar> specifies a path to a directory containing configuration
+      files that specify default values to be placed in certificate requests. This environment
+      variable is used only by the <command>grid-cert-request</command> and <command
+      >grid-default-ca</command> commands.</para>
+    <para>The location of the <glossterm>grid security directory</glossterm> is determined as
+      follows: <orderedlist>
+        <listitem>
+          <simpara>If the <envar>GRID_SECURITY_DIR</envar> environment variable is set, the grid
+            security directory is the value of that environment variable.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>If the configuration files exist in <filename>/etc/grid-security</filename>, the
+            grid security directory is that directory.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>if the configuration files exist in <filename>$GLOBUS_LOCATION/etc</filename>,
+            the grid security directory is that directory.</simpara>
+        </listitem>
+      </orderedlist></para>
+  </section>
+  <section id="gsic-env-tls">
+     <title>Using TLS</title>
+     <para><envar>GLOBUS_GSSAPI_FORCE_TLS</envar> specifies whether to use TLS
+     by default when establishing a security context. The default behavior if
+     this is not set is to use SSLv3.
+     </para>
+  </section>
+  <section id="gsic-env-name">
+     <title>Name Comparisons</title>
+     <para><envar>GLOBUS_GSSAPI_NAME_COMPATIBILITY</envar> specifies what name
+     matching algorithms are supported by GSSAPI for mutual authentication and
+     <function>gss_compare_name</function>. This variable may be set to any
+     of the following values:
+
+     <informaltable colsep="0" rowsep="0">
+         <tgroup cols="2">
+             <tbody>
+                <row>
+                    <entry><literal>STRICT_GT2</literal></entry>
+                    <entry><simpara>Strictly backward-compatible with GT 2.0 name
+                    matching. X.509 subjectAltName values are ignored. Names
+                    with hyphens are treated as wildcarded as described in the
+                    <olink targetdoc="gsicAdmin"
+                    targetptr="gsic-security-considerations">security
+                    considerations</olink> documentation. Name matching will
+                    rely on canonical host name associated with connection IP
+                    addresses.</simpara>
+                    </entry>
+                </row>
+                <row>
+                    <entry><simpara><literal>STRICT_RFC2818</literal></simpara></entry>
+                    <entry><simpara>Support
+                    <ulink url="http://www.ietf.org/rfc/rfc2818.txt">RFC
+                    2818</ulink> server identity processing. Hyphen characters
+                    are treated as normal part of a host name. DNSName and
+                    IPAddress subjectAltName extensions are matched against the
+                    host and port passed to GSSAPI. If subjectAltName is
+                    present, X.509 SubjectName is ignored.</simpara>
+                    </entry>
+                </row>
+                <row>
+                    <entry><simpara><literal>HYBRID</literal></simpara>
+                    </entry>
+                    <entry><simpara>Support a hybrid of the two previous name
+                    matching algorithms, liberally matching both hyphen
+                    wildcards, canonical names associated with IP addresses,
+                    and subjectAltName extensions.</simpara>
+                    </entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </informaltable>
+
+    If this variable is not set, the <literal>HYBRID</literal> behavior is 
+    used.
+     </para>
+  </section>
+</section>

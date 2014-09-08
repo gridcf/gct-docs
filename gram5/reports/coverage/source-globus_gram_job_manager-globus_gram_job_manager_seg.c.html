@@ -1,0 +1,4935 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_job_manager_seg.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2009 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_common.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_gram_job_manager.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_scheduler_event_generator.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_scheduler_event_generator_app.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;sys/types.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;utime.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">typedef struct globus_gram_seg_resume_s</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_t *         manager;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     events;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_seg_resume_t;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_result_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_seg_event_callback(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              user_arg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const globus_scheduler_event_t *    event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_fork_poll_callback(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              user_arg);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_deliver_event(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_seg_resume_callback(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              user_arg);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">53</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_result_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_init_seg(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_t *         manager)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">57</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">58</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    globus_result_t                     result = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">61</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">62</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg.start level=TRACE module=%s\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager-&gt;config-&gt;seg_module ? manager-&gt;config-&gt;seg_module : &quot;fork&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">66</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">67</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerLock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">68</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    if (manager-&gt;config-&gt;seg_module == NULL &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        strcmp(manager-&gt;config-&gt;jobmanager_type, &quot;fork&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        globus_reltime_t                delay;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">73</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        GlobusTimeReltimeSet(delay, 1, 0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">75</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        result = globus_callback_register_periodic(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">76</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;manager-&gt;fork_callback_handle,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;delay,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;delay,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                globus_l_gram_fork_poll_callback,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">80</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">81</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (result != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">82</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            char *                      errstr;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">84</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            char *                      errstr_escaped;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">85</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            errstr = globus_error_print_friendly(globus_error_peek(result));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">86</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">87</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            errstr_escaped = globus_gram_prepare_log_string(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">88</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    errstr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">90</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">91</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_WARN,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">93</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.end level=WARN status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">94</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;reason=\&quot;%s\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">95</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    -1,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">96</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    errstr_escaped ? errstr_escaped : &quot;&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">97</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">98</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (errstr_escaped)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">100</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                free(errstr_escaped);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">101</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">102</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (errstr)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">104</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                free(errstr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">105</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">106</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto failed_periodic;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">107</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">108</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">109</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">110</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">111</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">112</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">113</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">114</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;event=gram.seg.activate.start level=TRACE module=%s\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">115</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                manager-&gt;config-&gt;seg_module);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">116</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">117</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        rc = globus_module_activate(GLOBUS_SCHEDULER_EVENT_GENERATOR_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">118</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">119</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">120</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">121</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">122</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">123</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.activate.end level=ERROR error=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">124</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;reason=\&quot;Error activating SEG\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    rc);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">126</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto failed_activate;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">127</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">129</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_scheduler_event_generator_set_event_handler(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">130</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                globus_l_gram_seg_event_callback,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">131</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">132</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_scheduler_event_generator_set_timestamp(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">133</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                manager-&gt;seg_last_timestamp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">134</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        setenv(&quot;JOB_MANAGER_SEG_SCHEDULER&quot;, manager-&gt;config-&gt;seg_module, 1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">135</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        rc = globus_scheduler_event_generator_load_module(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">136</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;job_manager&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">137</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">138</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">139</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">140</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">141</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.end level=ERROR error=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">143</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;module=%s reason=\&quot;Error loading job_manager SEG &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">144</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;module\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    rc,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">146</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    manager-&gt;config-&gt;seg_module);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">148</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">149</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">150</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    manager-&gt;seg_started = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">151</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">failed_activate:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">152</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">failed_periodic:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">153</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">154</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">155</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">    return result;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">156</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">157</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_init_seg() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">159</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_result_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_shutdown_seg(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">161</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const char *                        seg_modele)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">162</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">163</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    globus_module_deactivate(GLOBUS_SCHEDULER_EVENT_GENERATOR_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">164</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">165</td>
+          <td class="coverageCount">318</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_shutdown_seg() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">168</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_result_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">170</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_seg_event_callback(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              user_arg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">172</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const globus_scheduler_event_t *    event)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">173</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">174</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">175</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_t *         manager = user_arg;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">176</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">177</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    globus_result_t                     result = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">178</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          new_event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">180</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">181</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">183</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg.event.start level=TRACE segid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">184</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;state=%d event_ts=%ld\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">185</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">186</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (int) event-&gt;event_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">187</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (long int) event-&gt;timestamp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">188</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    if (event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_RAW)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">190</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">191</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto raw_event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">192</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">193</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">194</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    result = globus_scheduler_event_copy(&amp;new_event, event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">195</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    if (result != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">196</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">197</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto copy_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">198</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">199</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">200</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerLock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Find the job request associated by this job id */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">202</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_gram_job_manager_add_reference_by_jobid(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">203</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">204</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">205</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;SEG event&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">206</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">207</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">208</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">209</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">210</td>
+          <td class="coverageCount">8</td>
+          <td class="srcCell"><span class="srcLine">        if (manager-&gt;seg_pause_count &gt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">211</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">212</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            /* New submit script is running. Avoid race by adding this to the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">213</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             * manager-wide queue</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">214</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">215</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">216</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">217</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">218</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.event.queue level=TRACE segid=\&quot;%s\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">219</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">220</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = globus_fifo_enqueue(&amp;manager-&gt;seg_event_queue, new_event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">221</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">222</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">223</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">224</td>
+          <td class="coverageCount">8</td>
+          <td class="srcCell"><span class="srcLine">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">225</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">226</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">227</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.event.end level=TRACE segid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">228</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;reason=\&quot;Event ID doesn&#39;t match known job id\&quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">229</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">230</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">231</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">232</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">233</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">234</td>
+          <td class="coverageCount">8</td>
+          <td class="srcCell"><span class="srcLine">        GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">235</td>
+          <td class="coverageCount">8</td>
+          <td class="srcCell"><span class="srcLine">        goto manager_event_queue_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">236</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">237</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    else if (request == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">238</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">239</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        /* Ignore unwanted event */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">240</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">241</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto done;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">242</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">243</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">244</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">245</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        if (event-&gt;timestamp &gt; manager-&gt;seg_last_timestamp)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">246</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">247</td>
+          <td class="coverageCount">126</td>
+          <td class="srcCell"><span class="srcLine">            manager-&gt;seg_last_timestamp = event-&gt;timestamp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">248</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">249</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">250</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">251</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        rc = globus_l_gram_deliver_event(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">252</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">253</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                new_event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">254</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">255</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">256</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">257</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">258</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        (void) globus_gram_job_manager_remove_reference(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">259</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">260</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">261</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;SEG event&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">262</td>
+          <td class="coverageCount">8</td>
+          <td class="srcCell"><span class="srcLine">manager_event_queue_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">263</td>
+          <td class="coverageCount">8</td>
+          <td class="srcCell"><span class="srcLine">        globus_scheduler_event_destroy(new_event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">264</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">copy_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">265</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">raw_event:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">266</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        ;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">267</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">268</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">done:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">269</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    result = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">270</td>
+          <td class="coverageCount">282</td>
+          <td class="srcCell"><span class="srcLine">    return result;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">271</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">272</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_seg_event_callback() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">273</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">274</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">275</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_seg_handle_event(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">276</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">277</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">278</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">279</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    char *                              subjob_id_ptr = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">280</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    size_t                              subjob_id_len;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">281</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_bool_t                       found_subjob_id;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">282</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">283</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    event = globus_fifo_dequeue(&amp;request-&gt;seg_event_queue);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">284</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">285</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">286</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">287</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_DEBUG,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">288</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.handle_seg_event.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">289</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=DEBUG &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">290</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;state=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">291</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">292</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;jobid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">293</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">294</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;event_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">295</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">296</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">297</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">298</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    found_subjob_id = GLOBUS_FALSE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">299</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    subjob_id_len = strlen(event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">300</td>
+          <td class="coverageCount">822</td>
+          <td class="srcCell"><span class="srcLine">    while (!found_subjob_id)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">301</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">302</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        subjob_id_ptr = strstr(request-&gt;job_id_string, event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">303</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        assert(subjob_id_ptr != NULL);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">304</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">305</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        if (subjob_id_ptr == request-&gt;job_id_string ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">306</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            (*(subjob_id_ptr - 1) == &#39;,&#39;))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">307</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">308</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            /* request-&gt;job_id_string starts with this subjob_id, or this</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">309</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             * subjob_id happens after a comma. If it ends with a comma or</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">310</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             * \0, then we&#39;ve found a match.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">311</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">             */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">312</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">            if (subjob_id_ptr[subjob_id_len] == &#39;,&#39;)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">313</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">314</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                found_subjob_id = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">315</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">316</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                if (event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_DONE ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">317</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_FAILED)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">318</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">319</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    /* Remove this sub job id from the list by moving</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">320</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     * after the comma up until \0 to subjob_id_ptr</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">321</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">322</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    memmove(subjob_id_ptr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">323</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                            subjob_id_ptr + subjob_id_len + 1,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">324</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                            strlen(subjob_id_ptr + subjob_id_len + 1) + 1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">325</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">326</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">327</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">            else if (subjob_id_ptr[subjob_id_len] == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">328</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">329</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                /* This is the final subjob in the job_id_string */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">330</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">                found_subjob_id = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">331</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">                if (event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_DONE ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">332</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_FAILED)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">333</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">334</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    /* Don&#39;t need to do memmove here, just null terminate at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">335</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     * either the initial part of the string if subjob_id is</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">336</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     * the only one in the list, or at the comma otherwise</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">337</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">338</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">                    if (subjob_id_ptr != request-&gt;job_id_string)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">339</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">340</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                        *(subjob_id_ptr - 1) = &#39;\0&#39;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">341</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">342</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">343</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">344</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">                        request-&gt;job_id_string[0] = &#39;\0&#39;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">345</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">346</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">347</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">348</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">349</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">350</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">351</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    assert(found_subjob_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">352</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">353</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* If this is a terminal event (done or failed), we&#39;ll update the expected</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">354</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * terminal state (in the case of a multi-subjob case) and the exit code</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">355</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * if the job&#39;s exit code is currently 0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">356</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">357</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * Thus, if any subjob fails or exits with a non-0 exit code, we will</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">358</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * propogate that in the job state change notification.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">359</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">360</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    if (event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_DONE ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">361</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_FAILED)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">362</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">363</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">        if (request-&gt;expected_terminal_state ==</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">364</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">365</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">366</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;expected_terminal_state = event-&gt;event_type;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">367</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">368</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">        if (event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_DONE &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">369</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;exit_code == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">370</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">371</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;exit_code = event-&gt;exit_code;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">372</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">373</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">374</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">375</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* If the last job terminated or any job moved to active, we&#39;ll update the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">376</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * job status and potentially send notifications.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">377</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">378</td>
+          <td class="coverageCount">458</td>
+          <td class="srcCell"><span class="srcLine">    if (event-&gt;event_type != GLOBUS_SCHEDULER_EVENT_DONE &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">379</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">         event-&gt;event_type != GLOBUS_SCHEDULER_EVENT_FAILED)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">380</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">381</td>
+          <td class="coverageCount">184</td>
+          <td class="srcCell"><span class="srcLine">        if (globus_i_gram_job_manager_script_valid_state_change(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">382</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">383</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event-&gt;event_type))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">384</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">385</td>
+          <td class="coverageCount">92</td>
+          <td class="srcCell"><span class="srcLine">            globus_gram_job_manager_request_set_status(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">386</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">387</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event-&gt;event_type);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">388</td>
+          <td class="coverageCount">92</td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;unsent_status_change = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">389</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">390</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">391</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">    else if (*request-&gt;job_id_string == &#39;\0&#39;)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">392</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">393</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">        if (globus_i_gram_job_manager_script_valid_state_change(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">394</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">395</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request-&gt;expected_terminal_state))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">396</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">397</td>
+          <td class="coverageCount">168</td>
+          <td class="srcCell"><span class="srcLine">            if ((request-&gt;expected_terminal_state ==</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">398</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE) &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">399</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                globus_gram_job_manager_rsl_need_stage_out(request))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">400</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">401</td>
+          <td class="coverageCount">78</td>
+          <td class="srcCell"><span class="srcLine">                globus_gram_job_manager_request_set_status(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">402</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                        request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">403</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                        GLOBUS_GRAM_PROTOCOL_JOB_STATE_STAGE_OUT);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">404</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">405</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">406</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">407</td>
+          <td class="coverageCount">12</td>
+          <td class="srcCell"><span class="srcLine">                globus_gram_job_manager_request_set_status(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">408</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                        request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">409</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                        request-&gt;expected_terminal_state);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">410</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">411</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;unsent_status_change = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">412</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">413</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">414</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">415</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">416</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">417</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_DEBUG,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">418</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.handle_seg_event.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">419</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=DEBUG &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">420</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;state=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">421</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">422</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;jobid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">423</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">424</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;event_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">425</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">426</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">427</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">428</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_destroy(event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">429</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">430</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    (void) globus_gram_job_manager_remove_reference(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">431</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">432</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">433</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;SEG event&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">434</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">435</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_seg_handle_event() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">436</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">437</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">438</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_seg_pause(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">439</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_t *         manager)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">440</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">441</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">442</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">443</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">444</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg_pause.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">445</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">446</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;count=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">447</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">448</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager-&gt;seg_pause_count+1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">449</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">450</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerLock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">451</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    manager-&gt;seg_pause_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">452</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">453</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">454</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">455</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">456</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">457</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg_pause.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">458</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">459</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;count=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">460</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">461</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager-&gt;seg_pause_count);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">462</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">463</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_seg_pause() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">464</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">465</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">466</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_seg_resume(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">467</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_t *         manager)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">468</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">469</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_result_t                     result;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">470</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">471</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_seg_resume_t *          resume;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">472</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">473</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">474</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">475</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">476</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg_resume.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">477</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">478</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;count=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">479</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">480</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager-&gt;seg_pause_count-1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">481</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">482</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerLock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">483</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    manager-&gt;seg_pause_count--;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">484</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">485</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    if (manager-&gt;seg_pause_count == 0 &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">486</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        !globus_fifo_empty(&amp;manager-&gt;seg_event_queue))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">487</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">488</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        resume = malloc(sizeof(globus_gram_seg_resume_t));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">489</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (resume != NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">490</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">491</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            globus_reltime_t            delay;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">492</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">493</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            GlobusTimeReltimeSet(delay, 0, 0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">494</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">495</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            resume-&gt;manager = manager;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">496</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            resume-&gt;events = globus_fifo_convert_to_list(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">497</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &amp;manager-&gt;seg_event_queue);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">498</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">499</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            result = globus_callback_register_oneshot(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">500</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">501</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &amp;delay,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">502</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    globus_l_seg_resume_callback,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">503</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    resume);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">504</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (result != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">505</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">506</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                while (!globus_list_empty(resume-&gt;events))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">507</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">508</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    event = globus_list_remove(&amp;resume-&gt;events, resume-&gt;events);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">509</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">510</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    globus_scheduler_event_destroy(event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">511</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">512</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">513</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">514</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">515</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">516</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">517</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">518</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">519</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg_resume.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">520</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">521</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;count=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">522</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">523</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager-&gt;seg_pause_count-1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">524</td>
+          <td class="coverageCount">104</td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">525</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_seg_resume() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">526</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">527</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">528</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">529</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_seg_resume_callback(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">530</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              user_arg)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">531</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">532</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_gram_seg_resume_t *          resume = user_arg;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">533</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">534</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">535</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">536</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">537</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">538</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">539</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">540</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg.resume_callback.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">541</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">542</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">543</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">544</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    while (!globus_list_empty(resume-&gt;events))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">545</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">546</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        event = globus_list_remove(&amp;resume-&gt;events, resume-&gt;events);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">547</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">548</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        GlobusGramJobManagerLock(resume-&gt;manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">549</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_gram_job_manager_add_reference_by_jobid(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">550</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                resume-&gt;manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">551</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">552</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;SEG event&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">553</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">554</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">555</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">556</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">557</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">558</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">559</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.resume_callback.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">560</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">561</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">562</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">563</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">564</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    0,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">565</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Ignoring unknown job id&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">566</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            GlobusGramJobManagerUnlock(resume-&gt;manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">567</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_scheduler_event_destroy(event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">568</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">569</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">570</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">571</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (event-&gt;timestamp &gt; request-&gt;manager-&gt;seg_last_timestamp)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">572</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">573</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;manager-&gt;seg_last_timestamp = event-&gt;timestamp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">574</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">575</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            GlobusGramJobManagerUnlock(resume-&gt;manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">576</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = globus_l_gram_deliver_event(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">577</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">578</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">579</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">580</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_gram_job_manager_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">581</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">582</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">583</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;event=gram.seg.resume_callback.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">584</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">585</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">586</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">587</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">588</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    -rc,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">589</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    &quot;Delivered event&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">590</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">591</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">592</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">593</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_seg_resume_callback() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">594</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">595</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">596</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">597</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_deliver_event(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">598</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">599</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          event)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">600</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">601</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">602</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_reltime_t                    delay_time;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">603</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">604</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerRequestLock(request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">605</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">606</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">607</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">608</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">609</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg_deliver_event.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">610</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">611</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">612</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;jobid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">613</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;state=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">614</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;jmstate=%d\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">615</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">616</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">617</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;event_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">618</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;jobmanager_state);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">619</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">620</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Keep the state file&#39;s timestamp up to date so that</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">621</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * anything scrubbing the state files of old and dead</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">622</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * processes leaves it alone */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">623</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    if(request-&gt;job_state_file)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">624</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">625</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">        utime(request-&gt;job_state_file, NULL);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">626</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">627</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">628</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_fifo_enqueue(&amp;request-&gt;seg_event_queue, event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">629</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">630</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">631</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">632</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">633</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">634</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">635</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                GLOBUS_GRAM_JOB_MANAGER_LOG_ERROR,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">636</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;event=gram.seg_deliver_event.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">637</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;level=ERROR &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">638</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">639</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;jobid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">640</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;state=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">641</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;jmstate=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">642</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">643</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">644</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;reason=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">645</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">646</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">647</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">648</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                event-&gt;event_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">649</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;jobmanager_state,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">650</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                -rc,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">651</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;Fifo enqueue failed&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">652</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                globus_gram_protocol_error_string(rc));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">653</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">654</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto event_enqueue_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">655</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">656</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">657</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    if (event-&gt;event_type == GLOBUS_SCHEDULER_EVENT_DONE ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">658</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        event-&gt;event_type ==  GLOBUS_SCHEDULER_EVENT_FAILED)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">659</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">660</td>
+          <td class="coverageCount">90</td>
+          <td class="srcCell"><span class="srcLine">        (void) globus_gram_job_manager_unregister_job_id(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">661</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">662</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                event-&gt;job_id);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">663</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">664</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">665</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    if (request-&gt;jobmanager_state == GLOBUS_GRAM_JOB_MANAGER_STATE_POLL2)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">666</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">667</td>
+          <td class="coverageCount">106</td>
+          <td class="srcCell"><span class="srcLine">        GlobusTimeReltimeSet(delay_time, 0, 0); </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">668</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">669</td>
+          <td class="coverageCount">106</td>
+          <td class="srcCell"><span class="srcLine">        request-&gt;jobmanager_state = GLOBUS_GRAM_JOB_MANAGER_STATE_POLL1;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">670</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">671</td>
+          <td class="coverageCount">106</td>
+          <td class="srcCell"><span class="srcLine">        rc = globus_gram_job_manager_state_machine_register(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">672</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">673</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">674</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;delay_time);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">675</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">676</td>
+          <td class="coverageCount">106</td>
+          <td class="srcCell"><span class="srcLine">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">677</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">678</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            request-&gt;jobmanager_state = GLOBUS_GRAM_JOB_MANAGER_STATE_POLL2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">679</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">680</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">681</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">682</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">683</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">684</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">685</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">686</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.seg_deliver_event.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">687</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">688</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">689</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;jobid=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">690</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;state=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">691</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;jmstate=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">692</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">693</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">694</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">695</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">696</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            event-&gt;event_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">697</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;jobmanager_state,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">698</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">699</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">700</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">event_enqueue_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">701</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    GlobusGramJobManagerRequestUnlock(request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">702</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">703</td>
+          <td class="coverageCount">274</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">704</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">705</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_deliver_event() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">706</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">707</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">708</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">709</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_fork_poll_callback(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">710</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              user_arg)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">711</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">712</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">713</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_gram_job_manager_t *         manager = user_arg;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">714</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     l;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">715</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_scheduler_event_t *          event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">716</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_list_t *                     events = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">717</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">718</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    int                                 pid_count = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">719</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    int                                 done_count = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">720</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     job_id_list;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">721</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     tmp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">722</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">723</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Walk the job id list, checking to see if the process has completed */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">724</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    rc = globus_gram_job_manager_get_job_id_list(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">725</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">726</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;job_id_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">727</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">728</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    for (tmp = job_id_list; tmp != NULL; tmp = globus_list_rest(tmp))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">729</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">730</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        char *                          tok_end = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">731</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        char *                          pid_string;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">732</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        char *                          job_id_string;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">733</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        char *                          job_id_string_copy;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">734</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">735</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        job_id_string = globus_list_first(tmp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">736</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        job_id_string_copy = strdup(job_id_string);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">737</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (job_id_string_copy == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">738</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">739</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            continue;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">740</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">741</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">742</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        pid_count = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">743</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        done_count = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">744</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        for (tok_end = NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">745</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                    pid_string = strtok_r(job_id_string, &quot;,&quot;, &amp;tok_end);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">746</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">             pid_string != NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">747</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">             pid_string = strtok_r(NULL, &quot;,&quot;, &amp;tok_end))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">748</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">749</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            char *                      end = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">750</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            unsigned long               pid;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">751</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">752</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            pid_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">753</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            errno = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">754</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            pid = strtoul(pid_string, &amp;end, 10);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">755</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if ((pid == ULONG_MAX &amp;&amp; errno != 0) || strlen(end) != 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">756</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">757</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                continue;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">758</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">759</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">760</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (kill((pid_t) pid, 0) &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">761</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">762</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                done_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">763</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">764</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">765</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">766</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (pid_count == done_count &amp;&amp; pid_count &gt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">767</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">768</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            /* Synthesize done event */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">769</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event = malloc(sizeof(globus_scheduler_event_t));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">770</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">771</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event-&gt;event_type = GLOBUS_SCHEDULER_EVENT_DONE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">772</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event-&gt;job_id = job_id_string_copy;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">773</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event-&gt;timestamp = time(NULL);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">774</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event-&gt;exit_code = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">775</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event-&gt;failure_code = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">776</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            event-&gt;raw_event = NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">777</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">778</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_list_insert(&amp;events, event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">779</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">780</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">781</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">782</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            free(job_id_string_copy);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">783</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">784</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(job_id_string);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">785</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">786</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_list_free(job_id_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">787</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">788</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* Queue events in the request-specific SEG event queue */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">789</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    for (l = events; l != NULL; l = globus_list_rest(l))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">790</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">791</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        event = globus_list_first(l);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">792</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">793</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        GlobusGramJobManagerLock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">794</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_gram_job_manager_add_reference_by_jobid(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">795</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                manager,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">796</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                event-&gt;job_id,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">797</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;SEG event&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">798</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">799</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        GlobusGramJobManagerUnlock(manager);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">800</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">801</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc == GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">802</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">803</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = globus_l_gram_deliver_event(   </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">804</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">805</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">806</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">807</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">808</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">809</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                goto destroy_event;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">810</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">811</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">812</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">813</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">814</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">815</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">destroy_event:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">816</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            globus_scheduler_event_destroy(event);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">817</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">818</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">819</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_list_free(events);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">820</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">}</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

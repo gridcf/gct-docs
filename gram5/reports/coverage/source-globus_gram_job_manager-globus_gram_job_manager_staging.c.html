@@ -1,0 +1,5139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_job_manager_staging.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2009 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#ifndef GLOBUS_DONT_DOCUMENT_INTERNAL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @file globus_gram_job_manager_staging.c GRAM Job Manager Staging Tracking</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * CVS Information:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Source: /home/ec2-user/alliance-web/alliance/toolkit/docs/5.2/5.2.5/gram5/reports/coverage/source-globus_gram_job_manager-globus_gram_job_manager_staging.c.html,v $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Date: 2013/06/19 18:13:40 $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Revision: 1.1 $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * $Author: bester $</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_gram_job_manager.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_rsl_assist.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;string.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_job_manager_staging_add_pair(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_rsl_value_t *                from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_rsl_value_t *                to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const char *                        type);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_bool_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_job_manager_staging_match(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              datum,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              arg);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_staging_list_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    FILE *                              fp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">53</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              buffer,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_type_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        staging_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t **                    staging_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">57</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#endif</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">58</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_staging_create_list(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">61</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">62</td>
+          <td class="coverageCount">123</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 i;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_rsl_value_t *                from;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">66</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_rsl_value_t *                to;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">67</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     list;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     pairs;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              can_stage_list[] =</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_FILE_STAGE_IN_PARAM,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_FILE_STAGE_IN_SHARED_PARAM,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_FILE_STAGE_OUT_PARAM,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        &quot;filestreamout&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">75</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        NULL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">76</td>
+          <td class="coverageCount">123</td>
+          <td class="srcCell"><span class="srcLine">    };</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 errors_list[] =</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_IN,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">80</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_IN_SHARED,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_OUT,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">82</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_PROTOCOL_ERROR_RSL_STDOUT,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">84</td>
+          <td class="coverageCount">123</td>
+          <td class="srcCell"><span class="srcLine">    };</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">85</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">86</td>
+          <td class="coverageCount">123</td>
+          <td class="srcCell"><span class="srcLine">    if(request-&gt;jm_restart)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">88</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">        return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">90</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">91</td>
+          <td class="coverageCount">553</td>
+          <td class="srcCell"><span class="srcLine">    for(i = 0; can_stage_list[i] != NULL; i++)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">93</td>
+          <td class="coverageCount">446</td>
+          <td class="srcCell"><span class="srcLine">        list = globus_rsl_param_get_values(request-&gt;rsl, can_stage_list[i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">94</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">95</td>
+          <td class="coverageCount">446</td>
+          <td class="srcCell"><span class="srcLine">        if(!list)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">96</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">97</td>
+          <td class="coverageCount">331</td>
+          <td class="srcCell"><span class="srcLine">            continue;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">98</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">100</td>
+          <td class="coverageCount">483</td>
+          <td class="srcCell"><span class="srcLine">        while(!globus_list_empty(list))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">101</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">102</td>
+          <td class="coverageCount">262</td>
+          <td class="srcCell"><span class="srcLine">            pairs = globus_rsl_value_sequence_get_value_list(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    globus_list_first(list));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">104</td>
+          <td class="coverageCount">262</td>
+          <td class="srcCell"><span class="srcLine">            list = globus_list_rest(list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">105</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">106</td>
+          <td class="coverageCount">262</td>
+          <td class="srcCell"><span class="srcLine">            if(globus_list_size(pairs) != 2)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">107</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">108</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">                rc = errors_list[i];</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">109</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">                goto failed_adding_exit;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">110</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">111</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">112</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">            from = globus_list_first(pairs);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">113</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">            to = globus_list_first(globus_list_rest(pairs));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">114</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">115</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">            rc = globus_l_gram_job_manager_staging_add_pair(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">116</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">117</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">118</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">119</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                    can_stage_list[i]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">120</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">121</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">            if(rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">122</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">123</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">                goto failed_adding_exit;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">124</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">126</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">127</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">129</td>
+          <td class="coverageCount">107</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">130</td>
+          <td class="coverageCount">9</td>
+          <td class="srcCell"><span class="srcLine">failed_adding_exit:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">131</td>
+          <td class="coverageCount">9</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_free_all(request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">132</td>
+          <td class="coverageCount">9</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">133</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">134</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_staging_create_list() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">135</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">136</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">137</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_staging_remove(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">138</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">139</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_type_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">140</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">141</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              to)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">143</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">144</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        query;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">146</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        item;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">148</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t **                    list;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">149</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     node;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">150</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    const char *                        typestr = &quot;&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">151</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">152</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    switch(type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">153</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">154</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">155</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">          typestr = &quot;file_stage_in&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">156</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">          break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">157</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">158</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">          typestr = &quot;file_stage_in_shared&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">159</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">          break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">161</td>
+          <td class="coverageCount">44</td>
+          <td class="srcCell"><span class="srcLine">          typestr = &quot;file_stage_out&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">162</td>
+          <td class="coverageCount">44</td>
+          <td class="srcCell"><span class="srcLine">          break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">163</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">164</td>
+          <td class="coverageCount">173</td>
+          <td class="srcCell"><span class="srcLine">          typestr = &quot;file_stream_out&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">165</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">          break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">168</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">170</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_DEBUG,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.staging_remove.start &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">172</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=DEBUG &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">174</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;src=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">175</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;dst=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">176</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;type=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">177</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">178</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">180</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">181</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            typestr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">183</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    query.evaled_from = from;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">184</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    query.evaled_to = to;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">185</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    query.type = type;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">186</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">187</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    switch(type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">188</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">190</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">        list = &amp;request-&gt;stage_in_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">191</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">192</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">193</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">        list = &amp;request-&gt;stage_in_shared_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">194</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">195</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">196</td>
+          <td class="coverageCount">44</td>
+          <td class="srcCell"><span class="srcLine">        list = &amp;request-&gt;stage_out_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">197</td>
+          <td class="coverageCount">44</td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">198</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">199</td>
+          <td class="coverageCount">173</td>
+          <td class="srcCell"><span class="srcLine">        list = &amp;request-&gt;stage_stream_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">200</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">202</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">203</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    node = globus_list_search_pred(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">204</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            *list,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">205</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            globus_l_gram_job_manager_staging_match,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">206</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;query);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">207</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">208</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    if(node)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">209</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">210</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        item = globus_list_remove(list, node);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">211</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">212</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">213</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">214</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_TRACE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">215</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.staging_remove.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">216</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=TRACE &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">217</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">218</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">219</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;src=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">220</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;dst=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">221</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;type=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">222</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">223</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">224</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">225</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;File staged&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">226</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">227</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">228</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            typestr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">229</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">230</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">231</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        if (item-&gt;type == GLOBUS_GRAM_JOB_MANAGER_STAGE_IN)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">232</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">233</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">            if (strncmp(item-&gt;evaled_from, &quot;http://&quot;, 7) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">234</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">235</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_in_http_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">236</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">237</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">            else if (strncmp(item-&gt;evaled_from, &quot;https://&quot;, 8) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">238</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">239</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_stats.file_stage_in_https_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">240</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">241</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            else if (strncmp(item-&gt;evaled_from, &quot;ftp://&quot;, 6) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">242</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">243</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_in_ftp_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">244</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">245</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            else if (strncmp(item-&gt;evaled_from, &quot;gsiftp://&quot;, 6) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">246</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">247</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_in_gsiftp_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">248</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">249</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">250</td>
+          <td class="coverageCount">221</td>
+          <td class="srcCell"><span class="srcLine">        else if (item-&gt;type == GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">251</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">252</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">            if (strncmp(item-&gt;evaled_from, &quot;http://&quot;, 7) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">253</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">254</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_in_shared_http_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">255</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">256</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">            else if (strncmp(item-&gt;evaled_from, &quot;https://&quot;, 8) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">257</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">258</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_stats.file_stage_in_shared_https_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">259</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">260</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            else if (strncmp(item-&gt;evaled_from, &quot;ftp://&quot;, 6) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">261</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">262</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_in_shared_ftp_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">263</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">264</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            else if (strncmp(item-&gt;evaled_from, &quot;gsiftp://&quot;, 6) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">265</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">266</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_in_shared_gsiftp_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">267</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">268</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">269</td>
+          <td class="coverageCount">217</td>
+          <td class="srcCell"><span class="srcLine">        else if (item-&gt;type == GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">270</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                 item-&gt;type == GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">271</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">272</td>
+          <td class="coverageCount">217</td>
+          <td class="srcCell"><span class="srcLine">            if (strncmp(item-&gt;evaled_to, &quot;http://&quot;, 7) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">273</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">274</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_out_http_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">275</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">276</td>
+          <td class="coverageCount">217</td>
+          <td class="srcCell"><span class="srcLine">            else if (strncmp(item-&gt;evaled_to, &quot;https://&quot;, 8) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">277</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">278</td>
+          <td class="coverageCount">171</td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_stats.file_stage_out_https_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">279</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">280</td>
+          <td class="coverageCount">46</td>
+          <td class="srcCell"><span class="srcLine">            else if (strncmp(item-&gt;evaled_to, &quot;ftp://&quot;, 6) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">281</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">282</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                request-&gt;job_stats.file_stage_out_ftp_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">283</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">284</td>
+          <td class="coverageCount">46</td>
+          <td class="srcCell"><span class="srcLine">            else if (strncmp(item-&gt;evaled_to, &quot;gsiftp://&quot;, 6) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">285</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">286</td>
+          <td class="coverageCount">18</td>
+          <td class="srcCell"><span class="srcLine">                request-&gt;job_stats.file_stage_out_gsiftp_count++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">287</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">288</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">289</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(item-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">290</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(item-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">291</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        free(item-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">292</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        free(item-&gt;evaled_to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">293</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        free(item);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">294</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">295</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">296</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">297</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_job_manager_request_log(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">298</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">299</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            GLOBUS_GRAM_JOB_MANAGER_LOG_WARN,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">300</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;event=gram.staging_remove.end &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">301</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;level=WARN &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">302</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;gramid=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">303</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">304</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;src=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">305</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;dst=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">306</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;type=%s &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">307</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;status=%d &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">308</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;msg=\&quot;%s\&quot; &quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">309</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;\n&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">310</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            request-&gt;job_contact_path,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">311</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;File staged&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">312</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">313</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">314</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            typestr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">315</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            0,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">316</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &quot;Unexpected staging completion&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">317</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">318</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">319</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">320</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_staging_remove() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">321</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">322</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">323</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_staging_write_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">324</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">325</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    FILE *                              fp)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">326</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">327</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t *                     tmp_list;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">328</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">329</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        info;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">330</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              tmp_str;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">331</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">332</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">333</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    rc = fprintf(fp, &quot;%d\n&quot;, globus_list_size(request-&gt;stage_in_todo));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">334</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">335</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">336</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">337</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">338</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">339</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">340</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    tmp_list = request-&gt;stage_in_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">341</td>
+          <td class="coverageCount">1711</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(tmp_list))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">342</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">343</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_first(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">344</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        tmp_list = globus_list_rest(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">345</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">346</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">347</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">348</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">349</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">350</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">351</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">352</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">353</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">354</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">355</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">356</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">357</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">358</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">359</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">360</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">361</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">362</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    rc = fprintf(fp, &quot;%d\n&quot;, globus_list_size(request-&gt;stage_in_shared_todo));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">363</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">364</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">365</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">366</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">367</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    tmp_list = request-&gt;stage_in_shared_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">368</td>
+          <td class="coverageCount">1712</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(tmp_list))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">369</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">370</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_first(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">371</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        tmp_list = globus_list_rest(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">372</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">373</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">374</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">375</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">376</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">377</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">378</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">379</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">380</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">381</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">382</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">383</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">384</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">385</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">386</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">387</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">388</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">389</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    rc = fprintf(fp, &quot;%d\n&quot;, globus_list_size(request-&gt;stage_out_todo));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">390</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">391</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">392</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">393</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">394</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    tmp_list = request-&gt;stage_out_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">395</td>
+          <td class="coverageCount">2160</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(tmp_list))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">396</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">397</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_first(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">398</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        tmp_list = globus_list_rest(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">399</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">400</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">401</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">402</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">403</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">404</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">405</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">406</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">407</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">408</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">409</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">410</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">411</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">412</td>
+          <td class="coverageCount">454</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">413</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">414</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">415</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">416</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">417</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    rc = fprintf(fp, &quot;%d\n&quot;, globus_list_size(request-&gt;stage_stream_todo));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">418</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    tmp_list = request-&gt;stage_stream_todo;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">419</td>
+          <td class="coverageCount">3038</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(tmp_list))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">420</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">421</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_first(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">422</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        tmp_list = globus_list_rest(tmp_list);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">423</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">424</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">425</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">426</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">427</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">428</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">429</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">430</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">431</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">432</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">433</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        tmp_str = globus_rsl_value_unparse(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">434</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        rc = fprintf(fp, &quot;%s\n&quot;, tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">435</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        free(tmp_str);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">436</td>
+          <td class="coverageCount">1332</td>
+          <td class="srcCell"><span class="srcLine">        if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">437</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">438</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            return GLOBUS_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">439</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">440</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">441</td>
+          <td class="coverageCount">853</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">442</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">443</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_staging_write_state() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">444</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">445</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">446</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_staging_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">447</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">448</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    FILE *                              fp)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">449</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">450</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">451</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              buffer;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">452</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    size_t                              buffer_len;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">453</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    long                                offset;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">454</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">455</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    offset = ftell(fp);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">456</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (fseek(fp, 0, SEEK_END) &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">457</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">458</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_READING_STATE_FILE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">459</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">460</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">461</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">462</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">463</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    buffer_len = ftell(fp) - offset;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">464</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">465</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (fseek(fp, offset, SEEK_SET) &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">466</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">467</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_READING_STATE_FILE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">468</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">469</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">470</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">471</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">472</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    buffer = malloc(buffer_len+1);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">473</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (buffer == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">474</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">475</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">476</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">477</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">478</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">479</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">480</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_l_gram_staging_list_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">481</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">482</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        fp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">483</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        buffer,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">484</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_JOB_MANAGER_STAGE_IN,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">485</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        &amp;request-&gt;stage_in_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">486</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">487</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">488</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">489</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto free_buffer_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">490</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">491</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">492</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_l_gram_staging_list_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">493</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">494</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        fp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">495</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        buffer,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">496</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">497</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        &amp;request-&gt;stage_in_shared_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">498</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">499</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">500</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">501</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto free_buffer_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">502</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">503</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">504</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_l_gram_staging_list_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">505</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">506</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        fp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">507</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        buffer,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">508</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">509</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        &amp;request-&gt;stage_out_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">510</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">511</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">512</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">513</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto free_buffer_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">514</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">515</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">516</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">517</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_l_gram_staging_list_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">518</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">519</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        fp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">520</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        buffer,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">521</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">522</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        &amp;request-&gt;stage_stream_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">523</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">524</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">free_buffer_out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">525</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    free(buffer);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">526</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">527</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">528</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_gram_job_manager_staging_free_all(request);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">529</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">530</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">531</td>
+          <td class="coverageCount">7</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">532</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">533</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_staging_read_state() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">534</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">535</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">536</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">537</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_job_manager_staging_add_pair(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">538</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">539</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_rsl_value_t *                from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">540</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_rsl_value_t *                to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">541</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const char *                        type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">542</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">543</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">544</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">545</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        info;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">546</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">547</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    info = calloc(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">548</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            1,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">549</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            sizeof(globus_gram_job_manager_staging_info_t));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">550</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    if(!info)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">551</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">552</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">553</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto info_calloc_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">554</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">555</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">556</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    info-&gt;from = globus_rsl_value_copy_recursive(from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">557</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    info-&gt;to = globus_rsl_value_copy_recursive(to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">558</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">559</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    if(strcmp(type, GLOBUS_GRAM_PROTOCOL_FILE_STAGE_IN_PARAM) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">560</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">561</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        info-&gt;type = GLOBUS_GRAM_JOB_MANAGER_STAGE_IN;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">562</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">563</td>
+          <td class="coverageCount">250</td>
+          <td class="srcCell"><span class="srcLine">    else if(strcmp(type, GLOBUS_GRAM_PROTOCOL_FILE_STAGE_IN_SHARED_PARAM)== 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">564</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">565</td>
+          <td class="coverageCount">6</td>
+          <td class="srcCell"><span class="srcLine">        info-&gt;type = GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">566</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">567</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">568</td>
+          <td class="coverageCount">244</td>
+          <td class="srcCell"><span class="srcLine">    else if(strcmp(type, GLOBUS_GRAM_PROTOCOL_FILE_STAGE_OUT_PARAM) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">569</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">570</td>
+          <td class="coverageCount">46</td>
+          <td class="srcCell"><span class="srcLine">        info-&gt;type = GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">571</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">572</td>
+          <td class="coverageCount">198</td>
+          <td class="srcCell"><span class="srcLine">    else if (strcmp(type, &quot;filestreamout&quot;) == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">573</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">574</td>
+          <td class="coverageCount">198</td>
+          <td class="srcCell"><span class="srcLine">        info-&gt;type = GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">575</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">576</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">577</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_gram_job_manager_rsl_evaluate_value(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">578</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;request-&gt;symbol_table,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">579</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            info-&gt;from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">580</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">581</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">582</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    if(!info-&gt;evaled_from)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">583</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">584</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(rc == GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">585</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">586</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            /* Not a literal after a successful eval */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">587</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            switch(info-&gt;type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">588</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">589</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">590</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_IN;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">591</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">592</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">593</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_IN_SHARED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">594</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">595</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">596</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_OUT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">597</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">598</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">599</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_STDOUT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">600</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">601</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">602</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">603</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">604</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto eval_from_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">605</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">606</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_gram_job_manager_rsl_evaluate_value(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">607</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;request-&gt;symbol_table,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">608</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            info-&gt;to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">609</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;info-&gt;evaled_to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">610</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">611</td>
+          <td class="coverageCount">256</td>
+          <td class="srcCell"><span class="srcLine">    if(!info-&gt;evaled_to)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">612</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">613</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">        if(rc == GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">614</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">615</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            /* Not a literal after a successful eval */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">616</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">            switch(info-&gt;type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">617</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">618</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">619</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_IN;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">620</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">621</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">622</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_IN_SHARED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">623</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">624</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">625</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_FILE_STAGE_OUT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">626</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">627</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">              case GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">628</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">                rc = GLOBUS_GRAM_PROTOCOL_ERROR_RSL_STDOUT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">629</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">630</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">631</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">632</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">633</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">        goto eval_to_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">634</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">635</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">636</td>
+          <td class="coverageCount">253</td>
+          <td class="srcCell"><span class="srcLine">    switch(info-&gt;type)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">637</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">638</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">639</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        globus_list_insert(&amp;request-&gt;stage_in_todo, info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">640</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">641</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_IN_SHARED:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">642</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        globus_list_insert(&amp;request-&gt;stage_in_shared_todo, info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">643</td>
+          <td class="coverageCount">5</td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">644</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_OUT:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">645</td>
+          <td class="coverageCount">45</td>
+          <td class="srcCell"><span class="srcLine">        globus_list_insert(&amp;request-&gt;stage_out_todo, info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">646</td>
+          <td class="coverageCount">45</td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">647</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">      case GLOBUS_GRAM_JOB_MANAGER_STAGE_STREAMS:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">648</td>
+          <td class="coverageCount">198</td>
+          <td class="srcCell"><span class="srcLine">        globus_list_insert(&amp;request-&gt;stage_stream_todo, info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">649</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">650</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">651</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">652</td>
+          <td class="coverageCount">253</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">653</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">654</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">eval_to_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">655</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">    free(info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">656</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">eval_from_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">657</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">    free(info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">658</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">info_calloc_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">659</td>
+          <td class="coverageCount">3</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">660</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">661</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_job_manager_staging_add_url() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">662</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">663</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">664</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_bool_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">665</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_job_manager_staging_match(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">666</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              datum,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">667</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    void *                              arg)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">668</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">669</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">670</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        item;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">671</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">672</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        query;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">673</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">674</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    item = datum;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">675</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    query = arg;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">676</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">677</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    globus_assert(item-&gt;type == query-&gt;type);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">678</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">679</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">    if((strcmp(item-&gt;evaled_from, query-&gt;evaled_from) == 0) &amp;&amp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">680</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">       (strcmp(item-&gt;evaled_to, query-&gt;evaled_to) == 0))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">681</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">682</td>
+          <td class="coverageCount">225</td>
+          <td class="srcCell"><span class="srcLine">        return GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">683</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">684</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">685</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">686</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return GLOBUS_FALSE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">687</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">688</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">689</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_job_manager_staging_match() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">690</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">691</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">void</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">692</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_job_manager_staging_free_all(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">693</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">694</td>
+          <td class="coverageCount">123</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">695</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">696</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        info;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">697</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">698</td>
+          <td class="coverageCount">247</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(request-&gt;stage_in_todo))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">699</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">700</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_remove(&amp;request-&gt;stage_in_todo,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">701</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                  request-&gt;stage_in_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">702</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">703</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">704</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">705</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">706</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info-&gt;evaled_to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">707</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">708</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">709</td>
+          <td class="coverageCount">247</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(request-&gt;stage_in_shared_todo))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">710</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">711</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_remove(&amp;request-&gt;stage_in_shared_todo,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">712</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                  request-&gt;stage_in_shared_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">713</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">714</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">715</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">716</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">717</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info-&gt;evaled_to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">718</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">719</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">720</td>
+          <td class="coverageCount">247</td>
+          <td class="srcCell"><span class="srcLine">    while(!globus_list_empty(request-&gt;stage_out_todo))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">721</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">722</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        info = globus_list_remove(&amp;request-&gt;stage_out_todo,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">723</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                  request-&gt;stage_out_todo);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">724</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">725</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">726</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        globus_rsl_value_free_recursive(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">727</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">728</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info-&gt;evaled_to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">729</td>
+          <td class="coverageCount">1</td>
+          <td class="srcCell"><span class="srcLine">        free(info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">730</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">731</td>
+          <td class="coverageCount">123</td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">732</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_job_manager_staging_free_all() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">733</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">734</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">735</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Read a list of staging pairs from the state file</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">736</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">737</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param request</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">738</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Job request associated with the state file (used for</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">739</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     RSL evaluation)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">740</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param fp</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">741</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     State file opened for reading</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">742</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param buffer</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">743</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Buffer containing the state file data</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">744</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param staging_type</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">745</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Type of staging list to read</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">746</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param staging_list</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">747</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     List to insert the staging work into.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">748</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">749</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_SUCCESS</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">750</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Success</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">751</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_GRAM_PROTOCOL_ERROR_READING_STATE_FILE</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">752</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Error reading state file</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">753</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @retval GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">754</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *     Out of memory</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">755</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">756</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">757</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">758</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_staging_list_read_state(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">759</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_jobmanager_request_t *  request,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">760</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    FILE *                              fp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">761</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *                              buffer,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">762</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_type_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">763</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        staging_type,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">764</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_list_t **                    staging_list)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">765</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">766</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc = GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">767</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 i, tmp_list_size;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">768</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_job_manager_staging_info_t *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">769</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                        info;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">770</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">771</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">    if (fscanf(fp, &quot;%[^\n]%*c&quot;, buffer) &lt; 1)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">772</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">773</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = GLOBUS_GRAM_PROTOCOL_ERROR_READING_STATE_FILE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">774</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">775</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">776</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">777</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">    tmp_list_size = atoi(buffer);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">778</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">779</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">    for(i = 0; i &lt; tmp_list_size; i++)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">780</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">781</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        info = calloc(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">782</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                1,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">783</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                sizeof(globus_gram_job_manager_staging_info_t));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">784</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (info == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">785</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">786</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_MALLOC_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">787</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">788</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">789</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">790</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">791</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        info-&gt;type = staging_type;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">792</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">793</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(fscanf(fp, &quot;%[^\n]%*c&quot;, buffer) &lt; 1)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">794</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">795</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_READING_STATE_FILE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">796</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">797</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto free_info_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">798</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">799</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_gram_job_manager_rsl_parse_value(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">800</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                buffer, &amp;info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">801</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">802</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">803</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto free_info_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">804</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">805</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">806</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if(fscanf(fp, &quot;%[^\n]%*c&quot;, buffer) &lt; 1)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">807</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">808</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = GLOBUS_GRAM_PROTOCOL_ERROR_READING_STATE_FILE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">809</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">810</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto free_info_from_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">811</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">812</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_gram_job_manager_rsl_parse_value(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">813</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                buffer, &amp;info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">814</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">815</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">816</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto free_info_from_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">817</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">818</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">819</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_gram_job_manager_rsl_evaluate_value(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">820</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;request-&gt;symbol_table,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">821</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                info-&gt;from,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">822</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">823</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">824</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">825</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">826</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto free_info_to_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">827</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">828</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">829</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = globus_gram_job_manager_rsl_evaluate_value(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">830</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;request-&gt;symbol_table,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">831</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                info-&gt;to,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">832</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &amp;info-&gt;evaled_to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">833</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">834</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">835</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto free_info_evaled_from_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">836</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">837</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">838</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        globus_list_insert(staging_list, info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">839</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">840</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">841</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">    if (rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">842</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">843</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">free_info_evaled_from_out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">844</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(info-&gt;evaled_from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">845</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">free_info_to_out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">846</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(info-&gt;to);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">847</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">free_info_from_out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">848</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(info-&gt;from);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">849</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">free_info_out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">850</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        free(info);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">851</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">852</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">853</td>
+          <td class="coverageCount">28</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">854</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<?php 
+$title="Usage Statistics Collection by the Globus Alliance";
+include_once( "/nfs/globus.org/include/globus_header.inc" ); ?>
+
+
+
+<h1><?php echo $title; ?></h1>
+
+<p>Beginning with GT 3.9.5, the Globus Toolkit has the capability to send usage
+  statistics back to the Globus Alliance.</p>
+<ul>
+  <li><a href="#whyarewedoingthis">Why are we doing this?</a></li>
+  <li><a href="#theoverview">The overview</a> </li>
+  <li><a href="#optout">Opt-out</a></li>
+  <li><a href="#whatissent">What is sent?</a></li>
+  <li><a href="#howisthedatasent">How is the data sent?</a></li>
+  <li><a href="#whenisthedatasent">When is it sent?</a></li>
+  <li><a href="#whatwillitbeusedfor">What will the data be used for?</a></li>
+  <li><a href="#feedback">Feedback</a>    </li>
+</ul>
+<h2><a name="whyarewedoingthis"></a>Why are we doing this?</h2>  
+<p>  The Globus Alliance receives support from government funding agencies. In
+  a time of funding scarcity, these agencies must be able to demonstrate that
+    the scientific community is benefiting from their investment. To this end,
+we want to provide generic usage data about such things as the following: </p>
+<UL>
+  <LI>how many people use GridFTP </LI>
+    
+  <LI>how many jobs run using GRAM </LI>
+</UL>
+<p>To this end, we have added support to the Globus Toolkit that will allow installations
+to send us generic usage statistics. By participating in this project, you help
+our funders to justify continuing their support for the software on which you
+rely.</p>
+<h2><a name="theoverview"></a>The overview </h2>  
+<ul>
+  <li>Components affected for GT5 are:
+    <ul>
+      <li>GridFTP</li>
+      <li>GRAM5</li>
+      <li>RLS</li>
+      <li>MyProxy</li>
+      <li>GSI-OpenSSH</li>
+    </ul>
+  </li>
+  <li>The data sent is as generic as possible (see <a href=#whatissent>What
+      is Sent?</a> below). </li>
+  <li>Every component affected has a section titled "Usage
+    Statistics" in its Users and Admin guides that lists precisely what
+    is sent and the configuration control that is
+    available (which you can use to <strong>disable</strong> the ability to send the data). </li>
+  <li>To make this a win-win proposition, we have made
+        the receiver for the data available from CVS (follow the directions <a href="setup_usage_receiver.html">here</a>).
+        This means that a (virtual) organization could set up their own listener
+        and collect organization wide usage statistics. </li>
+</ul>
+<h2><a name="optout"></a>Opt-out</h2> 
+We are using opt-out rather than opt-in. The reason is that we <it>need</it> this
+data - it is a requirement for funding. We're
+sure our fellow users would be willing to help show that Grid Computing works
+and is in use. Realistically, however, we know that if it requires any additional
+effort to set up usage statistic reporting, it would drastically reduce the number
+of users that would actually report the data. To be effective, we need to require
+zero additional effort.
+<p>By not opting out, and allowing these statistics to be reported back, you
+are explicitly supporting the further development of the Globus Toolkit.</p>
+
+
+
+
+<h2><a name="whatissent" id="whatissent"></a>What is sent?</h2> 
+<p>The components affected for GT5 are GridFTP, RLS, GRAM5, MyProxy and GSI-OpenSSH. We send the "how much" data,
+  not "the
+  what" data.  </p>
+<p>For instance, GridFTP sends the number of bytes, how long the
+    transfer took, how many streams were used, etc. It does NOT send filenames,
+    usernames, or even the destination IP since that would mean that the source
+    site would make a decision about sending information about the destination
+    site. </p>
+<p>Each component has a section in its Users  and Admin guides listing what
+  component specific data is sent, and the Admin guide explains 
+  configurations related to the usage statistics. 
+  Links to these sections are provided here:</p>
+
+<ul>
+  <li><a href="gridftp/admin/#gridftp-usage">GridFTP</a></li>
+  <li><a href="gram5/admin/#gram5-usage">GRAM5</a></li>
+  <li><a href="myproxy/admin/#myproxy-usage">MyProxy</a></li>
+  <li><a href="openssh/admin/#openssh-usage">GSI-OpenSSH</a></li>
+</ul>
+<p>Header data that may be sent by every component, not including the component-specific
+  data listed above, are:</p>
+<ul>
+    <li> Component identifier </li>
+    <li> Usage data format identifier </li>
+    <li> Time stamp </li>
+    <li> Source IP address </li>
+    <li> Source hostname (to differentiate between hosts with identical private IP addresses)</li>
+</ul>
+
+<h2><a name="howisthedatasent"></a>How is the data sent?</h2>  <p>The messages are sent as a single UDP packet.  While this may cause us to lose some data, it drastically reduces the possibility that the usage statistics reporting can adversely affect the operation of the software.</p>
+
+<h2><a name="whenisthedatasent"></a>When is the data sent?</h2>  <p>Once per "task" (GridFTP transfer, GRAM Job, etc), either immediately upon startup, or at completion of the task.</p>
+
+<h2><a name="whatwillitbeusedfor"></a>What will the data be used for?</h2> 
+<p>The data will be used for answering questions such as:</p>
+<ul>
+  <li>How many jobs were run with GRAM last month? </li>
+  <li>How many gigabytes of data has
+            GridFTP moved? </li>
+</ul>
+<p>We will also try and mine the data to answer operational questions such as:
+</p>
+<ul>
+  <li> What percentage
+            of the jobs run complete successfully? </li>
+  <li>Of the ones that
+              fail, what is the most common fault code returned?</li>
+</ul>
+<p>The data will <strong>NOT</strong> be used to answer questions such as &quot;IP 123.456.789.012
+  sent 10 TB of data last month.&quot; </p>
+<p>Our intent is to make the data that we get generic enough that
+      we do not have to worry what is done with it. We record
+      the IP only for counting purposes to know how many sites there
+  are, but we will not produce site-specific statistics. </p>
+<h2><a name="feedback"></a>Feedback</h2>
+<p>Please send us your feedback at <a href="mailto:usage-stats@globus.org">usage-stats@globus.org</a>.
+Feedback from our user communities will be useful in determining our path forward
+with this in the future. We do ask that if you have concerns or objections, please
+be specific in your feedback. For example: "Our site has a policy against sending
+such data" is good information for us to know in the future.  A link to such
+a policy would be even better.</p>
+
+
+<?php include("/nfs/globus.org/include/globus_footer.inc"); ?>

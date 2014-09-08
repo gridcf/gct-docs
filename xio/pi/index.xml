@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="xioPI">
+    <title>GT <replaceable role="entity">version</replaceable> Component Guide to Public Interfaces: XIO</title>
+    <titleabbrev>Public Interface Guide</titleabbrev>
+    
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../XIO_Interface_API_Frag.xml" />
+
+    <!-- n/a
+
+
+<chapter id="xio-pi-cmd"><title>Command-Line Tools</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../XIO_Interface_Commandline_Frag.xml"/>
+</chapter>
+
+<chapter id="xio-pi-guis"><title>Overview of Graphical User Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../XIO_Interface_GUI_Frag.xml"/>
+</chapter>
+
+<chapter id="xio-pi-domain"><title>Semantics and Syntax of Domain-Specific Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../XIO_Interface_Domain_Frag.xml"/>
+</chapter>
+
+<chapter id="xio-pi-config"><title>Configuration Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../XIO_Interface_Config_Frag.xml"/>
+</chapter>
+    -->
+<chapter id="xio-pi-env-vars"><title>Environmental variables</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../XIO_Interface_Env_Frag.xml"/>
+</chapter>
+    
+          <appendix id="xio-error-codes">
+        <title>Errors</title>
+            <indexterm type="xio">
+  <primary>errors</primary>
+    </indexterm>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../XIO_Errors_Frag.xml" xpointer="xio-errors-table"/>
+    </appendix>
+</book>

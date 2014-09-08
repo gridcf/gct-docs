@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter id="gtadmin-basic-security" xreflabel="Basic Security Configuration">
+	<title>Basic Security Configuration</title>
+	<section id="gtadmin-basic-host" xreflabel="Obtaining host certificates">
+		<title>Obtain host credentials</title>
+		<!-- this is where preswsaa (GSI) config and env variables come in - but not really necessary at this point?? do most people already know??  -->
+		<para>You must have X.509 certificates to use the GT <replaceable role="entity"
+				>version</replaceable> software securely (referred to in this documentation as
+				<emphasis>host certificates</emphasis>). For an overview of certificates for
+				<glossterm baseform="Grid Security Infrastructure">GSI</glossterm> (security) see
+				<olink targetdoc="gsicAdmin" targetptr="gsic-configuring">GSI Configuration
+				Information</olink> and <olink targetdoc="gsicDeveloper"
+				targetptr="gsic-developer-env">GSI Environment Variables</olink>.</para>
+		<para>If you will need to be interoperable with other sites, you will need to obtain certs
+			from a trusted Certificate Authority, such as those that are included in <ulink
+				url="http://www.igtf.net">IGTF</ulink>. If you are simply testing the software on
+			your own resources, SimpleCA offers an easy way to create your own certificates (see
+			section below).</para>
+		<para>Host credentials must:</para>
+		<itemizedlist>
+			<listitem>
+				<simpara>consist of the following two files: <filename>hostcert.pem</filename> and
+						<filename>hostkey.pem</filename></simpara>
+			</listitem>
+			<listitem>
+				<simpara>be in the appropriate directory for secure services: <filename
+						class="directory">/etc/grid-security/</filename>
+				</simpara>
+			</listitem>
+			<listitem>
+				<simpara>match the hostname for a the machine. If the machine is going to be
+                                accessed remotely, the name on the certificate
+                                must match the network-visible hostname.</simpara>
+			</listitem>
+		</itemizedlist>
+		<para>You have the following options:</para>
+		<section id="gtadmin-basic-existing">
+			<title> Request a certificate from an existing CA</title>
+			<para>Your best option is to use an already existing CA. You may have access to one from
+				the company you work for or an organization you are affiliated with. Some
+				universities provide certificates for their members and affiliates. Contact your
+				support organization for details about how to acquire a certificate. You may find
+				your CA listed in the <ulink url="http://www.tacar.org/">TERENA Repository</ulink>. </para>
+			<para>If you already have a CA, you will need to follow their configuration directions.
+				If they include a CA setup package, follow the CAs instruction on how to install the
+				setup package. If they do not, you will need to create an <filename
+					class="directory">/etc/grid-security/certificates</filename> directory and
+				include the CA cert and signing policy in that directory. See <olink
+					targetdoc="gsicAdmin" targetptr="gsic-configuring">Configuring a Trusted
+					CA</olink> for more details. </para>
+			<para>This type of certificate is best for service deployment and Grid inter-operation.
+			</para>
+		</section>
+		<section id="gtadmin-basic-simpleca">
+			<title>SimpleCA</title>
+			<para>SimpleCA provides a wrapper around the OpenSSL CA functionality and is sufficient
+				for simple Grid services. Alternatively, you can use OpenSSL's <command
+					>CA.sh</command> command on its own. Instructions on how to use the SimpleCA can
+				be found in <olink targetdoc="gtadminappendix" targetptr="gtadmin-simpleca"/>. </para>
+			<para>SimpleCA is suitable for testing or when a certificate authority is not
+				available.</para>
+                        <para>If you install the
+                            <package>globus-simpleca</package> native package, it
+                            will automatically create a CA and host certificate if
+                            you don't have one configured yet. Otherwise, you'll need to use
+                            <command>grid-ca-create</command> to create the CA
+                            and <command>grid-default-ca</command> to make that the default
+                            for requesting credentials.
+                        </para>
+                        <para>
+                            To create user credentials, you can run the command
+                            <command>grid-cert-request</command> as a user that
+                            you want to create a credential for. You can then
+                            run the <command>grid-ca-sign</command> command as
+                            the <systemitem class="username">simpleca</systemitem>
+                            user to sign the certificate.
+                        </para>
+		</section>
+	</section>
+	<section id="gtadmin-basic-gridmap">
+		<title>Add authorization</title>
+		<para>Installing Globus services on your resources doesn't automatically authorize 
+			users to use these services. Each user must have their own user certificate, and
+			each user certificate must be mapped to a local account.</para>
+		<para>To add authorizations for users, you'll need to update the <filename>grid-mapfile</filename>
+                database to include the mapping between the credentials and the local user accounts.</para>
+		<para>You'll need two pieces of information:</para>
+		<itemizedlist>
+			<listitem>
+				<simpara>the subject name of a user's certificate</simpara>
+			</listitem>
+			<listitem>
+				<simpara>the local account name that the certificate holder can access.</simpara>
+			</listitem>
+		</itemizedlist>
+                <para>To start with, if you have created a user certificate,
+                you can run the <command>grid-cert-info</command> command to get the
+                certificate's subject name, and <command>id -un</command> to get the account name:</para>
+		<screen><prompt role="globus"/><command>grid-cert-info -subject</command>
+<computeroutput>/O=Grid/OU=GlobusTest/OU=simpleCA-elephant.globus.org/CN=Globus User</computeroutput>
+<prompt role="globus"/><command>id -un</command>
+<computeroutput>globus</computeroutput></screen>
+		<para>You may add the line by running the following command as root:</para>
+		<screen><prompt role="root"/><command>grid-mapfile-add-entry \
+    -dn "/O=Grid/OU=GlobusTest/OU=simpleCA-elephant.globus.org/CN=Globus User" \
+    -ln gtuser</command>
+<computeroutput>Modifying /etc/grid-security/grid-mapfile ...
+/etc/grid-security/grid-mapfile does not exist... Attempting to create /etc/grid-security/grid-mapfile 
+New entry:
+"/O=Grid/OU=GlobusTest/OU=simpleCA-elephant.globus.org/CN=Globus User" globus
+(1) entry added</computeroutput></screen>
+		<important>
+			<simpara>The quotes around the subject name are <emphasis>important</emphasis>, because
+				it contains spaces.</simpara>
+		</important>
+	</section>
+	<section id="gtadmin-basic-verify">
+		<title>Verify Basic Security</title>
+		<para>Now that you have installed a trusted CA, acquired a hostcert and acquired a usercert,
+			you may verify that your security setup is complete. As your user account, run the
+			following command: </para>
+		<screen>gtuser$ grid-proxy-init -verify -debug
+
+User Cert File: /home/gtuser/.globus/usercert.pem
+User Key File: /home/gtuser/.globus/userkey.pem
+
+Trusted CA Cert Dir: /etc/grid-security/certificates
+
+Output File: /tmp/x509up_u506
+Your identity: /DC=org/DC=doegrids/OU=People/CN=GT User 332900
+Enter GRID pass phrase for this identity:
+Creating proxy ...++++++++++++
+..................++++++++++++
+ Done
+Proxy Verify OK
+Your proxy is valid until: Fri Jan 28 23:13:22 2005</screen>
+		<para> There are a few things you can notice from this command. Your usercert and key are
+			located in <filename class="directory">$HOME/.globus/</filename>. The proxy certificate
+			is created in <filename class="directory">/tmp/</filename>. The "up" stands for "user
+			proxy", and the <replaceable>_u506</replaceable> will be your UNIX userid. It also
+			prints out your distinguished name (DN), and the proxy is valid for 12 hours. </para>
+		<para> If this command succeeds, your single node is correctly configured. </para>
+		<para>If you get an error, or if you want to see more diagnostic information about your
+			certificates, run the following:</para>
+		<screen>gtuser$ grid-cert-diagnostics</screen>
+		<para>For more troubleshooting information, see the GSI <olink targetdoc="gsicAdmin"
+				targetptr="gsic-admin-troubleshooting">troubleshooting guide</olink></para>
+	</section>
+	<section id="gt-admin-firewall">
+		<title>Firewall configuration</title>
+		<para> There are four possible firewall scenarios that might present themselves:
+			restrictions on incoming and outgoing ports for both client and server scenarios.</para>
+		<para>This section divides sites into two categories: client sites, which have users that
+			are acting as clients to Grid services, and server sites, which are running Grid
+			services. Server sites also often act as client sites either because they also have
+			users on site or jobs submitted by users to the site act as clients to other sites by
+			retrieving data from other sites or spawning sub-jobs.</para>
+		<section>
+			<title>Client Site Firewall Requirements</title>
+			<para>This section describes the requirements placed on firewalls at sites containing
+				Globus Toolkit clients. Note that often jobs submitted to sites running Globus
+				services will act as clients (e.g. retrieving files needed by the job, spawning
+				subjobs), so server sites will also have client site requirements.</para>
+			<section>
+				<title>Allowed Outgoing Ports</title>
+				<para>Clients need to be able to make outgoing connections freely from ephemeral
+					ports on hosts at the client site to all ports at server sites.</para>
+			</section>
+			<section id="gtadmin-client-incomingports">
+				<title>Allowed Incoming Ports</title>
+				<para>As described in <olink targetdoc="gram5Developer"
+						targetptr="gram5-developer-jobstatecallbacks"/>, the Globus Toolkit GRAM
+					service uses callbacks to communicate state changes to clients and, optionally,
+					to stage files to/from the client. If connections are not allowed back to the
+					Globus Toolkit clients, the following restrictions will be in effect: </para>
+				<itemizedlist>
+					<listitem>
+						<simpara>You cannot do a job submission request and redirect the output back
+							to the client. This means the globus-job-run command won't work.
+							globus-job-submit will work, but you cannot use globus-job-get-output.
+							globusrun with the -o option also will not work.</simpara>
+					</listitem>
+					<listitem>
+						<simpara>Staging to or from the client will also not work, which precludes
+							the -s and -w options.</simpara>
+					</listitem>
+					<listitem>
+						<simpara>The client cannot be notified of state changes in the job, e.g.
+							completion.</simpara>
+					</listitem>
+				</itemizedlist>
+				<para>To allow these callbacks, client sites should allow incoming connection in the
+					ephemeral port range. Client sites wishing to restrict incoming connections in
+					the ephemeral port range should select a port range for their site. The size of
+					this range should be approximately 10 ports per expected simultaneous user on a
+					given host, though this may vary depending on the actual usage characteristics.
+					Hosts on which clients run should have the GLOBUS_TCP_PORT_RANGE environment
+					variable set for the users to reflect the site’s chosen range.</para>
+			</section>
+			<section>
+				<title>Network Address Translation (NAT)</title>
+				<para>Clients behind NATs will be restricted as described in <olink
+						targetptr="gtadmin-client-incomingports"/> unless the firewall and site
+					hosts are configured to allow incoming connections.</para>
+				<para>This configuration involves: <itemizedlist>
+						<listitem>
+							<simpara>Select a separate portion of the ephemeral port range for each
+								host at the site on which clients will be running (e.g. 45000-45099
+								for host A, 45100-45199 for host B, etc.).</simpara>
+						</listitem>
+						<listitem>
+							<simpara>Configure the NAT to direct incoming connections in the port
+								range for each host back to the appropriate host (e.g., configure
+								45000-45099 on the NAT to forward to 45000-45099 on host
+								A).</simpara>
+						</listitem>
+						<listitem>
+							<simpara>Configure the Globus Toolkit clients on each site host to use
+								the selected port range for the host using the techniques described
+								in <olink targetdoc="gridftpUser"
+									targetptr="gridftp-user-config-client-firewall"/>.</simpara>
+						</listitem>
+						<listitem>
+							<simpara>Configure Globus Toolkit clients to advertise the firewall as
+								the hostname to use for callbacks from the server host. This is done
+								using the GLOBUS_HOSTNAME environment variable. The client must also
+								have the GLOBUS_HOSTNAME environment variable set to the hostname of
+								the external side of the NAT firewall. This will cause the client
+								software to advertise the firewall's hostname as the hostname to be
+								used for callbacks causing connections from the server intended for
+								it to go to the firewall (which redirects them to the
+								client).</simpara>
+						</listitem>
+					</itemizedlist></para>
+			</section>
+		</section>
+		<section>
+			<title>Server Site Firewall Requirements</title>
+			<para>This section describes firewall policy requirements at sites that host Grid
+				services. Sites that host Grid services often host Grid clients, however the policy
+				requirements described in this section are adequate for clients as well.</para>
+			<section>
+				<title>Allowed Incoming Ports</title>
+				<para>A server site should allow incoming connections to the well-known Grid Service
+					Ports as well as ephemeral ports. These ports are 22/tcp (for gsi-enabled
+					openssh), 2119/tcp (for GRAM) and 2811/tcp for GridFTP.</para>
+				<para>A server not allowing incoming connections in the ephemeral port range will
+					have the following restrictions: <itemizedlist>
+						<listitem>
+							<simpara>If port 2119/tcp is open, GRAM will allow jobs to be submitted,
+								but further management of the jobs will not be possible.</simpara>
+						</listitem>
+						<listitem>
+							<simpara>While it will be possible to make GridFTP control connections
+								if port 2811/tcp is open, it will not possible to actually get or
+								put files.</simpara>
+						</listitem>
+					</itemizedlist></para>
+				<para>Server sites wishing to restrict incoming connections in the ephemeral port
+					range should select a range of port numbers. The size of this range should be
+					approximately 20 ports per expected simultaneous user on a given host, though
+					this may vary depending on the actual usage characteristics. While it will take
+					some operational experience to determine just how big this range needs to be, it
+					is suggested that any major server site open a port range of at least a few
+					hundred ports. Grid Services should configured as described in Section to
+					reflect the site’s chosen range.</para>
+			</section>
+			<section>
+				<title>Allowed Outgoing Ports</title>
+				<para>Server sites should allow outgoing connections freely from ephemeral ports at
+					the server site to ephemeral ports at client sites as well as to Grid Service
+					Ports at other sites.</para>
+			</section>
+			<section>
+				<title> Network Address Translation (NAT)</title>
+				<para>Grid services are not supported to work behind NAT firewalls because the
+					security mechanisms employed by Globus require knowledge of the actual IP
+					address of the host that is being connected to.</para>
+				<para>We do note there have been some successes in running GT services behind NAT
+					firewalls.</para>
+			</section>
+		</section>
+		<section>
+			<title>Summary of Globus Toolkit Traffic</title>
+			<table frame="all">
+				<title>Summary of Globus Toolkit Traffic</title>
+				<tgroup cols="3" align="left" colsep="1" rowsep="1">
+					<colspec colname="Application"/>
+					<colspec colname="Network Ports"/>
+					<colspec colname="Comments"/>
+					<thead>
+						<row>
+							<entry>Application</entry>
+							<entry>Network Ports</entry>
+							<entry>Comments</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>GRAM Gatekeeper(to start jobs)</entry>
+							<entry>To 2119/tcp on server from controllable ephemeral port on
+								client</entry>
+							<entry>Connections back to client (controllable ephemeral port to
+								controllable ephemeral port) required if executable or data staged
+								from client or output from job sent back to client. Port 2119/tcp
+								defined by IANA</entry>
+						</row>
+						<row>
+							<entry>GRAM Job-Manager</entry>
+							<entry>From controllable ephemeral port on client to controllable
+								ephemeral port on server.</entry>
+							<entry>Port on server selected when original connection made by the
+								client to the Gatekeeper and returned to the client in a URL. May
+								result in connection back to client from ephemeral port on server to
+								controllable ephemeral port on client.</entry>
+						</row>
+						<row>
+							<entry>GridFTP</entry>
+							<entry>From controllable ephemeral port on client to port 2811/tcp on
+								server for control channel.</entry>
+							<entry>Port 2811/tcp defined by IANA.</entry>
+						</row>
+						<row>
+							<entry>GSI-Enabled SSH</entry>
+							<entry>From ephemeral port on client to port 22/tcp on server.</entry>
+							<entry>Same as standard SSH. Port 22/tcp defined by IANA.</entry>
+						</row>
+						<row>
+							<entry>MyProxy</entry>
+							<entry>From ephemeral port on client to port 7512/tcp on server.</entry>
+							<entry>Default. Can be modified by site.</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		<section>
+			<title>Controlling The Ephemeral Port Range</title>
+			<para>Controllable ephemeral ports in the Globus Toolkit can be restricted to a given
+				range. setting the environment variable GLOBUS_TCP_PORT_RANGE can restrict ephemeral
+				ports. The value of this variable should be formatted as min,max (a comma separated
+				pair). This will cause the GT libraries (specifically GlobusIO) to select port
+				numbers for controllable ports in that specified range.
+				<screen>% GLOBUS_TCP_PORT_RANGE=40000,40010
+% export GLOBUS_TCP_PORT_RANGE
+% globus-gass-server
+https://globicus.lbl.gov:40000
+^C
+%</screen>
+				This environment variable is respected by both clients and servers that are started
+				from within the environment in which it is set. There are better ways, however, to
+				configure a globus-job-manager or a GridFTP server to restrict its port range. <itemizedlist>
+					<listitem>
+						<simpara>globus-job-manager has an option, -globus-tcp-port-range PORT_RANGE
+							that acts in the same manner as the environment variable. It can be
+							specified on the command line or in the configuration file. See the <olink
+								targetdoc="gram5Admin" targetptr="gram5-cmd-globus-job-manager"
+								>job manager documentation</olink> for all of its options.</simpara>
+					</listitem>
+					<listitem>
+						<simpara>See the <olink targetdoc="gridftpAdmin"
+								targetptr="gridftp-config-security-firewalls">GridFTP documentation</olink> for
+							information about using GridFTP with firewalls.</simpara>
+					</listitem>
+				</itemizedlist></para>
+		</section>
+	</section>
+</chapter>

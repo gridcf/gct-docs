@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+
+<section id="gram5-developer-scenarios-java"><title>Java</title>
+<para>
+Also, it will probably be helpful to look at the
+<ulink url="http://viewcvs.globus.org/viewcvs.cgi/ws-gram/client/java/source/src/org/globus/exec/client/GramJob.java?rev=1.129.2.3&amp;only_with_tag=globus_4_0_branch&amp;content-type=text/vnd.viewcvs-markup">GramJob class source code</ulink> as a functioning example.
+</para>
+
+<section id="gram5-developer-scenarios-java-imports">
+<title>Class imports</title>
+<para>
+The following imports will be needed for these examples:
+<screen>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/io/File.html">java.io.File;</ulink>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/io/FileInputStream.html">java.io.FileInputStream;</ulink>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/net/URL.html">java.net.URL;</ulink>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/util/LinkedList.html">java.util.LinkedList;</ulink>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html">java.util.List;</ulink>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Vector.html">java.util.Vector;</ulink>
+    import <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/security/cert/X509Certificate.html">java.security.cert.X509Certificate;</ulink>
+    import <ulink url="http://java.sun.com/j2ee/1.4/docs/api/javax/xml/rpc/Stub.html">javax.xml.rpc.Stub;</ulink>
+    import <ulink url="http://java.sun.com/j2ee/1.4/docs/api/javax/xml/soap/SOAPElement.html">javax.xml.soap.SOAPElement;</ulink>
+    import <ulink url="http://ws.apache.org/axis/java/apiDocs/org/apache/axis/components/uuid/UUIDGenFactory.html">org.apache.axis.components.uuid.UUIDGenFactory;</ulink>
+    import <ulink url="http://ws.apache.org/addressing/apidocs/org/apache/axis/message/addressing/AttributedURI.html">org.apache.axis.message.addressing.AttributedURI;</ulink>
+    import <ulink url="http://ws.apache.org/addressing/apidocs/org/apache/axis/message/addressing/EndpointReferenceType.html">org.apache.axis.message.addressing.EndpointReferenceType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_delegation_service_java/org/globus/delegation/DelegationUtil.html">org.globus.delegation.DelegationUtil;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_common_java/org/globus/exec/generated/CreateManagedJobInputType.html">org.globus.exec.generated.CreateManagedJobInputType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_common_java/org/globus/exec/generated/CreateManagedJobOutputType.html">org.globus.exec.generated.CreateManagedJobOutputType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_common_java/org/globus/exec/generated/ManagedJobFactoryPortType.html">org.globus.exec.generated.ManagedJobFactoryPortType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_common_java/org/globus/exec/generated/ManagedJobPortType.html">org.globus.exec.generated.ManagedJobPortType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_common_java/org/globus/exec/generated/ReleaseInputType.html">org.globus.exec.generated.ReleaseInputType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_utils_java/org/globus/exec/utils/ManagedJobConstants.html">org.globus.exec.utils.ManagedJobConstants;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_utils_java/org/globus/exec/utils/ManagedJobFactoryConstants.html">org.globus.exec.utils.ManagedJobFactoryConstants;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_utils_java/org/globus/exec/utils/client/ManagedJobClientHelper.html">org.globus.exec.utils.client.ManagedJobClientHelper;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_utils_java/org/globus/exec/utils/client/ManagedJobFactoryClientHelper.html">org.globus.exec.utils.client.ManagedJobFactoryClientHelper;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_wsrf_gram_utils_java/org/globus/exec/utils/rsl/RSLHelper.html">org.globus.exec.utils.rsl.RSLHelper;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/notification/ClientNotificationConsumerManager.html">org.globus.wsrf.NotificationConsumerManager;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/WSNConstants.html">org.globus.wsrf.WSNConstants;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/encoding/ObjectDeserializer.html">org.globus.wsrf.encoding.ObjectDeserializer;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/authentication/Constants.html">org.globus.wsrf.impl.security.authentication.Constants;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/authorization/Authorization.html">org.globus.wsrf.impl.security.authorization.Authorization;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/authorization/HostAuthorization.html">org.globus.wsrf.impl.security.authorization.HostAuthorization;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/authorization/IdentityAuthorization.html">org.globus.wsrf.impl.security.authorization.IdentityAuthorization;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/authorization/SelfAuthorization.html">org.globus.wsrf.impl.security.authorization.SelfAuthorization;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/descriptor/ClientSecurityDescriptor.html">org.globus.wsrf.impl.security.descriptor.ClientSecurityDescriptor;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/descriptor/GSISecureMsgAuthMethod.html">org.globus.wsrf.impl.security.descriptor.GSISecureMsgAuthMethod;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/descriptor/GSITransportAuthMethod.html">org.globus.wsrf.impl.security.descriptor.GSITransportAuthMethod;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/globus/wsrf/impl/security/descriptor/ResourceSecurityDescriptor.html">org.globus.wsrf.impl.security.descriptor.ResourceSecurityDescriptor;</ulink>
+    import <ulink url="http://www.cogkit.org/release/4_1_2/api/jglobus/org/gridforum/jgss/ExtendedGSSManager.html">org.gridforum.jgss.ExtendedGSSManager;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsn/Subscribe.html">org.oasis.wsn.Subscribe;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsn/SubscribeResponse.html">org.oasis.wsn.SubscribeResponse;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsn/SubscriptionManager.html">org.oasis.wsn.SubscriptionManager;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsn/TopicExpressionType.html">org.oasis.wsn.TopicExpressionType;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsn/WSBaseNotificationServiceAddressingLocator.html">org.oasis.wsn.WSBaseNotificationServiceAddressingLocator;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsrf/lifetime/Destroy.html">org.oasis.wsrf.lifetime.Destroy;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsrf/properties/GetMultipleResourceProperties_Element.html">org.oasis.wsrf.properties.GetMultipleResourceProperties_Element;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsrf/properties/GetMultipleResourcePropertiesResponse.html">org.oasis.wsrf.properties.GetMultipleResourcePropertiesResponse;</ulink>
+    import <ulink url="http://www.globus.org/api/javadoc-4.0/globus_java_ws_core/org/oasis/wsrf/properties/GetResourcePropertyResponse.html">org.oasis.wsrf.properties.GetResourcePropertyResponse;</ulink>
+</screen>
+</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-loadingjd"><title>Loading the job description</title>
+<para>
+<screen>
+File jobDescriptionFile = new File("myjobdesc.xml");
+JobDescriptionType jobDescription = RSLHelper.readRSL(jobDescriptionFile);
+</screen>
+The object <computeroutput>jobDescription</computeroutput> will be of sub-type
+MultiJobDescriptionType if the file contents is a multi-job description.
+</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-factorystub"><title>Creating the factory service stub</title>
+<para>
+<screen>
+URL factoryUrl = ManagedJobFactoryClientHelper.getServiceURL(
+    contactString).getURL();
+String factoryType
+    = ManagedJobFactoryConstants.FACTORY_TYPE.<emphasis>&lt;factory type constant&gt;</emphasis>;
+EndpointReferenceType factoryEndpoint
+    = ManagedJobFactoryClientHelper.getFactoryEndpoint(factoryUrl, factoryType);
+ManagedJobFactoryPortType factoryPort
+    = ManagedJobFactoryClientHelper.getPort(factoryEndpoint);
+</screen>
+</para>
+<para>The format of <computeroutput>contactString</computeroutput> is
+<emphasis>[protocol://]host[:port][/servicepath].</emphasis></para>
+</section>
+
+<section id="gram5-developer-scenarios-java-load-proxy-file"><title>Loading a proxy from a file</title>
+
+<itemizedlist>
+<listitem><para>Default proxy file:
+<screen>
+ExtendedGSSManager manager =
+    (ExtendedGSSManager)ExtendedGSSManager.getInstance();
+        
+GSSCredential cred = manager.createCredential(
+    GSSCredential.INITIATE_AND_ACCEPT);
+</screen>
+</para></listitem>
+<listitem><para>Specific proxy file:
+<screen>
+File proxyFile = new File("proxy_file");
+byte[] proxyData = new byte[(int)proxyFile.length)];
+FileInputStream inputStream = new FileInputStream(proxyFile);
+inputStream.read(proxyData);
+inputStream.close();
+        
+ExtendedGSSManager manager =
+    (ExtendedGSSManager)ExtendedGSSManager.getInstance();
+        
+GSSCredential proxy = manager.createCredential(
+    proxyData,
+    ExtendedGSSCredential.IMPEXP_OPAQUE,
+    GSSCredential.DEFAULT_LIFETIME,
+    null,
+    GSSCredential.ACCEPT_ONLY);
+</screen>
+</para></listitem>
+</itemizedlist>
+</section>
+
+<section id="gram5-developer-scenarios-java-stubsec"><title>Setting stub security parameters</title>
+<para>
+<screen>
+ClientSecurityDescriptor secDesc = new ClientSecurityDescriptor();
+secDesc.setGSITransport(Constants.<emphasis>&lt;protection level constant&gt;</emphasis>);
+secDesc.setAuthz(<emphasis>&lt;<computeroutput>Authorization</computeroutput> sub-class instance&gt;</emphasis>);
+if (proxy != null) {
+    secDesc.setGSSCredential(proxy);
+}
+((Stub) port)._setProperty(Constants.CLIENT_DESCRIPTOR, secDesc);
+</screen>
+Use setGSISecureMsg() for GSI Secure Message.</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-queryingrps"><title>Querying for factory resource properties</title>
+
+<section>
+<title>One at a time</title>
+<screen>
+GetResourcePropertyResponse response
+    = factoryport.getResourceProperty(ManagedJobConstants.<emphasis>&lt;RP constant&gt;</emphasis>);
+
+SOAPElement[] any = response.get_any();
+
+... = ObjectDeserializer.toObject(any[0], <emphasis>&lt;RP type&gt;</emphasis>.class);
+</screen>
+</section>
+<section>
+<title>Many at a time</title>
+<screen>
+GetMultipleResourceProperties_Element rpRequest
+    = new GetMultipleResourceProperties_Element();
+rpRequest.setResourceProperty(new QName[] {
+    ManagedJobFactoryConstants.<emphasis>&lt;RP constant #1&gt;</emphasis>,
+    ManagedJobFactoryConstants.<emphasis>&lt;RP constant #2&gt;</emphasis>,
+    ManagedJobFactoryConstants.<emphasis>&lt;RP constant #N&gt;</emphasis>
+});
+GetMultipleResourcePropertiesResponse response
+    = factoryPort.getMultipleResourceProperties(rpRequest);
+
+SOAPElement[] any = response.get_any();
+
+... = ObjectDeserializer.toObject(any[0], <emphasis>&lt;RP #1 type&gt;</emphasis>.class);
+... = ObjectDeserializer.toObject(any[0], <emphasis>&lt;RP #2 type&gt;</emphasis>.class);
+... = ObjectDeserializer.toObject(any[0], <emphasis>&lt;RP #N type&gt;</emphasis>.class);
+</screen>
+
+</section>
+</section>
+
+<section id="gram5-developer-scenarios-java-delegating"><title>Delegating credentials (if needed)</title>
+<para>
+<screen>
+X509Certificate certToSign = DelegationUtil.getCertificateChainRP(
+    delegFactoryEndpoint,   //EndpointReferenceType
+    secDesc,                //ClientSecurityDescriptor
+)[0];   //first element in the returned array
+EndpointReferenceType credentialEndpoint = DelegationUtil.delegate(
+    delegFactoryurl,        //String
+    credential,             //GlobusCredential
+    certToSign,             //X509Certificate
+    lifetime,               //int (seconds)
+    fullDelegation,         //boolean
+    secDesc);               //ClientSecurityDescriptor
+</screen>
+
+There are three types of delegated credentials:
+
+<orderedlist>
+<listitem><para>Credential used by the job to generate user-owned proxy:
+    <screen>jobDescription.setJobCredential(credentialEndpoint);</screen></para></listitem>
+<listitem><para>Credential used to contact RFT for staging and file clean up:
+    <screen>jobDescription.setStagingCredentialEndpoint(credentialEndpoint);</screen></para></listitem>
+<listitem><para>Credential used by RFT to contact GridFTP servers:
+    <screen>TransferRequestType stageOut = jobDescription.getFileStageOut();
+         stageOut.setTransferCredential(credentialEndpoint);</screen>
+    Do the same for fileStageIn and fileCleanUp.</para></listitem>
+</orderedlist>
+</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-creatingjob"><title>Creating the job resource</title>
+<para>
+<screen>
+CreateManagedJobInputType jobInput = new CreateManagedJobInputType();
+jobInput.setJobID(new AttributeURI("uuid: " +  UUIDGenFactory.getUUIDGen().nextUUID()));
+jobInput.setInitialTerminationTime(<emphasis>&lt;Calendar instance&gt;</emphasis>);
+if (multiJob) jobInput.setMultiJob(jobDescription) else jobInput.setJob(jobDescription);
+if (subscribeOnCreate) jobInput.setSubscribe(subscriptionReq);
+CreateManagedJobOutputType createResponse
+    = factoryPort.createManagedJob(jobInput);
+EndpointReferenceType jobEndpoint = createResponse.getManagedJobEndpoint();
+</screen>
+</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-jobstub"><title>Creating the job service stub</title>
+<para>
+<screen>
+ManagedJobPortType jobPort = ManagedJobClientHelper.getPort(jobEndpoint);
+</screen>
+You must set the appropriate security parameters for the job service stub
+(<computeroutput>jobPort</computeroutput>) as well.</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-subscribing"><title>Subscribing for job state notifications</title>
+<para>
+<screen>
+NotificationConsumerManager notifConsumerManager
+    = NotificationConsumerManager.getInstance();
+
+notifConsumerManager.startListening();
+List topicPath = new LinkedList();
+topicPath.add(ManagedJobConstants.RP_STATE);
+
+ResourceSecurityDescriptor resourceSecDesc = new ResourceSecurityDescriptor();
+resourceSecDesc.setAuthz(Authorization.<emphasis>&lt;authz type constant&gt;</emphasis>);
+
+Vector authMethods = new Vector();
+authMethods.add(GSITransportAuthMethod.BOTH);
+resourceSecDesc.setAuthMethods(authMethods);
+
+EndpointReferenceType notificationConsumerEndpoint
+    = notifConsumerManager.createNotificationConsumer(
+        topicPath,
+        this,
+        resourceSecDesc);
+
+
+Subscribe subscriptionReq = new Subscribe();
+subscriptionReq.setConsumerReference(
+    notificationConsumerEndpoint);
+
+TopicExpressionType topicExpression = new TopicExpressionType(
+    WSNConstants.SIMPLE_TOPIC_DIALECT,
+    ManagedJobConstants.RP_STATE);
+subscriptionReq.setTopicExpression(topicExpression);
+
+EndpointReferenceType subscriptionEndpoint;
+</screen>
+<itemizedlist>
+<listitem><para>Subscribe on creation
+<screen>jobInput.setSubscribe(subscriptionReq);</screen></para></listitem>
+<listitem><para>Subscribe after creation
+<screen>SubscribeResponse subscribeResponse
+        = jobPort.subscribe(subscriptionRequest);
+     subscriptionEndpoint = subscribeResponse.getSubscriptionReference();
+</screen></para></listitem>
+</itemizedlist>
+</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-releasing"><title>Releasing any state holds (if necessary)</title>
+<para>
+<screen>
+jobPort.release(new ReleaseInputType());
+</screen>
+</para>
+</section>
+
+<section id="gram5-developer-scenarios-java-destroying"><title>Destroying resources</title>
+<para>
+<screen>
+/*destroy subscription resource*/
+SubscriptionManager subscriptionManagerPort
+    = new WSBaseNotificationServiceAddressingLocator()
+    .getSubscriptionManagerPort(subscriptionEndpoint);
+
+//set stub security parameters on subscriptionManagerPort
+
+subscriptionManagerPort.destroy(new Destroy());
+
+
+/*destroy the job resource*/
+jobPort.destroy(new Destroy());
+</screen>
+</para>
+</section>
+</section>

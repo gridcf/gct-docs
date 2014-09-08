@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+<!ENTITY prompt "<prompt>&#37; </prompt>" >
+<!ENTITY rootprompt "<prompt># </prompt>" >
+<!ENTITY gatekeeper "<command>globus-gatekeeper</command>" >
+<!ENTITY seg "<command>globus-scheduler-event-generator</command>" >
+<!ENTITY GRAM "GRAM5" >
+
+%xinclude;
+
+]>
+<book status="draft" id="gram5Admin">
+  <title>GT <replaceable role="entity">version</replaceable> &GRAM;: System Administrator's
+    Guide</title>
+  <titleabbrev> System Administrator's Guide</titleabbrev>
+  <bookinfo>
+    <abstract>
+      <title>Introduction</title>
+      <para> This guide contains configuration information for system administrators working with
+        &GRAM;. It describes procedures typically performed by system administrators, including
+        &GRAM; software installation, configuration, testing, and debugging. Readers should be
+        familiar with the <olink targetdoc="gram5Key">&GRAM; Key Concepts</olink> to understand the
+        motivation for and interaction between the various deployed components. </para>
+    </abstract>
+  </bookinfo>
+  <!--  will add back when the output is more useful - i lost the indexterms i'd added, need to add them again
+<index type="gram5-howto">
+    <title>Admin How-tos Index</title>
+</index>
+-->
+  <!-- introduction -->
+  <chapter id="gram5-admin-install" xreflabel="&GRAM; Installation">
+    <title>&GRAM; Installation</title>
+    <section>
+      <title>Introduction</title>
+      <para> The Globus Toolkit provides &GRAM;: a service to submit, monitor, and cancel jobs on
+        Grid computing resources. In &GRAM;, a job consists of a computation and, optionally, file
+        transfer and management operations related to the computation. Some users, particularly
+        interactive ones, benefit from accessing output data files as the job is running. Monitoring
+        consists of querying for and/or subscribing to status information, such as job state
+        changes. </para>
+      <para> &GRAM; relies on <olink targetdoc="gsic"/> mechanisms for security, and interacts with
+          <olink targetdoc="gridftp">GridFTP services</olink> to stage files to compute resources.
+        Please see their respective Administrator's guides for information about installing,
+        configuring, and managing those systems. In particular, you must understand the tasks in
+          <olink targetdoc="gtadmin" targetptr="gtadmin-install"/> and install the basic &GRAM;
+        packages, and complete the tasks in <olink targetdoc="gtadmin"
+          targetptr="gtadmin-basic-security"/>. </para>
+    </section>
+    <section>
+      <title>Planning your &GRAM; installation</title>
+      <para> Before installing &GRAM; on a server, you'll first need to plan what <glossterm baseform="Local Resource Manager">Local Resource
+        Managers</glossterm> (LRMs) you want &GRAM; to interface with, what LRM you want to have as your default
+        &GRAM; service, and whether you'll be using the &seg; to process LRM events. </para>
+      <para> &GRAM; requires a few services to be running to function: the
+      <glossterm>Gatekeeper</glossterm> and the
+      <glossterm>Scheduler Event Generator</glossterm> (SEG). The supported way to run these services is
+      via the System-V style init scripts provided with the &GRAM;-related packages. The gatekeeper
+        daemon can also be configured to start via an internet superserver such as <command
+          >inetd</command> or <command>xinetd</command> though that is beyond the scope of this
+        document. The &seg; can not be run in that way. </para>
+      <section>
+        <title>Choosing an LRM Adapter</title>
+        <para> &GRAM; in GT <replaceable role="entity">version</replaceable> supports the following
+          <glossterm baseform="LRM Adapter">LRM adapters</glossterm>: <glossterm>Condor</glossterm>,
+          <glossterm baseform="Portable Batch System">PBS</glossterm>,
+          <glossterm baseform="Oracle GridEngine">GridEngine</glossterm>,
+          and <glossterm baseform="fork">Fork</glossterm>. These LRM adapters translate &GRAM;
+          job specifications into LRM-specific job descriptions and scripts to run them, as well as
+          interfaces to the LRM to determine job termination status. </para>
+        <para> If you're not familiar with the supported LRMs, you might want to start with the Fork
+          one to get familiar with how &GRAM; works. This adapter simply forks the job and runs it
+          on the &GRAM; node. You can then install one of the other LRMs and its adapter to provide
+          batch or high-throughput job scheduling. </para>
+        <section>
+          <title>Default &GRAM; Service</title>
+          <para> &GRAM; can be configured to support multiple LRMs on the same service machine. In
+            that case, one LRM is typically configured as the default LRM which is used when a
+            client uses a shortened version of a &GRAM;
+            <olink targetdoc="gram5User" targetptr="gram5-user-resource-names">resource
+            name</olink>. A common configuration is to configure a batch system interface as the
+            default, and provide the <literal>jobmanager-fork</literal> service as well for simple
+            jobs, such as creating directories or staging data. </para>
+        </section>
+        <section>
+          <title>Job Status Method</title>
+          <para> &GRAM; has two ways of determining job state transitions: polling the LRM and using
+            the <glossterm>Scheduler Event Generator</glossterm> (SEG) service. When
+            polling, each user's <command>globus-job-manager</command> will periodically execute an
+            LRM-specific command to determine the state of each job. On systems with many users, or
+            with users submitting a large number of jobs, this can cause significant resource use on
+            the &GRAM; service machine. Instead, the &GRAM; service can be configured (on a per-LRM
+            basis) to use the &seg; service to more efficiently process LRM state changes. <note>
+              <simpara> Not all LRM adapters provide an interface to the &seg;, and some require
+                LRM-specific configuration to work properly. This is described in more
+                detail.</simpara>
+            </note></para>
+        </section>
+      </section>
+    </section>
+    <section id="gram5-admin-installing-lrm-packages">
+      <title>Installing LRM Adapter Packages</title>
+      <para> There are several LRM adapters included in the GT <replaceable role="entity"
+          >version</replaceable>. For some, there is a <literal>-setup-poll</literal> and <literal
+          >-setup-seg</literal> package which installs the adapter and configuration file needed for
+        job status via polling or the &seg; program. </para>
+      <para> There are three ways to get LRM adapters: as RPM packages, as Debian packages, and from
+        the source installer. These installation methods are described in <olink targetdoc="gtadmin"
+        />. </para>
+      <para> LRM adapter packages included in the GT <replaceable role="entity"
+          >version</replaceable> release are: <table>
+          <title>&GRAM; LRM Adapters</title>
+          <tgroup cols="4">
+            <thead>
+              <row>
+                <entry>LRM Adapter</entry>
+                <entry>Poll Package</entry>
+                <entry>SEG Package</entry>
+                <entry>Installer Target</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>fork</entry>
+                <entry>globus-gram-job-manager-fork-setup-poll</entry>
+                <entry>
+                  <simpara>globus-gram-job-manager-fork-setup-seg<footnote>
+                      <para>Not recommended for production use</para>
+                    </footnote></simpara>
+                </entry>
+                <entry>globus_gram_job_&#x200B;manager_fork</entry>
+              </row>
+              <row>
+                <entry><ulink
+                    url="http://www.clusterresources.com/products/torque-resource-manager.php"
+                    >pbs</ulink></entry>
+                <entry>globus-gram-job-manager-pbs-setup-poll</entry>
+                <entry>globus-gram-job-manager-pbs-setup-seg</entry>
+                <entry>globus_gram_job_&#x200B;manager_pbs</entry>
+              </row>
+              <row>
+                <entry><ulink url="http://www.cs.wisc.edu/condor/">Condor</ulink></entry>
+                <entry>N/A</entry>
+                <entry>
+                  <simpara>globus-gram-job-manager-condor<footnote>
+                      <para>This LRM uses a SEG-like mechanism included in the <command
+                          >globus-job-manager</command> program, but not the &seg; service.</para>
+                    </footnote></simpara>
+                </entry>
+                <entry>globus_gram_job_&#x200B;manager_condor</entry>
+              </row>
+              <row>
+                <entry><glossterm baseform="Sun GridEngine">SGE</glossterm></entry>
+                <entry>globus-gram-job-manager-sge-setup-poll</entry>
+                <entry>globus-gram-job-manager-sge-setup-seg</entry>
+                <entry>globus_gram_job_&#x200B;manager_sge</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
+  </chapter>
+  <chapter id="gram5-admin-managing">
+    <title>Common Administrative Tasks</title>
+    <para>There are several tools provided with GT <replaceable role="entity">version</replaceable>
+      to manage &GRAM;, as well as OS-specific tools to start and stop some of the services. There
+      are tools to manage user authorization, which services are enabled, which scheduler event
+      generator modules are enabled, and to test the <command>globus-gatekeeper</command> service. </para>
+    <section>
+      <title>Managing &GRAM; Users</title>
+      <para> Before a user may interact with the &GRAM; service to submit jobs, he or she must be
+        authorized to use the service. In order to be authorized, a &GRAM; administrator must add
+        the user's credential name and local account mapping to the <filename
+          >/etc/grid-mapfile</filename>. This can be done using the <olink targetdoc="gsicPI"
+          targetptr="grid-mapfile-add-entry"/> and <olink targetdoc="gsicPI"
+          targetptr="grid-mapfile-delete-entry"/> tools. For more information, see the <olink
+          targetdoc="gsic"/> manual. </para>
+    </section>
+    <!-- Managing &GRAM; users -->
+    <section id="gram5-admin-starting-and-stopping">
+      <title>Starting and Stopping &GRAM; services</title>
+      <para>In order to run the service, the <command>globus-gatekeeper</command>, and, if
+        applicable to your configuration, the &seg; services must be running on your system. The
+        packages for these services include init scripts and configuration files which can be used
+        to configure, start, and stop the service. </para>
+      <para> The &gatekeeper; and &seg; init scripts handle the following actions: <literal
+          >start</literal>, <literal>stop</literal>, <literal>status</literal>, <literal
+          >restart</literal>, <literal>condrestart</literal>, <literal>try-restart</literal>,
+          <literal>reload</literal>, and <literal>force-reload</literal>. The &seg; script also
+        accepts another optional parameter to start or stop a particular &seg; module. If the second
+        parameter is not present, then all services will be acted on. </para>
+      <section>
+        <title>Debian Specifics</title>
+        <para> If you installed using Debian packaging tools, then the services will automatically
+          be started upon installation. To start or stop the service, use the command <command
+            >invoke-rc.d</command> with the service name and action. </para>
+      </section>
+      <section>
+        <title>RPM Specifics</title>
+        <para> If you installed using the RPM packaging tools, then the services will be installed
+          but not enabled by default. To enable the services to start at boot time, use the
+          commands:
+          <screen>&rootprompt;<command>chkconfig globus-gatekeeper on</command>
+&rootprompt;<command>chkconfig globus-scheduler-event-generator on</command></screen></para>
+        <para> To start or stop the services, use the <command>service</command> command to run the
+          init scripts with the service name and action and optional &seg; module.</para>
+      </section>
+    </section>
+    <!-- Starting and Stopping &GRAM; services -->
+    <section>
+      <title>Enabling and Disabling &GRAM; Services</title>
+      <para> The &GRAM; packages described in <olink targetptr="gram5-admin-installing-lrm-packages"
+        /> will automatically register themselves with the &gatekeeper; and &seg; services. The
+        first LRM adapter installed will be configured as the default
+        <glossterm>Job Manager</glossterm> service. To list
+        the installed services, change the default, or disable a service, use the <olink
+          targetptr="globus-gatekeeper-admin"/> tool. </para>
+      <example>
+        <title>Using globus-gatekeeper-admin to set the default service</title>
+        <para> This example shows how to use the <command>globus-gatekeeper-admin</command> tool to
+          list the available services and then choose one as the default:</para>
+        <screen>&rootprompt;<command>globus-gatekeeper-admin</command> <option>-l</option>
+<computeroutput>jobmanager-condor [ENABLED]
+jobmanager-fork-poll [ENABLED]
+jobmanager-fork [ALIAS to jobmanager-fork-poll]</computeroutput>
+&rootprompt;<command>globus-gatekeeper-admin</command> <option>-e jobmanager-condor -n jobmanager</option>
+&rootprompt;<command>globus-gatekeeper-admin</command> <option>-l</option>
+<computeroutput>jobmanager-condor [ENABLED]
+jobmanager-fork-poll [ENABLED]
+jobmanager [ALIAS to jobmanager-condor]
+jobmanager-fork [ALIAS to jobmanager-fork-poll]</computeroutput></screen>
+      </example>
+    </section>
+    <section>
+      <title>Enabling and Disabling SEG Modules</title>
+      <para> The <literal>-setup-seg</literal> packages described in <olink
+          targetptr="gram5-admin-installing-lrm-packages"/> will automatically register themselves
+        with the &seg; service. To disable a module from running when the &seg; service is started,
+        use the <olink targetptr="globus-scheduler-event-generator-admin"/> tool. <example>
+          <title>Using globus-scheduler-event-generator-admin to disable a SEG module</title>
+          <para> This example shows how to stop the <literal>pbs</literal>
+            <command>globus-scheduler-event-generator</command> module and disable it so it will not
+            restart when the system is rebooted: </para>
+          <screen>
+&rootprompt;<command>/etc/init.d/globus-scheduler-event-generator stop pbs</command>
+<computeroutput>Stopped globus-scheduler-event-generator                   [  OK  ]</computeroutput>
+&rootprompt;<command>globus-scheduler-event-generator-admin</command> <option>-d pbs</option>
+&rootprompt;<command>globus-scheduler-event-generator-admin</command> <option>-l</option>
+<computeroutput>pbs [DISABLED]</computeroutput>
+</screen>
+        </example></para>
+    </section>
+  </chapter>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Interface_Config_Frag.xml"/>
+  <!--
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../GRAM5_Performance_Guide.xml"/>
+ -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Audit_Logging.xml"/>
+  <chapter id="gram5-admin-security_considerations">
+    <title>Security Considerations </title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Security_Considerations_Frag.xml"/>
+
+  </chapter>
+  <chapter id="gram5-admin-troubleshooting">
+    <title>Troubleshooting</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../GRAM5_Troubleshooting_Admin_Frag.xml"/>
+  </chapter>
+  <!--
+    This is the subset of the command-line interface that is relevant to
+    admin tasks
+-->
+  <chapter id="gram5-admin-programs">
+    <title>Admin Tools</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../globus-gatekeeper-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../globus-gatekeeper-admin-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../globus-gram-audit-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../globus-job-manager-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../globus-rvf-check-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../globus-rvf-edit-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../globus-scheduler-event-generator-manual.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../globus-scheduler-event-generator-admin-manual.xml"/>
+  </chapter>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Usage_Statistics_Frag.xml"/>
+  <!--  LocalWords:  NOPASSWD -->
+  <glossary role="auto" id="glossary-gram5Admin">
+    <remark>some terms not in the docs but wanted in glossary: 
+        <glossterm>Local Resource Manager</glossterm>
+        <glossterm>TORQUE</glossterm>
+        <glossterm>Oracle GridEngine</glossterm>
+        <glossterm>Sun GridEngine</glossterm>
+        <glossterm>Portable Batch System</glossterm>
+    </remark>
+    <glossdiv>
+      <title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef></glossentry>
+    </glossdiv>
+  </glossary>
+  <index type="gram5">
+    <title>Index</title>
+  </index>
+</book>

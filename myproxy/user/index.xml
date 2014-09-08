@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="myproxyUser">
+<title>GT <replaceable role="entity">version</replaceable> MyProxy: User's Guide</title>
+<titleabbrev>User's Guide</titleabbrev>
+
+<chapter id="myproxy-user-introduction"><title>Introduction</title>
+<para>
+Please refer to the 
+<ulink url="http://myproxy.ncsa.uiuc.edu/userguide.html">MyProxy User's Guide</ulink>
+on the MyProxy web site.
+</para>
+</chapter>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.xml"/>
+
+<!-- 
+<chapter id="myproxy-user-gui"><title>Graphical user interfaces</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../Cred_Mgmt_MyProxy_Interface_GUI_Frag.xml"/>
+</chapter>
+-->
+  
+<chapter id="myproxy-user-troubleshooting"><title>Troubleshooting</title>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Errors_Frag.xml"/>
+
+<section id="myproxy-errors">
+  <title>Additional MyProxy Troubleshooting</title>
+<para>For additional information, see the
+  <ulink url="http://myproxy.ncsa.uiuc.edu/troubleshooting.html">MyProxy Troubleshooting Page</ulink> at NCSA.
+</para>
+</section>
+
+</chapter>
+  
+  <xi:include href="../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  
+  <glossary role="auto" id="glossary-myproxyUser">
+    <!-- 
+    <remark>some terms not in the docs but wanted in glossary: 
+    <glossterm>scheduler</glossterm>
+    </remark>
+    -->
+    <glossdiv><title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</book>

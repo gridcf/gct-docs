@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="xioAdmin">
+<title>GT <replaceable role="entity">version</replaceable> XIO: System Administrator's Guide</title>
+<titleabbrev>System Administrator's Guide</titleabbrev>
+
+<bookinfo><abstract><title>Introduction</title>
+<para>
+Globus XIO is a development API.  The only administration required is to
+  install it according to the <olink targetdoc="gtadmin" targetptr="gtadmin-install">GT <replaceable role="entity">version</replaceable> installation
+  instructions</olink>.</para>
+<para>  <important>
+    <simpara> This information is in addition to the basic Globus Toolkit prerequisite, 
+      overview, installation, security configuration instructions in the <olink targetdoc="gtadmin"/>.  
+      Read through this guide before continuing!</simpara>  
+  </important></para>
+</abstract></bookinfo>
+
+<chapter id="xio-admin-installing"><title>Building and Installing</title>
+  <para>XIO is built and installed with a default GT <replaceable role="entity">version</replaceable> installation, see the <olink targetdoc="gtadmin" targetptr="gtadmin-install" />.</para>
+</chapter>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Interface_Config_Frag.xml"/>
+
+<chapter id="xio-admin-deploying"><title>Deploying</title>
+<para>Once a user has a successful installation of Globus XIO they may wish
+    to use their own drivers.  Once the
+    driver is compiled, it can be used at runtime by Globus XIO so long as
+    it can be found in the LD_LIBRARY_PATH.
+</para>
+</chapter>
+
+<chapter id="xio-admin-testing"><title>Testing</title>
+<para>
+A test suite is available to test the Globus XIO framework.  To test it, 
+simply run: </para>
+<screen>$GLOBUS_LOCATION/test/globus_xio_test/TESTS.pl</screen>
+</chapter>
+
+<chapter id="xio-admin-security_considerations"><title>Security Considerations </title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Security_Considerations_Frag.xml"/>
+  </chapter>
+
+<chapter id="xio-admin-troubleshooting"><title>Troubleshooting</title>
+ 
+<section><title>Set GLOBUS_LOCATION correctly</title>
+  <para>
+<itemizedlist>
+  <listitem><simpara>The environment variable <envar>GLOBUS_LOCATION</envar> must be set to a valid Globus <replaceable role="entity">version</replaceable> installation.</simpara></listitem>
+  <listitem><simpara>Various other environment variables must be set in
+    order to easily use the GlobusXIO application.  The proper environment can
+    be established by running: 
+    <computeroutput>source $GLOBUS_LOCATION/etc/globus-user-env.sh</computeroutput>
+    or 
+    <computeroutput>source $GLOBUS_LOCATION/etc/globus-user-env.csh</computeroutput>
+    depending on the shell you are using.
+</simpara></listitem>
+</itemizedlist>
+  </para></section>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Errors_Frag.xml"/>
+</chapter>
+
+</book>

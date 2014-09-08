@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <chapter id="gsic-apis"><title>APIs</title>
+<para>Documentation for the APIs in this component can be found here:</para>
+ <itemizedlist>
+    <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/gaa_core/html/index.html#_top'>gaa_core</ulink>
+      [<ulink url='http://www.globus.org/api/c-globus-{$version}/gaa_core/html/main.html#_top' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/gaa_gss_generic/html/index.html#_top'>gaa_gss_generic</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/gaa_gss_generic/html/main.html#_top'>no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/gaa_plugin/html/index.html#_top' >gaa_plugin</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/gaa_plugin/html/main.html#_top' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_authz/html/index.html#_top' >globus_authz</ulink>
+
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_authz/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_authz_callout_error/html/index.html#_top' >globus_authz_callout_error</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_authz_callout_error/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gridmap_callout_error/html/index.html#_top' >globus_gridmap_callout_error</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gridmap_callout_error/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_callback/html/index.html#_top' >globus_gsi_callback</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_callback/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_cert_utils/html/index.html#_top' >globus_gsi_cert_utils</ulink>
+
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_cert_utils/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_credential/html/index.html#_top' >globus_gsi_credential</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_credential/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_openssl_error/html/index.html#_top' >globus_gsi_openssl_error</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_openssl_error/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_proxy_core/html/index.html#_top' >globus_gsi_proxy_core</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_proxy_core/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_proxy_ssl/html/index.html#_top' >globus_gsi_proxy_ssl</ulink>
+
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_proxy_ssl/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_sysconfig/html/index.html#_top' >globus_gsi_sysconfig</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gsi_sysconfig/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gss_assist/html/index.html#_top' >globus_gss_assist</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gss_assist/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gssapi_gsi/html/index.html#_top' >globus_gssapi_gsi</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_gssapi_gsi/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/globus_openssl_module/html/index.html#_top' >globus_openssl_module</ulink>
+
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/globus_openssl_module/html/main.html' >no frames</ulink>]
+   </simpara></listitem>
+   <listitem><simpara> <ulink url='http://www.globus.org/api/c-globus-{$version}/gssapi_error/html/index.html#_top' >gssapi_error</ulink>
+     [<ulink url='http://www.globus.org/api/c-globus-{$version}/gssapi_error/html/main.html' >no frames</ulink>]
+    </simpara></listitem>
+
+</itemizedlist>
+
+
+<para>For information on the internationalization API, see the <olink targetdoc="ccommonlibPI" targetptr="ccommonlib-apis">CCommon Libraries Public Interface</olink>. </para>
+</chapter>

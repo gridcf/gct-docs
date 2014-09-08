@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="myproxyAdmin">
+<title>GT <replaceable role="entity">version</replaceable> MyProxy: System Administrator's Guide</title>
+<titleabbrev>System Administrator's Guide</titleabbrev>
+
+
+<bookinfo id="myproxy-admin-introduction"><abstract><title>Introduction</title>
+<para>
+This guide contains advanced configuration information for system administrators
+  working with MyProxy. It provides references to information
+  on procedures typically performed by system administrators, including installation,
+  configuring, deploying, and testing the installation.</para>
+<para>  <important>
+    <simpara> This information is in addition to the basic Globus Toolkit prerequisite, 
+      overview, installation, security configuration instructions in <olink targetdoc="gtadmin" />.  
+      Read through this guide before continuing!</simpara>  
+  </important></para>
+<para>A typical MyProxy configuration has one dedicated myproxy-server for
+  the site, with MyProxy clients installed on all systems where other
+  Globus Toolkit client software is installed. </para></abstract>
+</bookinfo>
+
+<chapter id="myproxy-admin-installing" xreflabel="Building and installing MyProxy"><title>Building and Installing</title>
+  <para>MyProxy is built and installed as part of a default GT <replaceable role="entity">version</replaceable> installation. For
+    basic installation instructions, see <olink targetdoc="gtadmin" />. No extra installation steps are required
+  for this component.</para>
+
+<para>If you wish to install MyProxy without installing the rest
+  of the Globus Toolkit, follow the instructions in
+  <olink targetdoc="gtadmin" /> 
+  with the following changes.  First, you do not need Ant, a JDK, or a
+  JDBC database to build only MyProxy.
+  Second, instead of running "make",
+  run:
+</para>
+<screen>globus$ make gsi-myproxy</screen>
+<para>
+  This will install the MyProxy client and server programs.
+  For client-only installations, simply do not configure or use the installed server.
+</para>
+
+</chapter>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../Cred_Mgmt_MyProxy_Interface_Config_Frag.xml"/>
+
+<chapter id="myproxy-admin-deploying"><title>Deploying</title>
+<para>
+A sample SysV-style
+boot script for MyProxy is installed at
+<filename>$GLOBUS_LOCATION/share/myproxy/etc.init.d.myproxy</filename>.
+To install on Linux, copy the file to <filename>/etc/rc.d/init.d/myproxy</filename> and run
+<command>chkconfig --add myproxy</command>.
+You will need to edit the file to set the <filename>GLOBUS_LOCATION</filename> environment
+variable correctly.
+</para>
+
+<para>
+Alternatively, to run the myproxy server out of inetd or xinetd, you
+need to do the following as root:
+</para>
+<itemizedlist>
+<listitem><simpara>   Add the entries in
+       <filename>$GLOBUS_LOCATION/share/myproxy/etc.services</filename>.modifications to the
+       <filename>/etc/services</filename> or <filename>/etc/inet/services</filename> file.</simpara></listitem>
+ 
+<listitem><simpara>   Add the entries in
+       <filename>$GLOBUS_LOCATION/share/myproxy/etc.inetd.conf.modifications</filename> to
+       <filename>/etc/inetd.conf</filename> or <filename>/etc/inet/inetd.conf</filename>, or copy
+       <filename>$GLOBUS_LOCATION/share/myproxy/etc.xinetd.myproxy</filename> to
+       <filename>/etc/xinetd.d/myproxy</filename>.  You'll need to modify the paths in the
+       file according to your installation.</simpara></listitem>
+
+<listitem><simpara>   Reactivate the inetd (or xinetd).
+       This is typically accomplished by sending the SIGHUP signal to
+       the daemon.  Refer to the inetd or xinetd man page for your system.</simpara></listitem>
+</itemizedlist>
+
+<para>
+In addition, an example cron script is provided in <filename>$GLOBUS_LOCATION/share/myproxy/myproxy.cron</filename>
+for removing expired/revoked credentials from the repository.
+You will need to edit the file to set the <filename>GLOBUS_LOCATION</filename>
+environment variable correctly before installing in (for example) <filename>/etc/cron.hourly</filename>. 
+</para>
+
+</chapter>
+<chapter id="myproxy-admin-testing"><title>Testing</title>
+
+<para>
+To verify your myproxy-server installation and configuration, you can
+run the myproxy-server directly from your shell.
+  If using a <glossterm>host certificate</glossterm>, you will need to run the myproxy-server
+as root.
+
+First, make sure your Globus environment is setup in your shell.
+Set the <filename>GLOBUS_LOCATION</filename> environment variable to the location of your
+MyProxy installation.  
+
+Then, depending on your shell, run one of the following commands.
+</para>
+<para>
+For csh shells:
+</para>
+<blockquote><para>
+<command>source $GLOBUS_LOCATION/etc/globus-user-env.csh</command>
+</para></blockquote>
+<para>
+For sh shells:
+</para>
+<blockquote><para>
+<command>. $GLOBUS_LOCATION/etc/globus-user-env.sh</command>
+</para></blockquote>
+  
+<para>
+Then, run <command>$GLOBUS_LOCATION/sbin/myproxy-server -d</command>.
+The <option>-d</option> argument runs the myproxy-server in debug mode.
+It will write debugging messages to the terminal and
+exit after servicing a single request.
+You will need to start it once for each test request.
+In another shell, you can run the MyProxy client programs to test the
+server.
+</para>
+
+<para>
+If run without the <option>-d</option> argument,
+the myproxy-server program will start up and background itself.
+It accepts connections on TCP port 7512, forking off a separate child
+to handle each incoming connection.
+It logs information via the syslog service under the daemon facility.
+</para>
+
+</chapter>
+
+<chapter id="myproxy-admin-security_considerations"><title>Security Considerations</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../Cred_Mgmt_MyProxy_Security_Considerations_Frag.xml"/>
+</chapter>
+
+<chapter id="myproxy-admin-debugging"><title>Debugging</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../Cred_Mgmt_MyProxy_Logging_Frag.xml"/>
+</chapter>
+
+<!-- pulls in troubleshooting chapter from user's guide -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../user/index.xml" xpointer="myproxy-user-troubleshooting"/>
+  
+  <xi:include href="../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  
+  <glossary role="auto" id="glossary-myproxyAdmin">
+    <!-- 
+    <remark>some terms not in the docs but wanted in glossary: 
+    <glossterm>scheduler</glossterm>
+    </remark>
+    -->
+    <glossdiv><title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</book>

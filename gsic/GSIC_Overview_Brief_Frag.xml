@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+
+<para>
+The Globus Toolkit GSI C component provides APIs and tools for authentication,
+authorization and certificate management. The authentication API is built using
+<glossterm baseform="public key">Public Key</glossterm> Infrastructure (PKI)
+technologies, e.g. X.509 Certificates and TLS. In addition to authentication it
+features a delegation mechanism based upon X.509 <glossterm baseform="proxy
+certificate">Proxy Certificates</glossterm>. Authorization support takes  the
+form of a couple of APIs. The first provides a generic authorization API that
+allows callouts to perform access control based on the client's credentials
+(i.e. the X.509 certificate chain). The second provides a simple access control
+list that maps authorized remote entities to local (system) user names. The
+second mechanism also provides callouts that allow third parties to override
+the default behavior and is currently used in the Gatekeeper and GridFTP
+servers. In addition to the above there are various lower level APIs and tools
+for managing, discovering and querying certificates.
+</para>

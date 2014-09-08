@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<article id="gsiopensshRN">
+    <title>GT <replaceable role="entity">version</replaceable> Release Notes: GSI-OpenSSH</title>
+    <titleabbrev>Release Notes</titleabbrev>
+    <section id="gsiopenssh-rn-overview">
+        <title>Component Overview</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Overview_Brief_Frag.xml"/>
+    </section>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Feature_Summary_Frag.xml"/>
+
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Change_Summary_Frag.xml"/>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Fixed_Bugs_Frag.xml"/>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Known_Problems_Frag.xml"/>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Dependencies_Summary_Frag.xml"/>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Platform_Summary_Frag.xml"/>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Compatibility_Summary_Frag.xml"/>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../Util_OpenSSH_Associated_Standards_Frag.xml"/>
+
+    <section id="gsiopenssh-rn-formoreinfo">
+        <title>For More Information </title>
+        <para>See <olink targetdoc="gsiopenssh"/> more information about this component. </para>
+    </section>
+    <glossary role="auto" id="glossary-opensshRN">
+        <!-- 
+        <remark>some terms not in the docs but wanted in glossary: 
+        <glossterm>scheduler</glossterm>
+        </remark>
+        -->
+        <glossdiv><title>A</title>
+            <glossentry>
+                <glossterm>Dummy term</glossterm>
+                <glossdef>
+                    <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+                </glossdef>
+            </glossentry>
+        </glossdiv>
+    </glossary>
+</article>

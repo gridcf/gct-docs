@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="gridftp-tech-dependencies"><title>Technology dependencies</title>
+<para>GridFTP depends on the following GT components:</para>
+<itemizedlist>
+  <listitem><simpara>Non-WS (General) Authentication &amp; Authorization</simpara></listitem>
+  <listitem><simpara>C Common Libraries</simpara></listitem>
+  <listitem><simpara>XIO</simpara></listitem>
+</itemizedlist>
+<para>GridFTP depends on the following 3rd party software:</para>
+<itemizedlist>
+  <listitem><simpara>OpenSSL (version is included in release)</simpara></listitem>
+</itemizedlist>
+</section>

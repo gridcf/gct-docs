@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <section id="gsic-dependencies">
+    <title>Technology dependencies</title>
+<para>The GSI C component depends on the following
+  GT components:</para>
+<itemizedlist>
+  <listitem><simpara>C Common Libraries</simpara></listitem>
+</itemizedlist>
+<para>The GSI C component depends on the following
+  3rd party software:</para>
+<itemizedlist>
+  <listitem><simpara>OpenSSL</simpara></listitem>
+</itemizedlist>
+</section>

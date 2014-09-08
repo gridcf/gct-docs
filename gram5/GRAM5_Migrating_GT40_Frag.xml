@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <chapter id="gram5-migrating-gt40">
+    <title>Migrating GRAM from GT4.0</title>
+    <indexterm type="gram5"><primary>migrating</primary><secondary>from 4.0.x</secondary></indexterm>
+      <para>The GRAM5 protocol has been designed to be backward compatible with
+      GRAM2 protocol from GT 4.0.x. There is no compatibility between GRAM5
+      and the GRAM4 protocol.</para>
+
+<section> <title>Admin - Migration Guide</title>
+
+  <section id="gram5-admin-migrating-gt5-audit">
+    <title>Audit Logging</title>
+    <para>
+      GRAM5 supports generating audit records the same as GRAM2. It also
+      adds support for a Teragrid-specific Gateway User field in the audit 
+      records. The
+      <application>globus_gram_job_manager_auditing</application> package 
+      contains the audit database interface code. The 
+      <application>globus_gram_job_manager_auditing_setup</application>
+      setup package configures this package. GRAM5 auditing is enabled by
+      using the <option>-audit-directory</option> command-line option in the
+      job manager configuration file. For more information about GRAM5 audit
+      support, see the <olink targetdoc="gram5Admin"
+      targetptr="gram5-audit-logging">GRAM5 admin guide</olink>.
+    </para>
+  </section>
+</section>
+
+<section> <title>User - Migration Guide</title>
+
+
+  <section id="gram5-user-migrating-tools">
+    <title>Command-line Tools</title>
+    <para>
+      GRAM5 provides the <command>globusrun</command> program to submit
+      jobs to GRAM5 services. It no longer supports multi-request (duroc
+      or MPI) jobs. GRAM5 does not provide the <command>globusrun-ws</command>
+      as it does not support the WSRF protocols.
+    </para>
+  </section>
+
+</section>
+
+<section> <title>Developer - Migration Guide</title>
+
+
+  <section id="gram5-developer-extensions">
+    <title>API Changes</title>
+    <para>
+        The GRAM5 version of the GRAM Client API adds support for receiving
+        protocol extension information in callbacks and responses. All 
+        GRAM Client API functions from GRAM2 are provided in the GRAM5 API.
+        The DUROC, DUCT, and Nexus APIs are no longer provided in GRAM5.
+    </para>
+  </section>
+
+</section>
+
+</chapter>

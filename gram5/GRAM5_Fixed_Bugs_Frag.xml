@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<section id="gram5-fixed-bugs">
+  <title>Fixed Bugs for GRAM5</title>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <simpara><ulink url="https://globus.atlassian.net/browse/GT-311">GT-311</ulink>: globus job manager is leaking memory</simpara>
+      </listitem>
+      <listitem>
+        <simpara><ulink url="https://globus.atlassian.net/browse/GT-344">GT-344</ulink>: Cut and past error in gpt metadata for GRAM LSF module</simpara>
+      </listitem>
+      <listitem>
+        <simpara><ulink url="https://globus.atlassian.net/browse/GT-359">GT-359</ulink>: SGE SEG hangs when log_path points to directory</simpara>
+      </listitem>
+      <listitem>
+        <simpara><ulink url="https://globus.atlassian.net/browse/GT-384">GT-384</ulink>: GRAM mishandles long script responses</simpara>
+      </listitem>
+    </itemizedlist>
+  </para>
+</section>

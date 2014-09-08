@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+
+  <appendix id="xio-driver-addons">
+    <title> GT <replaceable role="entity">version</replaceable> XIO : Driver Add-ons</title>
+    <titleabbrev>Add-on</titleabbrev>
+    <section id="xio-drivers-addon-intro">
+        <title>Introduction</title>
+        <para>Here we describe a GPT bundle of some useful GlobusXIO drivers. The drivers are not
+            packaged with the standard globus release because they require external dependencies, or
+            are otherwise best distributed in a separate release. Here you can get each driver
+            individually, or a bundle of all the drivers.</para>
+    </section>
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_UDT_REF.xml"/>
+
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Token_Bucket.xml"/>
+    
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Popen.xml"/>
+    
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_BIDI.xml"/>
+
+
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Netlog.xml"/>
+    
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Skeleton.xml"/>
+    
+</appendix>

@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="job_manager_script_test_pl_gcc64-sgeseg" errors="0" failures="0" tests="0" time="1040.30702495575">
+    <system-out>1..0 # Skip Test is fork-specific
+</system-out>
+  </testsuite>
+  <testsuite name="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" errors="0" failures="0" tests="19" time="1040.30702495575">
+    <system-out>1..19
+ok 1 - stdio001
+ok 3 - stdio003
+ok 4 - stdio004
+ok 5 - stdio005
+ok 7 - stdio007
+ok 8 - stdio008
+ok 10 - stdio010
+ok 11 - stdio011
+ok 14 - stdio014
+ok 15 - stdio015
+</system-out>
+    <testcase name="stdio001" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio003" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio004" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio005" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio007" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio008" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio010" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio011" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio014" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="stdio015" classname="stdio_test_globus_gram_job_manager_stdio_test_pl_gcc64-sgeseg" time="0" />
+  </testsuite>
+  <testsuite name="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" errors="0" failures="0" tests="53" time="1040.30702495575">
+    <system-out>1..53
+ok 1 - submit001:
+ok 2 - submit002:
+ok 3 - submit003:
+ok 4 - submit004:
+ok 5 - submit005:
+ok 6 - submit006:
+ok 7 - submit007:
+ok 8 - submit008:
+ok 9 - submit009:
+ok 10 - submit010:
+ok 11 - submit011:
+ok 12 - submit012:
+ok 13 - submit013:
+ok 14 - submit014:
+ok 15 - submit015:
+ok 16 - submit016:
+ok 17 - submit017:
+ok 18 - submit018:
+ok 19 - submit019:
+ok 20 - submit020:
+ok 21 - submit021:
+ok 22 - submit022:
+ok 23 - submit023:
+ok 24 - submit024:
+ok 25 - submit025:
+ok 26 - submit026:
+ok 27 - submit027:
+ok 28 - submit028:
+ok 29 - submit029:
+ok 30 - submit030:
+ok 31 - submit031:
+ok 32 - submit032:
+ok 33 - submit033:
+ok 34 - submit034:
+ok 35 - submit035:
+ok 36 - submit036:
+ok 37 - submit037:
+ok 38 - submit038:
+ok 39 - submit039:
+ok 40 - submit040:
+ok 41 - submit041:
+ok 42 - submit042:
+ok 43 - submit043:
+ok 44 - submit044:
+ok 45 - submit045:
+ok 46 - submit046:
+ok 47 - submit047:
+ok 48 - submit048:
+ok 49 - submit049:
+ok 50 - submit001:
+ok 51 - submit001:(save_state = yes)
+ok 52 - submit001:(two_phase = 10)
+ok 53 - submit001:(save_state = yes)(two_phase = 10)
+</system-out>
+    <testcase name="submit001:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit002:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit003:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit004:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit005:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit006:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit007:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit008:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit009:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit010:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit011:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit012:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit013:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit014:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit015:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit016:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit017:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit018:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit019:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit020:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit021:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit022:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit023:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit024:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit025:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit026:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit027:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit028:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit029:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit030:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit031:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit032:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit033:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit034:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit035:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit036:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit037:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit038:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit039:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit040:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit041:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit042:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit043:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit044:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit045:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit046:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit047:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit048:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit049:" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit001: (2)" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit001:(save_state = yes)" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit001:(two_phase = 10)" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="submit001:(save_state = yes)(two_phase = 10)" classname="submit_test_globus_gram_job_manager_submit_test_pl_gcc64-sgeseg" time="0" />
+  </testsuite>
+  <testsuite name="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" errors="0" failures="0" tests="54" time="1040.30702495575">
+    <system-out>1..54
+ok 1 - error_bad_directory.rsl
+ok 2 - error_evaluation_failed.rsl
+ok 3 - error_executable_not_found.rsl
+ok 4 - error_executable_permissions.rsl
+ok 5 - error_invalid_cache2.rsl
+ok 6 - error_invalid_cache.rsl
+ok 7 - error_invalid_count.rsl
+ok 8 - error_invalid_gram_myjob.rsl
+ok 9 - error_invalid_jobtype.rsl
+ok 10 - error_invalid_save_state.rsl
+ok 11 - error_invalid_scratch.rsl
+ok 12 - error_invalid_two_phase_commit.rsl
+ok 13 - error_invalid_proxy_timeout.rsl
+ok 14 - error_no_state_file.rsl
+ok 15 - error_opening_stderr.rsl
+ok 16 - error_opening_stderr2.rsl
+ok 17 - error_opening_stdout.rsl
+ok 18 - error_opening_stdout2.rsl
+ok 19 - error_opening_stdout3.rsl
+ok 20 - error_rsl_arguments.rsl
+ok 21 - error_rsl_cache.rsl
+ok 22 - error_rsl_directory.rsl
+ok 23 - error_rsl_dryrun.rsl
+ok 24 - error_rsl_environment1.rsl
+ok 25 - error_rsl_environment2.rsl
+ok 26 - error_rsl_evaluation_failed2.rsl
+ok 27 - error_rsl_evaluation_failed.rsl
+ok 28 - error_rsl_executable.rsl
+ok 29 - error_rsl_file_stage_in2.rsl
+ok 30 - error_rsl_file_stage_in3.rsl
+ok 31 - error_rsl_file_stage_in.rsl
+ok 32 - error_rsl_file_stage_in_shared2.rsl
+ok 33 - error_rsl_file_stage_in_shared3.rsl
+ok 34 - error_rsl_file_stage_in_shared.rsl
+ok 35 - error_rsl_file_stage_out2.rsl
+ok 36 - error_rsl_file_stage_out3.rsl
+ok 37 - error_rsl_file_stage_out.rsl
+ok 38 - error_rsl_jobtype.rsl
+ok 39 - error_rsl_myjob.rsl
+ok 40 - error_rsl_proxy_timeout.rsl
+ok 41 - error_rsl_remote_io_url.rsl
+ok 42 - error_rsl_restart.rsl
+ok 43 - error_rsl_save_state.rsl
+ok 44 - error_rsl_scratch.rsl
+ok 45 - error_rsl_stderr.rsl
+ok 46 - error_rsl_stderr2.rsl
+ok 47 - error_rsl_stdin.rsl
+ok 48 - error_rsl_stdout.rsl
+ok 49 - error_rsl_stdout2.rsl
+ok 50 - error_rsl_two_phase_commit.rsl
+ok 51 - error_staging_executable.rsl
+ok 52 - error_staging_stdin.rsl
+ok 53 - error_stdin_not_found.rsl
+ok 54 - error_undefined_executable.rsl
+</system-out>
+    <testcase name="error_bad_directory.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_evaluation_failed.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_executable_not_found.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_executable_permissions.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_cache2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_cache.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_count.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_gram_myjob.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_jobtype.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_save_state.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_scratch.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_two_phase_commit.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_invalid_proxy_timeout.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_no_state_file.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_opening_stderr.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_opening_stderr2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_opening_stdout.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_opening_stdout2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_opening_stdout3.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_arguments.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_cache.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_directory.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_dryrun.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_environment1.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_environment2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_evaluation_failed2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_evaluation_failed.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_executable.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_in2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_in3.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_in.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_in_shared2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_in_shared3.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_in_shared.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_out2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_out3.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_file_stage_out.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_jobtype.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_myjob.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_proxy_timeout.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_remote_io_url.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_restart.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_save_state.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_scratch.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_stderr.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_stderr2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_stdin.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_stdout.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_stdout2.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_rsl_two_phase_commit.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_staging_executable.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_staging_stdin.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_stdin_not_found.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="error_undefined_executable.rsl" classname="failure_test_globus_gram_job_manager_failure_test_pl_gcc64-sgeseg" time="0" />
+  </testsuite>
+  <testsuite name="rsl_size_test_globus_gram_job_manager_rsl_size_test_pl_gcc64-sgeseg" errors="0" failures="0" tests="5" time="1040.30702495575">
+    <system-out>1..5
+ok 1 - tiny
+ok 2 - small
+ok 3 - medium
+ok 4 - large
+ok 5 - huge
+</system-out>
+    <testcase name="tiny" classname="rsl_size_test_globus_gram_job_manager_rsl_size_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="small" classname="rsl_size_test_globus_gram_job_manager_rsl_size_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="medium" classname="rsl_size_test_globus_gram_job_manager_rsl_size_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="large" classname="rsl_size_test_globus_gram_job_manager_rsl_size_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="huge" classname="rsl_size_test_globus_gram_job_manager_rsl_size_test_pl_gcc64-sgeseg" time="0" />
+  </testsuite>
+  <testsuite name="user_test_globus_gram_job_manager_user_test_pl_gcc64-sgeseg" errors="0" failures="0" tests="3" time="1040.30702495575">
+    <system-out>1..3
+ok 1 - test_user_bamboo
+ok 2 - test_user_bamboo
+ok 3 - test_user_bamboo
+</system-out>
+    <testcase name="test_user_bamboo" classname="user_test_globus_gram_job_manager_user_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="test_user_bamboo (2)" classname="user_test_globus_gram_job_manager_user_test_pl_gcc64-sgeseg" time="0" />
+    <testcase name="test_user_bamboo (3)" classname="user_test_globus_gram_job_manager_user_test_pl_gcc64-sgeseg" time="0" />
+  </testsuite>
+</testsuites>

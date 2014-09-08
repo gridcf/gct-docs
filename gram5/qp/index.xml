@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<article id="gram5QP">
+    <title>GT <replaceable role="entity">version</replaceable> GRAM5: Quality Profile</title>
+    <titleabbrev>Quality Profile</titleabbrev>
+    <section id="gram5-qp-test">
+        <title>Test Reports </title>
+        <!--
+            These were pulled from the bamboo test-results artifact from the CentOS 5
+            build, and then processed with the junit.xsl stylesheet in
+            this directory
+          -->
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <ulink url="protocoltest.html">GT <replaceable role="entity">version</replaceable> GRAM Protocol Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="clienttest.html">GT <replaceable role="entity">version</replaceable> GRAM Client Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="condornone.html">GT <replaceable role="entity">version</replaceable> Condor Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="forkpoll.html">GT <replaceable role="entity">version</replaceable> Fork (Poll) Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="forkseg.html">GT <replaceable role="entity">version</replaceable> Fork (SEG) Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="pbspoll.html">GT <replaceable role="entity">version</replaceable> PBS (Poll) Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="pbsseg.html">GT <replaceable role="entity">version</replaceable> PBS (SEG) Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="sgepoll.html">GT <replaceable role="entity">version</replaceable> SGE (Poll) Test Report</ulink>
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara>
+                    <ulink url="sgeseg.html">GT <replaceable role="entity">version</replaceable> SGE (SEG) Test Report</ulink>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <section id="gram5-qp-coverage">
+        <title>Test Coverage Reports </title>
+        <itemizedlist>
+            <listitem><simpara><ulink url="http://www.mcs.anl.gov/~bester/gram5/coverage/{$version}"/></simpara></listitem>
+        </itemizedlist>
+    </section>
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Known_Problems_Frag.xml" />
+    
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Fixed_Bugs_Frag.xml"/>
+
+<!--
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="GRAM5_QP_Throughput_Tests_Frag.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="GRAM5_QP_Condor-G_Frag.xml"/>
+-->
+
+</article>

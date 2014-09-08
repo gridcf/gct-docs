@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="test_pci_pl_gcc64" errors="0" failures="0" tests="5" time="0.128664970397949">
+    <system-out>1..5
+ok 1 - path10-policy
+ok 2 - path10
+ok 3 - path0-policy
+ok 4 - policy
+ok 5 - default
+</system-out>
+    <testcase name="path10-policy" classname="test_pci_pl_gcc64" time="0.0235888957977295" />
+    <testcase name="path10" classname="test_pci_pl_gcc64" time="0.0205841064453125" />
+    <testcase name="path0-policy" classname="test_pci_pl_gcc64" time="0.0204319953918457" />
+    <testcase name="policy" classname="test_pci_pl_gcc64" time="0.0201759338378906" />
+    <testcase name="default" classname="test_pci_pl_gcc64" time="0.0200700759887695" />
+  </testsuite>
+</testsuites>

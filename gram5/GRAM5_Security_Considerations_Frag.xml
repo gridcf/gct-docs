@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!ENTITY GRAM "GRAM5" >
+<!ENTITY gatekeeper "<command>globus-gatekeeper</command>" >
+<!ENTITY jobmanager "<command>globus-job-manager</command>" >
+]>
+
+<section id="gram5-security-considerations"><title>Security Considerations</title>
+
+<section>
+<title>Gatekeeper Security Considerations</title>
+<para>
+&GRAM; runs different parts of itself under different privilege
+levels. The &gatekeeper; runs as root, and uses its root privilege to access
+the host's private key. It uses the <glossterm>grid map file</glossterm> to
+map <glossterm baseform="certificate">Grid Certificates</glossterm> to
+local user ids and then uses the <function>setuid()</function> function
+to change to that user and execute the &jobmanager; program
+</para>
+</section>
+
+<section>
+<title>Job Manager Security Considerations</title>
+<para>
+The  &jobmanager; program runs as a local non-root account. It receives
+a delegated limited <glossterm>proxy certificate</glossterm> from the &GRAM;
+client which it uses to access Grid storage resources via GridFTP and to
+authenticate job signals (such as client cancel requests), and send
+job state callbacks to registered clients. This proxy is generally short-lived,
+and is automatically removed by the job manager when the job completes.
+</para>
+
+<para>
+The &jobmanager; program uses a publicly-writable directory for job state
+files. This directory has the <emphasis>sticky</emphasis> bit set, so 
+users may not remove other users files. Each file is named by a UUID, so
+it should be unique.
+</para>
+</section>
+
+<section>
+<title>Fork SEG Module Security Considerations</title>
+
+<para>
+The Fork Scheduler Event Generator module uses a globally writable file
+for job state change events. This is not recommended for production use.
+</para>
+</section>
+
+</section>

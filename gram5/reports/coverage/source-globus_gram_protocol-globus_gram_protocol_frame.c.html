@@ -1,0 +1,2169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_protocol_frame.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2006 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_i_gram_protocol.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;string.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#ifndef GLOBUS_DONT_DOCUMENT_INTERNAL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">char *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_protocol_lookup_reason(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int					code);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#endif</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @defgroup globus_gram_protocol_framing Message Framing</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_functions</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * The functions in this section take GRAM request (or query) and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * reply messages, and frame them with HTTP headers, so that they can be</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * sent. These functions should be used when an application wants to control</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * the way that the GRAM Protocol messages are sent, while still using</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * the standard message formatting and framing routines. An alternative</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * set of functions in the @ref globus_gram_protocol_io section of the manual</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * combine message framing with callback-driven I/O.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Frame a GRAM query</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_framing</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Adds an HTTP frame around a GRAM protocol message. The frame is</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * constructed from the URL, the GRAM protocol message type header,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * and a message length header. The framed message is returned</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * in a new string pointed to by @a framedmsg parameter and the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * length of the framed message is returned in the @a framedsize parameter.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param url</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">53</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The URL of the GRAM resource to contact.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param msg</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The message to be framed.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param msgsize</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">57</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The length of the unframed message.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">58</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param framedmsg</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">59</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        A return parameter, which will contain the framed message</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        upon this function&#39;s return.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">61</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param framedsize</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">62</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        A return parameter, which will contain the length of the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        framed message.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">64</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">66</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_frame_request(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">67</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const char *			url,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const globus_byte_t *		msg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			msgsize,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">70</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_byte_t **			framedmsg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t *			framedsize)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">72</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *				buf;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">74</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			digits = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">75</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			tmp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">76</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			framedlen;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_url_t			parsed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int					rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">80</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    rc = globus_url_parse(url, &amp;parsed);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">82</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    if(rc != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">84</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	rc = GLOBUS_GRAM_PROTOCOL_ERROR_INVALID_JOB_CONTACT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">85</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">86</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">88</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">89</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    if (parsed.url_path == NULL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">90</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">91</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	rc = GLOBUS_GRAM_PROTOCOL_ERROR_INVALID_JOB_CONTACT;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">93</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto destroy_out;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">94</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">95</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">96</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">97</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * HTTP request message framing:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">98</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    POST &lt;uri&gt; HTTP/1.1&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    Host: &lt;hostname&gt;&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">100</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    Content-Type: application/x-globus-gram&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">101</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    Content-Length: &lt;msgsize&gt;&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">102</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    &lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">103</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    &lt;msg&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">104</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">105</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp = msgsize;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">106</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">107</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    do</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">108</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">109</td>
+          <td class="coverageCount">46316</td>
+          <td class="srcCell"><span class="srcLine">	tmp /= 10;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">110</td>
+          <td class="coverageCount">46316</td>
+          <td class="srcCell"><span class="srcLine">	digits++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">111</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">112</td>
+          <td class="coverageCount">46316</td>
+          <td class="srcCell"><span class="srcLine">    while(tmp &gt; 0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">113</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">114</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen  = strlen(GLOBUS_GRAM_HTTP_REQUEST_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">115</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += strlen((char *) parsed.url_path);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">116</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += strlen(GLOBUS_GRAM_HTTP_HOST_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">117</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += strlen((char *) parsed.host);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">118</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += strlen(GLOBUS_GRAM_HTTP_CONTENT_TYPE_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">119</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += strlen(GLOBUS_GRAM_HTTP_CONTENT_LENGTH_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">120</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += digits;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">121</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += 2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">122</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    framedlen += msgsize;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">123</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">124</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    buf = (char *) globus_libc_malloc(framedlen + 1 /*null terminator*/);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">126</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp  = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">127</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			      GLOBUS_GRAM_HTTP_REQUEST_LINE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">129</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			      parsed.url_path);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">130</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">131</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			      GLOBUS_GRAM_HTTP_HOST_LINE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">132</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			      parsed.host);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">133</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">134</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			       GLOBUS_GRAM_HTTP_CONTENT_TYPE_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">135</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">136</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			       GLOBUS_GRAM_HTTP_CONTENT_LENGTH_LINE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">137</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			       (long) msgsize);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">138</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">139</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			       CRLF);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">140</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">141</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    if (msgsize &gt; 0)    /* allow for empty message body (msg==NULL) */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">143</td>
+          <td class="coverageCount">22805</td>
+          <td class="srcCell"><span class="srcLine">	memcpy(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">144</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	       msg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">145</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	       msgsize);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">146</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">148</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    *framedmsg = (globus_byte_t *) buf;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">149</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    *framedsize = tmp + msgsize;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">150</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">151</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">destroy_out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">152</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    globus_url_destroy(&amp;parsed);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">153</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">out:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">154</td>
+          <td class="coverageCount">22840</td>
+          <td class="srcCell"><span class="srcLine">    return rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">155</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">156</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">157</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Frame a GRAM reply</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">159</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @ingroup globus_gram_protocol_framing</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">161</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Adds an HTTP frame around a GRAM protocol reply. The frame is</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">162</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * constructed from the message code passed as the first parameter.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">163</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * The framed reply is returned</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">164</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * in a new string pointed to by @a framedmsg parameter and the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">165</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * length of the framed reply is returned in the @a framedsize parameter.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param code</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">168</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The HTTP response code to associate with this reply.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param msg</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">170</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The reply to be framed.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param msgsize</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">172</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        The length of the unframed reply.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param framedmsg</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">174</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        A return parameter, which will contain the framed reply</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">175</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        upon this function&#39;s return.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">176</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @param framedsize</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">177</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        A return parameter, which will contain the length of the</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">178</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> *        framed reply.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">180</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">181</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_frame_reply(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int					code,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">183</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    const globus_byte_t *		msg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">184</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			msgsize,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">185</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_byte_t **			framedmsg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">186</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t *			framedsize)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">187</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">188</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *				buf;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *				reason;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">190</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			digits = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">191</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			tmp;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">192</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_size_t			framedlen;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">193</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">194</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">195</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * HTTP reply message framing:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">196</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    HTTP/1.1 &lt;3 digit code&gt; Reason String&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">197</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    Connection: close&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">198</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    &lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">199</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">200</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * or</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    HTTP/1.1 &lt;3 digit code&gt; Reason String&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">202</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    Content-Type: application/x-globus-gram&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">203</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    Content-Length: &lt;msgsize&gt;&lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">204</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    &lt;CR&gt;&lt;LF&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">205</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *    msg</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">206</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">207</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">208</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    reason = globus_l_gram_protocol_lookup_reason(code);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">209</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">210</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    if(msgsize == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">211</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">212</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	framedlen = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">213</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(GLOBUS_GRAM_HTTP_REPLY_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">214</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(reason);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">215</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(GLOBUS_GRAM_HTTP_CONNECTION_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">216</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">217</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	buf = (char *) globus_malloc(framedlen + 1 /* null terminator */);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">218</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">219</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	tmp = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">220</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">221</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   GLOBUS_GRAM_HTTP_REPLY_LINE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">222</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   code,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">223</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   reason);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">224</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">225</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   GLOBUS_GRAM_HTTP_CONNECTION_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">226</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">227</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   CRLF);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">228</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">229</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">230</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">231</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	tmp = msgsize;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">232</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">233</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	do</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">234</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">235</td>
+          <td class="coverageCount">33933</td>
+          <td class="srcCell"><span class="srcLine">	    tmp /= 10;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">236</td>
+          <td class="coverageCount">33933</td>
+          <td class="srcCell"><span class="srcLine">	    digits++;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">237</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">238</td>
+          <td class="coverageCount">33933</td>
+          <td class="srcCell"><span class="srcLine">	while(tmp &gt; 0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">239</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">240</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">241</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(GLOBUS_GRAM_HTTP_REPLY_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">242</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(reason);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">243</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(GLOBUS_GRAM_HTTP_CONTENT_TYPE_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">244</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += strlen(GLOBUS_GRAM_HTTP_CONTENT_LENGTH_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">245</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += digits;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">246</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += 2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">247</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	framedlen += msgsize;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">248</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">249</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	buf = (char *) globus_malloc(framedlen);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">250</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	tmp = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">251</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">252</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   GLOBUS_GRAM_HTTP_REPLY_LINE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">253</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   code,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">254</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">				   reason);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">255</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">256</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		       GLOBUS_GRAM_HTTP_CONTENT_TYPE_LINE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">257</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">258</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		       GLOBUS_GRAM_HTTP_CONTENT_LENGTH_LINE,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">259</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		       (long)msgsize);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">260</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	tmp += globus_libc_sprintf(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">261</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		       CRLF);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">262</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">263</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	if (msgsize &gt; 0)   /* this allows msg = NULL */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">264</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">265</td>
+          <td class="coverageCount">11329</td>
+          <td class="srcCell"><span class="srcLine">	    memcpy(buf + tmp,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">266</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		   msg,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">267</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		   msgsize);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">268</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">269</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">270</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">271</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">272</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    *framedmsg = (globus_byte_t *) buf;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">273</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    *framedsize = tmp + msgsize;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">274</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">275</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">276</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">277</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_gram_protocol_frame_reply() */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">278</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">279</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#ifndef GLOBUS_DONT_DOCUMENT_INTERNAL</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">280</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">281</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">char *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">282</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_protocol_lookup_reason(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">283</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int					code)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">284</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">285</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    char * reason = GLOBUS_NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">286</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">287</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* These are culled from RFC 2616 */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">288</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    switch(code)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">289</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">290</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 100: reason=&quot;Continue&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">291</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 101: reason=&quot;Switching Protocols&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">292</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    case 200: reason=&quot;OK&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">293</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 201: reason=&quot;Created&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">294</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 202: reason=&quot;Accepted&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">295</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 203: reason=&quot;Non-Authoritative Information&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">296</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 204: reason=&quot;No Content&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">297</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 205: reason=&quot;Reset Content&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">298</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 206: reason=&quot;Partial Content&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">299</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 300: reason=&quot;Multiple Choices&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">300</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 301: reason=&quot;Moved Permanently&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">301</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 302: reason=&quot;Found&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">302</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 303: reason=&quot;See Other&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">303</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 304: reason=&quot;Not Modified&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">304</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 305: reason=&quot;Use Proxy&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">305</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 307: reason=&quot;Temporary Redirect&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">306</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 400: reason=&quot;Bad Request&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">307</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 401: reason=&quot;Unauthorized&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">308</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 402: reason=&quot;Payment Required&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">309</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 403: reason=&quot;Forbidden&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">310</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 404: reason=&quot;Not Found&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">311</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 405: reason=&quot;Method Not Allowed&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">312</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 406: reason=&quot;Not Acceptable&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">313</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 407: reason=&quot;Proxy Authentication Required&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">314</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 408: reason=&quot;Request Time-out&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">315</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 409: reason=&quot;Conflict&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">316</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 410: reason=&quot;Gone&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">317</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 411: reason=&quot;Length Required&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">318</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 412: reason=&quot;Precondition Failed&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">319</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 413: reason=&quot;Request Entity Too Large&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">320</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 414: reason=&quot;Request-URI Too Large&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">321</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 415: reason=&quot;Unsupported Media Type&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">322</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 416: reason=&quot;Requested range not satisfiable&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">323</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 417: reason=&quot;Expectation Failed&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">324</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 500: reason=&quot;Internal Server Error&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">325</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 501: reason=&quot;Not Implemented&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">326</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 502: reason=&quot;Bad Gateway&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">327</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 503: reason=&quot;Service Unavailable&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">328</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 504: reason=&quot;Gateway Time-out&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">329</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    case 505: reason=&quot;HTTP Version not supported&quot;; break;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">330</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    default:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">331</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	if(code &lt; 100 ||</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">332</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	   code &gt;= 600)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">333</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">334</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	    reason=&quot;Internal Server Error&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">335</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">336</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	else if(code &lt; 200)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">337</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">338</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	    reason=&quot;Continue&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">339</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">340</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	else if(code &lt; 300)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">341</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">342</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	    reason=&quot;OK&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">343</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">344</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	else if(code &lt; 400)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">345</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">346</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	    reason=&quot;Multiple Choices&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">347</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">348</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	else if(code &lt; 500)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">349</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">350</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	    reason=&quot;Bad Request&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">351</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">352</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	else if(code &lt; 600)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">353</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">354</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	    reason=&quot;Internal Server Error&quot;;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">355</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">356</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">357</td>
+          <td class="coverageCount">11909</td>
+          <td class="srcCell"><span class="srcLine">    return reason;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">358</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">359</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/* globus_l_gram_protocol_lookup_reason() */</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

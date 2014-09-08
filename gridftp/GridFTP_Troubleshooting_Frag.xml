@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[
+<!ENTITY % xinclude SYSTEM "../xinclude.mod">
+%xinclude;
+]>
+<chapter id="gridftp-troubleshooting"><title>Troubleshooting</title>
+    <indexterm type="gridftp-howto"><primary>troubleshooting for GridFTP</primary></indexterm>
+    <indexterm type="gridftp"><primary>troubleshooting for GridFTP</primary></indexterm>
+    <para>If you are having problems using the GridFTP <glossterm>server</glossterm>, try the steps
+        listed below. If you have an error, try checking the server logs if you have access to them.
+        By default, the server logs to stderr, unless it is running from inetd, or its execution
+        mode is detached, in which case logging is disabled by default. </para><para> The command
+        line options -d , -log-level, -L and -logdir can affect where logs will be written, as can
+        the configuration file options log_single and log_unique. See the <olink
+            targetdoc="gridftpPI" targetptr="globus-gridftp-server"/> for more information on these
+            and other configuration options.</para>
+   <!-- <para>For a list of common errors in GT, see <olink
+    targetdoc="gtuser" targetptr="errors"/>.</para> -->
+    <xi:include
+        href="GridFTP_Errors_Frag.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/><section>
+        <title>Establish control channel connection</title>
+        <para>Verify that you can establish a control channel connection and that the server has
+            started successfully by telnetting to the port on which the server is running: </para>
+        <screen>% telnet localhost 2811
+                Trying 127.0.0.1...
+                Connected to localhost.
+                Escape character is '^]'.
+                220 GridFTP Server mldev.mcs.anl.gov 2.0 (gcc32dbg, 1113865414-1) ready.</screen>
+        <para>If you see anything other than a 220 banner such as the one above, the server has not
+            started correctly.</para>
+        <para>Verify that there are no configuration files being unexpectedly loaded from
+            /etc/grid-security/gridftp.conf or $GLOBUS_LOCATION/etc/gridftp.conf. If those files
+            exist, and you did not intend for them to be used, rename them to .save, or specify -c
+            none on the command line and try again.</para>
+        <para>If you can log into the machine where the server is, try running the server from the
+            command line with only the -s option: </para>
+        <screen>$GLOBUS_LOCATION/sbin/globus-gridftp-server -s</screen>
+        <para>The server will print the port it is listening on: </para>
+        <screen>Server listening at gridftp.mcs.anl.gov:57764</screen>
+        <para>Now try and telnet to that port. If you still do not get the banner listed above,
+            something is preventing the socket connection. Check firewalls, tcp-wrapper, etc.</para>
+        <para>If you now get a correct banner, add -p 2811 (you will have to disable (x)inetd on
+            port 2811 if you are using them or you will get port already in use):</para>
+        <screen>$GLOBUS_LOCATION/sbin/globus-gridftp-server -s -p 2811</screen>
+        <para>Now telnet to port 2811. If this does not work, something is blocking port 2811. Check
+            firewalls, tcp-wrapper, etc.</para>
+        <para>If this works correctly then re-enable your normal server, but remove all options but
+            -i, -s, or -S.</para>
+        <para>Now telnet to port 2811. If this does not work, something is wrong with your service
+            configuration. Check /etc/services and (x)inetd config, have (x)inetd restarted, etc.</para>
+        <para>If this works, begin adding options back one at a time, verifying that you can telnet
+            to the server after each option is added. Continue this till you find the problem or get
+            all the options you want. </para>
+        <para>At this point, you can establish a control connection. Now try running
+            globus-url-copy.</para>
+    </section><section>
+        <title>Try running globus-url-copy</title>
+        <para>Once you've verified that you can establish a control connection, try to make a
+            transfer using globus-url-copy.</para>
+        <para>If you are doing a <glossterm>client</glossterm>/server transfer (one of your URLs has
+                <filename>file:</filename> in it) then try:</para>
+        <screen>globus-url-copy -vb -dbg gsiftp://host.server.running.on/dev/zero file:///dev/null</screen>
+        <para>This will run until you control-c the transfer. If that works, reverse the direction:</para>
+        <screen>globus-url-copy -vb -dbg file:///dev/zero gsiftp://host.server.running.on/dev/null</screen>
+        <para>Again, this will run until you control-c the transfer.</para>
+        <para>If you are doing a <glossterm baseform="third party transfers">third party
+            transfer</glossterm>, run this command:</para>
+        <screen>globus-url-copy -vb -dbg gsiftp://host.server1.on/dev/zero gsiftp://host.server2.on/dev/null</screen>
+        <para>Again, this will run until you control-c the transfer.</para>
+        <para>If the above transfers work, try your transfer again. If it fails, you likely have
+            some sort of file permissions problem, typo in a file name, etc.</para>
+    </section><section>
+        <title>If your server starts...</title>
+        <para>If the server has started correctly, and your problem is with a security failure or
+            gridmap lookup failure, verify that you have security configured properly <olink
+                targetdoc="gtadmin" targetptr="gtadmin-basic-security">here</olink>.</para>
+        <para>If the server is running and your client successfully authenticates but has a problem
+            at some other time during the session, please ask for help on <ulink
+                url="http://dev.globus.org/wiki/Mailing_Lists">gt-user@globus.org</ulink>. When you
+            send mail or submit bugs, please always include as much of the following information as
+            possible:</para>
+        <itemizedlist>
+            <listitem>
+                <simpara>Specs on all hosts involved (OS, processor, RAM, etc).</simpara>
+            </listitem>
+            <listitem>
+                <simpara>globus-url-copy -version</simpara>
+            </listitem>
+            <listitem>
+                <simpara>globus-url-copy -versions </simpara>
+            </listitem>
+            <listitem>
+                <simpara>Output from the telnet test above.</simpara>
+            </listitem>
+            <listitem>
+                <simpara>The actual command line you ran with -dbg added. Don't worry if the output
+                    gets long.</simpara>
+            </listitem>
+            <listitem>
+                <simpara>Check that you are getting a FQDN and /etc/hosts that is sane.</simpara>
+            </listitem>
+            <listitem>
+                <simpara>The server configuration and setup (/etc/services entries, (x)inetd
+                    configs, etc.).</simpara>
+            </listitem>
+            <listitem>
+                <simpara> Any relevant lines from the server logs (not the entire log
+                please).</simpara>
+            </listitem>
+        </itemizedlist>
+    </section><section id="gridftp-troubleshooting-latency">
+        <title>High latency for GridFTP server connections</title>
+        <para> If you run GridFTP servers via Xinetd and notice high latency for connections and/or
+            transfers, check if <filename>/etc/xinetd.conf</filename> or the gsiftp service
+            configuration inside <filename>/etc/xinetd.d</filename> is set to log USERID as follows:
+            <screen>log_on_success += USERID
+log_on_failure += USERID</screen></para>
+        <para>Such a configuration tells Xinetd to log the remote user using the method defined in
+            RFC 1413, which causes an ident client to attempt to query the machine that the
+            connection is coming from before the service will run. Even when this succeeds, the
+            response can't be trusted, and more often than not it is rejected or simply dropped
+            (which results in the longest delays) by the remote firewall.</para>
+        <para>Latency can be reduced by making sure Xinetd does <emphasis>not</emphasis> log the
+            USERID.</para>
+    </section></chapter>

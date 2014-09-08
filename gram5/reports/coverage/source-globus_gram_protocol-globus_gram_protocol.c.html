@@ -1,0 +1,1671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for globus_gram_protocol.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Copyright 1999-2006 University of Chicago</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * you may not use this file except in compliance with the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * You may obtain a copy of the License at</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * http://www.apache.org/licenses/LICENSE-2.0</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * Unless required by applicable law or agreed to in writing, software</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">13</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * See the License for the specific language governing permissions and</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * limitations under the License.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_i_gram_protocol.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;version.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">20</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/**</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> * @defgroup globus_gram_protocol_functions Functions</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">22</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"> */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">23</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">gss_cred_id_t				globus_i_gram_protocol_credential;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">24</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_mutex_t				globus_i_gram_protocol_mutex;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_cond_t				globus_i_gram_protocol_cond;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">27</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_list_t *				globus_i_gram_protocol_listeners;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_list_t *				globus_i_gram_protocol_connections;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">29</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_list_t *				globus_i_gram_protocol_old_creds;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_bool_t 				globus_i_gram_protocol_shutdown_called;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">31</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_io_attr_t			globus_i_gram_protocol_default_attr;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">32</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int					globus_i_gram_protocol_num_connects;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">33</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_handle_t		globus_i_gram_protocol_handle;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">35</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static int globus_l_gram_protocol_activate(void);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">36</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static int globus_l_gram_protocol_deactivate(void);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">37</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">38</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_module_descriptor_t globus_i_gram_protocol_module =</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">39</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    &quot;globus_gram_protocol&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">41</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_l_gram_protocol_activate,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">42</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_l_gram_protocol_deactivate,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    GLOBUS_NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">44</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    GLOBUS_NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">45</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    &amp;local_version</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">46</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">};</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">49</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">51</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_protocol_activate(void)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">52</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">53</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    OM_uint32				major_status;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">54</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    OM_uint32				minor_status;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">55</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int					result;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    char *				message;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">57</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">58</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    result = globus_module_activate(GLOBUS_GSI_GSS_ASSIST_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">59</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    if(result != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">60</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">61</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        return GLOBUS_GRAM_PROTOCOL_ERROR_NO_RESOURCES;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">62</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">63</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">64</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    result = globus_module_activate(GLOBUS_IO_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">65</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    if(result != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">66</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">67</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">	return GLOBUS_GRAM_PROTOCOL_ERROR_NO_RESOURCES;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">69</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">70</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    globus_thread_key_create(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">71</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            &amp;globus_i_gram_protocol_error_key,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">            globus_i_gram_protocol_error_destroy);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">75</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * Get the GSSAPI security credential for this process.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">76</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * we save it in static storage, since it is only</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * done once and can be shared by many threads.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * with some GSSAPI implementations a prompt to the user</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * may be done from this routine.</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">80</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     *</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">81</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * we will use the assist version of acquire_cred</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">82</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">84</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    major_status = globus_gss_assist_acquire_cred(&amp;minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">85</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                        GSS_C_BOTH,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">86</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                        &amp;globus_i_gram_protocol_credential);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">87</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">88</td>
+          <td class="coverageCount">869</td>
+          <td class="srcCell"><span class="srcLine">    if (major_status != GSS_S_COMPLETE)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">90</td>
+          <td class="coverageCount">40</td>
+          <td class="srcCell"><span class="srcLine">        globus_gss_assist_display_status_str(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">91</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		&amp;message,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                &quot;gram_init failure:&quot;,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">93</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                major_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">94</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">95</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                0);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">96</td>
+          <td class="coverageCount">40</td>
+          <td class="srcCell"><span class="srcLine">	globus_gram_protocol_error_7_hack_replace_message(message);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">97</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">98</td>
+          <td class="coverageCount">40</td>
+          <td class="srcCell"><span class="srcLine">	globus_module_deactivate(GLOBUS_IO_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">99</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">100</td>
+          <td class="coverageCount">40</td>
+          <td class="srcCell"><span class="srcLine">        return GLOBUS_GRAM_PROTOCOL_ERROR_AUTHORIZATION; /* need better return code */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">101</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">102</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">103</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_listeners = GLOBUS_NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">104</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_connections = GLOBUS_NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">105</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_old_creds = GLOBUS_NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">106</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_shutdown_called = GLOBUS_FALSE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">107</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_num_connects = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">108</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_mutex_init(&amp;globus_i_gram_protocol_mutex, GLOBUS_NULL);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">109</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_cond_init(&amp;globus_i_gram_protocol_cond, GLOBUS_NULL);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">110</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_gram_protocol_setup_attr(&amp;globus_i_gram_protocol_default_attr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">111</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">112</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">113</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">114</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">115</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">116</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">static int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">117</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_l_gram_protocol_deactivate(void)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">118</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">119</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_listener_t *  listener;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">120</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">121</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">122</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * wait for in-progress commands to complete</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">123</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">124</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_mutex_lock( &amp;globus_i_gram_protocol_mutex );</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">125</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">126</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">	globus_i_gram_protocol_shutdown_called = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">127</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">128</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	/* finish all outstanding accepts */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">129</td>
+          <td class="coverageCount">1624</td>
+          <td class="srcCell"><span class="srcLine">	while (!globus_list_empty(globus_i_gram_protocol_listeners))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">130</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">131</td>
+          <td class="coverageCount">18</td>
+          <td class="srcCell"><span class="srcLine">	    listener = (globus_i_gram_protocol_listener_t *)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">132</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">		globus_list_first(globus_i_gram_protocol_listeners);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">133</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">134</td>
+          <td class="coverageCount">18</td>
+          <td class="srcCell"><span class="srcLine">	    globus_i_gram_protocol_callback_disallow(listener);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">135</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">136</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">137</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	/* wait for all outgoing connections to get replies */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">138</td>
+          <td class="coverageCount">1618</td>
+          <td class="srcCell"><span class="srcLine">	while (globus_i_gram_protocol_num_connects != 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">139</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">140</td>
+          <td class="coverageCount">12</td>
+          <td class="srcCell"><span class="srcLine">	    globus_cond_wait(&amp;globus_i_gram_protocol_cond,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">141</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">			     &amp;globus_i_gram_protocol_mutex);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">142</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">	}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">143</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">144</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_mutex_unlock(&amp;globus_i_gram_protocol_mutex);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">145</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_io_tcpattr_destroy(&amp;globus_i_gram_protocol_default_attr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">146</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_mutex_destroy(&amp;globus_i_gram_protocol_mutex);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">147</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">148</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_module_deactivate(GLOBUS_GSI_GSS_ASSIST_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">149</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_module_deactivate(GLOBUS_IO_MODULE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">150</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /*</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">151</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * GSSAPI - cleanup of the credential</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">152</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     * don&#39;t really care about returned status</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">153</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">     */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">154</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    if (globus_i_gram_protocol_credential != GSS_C_NO_CREDENTIAL)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">155</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">156</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        OM_uint32 minor_status;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">157</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">        gss_release_cred(&amp;minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">158</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                         &amp;globus_i_gram_protocol_credential);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">159</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">	globus_i_gram_protocol_credential = GSS_C_NO_CREDENTIAL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">160</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">161</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">162</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    globus_i_gram_protocol_listeners = GLOBUS_NULL;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">163</td>
+          <td class="coverageCount">803</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">164</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">165</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">166</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">/************************* help function *********************************/</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">167</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">168</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">169</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_setup_attr(globus_io_attr_t *  attr)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">170</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">171</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_result_t                        res;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">172</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    globus_io_secure_authorization_data_t  auth_data;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">173</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">174</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* acquire mutex */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">175</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    res = globus_io_secure_authorization_data_initialize(&amp;auth_data);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">176</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    if (res != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">177</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">178</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto error_exit;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">179</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">180</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    res = globus_io_tcpattr_init(attr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">181</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    if (res != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">182</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">183</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto destroy_1;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">184</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">185</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    res = globus_io_attr_set_socket_keepalive(attr, GLOBUS_TRUE);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">186</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    if (res != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">187</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">188</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto destroy_2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">189</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">190</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    res = globus_io_attr_set_secure_authentication_mode(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">191</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        attr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">192</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_IO_SECURE_AUTHENTICATION_MODE_MUTUAL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">193</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        globus_i_gram_protocol_credential);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">194</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    if (res != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">195</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">196</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto destroy_2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">197</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">198</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    res = globus_io_attr_set_secure_authorization_mode(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">199</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        attr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">200</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_IO_SECURE_AUTHORIZATION_MODE_SELF,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">201</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        &amp;auth_data);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">202</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    if (res != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">203</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">204</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto destroy_2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">205</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">206</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    res = globus_io_attr_set_secure_channel_mode(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">207</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        attr,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">208</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        GLOBUS_IO_SECURE_CHANNEL_MODE_SSL_WRAP);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">209</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    if (res != GLOBUS_SUCCESS)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">210</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">211</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto destroy_2;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">212</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">213</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">214</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    globus_io_secure_authorization_data_destroy(&amp;auth_data);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">215</td>
+          <td class="coverageCount">829</td>
+          <td class="srcCell"><span class="srcLine">    return GLOBUS_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">216</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">217</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">destroy_2:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">218</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_io_tcpattr_destroy(attr);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">219</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">destroy_1:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">220</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_io_secure_authorization_data_destroy(&amp;auth_data);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">221</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">error_exit:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">222</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    globus_object_free(globus_error_get(res));</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">223</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">224</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    /* release mutex */</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">225</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">    return GLOBUS_GRAM_PROTOCOL_ERROR_CONNECTION_FAILED;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">226</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">227</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">228</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_bool_t</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">229</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">globus_gram_protocol_authorize_self(</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">230</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    gss_ctx_id_t                        context)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">231</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">232</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    OM_uint32                           major_status;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">233</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    OM_uint32                           minor_status;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">234</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    gss_name_t                          source_name;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">235</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    gss_name_t                          target_name;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">236</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 equal;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">237</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    globus_bool_t                       result = GLOBUS_FALSE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">238</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">239</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    major_status = gss_inquire_context(&amp;minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">240</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       context,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">241</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       &amp;source_name,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">242</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       &amp;target_name,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">243</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">244</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">245</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">246</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       NULL,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">247</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                       NULL);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">248</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    if(GSS_ERROR(major_status))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">249</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">250</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto exit;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">251</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">252</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">253</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    major_status = gss_compare_name(&amp;minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">254</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                    source_name,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">255</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                    target_name,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">256</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                                    &amp;equal);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">257</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    if(GSS_ERROR(major_status))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">258</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">259</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto free_names;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">260</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">261</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">262</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    if(equal)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">263</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">264</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">        result = GLOBUS_TRUE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">265</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">266</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">267</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine"> free_names:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">268</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    gss_release_name(&amp;minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">269</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     &amp;source_name);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">270</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    gss_release_name(&amp;minor_status,</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">271</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">                     &amp;target_name);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">272</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine"> exit:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">273</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">274</td>
+          <td class="coverageCount">580</td>
+          <td class="srcCell"><span class="srcLine">    return result;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">275</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    </span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">276</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">}</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

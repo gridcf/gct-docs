@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<appendix id="gridftp-SRB">
+    <title>GT <replaceable role="entity">version</replaceable> GridFTP: Setting up Storage Resource
+        Broker (SRB)</title>
+    <titleabbrev>Setting up SRB for use with GridFTP</titleabbrev>
+    <section id="gridftp-SRB-intro">
+        <title>Introduction</title>
+        <para>The Storage Resource Broker Data Storage Interface (SRB-DSI) is an extension to the
+            GridFTP server that allows it to interact with SRB. Plugging this extension into a
+            GridFTP server allows the GridFTP server to access a SRB resource and serve it to any
+            GridFTP client as though it were a filesystem.</para>
+    </section>
+    <section id="gridftp-SRB-architecture">
+        <title>Architecture</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="srb-dsi.gif" align="center"/>
+            </imageobject>
+            <textobject>
+                <phrase>SRB DSI Architecture</phrase>
+            </textobject>
+        </mediaobject>
+        <para>The above image shows the architecture of the system. There are 4 major components:</para>
+        <itemizedlist>
+            <listitem>
+                <simpara><emphasis>SRB Server </emphasis>- This is where the data is stored. It is
+                    accessed by the GridFTP server via the standard SRB protocols using GSI_AUTH.
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara><emphasis>SRB-DSI</emphasis> - This component is the bridge between GridFTP
+                    and SRB. All operation requests and data are routed through this component. The
+                    GridFTP server makes requests of it, then it translates these requests into SRB
+                    client commands. </simpara>
+            </listitem>
+            <listitem>
+                <simpara><emphasis>GridFTP Server</emphasis> - A standard GridFTP <replaceable
+                        role="entity">version</replaceable> server is loaded with the SRB-DSI.
+                    Clients contact this server to access data in a SRB resource. The server passes
+                    the request to the SRB-DSI which, as described above, passes the request on to
+                    the SRB server. The responses to the requests return along the same path.
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara><emphasis>GridFTP Client </emphasis>- A stock GridFTP client (like <command
+                        >globus-url-copy</command>). No modifications to the client are
+                needed.</simpara>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <section id="gridftp-SRB-software">
+        <title>Software</title>
+        <para>You need the following items to use the SRB-DSI:</para>
+        <itemizedlist>
+            <listitem>
+                <simpara><emphasis>Globus Toolkit</emphasis> - You need the GridFTP distributed with
+                    GT (compatible with 4.0.1 or later). You can find that <ulink
+                        url="http://www.globus.org/toolkit/downloads/{$version}/">here</ulink>.
+                </simpara>
+            </listitem>
+            <listitem>
+                <simpara><emphasis>SRB Client 3.4.0</emphasis> - You only need the client libraries
+                    to build the SRB-DSI, but you will need access to a running SRB server and
+                    resource. You can find the client libraries <ulink
+                        url="http://www.sdsc.edu/srb/tarfiles/main.html">here</ulink>. </simpara>
+            </listitem>
+            <listitem>
+                <simpara><emphasis>SRB-DSI </emphasis>- You can find the SRB-DSI <ulink
+                        url="http://www-unix.mcs.anl.gov/~bresnaha/SRB_DSI_Doc/globus_srb_dsi-latest.tar.gz"
+                        >here</ulink>.</simpara>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <section id="gridftp-SRB-building">
+        <title>Building</title>
+        <para>Instructions for building <olink targetdoc="gtadmin">Globus</olink> and <ulink
+                url="http://www.sdsc.edu/srb">SRB</ulink> are well documented in the above links.
+            The following sections describe one way of building these two packages. However, if any
+            questions or errors are discovered, the reader should look to the above links for
+            solutions.</para>
+        <section id="gridftp-SRB-building-globus">
+            <title>Building Globus</title>
+            <para>Download the source installer, choose a path on your filesystem for your
+                    <computeroutput>GLOBUS_LOCATION</computeroutput>, and run the following:</para>
+            <screen>
+% bunzip2 gt<replaceable role="entity">version</replaceable>-all-source-installer.tar.bz2
+% tar -xvf gt<replaceable role="entity">version</replaceable>-all-source-installer.tar
+% export GLOBUS_LOCATION=&lt;path you chose for your GLOBUS_LOCATION&gt;
+% ./configure --prefix=$GLOBUS_LOCATION
+% make gridftp globus_gridftp_server-thr
+% source $GLOBUS_LOCATION/etc/globus-user-env.sh</screen>
+        </section>
+        <section id="gridftp-SRB-building-SRB">
+            <title>Building SRB</title>
+            <screen>
+% ./configure  --enable-gsi-auth --enable-globus-location=$GLOBUS_LOCATION --enable-globus-flavor=&lt;a threaded globus flavor&gt;
+% make</screen>
+        </section>
+        <section id="gridftp-SRB-building-SRBDSI">
+            <title>Building SRB-DSI</title>
+            <para>The SRB-DSI is a GPT package. More information about GPT package installation can
+                be found <ulink url="http://www.gridpackagingtools.org/">here</ulink>. Most users
+                should simply need:</para>
+            <screen>
+gpt-build -force CONFIGOPTS_GPTMACRO="--with-srb-path=&lt;location of SRB source tree&gt;"  globus_srb_dsi-0.13.tar.gz &lt;threaded flavor&gt;</screen>
+        </section>
+    </section>
+    <section id="gridftp-SRB-administration">
+        <title>Administration</title>
+        <para>Before you can run the GridFTP server with the SRB-DSI, you need to set up some files. </para>
+        <section id="gridftp-SRB-config-file">
+            <title>Creating and setting up the SRB configuration file</title>
+            <para> A configuration file must be created at:</para>
+            <screen>$GLOBUS_LOCATION/etc/gridftp_srb.conf</screen>
+            <para>The following values must be set in this file:</para>
+            <screen>
+srb_hostname &lt;host&gt;:&lt;port&gt;
+srb_hostname_dn &lt;domain name to expect from SRB server&gt;
+srb_default_resource &lt;default srb resource to use&gt;</screen>
+        </section>
+        <section id="gridftp-SRB-gridmap-file">
+            <title>Setting up the gridmap file</title>
+            <para>Additionally, the gridmap file must be special for this DSI. Along with the
+                subject name and username, the SRB-DSI needs to know the SRB domain name for the
+                user. This is handled by adding an additional value to the gridmap file:</para>
+            <screen> 
+"&lt;user security DN&gt;" &lt;srb user name&gt;@&lt;domain name&gt;</screen>
+        </section>
+    </section>
+    <section id="gridftp-SRB-running">
+        <title>Running</title>
+        <para>Once you have the configuration files in place, you can run the server. </para>
+        <important>
+            <simpara>All options of the server apply, but the parameter <computeroutput>-dsi srb
+                    -auth-level 4</computeroutput>
+                <emphasis>must</emphasis> also be used.</simpara>
+        </important>
+        <para>For more information on setting these values and running the GridFTP server see <olink targetdoc="gridftpAdmin"
+                targetptr="gridftp-configuring"/>. </para>
+        <para>Most users can run with:</para>
+        <screen> 
+$GLOBUS_LOCATION/sbin/globus-gridftp-server -p &lt;port&gt; -dsi srb -auth-level 4</screen>
+    </section>
+    <section id="gridftp-SRB-seealso">
+        <title>See Also</title>
+        <para>See the <ulink url="http://www-unix.mcs.anl.gov/~bresnaha/SRB_DSI_Doc/README.txt"
+                >README</ulink> file for more information.</para>
+    </section>
+</appendix>

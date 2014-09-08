@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="xio-apis">
+  <title>XIO APIs</title>
+  <section>
+    <title>Programming Model Overview</title>
+    <para> Globus XIO is based on an event based asynchronous programming model. This model is
+      described in great detail at: <olink targetdoc="gtdeveloper" targetptr="globus-async">Asynchronous Event
+        Handling</olink>. In short, with Globus XIO, connections are opened and closed. While open,
+      read and write requests are posted with a callback function pointer given by the user. When
+      the event completes, the given callback is called. </para>
+  </section>
+
+  <section>
+    <title>Component API</title>
+    <para>You can find documentation of the XIO library at: </para>
+    <para>
+      <ulink url="http://www.globus.org/api/c/globus_xio/html/index.html"
+        >http://www.globus.org/api/c/globus_xio/html/index.html</ulink>
+    </para>
+    <para>For information on the internationalization API, see <olink targetdoc="ccommonlibPI"
+        targetptr="ccommonlib-apis"/>. </para>
+  </section>
+</chapter>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<article id="gsiopensshMig">
+  <title> GT <replaceable role="entity">version</replaceable> Migrating Guide for GSI-OpenSSH</title>
+  <titleabbrev>Migrating Guide</titleabbrev>
+<para>No special procedures are required for upgrading GSI-OpenSSH installations. GSI-OpenSSH is backward compatible.</para>
+</article>

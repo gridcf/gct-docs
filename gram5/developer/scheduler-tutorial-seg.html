@@ -1,0 +1,148 @@
+<?php include_once( "/nfs/globus.org/include/globus_header.inc" ); ?>
+<!-- Include some useful php functions and the standard globus page header -->
+<?php
+    $title="GRAM Scheduler Interface Tutorial (SEG Module)";
+    include_once("scheduler-tutorial-utils.php");
+?>
+
+<h1><?php echo $title; ?></h1>
+
+    <p>The Scheduler Event Generator (or SEG) is an application which uses
+    scheduler-specific monitors to report job state changes to the Managed
+    Job Service.  The SEG modules themselves implement a simple interface
+    (described here) to generate events from a scheduler. This document
+    describes how to write a SEG module for a scheduler, using
+    the LSF scheduler implementation as an example.</p>
+
+
+    <h2>Scheduler Event Generator Module</h2>
+    <p>The SEG module for a scheduler may use whatever method is most
+    appropriate for receiving events from the scheduler. At the time of
+    writing this, all SEG modules have relied on scheduler log files to
+    determine when to issue events. The main reasons for this are:</p>
+    <dl>
+      <dt>Restartability</dt>
+      <dd>In the case the Web Service Container fails and restarts, the
+      SEG module must be able to resume generating events from the last 
+      state the container had persisted.</dd>
+      <dt>Performance</dt>
+      <dd>Earlier job monitoring mechanisms used by GRAM relied on actively
+      polling the scheduler. This caused the head node of the scheduler
+      to be overloaded and perform poorly. By watching log files, the
+      computation required to obtain job state is reduced dramatically.</dd>
+    </dl>
+
+    <p>Even with these considerations, it might be appropriate in a SEG
+    module for some particular scheduler to use some scheduler API to receive
+    events directly from the scheduler if it provides a suitable API.</p>
+
+    <h3>Module descriptor</h3>
+    <p>The SEG module for a scheduler is implemented as a globus extension C shared library
+    which contains a <code>globus_module_descriptor</code>. The module 
+    descriptor symbol must be named
+    <code>globus_scheduler_event_module_ptr</code>.In the lsf SEG module, we
+    have</p>
+
+    <pre>
+#include "globus_common.h"
+#include "globus_scheduler_event_generator.h"
+#include "version.h"
+
+    ...
+
+GlobusExtensionDefineModule(globus_seg_lsf) =
+{
+    "globus_seg_lsf",
+    globus_l_lsf_module_activate,
+    globus_l_lsf_module_deactivate,
+    NULL,
+    NULL,
+    &local_version
+};
+
+    </pre>
+
+    <p>The <code>globus-scheduler-event-generator</code> program will interact
+    with the scheduler-specific module by activating the extension (resulting
+    in the module's activate (<code>globus_l_lsf_module_activate</code>) and
+    deactivate (<code>globus_l_lsf_module_deactivate</code>) functions to
+    be invoked.</p>
+
+    <h3>Activation and Deactivation</h3>
+    <p>Within the module activation function, we'll initialize Globus modules
+    that we will use, initialize our state structure and register an event
+    with the Globus event driver to enable us to begin searching the log
+    file for job events. The call to
+    <code>globus_scheduler_event_generator_get_timestamp</code> will
+    return in its parameter the timestamp from which the scheduler module
+    should begin issuing events from. If this value is 0, then the monitor
+    should begin issuing events from the current time and ignore any previous
+    scheduler state changes.</p>
+
+    <p>At module deactivation, the LSF SEG module waits until all log
+    searching events have finished and then deactivates the modules it 
+    activated.</p>
+
+    <h3>LSF State</h3>
+    <p>Let's look a bit at the logfile state structure.  This structure
+    contains the information we need to reliably parse the LSF log files.
+    Most of the logic in the LSF SEG module is related to keeping track of
+    which log file is currently being read and where in that file we can
+    parse events from (somewhat complicated by the fact that the LSF log
+    files are renamed from time to time). We have to be careful to make sure
+    that when we parse an event from the logfile that the logfile hasn't been
+    written to during our read and that the event occurs after the starting
+    timestamp we are interested.</p>
+    
+    <p> We also keep track of the path to the LSF log directory, the current
+    log file we are parsing, our location within the logfile, and a buffer of
+    partial events which we've read. All of this information is threaded
+    throw the callbacks </p>
+
+    <h3>Read Callback</h3>
+    <p>The read callback is called periodically to check to see if any new
+    events are available from the log file.  To make sure we are keeping
+    things consistent, we will <code>stat</code> the LSF index file which is
+    changed whenever logs are rotated before we issue events for any log
+    messages we read. After we have a buffer of valid data, we parse it and
+    call functions in the SEG API to generate events from the data we read.
+    </p>
+
+    <p>If we our read was up to the end of the active log file, we delay
+    our next read for a few seconds before the read callback will be called
+    again---the file is currently lacking new events. Otherwise, we schedule
+    a new read callback to occur as soon as possible. We do not loop around
+    the reads so that the SEG events we register with the API can occur.</p>
+
+    <h3>Getting Logfile Path</h3>
+    <p>For LSF, the rotated log files are named <code>lsb.events.#</code> with
+    the number ranging from 1 to some system-configuration dependent number.
+    The smallest numbered log file is the most recent rotated one. The
+    current log file is <code>lsb.events</code>. Normally,
+    only the current log file is used, but if that file is rotated
+    while we are reading from it, or if the restart timestamp is before the
+    beginning of the current file, then we must search the log files for one
+    which begins after the event timestamp we're interested in.<p>
+
+    <p>Other schedulers have different methods of handling these log files
+    (PBS has one log file per day, our Fork implementation does not yet
+    implement any log rotation).</p>
+
+    <h3>Parsing and Generating events</h3>
+    <p>The event parsing function is entirely scheduler dependent. The code
+    scans the lsb event lines from the log file and generates appropriate
+    calls to the Globus Scheduler Event Generator API to send messages to
+    the Job State Monitor. The most often used API calls are those which
+    map to GRAM job state changes:</p>
+    <ul>
+      <li>globus_scheduler_event_pending</li>
+      <li>globus_scheduler_event_active</li>
+      <li>globus_scheduler_event_done</li>
+      <li>globus_scheduler_event_failed</li>
+    </ul>
+
+    <h2>Related Documentation</h2>
+    <ul>
+      <li><a href="<?php print doxygen_path()?>/globus_scheduler_event_generator/html/main.html">Scheduler Event Generator Documentation</a></li>
+    </ul>
+<?php include("/nfs/globus.org/include/globus_footer.inc"); ?>

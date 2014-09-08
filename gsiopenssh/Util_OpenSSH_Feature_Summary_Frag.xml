@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <section id="gsiopenssh-features"><title>Feature summary</title>
+<blockquote>
+
+<para>Supported Features</para>
+
+<itemizedlist>
+  <listitem><simpara>The <command>gsissh</command> command provides a secure remote login service with
+      forwarding of X.509 <glossterm>proxy credentials</glossterm>.</simpara></listitem>
+  <listitem><simpara>The <command>gsiscp</command> and <command>gsisftp</command> commands provide a secure file transfer
+      service authenticated with X.509 proxy credentials, mimicking
+      the <command>rcp/scp</command> and <command>ftp/sftp</command> commands.</simpara></listitem>
+  <listitem><simpara>All standard OpenSSH features are supported, excluding Kerberos
+      authentication.  Kerberos authentication is <emphasis>not</emphasis> compatible with
+      GSI-enabled OpenSSH.</simpara></listitem>
+  <listitem><simpara>The GSI-OpenSSH server can replace the standard system SSH
+      server in typical environments.</simpara></listitem>
+  <listitem><simpara>If no username is given on the command-line, GSI-OpenSSH
+      automatically determines the username that corresponds to the
+      X.509 proxy <glossterm>certificate subject</glossterm> in the server's
+      <computeroutput>grid-mapfile</computeroutput>.</simpara></listitem>
+</itemizedlist>
+
+<para>Deprecated Features</para>
+
+  <itemizedlist>
+  <listitem><simpara>None</simpara></listitem>
+  </itemizedlist>
+
+</blockquote>
+</section>

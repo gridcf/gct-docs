@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gram5Key">
+  <title>GT <replaceable role="entity">version</replaceable> GRAM5 Key Concepts</title>
+  <titleabbrev>GRAM5 Key Concepts</titleabbrev>
+  <bookinfo id="gram5-key-overview">
+    <abstract>
+      <title>Overview</title>
+      <para> The Globus Toolkit provides GRAM5: a service to submit, monitor, and cancel jobs on
+        Grid computing resources. In GRAM, a job consists of a computation and, optionally, file
+        transfer and management operations related to the computation. Some users, particularly
+        interactive ones, benefit from accessing output data files as the job is running. Monitoring
+        consists of querying and/or subscribing for status information, such as job state changes. </para>
+      <para> Grid computing resources are typically managed by a local resource manager which
+        implements allocation and prioritization policies while optimizing the execution of all
+        submitted jobs for efficiency and performance according to site policy. GRAM is not a
+        resource scheduler, but rather a protocol engine for communicating with a range of different
+        local resource schedulers using a standard message format. </para>
+    </abstract>
+  </bookinfo>
+  <chapter id="gram5-key-concepts">
+    <title>Conceptual details</title>
+    <para> A number of concepts underly the purpose and motivation for GRAM. These concepts are
+      divided into broad categories below. </para>
+    <section>
+      <title>Targeted job types</title>
+      <para> GRAM is meant to address a range of jobs where arbitrary programs, reliable operation,
+        stateful monitoring, credential management, and file staging are important. GRAM is not
+        meant to serve as a "remote procedure call" (RPC) interface for applications not requiring
+        many of these features. Furthermore, its interface model and implementation may be too
+        costly for such uses. The GRAM5 service protocols and implementation will always involve
+        multiple round-trips to support these advanced features that are not required for simple RPC
+        applications. </para>
+    </section>
+    <section>
+      <title>Component architecture</title>
+      <para> Rather than consisting of a monolithic solution, GRAM is based on a component
+        architecture at both the protocol and software implementation levels. This component
+        approach serves as an ideal which shapes the implementation as well as the abstract design
+        and features. </para>
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>Service model</entry>
+              <entry>
+                <para> For GRAM5, the <command>globus-gatekeeper</command> daemon and GSI library
+                  are used for secure communications and service dispatch. </para>
+                <para> The <command>globus-job-manager</command> daemon implements the job
+                  management and file transfer functionality. </para>
+              </entry>
+            </row>
+            <row>
+              <entry><glossterm baseform="LRM Adapter">Local Resource Manager Adapters</glossterm></entry>
+              <entry>
+                <para> GRAM provides a scripted plug-in architecture to enable extension with
+                  adapters to control a variety of local resource systems. </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section>
+      <title>Security</title>
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>Secure operation</entry>
+              <entry>
+                <para>GRAM5 uses SSL-based protocols to establish identity or provide other security
+                  tokens needed to authorize GRAM5 service requests. Once authorized, each instance
+                  of the job service runs as a local POSIX user. GRAM5 restricts job monitoring and
+                  management operations to those who are authorized by the local site policy.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>Local system protection domains</entry>
+              <entry>
+                <para>To protect users from each other, the GRAM5 job manager and the jobs it starts
+                  are executed in separate local security contexts. Additionally, GRAM mechanisms
+                  used to interact with the local resource are designed to minimize the privileges
+                  required and to minimize the risks of service malfunction or compromise. </para>
+              </entry>
+            </row>
+            <row>
+              <entry>Credential delegation and management</entry>
+              <entry>
+                <para>A client delegates some of its rights to the GRAM service in order to allow it
+                  to perform file transfers on behalf of the client and send state notifications to
+                  registered clients. Additionally, GRAM5 provides per-job credentials so that job
+                  instances may perform further authentication with other services. </para>
+              </entry>
+            </row>
+            <row>
+              <entry>Audit</entry>
+              <entry>
+                <para>GRAM uses a range of audit and logging techniques to record a history of job
+                  submissions and critical system operations. These records may be used to assist
+                  with accounting functions as well as to further mitigate risks from abuse or
+                  malfunction.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </chapter>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="GRAM5_Approach.xml"/>
+  <glossary role="auto" id="gram5Key-glossary">
+            <remark>
+                <!--some terms not in the docs but wanted in glossary: -->
+            <glossterm>Grid Resource Allocation and Management</glossterm>
+            <glossterm>Local Resource Manager</glossterm>
+            </remark>
+            <glossdiv><title>A</title>
+                <glossentry>
+                    <glossterm>Dummy term</glossterm>
+                    <glossdef>
+                        <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+                    </glossdef>
+                </glossentry>
+            </glossdiv>
+  </glossary>
+</book>

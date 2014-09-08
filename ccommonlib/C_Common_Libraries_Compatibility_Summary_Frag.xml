@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="ccommonlib-compatibility-summary"><title>Backward compatibility summary</title>
+<para>API changes since GT version <replaceable role="entity">previousversion</replaceable></para>
+<para>None.</para>
+<para>All of the GT 3.2 API is still functional in GT <replaceable role="entity">version</replaceable>.</para> 
+</section>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="simpleca-featuresummary"><title>Feature Summary</title>
+<para>Features new in GT <replaceable role="entity">shortversion</replaceable>
+<itemizedlist>
+  <listitem><simpara>Remove dependency on GPT to generate and use
+  SimpleCA</simpara></listitem>
+  <listitem><simpara>Support for generating native RPM and Debian
+  packages for SimpleCA files.</simpara></listitem>
+</itemizedlist>
+</para>
+<para>Other Supported Features
+<itemizedlist>
+  <listitem><simpara>Easy creation of X.509 certificates for use with the Globus Toolkit</simpara></listitem>
+  <listitem><simpara>Easy creation of GPT packages for the created SimpleCA</simpara></listitem>
+</itemizedlist>
+</para>
+<para>Deprecated Features
+<itemizedlist>
+  <listitem><simpara>GPT package distribution of CA data</simpara></listitem>
+</itemizedlist>
+</para>
+</section>

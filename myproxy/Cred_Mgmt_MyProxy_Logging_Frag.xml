@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<section id="myproxy-logging"><title>Logging</title>
+ <indexterm type="myproxy">
+  <primary>logging</primary>
+ </indexterm>
+ <para>
+The myproxy-server logs to the system logger (syslog) LOG_DAEMON
+facility.
+Alternatively, run
+</para>
+<blockquote><para><command>myproxy-server -d</command></para></blockquote>
+<para>
+from a terminal.
+In that mode, the myproxy-server will write debugging messages to the
+terminal and exit after servicing a single request.
+</para>
+</section>

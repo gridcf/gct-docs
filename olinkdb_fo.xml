@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE targetset 
+       SYSTEM "http://docbook.sourceforge.net/release/xsl/current/common/targetdatabase.dtd" [
+       <!ENTITY % myents SYSTEM "targetents">
+       
+       %myents;
+       
+       ]>
+<targetset>
+    <!-- Site map for generating relative paths between documents -->
+    <sitemap>
+        <dir name="documentation">
+            <dir name="admin">
+                <dir name="install">
+                    <document targetdoc="gtadmin" baseuri="installingGT.pdf"> &gtadminTarget;</document>
+                </dir>
+                <dir name="quickstart">
+                    <document targetdoc="quickstart" baseuri="gtQuickstart.pdf"> &quickstartTarget;</document>
+                </dir>
+            </dir>
+
+            <dir name="appendices">
+                <document targetdoc="appendices" baseuri="gtAppendices.pdf"> &appendicesTarget; </document>
+                <dir name="commands">
+                    <document targetdoc="gtcommands" baseuri="gtCommands.pdf"> &gtcommandsTarget;</document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gtdeveloper" baseuri="gtDeveloperGuide.pdf"> &gtdeveloperTarget;</document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="key" baseuri="gtKeyConcepts.pdf"> &keyTarget;</document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="mig" baseuri="gtMigratingGuide.pdf"> &migTarget;</document>
+                </dir>
+          <!--      <dir name="user">
+                    <document targetdoc="gtuser" baseuri="gtUserGuide.pdf"> &gtuserTarget;</document>
+                </dir> -->
+            </dir>
+            
+            <dir name="ccommonlib">
+                <document targetdoc="ccommonlib" baseuri="ccommonlib.pdf"> &ccommonlibTarget;
+                </document>
+                <dir name="developer">
+                    <document targetdoc="ccommonlibDeveloper" baseuri="ccommonlibDevelopersGuide.pdf"> &ccommonlibDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="ccommonlibMig" baseuri="ccommonlibMigratingGuide.pdf"> &ccommonlibMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="ccommonlibPI" baseuri="ccommonlibPublicInterfacesGuide.pdf"> &ccommonlibPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="ccommonlibQP" baseuri="ccommonlibQualityProfile.pdf"> &ccommonlibQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="ccommonlibRN" baseuri="ccommonlibReleaseNotes.pdf"> &ccommonlibRNTarget; </document>
+                </dir>
+            </dir>
+
+            <dir name="gram5">
+                <document targetdoc="gram5" baseuri="gram5.pdf"> &gram5Target;
+                </document>
+                <dir name="admin">
+                    <document targetdoc="gram5Admin" baseuri="gram5AdminGuide.pdf"> &gram5AdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gram5Developer" baseuri="gram5DeveloperGuide.pdf"> &gram5DeveloperTarget; </document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gram5Key" baseuri="gram5KeyConceptsGuide.pdf"> &gram5KeyTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gram5Mig" baseuri="gram5MigratingGuide.pdf"> &gram5MigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gram5PI" baseuri="gram5PublicInterfacesGuide.pdf"> &gram5PITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gram5QP" baseuri="gram5QualityProfile.pdf"> &gram5QPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gram5RN" baseuri="gram5ReleaseNotes.pdf"> &gram5RNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gram5User" baseuri="gram5UserGuide.pdf"> &gram5UserTarget; </document>
+                </dir>
+            </dir>
+
+            <dir name="gridftp">
+                <document targetdoc="gridftp" baseuri="gridftp.pdf"> &gridftpTarget;
+                </document>
+                <dir name="admin">
+                    <document targetdoc="gridftpAdmin" baseuri="gridftpAdminGuide.pdf"> &gridftpAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gridftpDeveloper" baseuri="gridftpDeveloperGuide.pdf"> &gridftpDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gridftpKey" baseuri="gridftpKeyConceptsGuide.pdf"> &gridftpKeyTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gridftpMig" baseuri="gridftpMigratingGuide.pdf"> &gridftpMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gridftpPI" baseuri="gridftpPublicInterfacesGuide.pdf"> &gridftpPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gridftpQP" baseuri="gridftpQualityProfile.pdf"> &gridftpQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gridftpRN" baseuri="gridftpReleaseNotes.pdf"> &gridftpRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gridftpUser" baseuri="gridftpUserGuide.pdf"> &gridftpUserTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="gsic">
+                <document targetdoc="gsic" baseuri="gsic.pdf"> &gsicTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="gsicAdmin" baseuri="gsicAdminGuide.pdf"> &gsicAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gsicDeveloper" baseuri="gsicDeveloperGuide.pdf"> &gsicDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gsciKey" baseuri="gsicKeyConceptsGuide.pdf"> &gsciKeyTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gsicMig" baseuri="gsicMigratingGuide.pdf"> &gsicMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gsicPI" baseuri="gsicPublicInterfacesGuide.pdf"> &gsicPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gsicQP" baseuri="gsicQualityProfile.pdf"> &gsicQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gsicRN" baseuri="gsicReleaseNotes.pdf"> &gsicRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gsicUser" baseuri="gsicUserGuide.pdf"> &gsicUserTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="gsiopenssh">
+                <document targetdoc="gsiopenssh" baseuri="gsiopenssh.pdf"> &gsiopensshTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="gsiopensshAdmin" baseuri="gsiopensshAdminGuide.pdf"> &gsiopensshAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gsiopensshDeveloper" baseuri="gsiopensshDeveloperGuide.pdf"> &gsiopensshDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gsiopensshMig" baseuri="gsiopensshMigratingGuide.pdf"> &gsiopensshMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gsiopensshPI" baseuri="gsiopensshPublicInterfacesGuide.pdf"> &gsiopensshPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gsiopensshQP" baseuri="gsiopensshQualityProfile.pdf"> &gsiopensshQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gsiopensshRN" baseuri="gsiopensshReleaseNotes.pdf"> &gsiopensshRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gsiopensshUser" baseuri="gsiopensshUserGuide.pdf"> &gsiopensshUserTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="myproxy">
+                <document targetdoc="myproxy" baseuri="myproxy.pdf"> &myproxyTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="myproxyAdmin" baseuri="myproxyAdminGuide.pdf"> &myproxyAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="myproxyDeveloper" baseuri="myproxyDeveloperGuide.pdf"> &myproxyDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="myproxyMig" baseuri="myproxyMigratingGuide.pdf"> &myproxyMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="myproxyPI" baseuri="myproxyPublicInterfaces.pdf"> &myproxyPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="myproxyQP" baseuri="myproxyQualityProfile.pdf"> &myproxyQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="myproxyRN" baseuri="myproxyReleaseNotes.pdf"> &myproxyRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="myproxyUser" baseuri="myproxyUserGuide.pdf"> &myproxyUserTarget; </document>
+                </dir>
+            </dir>
+ 
+            <dir name="rn">
+                <document targetdoc="rn" baseuri="gtReleaseNotes.pdf"> &rnTarget;</document>
+            </dir>
+            <dir name="simpleca">
+                <document targetdoc="simpleca" baseuri="simpleca.pdf"> &simplecaTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="simplecaAdmin" baseuri="simplecaAdminGuide.pdf"> &simplecaAdminTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="simplecaRN" baseuri="simplecaReleaseNotes.pdf"> &simplecaRNTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="xio">
+                <document targetdoc="xio" baseuri="xio.pdf"> &xioTarget;
+                </document>
+                <dir name="admin">
+                    <document targetdoc="xioAdmin" baseuri="xioAdminGuide.pdf"> &xioAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="xioDeveloper" baseuri="xioDeveloperGuide.pdf"> &xioDeveloperTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="xioMig" baseuri="xioMigratingGuide.pdf"> &xioMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="xioPI" baseuri="xioPublicInterfacesGuide.pdf"> &xioPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="xioQP" baseuri="xioQualityProfile.pdf"> &xioQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="xioRN" baseuri="xioReleaseNotes.pdf"> &xioRNTarget; </document>
+                </dir>
+            </dir>
+        </dir>
+    </sitemap>
+</targetset>

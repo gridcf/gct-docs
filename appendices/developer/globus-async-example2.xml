@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+
+                        <chapter id="globus-async-example2"><title>GT <replaceable role="entity">version</replaceable>: Asynchronous Event Handling: Example 2</title>
+    <titleabbrev>Asynchronous Event Handling: Example 2</titleabbrev>
+
+<screen>#include &lt;globus_common.h&gt;
+
+struct test_monitor_s
+{
+    globus_mutex_t                      mutex;
+    globus_cond_t                       cond;
+    globus_bool_t                       done;
+};
+
+void
+user_callback(
+    void *                              user_arg)
+{
+    struct test_monitor_s *              monitor;
+
+    monitor = (struct test_monitor_s *) user_arg;
+
+    globus_mutex_lock(&amp;monitor->mutex);
+    {
+        fprintf(stdout, "Signaling the wait\n");
+        monitor->done = GLOBUS_TRUE;
+        globus_cond_signal(&amp;monitor.cond);
+    }
+    globus_mutex_unlock(&amp;monitor->mutex);
+}
+
+int
+main(
+    int                                 argc,
+    char **                             argv)
+{
+    struct test_monitor_s               monitor;
+    globus_reltime_t                    delay;
+
+    globus_module_activate(GLOBUS_COMMON_MODULE);
+
+    globus_mutex_init(&amp;monitor.mutex, NULL);
+    globus_cond_init(&amp;monitor.cond, NULL);
+    monitor.done = GLOBUS_FALSE;
+
+    globus_mutex_lock(&amp;monitor.mutex);
+    {
+        GlobusTimeReltimeSet(delay, 1, 0);
+        globus_callback_register_oneshot(
+            NULL,
+            &amp;delay,
+            user_callback,
+            &amp;monitor);
+
+        while(!monitor.done)
+        {
+            fprintf(stdout, "waiting...\n");
+            globus_cond_wait(&amp;monitor.cond, &amp;monitor.mutex);
+        }
+    }
+    globus_mutex_unlock(&amp;monitor.mutex);
+
+    globus_module_deactivate(GLOBUS_COMMON_MODULE);
+
+    fprintf(stdout, "Done\n");
+
+    return 0;
+}
+
+</screen>
+</chapter>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section><title>Usability Summary</title>
+<para>The following areas have received substantial effort in order to make using GridFTP easier, 
+    more enjoyable, etc:</para>
+<itemizedlist>
+    <listitem><simpara>100% protocol compatibility with previous versions.  Any <glossterm>client</glossterm>/<glossterm>server</glossterm> combination since 2.4.0 
+			should work (barring a new client trying to invoke new functionality on an old server).</simpara>
+</listitem>
+<listitem><simpara>Greatly improved documentation.  It is not complete, and we will continue to develop it, but it is far 
+		better than past versions.</simpara></listitem>
+<listitem><para>
+For GT 4.0.0 there is a completely new server implementation that provides the following benefits:
+<itemizedlist>
+	<listitem><simpara>More stable (one project went from on the order of 1000 failures in a large workflow with the 2.4.3 server to zero failures with the new server).</simpara></listitem>
+	<listitem><simpara>More scalable (we had a single server supporting 1800 clients).</simpara></listitem>
+	<listitem><simpara>Easier to extend and modify. The Data Storage Interface (DSI) allows a clean way to access things other than POSIX file systems, such as tape systems, custom storage systems, etc.</simpara></listitem>
+	<listitem><simpara>Ability to run threaded servers (previous versions of the server did not support this).</simpara></listitem>
+    <listitem><simpara><glossterm>striping</glossterm> is now available (allows multi-Gigabit speeds).</simpara></listitem>
+	<listitem><simpara>Easier server configuration.</simpara></listitem>
+</itemizedlist>
+</para>
+</listitem>
+</itemizedlist>
+</section>

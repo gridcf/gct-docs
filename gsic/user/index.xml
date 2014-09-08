@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gsicUser">
+  <title>GT5: Security: GSI C User&apos;s Guide</title>
+  <titleabbrev>User&apos;s Guide</titleabbrev>
+  <bookinfo id="gsic-user-introduction">
+    <abstract>
+      <title>Introduction</title>
+      <para> Authentication in the Globus Toolkit is based on X.509 certificates. This document
+        describes how to acquire and use the certificates that you will need to authenticate
+        yourself to Globus services.</para>
+    </abstract>
+  </bookinfo>
+  <chapter id="gsic-user-usagescenarios">
+    <title>Usage scenarios</title>
+    <section id="gsic-user-basic-procedure">
+      <title>Basic procedure for using GSI C</title>
+      <para> In most cases, an individual will do the following: <itemizedlist>
+          <listitem>
+            <simpara>Acquire a <glossterm>user certificate</glossterm> from a certification
+              authority (CA) with <olink targetdoc="gsicUser" targetptr="grid-cert-request">grid-cert-request</olink>. This certificate will typically 
+              be valid for a year or more and will be stored in a file in the individual&apos;s home directory.</simpara>
+            <simpara>It is important to keep in mind when your cert will expire - after your user certificate expires, you may not be able to use secure 
+              services in GT!</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Use the end-user certificate to create a <glossterm>proxy certificate</glossterm> using <olink targetdoc="gsicUser" targetptr="grid-proxy-init">grid-proxy-init</olink>. This will be used to 
+              authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user
+              certificates (usually 12 hours). Once your proxy certificate expires, simply rerun <command>grid-proxy-init</command>.</simpara>
+          </listitem>
+        </itemizedlist></para>
+    </section>
+  </chapter>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../GSIC_Interface_Commandline_Frag.xml"/>
+  <!-- 
+<chapter id="gsic-user-gui">
+  <title>Graphical user interfaces</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../GSIC_Interface_GUI_Frag.xml"/>
+</chapter>
+  -->
+  <chapter id="gsic-user-troubleshooting">
+    <title>Troubleshooting</title>
+    <para>The following includes common errors for credentials and gridmap files. For information about system administrator logs, 
+    see <olink targetdoc="gsicAdmin" targetptr="gsic-admin-debugging"/> in the GSI C Admin Guide.</para>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../Credential_Troubleshooting_Frag.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../Gridmap_Troubleshooting_Frag.xml"/>
+  </chapter>
+  <glossary role="auto" id="glossary-gsicUser">
+    <remark>some terms not in the docs but wanted in glossary: <glossterm>scheduler</glossterm>
+    </remark>
+    <glossdiv>
+      <title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef></glossentry>
+    </glossdiv></glossary>
+</book>

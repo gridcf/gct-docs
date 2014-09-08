@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+<article id="gridftpQP">
+  <title>GT <replaceable role="entity">version</replaceable> GridFTP: Quality Profile</title>
+  <titleabbrev>Quality Profile</titleabbrev>
+  <section id="gridftp-qp-test">
+    <title>Test coverage reports </title>
+    <para>There are no test coverage reports available at this time.</para>
+  </section>
+  <section id="gridftp-qp-code">
+    <title>Code analysis reports </title>
+    <para>There are no code analysis reports available at this time.</para>
+  </section>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Known_Problems_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Fixed_Bugs_Frag.xml"/>
+
+  <section id="gridftp-qp-performance">
+    <title>Performance reports </title>
+    <indexterm type="gridftp">
+      <primary>performance reports (GridFTP)</primary>
+    </indexterm>
+    <itemizedlist>
+      <listitem>
+        <simpara>
+          <ulink url="../gridftp_performance.doc">Performance of Globus
+            Striped GridFTP Server on TeraGrid</ulink>
+        </simpara>
+      </listitem>
+      <listitem>
+        <simpara>
+          <ulink url="../gridftp_scalability.doc">GridFTP Scalability and
+            Performance Results</ulink>
+        </simpara>
+      </listitem>
+    </itemizedlist>
+  </section>
+</article>

@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- source.template -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Code Coverage for lock_test.c</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link href="coverage.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <table class="srcView">
+      
+        <tr>
+          <td class="lineCount">1</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &quot;globus_common.h&quot;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">2</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">3</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;sys/types.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">4</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;unistd.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">5</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;fcntl.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">6</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;stdlib.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">7</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;stdio.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">8</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;sys/stat.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">9</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;sys/wait.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">10</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">#include &lt;errno.h&gt;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">11</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">12</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">int main(int argc, char *argv[])</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">13</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">{</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">14</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 fd;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">15</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 rc;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">16</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    struct flock                        fl;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">17</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    pid_t                               pid;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">18</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    int                                 child_status;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">19</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">20</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    if (argc != 2)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">21</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">22</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        fprintf(stderr, &quot;Usage: %s lock-file-path\n&quot;, argv[0]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">23</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = EXIT_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">24</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto arg_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">25</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">26</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">27</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    fd = open(argv[1], O_RDWR|O_CREAT|O_TRUNC, S_IRUSR|S_IWUSR);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">28</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">29</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    if (fd &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">30</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">31</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        perror(&quot;open&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">32</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = EXIT_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">33</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto open_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">34</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">35</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    fl.l_start = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">36</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    fl.l_len = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">37</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    fl.l_pid = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">38</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    fl.l_type = F_WRLCK;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">39</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    fl.l_whence = SEEK_SET;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">40</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">41</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    rc = fcntl(fd, F_SETLKW, &amp;fl);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">42</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    if (rc &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">43</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">44</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        perror(&quot;fcntl&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">45</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = EXIT_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">46</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto fcntl_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">47</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">48</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">49</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">    pid = fork();</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">50</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">51</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">    if (pid &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">52</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">53</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        perror(&quot;fork&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">54</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        rc = EXIT_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">55</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">        goto fork_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">56</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">57</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">    else if (pid == 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">58</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">59</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        errno=0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">60</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        fl.l_start = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">61</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        fl.l_len = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">62</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        fl.l_pid = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">63</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        fl.l_type = F_WRLCK;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">64</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        fl.l_whence = SEEK_SET;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">65</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">66</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        rc = fcntl(fd,F_SETLK, &amp;fl);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">67</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        if (rc == 0 || (errno != EACCES &amp;&amp; errno != EAGAIN))</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">68</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">69</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            perror(&quot;fcntl&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">70</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = EXIT_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">71</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto child_lock_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">72</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">73</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">74</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">75</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">            rc = 0;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">76</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">            rc = EXIT_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">77</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">78</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">79</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">80</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">81</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        pid = wait(&amp;child_status);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">82</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">        if (pid &lt; 0)</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">83</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">84</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            perror(&quot;wait&quot;);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">85</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            rc = EXIT_FAILURE;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">86</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine"></span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">87</td>
+          <td class="coverageCountHilight">0</td>
+          <td class="srcCell"><span class="srcLineHilight">            goto wait_failed;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">88</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">89</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        else</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">90</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        {</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">91</td>
+          <td class="coverageCount">2</td>
+          <td class="srcCell"><span class="srcLine">            rc = EXIT_SUCCESS;</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">92</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">        }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCount">93</td>
+          <td class="coverageCount"></td>
+          <td class="srcCell"><span class="srcLine">    }</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">94</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">wait_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">95</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">child_lock_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">96</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">fork_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">97</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">fcntl_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">98</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">    close(fd);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">99</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">    remove(argv[1]);</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">100</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">open_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">101</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">arg_failed:</span></td>
+        </tr>
+      
+        <tr>
+          <td class="lineCountHilight">102</td>
+          <td class="coverageCount">4</td>
+          <td class="srcCell"><span class="srcLine">    exit(rc);</span></td>
+        </tr>
+      
+      </table>
+  </body>
+</html>

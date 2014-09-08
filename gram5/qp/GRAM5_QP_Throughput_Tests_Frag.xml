@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+    <section id="gram5-reports-throughput">
+        <title>GRAM5 Throughput Tests</title>
+        <indexterm type="gram5"><primary>GRAM5 Throughput Test Results</primary></indexterm>
+
+<para>
+   
+</para>
+
+    <section id="gram5-reports-throughput-configuration">
+    <title>Experiment Hardware and Software Configuration</title>
+
+    <para>
+    The following experiments were run on the
+    <systemitem class="systemname">nomer.mcs.anl.gov</systemitem> virtual
+    cluster. The
+    cluster consists of 6 partitions, each having a single
+    <hardware>Intel(R) Xeon(R) CPU E5430 @ 2.66GHz</hardware> core, and 2GB
+    RAM. The virtual machines in the cluster each had a single virtual network
+    interface. The cluster was configured as follows:
+
+    <itemizedlist>
+        <listitem><simpara>1 node: Master node</simpara></listitem>
+        <listitem><simpara>5 nodes: Test/execution nodes</simpara></listitem>
+    </itemizedlist>
+    </para>
+
+    <para>
+    All nodes ran an <command>apache2</command> http server,
+    <command>gmond</command> (ganglia monitoring), and
+    <command>pbs_mom</command> (torque LRM).
+    </para>
+
+    <para>
+        The master node also ran a <command>globus-gatekeeper</command>,
+        <command>globus-gridftp-server</command>,
+        <command>globus-job-manager-event-generator</command>,
+        <command>gmetad</command> (Ganglia Meta Daemon),
+        <command>pbs_sched</command> (Torque LRM scheduler),
+        <command>pbs_server</command> (Torque LRM server), and
+        <command>nfsd</command> linux kernel NFSv4 server for the execution
+        nodes.
+    </para>
+
+    <para>
+        The test nodes (1 for single-client tests, 5 for
+        multiple client tests) ran the
+        <command>gram-throughput-tester</command> program. All 5 test/execution
+        nodes executed the test job executables as scheduled by the LRM.
+    </para>
+
+    <para>
+        These tests were done with GT 5.0.2 beta1. The throughput tester was
+        compiled from CVS trunk October 30, 2009.
+    </para>
+    </section>
+
+    <section>
+    <title>Experiment Scenarios</title>
+
+    <para>
+        The first set of tests submitted jobs to the GRAM5 service for one hour.
+        After one hour elapsed, the client would terminate any jobs which were
+        being managed by the GRAM5 service. The test client recorded the time
+        of the experiment start, the time of the termination start, and the
+        time after which all jobs had reached a DONE or FAILED state.
+    </para>
+
+    <para>
+        The throughput test client would generate a maximum of 50 simultaneous
+        job requests. For all but the <emphasis>uncapped</emphasis> test below,
+        a maximum of 2000 jobs were managed by the job manager at any given
+        time (pending or active). Once the client had submitted 2000 jobs, it
+        would stop submissions until a job completed. A total of 10 execution
+        slots were available for the LRM to schedule jobs into, so many were in
+        the GRAM5 PENDING state during the duration of the test.
+    </para>
+
+    <para>
+        The different <command>gram-throughput-tester</command> experiments
+        consisted of:
+
+        <table>
+            <title>GRAM5 Throughput Tester Experiments</title>
+
+            <tgroup cols="5">
+                <thead>
+                    <row>
+                        <entry>Experiment Name</entry>
+                        <entry>LRM monitoring method</entry>
+                        <entry>Number of clients</entry>
+                        <entry>Number of users</entry>
+                        <entry>Maximum number of simultaneous jobs / client</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>1-client-poll</entry>
+                        <entry>POLL</entry>
+                        <entry>1</entry>
+                        <entry>1</entry>
+                        <entry>2000</entry>
+                    </row>
+                    <row>
+                        <entry>1-client-seg</entry>
+                        <entry>SEG</entry>
+                        <entry>1</entry>
+                        <entry>1</entry>
+                        <entry>2000</entry>
+                    </row>
+                    <row>
+                        <entry>1-client-seg-uncapped</entry>
+                        <entry>SEG</entry>
+                        <entry>1</entry>
+                        <entry>1</entry>
+                        <entry>unlimited</entry>
+                    </row>
+                    <row>
+                        <entry>5-client-seg</entry>
+                        <entry>SEG</entry>
+                        <entry>5</entry>
+                        <entry>1</entry>
+                        <entry>2000</entry>
+                    </row>
+                    <row>
+                        <entry>5-client-seg-diffusers</entry>
+                        <entry>SEG</entry>
+                        <entry>5</entry>
+                        <entry>5</entry>
+                        <entry>2000</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </para>
+    </section>
+
+    <section>
+    <title>Throughput Test Results</title>
+
+    <para>
+    The following table contains a summary of the results of these experiments.
+    The columns contain the following information:
+
+    <variablelist>
+        <varlistentry>
+            <term>Experiment</term>
+            <listitem><simpara>Experiment name, the same as in the previous
+            section</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>Total Jobs</term>
+            <listitem><simpara>The total number of GRAM jobs that were
+            <emphasis>submitted</emphasis> to the GRAM5 service by the
+            throughput tester in one hour.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>Termination Tasks After 1 Hour</term>
+            <listitem><simpara>The total number of jobs that were being managed
+            by the GRAM5 service when the one hour test period elapsed. These
+            jobs were terminated using the GRAM5 cancel protocol message by the
+            throughput tester.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>Termination Duration (hh:mm:ss)</term>
+            <listitem><simpara>The amount of time it took for the termination
+            tasks to complete and all jobs to reach the <literal>DONE</literal>
+            or <literal>FAILED</literal> state.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>Master Node Max 1 min. Load Average</term>
+            <listitem><simpara>The maximum value of the one-minute load average
+            on the master node, that is, the node running the GRAM5 and Torque
+            service.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>Master Node Average 1 min. Load Average</term>
+            <listitem><simpara>The average value of the one-minute load average
+            on the master node over the duration of the
+            test.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>Errors</term>
+            <listitem><simpara>Description of any errors which occurred on the
+            client side that prevented operations from completing as expected.
+            </simpara></listitem>
+        </varlistentry>
+    </variablelist>
+    <table>
+        <title>GRAM5 Throughput Tester Results Summary</title>
+        <tgroup cols="6">
+            <thead>
+                <row>
+                    <entry>Experiment</entry>
+                    <entry>Total Jobs</entry>
+                    <entry>Termination Tasks  After 1 Hour</entry>
+                    <entry>Termination Duration (hh:mm:ss)</entry>
+                    <entry>Master Node Max 1 min. Load Average</entry>
+                    <entry>Master Node Average 1 min. Load Average</entry>
+                    <entry>Errors</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>1-client-poll</entry>
+                    <entry>2110</entry>
+                    <entry>2000</entry>
+                    <entry>00:14:18</entry>
+                    <entry>11.46</entry>
+                    <entry>7.96</entry>
+                    <entry>None</entry>
+                </row>
+
+                <row>
+                    <entry>1-client-seg</entry>
+                    <entry>2110</entry>
+                    <entry>2000</entry>
+                    <entry>00:10:36</entry>
+                    <entry>2.82</entry>
+                    <entry>0.93</entry>
+                    <entry>None</entry>
+                </row>
+
+                <row>
+                    <entry>1-client-seg-uncapped</entry>
+                    <entry>6664</entry>
+                    <entry>6584</entry>
+                    <entry>00:42:46</entry>
+                    <entry>3.26</entry>
+                    <entry>2.75</entry>
+                    <entry>None</entry>
+                </row>
+                
+                <row>
+                    <entry>5-client-seg</entry>
+                    <entry>6800</entry>
+                    <entry>6434</entry>
+                    <entry>00:57:20</entry>
+                    <entry>3.19</entry>
+                    <entry>2.49</entry>
+                    <entry>Connection refused during termination</entry>
+                </row>
+                <row>
+                    <entry>5-client-seg-diffusers</entry>
+                    <entry>7226</entry>
+                    <entry>6720</entry>
+                    <entry>00:45:41</entry>
+                    <entry>3.79</entry>
+                    <entry>3.13</entry>
+                    <entry>None</entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </table>
+    </para>
+    </section>
+</section>

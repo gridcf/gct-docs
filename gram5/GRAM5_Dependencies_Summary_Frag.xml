@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+  
+  <section id="gram5-dependencies"><title>Technology dependencies</title>
+    <indexterm type="gram5"><primary>dependencies</primary></indexterm>
+<para>GRAM depends on the following GT components:</para>
+<itemizedlist>
+  <listitem><simpara>Globus Common</simpara></listitem>
+  <listitem><simpara>GSI C</simpara></listitem>
+  <listitem><simpara>GridFTP server</simpara></listitem>
+</itemizedlist>
+
+</section>

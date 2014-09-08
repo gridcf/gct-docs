@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="ccommonlib-feature-summary"><title>Feature summary</title>
+
+<itemizedlist>
+  <listitem>
+        <simpara>Globus Callback - Portable event handling layer for signal
+        handling and periodic and one-shot events in a single- more
+        multi-threaded environment.</simpara>
+    </listitem>
+    <listitem>
+        <simpara>Globus Error - An abstraction for providing context-specific
+        information in error response in C.</simpara>
+    </listitem>
+    <listitem>
+        <simpara>Portable Threading API for POSIX and Windows</simpara>
+    </listitem>
+    <listitem>
+        <simpara>URL String Parser</simpara>
+    </listitem>
+    <listitem>
+        <simpara>Configuration handlers for command-line, environment-variable,
+        and configuration file based application configuration.</simpara>
+    </listitem>
+</itemizedlist>
+</section>

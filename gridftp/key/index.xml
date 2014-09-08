@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gridftpKey">
+  <title>GT <replaceable role="entity">version</replaceable> GridFTP Key Concepts</title>
+  <titleabbrev>GridFTP Key Concepts</titleabbrev> 
+
+  <bookinfo id="gridftp-key-overview"><abstract><title>Overview</title>
+<para>One of the foundational issues in HPC computing is the ability to move
+large (multi Gigabyte, and even Terabyte), file-based data sets between sites.
+Simple file transfer mechanisms such as FTP and SCP are not sufficient either
+from a reliability or performance perspective. GridFTP extends the standard FTP
+protocol to provide a high-performance, secure, reliable protocol for bulk data
+transfer.</para></abstract>
+</bookinfo>
+
+  <chapter id="gridftp-key-advantages"><title>GridFTP Protocol</title>
+<!-- 
+  If you are not familiar with FTP in general, it might be a good idea to browse
+  relevant definitions [fixme here - olink to glossary].
+  -->
+
+<para>
+GridFTP is a protocol defined by Global Grid Forum Recommendation GFD.020,
+  RFC 959, RFC 2228, RFC 2389, and a draft before the IETF FTP working group. Key
+  features include:
+<itemizedlist>
+  <listitem><simpara>Performance - GridFTP protocol supports using parallel TCP
+  streams and multi-node transfers to achieve high
+  performance.</simpara></listitem>
+  <listitem><simpara>
+  Checkpointing - GridFTP protocol requires that the server send restart markers
+  (checkpoint) to the client.
+  </simpara></listitem>
+  <listitem><simpara>
+  Third-party transfers - The FTP protocol on which GridFTP is based separates control and data channels, enabling third-party transfers, that is, the transfer of data between two end hosts, mediated by a third host.
+  </simpara></listitem>
+  <listitem><simpara>
+  Security - Provides strong security on both control and data channels. Control
+  channel is encrypted by default. Data channel is authenticated by default with
+  optional integrity protection and encryption. 
+  </simpara></listitem>
+</itemizedlist>
+  </para>
+</chapter>
+
+  <chapter id="globus-gridftp"><title>Globus Implementation of GridFTP</title>
+  <para>
+  The GridFTP protocol provides for the secure, robust, fast and efficient transfer
+  of (especially bulk) data. The Globus Toolkit provides the most commonly used
+  implementation of that protocol, though others do exist (primarily tied to
+  proprietary internal systems). </para>
+<para>The Globus Toolkit provides:</para>
+<itemizedlist>
+  <listitem><simpara>a server implementation
+          called <computeroutput>globus-gridftp-server</computeroutput>,</simpara></listitem>
+  <listitem><simpara> a scriptable command line client called <computeroutput>globus-url-copy</computeroutput>, and</simpara></listitem>
+  <listitem><simpara>a set of development libraries for custom clients. </simpara></listitem>
+</itemizedlist>
+<para>While the Globus
+  Toolkit does not provide a client with Graphical User Interface (GUI), <ulink
+  url="http://www.globusonline.org">Globus Online</ulink> provides a web GUI for
+  GridFTP data movement. </para>
+<para>
+Globus GridFTP framework implements all the key features of GridFTP protocol
+mentioned above. It supports both Grid Security Infrastructure (GSI) and SSH for
+securing the data transfer. Unlike sftp, SSH based GridFTP supports multiple
+security options on the data channel - authentication only, authentication and
+integrity protection, fully encrypted. Globus implemention of GridFTP is modular
+and extensibl. XIO based Globus GridFTP framework makes it easy to plugin
+alternate transport protocols. The Data Storage Interface (DSI) allows for
+easier integration with various storage systems. We currently have DSIs for
+POSIX filesystems (default) and HPSS. Globus GridFTP has been deployed at
+thousands of sites with more than 10 million data transfers per day.</para>
+</chapter>
+
+<chapter id="gridftp-clients"><title>GridFTP Clients</title>
+<para> <ulink url="http://www.globusonline.org">Globus Online</ulink> is the recommended interface to move data to and from
+GridFTP servers. Globus Online provides a web GUI, command line interface and a
+REST API for GridFTP data movement. It provides automatic fault recovery and
+automatic tuning of optimization parameters to achieve high performance. </para>  
+<para>
+The Globus Toolkit provides a GridFTP client called
+<computeroutput>globus-url-copy</computeroutput>, a command line interface, suitable for scripting. For example,
+the following command:</para>
+<screen>globus-url-copy gsiftp://remote.host.edu/path/to/file file:///path/on/local/host</screen>
+<para>would transfer a file from a remote host to the locally accessible path specified
+in the second URL.</para>
+<para>Finally, if you wish to add access to files stored behind GridFTP servers,
+  or you need custom client functionality, you can use our very powerful client
+library to develop custom client functionality.</para>
+<para>
+  For more information about GridFTP, see:</para>
+  <itemizedlist>
+    <listitem><simpara>the <olink targetdoc="gridftp">documentation</olink>.</simpara></listitem>
+    <listitem><simpara><ulink url="http://www.globus.org/alliance/publications/papers/gridftp_final.pdf">The Globus Striped GridFTP Framework and Server</ulink></simpara></listitem>
+  </itemizedlist>
+  
+</chapter>
+
+
+  <glossary role="auto" id="glossary-gridftpKey">
+    <remark><glossterm>GridFTP</glossterm></remark>
+    <glossdiv><title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</book>

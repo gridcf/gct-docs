@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<article id="myproxyMig">
+<title> GT <replaceable role="entity">version</replaceable> Migrating Guide for MyProxy</title>
+<titleabbrev>Migrating Guide</titleabbrev>
+<para>No special procedures are required for upgrading MyProxy installations. MyProxy is backward compatible.</para>
+</article>

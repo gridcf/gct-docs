@@ -1,0 +1,890 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<section id="gram5-error-codes"><title>Errors</title>
+ <indexterm type="gram5">
+  <primary>errors</primary>
+ </indexterm>
+ 
+  <table frame='all' id="gram5-errors-table"><title>GRAM5 Errors</title>
+<tgroup cols='3' align='left' colsep='1' rowsep='1'>
+<colspec colname='c1'/>
+<colspec colname='c2'/>
+<colspec colname='c3'/>
+<thead>
+<row>
+  <entry>Error Code</entry>
+  <entry>Reason</entry>
+  <entry>Possible Solutions</entry>
+</row>
+</thead>
+<tbody>
+    <row>
+        <entry>1</entry>
+        <entry>one of the RSL parameters is not supported</entry>
+        <entry>Check RSL documentation</entry>
+    </row>
+    <row>
+        <entry>2</entry>
+        <entry>the RSL length is greater than the maximum allowed</entry>
+        <entry>Use RSL substitutions to reduce length of RSL strings</entry>
+    </row>
+    <row>
+        <entry>3</entry>
+        <entry>an I/O operation failed</entry>
+        <entry>Enable trace logging and report to gram-dev@globus.org</entry>
+    </row>
+    <row>
+        <entry>4</entry>
+        <entry>jobmanager unable to set default to the directory requested</entry>
+        <entry>Check that RSL <literal>directory</literal> attribute refers to a directory that exists on the target system.</entry>
+    </row>
+    <row>
+        <entry>5</entry>
+        <entry>the executable does not exist</entry>
+        <entry>Check that the RSL <literal>executable</literal> attribute refers to an executable that exists on the target system.</entry>
+    </row>
+    <row>
+        <entry>6</entry>
+        <entry>of an unused INSUFFICIENT_FUNDS</entry>
+        <entry>Unimplemented feature.</entry>
+    </row>
+    <row>
+        <entry>7</entry>
+        <entry>authentication with the remote server failed</entry>
+        <entry>Check that the contact string contains the proper X.509 DN.</entry>
+    </row>
+    <row>
+        <entry>8</entry>
+        <entry>the user cancelled the job</entry>
+        <entry>Don't cancel jobs you want to complete.</entry>
+    </row>
+    <row>
+        <entry>9</entry>
+        <entry>the system cancelled the job</entry>
+        <entry>Check RSL requirements such as maximum time and memory are valid for the job.</entry>
+    </row>
+    <row>
+        <entry>10</entry>
+        <entry>data transfer to the server failed</entry>
+        <entry>Check gatekeeper and/or job manager logs to see why the process failed.</entry>
+    </row>
+    <row>
+        <entry>11</entry>
+        <entry>the stdin file does not exist</entry>
+        <entry>Check that the RSL <literal>stdin</literal> attribute refers to a file that exists on the target system or has a valid ftp, gsiftp, http, or https URL.</entry>
+    </row>
+    <row>
+        <entry>12</entry>
+        <entry>the connection to the server failed (check host and port)</entry>
+        <entry>Check that the service is running on the expected TCP/IP port.
+               Check that no firewall prevents contacting that TCP/IP port.
+               Check <filename><envar>$GLOBUS_LOCATION</envar>/var/globus-gatekeeper.log</filename> for runtme configuration errors.</entry>
+    </row>
+    <row>
+        <entry>13</entry>
+        <entry>the provided RSL 'maxtime' value is not an integer</entry>
+        <entry>Check that the RSL <literal>maxtime</literal> value evaluates to an integer.</entry>
+    </row>
+    <row>
+        <entry>14</entry>
+        <entry>the provided RSL 'count' value is not an integer</entry>
+        <entry>Check that the RSL <literal>count</literal> value evaluates to an integer.</entry>
+    </row>
+    <row>
+        <entry>15</entry>
+        <entry>the job manager received an invalid RSL</entry>
+        <entry>Check that the RSL string can be parsed by using <command>globusrun -p <replaceable>RSL</replaceable></command>.</entry>
+    </row>
+    <row>
+        <entry>16</entry>
+        <entry>the job manager failed in allowing others to make contact</entry>
+        <entry>Check job manager log.</entry>
+    </row>
+    <row>
+        <entry>17</entry>
+        <entry>the job failed when the job manager attempted to run it</entry>
+        <entry>Verify that the LRM is configured properly.</entry>
+    </row>
+    <row>
+        <entry>18</entry>
+        <entry>an invalid paradyn was specified</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>19</entry>
+        <entry>the provided RSL 'jobtype' value is invalid</entry>
+        <entry>The RSL <literal>jobtype</literal> attribute is not indicated as supported by the LRM. Valid <literal>jobtype</literal> values are <literal>single</literal>,  <literal>multiple</literal>, <literal>mpi</literal>, and <literal>condor</literal>.</entry>
+    </row>
+    <row>
+        <entry>20</entry>
+        <entry>the provided RSL 'myjob' value is invalid</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>21</entry>
+        <entry>the job manager failed to locate an internal script argument file</entry>
+        <entry>Check that <filename><envar>$GLOBUS_LOCATION</envar>/libexec/globus-job-manager-script.pl</filename> exists and is executable.
+        Check that the LRM-specific perl module is located in <filename><envar>$GLOBUS_LOCATION</envar>/lib/perl/Globus/GRAM/JobManager/</filename> directory and is valid. The command <command>perl -I$GLOBUS_LOCATION/lib/perl $GLOBUS_LOCATION/lib/perl/Globus/GRAM/JobManager/<replaceable>LRM</replaceable>.pm</command> can be used to check if there are any syntax errors in the script.</entry>
+    </row>
+    <row>
+        <entry>22</entry>
+        <entry>the job manager failed to create an internal script argument file</entry>
+        <entry>Check that your home directory is writable and not full.</entry>
+    </row>
+    <row>
+        <entry>23</entry>
+        <entry>the job manager detected an invalid job state</entry>
+        <entry>Check job manager logs.</entry>
+    </row>
+    <row>
+        <entry>24</entry>
+        <entry>the job manager detected an invalid script response</entry>
+        <entry>Check job manager logs. This is likely a bug in the LRM script.</entry>
+    </row>
+    <row>
+        <entry>25</entry>
+        <entry>the job manager detected an invalid script status</entry>
+        <entry>Check job manager logs. This is likely a bug in the LRM script.</entry>
+    </row>
+    <row>
+        <entry>26</entry>
+        <entry>the provided RSL 'jobtype' value is not supported by this job manager</entry>
+        <entry>Check that the RSL <literal>jobtype</literal> attribute is implemented by the LRM script. Note that some job types require configuration</entry>
+    </row>
+    <row>
+        <entry>27</entry>
+        <entry>unused ERROR_UNIMPLEMENTED</entry>
+        <entry>LRM does not support some feature included in the job request. </entry>
+    </row>
+    <row>
+        <entry>28</entry>
+        <entry>the job manager failed to create an internal script submission file</entry>
+        <entry>Check that the user's home file system is not full. Check job manager log</entry>
+    </row>
+    <row>
+        <entry>29</entry>
+        <entry>the job manager cannot find the user proxy</entry>
+        <entry>Check that client is delegating a proxy when authenticating with the gatekeeper.
+        Check that the user's home filesystem and the <filename>/tmp</filename> file system are not full.</entry>
+    </row>
+    <row>
+        <entry>30</entry>
+        <entry>the job manager failed to open the user proxy</entry>
+        <entry>Check that the user's home filesystem and the <filename>/tmp</filename> file system are not full.</entry>
+    </row>
+    <row>
+        <entry>31</entry>
+        <entry>the job manager failed to cancel the job as requested</entry>
+        <entry>Check that the user's home filesystem and the <filename>/tmp</filename> file system are not full.</entry>
+    </row>
+    <row>
+        <entry>32</entry>
+        <entry>system memory allocation failed</entry>
+        <entry>Check job manager log for details.</entry>
+    </row>
+    <row>
+        <entry>33</entry>
+        <entry>the interprocess job communication initialization failed</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>34</entry>
+        <entry>the interprocess job communication setup failed</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>35</entry>
+        <entry>the provided RSL 'host count' value is invalid</entry>
+        <entry>Check that the RSL <literal>host_count</literal> attribute evaluates to an integer.</entry>
+    </row>
+    <row>
+        <entry>36</entry>
+        <entry>one of the provided RSL parameters is unsupported</entry>
+        <entry>Check job manager log for details about invalid parameter.</entry>
+    </row>
+    <row>
+        <entry>37</entry>
+        <entry>the provided RSL 'queue' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>queue</literal> attribute evaluates to a string that corresponds to an LRM-specific queue name.</entry>
+    </row>
+    <row>
+        <entry>38</entry>
+        <entry>the provided RSL 'project' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>project</literal> attribute evaluates to a string that corresponds to an LRM-specific project name.</entry>
+    </row>
+    <row>
+        <entry>39</entry>
+        <entry>the provided RSL string includes variables that could not be identified</entry>
+        <entry>Check that all RSL substitutions are defined before being used in the job description.</entry>
+    </row>
+    <row>
+        <entry>40</entry>
+        <entry>the provided RSL 'environment' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>environment</literal> attribute contains a sequence of <replaceable>VARIABLE</replaceable> <replaceable>VALUE</replaceable> pairs.</entry>
+    </row>
+    <row>
+        <entry>41</entry>
+        <entry>the provided RSL 'dryrun' parameter is invalid</entry>
+        <entry>Remove the RSL <literal>dryrun</literal> attribute from the job description.</entry>
+    </row>
+    <row>
+        <entry>42</entry>
+        <entry>the provided RSL is invalid (an empty string)</entry>
+        <entry>Include a non-empty RSL string in your job submission request.</entry>
+    </row>
+    <row>
+        <entry>43</entry>
+        <entry>the job manager failed to stage the executable</entry>
+        <entry>Check that the file service hosting the executable is reachable from the GRAM5 service node.
+        Check that the executable exists on the file service node.
+        Check that there is sufficient disk space in the user's home directory on the service node to store the executable.</entry>
+    </row>
+    <row>
+        <entry>44</entry>
+        <entry>the job manager failed to stage the stdin file</entry>
+        <entry>Check that the file service hosting the standard input file is reachable from the GRAM5 service node.
+        Check that the standard input file exists on the file service node.
+        Check that there is sufficient disk space in the user's home directory on the service node to store the standard input file.</entry>
+    </row>
+    <row>
+        <entry>45</entry>
+        <entry>the requested job manager type is invalid</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>46</entry>
+        <entry>the provided RSL 'arguments' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>47</entry>
+        <entry>the gatekeeper failed to run the job manager</entry>
+        <entry>Check the gatekeeper or job manager logs for more information.</entry>
+    </row>
+    <row>
+        <entry>48</entry>
+        <entry>the provided RSL could not be properly parsed</entry>
+        <entry>Check that the RSL string can be parsed by using <command>globusrun -p <replaceable>RSL</replaceable></command>.</entry>
+    </row>
+    <row>
+        <entry>49</entry>
+        <entry>there is a version mismatch between GRAM components</entry>
+        <entry>Ask system administrator to upgrade GRAM service to GRAM2 or GRAM5</entry>
+    </row>
+    <row>
+        <entry>50</entry>
+        <entry>the provided RSL 'arguments' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>arguments</literal> attribute evaluates to a sequence of strings.</entry>
+    </row>
+    <row>
+        <entry>51</entry>
+        <entry>the provided RSL 'count' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>count</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>52</entry>
+        <entry>the provided RSL 'directory' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>directory</literal> attribute evaluates to a string.</entry>
+    </row>
+    <row>
+        <entry>53</entry>
+        <entry>the provided RSL 'dryrun' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>dryrun</literal> attribute evaluates to either <literal>yes</literal> or <literal>no</literal>.</entry>
+    </row>
+    <row>
+        <entry>54</entry>
+        <entry>the provided RSL 'environment' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>environment</literal> attribute evaluates to a sequence of <replaceable>VARIABLE</replaceable>, <replaceable>VALUE</replaceable> pairs.</entry>
+    </row>
+    <row>
+        <entry>55</entry>
+        <entry>the provided RSL 'executable' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>executable</literal> attribute evaluates to a string value.</entry>
+    </row>
+    <row>
+        <entry>56</entry>
+        <entry>the provided RSL 'host_count' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>host_count</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>57</entry>
+        <entry>the provided RSL 'jobtype' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>jobtype</literal> attribute evaluates to one of <literal>single</literal>, <literal>multiple</literal>, <literal>mpi</literal>, or <literal>condor</literal></entry>
+    </row>
+    <row>
+        <entry>58</entry>
+        <entry>the provided RSL 'maxtime' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>maxtime</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>59</entry>
+        <entry>the provided RSL 'myjob' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM5.</entry>
+    </row>
+    <row>
+        <entry>60</entry>
+        <entry>the provided RSL 'paradyn' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM2.</entry>
+    </row>
+    <row>
+        <entry>61</entry>
+        <entry>the provided RSL 'project' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>project</literal> attribute evaluates to a string value.</entry>
+    </row>
+    <row>
+        <entry>62</entry>
+        <entry>the provided RSL 'queue' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>queue</literal> attribute evaluates to a string value.</entry>
+    </row>
+    <row>
+        <entry>63</entry>
+        <entry>the provided RSL 'stderr' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>stderr</literal> attribute evaluates to a string value or a sequence of <replaceable>DESTINATION</replaceable> URLs with optional <replaceable>CACHE_TAG</replaceable> string parameters.</entry>
+    </row>
+    <row>
+        <entry>64</entry>
+        <entry>the provided RSL 'stdin' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>stdin</literal> attribute evaluates to a string value.</entry>
+    </row>
+    <row>
+        <entry>65</entry>
+        <entry>the provided RSL 'stdout' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>stdout</literal> attribute evaluates to a string value or a sequence of <replaceable>DESTINATION</replaceable> URLs with optional <replaceable>CACHE_TAG</replaceable> string parameters.</entry>
+    </row>
+    <row>
+        <entry>66</entry>
+        <entry>the job manager failed to locate an internal script</entry>
+        <entry>Check job manager log for more details.</entry>
+    </row>
+    <row>
+        <entry>67</entry>
+        <entry>the job manager failed on the system call pipe()</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>68</entry>
+        <entry>the job manager failed on the system call fcntl()</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>69</entry>
+        <entry>the job manager failed to create the temporary stdout filename</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>70</entry>
+        <entry>the job manager failed to create the temporary stderr filename</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>71</entry>
+        <entry>the job manager failed on the system call fork()</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>72</entry>
+        <entry>the executable file permissions do not allow execution</entry>
+        <entry>Check that the RSL <literal>executable</literal> attribute refers to an executable program or script.</entry>
+    </row>
+    <row>
+        <entry>73</entry>
+        <entry>the job manager failed to open stdout</entry>
+        <entry>Check that the RSL <literal>stdout</literal> attribute refers to one or more valid destination files or URLs.</entry>
+    </row>
+    <row>
+        <entry>74</entry>
+        <entry>the job manager failed to open stderr</entry>
+        <entry>Check that the RSL <literal>stderr</literal> attribute refers to one or more valid destination files or URLs.</entry>
+    </row>
+    <row>
+        <entry>75</entry>
+        <entry>the cache file could not be opened in order to relocate the user proxy</entry>
+        <entry>Check that the user's home directory is writable and not full on the GRAM5 service node.</entry>
+    </row>
+    <row>
+        <entry>76</entry>
+        <entry>cannot access cache files in ~/.globus/.gass_cache, check permissions, quota, and disk space</entry>
+        <entry>Check that the user's home directory is writable and not full on the GRAM5 service node.</entry>
+    </row>
+    <row>
+        <entry>77</entry>
+        <entry>the job manager failed to insert the contact in the client contact list</entry>
+        <entry>Check job manager log</entry>
+    </row>
+    <row>
+        <entry>78</entry>
+        <entry>the contact was not found in the job manager's client contact list</entry>
+        <entry>Don't attempt to unregister callback contacts that are not registered</entry>
+    </row>
+    <row>
+        <entry>79</entry>
+        <entry>connecting to the job manager failed.  Possible reasons: job terminated, invalid job contact, network problems, ...</entry>
+        <entry>Check that the job manager process is running.
+        Check that the job manager credential has not expired.
+        Check that the job manager contact refers to the correct TCP/IP host and port.
+        Check that the job manager contact is not blocked by a firewall.</entry>
+    </row>
+    <row>
+        <entry>80</entry>
+        <entry>the syntax of the job contact is invalid</entry>
+        <entry>Check the syntax of job contact string.</entry>
+    </row>
+    <row>
+        <entry>81</entry>
+        <entry>the executable parameter in the RSL is undefined</entry>
+        <entry>Include the RSL <literal>executable</literal> in all job requests.</entry>
+    </row>
+    <row>
+        <entry>82</entry>
+        <entry>the job manager service is misconfigured.  condor arch undefined</entry>
+        <entry>Add the <option>-condor-arch</option> to the command-line or configuration file for a job manager configured to use the <literal>condor</literal> LRM.</entry>
+    </row>
+    <row>
+        <entry>83</entry>
+        <entry>the job manager service is misconfigured.  condor os undefined</entry>
+        <entry>Add the <option>-condor-os</option> to the command-line or configuration file for a job manager configured to use the <literal>condor</literal> LRM.</entry>
+    </row>
+    <row>
+        <entry>84</entry>
+        <entry>the provided RSL 'min_memory' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>min_memory</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>85</entry>
+        <entry>the provided RSL 'max_memory' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>max_memory</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>86</entry>
+        <entry>the RSL 'min_memory' value is not zero or greater</entry>
+        <entry>Check that the RSL <literal>min_memory</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>87</entry>
+        <entry>the RSL 'max_memory' value is not zero or greater</entry>
+        <entry>Check that the RSL <literal>max_memory</literal> attribute evaluates to a positive integer value.</entry>
+    </row>
+    <row>
+        <entry>88</entry>
+        <entry>the creation of a HTTP message failed</entry>
+        <entry>Check job manager log.</entry>
+    </row>
+    <row>
+        <entry>89</entry>
+        <entry>parsing incoming HTTP message failed</entry>
+        <entry>Check job manager log.</entry>
+    </row>
+    <row>
+        <entry>90</entry>
+        <entry>the packing of information into a HTTP message failed</entry>
+        <entry>Check job manager log.</entry>
+    </row>
+    <row>
+        <entry>91</entry>
+        <entry>an incoming HTTP message did not contain the expected information</entry>
+        <entry>Check job manager log.</entry>
+    </row>
+    <row>
+        <entry>92</entry>
+        <entry>the job manager does not support the service that the client requested</entry>
+        <entry>Check that the client is talking to the correct servce</entry>
+    </row>
+    <row>
+        <entry>93</entry>
+        <entry>the gatekeeper failed to find the requested service</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>94</entry>
+        <entry>the jobmanager does not accept any new requests (shutting down)</entry>
+        <entry>Execute queries before the job has been cleaned up.</entry>
+    </row>
+    <row>
+        <entry>95</entry>
+        <entry>the client failed to close the listener associated with the callback URL</entry>
+        <entry>Call <function>globus_gram_client_callback_disallow()</function> with a valid the callback contact.</entry>
+    </row>
+    <row>
+        <entry>96</entry>
+        <entry>the gatekeeper contact cannot be parsed</entry>
+        <entry>Check the syntax of the gatekeeper contact string you are attempting to contact.</entry>
+    </row>
+    <row>
+        <entry>97</entry>
+        <entry>the job manager could not find the 'poe' command</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>98</entry>
+        <entry>the job manager could not find the 'mpirun' command</entry>
+        <entry>Configure the LRM script with <filename>mpirun</filename> in your path.</entry>
+    </row>
+    <row>
+        <entry>99</entry>
+        <entry>the provided RSL 'start_time' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>100</entry>
+        <entry>the provided RSL 'reservation_handle' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>101</entry>
+        <entry>the provided RSL 'max_wall_time' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>max_wall_time</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>102</entry>
+        <entry>the RSL 'max_wall_time' value is not zero or greater</entry>
+        <entry>Check that the RSL <literal>max_wall_time</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>103</entry>
+        <entry>the provided RSL 'max_cpu_time' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>max_cpu_time</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>104</entry>
+        <entry>the RSL 'max_cpu_time' value is not zero or greater</entry>
+        <entry>Check that the RSL <literal>max_cpu_time</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>105</entry>
+        <entry>the job manager is misconfigured, a scheduler script is missing</entry>
+        <entry>Check that the adminstrator has configured the LRM by running its setup script.</entry>
+    </row>
+    <row>
+        <entry>106</entry>
+        <entry>the job manager is misconfigured, a scheduler script has invalid permissions</entry>
+        <entry>Check that the adminstrator has installed the <filename><envar>GLLOBUS_LOCATION</envar>/libexec/globus-job-manager-script.pl</filename> script.
+        Check that the file system containing that script allows file execution.</entry>
+    </row>
+    <row>
+        <entry>107</entry>
+        <entry>the job manager failed to signal the job</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>108</entry>
+        <entry>the job manager did not recognize/support the signal type</entry>
+        <entry>Check that your signal operation is using the correct signal constant.</entry>
+    </row>
+    <row>
+        <entry>109</entry>
+        <entry>the job manager failed to get the job id from the local scheduler</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>110</entry>
+        <entry>the job manager is waiting for a commit signal</entry>
+        <entry>Send a two-phase commit signal to the job manager to acknowledge receiving the job contact from the job manager.</entry>
+    </row>
+    <row>
+        <entry>111</entry>
+        <entry>the job manager timed out while waiting for a commit signal</entry>
+        <entry>Send a two-phase commit signal to the job manager to acknowledge receiving the job contact from the job manager.
+        Increase the two-phase commit time out for your job.
+        Check that the job manager contact TCP/IP port is reachable from your client.</entry>
+    </row>
+    <row>
+        <entry>112</entry>
+        <entry>the provided RSL 'save_state' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>save_state</literal> attribute is set to <literal>yes</literal> or <literal>no</literal>.</entry>
+    </row>
+    <row>
+        <entry>113</entry>
+        <entry>the provided RSL 'restart' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>restart</literal> attribute evaluates to a string containing a job contact string.</entry>
+    </row>
+    <row>
+        <entry>114</entry>
+        <entry>the provided RSL 'two_phase' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>two_phase</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>115</entry>
+        <entry>the RSL 'two_phase' value is not zero or greater</entry>
+        <entry>Check that the RSL <literal>two_phase</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>116</entry>
+        <entry>the provided RSL 'stdout_position' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>117</entry>
+        <entry>the RSL 'stdout_position' value is not zero or greater</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>118</entry>
+        <entry>the provided RSL 'stderr_position' parameter is invalid</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>119</entry>
+        <entry>the RSL 'stderr_position' value is not zero or greater</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>120</entry>
+        <entry>the job manager restart attempt failed</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>121</entry>
+        <entry>the job state file doesn't exist</entry>
+        <entry>Check that the job contact you are trying to restart matches one that the job manager returned to you.</entry>
+    </row>
+    <row>
+        <entry>122</entry>
+        <entry>could not read the job state file</entry>
+        <entry>Check that the state file directory is not full.</entry>
+    </row>
+    <row>
+        <entry>123</entry>
+        <entry>could not write the job state file</entry>
+        <entry>Check that the state file directory is not full.</entry>
+    </row>
+    <row>
+        <entry>124</entry>
+        <entry>old job manager is still alive</entry>
+        <entry>Contact the returned job manager contact to manage the job you are trying to restart.</entry>
+    </row>
+    <row>
+        <entry>125</entry>
+        <entry>job manager state file TTL expired</entry>
+        <entry>OBSOLETE in GRAM2</entry>
+    </row>
+    <row>
+        <entry>126</entry>
+        <entry>it is unknown if the job was submitted</entry>
+        <entry>Check job manager log.</entry>
+    </row>
+    <row>
+        <entry>127</entry>
+        <entry>the provided RSL 'remote_io_url' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>remote_io_url</literal> attribute evaluates to a string value.</entry>
+    </row>
+    <row>
+        <entry>128</entry>
+        <entry>could not write the remote io url file</entry>
+        <entry>Check that the user's home file system on the job manager service node is writable and not full.</entry>
+    </row>
+    <row>
+        <entry>129</entry>
+        <entry>the standard output/error size is different</entry>
+        <entry>Send a stdio update signal to redirect the job manager output to a new URL</entry>
+    </row>
+    <row>
+        <entry>130</entry>
+        <entry>the job manager was sent a stop signal (job is still running)</entry>
+        <entry>Submit a restart request to monitor the job.</entry>
+    </row>
+    <row>
+        <entry>131</entry>
+        <entry>the user proxy expired (job is still running)</entry>
+        <entry>Generate a new proxy and then submit a restart request to monitor the job.</entry>
+    </row>
+    <row>
+        <entry>132</entry>
+        <entry>the job was not submitted by original jobmanager</entry>
+        <entry>OBSOLETE IN GRAM2</entry>
+    </row>
+    <row>
+        <entry>133</entry>
+        <entry>the job manager is not waiting for that commit signal</entry>
+        <entry>Do not send a commit signal to a job that is not waiting for a commit signal.</entry>
+    </row>
+    <row>
+        <entry>134</entry>
+        <entry>the provided RSL scheduler specific parameter is invalid</entry>
+        <entry>Check the LRM-specific documentation to determine what values are legal for the RSL extensions implemented by the LRM.</entry>
+    </row>
+    <row>
+        <entry>135</entry>
+        <entry>the job manager could not stage in a file</entry>
+        <entry>Check that the file service hosting the file to stage is reachable from the GRAM5 service node.
+        Check that the file to stage exists on the file service node.
+        Check that there is sufficient disk space in the user's home directory on the service node to store the file to stage.</entry>
+    </row>
+    <row>
+        <entry>136</entry>
+        <entry>the scratch directory could not be created</entry>
+        <entry>Check that the directory named by the RSL <literal>scratch_dir</literal> attribute exists and is writable.
+        Check that the directory named by the RSL <literal>scratch_dir</literal> attribute is not full.</entry>
+    </row>
+    <row>
+        <entry>137</entry>
+        <entry>the provided 'gass_cache' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>gass_cache</literal> attribute evaluates to a string.</entry>
+    </row>
+    <row>
+        <entry>138</entry>
+        <entry>the RSL contains attributes which are not valid for job submission</entry>
+        <entry>Do not use restart- or signal-only RSL attributes when submitting a job.</entry>
+    </row>
+    <row>
+        <entry>139</entry>
+        <entry>the RSL contains attributes which are not valid for stdio update</entry>
+        <entry>Do not use submit- or restart-only RSL attributes when sending a stdio update signal to a job.</entry>
+    </row>
+    <row>
+        <entry>140</entry>
+        <entry>the RSL contains attributes which are not valid for job restart</entry>
+        <entry>Do not use submit- or signal-only RSL attributes when restarting a job.</entry>
+    </row>
+    <row>
+        <entry>141</entry>
+        <entry>the provided RSL 'file_stage_in' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>file_stage_in</literal> attribute evaluates to a sequence of <replaceable>SOURCE</replaceable> <replaceable>DESTINATION</replaceable> pairs.</entry>
+    </row>
+    <row>
+        <entry>142</entry>
+        <entry>the provided RSL 'file_stage_in_shared' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>file_stage_in_shared</literal> attribute evaluates to a sequence of <replaceable>SOURCE</replaceable> <replaceable>DESTINATION</replaceable> pairs.</entry>
+    </row>
+    <row>
+        <entry>143</entry>
+        <entry>the provided RSL 'file_stage_out' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>file_stage_out</literal> attribute evaluates to a sequence of <replaceable>SOURCE</replaceable> <replaceable>DESTINATION</replaceable> pairs.</entry>
+    </row>
+    <row>
+        <entry>144</entry>
+        <entry>the provided RSL 'gass_cache' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>gass_cache</literal> attribute evaluates to a string.</entry>
+    </row>
+    <row>
+        <entry>145</entry>
+        <entry>the provided RSL 'file_cleanup' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>file_clean_up</literal> attribute evaluates to a sequence of strings.</entry>
+    </row>
+    <row>
+        <entry>146</entry>
+        <entry>the provided RSL 'scratch_dir' parameter is invalid</entry>
+        <entry>Check that the RSL <literal>scratch_dir</literal> attribute evaluates to a string.</entry>
+    </row>
+    <row>
+        <entry>147</entry>
+        <entry>the provided scheduler-specific RSL parameter is invalid</entry>
+        <entry>Check the LRM-specific documentation to determine what values are legal for the RSL extensions implemented by the LRM.</entry>
+    </row>
+    <row>
+        <entry>148</entry>
+        <entry>a required RSL attribute was not defined in the RSL spec</entry>
+        <entry>Check that the RSL <literal>executable</literal> attribute is present in your job request RSL.
+        Check that the RSL <literal>restart</literal> attributes is present in your restart RSL.</entry>
+    </row>
+    <row>
+        <entry>149</entry>
+        <entry>the gass_cache attribute points to an invalid cache directory</entry>
+        <entry>Check that the RSL <literal>gass_cache</literal> attributes evaluates to a directory that exists or can be created.
+        Check that the user's home file system is writable and not full.</entry>
+    </row>
+    <row>
+        <entry>150</entry>
+        <entry>the provided RSL 'save_state' parameter has an invalid value</entry>
+        <entry>Check that the RSL <literal>save_state</literal> attribute has a value of <literal>yes</literal> or <literal>no</literal>.</entry>
+    </row>
+    <row>
+        <entry>151</entry>
+        <entry>the job manager could not open the RSL attribute validation file</entry>
+        <entry>Check that <filename><envar>$GLOBUS_LOCATION</envar>/share/globus_gram_job_manager/globus-gram-job-manager.rvf</filename> is present and readable on the job manager service node.
+        Check that <filename><envar>$GLOBUS_LOCATION</envar>/share/globus_gram_job_manager/<replaceable>LRM</replaceable>.rvf</filename> is readable on the job manager service node if present.</entry>
+    </row>
+    <row>
+        <entry>152</entry>
+        <entry>the  job manager could not read the RSL attribute validation file</entry>
+        <entry>Check that <filename><envar>$GLOBUS_LOCATION</envar>/share/globus_gram_job_manager/globus-gram-job-manager.rvf</filename> is valid.
+        Check that <filename><envar>$GLOBUS_LOCATION</envar>/share/globus_gram_job_manager/<replaceable>LRM</replaceable>.rvf</filename> is valid if present.</entry>
+    </row>
+    <row>
+        <entry>153</entry>
+        <entry>the provided RSL 'proxy_timeout' is invalid</entry>
+        <entry>Check that RSL <literal>proxy_timeout</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>154</entry>
+        <entry>the RSL 'proxy_timeout' value is not greater than zero</entry>
+        <entry>Check that RSL <literal>proxy_timeout</literal> attribute evaluates to a positive integer.</entry>
+    </row>
+    <row>
+        <entry>155</entry>
+        <entry>the job manager could not stage out a file</entry>
+        <entry>Check that the source file being staged exists on the job manager service node.
+        Check that the directory of the destination file being staged exists on the file service node.
+        Check that the directory of the destination file being staged is writable by the user.
+        Check that the destination file service is reachable by the job manager service node.</entry>
+    </row>
+    <row>
+        <entry>156</entry>
+        <entry>the job contact string does not match any which the job manager is handling</entry>
+        <entry>Check that the job contact string matches one returned from a job request.</entry>
+    </row>
+    <row>
+        <entry>157</entry>
+        <entry>proxy delegation failed</entry>
+        <entry>Check that the job manager service node trusts the signer of your credential.
+        Check that you trust the signer of the job manager service node's credential. </entry>
+    </row>
+    <row>
+        <entry>158</entry>
+        <entry>the job manager could not lock the state lock file</entry>
+        <entry>Check that the file system holding the job state directory supports POSIX advisory locking.
+        Check that the job state directory is writable by the user on the service node.
+        Check that the job state directory is not full.</entry>
+    </row>
+    <row>
+        <entry>159</entry>
+        <entry>an invalid globus_io_clientattr_t was used.</entry>
+        <entry>Check that you have initialized the <literal>globus_io_clientattr_t</literal> attribute prior to using it with the GRAM client API.</entry>
+    </row>
+    <row>
+        <entry>160</entry>
+        <entry>an null parameter was passed to the gram library</entry>
+        <entry>Check that you are passing legal values to all GRAM API calls.</entry>
+    </row>
+    <row>
+        <entry>161</entry>
+        <entry>the job manager is still streaming output</entry>
+        <entry>OBSOLETE IN GRAM5</entry>
+    </row>
+    <row>
+        <entry>162</entry>
+        <entry>the authorization system denied the request</entry>
+        <entry>Check with your GRAM system administrator to allow a particular certificate to be authorized.</entry>
+    </row>
+    <row>
+        <entry>163</entry>
+        <entry>the authorization system reported a failure</entry>
+        <entry>Check with your system administrator to verify that the authorization system is configured properly.</entry>
+    </row>
+    <row>
+        <entry>164</entry>
+        <entry>the authorization system denied the request - invalid job id</entry>
+        <entry>Check with your system administrator to verify that the authorization system is configured properly.
+        Use a credential which is authorized to interact with a particular GRAM job.</entry>
+    </row>
+    <row>
+        <entry>165</entry>
+        <entry>the authorization system denied the request - not authorized to run the specified executable</entry>
+        <entry>Check with your system administrator to verify that the authorization system is configured properly.
+        Use a credential which is authorized to interact with a particular GRAM job.</entry>
+    </row>
+    <row>
+        <entry>166</entry>
+        <entry>the provided RSL 'user_name' parameter is invalid.</entry>
+        <entry>Check that the RSL <literal>user_name</literal> attribute evaluates to a string.</entry>
+    </row>
+    <row>
+        <entry>167</entry>
+        <entry>the job is not running in the account named by the 'user_name' parameter.</entry>
+        <entry>Ask with the GRAM system administrator to add an authorization entry to allow your credential to run jobs as the specified user account.</entry>
+    </row>
+</tbody>
+</tgroup>
+   </table>
+ 
+</section>

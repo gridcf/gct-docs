@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[
+<!ENTITY % xinclude SYSTEM "../xinclude.mod">
+%xinclude;
+]>
+<chapter id="gridftp-configuring"><title>Configuring GridFTP</title>
+  <indexterm type="gridftp">
+    <primary>configuration interface for GridFTP</primary>
+  </indexterm>
+  <indexterm type="gridftp-howto">
+    <primary>configuring GridFTP</primary>
+  </indexterm>
+  <section id="gridftp-config-overview"><title>GridFTP server configuration overview</title>
+    <indexterm type="gridftp-howto">
+      <primary>configuring GridFTP</primary>
+      <secondary>overview</secondary>
+    </indexterm>
+    <para>The configuration interface for GridFTP is the admin tool, <command><olink targetdoc="gridftpAdmin"
+        targetptr="globus-gridftp-server"/></command>, which
+      can be used with a configuration file and/or run-time options.</para><note>
+      <para>Command line options and configuration file options may both be used, but the command
+        line <emphasis>overrides</emphasis> the config file.</para>
+    </note><para>The configuration file for the GridFTP <glossterm>server</glossterm> is read from
+      the following locations, in the given order. Only the first file found will be loaded:<itemizedlist>
+        <listitem>
+          <simpara>Path specified with the <computeroutput>-c &lt;configfile&gt;</computeroutput>
+            command line option.</simpara>
+        </listitem>
+        <listitem>
+          <simpara>
+            <filename>$GLOBUS_LOCATION/etc/gridftp.conf</filename>
+          </simpara>
+        </listitem>
+        <listitem>
+          <simpara>
+            <filename>/etc/grid-security/gridftp.conf</filename>
+          </simpara>
+        </listitem>
+      </itemizedlist></para><para>Options are one per line, with the format:
+      <screen>&lt;option&gt; &lt;value&gt;</screen> If the value contains spaces, they should be
+      enclosed in double-quotes ("). Flags or boolean options should only have a value of 0 or 1.
+      Blank lines and lines beginning with # are ignored.</para><para>For example:
+      <screen>  port 5000
+  allow_anonymous 1
+  anonymous_user bob
+  banner "Welcome!"
+      </screen></para><para>For
+      complete command documentation including all options, see <command><olink targetdoc="gridftpAdmin"
+        targetptr="globus-gridftp-server"/></command>.</para><para>This page includes information about
+      general configuration of the GridFTP server. Security options are discussed <olink
+        targetdoc="gridftpAdmin" targetptr="gridftp-admin-config-security">here</olink>, and more
+      advanced configuration is described <olink targetdoc="gridftpAdmin"
+        targetptr="gridftp-admin-advanced">here</olink>.</para></section><section
+    id="gridftp-config-types"><title>Typical configuration</title>
+    <indexterm type="gridftp">
+      <primary>configuring GridFTP</primary>
+      <secondary>typical</secondary>
+    </indexterm>
+    <para>The following describes a typical GridFTP configuration of the front end (control channel)
+      and back end (data channels). For other alternatives that provide greater levels of security,
+      see <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-advanced">Advanced
+        Configuration</olink>.</para><para>By default, the data channel and control channel are
+      separate socket connections within the same process. The client sends a command and waits to
+      finish before issuing the next command. This is good for a single host, traditional-type user.
+      If you have a single host and you want an ultra-reliable and light weight file transfer
+      service, this is a good choice. This configuration is also good for testing
+    purposes.</para></section><section id="gridftp-config-security-firewalls">
+    <title>Firewall requirements</title>
+    <!-- NOTE: any changes to this section need to be reproduced in GridFTP_Security_Considerations_Frag.xml -->
+      <para>If the GridFTP server is behind a firewall:</para>
+    <orderedlist>
+      <listitem>
+        <para>Contact your network administrator to open up port 2811 (for GridFTP control channel
+          connection) and a range of ports (for GridFTP data channel connections) for the incoming
+          connections. If the firewall blocks the outgoing connections, open up a range of ports for
+          outgoing connections as well.</para>
+      </listitem>
+      <listitem>
+        <para>Set the environment variable GLOBUS_TCP_PORT_RANGE:
+          <screen>export GLOBUS_TCP_PORT_RANGE=min,max </screen> where
+            <option>min</option>,<option>max</option> specify the port range that you have opened
+          for the incoming connections on the firewall. This restricts the listening ports of the
+          GridFTP server to this range. Recommended range is 1000 (e.g., 50000-51000) but it really
+          depends on how much use you expect.</para>
+      </listitem>
+      <listitem>
+        <para>If you have a firewall blocking the outgoing connections and you have opened a range
+          of ports, set the environment variable GLOBUS_TCP_SOURCE_RANGE:
+          <screen>export GLOBUS_TCP_SOURCE_RANGE=min,max </screen> where
+            <option>min</option>,<option>max</option> specify the port range that you have opened
+          for the outgoing connections on the firewall. This restricts the
+	  GridFTP server to bind to a local port in this range for outbound
+	  connections.
+          Recommended range is twice the range used for
+          GLOBUS_TCP_PORT_RANGE, because if parallel TCP streams are used for transfers, the
+          listening port would remain the same for each connection but the connecting port would be
+          different for each connection.</para>
+      </listitem>
+    </orderedlist>
+    <note>
+      <para>If the server is behind NAT, the <computeroutput>--data-interface &lt;real
+          ip/hostname&gt;</computeroutput> option needs to be used on the server.</para>
+    </note>
+      <!-- NOTE: the three client-firewall elements (-intro, -config and -moreinfo) are being pulled into the User's Guide -->
+      <para id="gridftp-client-firewall-intro">If the GridFTP <emphasis>client</emphasis> is behind a firewall:</para>
+      
+      <!-- NOTE: the three client-firewall elements (-intro, -config and -moreinfo) are being pulled into the User's Guide -->
+      <orderedlist id="gridftp-client-firewall-config">
+      <listitem>
+        <para>Contact your network administrator to open up a range of ports (for GridFTP data
+          channel connections) for the incoming connections. If the firewall blocks the outgoing
+          connections, open up a range of ports for outgoing connections as well.</para>
+      </listitem>
+      <listitem>
+        <para>Set the environment variable GLOBUS_TCP_PORT_RANGE
+          <screen>export GLOBUS_TCP_PORT_RANGE=min,max </screen> where min,max specify the port
+          range that you have opened for the incoming connections on the firewall. This restricts
+          the listening ports of the GridFTP client to this range. Recommended range is 1000 (e.g.,
+          50000-51000) but it really depends on how much use you expect.</para>
+      </listitem>
+      <listitem>
+        <para>If you have a firewall blocking the outgoing connections and you have opened a range
+          of (local) ports, set the environment variable GLOBUS_TCP_SOURCE_RANGE:
+          <screen>export GLOBUS_TCP_PORT_RANGE=min,max </screen> where min,max specify the port
+          range that you have opened for the outgoing connections on the
+	  firewall. This restricts the GridFTP client to bind to a local port in
+	  this range for
+          outbound connections. Recommended range is twice the
+          range used for GLOBUS_TCP_PORT_RANGE, because if parallel TCP streams are used for
+          transfers, the listening port would remain the same for each connection but the connecting
+          port would be different for each connection.</para>
+      </listitem>
+      </orderedlist>
+      
+      <!-- NOTE: the three client-firewall elements (-intro, -config and -moreinfo) are being pulled into the User's Guide -->
+    <para id="gridftp-client-firewall-moreinfo">Additional information on Globus Toolkit Firewall Requirements is available <ulink
+        url="http://www.globus.org/toolkit/security/firewalls/">here</ulink>.</para>
+  </section><section id="gridftp-admin-config-security">
+    <title>Configuring Security for GridFTP</title>
+    <para>There are many security options in GridFTP ranging from no security to higher security via
+      GSI .</para>
+    <section id="gridftp-admin-config-security-anonymous"><title>Anonymous mode</title>
+      <indexterm type="gridftp-howto">
+        <primary>configuring GridFTP</primary>
+        <secondary>security</secondary>
+        <tertiary>anonymous mode</tertiary>
+      </indexterm>
+      <para>Anonymous mode (using the <option>-aa</option> option) allows any user with an FTP
+        client to read and write (and delete) files that the server process can similarly access (it
+        is also a quick way to test that your server works).</para>
+        <screen><prompt role="globus"/><command>globus-gridftp-server -aa</command>
+<computeroutput>Server listening at 127.0.0.1:58806</computeroutput></screen>
+        <warning>
+        <para>When the server is run in this way, anyone who can connect to the server will posses
+          all the same rights as the user that the process is run as (directly or via
+            <option>-anonymous-user</option>). If using this mode intentionally for open access, it
+          is best to run under a dedicated account with limited filesystem permissions. You can also
+          use the option below to disable FTP commands such as STOR, ESTO, DELE, RDEL, RNTO, etc to
+          make sure that users can only read from the server and not write to it.
+          <screen> -disable-command-list &lt;string&gt;</screen> Where &lt;string&gt; represents a
+          comma separated list of client commands that will be disabled. Default: not set. </para>
+      </warning></section>
+    <section id="gridftp-admin-config-security-userpw"><title>Username/password</title>
+      <indexterm type="gridftp-howto">
+        <primary>configuring GridFTP</primary>
+        <secondary>security</secondary>
+        <tertiary>username/password</tertiary>
+      </indexterm>
+      <para>If you trust your network and want a minimal amount of security, you can run the
+        globus-gridftp-server with clear text passwords. This security model is the one originally
+        introduced in RFC959.</para><warning>
+        <para>We do not recommend it for long running servers open to the internet.</para>
+      </warning><section>
+        <title>Create password file</title>
+        <para>To run the server in clear text password mode, we first need to create a password file
+          dedicated to it. The format of the password file is the same as standard system password
+          files; however, it is ill-advised to use a system password file. To create an entry in a
+          GridFTP password file, run the following commands:</para>
+        <screen><prompt role="globus"/><command>touch pwfile</command>
+<prompt role="globus"/><command>gridftp-password.pl &gt;&gt; pwfile</command>
+<computeroutput>Password:</computeroutput></screen>
+        <para>This will ask you for a password and then create an entry in the password file for the
+          current user name and the given password. Take a look at the file created. You will notice
+          that the password you typed in is not in the file in a clear text form. We have run it
+          though a one way hash algorithm before storing it in the file.</para>
+      </section><section>
+        <title>Run the server in password mode</title>
+        <para>Simply start the server pointing it at the password file you just created.</para>
+        <screen><prompt role="globus"/><command>globus-gridftp-server -password-file  /full/path/of/pwfile</command>
+<computeroutput>Server listening at 127.0.0.1:5555</computeroutput></screen>
+      </section><section>
+        <title>Make a transfer</title>
+        <para>To run globus-url-copy with the password, use the following syntax:</para>
+        <screen><prompt role="globus"/><command>globus-url-copy file:///etc/group ftp://<replaceable>username</replaceable>:<replaceable>pw</replaceable>@localhost:5000/tmp/group</command></screen>
+      </section></section>
+    <section id="gridftp-admin-config-security-sshftp"><title>SSHFTP (GridFTP-over-SSH)</title>
+      <indexterm type="gridftp-howto">
+        <primary>configuring GridFTP</primary>
+        <secondary>security</secondary>
+        <tertiary>over SSH</tertiary>
+      </indexterm>
+      <para>This type of security introduces the sshftp control channel (frontend) protocol. This is
+        a very simple means of obtaining strong security on the control channel only (the data
+        channel is <emphasis>not</emphasis> authenticated). With this approach, you can run a
+        GridFTP transfer anywhere that you can ssh. <filename>sshftp://</filename> leverages the
+        ubiquitous ssh/sshd programs to form control channel connections much in the same way that
+        inetd forms connections.</para><section>
+        <title>Configure Server for SSH GridFTP Support</title>
+        <para>Every host that wishes to run a <command>globus-gridftp-server</command> which can
+          accept <filename>sshftp://</filename> connections must run the following command as
+          root:</para>
+        <screen><prompt role="globus"/><command>globus-gridftp-server-enable-sshftp</command></screen>
+        <para>In the absence of root access, a user can configure the server to allow <filename
+            >sshftp://</filename> connections for that user only with the following command:</para>
+        <screen><prompt role="globus"/><command>globus-gridftp-server-enable-sshftp -nonroot</command></screen>
+        <para> 
+	  The above command creates a file named 'sshftp' in
+	  '/etc/grid-security' (if run as root) or in '$HOME/.globus' (if run as
+	  nonroot).   You may edit this file to set gridftp commandline options
+	  or environment variables such as GLOBUS_TCP_PORT_RANGE, but you can
+	  also set those options in the config file.
+	  </para>
+      </section><section>
+        <title>Performing <filename>sshftp://</filename> Transfers</title>
+        <para>In this case, a <command>globus-gridftp-server</command> does not need to be running.
+          The server will be started via the sshd program. Therefore, the hostname and port should
+          be that of the sshd server. Run <command>globus-url-copy</command> just as you have
+          before; simply change <filename>ftp://</filename> to <filename
+          >sshftp://</filename>.</para>
+        <screen><prompt role="globus"/><command>globus-url-copy -v file:/etc/group sshftp://127.0.0.1/tmp/group</command>
+<prompt role="globus"/><command>globus-url-copy -list sshftp://127.0.0.1/tmp/</command></screen>
+      </section></section>
+    <section id="gridftp-admin-gsiftp"><title>GSIFTP</title>
+      <indexterm type="gridftp-howto">
+        <primary>configuring GridFTP</primary>
+        <secondary>security</secondary>
+        <tertiary>gsiftp</tertiary>
+      </indexterm>
+      <para>This security option can be the most involved to set up, but provides the most security.
+        It requires setting up GSI security as described in the GT Installation Guide here: <olink
+          targetdoc="gtadmin" targetptr="gtadmin-basic-security"/>. </para><para>Once GSI has been
+        set up (host and user credentials are valid, the gridmap file is updated and you've run
+        grid-proxy-init to create a proxy certificate), you simply run the GridFTP server:</para><screen>globus-gridftp-server</screen><note>
+        <para>If run as <computeroutput>root</computeroutput>, it will pick up the host cert; if
+          not, it will pick up the user cert.</para>
+      </note><para>Now you are ready to perform a GSI-authenticated transfer:</para><screen>globus-url-copy &lt;-s subject&gt; src_url dst_url</screen><note>
+        <para>The subject option is only needed if the server was not started as root.</para>
+      </note><section id="gridftp-admin-daemon_mode"><title>Running in daemon mode</title>
+        <indexterm type="gridftp-howto">
+          <primary>running in daemon mode</primary>
+        </indexterm>
+        <indexterm type="gridftp">
+          <primary>admin scenarios</primary>
+          <secondary>running in daemon mode</secondary>
+        </indexterm>
+        <para>The server should generally be run as root in daemon mode, although it is possible to
+          run it as a user (see below). When run as root you will need to have a <olink
+            targetdoc="gtadmin" targetptr="gtadmin-basic-host">host
+          certificate</olink>.</para><para>Run the
+          server:</para><screen>globus-gridftp-server &lt; -s | -S &gt; &lt;args&gt;</screen><para>where:</para><variablelist
+          termlength="100pt">
+          <varlistentry>
+            <term>-s</term>
+            <listitem>
+              <simpara>Runs in the foreground (this is the default mode).</simpara>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>-S</term>
+            <listitem>
+              <simpara>Detaches from the terminal and runs in the background.</simpara>
+            </listitem>
+          </varlistentry>
+        </variablelist><para>The following additional steps may be required when running as a user
+          other than root (for more details, review <olink targetdoc="gtadmin"
+            targetptr="gtadmin-basic-security"/>): <itemizedlist>
+            <listitem>
+              <simpara>Create a <filename>~/.gridmap</filename> file, containing the DNs of any
+                clients you wish to allow, mapped to the current username.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Create a proxy with <command>grid-proxy-init</command>.</simpara>
+            </listitem>
+          </itemizedlist></para></section><section id="gridftp-admin-inetd"><title>Running under
+          inetd or xinetd</title>
+        <indexterm type="gridftp-howto">
+          <primary>deploying</primary>
+          <secondary>running under inetd or xinetd</secondary>
+        </indexterm>
+        <indexterm type="gridftp">
+          <primary>deploying</primary>
+          <secondary>running under inetd or xinetd</secondary>
+        </indexterm>
+        <note>
+          <para>We also feature a user-configurable, super-server daemon plugin called GFork. Click
+              <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-gfork-master">here</olink>
+            for more information.</para>
+        </note><section>
+          <title>Set up xinetd/inetd config file</title>
+          <note>
+            <para>The service name used (gsiftp in this case) should be defined in <computeroutput
+                >/etc/services</computeroutput> with the desired port.</para>
+          </note>
+          <para>Here is a sample GridFTP server xinetd config entry in <filename
+              >/etc/xinetd.conf</filename>:
+            <screen>service gsiftp
+              {
+              instances               = 100
+              socket_type             = stream
+              wait                    = no
+              user                    = root
+              env                     += GLOBUS_LOCATION=(globus_location)
+              env                     += LD_LIBRARY_PATH=(globus_location)/lib
+              server                  = (globus_location)/sbin/globus-gridftp-server
+              server_args             = -i
+              log_on_success          += DURATION
+              nice                    = 10
+              disable                 = no
+              }</screen>
+            Here is a sample gridftp server inetd config entry in <filename
+              >/etc/inetd.conf</filename> (read as a single line):
+            <screen>
+              gsiftp   stream   tcp   nowait   root   /usr/bin/env env   \
+              GLOBUS_LOCATION=(globus_location)                      \
+              LD_LIBRARY_PATH=(globus_location)/lib                  \ 
+              (globus_location)/sbin/globus-gridftp-server -i
+            </screen></para>
+          <note>
+            <para>On Mac OS X, you must set DYLD_LIBRARY_PATH instead of LD_LIBRARY_PATH in the
+              above examples. </para>
+          </note>
+          <note>
+            <para>You should NOT include USERID in the log lines. See <olink
+                targetdoc="gridftpAdmin" targetptr="gridftp-troubleshooting-latency"/> for more
+              information.</para>
+          </note>
+        </section><section>
+          <title>globus-gridftp-server -i</title>
+          <para>Use the <option>-i</option> commandline option with <command
+              >globus-gridftp-server</command>: <screen>globus-gridftp-server -i</screen></para>
+        </section></section>
+      <section id="gridftp-admin-launchd"><title>Running under launchd</title>
+        
+        <para>launchd is used to start services in the system Mac OS X 10.4 (Tiger) and newer, and is also available as a port to FreeBSD.</para>
+        
+        <para>Here is a <ulink url="http://www.globus.org/toolkit/docs/{$shortversion}/{$version}/gridftp/globus.gridftp.plist">sample</ulink> configuration file for launchd to start the server:</para>
+        
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="globus.gridftp.plist"/></programlisting>
+        <para>Provided that the configuration file is stored in <filename>/System/Library/LaunchDaemons/globus.gridftp.plist</filename>, the following command starts the GridFTP server:</para>
+        
+        <screen><command>launchctl load /System/Library/LaunchDaemons/globus.griftp.plist</command></screen>
+        
+        <para>The server will be started automatically with a system, unless the value of the key 'Disabled' is changed from <code>&lt;false/&gt;</code> to <code>&lt;true/&gt;</code>.</para>
+      </section>
+    
+    </section>
+    <section id="gridftp-admin-user-pems">
+      <title>User permissions</title>
+      <para>Users are mapped to a local account on the server machine and file permissions are
+        handled by the operating systems. In the anonymous mode, users that connect to the server
+        will posses all the same rights as the user that the server process is run as (directly or
+        via -anonymous-user).</para>
+      <para>In case of username/password authentication, the users are mapped to the uid
+        corresponding to the username in the GridFTP password file and the access permissions for
+        the users is same as that of the UID that they are mapped to. If SSH based authentication is
+        used, upon successful authentication, SSHD maps users to a local account and the GridFTP
+        server is run as the mapped local user. The access permissions are the same as that of the
+        mapped local user.</para>
+      <para>If GSI is used, upon successful authentication an authorization callout is invoked to
+        (a) verify authorization and (b) determine the local user id as which the request should be
+        executed. This callout is linked dynamically. Globus GridFTP provides an implementation that
+        supports a Globus "gridmapfile". Sites can also provide alternative implementations. Server
+        does a setuid to the local user id as determined by the authorization callout and the access
+        permissions are the same as that of the local user id.</para>
+      <para>GridFTP server provides an option to disable certain FTP commands:
+        <screen> -disable-command-list &lt;string&gt;</screen> Where &lt;string&gt; represents a
+        comma separated list of client commands that will be disabled. Default: not set.</para>
+    </section>
+  </section><section>
+    <title><command>globus-gridftp-server</command> quickstart</title>
+    <para>The following is a quick guide to running the server and using the client:</para>
+    <para>Look through the list of options for globus-gridftp-server:</para>
+    <screen>globus-gridftp-server --help</screen>
+    <para>Start the server in anonymous mode (discussed more fully <olink targetdoc="gridftpAdmin"
+        targetptr="gridftp-admin-config-security-anonymous">here</olink>):</para>
+    <screen>globus-gridftp-server -control-interface 127.0.0.1 -aa -p 5000</screen>
+    <para>where: <variablelist>
+        <varlistentry>
+          <term>–control-interface</term>
+          <listitem>
+            <simpara>is the hostname or IP address of the interface to listen for control
+              connections on <!-- fixme need to find better syntax for this sentence -->. This
+              option is only needed here as a rudimentary means of security for this simple example.
+            </simpara>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>–aa</term>
+          <listitem>
+            <simpara>enables anonymous mode</simpara>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>–p</term>
+          <listitem>
+            <simpara>indicates on which port the server listens.</simpara>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+    <para>Run a two party transfer with client:</para>
+    <screen>globus-url-copy -v file:///etc/group ftp://localhost:5000/tmp/group</screen>
+    <para>Run 3rd party transfer:</para>
+    <screen>globus-url-copy -v ftp://localhost:<replaceable>port</replaceable>/etc/group ftp://localhost:<replaceable>port</replaceable>/tmp/group2</screen>
+    <para>Experiment with -dbg, and -vb options for debugging and checking the performance of your
+      setup:</para>
+    <screen>globus-url-copy -dbg file:///etc/group ftp://localhost:5000/tmp/group</screen>
+    <screen>globus-url-copy -vb file:///dev/zero ftp://localhost:5000/dev/null</screen>
+    <para>where:</para>
+    <variablelist id="debugging-options">
+      <varlistentry>
+        <term><option> -dbg</option></term>
+        <listitem>
+          <para>A useful option when something is not working. It results in a GridFTP control
+            channel protocol dump (along with other useful information) to stderr. If you understand
+            the GridFTP protocol, or you have ambition to understand it, this can be a very useful
+            tool to discover various problems in your setup such as overloaded servers and
+            firewalls. When submitting a bug report or asking a question on the support email lists
+            one should always send along the -dbg output.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-vb</option></term>
+        <listitem>
+          <para>Provides a type of progress bar of the user to observe the rate at which their
+            transfer is progressing.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>Ctrl-c - Kill the server.</para>
+    <note>
+      <para>There are many possible options and configurations with <command
+          >globus-gridftp-server</command>. For some guidelines on setting it up for your situation,
+        see <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-tuning"/>.</para>
+    </note>
+  </section>
+  <section>
+      <title>Enabling File Sharing with Globus Sharing Service</title>
+      <para>To enable file sharing using <ulink
+              url="https://www.globus.org/researchers/plus-plans">Globus
+	      Sharing</ulink>, you have to add the <ulink
+	      url="../securityd2b.tar.gz">Globus Sharing CA
+	      certificates</ulink> to your trusted certificates directory
+	      (/etc/grid-security/certificates) and use '-sharing-dn' option in the server
+	      as follows:
+<screen><prompt role="globus"/><command>globus-gridftp-server -sharing-dn
+"/C=US/O=Globus Consortium/OU=Globus Connect User/CN=__transfer__"</command>
+</screen>
+	and use '-sharing-rp' option to restrict the file paths allowed for
+	sharing:
+<screen><prompt role="globus"/><command>globus-gridftp-server -sharing-rp &lt;path&gt; </command>
+</screen></para>
+</section>
+  </chapter>

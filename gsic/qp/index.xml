@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+
+<article id="gsicQP">
+      <title>GT<replaceable role="entity">version</replaceable> GSI C Quality Profile</title>
+      <titleabbrev>Quality Profile</titleabbrev>
+      <section id="gsic-qp-test">
+            <title>Test Reports </title>
+            <para>
+                  <itemizedlist>
+                        <listitem>
+                              <simpara>
+
+                              <ulink url="globus-gss-assist-test.html">Unit Test Report: GSS Assist</ulink>
+                              </simpara>
+                        </listitem>
+                        <listitem>
+                              <simpara>
+
+                              <ulink url="globus-proxy-ssl-test.html">Unit Test Report: Proxy SSL</ulink>
+                              </simpara>
+                        </listitem>
+                        <listitem>
+                              <simpara>
+
+                              <ulink url="globus-gssapi-gsi-test.html">Unit Test Report: GSSAPI (GSI)</ulink>
+                              </simpara>
+                        </listitem>
+                        <listitem>
+                              <simpara>
+
+                              <ulink url="globus-proxy-utils-test.html">Unit Test Report: Proxy Utils</ulink>
+                              </simpara>
+                        </listitem>
+                        <listitem>
+                              <simpara>
+
+                              <ulink url="globus-openssl-error-test.html">Unit Test Report: OpenSSL Error</ulink>
+                              </simpara>
+                        </listitem>
+                  </itemizedlist>
+            </para>
+      </section>
+      <section id="gsic-qp-coverage"><title>Test coverage reports</title>
+      <para>
+        <itemizedlist>
+        <listitem><simpara>A test coverage report is available at <ulink url="http://www.mcs.anl.gov/~bester/gsi/coverage/{$version}"/>.</simpara></listitem>
+        </itemizedlist>
+      </para>
+      </section>
+      <section id="gsic-qp-code">
+            <title>Code analysis reports </title>
+            <para>
+                  <itemizedlist>
+                        <listitem>
+                              <simpara>There are no code analysis reports available at this
+                              time.</simpara>
+                        </listitem>
+                  </itemizedlist>
+            </para>
+      </section>
+
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="../GSIC_Known_Problems_Frag.xml"/>
+      
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="../GSIC_Fixed_Bugs_Frag.xml"/>
+
+      <section id="gsic-qp-performance">
+            <title>Performance reports </title>
+            <para>
+                  <itemizedlist>
+                        <listitem>
+                              <simpara>There are no performance reports available at this
+                              time.</simpara>
+                        </listitem>
+                  </itemizedlist>
+            </para>
+      </section>
+      <glossary role="auto" id="glossary-gsicQP">
+            <!-- 
+            <remark>some terms not in the docs but wanted in glossary: 
+            <glossterm>scheduler</glossterm>
+            </remark>
+            -->
+            <glossdiv><title>A</title>
+                  <glossentry>
+                        <glossterm>Dummy term</glossterm>
+                        <glossdef>
+                              <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+                        </glossdef>
+                  </glossentry>
+            </glossdiv>
+      </glossary>
+</article>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="myproxy-security-considerations"><title>MyProxy Security Considerations</title>
+<para>
+You should choose a well-protected host to run the myproxy-server
+on. Consult with security-aware personnel at your site. You want a host
+that is secured to the level of a Kerberos KDC, that has limited user
+access, runs limited services, and is well monitored and maintained in
+terms of security patches.
+</para>
+
+<para>
+For a typical myproxy-server installation, 
+the host on which the myproxy-server is running must
+    have /etc/grid-security created and a <glossterm>host certificate</glossterm> installed.
+In this case, the myproxy-server will run as root so it can access the
+host certificate and key.
+</para>
+</section>

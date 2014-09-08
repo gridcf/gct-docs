@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="x-xio-driver-quick-start"><title>Driver Quick Start</title>
+<section id="x-xio-driver-quick-start-Introduction-quick">
+    <title>Introduction</title>
+    <para>
+        This Guide explains how to create a transport driver for Globus XIO. For the purpose of 
+        exploring both what a transform driver is and how to write one this guide will walk through 
+        an example driver. The full source code for the driver can be found at <ulink url="../globus_xio_driver_example.c">Driver Example</ulink>. 
+        This example implements a file driver for globus_xio. If a user of globus_xio were to put this 
+        file at the bottom of the stack, they could access files on the local file system.
+    </para>
+</section>
+
+<section id="x-xio-driver-quick-start-dataStructure">
+    <title>Data Structures</title>
+    <para>
+        There are three data structures that will be explored in this example: attribute, target, and handle. 
+        The driver defines the memory layout of these data structures but the globus_xio framework imposes 
+        certain semantics upon them. It is up to the driver how to use them, but globus_xio will be expecting certain behaviors.
+    </para>
+</section>
+
+<section id="x-xio-driver-quick-start-attributes">
+    <title>Attributes</title>
+    <para>
+        Each driver may have its own attribute structure. The attribute gives the globus_xio user API an opportunity 
+        to tweak parameters inside the driver. The single attribute structure is used for all possible driver specific attributes:
+</para>
+<orderedlist>
+    <listitem><simpara>Target attributes</simpara></listitem>
+    <listitem><simpara>Handle attributes</simpara></listitem>
+     <listitem><simpara>Server attributes</simpara></listitem>
+</orderedlist>
+    
+    <para>
+        How each of these can use the attribute structure will be unveiled as the tutorial continues. For now it is simply important 
+        to remember there is attribute structure used to initiate of the driver ADTs.
+    </para>
+    
+    <para>
+        A driver is not required to have an attribute support at all. However if the driver author chooses to support attributes the following functions must be implemented:
+    </para>
+    <screen>typedef globus_result_t
+(*globus_xio_driver_attr_init_t)(
+       void **                                                     out_attr);
+        
+typedef globus_result_t
+(*globus_xio_driver_attr_cntl_t)(
+       void *                                                       attr,
+       int                                                             cmd,
+       va_list                                                      ap);
+        
+typedef globus_result_t
+(*globus_xio_driver_attr_copy_t)(
+       void **                                                      dst,
+       void *                                                        src);
+        
+typedef globus_result_t
+(*globus_xio_driver_attr_destroy_t)(
+       void *                                                        attr); </screen>
+    
+    <para>
+        See <ulink url="http://www.globus.org/api/c-globus-{$version}/globus_xio_gridftp_driver/html/index.html">driver API doc</ulink> for more information.
+    </para>
+    <para>
+        We shall now take our first look at the file <ulink url="../globus_xio_driver_example.c">Driver Example</ulink>. The file driver needs a way to provide 
+        the user level programmer with a means of setting the mode and flags when a file is open (akin to the POSIX function <computeroutput>open()</computeroutput>).    
+    </para>
+    <para>
+        The first step in creating this ability is to a) define the attribute structure and b) implement the<computeroutput> globus_xio_driver_attr_init_t</computeroutput> function which will initialize it:
+    </para>
+    <screen>/*
+ *  attribute structure 
+ */ 
+struct globus_l_xio_file_attr_s
+{
+    int                                                                mode;
+    int                                                                flags;
+}
+        
+globus_result_t
+globus_xio_driver_file_attr_init(
+    void **                                                         out_attr)
+{
+    struct globus_l_xio_file_attr_s *            file_attr;
+            
+    /*
+     *  create a file attr structure and initialize its values
+     */
+    file_attr = (struct globus_l_xio_file_attr_s *)
+        globus_malloc(sizeof(struct globus_l_xio_file_attr_s));
+            
+    file_attr-&gt;flags = O_CREAT;
+    file_attr-&gt;mode = S_IRWXU;
+            
+    /* set the out parameter to the driver attr */
+    *out_attr = file_attr;
+            
+    return GLOBUS_SUCCESS;
+}  </screen>
+    
+    <para>
+        The above simply defines a structure that can hold two integers, mode and flags, then defines a function the will allocate and initialize this structure.
+        <computeroutput>globus_xio</computeroutput> hides much of the memory management of these attribute structures from the driver. However, it does 
+        need the driver to provide a means of copying them, and free all resources associated with them. In the case of the file driver example, these are both simple:
+    </para>
+    
+    <screen>globus_result_t
+globus_xio_driver_file_attr_copy(
+        void **                                                        dst,
+        void *                                                          src)
+{
+        struct globus_l_xio_file_attr_s *           file_attr;
+                
+        file_attr = (struct globus_l_xio_file_attr_s *)
+        globus_malloc(sizeof(struct globus_l_xio_file_attr_s));
+                
+        memcpy(file_attr, src, sizeof(struct globus_l_xio_file_attr_s));
+                
+        *dst = file_attr;
+                
+        return GLOBUS_SUCCESS;
+}
+        
+globus_result_t
+globus_xio_driver_file_attr_destroy(
+        void *                                                          attr)
+{
+        globus_free(attr);
+                
+        return GLOBUS_SUCCESS;
+} </screen>
+    
+    <para>
+        The above code should be fairly clear. Obviously we need a method with which the user can set flags and mode. This is accomplished with the following interface function:
+    </para>
+    
+    <screen>globus_result_t
+globus_xio_driver_file_attr_cntl(
+        void *                                                                  attr,
+        int                                                                        cmd,
+        va_list                                                                 ap)
+{   
+        struct globus_l_xio_file_attr_s *                   file_attr;
+        int *                                                                     out_i;
+                
+        file_attr = (struct globus_l_xio_file_attr_s *)attr;
+        switch(cmd) 
+        {
+                case GLOBUS_XIO_FILE_SET_MODE:
+                        file_attr-&gt;mode = va_arg(ap, int);
+                        break;
+                        
+                case GLOBUS_XIO_FILE_GET_MODE:
+                        out_i = va_arg(ap, int *);
+                        *out_i = file_attr-&gt;mode;
+                        break; 
+                        
+                case GLOBUS_XIO_FILE_SET_FLAGS:
+                        file_attr-&gt;flags = va_arg(ap, int);
+                        break;
+                        
+                case GLOBUS_XIO_FILE_GET_FLAGS:
+                        out_i = va_arg(ap, int *);
+                        *out_i = file_attr-&gt;flags;
+                        break;
+                        
+                default:
+                        return FILE_DRIVER_ERROR_COMMAND_NOT_FOUND;
+                        break;
+        }
+                
+        return GLOBUS_SUCCESS;
+}</screen>
+    
+    <para>
+        This function is called passing the driver an <computeroutput>initialized file_attr</computeroutput> structure, a command, and a variable argument list.
+    </para>
+    
+    <para>
+        Based on the value of <computeroutput>cmd</computeroutput>, the driver decides to do one of the following:
+    </para>
+    
+    <itemizedlist>
+        <listitem><simpara>set flags or mode from the <computeroutput>va_args</computeroutput></simpara></listitem>
+        <listitem><simpara>return flags or mode to the user via a pointer in <computeroutput>va_args</computeroutput></simpara></listitem>
+        </itemizedlist>
+</section>
+
+    <section id="x-xio-driver-quick-start-target"><title>Target</title>
+        <para>
+            A target structure represents what a driver will open. It is initialized from a contact string and an attribute. 
+            In the case of a file driver, the target simply holds onto the contact string as a path to the file.
+        </para>
+        <para>The file driver implements the following target functions:</para>
+        
+        <screen>globus_result_t
+globus_xio_driver_file_target_init(
+        void **                                                                   out_target,
+        void *                                                                     target_attr,
+        const char *                                                         contact_string,
+        globus_xio_driver_stack_t                               stack)
+{
+        struct globus_l_xio_file_target_s *                 target;
+                    
+        /* create the target structure and copy the contact string into it */
+        target = (struct globus_l_xio_file_target_s *)
+                            globus_malloc(sizeof(struct globus_l_xio_file_target_s));
+        strncpy(target-&gt;pathname, contact_string, sizeof(target-&gt;pathname) - 1);
+        target-&gt;pathname[sizeof(target-&gt;pathname) - 1] = '\0';
+                    
+        return GLOBUS_SUCCESS;
+        }
+                    
+/*
+ *  destroy the target structure
+ */
+globus_result_t
+globus_xio_driver_file_target_destroy(
+        void *                                                                     target)
+{
+        globus_free(target);
+                    
+        return GLOBUS_SUCCESS;
+}</screen>
+        
+        <para>The above function handles the creation and destruction of the file driver's target structure.</para>   
+        <note><simpara>
+            When the target is created, the contact string is copied into it. It is invalid to just copy the pointer to the contact string. 
+            As soon as this interface function returns, that pointer is no longer valid.
+        </simpara></note>
+    </section>
+    
+    <section id="x-xio-driver-quick-start-handle"><title>Handle</title>
+        
+        <para>The most interesting of the three data types discussed here is the handle. All typical IO operations (open, close, read, write) 
+            are performed on the handle. The handle is the initialized form of the target and an attr. The driver developer should use this ADT 
+            to keep track of any state information they will need in order to perform reads and writes.</para>
+        
+        <para>In the example case, the driver handle is fairly simple as the driver is merely a wrapper around POSIX calls:</para>
+        
+<screen>struct globus_l_xio_file_handle_s
+ {
+        int                                    fd;
+};</screen>
+        
+        <para>The reader should review the following functions in <ulink url="../globus_xio_driver_example.c">Driver Example</ulink> 
+            in order to see how the handle structure is used:</para>
+        <itemizedlist>
+            <listitem><simpara><computeroutput>globus_xio_driver_file_open()</computeroutput></simpara></listitem>
+            <listitem><simpara><computeroutput>globus_xio_driver_file_write()</computeroutput></simpara></listitem>
+            <listitem><simpara><computeroutput>globus_xio_driver_file_read()</computeroutput></simpara></listitem>
+            <listitem><simpara><computeroutput>globus_xio_driver_file_close()</computeroutput></simpara></listitem>
+        </itemizedlist>
+        
+    </section>
+    
+    <section id="x-xio-driver-quick-start-IO-Operations"><title>IO Operations</title>
+        
+        <para>The read and write interface functions are called in response to a user read or write request. 
+            Both functions are provided with a vector that has at least the same members as the <computeroutput>struct iovec</computeroutput> and a vector length. 
+            As of now, the iovec elements may contain extra members, so if you wish to use <computeroutput>readv()</computeroutput> or <computeroutput>writev()</computeroutput>, you will have to 
+            transfer the <computeroutput>iov_base</computeroutput> and <computeroutput>iov_len</computeroutput> members to the POSIX iovec.</para>
+        
+        <para>As with the open and close interface functions, if an error occurs before any real processing has occurred, the 
+            interface function may simply return the error (in a <computeroutput>result_t</computeroutput>), effectively canceling the operation. However, once bytes 
+            have been read or written, you must not return the error. You must report the number of bytes read/written along with the result.</para>
+        
+        <para>When an operation is done, either by error or successful completion, the operation must be 'finished'. To do this, a call must be made to: </para>
+        
+        <screen>globus_result_t
+globus_xio_driver_finished_read/write(
+    globus_xio_driver_operation_t                       op, 
+    globus_result_t                                                 res, 
+    globus_ssize_t                                                  nbytes);</screen>
+        
+        <section id="x-xio-driver-quick-start-calls"><title>Blocking vs Non-blocking Calls</title>
+            <para>In general, the driver developer does not need to concern himself with how the user made the call. Whether it was a blocking or an asynchronous call, 
+                XIO will handle things correctly.</para>
+            
+            <para>However the call was made, the driver developer can call globus_xio_driver_finished_{open, read, write, close} either while in the original interface call, 
+                in a separate thread, or in a separate callback kick out via the globus_callback API. </para>
+        </section>
+    </section>
+    <section id="x-xio-driver-quick-start-glue"><title>The Glue</title>
+        
+        <para>Through a process not finalized yet, XIO will request the <computeroutput>globus_xio_driver_t</computeroutput> structure from the driver. 
+            This structure defines all of the interface functions that the driver supports. In detail: </para>
+        
+        <screen>/*
+ *  main io interface functions
+ */
+globus_xio_driver_open_t                                                      open_func;
+globus_xio_driver_close_t                                                     close_func;
+globus_xio_driver_read_t                                                       read_func;
+globus_xio_driver_write_t                                                       write_func;
+globus_xio_driver_handle_cntl_t                                          handle_cntl_func;
+            
+globus_xio_driver_target_init_t                                             target_init_func;
+globus_xio_driver_target_destroy_t                                     target_destroy_finc;
+            
+/*
+ * target init functions.  Must have client or server
+ */
+globus_xio_driver_server_init_t                                            server_init_func;
+globus_xio_driver_server_accept_t                                     server_accept_func;
+globus_xio_driver_server_destroy_t                                    server_destroy_func;
+globus_xio_driver_server_cntl_t                                           server_cntl_func;
+            
+/*
+ *  driver attr functions.  All or none may be NULL
+ */
+globus_xio_driver_attr_init_t                                                  attr_init_func;
+globus_xio_driver_attr_copy_t                                               attr_copy_func;
+globus_xio_driver_attr_cntl_t                                                 attr_cntl_func;
+globus_xio_driver_attr_destroy_t                                          attr_destroy_func;
+            
+/*
+ *  data descriptor functions.  All or none
+ */
+globus_xio_driver_data_descriptor_init_t                           dd_init;  
+globus_xio_driver_driver_data_descriptor_copy_t            dd_copy;
+globus_xio_driver_driver_data_descriptor_destroy_t       dd_destroy;
+globus_xio_driver_driver_data_descriptor_cntl_t              dd_cntl; </screen>
+    </section>
+</chapter>

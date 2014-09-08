@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<bookinfo id="gtadmin-intro" xreflabel="Introduction to Installing GT">
+<abstract>	<title>Introduction</title>
+
+	<para>
+		This guide is the starting point for everyone who wants
+		to install Globus Toolkit <replaceable role="entity">version</replaceable>. It will take you through
+		a basic installation that installs the
+		following basic services: a security infrastructure (GSI),
+		GridFTP, and Execution Services (GRAM5).
+	</para>
+<!-- need to either set up new way of generating admin.pdf, or just let people use the releaseManuals.pdf file
+	also, i don't think we'll be using toc_all.html anymore (hard to keep it up to date) -->
+	<para>
+		This guide is also available
+		as a <ulink url="installingGT.pdf">PDF</ulink>.
+		However, each component includes online reference
+		material, which this guide sometimes links to.
+		<!-- The master list of documentation is
+		<ulink url="../../toc_all.html">here</ulink>. -->
+	</para>
+</abstract>
+</bookinfo>
+

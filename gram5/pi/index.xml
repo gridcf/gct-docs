@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook EBNF Module V1.2CR1//EN"
+                    "http://www.oasis-open.org/docbook/xml/ebnf/1.2CR1/dbebnf.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gram5PI">
+<title>GT <replaceable role="entity">version</replaceable> Component Guide to Public Interfaces: GRAM5</title>
+<titleabbrev> Guide to Public Interfaces</titleabbrev>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../GRAM5_Interface_API_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_RSL_Frag.xml"/>
+    
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_RVF_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_Commandline_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_Config_Frag.xml"/>
+
+
+    <chapter><title>Job description</title>
+      <para>
+        Jobs are described in GRAM5's job description language.
+        For detailed schema information see the
+        <olink targetptr="gram5-rsl">GRAM5 RSL
+        documentation</olink>. For more information and examples please check the
+        <olink targetdoc="gram5User" targetptr="gram5-user-globusrun">Globusrun
+        section</olink> in the
+        <olink targetdoc="gram5User">GRAM5 Users's guide</olink>.
+      </para>
+    </chapter>
+
+<chapter id="gram5-pi-protocols"><title>Semantics and syntax of protocols</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_Protocol_Frag.xml"/>
+</chapter>
+
+<!-- n/a 
+<chapter id="gram5-pi-guis"><title>Graphical User Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_GUI_Frag.xml"/>
+</chapter>
+    -->
+
+<!-- n/a 
+<chapter id="gram5-pi-env"><title>Environment variable interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Interface_Env_Frag.xml"/>
+</chapter>
+-->
+    
+    <appendix id="gram5-error-codes">
+        <title>Errors</title>
+            <indexterm type="gram5">
+  <primary>errors</primary>
+    </indexterm>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Errors_Frag.xml" xpointer="gram5-errors-table"/>
+    </appendix>
+
+    <glossary role="auto" id="glossary-gram4PI">
+        <!-- 
+        <remark>some terms not in the docs but wanted in glossary: 
+        <glossterm>scheduler</glossterm>
+        </remark>
+        -->
+        <glossdiv><title>A</title>
+            <glossentry>
+                <glossterm>Dummy term</glossterm>
+                <glossdef>
+                    <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+                </glossdef>
+            </glossentry>
+        </glossdiv>
+    </glossary>
+</book>

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="failed_job_two_phase_commit_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:11:23 2012
+# Current time GMT:   Mon Jul 16 21:11:23 2012
+# Using Test.pm version 1.25
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="failed_job_two_phase_commit_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_activate_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:11:38 2012
+# Current time GMT:   Mon Jul 16 21:11:38 2012
+# Using Test.pm version 1.25
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_activate_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_callback_contact_test_pl_gcc64" errors="0" failures="0" tests="4" time="291.399136066437">
+    <system-out>1..4
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:11:38 2012
+# Current time GMT:   Mon Jul 16 21:11:38 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+ok 3
+ok 4
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_callback_contact_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_callback_contact_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_client_callback_contact_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_client_callback_contact_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_cancel_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:11:38 2012
+# Current time GMT:   Mon Jul 16 21:11:38 2012
+# Using Test.pm version 1.25
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_cancel_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_nonblocking_register_test_pl_gcc64" errors="0" failures="0" tests="4" time="291.399136066437">
+    <system-out>1..4
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:11:43 2012
+# Current time GMT:   Mon Jul 16 21:11:43 2012
+# Using Test.pm version 1.25
+ok 1
+Failed submitting job request because an authorization operation failed
+globus_xio_gsi: gss_init_sec_context failed.
+GSS Major Status: Unexpected Gatekeeper or Service Name
+globus_gsi_gssapi: Authorization denied: The name of the remote entity (/O=Grid/OU=GlobusTest/OU=simpleCA-ip-10-202-9-218.ec2.internal/OU=local/CN=bamboo), and the expected name for the remote entity (/O=Grid/OU=GlobusTest/OU=simpleCA-ip-10-202-9-218.ec2.internal/OU=local/CN=bambooX) do not match
+.
+ok 2
+ok 3
+ok 4
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_nonblocking_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_nonblocking_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_client_nonblocking_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_client_nonblocking_register_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_refresh_credentials_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:12:16 2012
+# Current time GMT:   Mon Jul 16 21:12:16 2012
+# Using Test.pm version 1.25
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_refresh_credentials_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_register_test_pl_gcc64" errors="0" failures="0" tests="5" time="291.399136066437">
+    <system-out>1..5
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:12:27 2012
+# Current time GMT:   Mon Jul 16 21:12:27 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+ok 3
+ok 4
+ok 5
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_client_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_client_register_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 5" classname="globus_gram_client_register_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_register_callback_test_pl_gcc64" errors="0" failures="0" tests="4" time="291.399136066437">
+    <system-out>1..4
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:13:05 2012
+# Current time GMT:   Mon Jul 16 21:13:05 2012
+# Using Test.pm version 1.25
+ok 1
+Failed submitting job request because an authorization operation failed
+globus_xio_gsi: gss_init_sec_context failed.
+GSS Major Status: Unexpected Gatekeeper or Service Name
+globus_gsi_gssapi: Authorization denied: The name of the remote entity (/O=Grid/OU=GlobusTest/OU=simpleCA-ip-10-202-9-218.ec2.internal/OU=local/CN=bamboo), and the expected name for the remote entity (/O=Grid/OU=GlobusTest/OU=simpleCA-ip-10-202-9-218.ec2.internal/OU=local/CN=bambooX) do not match
+.
+ok 2
+ok 3
+ok 4
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_register_callback_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_register_callback_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_client_register_callback_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_client_register_callback_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_register_cancel_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:13:38 2012
+# Current time GMT:   Mon Jul 16 21:13:38 2012
+# Using Test.pm version 1.25
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_register_cancel_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_ping_test_pl_gcc64" errors="0" failures="0" tests="2" time="291.399136066437">
+    <system-out>1..2
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:13:43 2012
+# Current time GMT:   Mon Jul 16 21:13:43 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_ping_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_ping_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_status_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:13:44 2012
+# Current time GMT:   Mon Jul 16 21:13:44 2012
+# Using Test.pm version 1.25
+Made 2478 calls to status in 10.550254 seconds
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_status_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_two_phase_commit_test_pl_gcc64" errors="0" failures="0" tests="4" time="291.399136066437">
+    <system-out>1..4
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:13:54 2012
+# Current time GMT:   Mon Jul 16 21:13:54 2012
+# Using Test.pm version 1.25
+ok 1
+globus_gram_client_callback_allow successful
+GRAM Job submission successful
+GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE
+ok 2
+ok 3
+ok 4
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_two_phase_commit_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_two_phase_commit_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_client_two_phase_commit_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_client_two_phase_commit_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_register_ping_test_pl_gcc64" errors="0" failures="0" tests="4" time="291.399136066437">
+    <system-out>1..4
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:14:59 2012
+# Current time GMT:   Mon Jul 16 21:14:59 2012
+# Using Test.pm version 1.25
+ok 1
+ok 2
+ok 3
+ok 4
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_register_ping_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="globus_gram_client_register_ping_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="globus_gram_client_register_ping_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 4" classname="globus_gram_client_register_ping_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="globus_gram_client_stdio_size_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+# Running under perl version 5.008008 for linux
+# Current time local: Mon Jul 16 17:15:00 2012
+# Current time GMT:   Mon Jul 16 21:15:00 2012
+# Using Test.pm version 1.25
+ok 1
+</system-out>
+    <testcase name="Unnamed test case 1" classname="globus_gram_client_stdio_size_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="job_status_with_info_test_pl_gcc64" errors="0" failures="0" tests="3" time="291.399136066437">
+    <system-out>1..3
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="job_status_with_info_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="job_status_with_info_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="job_status_with_info_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="register_version_test_pl_gcc64" errors="0" failures="0" tests="3" time="291.399136066437">
+    <system-out>1..3
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="register_version_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="register_version_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="register_version_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="restart_to_new_url_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+ok # test_restart_to_new_url
+</system-out>
+    <testcase name="# test_restart_to_new_url" classname="restart_to_new_url_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="stdio_update_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+ok # test_stdio_update
+</system-out>
+    <testcase name="# test_stdio_update" classname="stdio_update_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="version_test_pl_gcc64" errors="0" failures="0" tests="3" time="291.399136066437">
+    <system-out>1..3
+ok
+ok
+ok
+</system-out>
+    <testcase name="Unnamed test case 1" classname="version_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 2" classname="version_test_pl_gcc64" time="0" />
+    <testcase name="Unnamed test case 3" classname="version_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="local_stdio_size_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>job contact: https://ip-10-202-9-218.ec2.internal:60321/16217897457412978296/3461599309023326097/
+1..1
+ok # local-stdio-size-test 
+</system-out>
+    <testcase name="# local-stdio-size-test" classname="local_stdio_size_test_pl_gcc64" time="0" />
+  </testsuite>
+  <testsuite name="stdio_update_after_failure_test_pl_gcc64" errors="0" failures="0" tests="1" time="291.399136066437">
+    <system-out>1..1
+ok # stdio-update-after-failure-test
+</system-out>
+    <testcase name="# stdio-update-after-failure-test" classname="stdio_update_after_failure_test_pl_gcc64" time="0" />
+  </testsuite>
+</testsuites>

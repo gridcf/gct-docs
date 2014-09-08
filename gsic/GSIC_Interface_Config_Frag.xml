@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- wishlist: best practices for managing certs from a user's perspective -->
+<chapter id="gsic-configuring" xreflabel="Configuring GSI">
+  <title>Configuring Certificates</title>
+  <para>This section describes the configuration steps required to:<itemizedlist>
+      <listitem>
+        <simpara>determine whether or not to trust certificates issued by a particular <glossterm
+            baseform="Certificate Authority">Certificate Authority (CA)</glossterm>,</simpara>
+      </listitem>
+      <listitem>
+        <simpara>provide appropriate default values for use by the <olink targetdoc="gsicPI"
+            targetptr="grid-cert-request"><command>grid-cert-request</command></olink> command,
+          which is used to generate certificates,</simpara>
+      </listitem>
+      <listitem>
+        <simpara>request <glossterm baseform="service certificate">service certificates</glossterm>,
+          used by services to authenticate themselves to users, and</simpara>
+      </listitem>
+      <listitem>
+        <simpara>specify identity mapping information.</simpara>
+      </listitem>
+    </itemizedlist></para>
+  <para>In general, Globus tools will look for a configuration file in a user-specific location
+    first, and in a system-wide location if no user-specific file was found. The configuration
+    commands described here may be run by administrators to create system-wide defaults and by
+    individuals to override those defaults.</para>
+  <section id="gsic-configuring-trustCA">
+    <title>Configuring Globus to Trust a Particular Certificate Authority</title>
+    <section>
+      <title>Trusted certificates directory</title>
+      <para>The Globus tools will trust certificates issued by a CA if (and only if) it can find
+        information about the CA in the trusted certificates directory.</para>
+      <para>The trusted certificates directory is located as described below and exists either on a
+        per-machine or on a per-installation basis. </para>
+      <para><envar>X509_CERT_DIR</envar> is the environment variable used to specify the path to the
+        trusted certificates directory. This directory contains information about which CAs are
+        trusted (including the <glossterm baseform="CA Certificate">CA certificates</glossterm>
+        themselves) and, in some cases, configuration information used by <olink targetdoc="gsicPI"
+          targetptr="grid-cert-request"><command>grid-cert-request</command></olink> to formulate
+        certificate requests. The location of the trusted certificates directory is looked for in
+        the following order: <orderedlist>
+          <listitem>
+            <simpara>value of the <envar>X509_CERT_DIR</envar> environment variable</simpara>
+          </listitem>
+          <listitem>
+            <simpara><filename>$HOME/.globus/certificates</filename></simpara>
+          </listitem>
+          <listitem>
+            <simpara><filename>/etc/grid-security/certificates</filename> exists</simpara>
+          </listitem>
+          <listitem>
+            <simpara><filename>$GLOBUS_LOCATION/share/certificates</filename></simpara>
+          </listitem>
+        </orderedlist></para>
+    </section>
+    <section>
+      <title>Trusted certificates files</title>
+      <para>The following two files must exist in the directory for each trusted CA:</para>
+      <table>
+        <title>CA files</title>
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry><filename><replaceable>cert_hash</replaceable>.0</filename></entry>
+              <entry>The trusted <glossterm>CA Certificate</glossterm>.</entry>
+            </row>
+            <row>
+              <entry><filename><replaceable>cert_hash</replaceable>.signing_policy</filename></entry>
+              <entry>A configuration file defining the distinguished names of certificates signed by
+                the CA.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Non-WS Globus components will honor a certificate only if: <itemizedlist>
+          <listitem>
+            <simpara>its CA certificate exists (with the appropriate name) in the
+                <emphasis>TRUSTED_CA</emphasis> directory, and</simpara>
+          </listitem>
+          <listitem>
+            <simpara>the certificate's distinguished name matches the pattern described in the
+              signing policy file.</simpara>
+          </listitem>
+        </itemizedlist></para>
+    </section>
+    <section>
+      <title>Hash of the CA certificate</title>
+      <para>The <emphasis>cert_hash</emphasis> that appears in the file names above is the hash of
+        the CA certificate, which can be found by running the command:</para>
+      <screen>$GLOBUS_LOCATION/bin/openssl x509 -hash -noout &lt; <emphasis>ca_certificate</emphasis></screen>
+    </section>
+    <section>
+      <title>Creating a signing policy by hand</title>
+      <para>Some CAs provide tools to install their CA certificates and signing policy files into
+        the trusted certificates directory. You can, however, create a signing policy file by hand;
+        the signing policy file has the following format:</para>
+      <screen>access_id_CA X509 '<emphasis>CA Distinguished Name</emphasis>'
+pos_rights globus CA:sign
+cond_subjects globus '"<emphasis>Distinguished Name Pattern</emphasis>"'</screen>
+      <para>In the above, the <emphasis>CA Distinguished Name</emphasis> is the subject name of the
+        CA certificate, and the <emphasis>Distinguished Name Pattern</emphasis> is a string used to
+        match the distinguished names of certificates granted by the CA. </para>
+      <para>Some very simple wildcard matching is done: if the <emphasis>Distinguished Name
+        Pattern</emphasis> ends with a '*', then any distinguished name that matches the part of the
+        CA subject name before the '*' is considered a match. </para>
+      <para>Note: the cond_subjects line may contain a space-separated list of distinguished name
+        patterns.</para>
+    </section>
+    <section>
+      <title>Repository of CAs</title>
+      <para>A repository of CA certificates that are widely used in academic and research settings
+        can be found <ulink url="https://www.tacar.org/certs.html">here</ulink>.</para>
+    </section>
+  </section>
+  <section>
+    <title>Configuring Globus to Create Appropriate Certificate Requests</title>
+    <para>The <olink targetdoc="gsicPI" targetptr="grid-cert-request"><command
+        >grid-cert-request</command></olink> command, which is used to create certificates, uses the
+      following configuration files:</para>
+    <table>
+      <title>Certificate request configuration files</title>
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry><filename>globus-user-ssl.conf</filename></entry>
+            <entry>Defines the distinguished name to use for a user's certificate request. The
+              format is described <ulink
+                url="http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT"
+              >here</ulink>.</entry>
+          </row>
+          <row>
+            <entry><filename>globus-host-ssl.conf</filename></entry>
+            <entry>Defines the distinguished name for a host (or service) certificate request. The
+              format is described <ulink
+                url="http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT"
+              >here</ulink>.</entry>
+          </row>
+          <row>
+            <entry><filename>grid-security.conf</filename></entry>
+            <entry>A base configuration file that contains the name and email address for the
+            CA.</entry>
+          </row>
+          <row>
+            <entry><filename>directions</filename></entry>
+            <entry>An optional file that may contain directions on using the CA.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>Many CAs provide tools to install configuration files with the following names in the
+      Trusted Certificates directory:</para>
+    <itemizedlist>
+      <listitem>
+        <para><filename>globus-user-ssl.conf.<replaceable>cert_hash</replaceable></filename></para>
+      </listitem>
+      <listitem>
+        <para><filename>globus-host-ssl.conf.<replaceable>cert_hash</replaceable></filename></para>
+      </listitem>
+      <listitem>
+        <para><filename>grid_security.conf.<replaceable>cert_hash</replaceable></filename></para>
+      </listitem>
+      <listitem>
+        <para><filename>directions.<replaceable>cert_hash</replaceable></filename></para>
+      </listitem>
+    </itemizedlist>
+    <section>
+      <title>Creating a certificate request for a specific CA</title>
+      <para>The command:</para>
+      <screen>grid-cert-request -ca <emphasis>cert_hash</emphasis></screen>
+      <para>will create a certificate request based on the specified CA's configuration files.
+      </para>
+    </section>
+    <section>
+      <title>Listing available CAs</title>
+      <para>The command:</para>
+      <screen>grid-cert-request -ca</screen>
+      <para>will list the available CAs and let the user choose which one to create a request
+      for.</para>
+    </section>
+    <section>
+      <title>Specifying a default CA for certificate requests</title>
+      <para>The default CA is the CA that will be used for certificate requests if <olink
+          targetdoc="gsicPI" targetptr="grid-cert-request"><command
+        >grid-cert-request</command></olink> is invoked without the <option>-ca</option> flag. </para>
+      <para>You can specify a default CA by invoking the <olink targetdoc="gsicPI"
+          targetptr="grid-default-ca"><command>grid-default-ca</command></olink> command (follow the
+        link for examples of using the command).</para>
+    </section>
+    <section>
+      <title><filename>directions</filename> file</title>
+      <para>The <filename>directions</filename> file may contain specific directions on how to use
+        the CA. There are three types of printed messages: <itemizedlist>
+          <listitem>
+            <simpara><emphasis>REQUEST HEADER</emphasis>, printed to a certificate request
+            file,</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>USER INSTRUCTIONS</emphasis>, printed on the screen when one requests
+              a <glossterm>user certificate</glossterm>,</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>NONUSER INSTRUCTIONS</emphasis>, printed on the screen when one
+              requests a certificate for a service.</simpara>
+          </listitem>
+        </itemizedlist></para>
+      <para>Each message is delimited from others with lines <emphasis>----- BEGIN message type TEXT
+          -----</emphasis> and <emphasis>----- END message type TEXT -----</emphasis>. For example,
+        the <filename>directions</filename> file would contain the following lines:</para>
+      <screen>----- BEGIN REQUEST HEADER TEXT -----
+This is a Certificate Request file
+
+It should be mailed to ${GSI_CA_EMAIL_ADDR}
+----- END REQUEST HEADER TEXT -----</screen>
+      <para>If this file does not exist, the default messages are printed.</para>
+    </section>
+  </section>
+  <section>
+    <title>Requesting Service Certificates</title>
+    <para>Different CAs use different mechanisms for issuing end-user certificates; some use
+      mechanisms that are entirely web-based, while others require you to generate a certificate
+      request and send it to the CA. If you need to create a certificate request for a service
+      certificate, you can do so by running:</para>
+    <screen>grid-cert-request -host <emphasis>hostname</emphasis> -service <emphasis>service_name</emphasis></screen>
+    <para>where <emphasis>hostname</emphasis> is the fully-qualified name of the host on which the
+      service will be running, and <emphasis>service_name</emphasis> is the name of the service.
+      This will create the following three files:</para>
+    <table>
+      <title>Certificate request files</title>
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry><filename><replaceable>GRID_SECURITY/service_name/service_name</replaceable>cert.pem</filename></entry>
+            <entry>An empty file. When you receive your actual service certificate from your CA, you
+              should place it in this file.</entry>
+          </row>
+          <row>
+            <entry><filename><replaceable>GRID_SECURITY/service_name/service_name</replaceable>cert_request.pem</filename></entry>
+            <entry>The certificate request, which you should send to your CA.</entry>
+          </row>
+          <row>
+            <entry><filename><replaceable>GRID_SECURITY/service_name/service_name</replaceable>key.pem</filename></entry>
+            <entry>The <glossterm>private key</glossterm> associated with your certificate request,
+              encrypted with the pass phrase that you entered when prompted by <command
+                >grid-cert-request</command>.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>The <olink targetdoc="gsicPI" targetptr="grid-cert-request"><command
+        >grid-cert-request</command></olink> command recognizes several other useful options; you
+      can list these with:</para>
+    <screen>grid-cert-request -help</screen>
+  </section>
+  <section id="setting-up-gridmap">
+    <title>Configuring Credential Mappings</title>
+    <para> Several Globus services map certificates to local unix usernames to be used with unix
+      services. The default implementation uses a <glossterm baseform="grid map file"
+      >gridmap</glossterm> file to map the distinguished name of the identity of the client's
+      certificate to a local login name. Administrators can modify the contents of the gridmap file
+      to control what certificate identities are allowed to access Globus services, as well as
+      configure, via an environment variable, what gridmap file a particular service uses. </para>
+    <para>In addition to the identity-based mapping done via the gridmap file, administrators can
+      configure Globus services to to use arbitrary mapping functions. These may use other criteria,
+      such as SAML assertions, to map a certificate to a local account, or may map certificates to
+      temporary accounts. Administrators can install different mapping implementations and configure
+      services to use them by creating appropriate configuration files and setting environment
+      variables. </para>
+    <section>
+      <title>Configuring Identity Mappings Using <filename>gridmap</filename> Files</title>
+      <para> Gridmap files contain a database of entries mapping distinguished names to local user
+        names. These may be manipulated by using the following tools. </para>
+      <section>
+        <title>Adding an entry to a gridmap file</title>
+        <para>To add an entry to the gridmap file, run:</para>
+        <screen>$GLOBUS_LOCATION/sbin/grid-mapfile-add-entry \
+        -dn "<replaceable>Distinguished Name</replaceable>" \
+        -ln <replaceable>local_name</replaceable></screen>
+      </section>
+      <section>
+        <title>Deleting an entry from a gridmap file</title>
+        <para>To delete an entry from the gridmap file, run:</para>
+        <screen>$GLOBUS_LOCATION/sbin/grid-mapfile-delete-entry \
+        -dn "<replaceable>Distinguished Name</replaceable>" \
+        -ln <replaceable>local_name</replaceable></screen>
+      </section>
+      <section>
+        <title>Checking consistency of a gridmap file</title>
+        <para>To check the consistency of the gridmap file, run</para>
+        <screen>$GLOBUS_LOCATION/sbin/grid-mapfile-check-consistency</screen>
+      </section>
+      <section>
+        <title>Configuring per-service gridmap files</title>
+        <para> To configure a service to use a particular gridmap file, set the
+          <envar>GRIDMAP</envar> variable in the service's environment to the path of the gridmap
+          file. In this way, you can grant different access rights to different certificate
+          identities on a per-service basis by setting the <envar>GRIDMAP</envar> variable in
+          different service environments. </para>
+        <para> You can use tools described above to operate on different gridmap files by either
+          setting the <envar>GRIDMAP</envar> environment variable prior to invoking them, or by
+          using the <option>-mapfile</option> command-line option. </para>
+        <para>For reference, the GSI C code looks for the gridmap in these locations: <table
+            frame="all" id="gsic-gridmap-location-table">
+            <title>Gridmap File Location Algorithm </title>
+            <tgroup cols="2" align="left" colsep="1" rowsep="1">
+              <colspec colname="Location"/>
+              <colspec colname="c2"/>
+              <thead>
+                <row>
+                  <entry>Location</entry>
+                  <entry>notes</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <simpara>
+                      <envar>GRIDMAP</envar> environment variable </simpara>
+                  </entry>
+                  <entry>
+                    <simpara/>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <simpara>
+                      <filename>/etc/grid-security/grid-mapfile</filename>
+                    </simpara>
+                  </entry>
+                  <entry>
+                    <simpara> Only for services running as root. </simpara>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <simpara>
+                      <filename><envar>HOME</envar>.gridmap</filename>
+                    </simpara>
+                  </entry>
+                  <entry>
+                    <simpara> Only for services not running as root. </simpara>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+      <section>
+        <title>Gridmap formats</title>
+        <para>A gridmap line of the form:</para>
+        <screen>"<replaceable>Distinguished Name</replaceable>" <replaceable>local_name</replaceable></screen>
+        <para>maps the distinguished name <replaceable>Distinguished Name</replaceable> to the local
+          name <replaceable>local_name</replaceable>. </para>
+        <para>A gridmap line of the form:</para>
+        <screen>"<replaceable>Distinguished Name</replaceable>" <replaceable>local_name1</replaceable>,<replaceable>local_name2</replaceable></screen>
+        <para>maps <replaceable>Distinguished Name</replaceable> to both
+          <replaceable>local_name1</replaceable> and <replaceable>local_name2</replaceable>; any
+          number of local user names may occur in the comma-separated local name list.</para>
+        <para>For more detailed information about the gridmap file see the <ulink
+            url="https://dev.globus.org/wiki/Gridmap">file description and grammars </ulink> on
+          dev.globus.org.</para>
+      </section>
+    </section>
+    <section>
+      <title>Configuring Alternate Credential Mappings</title>
+      <para>To use an alternative credential mapping, you create a <filename
+        >gsi-authz.conf</filename> file containing information about how the mapping functions are
+        called from the authorization library. </para>
+      <para>To configure a per-service authorization configuration file, set the
+          <envar>GSI_AUTHZ_CONF</envar> variable to the path to the configuration file in the
+        environment of the service. </para>
+      <para>For reference, the GSI C code looks for the authorization configuration file in these
+        locations (in the given order): <table frame="all" id="gsic-gsi-authz-conf-location-table">
+          <title>Authorization Configuration File Locations</title>
+          <tgroup cols="1" align="left" colsep="1" rowsep="1">
+            <colspec colname="Location"/>
+            <thead>
+              <row>
+                <entry>Location</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <simpara>
+                    <envar>GSI_AUTHZ_CONF</envar> environment variable </simpara>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <simpara>
+                    <filename>/etc/grid-security/gsi-authz.conf</filename>
+                  </simpara>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <simpara>
+                    <filename><envar>GLOBUS_LOCATION</envar>/etc/gsi-authz.conf</filename>
+                  </simpara>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <simpara>
+                    <filename><envar>HOME</envar>/.gsi-authz.conf</filename>
+                  </simpara>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+      <section>
+        <title>Callout File Format</title>
+        <para> The authorization file defines a set of callouts, one per line. Each callout is
+          defined by an <emphasis>abstract type</emphasis>, <emphasis>library</emphasis>, and
+            <emphasis>symbol</emphasis> separated by whitespace. Comments begin with the
+          <emphasis>#</emphasis> character and continue to the end of line. <table frame="all"
+            id="gsic-gsi-authz-conf-entries-table">
+            <title>Authorization Configuration File Locations</title>
+            <tgroup cols="2" align="left" colsep="1" rowsep="1">
+              <colspec colname="Field"/>
+              <colspec colname="Meaning"/>
+              <thead>
+                <row>
+                  <entry>Field</entry>
+                  <entry>Meaning</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <simpara><replaceable>abstract type</replaceable></simpara>
+                  </entry>
+                  <entry>
+                    <simpara>Type of the callout: <emphasis>globus_mapping</emphasis> is used for
+                      credential mapping callouts</simpara>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <simpara><replaceable>library</replaceable>
+                    </simpara>
+                  </entry>
+                  <entry>
+                    <simpara>Path to the shared object containing the callout implementation. The
+                      library name may be a literal filename, or a partial filename to which the
+                      compilation flavor of the service is appended to the filename before its
+                      extension. </simpara>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <simpara><replaceable>symbol</replaceable></simpara>
+                  </entry>
+                  <entry>
+                    <simpara>The exported symbol containing the entry point to the callout
+                      implementation.</simpara>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+        <para>Here is a sample <filename>gsi-authz.conf</filename> file that configures a
+            <emphasis>globus_mapping</emphasis> callout to use the
+          <emphasis>globus_gridmap_callout</emphasis> function in the <filename
+            >/usr/local/globus/lib/libglobus_gridmap_callout_gcc32dbg</filename> shared object:
+          <screen>
+# abstract-type     library                                            symbol
+
+globus_mapping      /opt/globus/lib/libglobus_gridmap_callout_gcc32dbg globus_gridmap_callout
+</screen></para>
+      </section>
+    </section>
+  </section>
+  <section id="gsic-config-permissions">
+    <title>GSI File Permissions Requirements</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para><glossterm>End Entity Certificate</glossterm> (<glossterm
+              baseform="user certificate">User</glossterm>, <glossterm baseform="host certificate"
+              >Host</glossterm> and <glossterm baseform="service certificate">Service</glossterm>)
+            Certificates and the <glossterm baseform="GSI authorization callout configuration file"
+              >GSI Authorization Callout Configuration File</glossterm>: <itemizedlist>
+              <listitem>
+                <simpara>May not be executable</simpara>
+              </listitem>
+              <listitem>
+                <simpara>May not be writable by group and other</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Must be either regular files or soft links</simpara>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+        <listitem>
+          <para><glossterm baseform="private key">Private Keys</glossterm> and <glossterm
+              baseform="proxy credentials">Proxy Credentials</glossterm>: <itemizedlist>
+              <listitem>
+                <simpara>Must be owned by the current (effective) user</simpara>
+              </listitem>
+              <listitem>
+                <simpara>May not be executable</simpara>
+              </listitem>
+              <listitem>
+                <simpara>May not be readable by group and other</simpara>
+              </listitem>
+              <listitem>
+                <simpara>May not be writable by group and other</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Must be either regular files or soft links</simpara>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+        <listitem>
+          <para><glossterm baseform="CA Certificate">CA Certificates</glossterm>, <glossterm
+              baseform="CA Signing Policy">CA Signing Policy Files</glossterm>, the <glossterm
+              baseform="grid map file">Grid Map File</glossterm> and the <glossterm
+              baseform="GAA configuration file">GAA Configuration File</glossterm>: <itemizedlist>
+              <listitem>
+                <simpara>Must be either regular files or soft links</simpara>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+        <listitem>
+          <para>GSI Authorization callout configuration files<itemizedlist>
+              <listitem>
+                <simpara>Must exist</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Should be world readable</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Should not be writable by group and other</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Should be either a regular file or a soft link</simpara>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+        <listitem>
+          <para>GSI GAA configuration files<itemizedlist>
+              <listitem>
+                <simpara>Must exist</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Should be world readable</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Should not be writable by group and other</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Should be either a regular file or a soft link</simpara>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+</chapter>

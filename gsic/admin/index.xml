@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod">
+%xinclude;
+]>
+<book id="gsicAdmin">
+  <title>GT <replaceable role="entity">version</replaceable>: GSI C Admin Guide</title>
+
+  <titleabbrev>Admin Guide</titleabbrev>
+
+  <bookinfo id="gsic-admin-introduction">
+    <abstract>
+      <title>Introduction</title>
+
+      <para>This guide contains advanced configuration information for system
+      administrators working with GSI C. It provides references to
+      information on procedures typically performed by system administrators,
+      including installation, configuring, deploying, and testing the
+      installation.</para>
+
+      <para><important>
+          <para>The security tools are installed as part of the Globus Toolkit
+          installation process. For instructions on basic installation of the
+          Globus Toolkit, see the <olink targetdoc="gtadmin"></olink>.</para>
+        </important></para>
+
+      <para>Authentication in the Globus Toolkit is based on X.509
+      certificates. This document describes the configuration steps required
+      to:<itemizedlist>
+          <listitem>
+            <simpara>determine whether or not to trust certificates issued by
+            a particular <glossterm
+            baseform="Certificate Authority">Certificate Authority
+            (CA)</glossterm>,</simpara>
+          </listitem>
+
+          <listitem>
+            <simpara>provide appropriate default values for use by the
+            <command>grid-cert-request</command> command, which is used to
+            generate certificates,</simpara>
+          </listitem>
+
+          <listitem>
+            <simpara>request <glossterm baseform="service certificate">service
+            certificates</glossterm>, used by services to authenticate
+            themselves to users, and</simpara>
+          </listitem>
+
+          <listitem>
+            <simpara>specify identity mapping information.</simpara>
+          </listitem>
+        </itemizedlist></para>
+    </abstract>
+  </bookinfo>
+
+
+    <xi:include href="../GSIC_Interface_Config_Frag.xml" 
+      xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+
+  <chapter id="gsic-admin-testing">
+    <title>Testing</title>
+
+    <para>There is no content available at this time.</para>
+  </chapter>
+
+  <chapter id="gsic-admin-security_considerations">
+    <title>Security Considerations</title>
+
+    <xi:include href="../GSIC_Security_Considerations_Frag.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  </chapter>
+
+  <chapter id="gsic-admin-debugging">
+    <title>Debugging</title>
+
+    <xi:include href="../GSIC_Logging_Frag.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  </chapter>
+
+  <chapter id="gsic-admin-troubleshooting">
+    <title>Troubleshooting</title>
+    
+
+    <xi:include href="../../Credential_Troubleshooting_Frag.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+
+    <xi:include href="../../Gridmap_Troubleshooting_Frag.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
+  </chapter>
+
+  <glossary id="glossary-gsicAdmin" role="auto">
+    <remark>some terms not in the docs but wanted in glossary:
+    <glossterm>scheduler</glossterm></remark>
+
+    <glossdiv>
+      <title>A</title>
+
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do
+          not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</book>

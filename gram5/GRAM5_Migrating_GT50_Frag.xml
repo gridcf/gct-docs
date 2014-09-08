@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+  <chapter id="gram5-migrating-gt50">
+    <title>Migrating GRAM from GT5.0</title>
+    <indexterm type="gram5"><primary>migrating</primary><secondary>from 5.0.x</secondary></indexterm>
+      <para>FIXME</para>
+
+<section> <title>Admin - Migration Guide</title>
+
+  <para>FIXME</para>
+</section>
+
+<section> <title>User - Migration Guide</title>
+
+
+  <para>FIXME</para>
+
+</section>
+
+<section> <title>Developer - Migration Guide</title>
+
+
+  <para>FIXME</para>
+
+</section>
+
+</chapter>

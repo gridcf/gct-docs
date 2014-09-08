@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="xio-security-considerations"><title>Security considerations for XIO</title>
+<para>Globus XIO is a framework for creating network protocols.  Several
+      existing protocols, such as TCP, come built into the framework.  XIO
+      itself introduces no known security risks. However, all network
+      applications expose systems to the risks inherent when outsiders can connect to them.  Also included in the XIO distribution is the GSI
+      driver, which provides a driver that allows for secure connections.
+</para>
+</section>

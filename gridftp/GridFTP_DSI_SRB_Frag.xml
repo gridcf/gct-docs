@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section>
+    <title>Latest information about SRB</title>
+    <indexterm type="gridftp-howto">
+        <primary>accessing data</primary>
+        <secondary>SRB</secondary>
+    </indexterm>
+    <indexterm type="gridftp">
+        <primary>accessing data</primary>
+        <secondary>SRB</secondary>
+    </indexterm>
+    <para>Last Update: August 2005</para>
+
+    <para>Working with the SRB team at the San Diego Supercomputing Center, we have written a Data
+        Storage Interface (DSI) for read/write access to data in the Storage Resource Broker (SRB)
+        (http://www.npaci.edu/DICE/SRB). This DSI will enable GridFTP compliant clients to read and
+        write data to an SRB server, similar in functionality to the sput/sget commands.</para>
+    <para> This DSI is currently in testing and is not yet publicly available, but will be available
+        from both the SRB web site (here) and the Globus web site (here). It will also be included
+        in the next stable release of the toolkit. We are working on performance tests, but early
+        results indicate that for wide area network (WAN) transfers, the performance is comparable. </para>
+
+    <para>When might you want to use this functionality:</para>
+    <itemizedlist>
+        <listitem>
+            <simpara>You have existing tools that use GridFTP clients and you want to access data
+                that is in SRB</simpara>
+        </listitem>
+        <listitem>
+            <simpara>You have distributed data sets that have some of the data in SRB and some of
+                the data available from GridFTP servers. </simpara>
+        </listitem>
+    </itemizedlist>
+
+
+</section>

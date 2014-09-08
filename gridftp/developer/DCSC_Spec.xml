@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod">
+%xinclude;
+]>
+<appendix id="gridftp-developer-dcsc-spec">
+  <title>DCSC Specification</title>
+
+  <para>
+  This document provides the specification and rationale for the 'DCSC'
+  (Data Channel Security Context) command that is implemented by Globus
+  GridFTP server.
+  </para>
+
+  <section>
+    <title>Introduction</title>
+
+    <para>
+    A user may have multiple credentials issued by different organizations
+    that know nothing about the other.  If a user tries to perform a 3rd party
+    FTP transfer between these organizations' servers using DCAU (Data Channel
+    Authentication), it will fail because DCAU uses the user's credentials and
+    each side does not have the CA certificate that issued the other side's
+    user credential.  Thus, users are unlikely to be able to perform secure
+    3rd party transfers in large federated environments.  We present the DCSC
+    command as a way to enable DCAU in this scenario even if one side is
+    a legacy server that knows nothing about DCSC.  FTP servers that use SSH
+    for user authentication also benefit from DCSC since it provides a common,
+    interoperable context for DCAU.
+    </para>
+
+  </section>
+
+  <section>
+    <title>DCSC Command</title>
+
+<para>
+The current DCAU protocol uses an SSL context that contains the logged in
+user's credential.  If two servers have different user credentials and do
+not have each others' CA certificates, a client can not perform a secure
+3rd party transfer between them.  If one of the servers supports DCSC,
+a client can tell it to both send and accept the user credential used by
+the other server, thus enabling DCAU where it previously was not possible.
+If both servers support DCSC, clients that desire higher security may
+specify a random, self signed certificate as the DCAU context.
+</para>
+
+<para>The general format for DCSC is:</para>
+
+    <screen>DCSC <replaceable>context type</replaceable> <replaceable>context specific blob</replaceable>]</screen>
+
+<para>Where context type is a case insensitive string and the blob is a string
+composed of only printable ASCII (32-126) characters, such as base64
+encoding would produce.  This document specifies the "P" and "D" context
+types.</para>
+
+<para>A server that supports DCSC SHOULD include a line in its 'FEAT' output so
+clients can discover the feature.  The format of the FEAT line is:</para>
+
+    <screen>DCSC <replaceable>context type</replaceable> ["," <replaceable>context type</replaceable>]</screen>
+
+<para>For example, "DCSC P,D" means a server supports the "P" and "D" DCSC
+types.</para>
+
+<para>The allowed return codes for DCSC P and DCSC D are:</para>
+<screen>
+  * 2xx		Operation succeeded
+
+  * 5xx	        Operation failed; see message for specific information
+</screen>
+  </section>
+
+  <section id="dcsc-p">
+    <title>DCSC P</title>
+<para>
+The "P" context type (short for proxy/PEM) is:
+</para>
+
+    <screen>DCSC P <replaceable>base64 encoded blob</replaceable> </screen>
+
+<para>  base64 encoded blob: </para>
+<orderedlist>
+<listitem><simpara> A x509 certificate in PEM format </simpara></listitem>
+<listitem><simpara> A private key in PEM format </simpara></listitem>
+<listitem><simpara> Additional x509 certificates in PEM format, unordered (optional)</simpara></listitem>
+</orderedlist>
+
+<para>
+The PEM certificate(s) and key are already mostly in base64 encoding (the
+new line characters aren't) and thus encoding them again in base64 wastes
+some space.  However, this simplifies client and server implementation.
+</para>
+
+<para>
+A DCSC "P" command will overwrite any previous request.  A server SHOULD
+accept a DCSC "P" blob of at least 10KB in size.
+</para>
+
+<section> <title>Setting the Local Context</title>
+<para>
+The certificate (1) and key (2) MUST be used by the server as its 'client'
+certificate and key for all of the current session's subsequent DCAU
+connections.  Additionally, the DCAU A (self) command MUST imply the
+subject of certificate (1) instead of the user's log in credential.  This
+MUST occur even for a DCAU A that is implied if no DCAU command was issued
+by a client.
+</para>
+
+<para>
+The certificate in (1) MUST be self signed or verifiable using *only*
+intermediate and/or CA certificates in (3).  If the certificate in (1) is
+not self signed, clients MUST send its full certificate chain, including
+the CA certificate, in (3).  Servers SHOULD reject a request in which the
+certificate (1) is not self signed and can not be validated using only the
+certificates in (3).
+</para>
+</section>
+
+<section><title>Verifying the Remote Server</title>
+<para>
+A server MUST validate the remote party's DCAU certificate using the
+combination of:</para>
+
+<screen>
+   * The server's default CA certificates and signing policies
+
+   * All self signed certificates given in (1) and (3)
+</screen>
+
+<para>
+The server must trust all self signed certificates presented in (1) and
+(3), whether they are marked as a CA or not, in addition to its default CA
+certificate list, for all subsequent DCAU connections.  A server MUST NOT
+permanently trust the certificates in (1) and (3) or use them for anything
+other than validating DCAU connections used by the current session.
+</para>
+
+<para>
+Clients SHOULD provide the server all of the intermediate and/or CA
+certificates needed to verify the remote party's certificate by adding
+them to (3).  Servers MUST NOT require signing policy files for any CA
+certificates in (3).  If signing policies do exist for any CA certificates
+in (3), the server SHOULD still use and enforce them.  The DCSC command
+does not provide a way to specify signing policies; it is expected that
+the server's default CA certificates are already protected by signing
+policies.
+</para>
+</section>
+</section>
+<section><title>DCSC D</title>
+<para>
+ The "D" context type stands for "default context".  The command "DCSC D"
+ will revert the context to whatever it was immediately after login.
+</para>
+</section>
+
+<section>
+    <title>Security Considerations</title>
+<para>
+In legacy mode (only one server supports DCSC), the server supporting DCSC
+holds two short term credentials - one from a CA it knows about, and one
+from a CA of the other party.  A compromised server could thus leak both
+short term user credentials.  This might be mitigated somewhat by using an
+independent proxy for DCSC.  If both servers support DCSC, a random, self
+signed certificate SHOULD be used instead of a user credential for DCAU.
+</para>
+
+<para>
+Clients SHOULD send the DCSC command over an encrypted control channel.
+</para>
+
+</section>
+</appendix>

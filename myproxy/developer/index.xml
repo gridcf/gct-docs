@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="myproxyDeveloper">
+<title> GT <replaceable role="entity">version</replaceable> MyProxy: Developer's Guide</title>
+<titleabbrev>Developer's Guide</titleabbrev>
+
+<bookinfo id="myproxy-developer-introduction"><abstract><title>Introduction</title>
+<para>
+Please refer to the 
+<ulink url="http://myproxy.ncsa.uiuc.edu/devguide.html">MyProxy Developer's Guide</ulink>
+on the MyProxy web site.
+</para>
+</abstract>
+</bookinfo>
+
+<chapter id="myproxy-developer-beforeyoubegin">
+  <title>Before you begin</title>
+  
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Feature_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Platform_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Dependencies_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Security_Considerations_Frag.xml"/>
+</chapter>
+  <chapter id="myproxy-developer-scenarios"><title>Usage scenarios</title>
+    <para>
+      Please refer to the 
+      <ulink url="http://myproxy.ncsa.uiuc.edu/userguide.html">MyProxy User Guide</ulink>
+      for MyProxy usage scenarios.
+    </para>
+  </chapter>
+  
+  <chapter id="myproxy-developer-tutorials"><title>Tutorials</title>
+    <para>There are no tutorials available at this time.</para>
+  </chapter>
+<chapter id="myproxy-developer-archdes"><title>Architecture and design overview</title>
+<para>
+  The MyProxy system architecture and design is described in the
+  following two publications:
+</para>
+<itemizedlist>
+  <listitem><simpara>J. Basney, M. Humphrey, and V. Welch.
+    <ulink url="http://www.ncsa.uiuc.edu/~jbasney/myproxy-spe.pdf">The
+      MyProxy Online Credential Repository</ulink>. 
+    Software: Practice and Experience, 2005.</simpara></listitem>
+  <listitem><simpara>J. Novotny, S. Tuecke, and V. Welch.
+    <ulink url="http://www.globus.org/alliance/publications/papers/myproxy.pdf">An Online
+      Credential Repository for the Grid: MyProxy</ulink>.
+    Proceedings of the Tenth International Symposium
+    on High Performance Distributed Computing (HPDC-10), IEEE Press,
+    August 2001.</simpara></listitem>
+</itemizedlist>
+</chapter>
+
+  <!--
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Interface_API_Frag.xml"/>
+  -->
+  
+
+  <!--
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Interface_Config_Frag.xml"/>
+ 
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.xml"/>
+  -->
+
+  <!-- n/a
+  <chapter id="myproxy-developer-guis"><title>Graphical User Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Interface_GUI_Frag.xml"/>
+  </chapter>
+
+  <chapter id="myproxy-developer-domain"><title>Semantics and syntax of domain-specific interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Interface_Domain_Frag.xml"/>
+  </chapter>
+  -->
+
+  <!--
+  <chapter id="myproxy-developer-env"><title>Environment variable interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../Cred_Mgmt_MyProxy_Interface_Env_Frag.xml"/>
+  </chapter>
+  -->
+
+<!-- pulls in troubleshooting chapter from user's guide -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../user/index.xml" xpointer="myproxy-user-troubleshooting"/>
+
+<chapter id="myproxy-developer-relateddocs"><title>Related Documentation</title>
+<para>For additional information about MyProxy, see the
+  <ulink url="http://myproxy.ncsa.uiuc.edu/">MyProxy Project Home
+  Page</ulink> at NCSA.
+</para>
+</chapter>
+  <glossary role="auto" id="glossary-myproxyDeveloper">
+    <!-- 
+    <remark>some terms not in the docs but wanted in glossary: 
+    <glossterm>scheduler</glossterm>
+    </remark>
+    -->
+    <glossdiv><title>A</title>
+      <glossentry>
+        <glossterm>Dummy term</glossterm>
+        <glossdef>
+          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</book>

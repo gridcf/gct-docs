@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+]>
+
+
+<book id="gtadminappendix">
+<?dbhtml filename="appendix.html" ?>
+    <title>GT <replaceable role="entity">version</replaceable> Installation Appendix</title>
+    <!-- include all info for commonly used basic components: gram5 gridftp, rls, appendix of links to all of them -->
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="advanced_build.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="packaging.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="env_vars.xml"/>
+
+    <appendix id="gtadmin-simpleca" xreflabel="Installing SimpleCA">
+        <title>Installing SimpleCA</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+        xpointer="xpointer(id('simpleca-admin-guide')/*/section)" href="../../simpleca/admin/index.xml"/>
+    </appendix>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="troubleshooting.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="advanced_config.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="security_considerations.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="usage_stats.xml"/>
+
+    <glossary role="auto" id="glossary-gtadminappendix">
+        <glossdiv><title>A</title>
+            <glossentry>
+                <glossterm>Irrelevant</glossterm>
+                <glossdef>
+                    <para>If you can see this, the document was processed incorrectly. Use the
+                        <parameter>glossary.collection</parameter> parameter.</para>
+                </glossdef>
+            </glossentry>
+        </glossdiv>
+    </glossary>
+</book>

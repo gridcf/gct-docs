@@ -1,0 +1,10 @@
+Legacy library getopts.pl will be removed from the Perl core distribution in the next major release. Please install it from the CPAN distribution Perl4::CoreLibs. It is being used at /usr/sbin/myproxy-admin-adduser, line 42.
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+
+The new signed certificate is at: /var/lib/globus/simple_ca/newcerts/02.pem
+
+using storage directory /var/lib/myproxy
+Credential stored successfully
+Certificate subject is:
+/O=Grid/OU=GlobusTest/OU=simpleCA-elephant.globus.org/OU=local/CN=QuickStart User

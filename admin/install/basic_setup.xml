@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="gtadmin-basic-setup" xreflabel="Setting Up Basic Services for GT">
+	<title>Basic Setup for GT <replaceable role="entity">version</replaceable></title>
+	<para>The <olink targetdoc="quickstart">Quickstart Guide</olink> walks you through setting up basic services on multiple machines.</para>
+	
+	<!-- future fixme: could flesh this out 
+
+	<section id="gtadmin-basic-setup-gridftp"><title>Setting Up File Transfers (GridFTP)</title>
+	<para>adapt info from quickstart - olink to test info</para>
+	</section>
+	
+	
+	
+	<section id="gtadmin-basic-setup-rft"><title>Setting Up Large Transfers (RFT)</title>
+		<para>
+		configure the system to allow TCP/IP connections to postgres, adding a trust entry for our current host
+		as globus user, create the rftDatabase, 
+		load the RFT schema, 
+		change the password in the jndi-config.xml file, 
+		restart the container to load the new RFT configuration and 
+		test by trying an RFT transfer
+		</para>
+	</section>
+	
+	<section id="gtadmin-basic-setup-gram5"><title>Setting Up Job Management (GRAM5)</title>
+		<para>
+		setup sudo so the globus user can start jobs as a different user and
+		test by running a simple job
+		</para>
+		
+	</section>
+	
+	<section id="gtadmin-advanced-setup-index"><title>Discovering and Monitoring Resources with the Index Service (WS MDS)</title>
+		<para>adapt info from quickstart and test</para>
+		<para>make sure you include the glossary link to <glossterm>resource</glossterm>.</para>
+		
+		<section id="gtadmin-advanced-index-autoregister"><title>Auto-registration with the Default Index Service</title>
+			<para>talk about how by default, the ws services in the installation are automatically registered with the default index service</para>
+		</section>
+	</section>
+	
+	<section id="gtadmin-advanced-setup-webmds"><title>Visualizing Resources with WebMDS (WS MDS)</title>
+		<para>adapt info from quickstart</para>
+	</section>
+	
+	<section id="gtadmin-advanced-setup-myproxy"><title>Making Proxy Certificates Available with MyProxy</title>
+		<para>adapt info from quickstart</para>
+	</section>
+	
+	<section id="gtadmin-advanced-setup-multiple-machines"><title>Setting Up on Multiple Machines</title>
+		<para>general info about multiple machines</para>
+	</section>
+	
+	<section id="gtadmin-advanced-setup-cluster"><title>Setting Up Clusters</title>
+		<para>from quickstart - general information about clusters? or should that stay in quickstart?</para>
+	</section>
+	
+	<section id="gtadmin-advanced-setup-cross-ca-trust"><title>Establishing Cross-CA Trust</title>
+		<para>adapt info from quickstart</para>
+	</section>
+	
+	<section><title>Where To Go From Here</title>
+		<para>adapt info from quickstart</para>
+		
+	</section>
+	-->
+</chapter>
+

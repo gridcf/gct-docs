@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<book id="gsiopensshPI">
+<title> GT <replaceable role="entity">version</replaceable> Component Guide to Public Interfaces: GSI-OpenSSH</title>
+<titleabbrev>Public Interface Guide</titleabbrev>
+<!-- 
+<chapter id="gsiopenssh-pi-apis"><title>APIs</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_API_Frag.xml"/>
+</chapter>
+
+<chapter id="gsiopenssh-pi-wsdl"><title>Services and WSDL</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_WSDL_Frag.xml"/>
+</chapter>
+
+<chapter id="gsiopenssh-pi-protocols"><title>Protocols</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_Protocol_Frag.xml"/>
+</chapter>
+    -->
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_Commandline_Frag.xml"/>
+
+<!-- 
+<chapter id="gsiopenssh-pi-guis"><title>Graphical User Interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_GUI_Frag.xml"/>
+</chapter>
+
+<chapter id="gsiopenssh-pi-domain"><title>Semantics and syntax of domain-specific interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_Domain_Frag.xml"/>
+</chapter>
+    -->
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_Config_Frag.xml"/>
+
+<chapter id="gsiopenssh-pi-env"><title>Environment variable interface</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Interface_Env_Frag.xml"/>
+</chapter>
+    
+    <appendix id="gsiopenssh-error-codes">
+        <title>Errors</title>
+            <indexterm type="gsiopenssh">
+    <primary>errors</primary>
+    </indexterm>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../Util_OpenSSH_Errors_Frag.xml" xpointer="gsiopenssh-errors-table"/>
+    </appendix>
+
+    <glossary role="auto" id="glossary-opensshPI">
+        <!-- 
+        <remark>some terms not in the docs but wanted in glossary: 
+        <glossterm>scheduler</glossterm>
+        </remark>
+        -->
+        <glossdiv><title>A</title>
+            <glossentry>
+                <glossterm>Dummy term</glossterm>
+                <glossdef>
+                    <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
+                </glossdef>
+            </glossentry>
+        </glossdiv>
+    </glossary>
+</book>

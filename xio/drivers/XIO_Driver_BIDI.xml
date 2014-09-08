@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="xio-driver-bidi">
+    <title>Bidirectional Driver</title>
+    <para>The BIDI driver, bi-directional driver allows a user to turn
+    a unidirectional pipe, into a bidirectional stream.  It does this
+    simply by opening up 1 uni-directional pipe in each direction. 
+    By default it assumes the use of the ModeE driver, but it can
+    be configured to use any driver. </para>
+
+  <para>Important attribute controls are listed here.  For a complete list 
+        see: 
+    <ulink url="http://www.globus.org/api/c-globus-${version}/globus_xio_bidi_driver/html/index.html">BIDI API</ulink>
+  </para>
+  <itemizedlist>
+    <listitem>
+      <simpara>GLOBUS_XIO_BIDI_SET_READ_STACK</simpara>
+    </listitem>
+    <listitem>
+      <simpara>GLOBUS_XIO_BIDI_SET_WRITE_STACK</simpara>
+    </listitem>
+    <listitem>
+      <simpara>GLOBUS_XIO_BIDI_SET_READ_ATTR</simpara>
+    </listitem>
+    <listitem>
+      <simpara>GLOBUS_XIO_BIDI_SET_WRITE_ATTR</simpara>
+    </listitem>
+  </itemizedlist>
+
+</section>

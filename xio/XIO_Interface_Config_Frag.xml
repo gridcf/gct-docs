@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="xio-configuring">
+    <title>Configuring </title>
+    <para> Globus XIO is a development API; therefore, configuration details are largely in the
+        hands of the applications using it.</para>
+</chapter>

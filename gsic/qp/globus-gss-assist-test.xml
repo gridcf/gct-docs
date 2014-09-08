@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="gridmap_test_pl_gcc64" errors="0" failures="0" tests="11" time="0.551681041717529">
+    <system-out>1..11
+ok gridmap_bad_params_test
+ok userok_bad_params_test
+ok map_local_user_bad_params_test
+ok lookup_all_globusid_bad_params_test
+ok map_and_authorize_bad_params_test
+ok gridmap_test
+ok userok_test
+ok map_local_user_test
+ok lookup_all_globusid_test
+ok long_line_test
+ok blank_line_test
+</system-out>
+    <testcase name="gridmap_bad_params_test" classname="gridmap_test_pl_gcc64" time="0.000308990478515625" />
+    <testcase name="userok_bad_params_test" classname="gridmap_test_pl_gcc64" time="0.000185012817382812" />
+    <testcase name="map_local_user_bad_params_test" classname="gridmap_test_pl_gcc64" time="0.000123977661132812" />
+    <testcase name="lookup_all_globusid_bad_params_test" classname="gridmap_test_pl_gcc64" time="0.0001220703125" />
+    <testcase name="map_and_authorize_bad_params_test" classname="gridmap_test_pl_gcc64" time="0.000159978866577148" />
+    <testcase name="gridmap_test" classname="gridmap_test_pl_gcc64" time="0.000166893005371094" />
+    <testcase name="userok_test" classname="gridmap_test_pl_gcc64" time="0.000118017196655273" />
+    <testcase name="map_local_user_test" classname="gridmap_test_pl_gcc64" time="0.000116109848022461" />
+    <testcase name="lookup_all_globusid_test" classname="gridmap_test_pl_gcc64" time="0.000152826309204102" />
+    <testcase name="long_line_test" classname="gridmap_test_pl_gcc64" time="0.000133991241455078" />
+    <testcase name="blank_line_test" classname="gridmap_test_pl_gcc64" time="0.000116109848022461" />
+  </testsuite>
+  <testsuite name="gridmap_tools_test_pl_gcc64" errors="0" failures="0" tests="3" time="0.888354063034058">
+    <system-out>1..3
+ok 1 - add_test
+ok 2 - delete_empty_test
+ok 3 - delete_entry_test
+</system-out>
+    <testcase name="add_test" classname="gridmap_tools_test_pl_gcc64" time="0.20426607131958" />
+    <testcase name="delete_empty_test" classname="gridmap_tools_test_pl_gcc64" time="0.0991590023040771" />
+    <testcase name="delete_entry_test" classname="gridmap_tools_test_pl_gcc64" time="0.558335065841675" />
+  </testsuite>
+  <testsuite name="gss_assist_gridmap_test_pl_gcc64" errors="0" failures="0" tests="3" time="0.0255439281463623">
+    <system-out>1..3
+ok globus_gss_assist_gridmap
+ok default_user_match
+ok userok
+</system-out>
+    <testcase name="globus_gss_assist_gridmap" classname="gss_assist_gridmap_test_pl_gcc64" time="0.000277996063232422" />
+    <testcase name="default_user_match" classname="gss_assist_gridmap_test_pl_gcc64" time="0.000147819519042969" />
+    <testcase name="userok" classname="gss_assist_gridmap_test_pl_gcc64" time="0.000132083892822266" />
+  </testsuite>
+  <testsuite name="gss_assist_impexp_test_pl_gcc64" errors="0" failures="0" tests="3" time="0.212022066116333">
+    <system-out>1..3
+ok 1 - default-sec-env
+ok 2 - unset-x509-cert-dir
+ok 3 - unsetx509-user-proxy
+</system-out>
+    <testcase name="default-sec-env" classname="gss_assist_impexp_test_pl_gcc64" time="0.0913479328155518" />
+    <testcase name="unset-x509-cert-dir" classname="gss_assist_impexp_test_pl_gcc64" time="0.0420939922332764" />
+    <testcase name="unsetx509-user-proxy" classname="gss_assist_impexp_test_pl_gcc64" time="0.0405030250549316" />
+  </testsuite>
+  <testsuite name="gss_assist_auth_test_pl_gcc64" errors="0" failures="0" tests="3" time="0.21466588973999">
+    <system-out>1..3
+ok 1 - auth-with-default-environment
+ok 2 - auth-with-bogus-cert-dir
+ok 3 - auth-with-bogus-proxy
+</system-out>
+    <testcase name="auth-with-default-environment" classname="gss_assist_auth_test_pl_gcc64" time="0.0949828624725342" />
+    <testcase name="auth-with-bogus-cert-dir" classname="gss_assist_auth_test_pl_gcc64" time="0.0410559177398682" />
+    <testcase name="auth-with-bogus-proxy" classname="gss_assist_auth_test_pl_gcc64" time="0.0395350456237793" />
+  </testsuite>
+</testsuites>

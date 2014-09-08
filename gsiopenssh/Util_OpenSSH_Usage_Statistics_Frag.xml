@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="gsiopenssh-usage"><title>Usage statistics collection</title>
+<indexterm type="gsiopenssh"><primary>usage statistics for GSI-OpenSSH</primary></indexterm>
+<section id="gsiopenssh-usage-stats"><title>GSI-OpenSSH usage statistics collection</title>
+<para>
+By default, the GSI-OpenSSH server (sshd) will send a UDP packet containing usage
+information to 
+usage-stats.cilogon.org:4810 after serving each request.
+See the
+<ulink url="http://grid.ncsa.illinois.edu/ssh/privacy.html">Privacy Policy</ulink>
+    for details. You can see the Globus Usage Statistics policy <ulink url="/toolkit/docs/latest-stable/Usage_Stats.html">here</ulink>.
+</para>
+</section>
+</chapter>

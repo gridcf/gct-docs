@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="gsic-associatedstandards"><title>Associated Standards</title>
+<para>Associated standards for GSI C: </para>
+<itemizedlist>
+  <listitem>
+    <simpara><ulink url="http://www.faqs.org/rfcs/rfc3820.html">RFC 3820</ulink> Proxy Certificates</simpara>
+  </listitem>
+  <listitem>
+    <simpara><ulink url="http://www.faqs.org/rfcs/rfc2744.html">RFC 2744</ulink> GSSAPI: C-bindings</simpara>
+  </listitem>
+  <listitem>
+    <simpara><ulink url="http://www.faqs.org/rfcs/rfc2743.html">RFC 2743</ulink>: GSSAPI</simpara>
+  </listitem>
+  <listitem>
+    <simpara>
+      <ulink url="http://www.ogf.org/documents/GFD.24.pdf">GFD 24</ulink>: GSSAPI Extensions</simpara>
+  </listitem>
+  <listitem>
+    <simpara><ulink url="http://www.faqs.org/rfcs/rfc2246.html">RFC 2246</ulink> TLS</simpara>
+  </listitem>
+</itemizedlist>
+</section>

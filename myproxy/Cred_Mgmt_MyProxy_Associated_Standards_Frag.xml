@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="myproxy-associatedstandards">
+  <title>Associated Standards</title>
+  <para>Associated standards for MyProxy: </para>
+
+  <itemizedlist>
+    <listitem>
+      <simpara><ulink url="http://www.ggf.org/documents/GFD.54.pdf">GFD-E.054</ulink> MyProxy Protocol</simpara>
+    </listitem>
+    <listitem>
+      <simpara><ulink url="http://www.faqs.org/rfcs/rfc3820.html">RFC 3820</ulink> Proxy
+        Certificates</simpara>
+    </listitem>
+    <listitem>
+      <simpara><ulink url="http://www.faqs.org/rfcs/rfc2246.html">RFC 2246</ulink> TLS</simpara>
+    </listitem>
+  </itemizedlist>
+
+</section>

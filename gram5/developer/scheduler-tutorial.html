@@ -1,0 +1,34 @@
+<?php include_once( "/nfs/globus.org/include/globus_header.inc" ); ?>
+<!-- Include some useful php functions and the standard globus page header -->
+<?php
+    $title="GRAM Scheduler Interface Tutorial";
+    include_once("scheduler-tutorial-utils.php");
+?>
+
+<h1><?php echo $title; ?></h1>
+    <h2>Abstract:</h2>
+   <div class="abstract"
+         style="font-style: italic; margin-left: 10%; margin-right: 10%;">
+        GRAM provides a scheduler-independent abstraction to remote job
+        management.  The scheduler abstraction is divided into three sections:
+        job submission and cancelling, job monitoring, and information
+        publication. This set of tutorials describes how to implement and
+        bundle all packages needed for a complete scheduler interface for
+        GRAM.
+    </div>
+
+    <h2>Overview to Implementing a GRAM Scheduler</h2>
+
+    <dl>
+      <dt><a href="scheduler-tutorial-perl.html">Perl Scheduler
+      Interface</a></dt>
+      <dd>Module to do scheduler-specific job submit and job
+      cancel</dd>
+
+      <dt><a href="scheduler-tutorial-seg.html">Scheduler
+      Event Generator</a></dt>
+      <dd>Interface module to do scheduler-specific job monitoring</dd>
+
+      <dd></dd>
+    </dl>
+<?php include("/nfs/globus.org/include/globus_footer.inc"); ?>

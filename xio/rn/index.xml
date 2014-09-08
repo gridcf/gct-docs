@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+
+<article id="xioRN">
+<title>GT <replaceable role="entity">version</replaceable> Release Notes: XIO</title>
+<titleabbrev>Release Notes</titleabbrev>
+
+<section id="xio-rn-overview"><title>Component Overview</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Overview_Brief_Frag.xml"/>
+</section>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Feature_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Change_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Fixed_Bugs_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Known_Problems_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Dependencies_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Platform_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Compatibility_Summary_Frag.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../XIO_Associated_Standards_Frag.xml"/>
+
+<section id="xio-rn-formoreinfo"><title>For More Information </title>
+<para>See <olink targetdoc="xio"/> for more information about this component. </para>
+</section>
+</article>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+<article id="gram5RN">
+    <title>GT <replaceable role="entity">version</replaceable> Release Notes: GRAM5</title>
+    <titleabbrev>Release Notes</titleabbrev>
+    <section id="gram5-rn-overview">
+        <title>Component Overview</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="../GRAM5_Overview_Brief_Frag.xml"/>
+    </section>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Feature_Summary_Frag.xml"/>
+
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Change_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Fixed_Bugs_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Known_Problems_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Dependencies_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Platform_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Compatibility_Summary_Frag.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="../GRAM5_Associated_Standards_Frag.xml"/>
+
+    <section id="gram5-rn-formoreinfo">
+        <title>For More Information </title>
+        <para>See <olink targetdoc="gram5"/> for more information about this component. </para>
+    </section>
+    <glossary role="auto" id="glossary-gram5RN">
+        <!-- 
+        <remark>some terms not in the docs but wanted in glossary: 
+        <glossterm>scheduler</glossterm>
+        </remark>
+        -->
+        <glossdiv>
+            <title>A</title>
+            <glossentry>
+                <glossterm>Dummy term</glossterm>
+                <glossdef>
+                    <para>This is a dummy entry for the automatic glossary database. Do not
+                    edit.</para>
+                </glossdef>
+            </glossentry>
+        </glossdiv>
+    </glossary>
+</article>

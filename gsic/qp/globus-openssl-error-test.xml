@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="globus_openssl_error_test_pl_gcc64" errors="0" failures="0" tests="1" time="0.0457899570465088">
+    <system-out>1..1
+ok 1 - globus_error_wrap_openssl_error
+</system-out>
+    <testcase name="globus_error_wrap_openssl_error" classname="globus_openssl_error_test_pl_gcc64" time="0.0218679904937744" />
+  </testsuite>
+</testsuites>

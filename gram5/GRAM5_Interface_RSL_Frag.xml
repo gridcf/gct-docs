@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook EBNF Module V1.2CR1//EN"
+                    "http://www.oasis-open.org/docbook/xml/ebnf/1.2CR1/dbebnf.dtd" 
+[
+<!ENTITY % xinclude SYSTEM "../xinclude.mod">
+%xinclude;
+
+]>
+
+<chapter id="gram5-rsl">
+<title>RSL Specification v1.1</title>
+
+    <para>This is a document to specify the existing RSL v1.0 implementation
+    and interfaces, as they are provided in
+    the GT <replaceable role="entity">version</replaceable> release. This
+    document serves as a reference, and more introductory
+    text.</para>
+
+    <para>The Globus Resource
+    Specification Language (RSL) provides a common interchange language to
+    describe resources.  The various components of the Globus Resource
+    Management architecture manipulate RSL strings to perform their management
+    functions in cooperation with the other components in the system. The RSL
+    provides the skeletal syntax used to compose complicated resource
+    descriptions, and the various resource management components introduce
+    specific
+    <replaceable>ATTRIBUTE</replaceable>,<replaceable>VALUE</replaceable>&gt;
+    pairings into this common structure. Each attribute in a resource
+    description serves as a parameter to control the behavior of one or more
+    components in the resource management
+    system.
+    </para>
+
+    <section id="gram5-rsl-syntax-overview">
+    <title>RSL Syntax Overview</title>
+
+    <para>
+    The core syntax of the RSL syntax is the <emphasis>relation</emphasis>.
+    Relations associate an attribute name with a value, eg the relation
+    <literal>executable=a.out</literal> provides the name of an executable in a
+    resource request. There are two generative syntactic structures
+    in the RSL that are used to build more complicated resource descriptions
+    out of the basic relations: <emphasis>compound requests</emphasis> and
+    <emphasis>value sequences</emphasis>. In addition, the RSL
+    syntax includes a facility to both introduce and dereference string
+    <emphasis>substitution variables</emphasis>.
+    </para>
+
+    <para>The simplest form of compound request, utilized by all resource
+    management components, is the conjunct-request. The conjuct-request
+    expresses a conjunction of simple relations or compound requests (like a
+    boolean AND). The most common conjunct-request in Globus RSL strings is the
+    combination of multiple relations such as executable name, node count,
+    executable arguments, and output files for a basic GRAM job request.
+    Similarly, the core RSL syntax includes a disjunct-request form to
+    represent disjunctive relations (like a boolean OR). Currently, however, no
+    resource management component utilizes the disjunct-request form.
+    </para>
+    <para>The last form of compound request is the multi-request.
+    The multi-request expresses multiple parallel resources that
+    make up a resource description. The multi-request form differs
+    from the conjunction and disjunction in two ways: multi-requests introduce
+    new variable scope, meaning variables defined in one clause of a
+    multi-request are not visible to the other clauses, and multi-requests
+    introduce a non-reducible hierarchy to the resource
+    description. Whereas relations within a conjunct-request can be thought of
+    as <emphasis>constraints</emphasis> on the resource being described, the
+    subclauses of a
+    multi-request are best thought of as individual resource descriptions that
+    together constitute an abstract
+    resource collection; the same attributes may be
+    <emphasis>constrained</emphasis> in different ways in each
+    subclause without causing a logical contradiction. An example of a
+    contradiction would be to constrain the <literal>executable</literal>
+    attribute to be two conflicting values within a conjunction. Currently,
+    however, no resource management component utilizes the disjunct-request
+    form.
+    </para>
+    <para>The simplest form of value in the RSL syntax is the string literal.
+    When explicitly quoted, literals can contain any character, and many common
+    literals that don't contain special characters can appear without quotes.
+    Values can also be variable references, in which case the variable
+    reference is in essence <emphasis>replaced</emphasis> with the string
+    value defined for that variable. RSL descriptions can also express
+    string-concatenation of values, especially useful to construct long strings
+    out of several variable references.  String concatenation is supported with
+    both an explicit concatenation operator and implicit concatenation for many
+    idiomatic constructions involving variable references and literals.
+    </para>
+    <para>In addition to the simple value forms given above, the RSL syntax
+    includes the value sequence to express ordered sets of values. The value
+    sequence syntax is used primarily for defining variables and for providing
+    the argument list for a program.
+    </para>
+    </section>
+
+    <section id="gram5-rsl-tokenization-overview">
+    <title>RSL Tokenization Overview</title>
+    <para> Each RSL string consists of a sequence of RSL tokens, whitespace,
+    and comments. The RSL tokens are either special syntax or regular unquoted
+    literals, where special syntax contains one or more of the following listed
+    special characters and unquoted literals are made of sequences of
+    characters excluding the special characters.
+    </para>
+    <para>The complete set of special characters that cannot appear as part of
+    an unquoted literal is:
+    
+    <itemizedlist>
+        <listitem><simpara><literal>+</literal> (plus)</simpara></listitem>
+        <listitem><simpara><literal>&amp;</literal> (ampersand)</simpara></listitem>
+        <listitem><simpara><literal>|</literal> (pipe)</simpara></listitem>
+        <listitem><simpara><literal>(</literal>(left paren)</simpara></listitem>
+        <listitem><simpara><literal>)</literal> (right paren)</simpara></listitem>
+        <listitem><simpara><literal>=</literal> (equal)</simpara></listitem>
+        <listitem><simpara><literal>&lt;</literal> (left angle)</simpara></listitem>
+        <listitem><simpara><literal>&gt;</literal> (right angle)</simpara></listitem>
+        <listitem><simpara><literal>!</literal> (exclamation)</simpara></listitem> 
+        <listitem><simpara><literal>&quot;</literal> (double quote)</simpara></listitem>
+        <listitem><simpara><literal>'</literal> (apostrophe)</simpara></listitem>
+        <listitem><simpara><literal>^</literal> (carat)</simpara></listitem>
+        <listitem><simpara><literal>#</literal> (pound)</simpara></listitem>
+        <listitem><simpara><literal>$</literal> (dollar)</simpara></listitem>
+    </itemizedlist>
+    
+    These characters can only be used for the special syntactic forms described
+    in the <!--<olink targetptr="gram5-rsl-syntax-overview">RSL syntax
+    overview</olink> -->section and in the
+    <!--<olink targetptr="gram5-rsl-grammar-and-tokenization-rules">RSL
+    grammar</olink> -->section or as within quoted literals.
+    </para>
+    <para>Quoted literals are introduced with the <literal>&quot;</literal>
+    (double quote) or <literal>'</literal> (single quote/apostrophe)
+    and consist of all the characters up to (but not including) the next solo
+    double or single quote, respectively. To escape a quote character within a
+    quoted literal, the appearance of the quote character twice in a row is
+    converted to a single instance of the character and the literal continues
+    until the next solo quote character. For any quoted literal, there is only
+    one possible escape sequence, eg within a literal delimited by the single
+    quote character only the single quote character uses the escape notation
+    and the double quote character can appear without escape.
+
+    </para>
+    <para>Quoted literals can also be introduced with an alternate
+    <emphasis>user delimiter</emphasis> notation. User delimited literals are
+    introduced with the <literal>^</literal> (carat) character followed
+    immediately by a user-provided delimiter; the literal consists of all
+    the characters after the user's delimiter up to (but not including) the
+    next solo instance of the delimiter. The delimiter itself may be escaped
+    within the literal by providing two instances in a row, just as the regular
+    quote delimiters are escaped in regular quoted literals.
+    </para>
+    <para>
+    RSL string comments use a notation similar to comments in the C programming
+    language.  Comments are introduced by the prefix <literal>(*</literal>.
+    Comments continue to the first
+    terminating suffix <literal>*)</literal> and cannot be nested. Comments are
+    stripped from the RSL string during processing and are syntactically
+    equivalent to whitespace.
+    </para>
+
+    <example>
+    <title>Quoted Literal Examples</title>
+
+    <para>Assign the value <literal>Hello. Welcome to "The Grid"</literal> to
+    the attribute <literal>arguments</literal>, using double-quote as the
+    delimiter and the escaping sequence.
+    <programlisting>arguments = "Hello. Welcome to ""The Grid"""</programlisting>
+    </para>
+    <para>Assign the value <literal>Hello. Welcome to "The Grid"</literal> to
+    the attribute <literal>arguments</literal> using the single-quote delimiter.
+    <programlisting>arguments = 'Hello. Welcome to "The Grid'</programlisting>
+    </para>
+    <para>Assign the value <literal>Hello. Welcome to "The Grid"</literal> to
+    the attribute <literal>arguments</literal> using a user-defined quoting
+    character <literal>!</literal>.
+    <programlisting>arguments = ^!Hello. Welcome to "The Grid"!</programlisting>
+    </para>
+    </example>
+
+    </section>
+
+    <section id="gram5-rsl-substitution-semantics">
+    <title>RSL Substitution Semantics</title>
+    <para>RSL strings can introduce and reference string variables. String
+    substitution variables are defined in a special relation using the
+    <literal>rsl_substitution</literal> attribute, and the definitions affect
+    variable references made in the same conjunct-request (or
+    disjunct-request), as well as references made within any multi-request
+    nested inside one of the clauses of the conjunction (or disjunction). Each
+    multi-request introduces a new variable scope for each subrequest, and
+    variable definitions do not escape the closest enclosing scope.
+    </para>
+    <para>Within any given scope, variable definitions are processed
+    left-to-right in the resource description. Outermost scopes are processed
+    before inner scopes, and the definitions in inner scopes augment the
+    inherited definitions with new and/or updated variable definitions.
+    </para>
+    <para>Variable definitions and variable references are processed in a
+    single pass, with each definition updating the
+    <emphasis>environment</emphasis> prior to processing the next definition.
+    The value provided in a variable definition may include a reference to a
+    previously-defined variable. References to variables that are not yet
+    provided with definitions in the standard RSL variable processing order are
+    replaced with an empty literal string.
+    </para>
+    </section>
+
+    <section id="gram5-rsl-attribute-summary">
+    <title>RSL Attribute Summary</title>
+    <para>The RSL syntax is extensible because it defines structure without too
+    many keywords.  Each Globus resource management component introduces
+    additional attributes to the set recognized by RSL-aware components, so it
+    is difficult to provide a complete listing of attributes which might appear
+    in a resource description. Resource management components are designed to
+    utilize attributes they recognize and pass unrecongnized relations through
+    unchanged. This allows powerful compositions of different resource
+    management functions.
+    </para>
+    <para>The following listing summarizes the attribute names utilized by
+    existing resource management components in the standard Globus release.
+    Please see the individual component documentation for discussion of the
+    attribute semantics.</para>
+
+    <xi:include href="rsl.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+
+
+    </section>
+
+    <section id="gram5-rsl-examples">
+    <title>Simple RSL Examples</title>
+
+    <para>The following are some simple example RSL strings to illustrate
+    idiomatic usage with existing tools and to make concrete some of the more
+    interesting cases of tokenization, concatenation, and variable semantics.
+    These are meant to illustrate the use of the RSL notation without much
+    regard for the specific details of a particular resource management
+    component.
+    </para>
+    <para>Typical GRAM5 resource descriptions contain at least a few relations
+    in a conjunction:</para>
+
+    <example>
+    <title>GRAM5 Job Request Examples</title>
+
+    <para>This example shows a conjunct request containing values that are
+    unquoted literals and ordered sequences of a mix of quoted and unquoted
+    literals.
+    <programlisting><![CDATA[(* this is a comment *)
+& (executable = a.out (* <-- that is an unquoted literal *))
+  (directory  = /home/nobody )
+  (arguments  = arg1 "arg 2")
+  (count = 1)]]></programlisting>
+    </para>
+
+    <para>This example demonstrates RSL substitutions, which can be used to
+    make sure a string is used consistently multiple times in a
+    resource description:
+    <programlisting><![CDATA[
+& (rsl_substitution  = (TOPDIR  "/home/nobody")
+                       (DATADIR $(TOPDIR)"/data")
+                       (EXECDIR $(TOPDIR)/bin) )
+  (executable = $(EXECDIR)/a.out
+        (* ^-- implicit concatenation *))
+  (directory  = $(TOPDIR) )
+  (arguments  = $(DATADIR)/file1 
+        (* ^-- implicit concatenation *)
+                $(DATADIR) # /file2
+        (* ^-- explicit concatenation *)
+                '$(FOO)'            (* <-- a quoted literal *))
+  (environment = (DATADIR $(DATADIR)))
+  (count = 1)]]></programlisting>
+    </para>
+    <para>Performing all variable substitution and removing comments yields an
+    equivalent RSL string:
+    <programlisting><![CDATA[
+& (rsl_substitution  = (TOPDIR "/home/nobody")
+                       (DATADIR "/home/nobody/data") 
+                       (EXECDIR "/home/nobody/bin") )
+  (executable = "/home/nobody/bin/a.out" )
+  (directory  = "/home/nobody" )
+  (arguments  = "/home/nobody/data/file1"
+                "/home/nobody/data/file2"
+                "$(FOO)" )
+  (environment = (DATADIR "/home/nobody/data"))
+  (count = 1)]]></programlisting>
+   </para>
+    <para>Note in the above variable-substitution example, the variable
+    substitution definitions are not automatically made a part of the job's
+    environment.  And explicit <literal>environment</literal> attribute must be
+    used to add environment variables for the job.  Also note that the third
+    value in the arguments clause is not a variable reference but
+    only quoted literal that happens to contain one of the special characters.
+    </para>
+    </example>
+    </section>
+    <section id="gram5-rsl-grammar-and-tokenization-rules">
+    <title>RSL grammar and tokenization rules</title>
+    <para>The following is a modified BNF grammar for the Resource
+    Specification Language.  Lexical rules are provided for
+    the implicit concatenation sequences in the form of conventional regular
+    expressions; for the <emphasis>implicit-concat</emphasis> non-terminal
+    rules, whitespace is not allowed between juxtaposed non-terminals. Grammar
+    comments are provided in square brackets in a column to the right
+    of the productions, eg <literal>[comment]</literal> to help relate
+    productions in the grammar to the terminology used in the above discussion.
+    </para>
+    <para>Regular expressions are provided for the terminal class
+    <literal>string-literal</literal> and for RSL comments. These regular
+    expression make use of a common inverted character-class notation,
+    as popularized by the various <application>lex</application> tools.
+    Comments are syntactically equivalent to whitespace and can only appear
+    where the comment prefix cannot be mistaken for the trailing part of a
+    multi-character unquoted literal.</para>
+
+    <productionset>
+    <title>RSL Grammar</title>
+
+    <production id="gram5-rsl.specification">
+        <lhs>specification</lhs>
+        <rhs>
+            <nonterminal def="gram5-rsl.relation">relation</nonterminal>
+            <lineannotation>relation</lineannotation>
+            <sbr/>
+            | '+'
+            <nonterminal def="#gram5-rsl.spec-list">spec-list</nonterminal>
+            <lineannotation>multi-request</lineannotation>
+            <sbr/>
+            |
+            '&amp;' <nonterminal def="#gram5-rsl.spec-list">spec-list</nonterminal>
+            <lineannotation>conjunct-request</lineannotation>
+            <sbr/>
+            |
+            '|' <nonterminal def="#gram5-rsl.spec-list">spec-list</nonterminal>
+            <lineannotation>disjunct-request</lineannotation>
+          <sbr/>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.spec-list">
+        <lhs>spec-list</lhs>
+        <rhs>
+            '('
+            <nonterminal def="#gram5-rsl.specification">specification</nonterminal>
+            ')'
+            <nonterminal def="#gram5-rsl.spec-list">spec-list</nonterminal>
+            <sbr/>
+            |
+            '('
+            <nonterminal def="#gram5-rsl.specification">specification</nonterminal>
+            ')'
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.relation">
+        <lhs>relation</lhs>
+        <rhs>
+            'rsl_substitution'
+            '=' 
+            <nonterminal def="#gram5-rsl.binding-sequence">binding-sequence
+            </nonterminal>
+            <lineannotation>Substitution variable definition</lineannotation>
+            <sbr/>
+            |
+            <nonterminal def="#gram5-rsl.attribute">attribute</nonterminal>
+            <nonterminal def="#gram5-rsl.op">op</nonterminal>
+            <nonterminal def="#gram5-rsl.value-sequence">value-sequence</nonterminal>
+            <lineannotation>Attribute binding relation</lineannotation>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.binding-sequence">
+        <lhs>binding-sequence</lhs>
+        <rhs>
+            <nonterminal def="#gram5-rsl.binding">binding</nonterminal>
+            <nonterminal def="#gram5-rsl.binding-sequence">binding-sequence</nonterminal>
+            <sbr/>
+            |
+            <nonterminal def="#gram5-rsl.binding">binding</nonterminal>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.binding">
+        <lhs>binding</lhs>
+        <rhs>
+            '('
+            <nonterminal def="#gram5-rsl.string-literal">string-literal</nonterminal>
+            <nonterminal def="#gram5-rsl.simple-value">simple-value</nonterminal>
+            ')'
+            <lineannotation>Substitution variable definition</lineannotation>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.attribute">
+        <lhs>attribute</lhs>
+        <rhs>
+            <nonterminal def="#gram5-rsl.string-literal">string-literal</nonterminal>
+            <lineannotation>attribute</lineannotation>
+        </rhs>
+
+    </production>
+
+    <production id="gram5-rsl.op">
+        <lhs>op</lhs>
+        <rhs>'=' | '!=' | '&gt;' | '&gt;=' | '&lt;' | '&lt;='</rhs>
+    </production>
+
+    <production id="gram5-rsl.value-sequence">
+        <lhs>value-sequence</lhs>
+        <rhs>
+            <nonterminal def="#gram5-rsl.value">value</nonterminal>
+            <nonterminal def="#gram5-rsl.value-sequence">value-sequence</nonterminal>
+            |
+            <nonterminal def="#gram5-rsl.value">value</nonterminal>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.value">
+        <lhs>value</lhs>
+        <rhs>
+            '('
+            <nonterminal def="#gram5-rsl.value-sequence">value-sequence</nonterminal>
+            ')' |
+
+            <nonterminal def="#gram5-rsl.simple-value">simple-value</nonterminal>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.simple-value">
+        <lhs>simple-value</lhs>
+        <rhs>
+            <nonterminal def="#gram5-rsl.string-literal">string-literal</nonterminal>
+            <lineannotation>String</lineannotation>
+            <sbr/>
+            |
+            <nonterminal def="#gram5-rsl.simple-value">simple-value</nonterminal>
+            '#'
+            <nonterminal def="#gram5-rsl.simple-value">simple-value</nonterminal>
+            <lineannotation>Concatenation</lineannotation>
+            <sbr/>
+            |
+            <nonterminal def="#gram5-rsl.implicit-concat">implicit-concat</nonterminal>
+            |
+            <nonterminal def="#gram5-rsl.variable-reference">variable-reference</nonterminal>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.variable-reference">
+        <lhs>variable-reference</lhs>
+        <rhs>
+            '$(' 
+            <nonterminal def="#gram5-rsl.string-literal">string-literal</nonterminal>
+            ')'
+            <lineannotation>Variable Reference</lineannotation>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.implicit-concat">
+        <lhs>implicit-concat</lhs>
+        <rhs>
+            (<nonterminal def="#gram5-rsl.unquoted-literal">unquoted-literal</nonterminal>)?
+            (<nonterminal def="#gram5-rsl.implicit-concat-core">implicit-concat-core</nonterminal>)+
+            <lineannotation>Implicit concatenation</lineannotation>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.implicit-concat-core">
+        <lhs>implicit-concat-core</lhs>
+        <rhs>
+            <nonterminal def="#gram5-rsl.variable-reference">variable-reference</nonterminal>
+            <sbr/>
+            |
+            (<nonterminal def="#gram5-rsl.variable-reference">variable-reference</nonterminal>)
+            (<nonterminal def="#gram5-rsl.unquoted-literal">unquoted-literal</nonterminal>)
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.string-literal">
+        <lhs>string-literal</lhs>
+        <rhs>
+            <nonterminal def="#gram5-rsl.quoted-literal">quoted-literal</nonterminal>
+            <sbr/>
+            |
+            <nonterminal def="#gram5-rsl.unquoted-literal">unquoted-literal</nonterminal>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.quoted-literal">
+        <lhs>quoted-literal</lhs>
+        <rhs>''' (([^']) | (''''))* '''
+            <lineannotation>Single-quote delimiter with
+            escaping</lineannotation>
+            <sbr/>|
+            '"' (([^"]) | ('""')* '"'
+            <lineannotation>Double-quote delimiter with
+            escaping</lineannotation>
+            <sbr/>|
+            '^' c(([^c]|(cc))* c
+            <lineannotation>User defined delimiter <replaceable>c</replaceable>
+            with escaping</lineannotation>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.unquoted-literal">
+        <lhs>unquoted-literal</lhs>
+        <rhs>([^\t\v\n+&amp;|()=&lt;>!"'^#$])+
+        <lineannotation>Non-special characters</lineannotation>
+        </rhs>
+    </production>
+
+    <production id="gram5-rsl.comment">
+        <lhs>comment</lhs>
+        <rhs>
+            '(*' (([^*])|('*'[^)]))* '*)'
+        <lineannotation>Comment</lineannotation>
+        </rhs>
+    </production>
+    </productionset>
+</section>
+</chapter>

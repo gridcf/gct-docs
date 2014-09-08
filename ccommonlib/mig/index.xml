@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<article id="ccommonlibMig">
+<title> GT <replaceable role="entity">version</replaceable> Migrating Guide for C Common Libraries</title>
+<titleabbrev>Migrating Guide</titleabbrev>
+
+<abstract><para>The following provides available information about migrating from previous versions of the Globus Toolkit.</para></abstract>
+<!-- fixme verify -->
+  <section id="ccommonlib-migrating-GT5.0"><title>Migrating C Common Libraries from GT5.0</title>
+    <para>All components are compiled with a runtime configuration of thread model, instead of having to compile both threaded and nonthreaded build flavors. To enable threads for a program, set the environment variable <envar>GLOBUS_THREAD_MODEL</envar> or call <function>globus_thread_set_model</function>() with the desired thread model, such as <literal>pthread</literal> or <literal>windows</literal>.</para>
+  </section>
+  <section id="ccommonlib-migrating-GT4.2"><title>Migrating C Common Libraries from GT4.2</title>
+    <para>No changes need to be made in applications using version 4.2.x releases of the C common libraries.</para>
+  </section>
+  
+  <section id="ccommonlib-migrating-GT4"><title>Migrating C Common Libraries from GT4.0</title>
+<para>No changes need to be made in applications using version 4.0.x releases of the C common libraries.</para>
+  </section>
+
+  <section id="ccommonlib-migrating-GT3"><title>Migrating C Common Libraries from GT3</title>
+<para>No changes need to be made in applications using version 3.x releases of the C common libraries.</para>
+  </section>
+
+  <section id="ccommonlib-migrating-GT2"><title>Migrating C Common Libraries from GT2</title>
+<para>No changes need to be made in applications using version 2.x releases of the C common libraries.</para>
+  </section>
+  
+ 
+</article>

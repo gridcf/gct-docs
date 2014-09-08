@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!ENTITY % xinclude SYSTEM "../xinclude.mod" >
+]>
+
+  <chapter id="gram5-apis"><title>APIs</title>
+      <indexterm type="gram5"><primary>apis</primary></indexterm>
+<section><title>Programming Model Overview</title>
+    <indexterm type="gram5"><primary>apis</primary><secondary>overview</secondary></indexterm>
+
+    <section>
+        <title>C API Documentation Links</title>
+
+            <table>
+                <title>GRAM Client APIs</title>
+                <tgroup cols="2">
+                    <thead>
+                        <row>
+                            <entry><simpara>Name</simpara></entry>
+                            <entry><simpara>Purpose</simpara></entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><simpara><ulink url="http://www.globus.org/api/c-globus-{$version}/globus_gram_protocol/html/">GRAM Protocol</ulink></simpara></entry>
+                            <entry><simpara>Low-level functions for
+                            processing GRAM protocol messages. Symbolic
+                            constants for RSL attributes, signals, and job
+                            states.</simpara></entry>
+                        </row>
+                        <row>
+                            <entry><simpara><ulink url="http://www.globus.org/api/c-globus-{$version}/globus_gram_client/html/">GRAM Client</ulink></simpara></entry>
+                            <entry><simpara>Functions for submitting job
+                            requests, sending signals, and listening for
+                            job state updates.</simpara></entry>
+                        </row>
+                        <row>
+                            <entry><simpara><ulink url="http://www.globus.org/api/c-globus-{$version}/globus_rsl/html/">RSL</ulink></simpara></entry>
+                            <entry><simpara>Functions for parsing and
+                            manipulating job specifications in the RSL
+                            language.</simpara></entry>
+                        </row>
+                        <row>
+                            <entry><simpara><ulink url="http://www.globus.org/api/c-globus-{$version}/globus_scheduler_event_generator/html/">Scheduler Event Generator</ulink></simpara></entry>
+                            <entry><simpara>Functions for generating and
+                            parsing LRM-independent job state change
+                            events.</simpara></entry>
+                        </row>
+
+                    </tbody>
+                </tgroup>
+            </table>
+</section>
+    <section>
+        <title>GRAM5 Perl API Reference</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="developer/Error.xml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="developer/JobDescription.xml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="developer/JobManager.xml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="developer/JobSignal.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+            href="developer/JobState.xml" />
+    </section>
+</section>
+</chapter>

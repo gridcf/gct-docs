@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+  
+  <section id="gsiopenssh-platforms"><title>Tested platforms</title>
+<para>Tested Platforms for GSI-OpenSSH</para>
+<itemizedlist>
+  <listitem><simpara>Mac OS X 10.5</simpara></listitem>
+  <listitem><simpara>x86/x86_64 GNU/Linux</simpara></listitem>
+  <listitem><simpara>PPC AIX 5.3</simpara></listitem>
+  <listitem><simpara>Sun4u Solaris 5.10</simpara></listitem>
+</itemizedlist>
+</section>

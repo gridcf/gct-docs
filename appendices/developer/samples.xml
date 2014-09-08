@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="gt-samples">
+     <title>GT <replaceable role="entity">version</replaceable> Guide to Samples</title>
+     <titleabbrev>Samples</titleabbrev>
+     <para>This page contains links to samples currently available throughout GT <replaceable role="entity">version</replaceable>.</para>
+     <itemizedlist>
+          <!-- 
+          <listitem>
+               <simpara>
+               <ulink url="&docpath;execution/gram5/gram5-samples.html">GRAM5</ulink>
+               </simpara>
+          </listitem>
+          -->
+     </itemizedlist>
+</chapter>

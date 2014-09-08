@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE targetset 
+       SYSTEM "http://docbook.sourceforge.net/release/xsl/current/common/targetdatabase.dtd" [
+       <!ENTITY % myents SYSTEM "targetents">
+       
+       %myents;
+       
+       ]>
+<targetset>
+    <!-- Site map for generating relative paths between documents -->
+    <sitemap>
+        <dir name="documentation">
+            <document targetdoc="gt"> &gtTarget;</document>
+            <dir name="admin">
+                <document targetdoc="admin"> &adminTarget;</document>
+                <dir name="install">
+                    <document targetdoc="gtadmin"> &gtadminTarget;</document>
+                    <document targetdoc="gtadminappendix" baseuri="appendix.html"> &gtadminappendixTarget;</document>
+                </dir>
+                <dir name="quickstart">
+                    <document targetdoc="quickstart"> &quickstartTarget;</document>
+                </dir>
+            </dir>
+            
+            <dir name="appendices">
+                <document targetdoc="appendices"> &appendicesTarget; </document>
+                <dir name="commands">
+                    <document targetdoc="gtcommands"> &gtcommandsTarget;</document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gtdeveloper"> &gtdeveloperTarget;</document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gtKey"> &keyTarget;</document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="mig"> &migTarget;</document>
+                </dir>
+            <!--    
+                <dir name="user">
+                    <document targetdoc="gtuser"> &gtuserTarget;</document>
+                </dir> -->
+            </dir>
+            
+            
+            
+            <dir name="ccommonlib">
+                <document targetdoc="ccommonlib"> &ccommonlibTarget; </document>
+                <dir name="developer">
+                    <document targetdoc="ccommonlibDeveloper"> &ccommonlibDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="ccommonlibMig"> &ccommonlibMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="ccommonlibPI"> &ccommonlibPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="ccommonlibQP"> &ccommonlibQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="ccommonlibRN"> &ccommonlibRNTarget; </document>
+                </dir>
+            </dir>
+            
+            
+            <dir name="gram5">
+                <document targetdoc="gram5"> &gram5Target; </document>
+                <dir name="admin">
+                    <document targetdoc="gram5Admin"> &gram5AdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gram5Developer"> &gram5DeveloperTarget; </document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gram5Key"> &gram5KeyTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gram5Mig"> &gram5MigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gram5PI"> &gram5PITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gram5QP"> &gram5QPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gram5RN"> &gram5RNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gram5User"> &gram5UserTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="gridftp">
+                <document targetdoc="gridftp"> &gridftpTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="gridftpAdmin"> &gridftpAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gridftpDeveloper"> &gridftpDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gridftpKey"> &gridftpKeyTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gridftpMig"> &gridftpMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gridftpPI"> &gridftpPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gridftpQP"> &gridftpQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gridftpRN"> &gridftpRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gridftpUser"> &gridftpUserTarget; </document>
+                </dir>
+            </dir>
+
+            <dir name="gsic">
+                <document targetdoc="gsic"> &gsicTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="gsicAdmin"> &gsicAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gsicDeveloper"> &gsicDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="key">
+                    <document targetdoc="gsicKey"> &gsicKeyTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gsicMig"> &gsicMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gsicPI"> &gsicPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gsicQP"> &gsicQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gsicRN"> &gsicRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gsicUser"> &gsicUserTarget; </document>
+                </dir>
+            </dir>
+
+
+            <dir name="gsiopenssh">
+                <document targetdoc="gsiopenssh"> &gsiopensshTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="gsiopensshAdmin"> &gsiopensshAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="gsiopensshDeveloper"> &gsiopensshDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="gsiopensshMig"> &gsiopensshMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="gsiopensshPI"> &gsiopensshPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="gsiopensshQP"> &gsiopensshQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="gsiopensshRN"> &gsiopensshRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="gsiopensshUser"> &gsiopensshUserTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="myproxy">
+                <document targetdoc="myproxy"> &myproxyTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="myproxyAdmin"> &myproxyAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="myproxyDeveloper"> &myproxyDeveloperTarget;
+                    </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="myproxyMig"> &myproxyMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="myproxyPI"> &myproxyPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="myproxyQP"> &myproxyQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="myproxyRN"> &myproxyRNTarget; </document>
+                </dir>
+                <dir name="user">
+                    <document targetdoc="myproxyUser"> &myproxyUserTarget; </document>
+                </dir>
+            </dir>
+            
+            <dir name="rn">
+                <document targetdoc="rn"> &rnTarget;</document>
+            </dir>
+
+            <dir name="simpleca">
+                <document targetdoc="simpleca"> &simplecaTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="simplecaAdmin"> &simplecaAdminTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="simplecaRN"> &simplecaRNTarget; </document>
+                </dir>
+            </dir>
+            
+            
+            <dir name="xio">
+                <document targetdoc="xio"> &xioTarget; </document>
+                <dir name="admin">
+                    <document targetdoc="xioAdmin"> &xioAdminTarget; </document>
+                </dir>
+                <dir name="developer">
+                    <document targetdoc="xioDeveloper"> &xioDeveloperTarget; </document>
+                </dir>
+                <dir name="mig">
+                    <document targetdoc="xioMig"> &xioMigTarget; </document>
+                </dir>
+                <dir name="pi">
+                    <document targetdoc="xioPI"> &xioPITarget; </document>
+                </dir>
+                <dir name="qp">
+                    <document targetdoc="xioQP"> &xioQPTarget; </document>
+                </dir>
+                <dir name="rn">
+                    <document targetdoc="xioRN"> &xioRNTarget; </document>
+                </dir>
+            </dir>
+            
+
+        </dir>
+    </sitemap>
+</targetset>

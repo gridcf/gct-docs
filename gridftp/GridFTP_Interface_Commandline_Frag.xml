@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[
+
+<!ENTITY % xinclude SYSTEM "../xinclude.mod" >
+%xinclude;
+
+]>
+
+<reference id="gridftp-commandline"><title>GridFTP Commands</title>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+ href="GridFTP_Interface_Commandline_Client_Frag.xml" xpointer="globus-url-copy"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+ href="GridFTP_Interface_Commandline_Admin_Frag.xml"/>
+</reference>

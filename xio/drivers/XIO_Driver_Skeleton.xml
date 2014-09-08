@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section id="xio-driver-skeleton">
+    <title>Skeleton Driver</title>
+    <para>This is a very simple driver to serve as an example and base for writing additional
+        drivers. It does nothing but pass operations along the stack</para>
+</section>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="gram5-performance-guide">
+    <title>Scalability and Performance Recommendations</title>
+    <indexterm type="gram5"><primary>performance guide</primary></indexterm>
+    <para>This document includes recommendations for increasing the scalability
+    and performance of GRAM5 in a Grid.</para>
+    <section>
+        <title>Server-side Recommendations</title>
+        <indexterm type="gram5"><primary>performance guide</primary><secondary>server-side</secondary></indexterm>
+       
+        <section><title>Filesystem related settings</title>
+          <orderedlist>
+            <listitem>
+              <para>
+                The GRAM5 service stores job state for
+                crash recovery on disk. By default, the 
+                <filename><envar>$GLOBUS_LOCATION</envar>/tmp/gram_job_state</filename>
+                directory is used for these files. If this path is located
+                on a distributed file system mount, locking and updating
+                the job state files can negatively effect performance.
+                </para>
+                <para>
+                To configure GRAM5 to use a local disk for job state files,
+                modify
+                <filename><envar>$GLOBUS_LOCATION</envar>/etc/globus-job-manager.conf</filename>
+                or
+                <filename><envar>$GLOBUS_LOCATION</envar>/etc/grid-services/jobmanager-<replaceable>LRM</replaceable></filename>
+                so that the argument to the <option>-state-file-dir</option>
+                is a local directory path. That directory must be world
+                writable with the "sticky bit" set (mode
+                <literal>1777</literal>).
+                </para>
+            </listitem>
+          </orderedlist> 
+       </section>
+        <section><title>LRM-related settings</title>
+          <orderedlist>
+            <listitem>
+              <para>
+                The GRAM5 service can use two different interfaces to obtain
+                job state changes, polling and using the SEG. The default
+                method is to poll the LRM via the GRAM5 script interface. This
+                polling method is often less efficient than the SEG method and
+                results in a higher load on the GRAM5 service node, even when
+                all managed jobs are waiting in the queue for execution.
+               </para>
+               <para>The other method, uses a program implementing the SEG
+               interface to generate LRM events which can be stored in a log
+               file for job managers run by many different users to process.
+               When this is used, the multiple job managers may detect
+               job state changes without having to directly interact with the
+               LRM.
+               </para>
+               <para>
+               To enable the SEG to monitor jobs for a particular LRM, 
+               <olink
+               targetptr="gram5-admin-installing-pbs-lrm-adapter">install
+               and configure</olink> the LRM-specific gram5 bundle, run the
+               <olink
+               targetptr="gram5-cmd-globus-job-manager-event-generator"><command>globus-job-manager-event-generator</command></olink>
+               program on a node
+               which can access the LRM interfaces needed by the LRM-specific
+               SEG module, and <olink targetptr="gram5-Interface_Config_Frag-seg_module">configure the LRM-specific service instance to
+               use the SEG</olink> to monitor jobs for state changes.
+                </para>
+            </listitem>
+          </orderedlist> 
+       </section>
+     </section>
+</chapter>

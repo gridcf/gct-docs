@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter id="gram5-softenv">
+  <title>SoftEnv Support</title>
+  <indexterm type="gram5"><primary>SoftEnv</primary></indexterm>
+  <section id="gram5-softenv-overview">
+    <title>Overview</title>
+    <para> SoftEnv is a system designed to make it easier for users to define what applications they
+      want to use, and easier for administrators to make applications available to users. SoftEnv
+      has evolved from the original implementation called Soft designed at Northeastern University
+      in 1994. </para>
+    <para> In some environments, like TeraGrid, it is desirable to make use of SoftEnv before a job
+      is submitted to leverage the use of an exactly defined software environment in which the job
+      will run. </para>
+  </section>
+  <section id="gram5-softenv-configure">
+    <title>Configuring SoftEnv Support</title>
+    <para> Because this feature is very specific and may not be available on many systems, support
+      for SoftEnv is disabled by default in normal job submissions. There is a parameter in the JNDI
+      configuration of GRAM5 to enable SoftEnv support in job submissions. </para>
+    <para> SoftEnv support must be enabled on a per-scheduler basis because the internal mechanisms
+      to support SoftEnv vary between the different types of schedulers. Currently only the Fork,
+      PBS and LSF schedulers can be configured to have SoftEnv support enabled (Condor is not yet
+      supported). </para>
+    <para>To enable this feature, set the parameter <parameter
+      >enableDefaultSoftwareEnvironment</parameter> in the scheduler specific JNDI configuration to
+        <computeroutput>true</computeroutput>. </para>
+    <para>For example, to enable SoftEnv support in the Fork scheduler, set the <parameter
+        >enableDefaultSoftwareEnvironment</parameter> in <filename
+        >$GLOBUS_LOCATION/etc/globus_wsrf_gram_Fork/jndi-config.xml</filename> to <computeroutput
+      >true</computeroutput>. </para>
+    <para> Enabled SoftEnv support means that a user's default environment will be created from his
+        <computeroutput>.soft</computeroutput> file before each job submission automatically. The
+      user does not need to provide extra SoftEnv keys in the extensions element of a job
+      description. This is not done if the SoftEnv feature is disabled. </para>
+    <para> For more information and examples, please look in the <olink targetdoc="gram5User"
+        targetptr="gram5-user-softenv">SoftEnv section of the User's Guide</olink>. </para>
+  </section>
+  <section id="gram5-softenv-dependency">
+    <title>Dependencies</title>
+    <para> For the scheduler, Fork SoftEnv needs to be installed on the host in which the container
+      is running. </para>
+    <para>For PBS and LSF, SoftEnv needs to be installed on the hosts where the jobs are executed.
+    </para>
+  </section>
+</chapter>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<section>
+  <title>Latest information about HPSS</title>
+  <indexterm type="gridftp-howto">
+    <primary>accessing data</primary>
+    <secondary>HPSS</secondary>
+  </indexterm>
+  <indexterm type="gridftp">
+    <primary>accessing data</primary>
+    <secondary>HPSS</secondary>
+  </indexterm>
+  <para>Last Update: August 2005</para>
+
+  <para>Working with Los Alamos National Laboratory and the High Performance Storage System (HPSS)
+    collaboration (<ulink url="http://www.hpss-collaboration.org"
+    >http://www.hpss-collaboration.org</ulink>), we have written a Data Storage Interface (DSI) for
+    read/write access to HPSS. This DSI would allow an existing application that uses a GridFTP
+    compliant client to utilize an HPSS data resources.</para>
+
+  <para>This DSI is currently in testing. Due to changes in the HPSS security mechanisms, it
+    requires HPSS 6.2 or later, which is due to be released in Q4 2005. Distribution for the DSI has
+    not been worked out yet, but it will *probably* be available from both Globus and the HPSS
+    collaboration. While this code will be open source, it requires underlying HPSS libraries which
+    are NOT open source (proprietary). </para>
+
+  <note>
+    <simpara>This is a purely server side change, the client does not know what DSI is running, so
+      only a site that is already running HPSS and wants to allow GridFTP access needs to worry
+      about access to these proprietary libraries. </simpara>
+  </note>
+
+</section>

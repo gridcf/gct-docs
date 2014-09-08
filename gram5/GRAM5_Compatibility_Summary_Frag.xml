@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+  
+<section id="gram5-compatibility"><title>Backward compatibility summary</title>
+  <indexterm type="gram5"><primary>compatibility</primary></indexterm>
+<para>Protocol changes in GRAM since GT4 series:</para>
+<itemizedlist>
+  <listitem>
+  <simpara>The GRAM5 service uses a superset of the GRAM2 protocol for 
+  communciation between the client and service. The extensions supported
+  in GRAM5 are implemented in such a way that they are ignored by GRAM2
+  services or clients. These extensions provide improved error messages and
+  version detection.
+  </simpara>
+  </listitem>
+  <listitem>
+  <simpara>GRAM5 does not support task coallocation using DUROC and its related
+  protocols. Jobs submitted using DUROC directives will fail.
+  </simpara>
+  </listitem>
+  <listitem>
+  <simpara>GRAM5 does not support file streaming. The standard output and
+  standard error streams are sent after the job completes instead of during
+  execution. As a special case, support for the Condor grid monitor program
+  implements a small subset of the streaming capabilities of GRAM2 in GT 4.2.x.
+  </simpara>
+  </listitem>
+</itemizedlist>
+</section>

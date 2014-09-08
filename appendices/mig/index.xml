@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
+
+]>
+
+<article id="mig">
+     <title>GT <replaceable role="entity">version</replaceable> Migrating Guides</title>
+     <titleabbrev>Migrating Guides</titleabbrev>
+     <para>This page contains links to each GT <replaceable role="entity">version</replaceable> component's Migrating Guide.</para>
+     <note><simpara>At this time, many components are still working on updating their migration guides for this version.</simpara></note>
+     <itemizedlist>
+          <listitem>
+               <simpara><olink targetdoc="gridftpMig">GridFTP</olink></simpara>
+          </listitem>
+          <listitem>
+               <simpara><olink targetdoc="gram5Mig">GRAM5</olink></simpara>
+          </listitem>
+          <listitem>
+               <simpara>Security</simpara>
+               <itemizedlist>
+                        <listitem>
+                         <simpara>
+                              <olink targetdoc="gsicMig">GSI C</olink>
+                         </simpara>
+                                        </listitem>
+                    <listitem>
+                         <simpara>
+                              <olink targetdoc="myproxyMig">MyProxy</olink>
+                         </simpara>
+                    </listitem>
+                    <listitem>
+                         <simpara>
+                              <olink targetdoc="gsiopensshMig">GSI-OpenSSH</olink>
+                         </simpara>
+                    </listitem>
+               </itemizedlist>
+          </listitem>
+          <listitem>
+               <simpara>Common Runtime Components</simpara>
+               <itemizedlist>
+                    <listitem>
+                         <simpara>
+                              <olink targetdoc="xioMig">XIO</olink>
+                         </simpara>
+                    </listitem>
+                    <listitem>
+                         <simpara>
+                              <olink targetdoc="ccommonlibMig">C Common Libraries</olink>
+                         </simpara>
+                    </listitem>
+               </itemizedlist>
+          </listitem>
+
+     </itemizedlist>
+</article>
