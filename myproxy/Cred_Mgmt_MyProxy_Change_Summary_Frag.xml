@@ -5,6 +5,6 @@
   <title>Summary of Changes in MyProxy</title>
 
   <para>GT <replaceable role="entity">version</replaceable> contains
-  <olink targetdoc="myproxy">MyProxy</olink> 5.9.
+  <olink targetdoc="myproxy">MyProxy</olink> 6.0rc3.
   See the <ulink url="http://grid.ncsa.illinois.edu/myproxy/dl/VERSION">MyProxy Release Notes</ulink> for more details on this and other MyProxy versions.</para>
 </section>

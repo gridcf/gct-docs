@@ -4,24 +4,7 @@
   <title>Fixed Bugs for GSIC</title>
   <para>
     <itemizedlist>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-341">GT-341</ulink>: GPT metadata problem in new myproxy callout package</simpara>
-      </listitem>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-363">GT-363</ulink>: gss_get_mic/gss_verify_mic fail for some TLS ciphers with OpenSSL 1.0.1</simpara>
-      </listitem>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-387">GT-387</ulink>: Bug 3934 is not fixed in Globus 5.x branches</simpara>
-      </listitem>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-390">GT-390</ulink>: globus_callout loader fails load plugins on systems with broken libtool-ltdl</simpara>
-      </listitem>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-437">GT-437</ulink>: grid-proxy-init broken for PKCS12 files with CA certificates</simpara>
-      </listitem>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-445">GT-445</ulink>: Doxygen fixes</simpara>
-      </listitem>
+      <listitem><simpara/></listitem>
     </itemizedlist>
   </para>
 </section>

@@ -6,9 +6,7 @@
     <title>New Features: GSIC</title>
     <para>
       <itemizedlist>
-        <listitem>
-          <simpara><ulink url="https://globus.atlassian.net/browse/GT-411">GT-411</ulink>: Extend authz callout framework to support chaining of gridmap callouts </simpara>
-        </listitem>
+        <listitem><simpara/></listitem>
       </itemizedlist>
     </para>
   </section>
@@ -16,10 +14,8 @@
     <title>Improvements: GSIC</title>
     <para>
       <itemizedlist>
-        <listitem>
-          <simpara><ulink url="https://globus.atlassian.net/browse/GT-272">GT-272</ulink>: Increase default proxy key size</simpara>
-        </listitem>
-      </itemizedlist>
+        <listitem><simpara>More test cases</simpara></listitem>
+        </itemizedlist>
     </para>
   </section>
 </section>

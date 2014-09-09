@@ -4,7 +4,7 @@
   <title>Fixed Bugs for GridFTP</title>
   <para>
     <itemizedlist>
-    <listitem><simpara>None</simpara></listitem>
+    <listitem><simpara>Fix crash on DCAU N with custom net stack</simpara></listitem>
     </itemizedlist>
   </para>
 </section>

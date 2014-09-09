@@ -13,6 +13,9 @@
         <simpara>Update of build system to enable parallel builds,
         cross-compiling, and easier testing</simpara>
     </listitem>
+    <listitem role="highlight">
+        <simpara>Port of build system to Mac OS X and Windows</simpara>
+    </listitem>
     </itemizedlist>
   </section>
 </section>

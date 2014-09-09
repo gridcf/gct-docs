@@ -3,13 +3,5 @@
 <section id="ccommonlib-fixed-bugs">
   <title>Fixed Bugs for C Common Libraries</title>
   <para>
-    <itemizedlist>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-390">GT-390</ulink>: globus_callout loader fails load plugins on systems with broken libtool-ltdl</simpara>
-      </listitem>
-      <listitem>
-        <simpara><ulink url="https://globus.atlassian.net/browse/GT-470">GT-470</ulink>: Globus IO reports timeout error as cancellation</simpara>
-      </listitem>
-    </itemizedlist>
   </para>
 </section>

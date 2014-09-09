@@ -17,6 +17,18 @@
     <para>Highlights of this release include:</para>
     <itemizedlist>
       <listitem>
+        <simpara>Overall</simpara>
+        <itemizedlist>
+            <listitem><simpara>Migrate from CVS to https://github.com/globus/globus-toolkit</simpara></listitem>
+            <listitem><simpara>Simplified package by eliminating GPT and library flavors</simpara></listitem>
+            <listitem><simpara>Integrate tests into native package build process</simpara></listitem>
+            <listitem><simpara>Porting to windows -- mingw (partial) and cygwin</simpara></listitem>
+            <listitem><simpara>Add support for el7 (CentOS 7, RHEL 7)</simpara></listitem>
+            <listitem><simpara>Add binary package for Mac OS X</simpara></listitem>
+            <listitem><simpara>Make binaries and scripts more easily relocatable (don't need to set GLOBUS_LOCATION for most cases)</simpara></listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
         <simpara>GridFTP</simpara>
         <itemizedlist>
            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"

@@ -20,9 +20,6 @@
             <simpara>DCSC for cross-domain transfers without mutual
             trust</simpara>
         </listitem>
-        <listitem>
-        <simpara>TODO: Fetch JIRA Items</simpara>
-        </listitem>
       </itemizedlist>
     </para>
   </section>
@@ -31,7 +28,7 @@
     <para>
       <itemizedlist>
         <listitem>
-          <simpara>TODO: FETCH JIRA Items</simpara>
+        <simpara>Improved testing</simpara>
         </listitem>
       </itemizedlist>
     </para>
