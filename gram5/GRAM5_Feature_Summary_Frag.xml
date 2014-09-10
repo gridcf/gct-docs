@@ -7,8 +7,7 @@
 <para>New Features new since <replaceable role="entity">previousversion</replaceable>:
 
     <itemizedlist>
-        <listitem><simpara>Improved memory management and process management.</simpara></listitem>
-        <listitem><simpara>Support for SLURM</simpara></listitem>
+        <listitem><simpara>Bug fixes and improved testing</simpara></listitem>
     </itemizedlist>
     </para>
 
@@ -18,7 +17,7 @@
     <simpara>Remote job execution and management</simpara>
   </listitem>
   <listitem>
-    <simpara>Uniform and flexible interface to local resource managers, including Condor, LSF, and GridEngine</simpara>
+    <simpara>Uniform and flexible interface to local resource managers, including Condor, LSF, and SLURM, and GridEngine</simpara>
   </listitem>
   <listitem>
     <simpara>File staging before and after job execution</simpara>
