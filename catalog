@@ -34,12 +34,12 @@
  
      <uri
          name="http://docbook.sourceforge.net/release/xsl/current/html/onechunk.xsl"
-         uri="docbook/xsl/docbook-xsl-1.78.1/html/onechunk.xsl"/>
+         uri="docbook/xsl/docbook-xsl-1.76.1/html/onechunk.xsl"/>
 
 <!-- map to fo (pdf) docbook xsl stylesheet location -->
          
      <uri
          name="http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl"
-         uri="docbook/xsl/docbook-xsl-1.78.1/fo/docbook.xsl"/>
+         uri="docbook/xsl/docbook-xsl-1.76.1/fo/docbook.xsl"/>
 
  </catalog>

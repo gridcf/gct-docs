@@ -31,17 +31,17 @@
                
                <!-- should output be in draft mode? -->
                <xsl:param name="draft.mode" select="'no'"></xsl:param>
-               <xsl:param name="draft.watermark.image"><xsl:value-of select="$topdir"/>/docbook/xsl/docbook-xsl-1.78.1/images/draft.png</xsl:param>
+               <xsl:param name="draft.watermark.image"><xsl:value-of select="$topdir"/>/docbook/xsl/docbook-xsl-1.76.1/images/draft.png</xsl:param>
                
                <!-- ALIGNMENT -->
                <xsl:param name="alignment">left</xsl:param>
                
                <!-- GRAPHICS -->
                <!-- Set path to admonition graphics  -->
-               <xsl:param name="admon.graphics.path"><xsl:value-of select="$topdir"/>/docbook/xsl/docbook-xsl-1.78.1/images/</xsl:param>
+               <xsl:param name="admon.graphics.path"><xsl:value-of select="$topdir"/>/docbook/xsl/docbook-xsl-1.76.1/images/</xsl:param>
                 
                 <!-- Set path to callout graphics -->
-                <xsl:param name="callout.graphics.path"><xsl:value-of select="$topdir"/>/docbook/xsl/docbook-xsl-1.78.1/images/</xsl:param>
+                <xsl:param name="callout.graphics.path"><xsl:value-of select="$topdir"/>/docbook/xsl/docbook-xsl-1.76.1/images/</xsl:param>
                
                <!-- Again, if 1 above, what is the filename extension for admon graphics?-->
                 <xsl:param name="admon.graphics.extension" select="'.png'"/> 
