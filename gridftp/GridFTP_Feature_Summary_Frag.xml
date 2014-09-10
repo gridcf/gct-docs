@@ -5,22 +5,7 @@
   <title>Feature Summary</title>
   <para>Features new in GT <replaceable role="entity">version</replaceable>:
     <itemizedlist>
-      <listitem>
-    <simpara>
-    New support for default disk and network stacks:
-    globus-gridftp-server options -dc-default and -fs-default.
-</simpara>
-      </listitem>
-      <listitem>
-<simpara>
-Added server support for setting file modification time.
-</simpara>
-      </listitem>
-      <listitem>
-<simpara>
-Added ability (MLSC) to stream directory listings over the control channel.
-</simpara>
-      </listitem>
+      <listitem><simpara>Wider support for UDT</simpara></listitem>
     </itemizedlist>
     </para>
   <para>Features that continue to be supported from previous versions <itemizedlist>
