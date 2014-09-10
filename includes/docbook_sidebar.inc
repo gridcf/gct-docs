@@ -27,32 +27,32 @@
 			<h2 class="smalltitle"></h2>
 			<dl class="leftColumn">
 			<dt>Data Management
-			<dd><a href="/toolkit/docs/6.0/ggridftp/">GridFTP</a></dd>
+			<dd><a href="/toolkit/docs/6.0/gridftp/">GridFTP</a></dd>
 			</dt>
 			<dt>Jobs Management
-			<dd><a href="/toolkit/docs/6.0/ggram5/">GRAM5</a></dd>
+			<dd><a href="/toolkit/docs/6.0/gram5/">GRAM5</a></dd>
 			</dt>
 			<dt>Security
-			<dd><a href="/toolkit/docs/6.0/ggsic/">GSI C</a></dd>
-				<dd><a href="/toolkit/docs/6.0/gmyproxy/">MyProxy</a></dd>
-				<dd><a href="/toolkit/docs/6.0/ggsiopenssh/">GSI-OpenSSH</a></dd>
-				<dd><a href="/toolkit/docs/6.0/gsimpleca/">SimpleCA</a></dd>
+			<dd><a href="/toolkit/docs/6.0/gsic/">GSI C</a></dd>
+				<dd><a href="/toolkit/docs/6.0/myproxy/">MyProxy</a></dd>
+				<dd><a href="/toolkit/docs/6.0/gsiopenssh/">GSI-OpenSSH</a></dd>
+				<dd><a href="/toolkit/docs/6.0/simpleca/">SimpleCA</a></dd>
 			</dt>
 			<dt>Common Runtime
-				<dd><a href="/toolkit/docs/6.0/gxio/">XIO</a></dd>
-				<dd><a href="/toolkit/docs/6.0/gccommonlib/">C Common Libraries</a></dd>
+				<dd><a href="/toolkit/docs/6.0/xio/">XIO</a></dd>
+				<dd><a href="/toolkit/docs/6.0/ccommonlib/">C Common Libraries</a></dd>
 			</dt>
 			</dl>
 	
 			
 		<h2 class="smalltitle">Reference</h2>
 			<dl class="leftColumn">
-			<!--	<dt><a href="/toolkit/docs/6.0/gdeveloper/#gt-bestpractices">Best Practices</a></dt> -->
+			<!--	<dt><a href="/toolkit/docs/6.0/developer/#gt-bestpractices">Best Practices</a></dt> -->
 				<dt><a href="/toolkit/docs/development/coding_guidelines.html">Coding Guidelines</a></dt>
 				<dt><a href="/api/">API docs</a></dt>
-				<dt><a href="/toolkit/docs/6.0/gappendices/commands/">GT Commands</a></dt>
-		<!--		<dt><a href="/toolkit/docs/6.0/gappendices/user/#public-interfaces">Public Interfaces</a></dt> -->
-				<dt><a href="/toolkit/docs/6.0/gindex.html#glossary">Glossary</a></dt>
+				<dt><a href="/toolkit/docs/6.0/appendices/commands/">GT Commands</a></dt>
+		<!--		<dt><a href="/toolkit/docs/6.0/appendices/user/#public-interfaces">Public Interfaces</a></dt> -->
+				<dt><a href="/toolkit/docs/6.0/index.html#glossary">Glossary</a></dt>
 			</dl>
 	
 	</div>
