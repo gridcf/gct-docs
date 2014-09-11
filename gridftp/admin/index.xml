@@ -167,7 +167,7 @@
         <orderedlist>
           <listitem>
             <para>Threaded Globus GridFTP server. 
-              In GT5, the server is non-threaded by default. 
+              In GT6, the server is non-threaded by default. 
 	     Refer to
                 <olink targetdoc="gridftpAdmin" targetptr="gridftp-admin-installing-threaded"/> for
               information on how to enable threading in GridFTP server.</para>

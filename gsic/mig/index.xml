@@ -7,9 +7,13 @@
 <titleabbrev>Migrating Guide</titleabbrev>
 <para>The following provides available information about migrating from previous versions of the Globus Toolkit.</para>
   <!-- fixme plz verify -->
+  <section id="gsic-migrating-GT5.2">
+    <title>Migrating GSI from GT5.2</title>
+    <para>Nothing should have to be done when migrating from GT5.2.</para>
+  </section>
   <section id="gsic-migrating-GT5.0">
     <title>Migrating GSI from GT5.0</title>
-    <para>FIXME</para>
+    <para>Nothing should have to be done when migrating from GT5.0.</para>
   </section>
   <section id="gsic-migrating-GT4.2">
     <title>Migrating GSI from GT4.2</title>

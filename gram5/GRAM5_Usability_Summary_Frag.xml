@@ -9,27 +9,5 @@
 
 ]>
 <section><title>Usability improvements</title>
-  <para>GRAM5 usability has improved considerably in GT5!</para>
-<itemizedlist>
-  <listitem>
-    <para>Improved service performance:
-    <itemizedlist>
-        <listitem>
-          <simpara>Job Concurrency.  The maximum number of jobs a gram service can manage at one time.</simpara>
-        </listitem>
-        <listitem>
-          <simpara>Job Throughput.  The rate at which jobs can be processed (e.g. x /bin/date jobs per minute).</simpara>
-        </listitem>
-        <listitem>
-          <simpara>Job Latency.  The rate at which a single operation to the GRAM service can be processes.</simpara>
-        </listitem>
-        <listitem>
-          <simpara>Details of performance testing can be found <ulink url="&docpath;perf_overview.html">here.</ulink></simpara>
-        </listitem>
-      </itemizedlist></para>
-  </listitem>
-  <listitem>
-    <simpara>Fault Tolerance.  The ability for the GRAM service to recover after a container or host crash.  Recovery includes the continued processing and monitoring of all jobs managed by the GRAM service at the time of the crash.  The <replaceable role="entity">version</replaceable> GRAM architecture was simplified (from GT3) which is the main reason that fault tolerance has improved.</simpara>
-  </listitem>
-</itemizedlist>
+<para>No major improvements in GT6</para>
 </section>

@@ -13,7 +13,7 @@
                         <abstract>
                                     <title>Introduction</title>
                                     <para><note><simpara>Please note that the Best Practices need to be 
-                                                updated for GT5 and are not being published at this time. 
+                                                updated for GT6 and are not being published at this time. 
                                     </simpara></note></para>
                                     <para>You can download the <ulink url="gtDeveloperGuide.pdf">PDF version here</ulink>. Following are some docs you should be familiar with as well:</para>
                                     <para>
@@ -40,18 +40,6 @@
                                     </para>
                         </abstract>
             </bookinfo>
-            <!--
-                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                    href="best_practices.xml"/>
-
-              fixme not ready for prime time yet         
-            
-                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples.xml"
-                                   />
-
-                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="debugging.xml"
-                                   />
- -->
             <part>
                         <title>Asynchronous Event Handling with Examples</title>
                         
