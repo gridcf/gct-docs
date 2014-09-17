@@ -184,29 +184,32 @@
         <title>Steps</title>
         <orderedlist>
           <listitem>
-            <para> Build and install UDT </para>
-            <screen>globus$ make udt ("make gridftp udt" if gridftp is not built and installed already)
-                
-                globus$ make install</screen>
+            <para> Build and install UDT</para>
+            <para>
+            <screen>globus$ make udt</screen>
+            or 
+            <screen>globus$ make gridftp udt</screen>
+            if gridftp is not built and installed already)</para>
+            <para>
+            <screen>globus$ make install</screen></para>
           </listitem>
           <listitem>
-            <para> Configure GridFTP server
-              <screen>If you run the GridFTP server from xinetd, add '-dc-whitelist
-                  udt,gsi,tcp' to 'server_args' in /etc/xinetd.d/gsiftp 
-                </screen>
-              Alternatively, you can use the file $GLOBUS_LOCATION/etc/gridftp.conf to configure
-              this. Add the following to that file:
-              <screen>
-                  dc-whitelist udt,gsi,tcp
-                </screen> If you
-              run the server from commandline:
-              <screen>
-                  $GLOBUS_LOCATION/sbin/globus-gridftp-server -dc-whitelist
-                  udt,gsi,tcp
-                </screen></para>
+            <para>Configure GridFTP server</para>
+            <para>If you run the GridFTP server from
+            xinetd, add <literal>-dc-whitelist udt,gsi,tcp</literal> to
+            <literal>server_args</literal> in
+            <filename>/etc/xinetd.d/gsiftp</filename></para>
+            <para>
+              Alternatively, you can use the file
+              <filename>$GLOBUS_LOCATION/etc/gridftp.conf</filename> to
+              configure this. Add the following to that file:
+              <literal>dc_whitelist udt,gsi,tcp</literal>.
+              </para>
+              <para>If you run the server from the command line:
+              <screen>$GLOBUS_LOCATION/sbin/globus-gridftp-server -dc-whitelist udt,gsi,tcp</screen></para>
           </listitem>
           <listitem>
-            <para> Run globus-url-copy with new command line option "-udt" </para>
+            <para>Run globus-url-copy with new command line option "-udt" </para>
           </listitem>
         </orderedlist>
       </section></section>
