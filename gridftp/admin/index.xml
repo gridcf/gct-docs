@@ -203,7 +203,7 @@
               Alternatively, you can use the file
               <filename>$GLOBUS_LOCATION/etc/gridftp.conf</filename> to
               configure this. Add the following to that file:
-              <literal>dc_whitelist udt,gsi,tcp</literal>.
+              <screen><literal>dc_whitelist udt,gsi,tcp</literal></screen>.
               </para>
               <para>If you run the server from the command line:
               <screen>$GLOBUS_LOCATION/sbin/globus-gridftp-server -dc-whitelist udt,gsi,tcp</screen></para>
