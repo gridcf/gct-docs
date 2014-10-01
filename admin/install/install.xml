@@ -228,15 +228,76 @@
             </listitem>
             <listitem>
                 <para>
-                    The source installer will build all of the globus toolkit
-                    packages in the default make rule. The same
-                    <olink targetptr="install-packagegroups">package
-                    groups</olink> as the native packages may be used to build
-                    and install a subset of the toolkit.
+                    The source installer will build all of the Globus Toolkit
+                    packages in the default make rule. The following Makefile
+                    targets can be used to build subsets of the Globus Toolkit:
+
+                    <variablelist>
+                    <varlistentry>
+                        <term>ccommonlibs</term>
+                        <listitem><simpara>C Common Libraries</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gridftp</term>
+                        <listitem><simpara>GridFTP Client and Server</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gsi</term>
+                        <listitem><simpara>Security Libraries and Tools</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gsi</term>
+                        <listitem><simpara>Security Libraries and Tools</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>udt</term>
+                        <listitem><simpara>Globus XIO UDT Driver</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>myproxy</term>
+                        <listitem><simpara>MyProxy Client and Server</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gsi-openssh</term>
+                        <listitem><simpara>GSI OpenSSH Client and Server</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5</term>
+                        <listitem><simpara>GRAM5 Client and Libraries</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-server</term>
+                        <listitem><simpara>GRAM5 Service</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-lsf</term>
+                        <listitem><simpara>GRAM5 LSF Adapter</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-sge</term>
+                        <listitem><simpara>GRAM5 SGE Adapter</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-slurm</term>
+                        <listitem><simpara>GRAM5 SLURM Adapter</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-condor</term>
+                        <listitem><simpara>GRAM5 Condor Adapter</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-pbs</term>
+                        <listitem><simpara>GRAM5 PBS Adapter</simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>gram5-auditing</term>
+                        <listitem><simpara>GRAM5 Auditing Support</simpara></listitem>
+                    </varlistentry>
+                </variablelist>
                 </para>
 
                 <para> Run: </para>
-                <screen><prompt role="globus"/><command>make <replaceable>PACKAGE-GROUPS</replaceable></command></screen>
+                <screen><prompt role="globus"/><command>make <replaceable>TARGET</replaceable></command></screen>
                 <para> Note that this command can take a while to complete. If you wish to
                     have a log file of the build, use <command>tee</command>: </para>
                 <screen><prompt role="globus"/><command>make 2&gt;&amp;1 | tee build.log</command></screen>
