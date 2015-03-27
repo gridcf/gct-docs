@@ -1,5 +1,0 @@
- SAX LICENSE 
-This license applies to all interfaces and classes in the org/xml/sax hierarchy. 
-
-
-  This module, both source code and documentation, is in the Public Domain, and comes with NO WARRANTY. See http://www.saxproject.org for further information. 

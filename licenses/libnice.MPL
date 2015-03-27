@@ -444,11 +444,10 @@ EXHIBIT A -Mozilla Public License.
      License for the specific language governing rights and limitations
      under the License.
 
-     The Original Code is ______________________________________.
+     The Original Code is the Nice GLib ICE library.
 
-     The Initial Developer of the Original Code is ________________________.
-     Portions created by ______________________ are Copyright (C) ______
-     _______________________. All Rights Reserved.
+     The Initial Developers of the Original Code are Collabora Ltd and Nokia
+     Corporation. All Rights Reserved.
 
      Contributor(s): ______________________________________.
 
@@ -467,3 +466,4 @@ EXHIBIT A -Mozilla Public License.
      the notices in the Source Code files of the Original Code. You should
      use the text of this Exhibit A rather than the text found in the
      Original Code Source Code for Your Modifications.]
+
