@@ -3,9 +3,10 @@
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <!-- wishlist: best practices for managing certs from a user's perspective -->
 <chapter id="gsic-configuring" xreflabel="Configuring GSI">
-  <title>Configuring Certificates</title>
+  <title>Configuring GSI</title>
   <para>This section describes the configuration steps required to:<itemizedlist>
       <listitem>
+        <simpara>Configure SSL/TLS security parameters</simpara> 
         <simpara>determine whether or not to trust certificates issued by a particular <glossterm
             baseform="Certificate Authority">Certificate Authority (CA)</glossterm>,</simpara>
       </listitem>
@@ -26,6 +27,68 @@
     first, and in a system-wide location if no user-specific file was found. The configuration
     commands described here may be run by administrators to create system-wide defaults and by
     individuals to override those defaults.</para>
+  <section id="gsic-configuring-global-security-parameters">
+  <title>Configuring Global Security Parameters</title>
+  <para>The configuration file described here was added with the package
+  globus-gssapi-gsi-11.16 and the toolkit binary package version
+  6.0.1430141288.</para>
+  <para>
+  The global security parameters for GSIC are included in the file
+  <filename>/etc/grid-security/gsi.conf</filename>. This file contains the default values used by
+  all GSI-enabled servers and clients. The format of the file is a sequence of
+  lines containing a single NAME=VALUE pair, with comments beginning with the
+  <literal>#</literal> character. All values in the default configuration file may be
+  overridden by setting the corresponding environment variable for a particular
+  process.
+  </para>
+  <para>
+  The NAME strings that are currently understood are
+  <table>
+        <title>GSI Configuration Values</title>
+        <tgroup cols="4">
+              <thead>
+                <row>
+                  <entry>Configuration Entry</entry>
+                  <entry>Description</entry>
+                  <entry>Environment Override</entry>
+                  <entry>Default Value</entry>
+                </row>
+              </thead>
+          <tbody>
+            <row>
+              <entry><varname>FORCE_TLS</varname></entry>
+              <entry><simpara>A flag to choose whether to force TLS or
+              to allow SSLv3 as well. Set this to <literal>true</literal> to
+              disable SSLv3, or <literal>false</literal> to allow either to be
+              negotiated.</simpara></entry>
+              <entry><envar>GLOBUS_GSSAPI_FORCE_TLS</envar></entry>
+              <entry><simpara><literal>false</literal></simpara></entry>
+            </row>
+            <row>
+              <entry><varname>NAME_COMPATIBILITY</varname></entry>
+              <entry><simpara>GSSAPI Name compatibility mode when trying to
+              determine if a host certificate is legitimate. GSI predates
+              <ulink url="http://tools.ietf.org/html/rfc2818">RFC2818</ulink>,
+              so old versions of GSI use some old, less-secure,
+              practices. The possible values are described in
+              <olink targetdoc="gsicPI" targetptr="gsic-env-name"/>.</simpara></entry>
+              <entry><envar>GLOBUS_GSSAPI_NAME_COMPATIBILITY</envar></entry>
+              <entry><simpara><literal>STRICT_RFC2818</literal></simpara></entry>
+            </row>
+            <row>
+              <entry><varname>CIPHERS</varname></entry>
+              <entry><simpara>OpenSSL Cipher List. This is an
+              preference-ordered list of OpenSSL cipher names. See
+              <ulink url="https://www.openssl.org/docs/apps/ciphers.html">OpenSSL cipher documentation</ulink> for information on the syntax of this string.</simpara></entry>
+              <entry><envar>GLOBUS_GSSAPI_CIPHERS</envar></entry>
+              <entry><simpara><literal>HIGH</literal></simpara></entry>
+            </row>
+          </tbody>
+        </tgroup>
+    </table>
+
+  </para>
+  </section>
   <section id="gsic-configuring-trustCA">
     <title>Configuring Globus to Trust a Particular Certificate Authority</title>
     <section>

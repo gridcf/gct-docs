@@ -6,7 +6,7 @@
     <title>New Features: GSIC</title>
     <para>
       <itemizedlist>
-        <listitem><simpara/></listitem>
+        <listitem><simpara>globus-gssapi-gsi-11.16: Add new configuration options</simpara></listitem>
       </itemizedlist>
     </para>
   </section>
