@@ -66,11 +66,11 @@
       </listitem>
       <listitem>
         <simpara>Reliability/restart: The receiving server periodically (the default is 5 seconds,
-          but this can be changed) sends &ldquo;restart markers&rdquo; to the client. This marker is
+          but this can be changed) sends <emphasis>restart markers</emphasis> to the client. This marker is
           a messages specifying what bytes have been successfully written to the disk. If the
           transfer fails, the client may restart the transfer and provide these markers (or an
           aggregated equivalent marker), and the transfer will pick up where it left off. This can
-          include &ldquo;holes&rdquo; in the file.</simpara>
+          include holes in the file.</simpara>
       </listitem>
       <listitem>
         <simpara>Large file support: All file sizes, lengths, and offsets are 64 bits in
