@@ -1,0 +1,87 @@
+
+[[myproxyDeveloper,Developer's Guide]]
+:doctype: book
+= GT 6.0 MyProxy: Developer's Guide =
+
+  
+[[myproxy-developer-introduction]]
+
+.Introduction
+--
+Please refer to the http://myproxy.ncsa.uiuc.edu/devguide.html[MyProxy
+Developer's Guide] on the MyProxy web site. 
+
+--
+
+  
+[[myproxy-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../Cred_Mgmt_MyProxy_Feature_Summary_Frag.txt[]
+
+
+include::../Cred_Mgmt_MyProxy_Platform_Summary_Frag.txt[]
+
+
+include::../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.txt[]
+
+
+include::../Cred_Mgmt_MyProxy_Dependencies_Summary_Frag.txt[]
+
+
+include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.txt[]
+
+ 
+[[myproxy-developer-scenarios]]
+== Usage scenarios ==
+
+
+--
+Please refer to the http://myproxy.ncsa.uiuc.edu/userguide.html[MyProxy
+User Guide] for MyProxy usage scenarios. 
+
+
+--
+ 
+[[myproxy-developer-tutorials]]
+== Tutorials ==
+
+
+--
+There are no tutorials available at this time.
+
+
+--
+ 
+[[myproxy-developer-archdes]]
+== Architecture and design overview ==
+
+
+--
+The MyProxy system architecture and design is described in the following
+two publications: 
+
+
+* J. Basney, M. Humphrey, and V. Welch. http://www.ncsa.uiuc.edu/~jbasney/myproxy-spe.pdf[The MyProxy Online Credential Repository]. Software: Practice and Experience, 2005.
+
+* J. Novotny, S. Tuecke, and V. Welch. http://www.globus.org/alliance/publications/papers/myproxy.pdf[An Online Credential Repository for the Grid: MyProxy]. Proceedings of the Tenth International Symposium on High Performance Distributed Computing (HPDC-10), IEEE Press, August 2001.
+
+
+
+--
+ 
+include::../user/index.txt[]
+
+ 
+[[myproxy-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+For additional information about MyProxy, see the
+http://myproxy.ncsa.uiuc.edu/[MyProxy Project Home Page] at NCSA. 
+
+
+--
+  

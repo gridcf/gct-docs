@@ -1,0 +1,382 @@
+
+[[gram5Admin, System Administrator's Guide]]
+:doctype: book
+= GT 6.0 GRAM5: System Administrator's Guide =
+
+  
+.Introduction
+--
+This guide contains configuration information for system administrators
+working with GRAM5. It describes procedures typically performed by
+system administrators, including GRAM5 software installation,
+configuration, testing, and debugging. Readers should be familiar with
+the link:../..gram5/key/index.html[GRAM5 Key Concepts] to understand the
+motivation for and interaction between the various deployed components. 
+
+--
+
+  
+[[gram5-admin-install]]
+== GRAM5 Installation ==
+
+
+=== Introduction ===
+
+The Globus Toolkit provides GRAM5: a service to submit, monitor, and
+cancel jobs on Grid computing resources. In GRAM5, a job consists of a
+computation and, optionally, file transfer and management operations
+related to the computation. Some users, particularly interactive ones,
+benefit from accessing output data files as the job is running.
+Monitoring consists of querying for and/or subscribing to status
+information, such as job state changes. 
+
+GRAM5 relies on link:[] mechanisms for security, and interacts with
+link:[GridFTP services] to stage files to compute resources. Please see
+their respective Administrator's guides for information about
+installing, configuring, and managing those systems. In particular, you
+must understand the tasks in
+link:../../admin/install/index.html#gtadmin-install[] and install the
+basic GRAM5 packages, and complete the tasks in
+link:../../admin/install/index.html#gtadmin-basic-security[]. 
+
+
+=== Planning your GRAM5 installation ===
+
+Before installing GRAM5 on a server, you'll first need to plan what
+Local Resource
+        Managers (LRMs) you want GRAM5 to interface with,
+what LRM you want to have as your default GRAM5 service, and whether
+you'll be using the **++globus-scheduler-event-generator++** to process
+LRM events. 
+
+GRAM5 requires a few services to be running to function: the Gatekeeper
+and the Scheduler Event Generator (SEG). The supported way to run these
+services is via the System-V style init scripts provided with the
+GRAM5-related packages. The gatekeeper daemon can also be configured to
+start via an internet superserver such as **++inetd++** or
+**++xinetd++** though that is beyond the scope of this document. The
+**++globus-scheduler-event-generator++** can not be run in that way. 
+
+
+==== Choosing an LRM Adapter ====
+
+GRAM5 in GT 6.0 supports the following LRM adapters: Condor, PBS,
+GridEngine, and Fork. These LRM adapters translate GRAM5 job
+specifications into LRM-specific job descriptions and scripts to run
+them, as well as interfaces to the LRM to determine job termination
+status. 
+
+If you're not familiar with the supported LRMs, you might want to start
+with the Fork one to get familiar with how GRAM5 works. This adapter
+simply forks the job and runs it on the GRAM5 node. You can then install
+one of the other LRMs and its adapter to provide batch or
+high-throughput job scheduling. 
+
+
+===== Default GRAM5 Service =====
+
+GRAM5 can be configured to support multiple LRMs on the same service
+machine. In that case, one LRM is typically configured as the default
+LRM which is used when a client uses a shortened version of a GRAM5
+link:../..gram5/user/index.html#gram5-user-resource-names[resource
+name]. A common configuration is to configure a batch system interface
+as the default, and provide the ++jobmanager-fork++ service as well for
+simple jobs, such as creating directories or staging data. 
+
+
+===== Job Status Method =====
+
+GRAM5 has two ways of determining job state transitions: polling the LRM
+and using the Scheduler Event Generator (SEG) service. When polling,
+each user's **++globus-job-manager++** will periodically execute an
+LRM-specific command to determine the state of each job. On systems with
+many users, or with users submitting a large number of jobs, this can
+cause significant resource use on the GRAM5 service machine. Instead,
+the GRAM5 service can be configured (on a per-LRM basis) to use the
+**++globus-scheduler-event-generator++** service to more efficiently
+process LRM state changes. [NOTE]
+--
+Not all LRM adapters provide an interface to the **++globus-scheduler-event-generator++**, and some require LRM-specific configuration to work properly. This is described in more detail.
+--
+
+
+
+[[gram5-admin-installing-lrm-packages]]
+=== Installing LRM Adapter Packages ===
+
+There are several LRM adapters included in the GT 6.0. For some, there
+is a ++-setup-poll++ and ++-setup-seg++ package which installs the
+adapter and configuration file needed for job status via polling or the
+**++globus-scheduler-event-generator++** program. 
+
+There are three ways to get LRM adapters: as RPM packages, as Debian
+packages, and from the source installer. These installation methods are
+described in link:../../admin/install/index.html[]. 
+
+LRM adapter packages included in the GT 6.0 release are: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+          <title>GRAM5 LRM Adapters</title>
+          <tgroup cols='4'>
+            <thead>
+              <row>
+                <entry>LRM Adapter</entry>
+                <entry>Poll Package</entry>
+                <entry>SEG Package</entry>
+                <entry>Installer Target</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>fork</entry>
+                <entry>globus-gram-job-manager-fork-setup-poll</entry>
+                <entry>
+                  <simpara>globus-gram-job-manager-fork-setup-seg<footnote>
+                      <para>Not recommended for production use</para>
+                    </footnote></simpara>
+                </entry>
+                <entry>globus_gram_job_​manager_fork</entry>
+              </row>
+              <row>
+                <entry><ulink url='http://www.clusterresources.com/products/torque-resource-manager.php'>pbs</ulink></entry>
+                <entry>globus-gram-job-manager-pbs-setup-poll</entry>
+                <entry>globus-gram-job-manager-pbs-setup-seg</entry>
+                <entry>globus_gram_job_​manager_pbs</entry>
+              </row>
+              <row>
+                <entry><ulink url='http://www.cs.wisc.edu/condor/'>Condor</ulink></entry>
+                <entry>N/A</entry>
+                <entry>
+                  <simpara>globus-gram-job-manager-condor<footnote>
+                      <para>This LRM uses a SEG-like mechanism included in the <command>globus-job-manager</command> program, but not the <command>globus-scheduler-event-generator</command> service.</para>
+                    </footnote></simpara>
+                </entry>
+                <entry>globus_gram_job_​manager_condor</entry>
+              </row>
+              <row>
+                <entry><glossterm baseform='Sun GridEngine'>SGE</glossterm></entry>
+                <entry>globus-gram-job-manager-sge-setup-poll</entry>
+                <entry>globus-gram-job-manager-sge-setup-seg</entry>
+                <entry>globus_gram_job_​manager_sge</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ 
+[[gram5-admin-managing]]
+== Common Administrative Tasks ==
+
+
+--
+There are several tools provided with GT 6.0 to manage GRAM5, as well as
+OS-specific tools to start and stop some of the services. There are
+tools to manage user authorization, which services are enabled, which
+scheduler event generator modules are enabled, and to test the
+**++globus-gatekeeper++** service. 
+
+
+--
+
+=== Managing GRAM5 Users ===
+
+Before a user may interact with the GRAM5 service to submit jobs, he or
+she must be authorized to use the service. In order to be authorized, a
+GRAM5 administrator must add the user's credential name and local
+account mapping to the ++/etc/grid-mapfile++. This can be done using the
+. This can be done using the
+link:../..gsic/pi/index.html#grid-mapfile-add-entry[] and
+link:../..gsic/pi/index.html#grid-mapfile-delete-entry[] tools. For more
+information, see the link:[] manual. 
+
+
+[[gram5-admin-starting-and-stopping]]
+=== Starting and Stopping GRAM5 services ===
+
+In order to run the service, the **++globus-gatekeeper++**, and, if
+applicable to your configuration, the
+**++globus-scheduler-event-generator++** services must be running on
+your system. The packages for these services include init scripts and
+configuration files which can be used to configure, start, and stop the
+service. 
+
+The **++globus-gatekeeper++** and
+**++globus-scheduler-event-generator++** init scripts handle the
+following actions: ++start++, ++stop++, ++status++, ++restart++,
+++condrestart++, ++try-restart++, ++reload++, and ++force-reload++. The
+**++globus-scheduler-event-generator++** script also accepts another
+optional parameter to start or stop a particular
+**++globus-scheduler-event-generator++** module. If the second parameter
+is not present, then all services will be acted on. 
+
+
+==== Debian Specifics ====
+
+If you installed using Debian packaging tools, then the services will
+automatically be started upon installation. To start or stop the
+service, use the command **++invoke-rc.d++** with the service name and
+action. 
+
+
+==== RPM Specifics ====
+
+If you installed using the RPM packaging tools, then the services will
+be installed but not enabled by default. To enable the services to start
+at boot time, use the commands: 
+
+--------
+#  chkconfig globus-gatekeeper on
+#  chkconfig globus-scheduler-event-generator on
+--------
+
+
+To start or stop the services, use the **++service++** command to run
+the init scripts with the service name and action and optional
+**++globus-scheduler-event-generator++** module.
+
+
+=== Enabling and Disabling GRAM5 Services ===
+
+The GRAM5 packages described in
+link:#gram5-admin-installing-lrm-packages[] will automatically register
+themselves with the **++globus-gatekeeper++** and
+**++globus-scheduler-event-generator++** services. The first LRM adapter
+installed will be configured as the default Job Manager service. To list
+the installed services, change the default, or disable a service, use
+the link:#globus-gatekeeper-admin[] tool. 
+
+
+
+
+.Using globus-gatekeeper-admin to set the default service
+=======================================================================
+This example shows how to use the **++globus-gatekeeper-admin++** tool
+to list the available services and then choose one as the default:
+--------
+#  globus-gatekeeper-admin -l
+jobmanager-condor [ENABLED]
+jobmanager-fork-poll [ENABLED]
+jobmanager-fork [ALIAS to jobmanager-fork-poll]
+#  globus-gatekeeper-admin -e jobmanager-condor -n jobmanager
+#  globus-gatekeeper-admin -l
+jobmanager-condor [ENABLED]
+jobmanager-fork-poll [ENABLED]
+jobmanager [ALIAS to jobmanager-condor]
+jobmanager-fork [ALIAS to jobmanager-fork-poll]
+--------
+
+=======================================================================
+
+
+=== Enabling and Disabling SEG Modules ===
+
+The ++-setup-seg++ packages described in
+link:#gram5-admin-installing-lrm-packages[] will automatically register
+themselves with the **++globus-scheduler-event-generator++** service. To
+disable a module from running when the
+**++globus-scheduler-event-generator++** service is started, use the
+link:#globus-scheduler-event-generator-admin[] tool. 
+.Using globus-scheduler-event-generator-admin to disable a SEG module
+=======================================================================
+This example shows how to stop the ++pbs++
+**++globus-scheduler-event-generator++** module and disable it so it
+will not restart when the system is rebooted: 
+--------
+#  /etc/init.d/globus-scheduler-event-generator stop pbs
+Stopped globus-scheduler-event-generator                   [  OK  ]
+#  globus-scheduler-event-generator-admin -d pbs
+#  globus-scheduler-event-generator-admin -l
+pbs [DISABLED]
+
+--------
+
+=======================================================================
+
+
+ 
+include::../GRAM5_Interface_Config_Frag.txt[]
+
+ 
+include::../GRAM5_Audit_Logging.txt[]
+
+ 
+[[gram5-admin-security_considerations]]
+== Security Considerations ==
+
+
+include::../GRAM5_Security_Considerations_Frag.txt[]
+
+ 
+[[gram5-admin-troubleshooting]]
+== Troubleshooting ==
+
+
+include::../GRAM5_Troubleshooting_Admin_Frag.txt[]
+
+ 
+[[gram5-admin-programs]]
+== Admin Tools ==
+
+
+:leveloffset: 2
+
+include::../globus-gatekeeper-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-gatekeeper-admin-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-gram-audit-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-job-manager-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-rvf-check-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-rvf-edit-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-scheduler-event-generator-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::../globus-scheduler-event-generator-admin-manual.txt[]
+
+
+:leveloffset: 0
+ 
+include::../GRAM5_Usage_Statistics_Frag.txt[]
+
+   

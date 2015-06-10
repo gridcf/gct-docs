@@ -1,0 +1,221 @@
+
+[[gsic-env-var]]
+=== Environmental Variables for GSI C ===
+
+
+[[gsic-env-credentials]]
+==== Credentials ====
+
+Credentials are looked for in the following order:
+
+
+
+. service credential
+
+. host credential
+
+. proxy credential
+
+. user credential
+
+
+++X509_USER_PROXY++ specifies the path to the proxy credential. If
+++X509_USER_PROXY++ is not set, the proxy credential is created (by
+**++grid-proxy-init++**) and searched for (by client programs) in an
+operating-system-dependent local temporary file.
+
+++X509_USER_CERT++ and ++X509_USER_KEY++ specify the path to the end
+entity (user, service, or host) certificate and corresponding private
+key. The paths to the certificate and key files are determined as
+follows:
+
+For service credentials:
+
+
+
+. If ++X509_USER_CERT++ and ++X509_USER_KEY++ exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++/etc/grid-security/service/servicecert.pem++ and  and ++/etc/grid-security/service/servicekey.pem++ exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++$GLOBUS_LOCATION/etc/grid-security/service/servicecert.pem++ and  and ++$GLOBUS_LOCATION/etc/grid-security/service/servicekey.pem++ exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++service/servicecert.pem++ and  and ++service/servicekey.pem++ in the user's  in the user's ++.globus++ directory exist and contain a valid certificate and key, those files are used. directory exist and contain a valid certificate and key, those files are used.
+
+
+For host credentials:
+
+
+
+. If ++X509_USER_CERT++ and ++X509_USER_KEY++ exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++/etc/grid-security/hostcert.pem++ and  and ++/etc/grid-security/hostkey.pem++ exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++$GLOBUS_LOCATION/etc/hostcert.pem++ and  and ++$GLOBUS_LOCATION/etc/hostkey.pem++ exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++hostcert.pem++ and  and ++hostkey.pem++ in the user's  in the user's ++.globus++ directory, exist and contain a valid certificate and key, those files are used. directory, exist and contain a valid certificate and key, those files are used.
+
+
+For user credentials:
+
+
+
+. If ++X509_USER_CERT++ and ++X509_USER_KEY++ exist and contain a valid certificate and key, those files are used.
+
+. Otherwise, if the files ++usercert.pem++ and  and ++userkey.pem++ exist in the user's  exist in the user's ++.globus++ directory, those files are used. directory, those files are used.
+
+. Otherwise, if a PKCS-12 file called ++usercred.p12++ exists in the user's  exists in the user's ++.globus++ directory, the certificate and key are read from that file. directory, the certificate and key are read from that file.
+
+
+
+[[gsic-env-gridmapfile]]
+==== Gridmap file ====
+
+++GRIDMAP++ specifies the path to the grid map file, which is used to
+map distinguished names (found in certificates) to local names (such as
+login accounts). The location of the grid map file is determined as
+follows: 
+. If the ++GRIDMAP++ environment variable is set, the grid map file location is the value of that environment variable.
+
+. Otherwise: 
+
+* If the user is root (uid 0), then the grid map file is ++/etc/grid-security/grid-mapfile++..
+
+* Otherwise, the grid map file is ++$HOME/.gridmap++..
+
+
+
+
+[[gsic-env-trustedca]]
+==== Trusted CAs directory ====
+
+++X509_CERT_DIR++ is used to specify the path to the trusted
+certificates directory. This directory contains information about which
+CAs are trusted (including the CA certificates themselves) and, in some
+cases, configuration information used by **++grid-cert-request++** to
+formulate certificate requests. The location of the trusted certificates
+directory is determined as follows: 
+. If the ++X509_CERT_DIR++ environment variable is set, the trusted certificates directory is the value of that environment variable.
+
+. Otherwise, if ++$HOME/.globus/certificates++ exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.
+
+. Otherwise, if ++/etc/grid-security/certificates++ exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.
+
+. Finally, if ++$GLOBUS_LOCATION/share/certificates++ exists, then it is the trusted certificates directory. exists, then it is the trusted certificates directory.
+
+
+
+
+[[gsic-env-gsiauthz]]
+==== GSI authorization callout configuration file ====
+
+++GSI_AUTHZ_CONF++ is used to specify the path to the GSI authorization
+callout configuration file. This file is used to configure authorization
+callouts used by both the gridmap and the authorization API. The
+location of the GSI authorization callout configuration file is
+determined as follows:
+. If the ++GSI_AUTHZ_CONF++ environment variable is set, the authorization callout configuration file location is the value of this environment variable.
+
+. Otherwise, if ++/etc/grid-security/gsi-authz.conf++ exists, then this file is used. exists, then this file is used.
+
+. Otherwise, if ++$GLOBUS_LOCATION/etc/gsi-authz.conf++ exists, then this file is used. exists, then this file is used.
+
+. Finally, if ++$HOME/.gsi-authz.conf++ exists, then this file is used. exists, then this file is used.
+
+
+
+
+[[gsic-env-gaaauthz]]
+==== GAA (Generic Authorization and Access control) configuration file ====
+
+++GSI_GAA_CONF++ is used to specify the path to the GSI GAA (Generic
+Authorization and Access control)
+        configuration file. This file
+is used to configure policy language specific plugins to the GAA-API.
+The location of the GSI GAA configuration file is determined as follows:
+. If the ++GSI_GAA_CONF++ environment variable is set, the GAA configuration file location is the value of this environment variable.
+
+. Otherwise, if ++/etc/grid-security/gsi-gaa.conf++ exists, then this file is used. exists, then this file is used.
+
+. Otherwise, if ++$GLOBUS_LOCATION/etc/gsi-gaa.conf++ exists, then this file is used. exists, then this file is used.
+
+. Finally, if ++$HOME/.gsi-gaa.conf++ exists, then this file is used. exists, then this file is used.
+
+
+
+
+[[gsic-env-gridsecurity]]
+==== Grid security directory ====
+
+++GRID_SECURITY_DIR++ specifies a path to a directory containing
+configuration files that specify default values to be placed in
+certificate requests. This environment variable is used only by the
+**++grid-cert-request++** and **++grid-default-ca++** commands.
+
+The location of the grid security directory is determined as follows: 
+. If the ++GRID_SECURITY_DIR++ environment variable is set, the grid security directory is the value of that environment variable.
+
+. If the configuration files exist in ++/etc/grid-security++, the grid security directory is that directory., the grid security directory is that directory.
+
+. if the configuration files exist in ++$GLOBUS_LOCATION/etc++, the grid security directory is that directory., the grid security directory is that directory.
+
+
+
+
+[[gsic-env-tls]]
+==== Using TLS ====
+
+++GLOBUS_GSSAPI_FORCE_TLS++ specifies whether to use TLS by default when
+establishing a security context. The default behavior if this is not set
+is to use SSLv3. 
+
+
+[[gsic-env-name]]
+==== Name Comparisons ====
+
+++GLOBUS_GSSAPI_NAME_COMPATIBILITY++ specifies what name matching
+algorithms are supported by GSSAPI for mutual authentication and
+**++gss_compare_name++**. This variable may be set to any of the
+following values: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<informaltable colsep='0' rowsep='0'>
+         <tgroup cols='2'>
+             <tbody>
+                <row>
+                    <entry><literal>STRICT_GT2</literal></entry>
+                    <entry><simpara>Strictly backward-compatible with GT 2.0 name
+                    matching. X.509 subjectAltName values are ignored. Names
+                    with hyphens are treated as wildcarded as described in the
+                    <olink targetdoc='gsicAdmin' targetptr='gsic-security-considerations'>security
+                    considerations</olink> documentation. Name matching will
+                    rely on canonical host name associated with connection IP
+                    addresses.</simpara>
+                    </entry>
+                </row>
+                <row>
+                    <entry><simpara><literal>STRICT_RFC2818</literal></simpara></entry>
+                    <entry><simpara>Support
+                    <ulink url='http://www.ietf.org/rfc/rfc2818.txt'>RFC
+                    2818</ulink> server identity processing. Hyphen characters
+                    are treated as normal part of a host name. DNSName and
+                    IPAddress subjectAltName extensions are matched against the
+                    host and port passed to GSSAPI. If subjectAltName is
+                    present, X.509 SubjectName is ignored.</simpara>
+                    </entry>
+                </row>
+                <row>
+                    <entry><simpara><literal>HYBRID</literal></simpara>
+                    </entry>
+                    <entry><simpara>Support a hybrid of the two previous name
+                    matching algorithms, liberally matching both hyphen
+                    wildcards, canonical names associated with IP addresses,
+                    and subjectAltName extensions.</simpara>
+                    </entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </informaltable>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If this variable is not set, the ++HYBRID++ behavior is used. 
+

@@ -1,0 +1,24 @@
+
+[[gridftp-tech-dependencies]]
+=== Technology dependencies ===
+
+GridFTP depends on the following GT components:
+
+
+
+
+* Non-WS (General) Authentication & Authorization
+
+* C Common Libraries
+
+* XIO
+
+
+GridFTP depends on the following 3rd party software:
+
+
+
+
+* OpenSSL (version is included in release)
+
+

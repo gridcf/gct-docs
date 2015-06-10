@@ -1,0 +1,76 @@
+
+[[globus-async-example2,Asynchronous Event Handling: Example 2]]
+== GT 6.0: Asynchronous Event Handling: Example 2 ==
+
+
+--
+--------
+#include <globus_common.h>
+
+struct test_monitor_s
+{
+    globus_mutex_t                      mutex;
+    globus_cond_t                       cond;
+    globus_bool_t                       done;
+};
+
+void
+user_callback(
+    void *                              user_arg)
+{
+    struct test_monitor_s *              monitor;
+
+    monitor = (struct test_monitor_s *) user_arg;
+
+    globus_mutex_lock(&monitor->mutex);
+    {
+        fprintf(stdout, "Signaling the wait\n");
+        monitor->done = GLOBUS_TRUE;
+        globus_cond_signal(&monitor.cond);
+    }
+    globus_mutex_unlock(&monitor->mutex);
+}
+
+int
+main(
+    int                                 argc,
+    char **                             argv)
+{
+    struct test_monitor_s               monitor;
+    globus_reltime_t                    delay;
+
+    globus_module_activate(GLOBUS_COMMON_MODULE);
+
+    globus_mutex_init(&monitor.mutex, NULL);
+    globus_cond_init(&monitor.cond, NULL);
+    monitor.done = GLOBUS_FALSE;
+
+    globus_mutex_lock(&monitor.mutex);
+    {
+        GlobusTimeReltimeSet(delay, 1, 0);
+        globus_callback_register_oneshot(
+            NULL,
+            &delay,
+            user_callback,
+            &monitor);
+
+        while(!monitor.done)
+        {
+            fprintf(stdout, "waiting...\n");
+            globus_cond_wait(&monitor.cond, &monitor.mutex);
+        }
+    }
+    globus_mutex_unlock(&monitor.mutex);
+
+    globus_module_deactivate(GLOBUS_COMMON_MODULE);
+
+    fprintf(stdout, "Done\n");
+
+    return 0;
+}
+
+
+--------
+
+
+--

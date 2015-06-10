@@ -1,0 +1,265 @@
+
+[[gram5-rvf]]
+== RSL Validation File Specification ==
+
+--
+
+This is a document to specify the file format and semantics of the RSL
+validation files (**RVF**) used by GRAM5 to validate an Resource
+Specification Language job description document in various contexts.
+This validations ensures that the RSL attribute used in the document are
+understood by GRAM5, fills in any default values for missing RSL
+attributes, and also matches the type of the RSL value with that of the
+attribute to ensure it is valid.
+
+
+--
+
+[[gram5-rvf-syntax]]
+=== RVF Syntax Overview ===
+
+The core syntax of the RSL syntax is the **attribute definition
+record**. Each RSL attribute definition record can define one or more
+aspects of the attribute, and all but the **Attribute** aspect are
+optional. 
+
+
+[[gram5-rvf-definition]]
+==== Attribute Definition Record Syntax ====
+
+Syntactically, the attribute definition record consists of a series of
+line-oriented attribute aspect definitions, with records separated by a
+blank line. Additionally, comment strings may begin a line when the
+first non-whitespace character in the line is ++#++. 
+
+
+===== Aspect Name =====
+
+The aspect name syntax is an aspect name token, which may be any
+character other than the ++:++ character, then its value, which may be
+either a **Simple String** or a **Quoted String**. When parsed, the
+Aspect Name is transformed into a lowercase string. 
+
+
+===== Simple String =====
+
+The parser detects a Simple String by scanning the first non-whitespace
+character after the ++:++ character and seeing it is not ++"++. A Simple
+String's value is parsed from the first non-whitespace character until
+the end of line character. Thus, in a record, the line 
+--------
+Attribute: executable
+--------
+will parse the aspect name as ++Attribute++ and the simple string value
+as ++executable++ without any leading whitespace. There is no way to
+indicate an empty value with a simple string. 
+
+
+===== Quoted String =====
+
+The parser detects a Quoted String by scanning the first non-whitespace
+character after the ++:++ character and seeing it is ++"++. A Quoted
+String's value is parsed from the ++"++ character to the next ++"++ not
+preceded by the ++\++ character. Thus, a Quoted String may contain an
+empty value, or span multiple lines. 
+
+
+Thus, the aspect definition 
+--------
+Description: "The value of the \"Quoted String\"
+    It may span multiple lines"
+--------
+will yield an aspect named **Description** with the value 
+--------
+The value of the "Quoted String"
+    It may span multiple lines
+--------
+
+
+
+===== Record Delimiter =====
+
+Records are separated by blank lines which are not parts of Quoted
+String values. The rvf sequence 
+--------
+Name: record-1
+Aspect_1: with an aspect
+
+Name: some other simple value
+Aspect_1: with the same aspect
+    
+--------
+will yield two records, each with two aspects: ++Name++ and
+++Aspect_1++. 
+
+
+==== Aspects used by GRAM5 ====
+
+The GRAM5 RVF parser supports the following set of attributes in record
+definitions. 
+
+*Attribute*::
+     The only **required** aspect in a record, the ++Attribute++ aspect defines the name of the RSL attribute which the record refers to. The name is canonicalized to lowercase, with underscore characters removed.
+*Description*::
+     A description of the RSL attribute. This can be used to generate RSL documentation (see rsl.5), but is not otherwised used by GRAM5.
+*RequiredWhen*::
+     A list indicating when the attribute is **required** to be included in the RSL document. If it is not present, and the RVF does not include a default value for it, the RSL will be rejected. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
+*DefaultWhen*::
+     A list indicating when the attribute's default value will be provided when not in the RSL. The default value is defined by the ++Default++ aspect described below. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
+*ValidWhen*::
+     A list indicating when the attribute is valid in an RSL document. If the RSL attribute is included in a document which is not being used for the purpose described by this aspect's value, it will be rejected. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
+*Default*::
+     A default value for the RSL attribute if it's used in a context which matches the ++DefaultWhen++ aspect for this attribute's record. The value of this attribute must parsable into be a valid RSL link:../..gram5/pi/index.html#gram5-rsl.value-sequence[value-sequence].
+*Values*::
+     An enumeration of values for the RSL attribute. The value must be simple single-word strings (such as ++yes no++. RSL documents which include the attribute this record is for and do not match one of the single-word values will be rejected by the RSL validator.
+*Publish*::
+     A flag, which if it equals ++true++, will cause the RSL attribute to be included in the documentation produced by the **++create_rsl_documentation.pl++** program. This is generally only useful for core RSL attributes included in GRAM5
+
+
+
+[[gram5-rvf-when]]
+===== RVF When Values =====
+
+Several RVF aspect values are defined to include a list of contexts when
+the RVF record is valid, required, or should be assigned a default
+value. The list of contexts may include any number of the following
+strings, separated by whitespace: 
+
+*GLOBUS_GRAM_JOB_SUBMIT*::
+     The aspect relates to initial job submission RSL documents.
+*GLOBUS_GRAM_JOB_MANAGER_RESTART*::
+     The aspect relates to GRAM5 restart RSL documents.
+*GLOBUS_GRAM_JOB_MANAGER_STDIO_UPDATE*::
+     The aspect relates to a STDIO_UPDATE signal.
+
+
+
+For example, the following RVF record will be valid for all three
+contexts, and will provide a default value ++/dev/null++ for the
+++GLOBUS_GRAM_JOB_SUBMIT++ context but not the other contexts: 
+--------
+Attribute: stdout
+Description: "The name of the remote file to store the standard output from
+              the job. If the value is a GASS URL, the standard output from
+              the job is transferred dynamically during the execution of the
+              job. There are two accepted forms of this value. It can consist
+              of a single destination: stdout = URL, or a sequence of
+              destinations: stdout = (DESTINATION) (DESTINATION). In the latter
+              case, the DESTINATION may itself be a URL or a sequence of an
+              x-gass-cache URL followed by a cache tag."
+Default: "/dev/null"
+ValidWhen: GLOBUS_GRAM_JOB_SUBMIT GLOBUS_GRAM_JOB_MANAGER_RESTART GLOBUS_GRAM_JO
+B_MANAGER_STDIO_UPDATE
+DefaultWhen: GLOBUS_GRAM_JOB_SUBMIT
+--------
+
+
+
+[[gram5-rvf-merging]]
+==== RVF Merging ====
+
+GRAM5 will look in multiple locations for RVF records, allowing for the
+default core set of RSL attributes to be modified on a per-LRM case, as
+well as on a site-specific basis. The RVF parser looks in the following
+locations for RVF records in sequential order: 
+
+*/usr/share/globus/globus_gram_job_manager/globus-gram-job-manager.rvf*::
+     Core RVF definitions which apply to all LRM implementations.
+*/usr/share/globus/globus_gram_job_manager/'$LRM'.rvf*::
+     RVF definitions which apply to a particular LRM implementation.
+*/etc/globus/gram/job-manager.rvf*::
+     Site-specific RVF definitions which apply to all LRM implementations.
+*/etc/globus/gram/'$LRM'.rvf*::
+     Site-specific RVF definitions which apply to a particular LRM.
+All but the core RVF file are optional. 
+
+
+When processing multiple RVF files, GRAM5 will perform a merge with
+override of RVF aspects for each record based on the record's
+++Attribute++ aspect. Thus, each subsequent record for a particular RSL
+attribute will replace the value of those aspects which are included in
+the new record, leaving aspects which are not mentioned in the new RVF
+record unchanged. To remove an aspect defined in a previous RVF record,
+include the aspect with an empty Quoted Value. LRM-specific and site RVF
+files can also define records for new RSL attributes. 
+
+
+For example, if the core RVF records contain the following record: 
+--------
+Attribute: directory
+Description: "Specifies the path of the directory the jobmanager will use as
+              the default directory for the requested job."
+Default: $(HOME)
+ValidWhen: GLOBUS_GRAM_JOB_SUBMIT
+DefaultWhen: GLOBUS_GRAM_JOB_SUBMIT
+--------
+a site-specific RVF entry could replace the default value by including
+an RVF record like this: 
+--------
+Attribute: directory
+Default: /scratch/ # $(LOGNAME)
+--------
+
+
+
+Similarly, a LRM which does not support memory-related resource limits
+could add this record to an LRM-specific RVF file to disable those RSL
+attributes for that LRM: 
+--------
+Attribute: min_memory
+ValidWhen: ""
+
+Attribute: max_memory
+ValidWhen: ""
+--------
+
+
+
+==== Grammar Definition ====
+
+
+
+.Grammar for RVF
+[cols=3,options='header']
+|=======================================================================
+| Production | Rule | Annotations
+| 'records' |  'record' 'record_separator' 'records' +
+\| 'record' | 
+| 'record' |  'aspect_list' | 
+| 'aspect_list' |  'aspect' 'aspect_list' 'aspect' | 
+| 'aspect' |  'comment' `*` 'aspect_name' 'aspect_delimiter' 'aspect_value' 'aspect_separator' | 
+| 'aspect_name' |  'whitespace' `*`  `("Attribute"`  `\|`  `"Default"`  `\|`  `"DefaultWhen"`  `\|`  `"Description"`  `\|`  `"Publish"`  `\|`  `"RequiredWhen"`  `\|`  `"ValidWhen")`  | 
+| 'aspect_delimiter' | `":"`  'whitespace' `*` | 
+| 'aspect_value' | `"""`  'quoted_value' `"""` +
+\| 'unquoted_value' 'whitespace' | 
+| 'quoted_value' |  'when_value_list' +
+\| 'bool_value' +
+\| 'quoted_text' | 
+| 'unquoted_value' |  'when_value_list' +
+\| 'bool_value' 'unquoted_text' | 
+| 'when_value_list' |  'when_value_list' 'whitespace' 'when_value' +
+\| 'when_value' | 
+| 'when_value' | `"GLOBUS_GRAM_JOB_SUBMIT"`  +
+\|`"GLOBUS_GRAM_JOB_MANAGER_RESTART"`  +
+\|`"GLOBUS_GRAM_JOB_MANAGER_STDIO_UPDATE"`  | 
+| 'bool_value' | `"True"`  +
+\|`"False"`  | 
+| 'quoted_text' | `(("\"/[^"])`  +
+\|`([^\"])`  +
+\|`(\|"\""))*`  | Quoted text consists of \ followed by a
+                non-quote character, a non-backslash or non-quote character, or
+                a backslash followed by a quote. In the final case, the
+                backslash is discarded by the parser. +
+
+| 'unquoted_text' | `[^` `\t\r\n]*`  | Unquoted text value extends until the last
+                non-whitespace character on the line +
+
+| 'comment' | `WHITESPACE*` `"#"` `[^\n]`  'newline' | Comment strings begin with  +
+
+| 'whitespace' | `[` `\t\r]`  | 
+| 'record_separator' |  'newline' `(` 'comment' +
+\| 'newline' `)*` | 
+| 'aspect_separator' |  'newline' | 
+| 'newline' | `"\n"`  | 
+|=======================================================================
+

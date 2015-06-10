@@ -1,0 +1,6 @@
+GridFTP is a high-performance, secure, reliable data transfer protocol
+optimized for high-bandwidth wide-area networks. The GridFTP protocol is
+based on FTP, the highly-popular Internet file transfer protocol. We
+have selected a set of protocol features and extensions defined already
+in IETF RFCs and added a few additional features to meet requirements
+from current data grid projects. 

@@ -1,0 +1,11 @@
+
+[[myproxy-apis]]
+== APIs ==
+
+
+--
+Please refer to the http://myproxy.ncsa.uiuc.edu/devguide.html[MyProxy
+Developer's Guide] for a list of available MyProxy APIs. 
+
+
+--

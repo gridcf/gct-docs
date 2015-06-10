@@ -1,0 +1,529 @@
+
+[[gram5-interface-protocol]]
+=== GRAM5 Protocol ===
+
+The GRAM Protocol is used to handle communication between the
+Gatekeeper, Job Manager, and GRAM Clients. The protocol is based on a
+subset of the HTTP/1.1 protocol, with a small set of message types and
+responses sent as the body of the HTTP requests and responses. This
+document describes GRAM Protocol version 2 as used by GRAM5. This is
+compatible with with the GRAM Protocol parsers in GRAM2 with extensions.
+
+
+
+==== Framing ====
+
+GRAM messages are framed in HTTP/1.1 messages. However, only a small
+subset of the HTTP specification is used or understood by the GRAM
+system. All GRAM requests are HTTP POST messages. Only the following
+HTTP headers are understood: 
+
+* Host
+
+* Content-Type (set to "application/x-globus-gram" in all cases)
+
+* Content-Length
+
+* Connection (set to "close" in all HTTP responses)
+
+
+
+Only the following status codes are supported in response's HTTP
+Status-Line: 
+
+* 200 OK
+
+* 403 Forbidden
+
+* 404 Not Found
+
+* 500 Internal Server Error
+
+* 400 Bad Request
+
+
+
+
+==== Message Format ====
+
+All messages use the carriage return (ASCII value 13) followed by line
+feed (ASCII value 10) sequence to delimit lines. In all cases, a blank
+line separates the HTTP header from the message body. All
+++application/x-globus-gram++ message bodies consist of attribute names
+followed by a colon, a space, and then the value of the attribute. When
+the value may contain a newline or double-quote character, a special
+escaping rule is used to encapsulate the complete string. This
+encapsulation consists of surrounding the string with double-quotes, and
+escaping all double-quote and backslash characters within the string
+with a backslash. All other characters are sent without modification.
+For example, the string 
+
+--------
+rsl: &( executable = "/bin/echo" )
+ ( arguments = "hello" )
+--------
+becomes 
+
+--------
+rsl: "&( executable = \"bin/echo\" )
+  (arguments = \"hello\" )"
+--------
+
+
+In GRAM5, protocol extensions are supported in the status update
+messages. These extensions are implemented as extra attribute names
+**after** all of the attributes defined in the messages below. Older
+GRAM protocol parsers will ignore those extensions that occur after the
+attributes in the messages defined below. In GRAM5, the following
+extensions are used: 
+
+**++exit-code++**::
+     Job exit code. Sent in job state callbacks and in job status replies when the job completes.
+
+**++gt3-failure-type++**::
+     Failure detail type for staging errors. Sent in job state callbacks and in job status replies when a job fails.
+
+**++gt3-failure-message++**::
+     Failure detail message for more context for errors. Sent in job state callbacks and in job status replies when a job fails.
+
+**++gt3-failure-source++**::
+     Failure detail message for the source of a failed file transfer. Sent in job state callbacks and in job status replies when a job fails.
+
+**++gt3-failure-destination++**::
+     Failure detail message for the destination of a failed file transfer. Sent in job state callbacks and in job status replies when a job fails.
+
+**++version++**::
+     Job manager package version. Sent in all messages from the job manager.
+
+**++toolkit-version++**::
+     Toolkit release that the job manager is running. Sent in all messages from the job manager.
+
+
+This is the only form of quoting which ++application/x-globus-gram++
+messages support. Use of ++% HEX HEX++ escapes (such as seen in URL
+encodings) is not meaningful for this protocol. 
+
+
+==== Message Types ====
+
+
+===== Ping Request =====
+
+A ping request is used to verify that the gatekeeper is configured
+properly to handle a named service. The ping request consists of the
+following: 
+
+--------
+POST ping/job-manager-name HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+
+--------
+
+
+The values of the message-specific strings are 
+
+**'job-manager-name'**::
+     The name of the service to have the gatekeeper check. The service name corresponds to one of the gatekeeper's configured grid-services, and is usually of the form "jobmanager-'LRM'".
+
+**'host-name'**::
+     The name of the host on which the gatekeeper is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string "2".
+
+
+
+===== Job Request =====
+
+A job request is used to scheduler a job remotely using GRAM. The ping
+request consists of the HTTP framing described above with the
+request-URI consisting of 'job-manager-name', where 'job-manager name'
+is the name of the service to use to schedule the job. The format of a
+job request message consists of the following: 
+
+--------
+POST job-manager-name[@user-name] HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+job-state-mask: mask
+callback-url: callback-contact
+rsl: rsl-description
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'job-manager-name'**::
+     The name of the service to submit the job request to. The service name corresponds to one of the gatekeeper's configured grid-services, and is usually of the form jobmanager-'LRM'.
+
+**'user-name'**::
+     Starting with GT4.0, a client may request that a certain account by used by the gatekeeper to start the job manager. This is done optionally by appending the @ symbol and the local user name that the job should be run as to the 'job-manager-name'. If the @ and username are not present, then the first grid map entry will be used. If the client credential is not authorized in the grid map to use the specified account, an authorization error will occur in the gatekeeper.
+
+**'host-name'**::
+     The name of the host on which the gatekeeper is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string ++2++.
+
+**'mask'**::
+     An integer representation of the job state mask. This value is obtained from a bitwise-OR of the job state values which the client wishes to receive job status callbacks about. These meanings of the various job state values are defined in the GRAM Protocol API documentation.
+
+**'callback-contact'**::
+     A https URL which defines a GRAM protocol listener which will receive job state updates. The from a bitwise-OR of the job state values which the client wishes to receive job status callbacks about. The job status update messages are defined below.
+
+**'rsl-description'**::
+     A quoted string containing the RSL description of the job request.
+
+
+
+===== Status Request =====
+
+A status request is used by a GRAM client to get the current job state
+of a running job. This type of message can only be sent to a job
+manager's job-contact (as returned in the reply to a job request
+message). The format of a job request message consists of the following:
+
+
+--------
+POST job-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+protocol-version: version
+
+"status"
+
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'job-contact'**::
+     The job contact string returned in a response to a job request message, or determined by querying the MDS system.
+
+**'host-name'**::
+     The name of the host on which the job manager is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string ++2++.
+
+
+
+===== Callback Register Request =====
+
+A callback register request is used by a GRAM client to register a new
+callback contact to receive GRAM job state updates. This type of message
+can only be sent to a job manager's job-contact (as returned in the
+reply to a job request message). The format of a job request message
+consists of the following: 
+
+--------
+POST job-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+"register mask callback-contact"
+
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'job-contact'**::
+     The job contact string returned in a response to a job request message, or determined by querying the MDS system.
+
+**'host-name'**::
+     The name of the host on which the job manager is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string ++2++.
+
+**'mask'**::
+     An integer representation of the job state mask. This value is obtained from a bitwise-OR of the job state values which the client wishes to receive job status callbacks about. These meanings of the various job state values are defined in the GRAM Protocol API documentation.
+
+**'callback-contact'**::
+     A https URL which defines a GRAM protocol listener which will receive job state updates. The from a bitwise-OR of the job state values which the client wishes to receive job status callbacks about. The job status update messages are defined below.
+
+
+
+===== Callback Unregister Request =====
+
+A callback unregister request is used by a GRAM client to request that
+the job manager no longer send job state updates to the specified
+callback contact. This type of message can only be sent to a job
+manager's job-contact (as returned in the reply to a job request
+message). The format of a job request message consists of the following:
+
+
+--------
+POST job-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+"unregister callback-contact"
+        
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'job-contact'**::
+     The job contact string returned in a response to a job request message, or determined by querying the MDS system.
+
+**'host-name'**::
+     The name of the host on which the job manager is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string "2".
+
+**'callback-contact'**::
+     A https URL which defines a GRAM protocol listener which should no longer receive job state updates. The from a bitwise-OR of the job state values which the client wishes to receive job status callbacks about. The job status update messages are defined @ref globus_gram_protocol_job_state_updates "below".
+
+
+
+===== Job Cancel Request =====
+
+A job cancel request is used by a GRAM client to request that the job
+manager terminate a job. This type of message can only be sent to a job
+manager's job-contact (as returned in the reply to a job request
+message). The format of a job request message consists of the following:
+
+
+--------
+POST job-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+"cancel"
+        
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'job-contact'**::
+     The job contact string returned in a response to a job request message, or determined by querying the MDS system.
+
+**'host-name'**::
+     The name of the host on which the job manager is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string ++2++.
+
+
+
+===== Job Signal Request =====
+
+A job signal request is used by a GRAM client to request that the job
+manager process a signal for a job. The arguments to the various signals
+are discussed in the protocol library documentation. The format of a job
+request message consists of the following: 
+
+--------
+POST job-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+"signal"
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'job-contact'**::
+     The job contact string returned in a response to a job request message, or determined by querying the MDS system.
+
+**'host-name'**::
+     The name of the host on which the job manager is running. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string ++2++.
+
+**'signal'**::
+     A quoted string containing the signal number and its parameters.
+
+
+
+===== Job State Updates =====
+
+A job status update message is sent by the job manager to all registered
+callback contacts when the job's status changes. The format of the job
+status update messages is as follows: 
+
+--------
+POST callback-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+job-manager-url: job-contact
+status: status-code
+failure-code: failure-code
+    
+--------
+
+
+The values of the emphasized text items are as below: 
+
+**'callback-contact'**::
+     The callback contact string registered with the job manager either by being passed as the 'callback-contact' in a job request message or in a callback register message.
+
+**'host-name'**::
+     The host part of the callback-contact URL. This exists only for compatibility with the HTTP/1.1 protocol.
+
+**'message-size'**::
+     The length of the content of the message, not including the HTTP/1.1 header.
+
+**'version'**::
+     The version of the GRAM protocol which is being used. For the protocol defined in this document, the value must be the string ++2++.
+
+**'job-contact'**::
+     The job contact of the job which has changed states.
+
+
+
+===== Proxy Delegation =====
+
+A proxy delegation message is sent by the client to the job manager to
+initiate a delegation handshake to generate a new proxy credential for
+the job manager. This credential is used by the job manager or the job
+when making further secured connections. The format of the delegation
+message is as follows: 
+
+--------
+POST callback-contact HTTP/1.1
+Host: host-name
+Content-Type: application/x-globus-gram
+Content-Length: message-size
+
+protocol-version: version
+"renew"
+--------
+
+
+If a successful (200) reply is sent in response to this message, then
+the client will procede with a GSI delegation handshake. The tokens in
+this handshake will be framed with a 4 byte big-endian token length
+header. The framed tokens will then be wrapped using the
+GLOBUS_IO_SECURE_CHANNEL_MODE_SSL_WRAP wrapping mode. The job manager
+will frame response tokens in the same manner. After the job manager
+receives its final delegation token, it will respond with another
+response message that indicates whether the delegation was processed or
+not. This response message is a standard GRAM response message. 
+
+
+===== Security Attributes =====
+
+The following security attributes are needed to communicate with the
+Gatekeeper: 
+
+* Authentication must be done using GSSAPI mutual authentication
+
+* Messages must be wrapped with support for the delegation message. When using Globus I/O, this is accomplished by using the the GLOBUS_IO_SECURE_CHANNEL_MODE_GSI_WRAP wrapping mode.
+
+
+
+
+[[gram5-state-model]]
+==== Job State Model ====
+
+As the GRAM service processes a job, the job undergoes a series of state
+transitions. These states and their meanings follow: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+            <title>GRAM Job States</title>
+            <tgroup cols='2'>
+                <thead>
+                    <row>
+                        <entry><simpara>State</simpara></entry>
+                        <entry><simpara>Meaning</simpara></entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_UNSUBMITTED</constant></simpara></entry>
+                        <entry><simpara>Initial job state</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_STAGE_IN</constant></simpara></entry>
+                        <entry><simpara>Job staging in
+                        progress</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_PENDING</constant></simpara></entry>
+                        <entry><simpara>Job submitted to LRM, awaiting
+                        execution</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_ACTIVE</constant></simpara></entry>
+                        <entry><simpara>Job executing</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_SUSPENDED</constant></simpara></entry>
+                        <entry><simpara>Job made progress executing but is
+                        now suspended</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_STAGE_OUT</constant></simpara></entry>
+                        <entry><simpara>Job staging in progress after job
+                        completed</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE</constant></simpara></entry>
+                        <entry><simpara>Job completed
+                        successfully</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara><constant>GLOBUS_GRAM_PROTOCOL_JOB_STATE_FAILED</constant></simpara></entry>
+                        <entry><simpara>Job was canceled or
+                        failed</simpara></entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+.GRAM State Transitions
+--
+image::GRAM5_states.png[scaledwidth="75%",align="center"]
+--

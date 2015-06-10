@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/bester/docbook-to-asciidoc.py", line 1349, in <module>
+    raise Exception(root.tag + " as root")
+Exception: {urn:oasis:names:tc:entity:xmlns:xml:catalog}catalog as root

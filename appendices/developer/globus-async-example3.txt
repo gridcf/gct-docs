@@ -1,0 +1,147 @@
+
+[[globus-async-example3,Asynchronous Event Handling: Example 3]]
+== GT 6.0: Asynchronous Event Handling: Example 3 ==
+
+
+--
+--------
+#include <globus_common.h>
+#include <stdlib.h>
+
+
+typedef enum game_state_e
+{
+    FIRST_ROLL,
+    ROLLING,
+    LOST_GAME,
+    WON_GAME
+} game_state_t;
+
+typedef struct game_context_s
+{
+    globus_mutex_t                      mutex;
+    globus_cond_t                       cond;
+    game_state_t                        state;
+    int                                 rolls;
+    int                                 point;
+} game_context_t;
+
+void
+event_callback(
+    void *                              user_arg)
+{
+    int                                 die1;
+    int                                 die2;
+    game_context_t *                    game_context;
+
+    game_context = (game_context_t *) user_arg;
+
+    die1 = rand() % 6 + 1;
+    die2 = rand() % 6 + 1;
+
+    globus_mutex_lock(&game_context->mutex);
+    {
+        game_context->rolls++;
+        fprintf(stdout, "you rolled %d and %d, total is %d\n", 
+            die1, die2, die1+die2);
+        switch(game_context->state)
+        {
+            case FIRST_ROLL:
+                if(die1+die2 == 7 || die1+die2 == 11)
+                {
+                    game_context->state = WON_GAME;
+                    globus_cond_signal(&game_context->cond);
+                }
+                else if(die1+die2 == 2 || die1+die2 == 3 || die1+die2 == 12)
+                {
+                    game_context->state = LOST_GAME;
+                    globus_cond_signal(&game_context->cond);
+                }
+                else
+                {
+                    game_context->state = ROLLING;
+                    game_context->point = die1+die2;
+                    fprintf(stdout, "The point is: %d\n", game_context->point);
+                    globus_callback_register_oneshot(
+                        NULL,
+                        NULL,
+                        event_callback,
+                        game_context);
+                }
+                break;
+
+            case ROLLING:
+                if(die1+die2 == 7)
+                {
+                    game_context->state = LOST_GAME;
+                    globus_cond_signal(&game_context->cond);
+                }
+                else if(die1+die2 == game_context->point)
+                {
+                    game_context->state = WON_GAME;
+                    globus_cond_signal(&game_context->cond);
+                }
+                else
+                {
+                    globus_callback_register_oneshot(
+                        NULL,
+                        NULL,
+                        event_callback,
+                        game_context);
+                }
+                break;
+
+            default:
+                globus_assert(0 && "should never reach this state");
+                break;
+        }
+    }
+    globus_mutex_unlock(&game_context->mutex);
+}
+
+int
+main(
+    int                                 argc,
+    char **                             argv)
+{
+    game_context_t                      game_context;
+
+    globus_module_activate(GLOBUS_COMMON_MODULE);
+
+    globus_mutex_init(&game_context.mutex, NULL);
+    globus_cond_init(&game_context.cond, NULL);
+    game_context.rolls = 0;
+    game_context.state = FIRST_ROLL;
+
+    srandom(time(NULL));
+
+    globus_mutex_lock(&game_context.mutex);
+    {
+        globus_callback_register_oneshot(
+            NULL,
+            NULL,
+            event_callback,
+            &game_context);
+
+        while(game_context.state != LOST_GAME && 
+                game_context.state != WON_GAME)
+        {
+            globus_cond_wait(&game_context.cond, &game_context.mutex);
+        }
+    }
+    globus_mutex_unlock(&game_context.mutex);
+
+    fprintf(stdout, "%s, game over in %d rolls.\n", 
+        game_context.state == LOST_GAME ? "You LOSE" : "You WIN", 
+        game_context.rolls);
+
+    globus_module_deactivate(GLOBUS_COMMON_MODULE);
+    return 0;
+}
+
+
+
+--------
+
+
+--

@@ -1,0 +1,140 @@
+
+[[gram5-debugging]]
+== Debugging ==
+
+
+--
+Log output from GRAM5 is a useful tool for debugging issues. GRAM5 can
+log to either local files or syslog. See the
+link:../..gram5/admin/index.html#gram5-troubleshooting-admin[Admin
+Guide] for information about how to configure logging.
+
+In most cases, logging at the ++INFO++ level will produce enough
+information to show progress of most operations. Adding ++DEBUG++ will
+also allow log information from the GRAM LRM scripts. 
+
+
+--
+
+=== Basic Debugging Methods ===
+
+The first thing to determine when debugging unexpected failures is to
+determine whether the gatekeeper service is running, reachable from the
+client, and properly configured. 
+
+First, determine that the gatekeeper is running by using a tool such as
+**++telnet++** to connect to the TCP/IP port that the gatekeeper is
+listening on. From the GRAM service node, using a default configuration,
+use a command like: 
+
+--------
+%  telnet localhost 2119
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'
+--------
+
+
+An error message like the following indicates that the gatekeeper
+service is not starting: 
+
+--------
+telnet: connect to address 127.0.0.1: Connection refused
+telnet: Unable to connect to remote host
+--------
+
+
+If the telnet command exits immediately, then the gatekeeper service is
+being started but not running. Check the gatekeeper log (by default
+++$GLOBUS_LOCATION/var/globus-gatekeeper.log++) to see if there is an
+error message. A common error is having a missing library path
+environment variable in the gatekeeper's environment or having a
+malformed configuration file. See ) to see if there is an error message.
+A common error is having a missing library path environment variable in
+the gatekeeper's environment or having a malformed configuration file.
+See
+link:../..gram5/pi/index.html#gram5-globus-gatekeeper[the**++globus-gatekeeper++**]
+for information on the configuration options. 
+
+The next recommended diagnostic is to run the same telnet command from
+the machine which is acting as the GRAM client if it is distinct from
+the GRAM service node. Be sure to replace ++localhost++ with the actual
+host name of the GRAM service. Again, check for log entries in the case
+of immediate exit or refused connection. If the connection does not
+work, then there may be some network connectivity or firewall issues
+preventing access. 
+
+Next use a tool like **++globusrun++** to diagnose whether the client is
+authorized to contact the gatekeeper service. This is done by using the
+'-a' command-line option. For example: 
+
+--------
+%  globusrun -a -r grid.example.org
+
+GRAM Authentication test successful
+
+--------
+
+
+If you do not get the success message above, then check the gatekeeper
+log to see if there is a diagnostic message. A common problem is that
+the identity of the client is not in the grid mapfile used by the
+gatekeeper. 
+
+The next test is to use the '-dryrun' option to **++globusrun++** to
+verify that the job manager service is properly configured. To do so,
+try the following: 
+
+--------
+%  globusrun -dryrun -r grid.example.org "&(executable=/bin/sh)"
+globus_gram_client_callback_allow successful
+Dryrun successful
+--------
+
+
+If you do not get the success message above, first check the error
+number in the link:#gram5-error-codes[GRAM5 Error codes table] to
+determine how to proceed. If the result is unclear, check the job
+manager log (default ++$HOME/gram_DATE.log++) to see if there are any
+further details of the error. ) to see if there are any further details
+of the error. 
+
+The final test is to submit a test job to the GRAM5 service and wait for
+it to terminate, such as this example shows: 
+
+--------
+%  globus-job-run grid.example.org /bin/sh -c 'echo "hello, grid"'
+hello, grid
+--------
+
+
+If the process appears to hang, it might be that the job manager is
+unable to send state callbacks to the client. Check that there are no
+firewalls or network issues that would prevent the job manager process
+from connecting from the GRAM service node to the client node. 
+
+
+=== Advanced Debugging Methods ===
+
+The methods described in this section are intended for debugging
+problems in the GRAM code, not in the user environment. 
+
+
+==== Debugging the Job Manager ====
+
+To debug the GRAM5 job manager, run the command located in
+++$GLOBUS_LOCATION/etc/grid-services/jobmnager-LRM++ (ignoring the first
+3 fields). For example:  (ignoring the first 3 fields). For example: 
+
+--------
+%  $GLOBUS_LOCATION/libexec/globus-job-manager \
+    -conf $GLOBUS_LOCATION/etc/globus-job-manager.conf -type fork
+--------
+
+
+When the job manager is started in this way, it will log messages to
+standard error and will terminate 60 seconds after its last job has
+completed. This only works if there are no job managers running for this
+particular user. The job manager can be started in a debugger such as
+**++gdb++** or **++valgrind++** using a similar command-line. 
+

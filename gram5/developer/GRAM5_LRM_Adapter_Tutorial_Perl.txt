@@ -1,0 +1,194 @@
+
+[[gram5-lrma-tutorial-perl]]
+=== LRM Adapter Perl Module ===
+
+The Perl-language LRM module provides the job submission and cancelling
+interface between GRAM5 and the underlying scheduler. Very little has
+been added to this part of the scheduler interface since Globus Toolkit
+2---if you have a version for an older Globus Toolkit release, you can
+ignore most of this tutorial and jump to the
+link:#gram5-lrma-tutorial-perl-changes[] section of this tutorial. The
+module annotated below is available from link:fake.pm. 
+
+
+==== Perl LRM Adapter Module ====
+
+The LRM Adapter interface is implemented as a Perl module which is a
+subclass of the ++Globus::GRAM::JobManager++ module. Its name must match
+the type string used when the job manager is started, but in all lower
+case: for the fake LRM, the module name is
+++Globus::GRAM::JobManager::fake++ and it is stored in the file
+++fake.pm++. Though there are several methods in the . Though there are
+several methods in the
+link:#Globus::GRAM::JobManager[++Globus::GRAM::JobManager interface++],
+the only ones which absolutely need to be implemented in a scheduler
+module are **++submit++** and **++cancel++**. The **++poll++** can be
+used if there is no SEG module for your LRM Adapter, but using polling
+can be resource intensive and slow. We'll present the methods in the
+module one by one, but the entire module can be downloaded from here:
+link:fake.pm[fake.pm].
+
+We'll begin by looking at the start of the ++fake.pm++ source module To
+begin the script, we import the GRAM support modules into the LRM
+adapter module's namespace, declare the module's package, and declare
+this module as a subclass of the  source module To begin the script, we
+import the GRAM support modules into the LRM adapter module's namespace,
+declare the module's package, and declare this module as a subclass of
+the ++Globus::GRAM::JobManager++ module. All LRM adapter packages will
+need to do this, substituting the name of the LRM type being implemented
+where we see ++fake++ below.
+
+
+
+--------
+
+include::fake-prologue.pm[]
+
+
+--------
+
+Next, we declare any system-specific values which will be read from the
+configuration file. In the fake case, we will declare a module-global
+directory for job information and for SEG log entries. In real LRM
+Adapters, there are often variables which are loaded from the
+configuration file for such things as the list of available queues,
+paths to executables such as **++mpiexec++**, and any other
+site-specific configuration. 
+
+--------
+
+include::fake-config.pm[]
+
+
+--------
+
+
+
+===== Writing a Constructor =====
+
+For LRM Adapter interfaces which need to setup some data before calling
+their other methods, they can overload the **++new++** method which acts
+as a constructor. Scheduler scripts which don't need any per-instance
+initialization will not need to provide a constructor, the default
+**++Globus::GRAM::JobManager::new++** constructor will do the job.
+
+If you do need to overloaded this method, be sure to call the parent
+module's constructor to allow it to do its initialization. In this
+example, we create an object which includes a sequence number to ensure
+that the job ids returned from the LRM script is unique. 
+
+--------
+
+include::fake-constructor.pm[]
+
+
+--------
+
+
+The job interface methods are called with only one argument: the LRM
+Adapter object itself. That object contains a
+++Globus::GRAM::JobDescription++ object
+(**++$self->{JobDescription}++**) which includes the values from the RSL
+associated with the request, as well as a few extra values: 
+
+**job_id**::
+     The string returned as the value of JOB_ID in the eturn hash from submit. This won't be present for methods called before the job is submitted.
+
+**uniq_id**::
+     A string associated with this job request by the job manager program. It will be unique for all jobs on a host for all time and might be useful in creating temporary files or LRM-specific processing.
+
+
+Now, let's look at the methods which will interface to the LRM. 
+
+
+===== Submitting Jobs =====
+
+All LRM adapter modules must implement the **++submit++** method. This
+method is called when the job manager wishes to submit the job to the
+LRM. The information in the original job request RSL string is available
+to the LRM adapter interface through the ++JobDescription++ data member
+of its hash.
+
+For most LRM Adapters, this is the longest method to be implemented, as
+it must decide what to do with the job description, and convert RSL
+elements to something which the LRM can understand.
+
+For our fake adapter, we will validate that the two RSL attributes we
+process are integers, and if so generate a new unique LRM ID and return
+it and the state **++Globus::GRAM::JobState::PENDING++**. Note the call
+to **++respond++** with ++GT3_FAILURE_MESSAGE++. This allows the GRAM5
+client application to see the context-sensitive error message along with
+the general failure code from GRAM5. 
+
+--------
+
+include::fake-submit.pm[]
+
+
+--------
+
+
+That finishes the submit method. Most of the functionality for the
+scheduler interface is now written. 
+
+
+===== Polling Job State =====
+
+GRAM5 requires some way to determine the state of a job. In most
+systems, writing a Scheduler Event Generator module will provide the
+best performance and lowest resource overhead. However, when developing
+an LRM adapter, it is helpful to implement the polling interface so that
+the submission and cancel mechanism can be tested independent of having
+the SEG module completed. For the ++fake++ LRM Adapter, we'll write a
+simple **++poll++** method which will compare the current time with the
+time when the job was originally submitted. 
+
+--------
+
+include::fake-poll.pm[]
+
+
+--------
+
+
+
+===== Cancelling Jobs =====
+
+All LRM Adapter modules must also implement the **++cancel++** method.
+The purpose of this method is to cancel a job, whether it's already
+running or waiting in a queue.
+
+This method will be given the job ID as part of the JobDescription
+object in the manager object. If the LRM interface provides feedback
+that the job was cancelled successfully, then we can return a JOB_STATE
+change to the FAILED state. Otherwise we can return an empty hash
+reference, and let either the Scheduler Event Generator or a subsequent
+call to poll determine when the state change occurs.
+
+For the ++fake++ LRM adapter, we will update the job file with a
+cancellation time and return the ++Globus::GRAM::JobState::FAILED++
+state change. 
+
+--------
+
+include::fake-cancel.pm[]
+
+
+--------
+
+
+
+===== End of the script =====
+
+It is required that all perl modules return a non-zero value when they
+are parsed. To do this, make sure the last line of your module consists
+of: 
+
+--------
+
+include::fake-epilogue.pm[]
+
+
+--------
+
+

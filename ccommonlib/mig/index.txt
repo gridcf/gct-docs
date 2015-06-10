@@ -1,0 +1,57 @@
+[[ccommonlibMig,Migrating Guide]]
+:doctype: article
+= GT 6.0 Migrating Guide for C Common Libraries =
+
+  
+--
+The following provides available information about migrating from
+previous versions of the Globus Toolkit.
+
+--
+
+ 
+[[ccommonlib-migrating-GT5.2]]
+== Migrating C Common Libraries from GT5.2 ==
+
+GT6 is API (source) and ABI (binary) compatible with GT 5.2. Dependency
+resolution for GT6 is done with pkg-config only, not pkg-config or GPT.
+
+ 
+[[ccommonlib-migrating-GT5.0]]
+== Migrating C Common Libraries from GT5.0 ==
+
+All components are compiled with a runtime configuration of thread
+model, instead of having to compile both threaded and nonthreaded build
+flavors. To enable threads for a program, set the environment variable
+++GLOBUS_THREAD_MODEL++ or call **++globus_thread_set_model++**() with
+the desired thread model, such as ++pthread++ or ++windows++.
+
+ 
+[[ccommonlib-migrating-GT4.2]]
+== Migrating C Common Libraries from GT4.2 ==
+
+No changes need to be made in applications using version 4.2.x releases
+of the C common libraries.
+
+ 
+[[ccommonlib-migrating-GT4]]
+== Migrating C Common Libraries from GT4.0 ==
+
+No changes need to be made in applications using version 4.0.x releases
+of the C common libraries.
+
+ 
+[[ccommonlib-migrating-GT3]]
+== Migrating C Common Libraries from GT3 ==
+
+No changes need to be made in applications using version 3.x releases of
+the C common libraries.
+
+ 
+[[ccommonlib-migrating-GT2]]
+== Migrating C Common Libraries from GT2 ==
+
+No changes need to be made in applications using version 2.x releases of
+the C common libraries.
+
+ 

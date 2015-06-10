@@ -1,0 +1,115 @@
+
+[[gsiopensshDeveloper,Developer's Guide]]
+:doctype: book
+= GT 6.0 GSI-OpenSSH: Developer's Guide =
+
+  
+[[gsiopenssh-developer-introduction]]
+
+.Introduction
+--
+This document provides information for GSI-OpenSSH developers. 
+The changes to http://www.openssh.org/[OpenSSH] to add GSI support are
+limited, because we build on the existing GSSAPI support in OpenSSH for
+Kerberos. See the
+http://dev.globus.org/wiki/GSI-OpenSSH/Internals[GSI-OpenSSH Internals]
+page for more details. 
+
+--
+
+  
+[[gsiopenssh-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../Util_OpenSSH_Feature_Summary_Frag.txt[]
+
+
+include::../Util_OpenSSH_Platform_Summary_Frag.txt[]
+
+
+include::../Util_OpenSSH_Compatibility_Summary_Frag.txt[]
+
+
+include::../Util_OpenSSH_Dependencies_Summary_Frag.txt[]
+
+
+include::../Util_OpenSSH_Security_Considerations_Frag.txt[]
+
+ 
+[[gsiopenssh-developer-scenarios]]
+== Usage scenarios ==
+
+
+--
+The GSI-OpenSSH interface is through command-line tools only.
+
+
+--
+ 
+[[gsiopenssh-developer-tutorials]]
+== Tutorials ==
+
+
+--
+There are no tutorials available at this time
+
+
+--
+ 
+[[gsiopenssh-developer-archdes]]
+== Architecture and design overview ==
+
+
+--
+See the http://dev.globus.org/wiki/GSI-OpenSSH/Internals[GSI-OpenSSH
+Internals] page. 
+
+
+--
+ 
+include::../Util_OpenSSH_Interface_Commandline_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Interface_Config_Frag.txt[]
+
+ 
+[[gsiopenssh-developer-env]]
+== Environment variable interface ==
+
+
+include::../Util_OpenSSH_Interface_Env_Frag.txt[]
+
+ 
+[[gsiopenssh-developer-troubleshooting]]
+== Troubleshooting ==
+
+
+[[gsiopenssh-gterrors]]
+=== Common GT Errors ===
+
+
+
+
+include::../Util_OpenSSH_Errors_Frag.txt[]
+
+
+[[gsiopenssh-errors]]
+=== Additional GSI-OpenSSH Troubleshooting ===
+
+Please see the
+http://grid.ncsa.illinois.edu/ssh/ts%5fcommon.html[GSI-OpenSSH
+Troubleshooting Page] at NCSA.
+
+ 
+[[gsiopenssh-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+Please see the http://grid.ncsa.uiuc.edu/ssh/[GSI-OpenSSH Home Page] at
+NCSA for more information.
+
+
+--
+  

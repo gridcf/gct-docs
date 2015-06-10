@@ -1,0 +1,35 @@
+
+[[gsicPI,Public Interfaces]]
+:doctype: book
+= GT 6.0 GSI C Public Interfaces =
+
+  
+include::../GSIC_Interface_API_Frag.txt[]
+
+ 
+include::../GSIC_Interface_Protocol_Frag.txt[]
+
+ 
+include::../GSIC_Interface_Commandline_Frag.txt[]
+
+ 
+include::../GSIC_Interface_Config_Frag.txt[]
+
+ 
+[[gsic-pi-env]]
+== Environment variable interface ==
+
+
+include::../GSIC_Interface_Env_Frag.txt[]
+
+ 
+[[gsic-error-codes]]
+== Errors ==
+
+
+include::../../Credential_Troubleshooting_Frag.txt[]
+
+
+include::../../Gridmap_Troubleshooting_Frag.txt[]
+
+  

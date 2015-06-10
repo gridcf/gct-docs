@@ -1,0 +1,20 @@
+
+[[gsic-associatedstandards]]
+=== Associated Standards ===
+
+Associated standards for GSI C: 
+
+
+
+
+* http://www.faqs.org/rfcs/rfc3820.html[RFC 3820] Proxy Certificates
+
+* http://www.faqs.org/rfcs/rfc2744.html[RFC 2744] GSSAPI: C-bindings
+
+* http://www.faqs.org/rfcs/rfc2743.html[RFC 2743]: GSSAPI
+
+* http://www.ogf.org/documents/GFD.24.pdf[GFD 24]: GSSAPI Extensions
+
+* http://www.faqs.org/rfcs/rfc2246.html[RFC 2246] TLS
+
+

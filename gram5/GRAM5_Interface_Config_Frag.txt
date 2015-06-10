@@ -1,0 +1,593 @@
+
+[[gram5-configuring]]
+== Configuring GRAM5 ==
+
+
+--
+GRAM5 is designed to be usable by default without any manual
+configuration. However, there are many ways to customize a GRAM5
+installation to better interact with site policies, filesystem layouts,
+LRM interactions, logging, and auditing. In addition to GRAM5-specific
+configuration, see link:../..gsic/admin/index.html#gsic-configuring[]
+for information about configuring GSI security. 
+
+
+--
+
+[[gram5-configuring-gatekeeper]]
+=== Gatekeeper Configuration ===
+
+The **++globus-gatekeeper++** has many configuration options related to
+network configuration, security, logging, service path, and nice level.
+This configuration is located in: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>Gatekeeper Configuration Path</title>
+                <tgroup cols='2'>
+                    <thead>
+                        <row>
+                            <entry>Installation Type</entry>
+                            <entry>Configuration Path</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>RPM</entry>
+                            <entry><filename>/etc/sysconfig/globus-gatekeeper</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Debian Package</entry>
+                            <entry><filename>/etc/default/globus-gatekeeper</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Source Installer</entry>
+                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-gatekeeper.conf</filename></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+The following configuration variables are available in the
+**++globus-gatekeeper++** configuration file: 
+
+**GLOBUS_GATEKEEPER_PORT**::
+     Gatekeeper Service Port. If not set, the **++globus-gatekeeper++** uses the default of ++2119++.
+
+**GLOBUS_LOCATION**::
+     Globus Installation Path. If not set, the **++globus-gatekeeper++** uses the paths defined at package compilation time.
+
+**GLOBUS_GATEKEEPER_LOG**::
+     Gatekeeper Log Filename. If not set, the **++globus-gatekeeper++** logs to syslog using the ++GRAM-gatekeeper++ log identification prefix. The default configuration value is ++/var/log/globus-gatekeeper.log++
+
+**GLOBUS_GATEKEEPER_GRID_SERVICES**::
+     Path to grid service definitions. If not set, the **++globus-gatekeeper++** uses the default of ++/etc/grid-services++..
+
+**GLOBUS_GATEKEEPER_GRIDMAP**::
+     Path to grid-mapfile for authorization. If not set, the **++globus-gatekeeper++** uses the default of ++/etc/grid-security/grid-mapfile++..
+
+**GLOBUS_GATEKEEPER_CERT_DIR**::
+     Path to a trusted certificate root directory. If not set, the **++globus-gatekeeper++** uses the default of ++/etc/grid-security/certificates++..
+
+**GLOBUS_GATEKEEPER_CERT_FILE**::
+     Path to the gatekeeper's certificate. If not set, the **++globus-gatekeeper++** uses the default of ++/etc/grid-security/hostcert.pem++..
+
+**GLOBUS_GATEKEEPER_KEY_FILE**::
+     Path to the gatekeeper's private key. If not set, the **++globus-gatekeeper++** uses the default of ++/etc/grid-security/hostkey.pem++..
+
+**GLOBUS_GATEKEEPER_KERBEROS_ENABLED**::
+     Flag indicating whether or not the **++globus-gatekeeper++** will use a kerberos GSSAPI implementation instead of the GSI GSSAPI implementation (untested).
+
+**GLOBUS_GATEKEEPER_KMAP**::
+     Path to the KMAP authentication module. (untested).
+
+**GLOBUS_GATEKEEPER_PIDFILE**::
+     Path to a file where the **++globus-gatekeeper++**'s process ID is written. If not set, **++globus-gatekeeper++** uses ++/var/run/globus-gatekeeper.pid++
+
+**GLOBUS_GATEKEEPER_NICE_LEVEL**::
+     Process nice level for **++globus-gatekeeper++** and **++globus-job-manager++** processes. If not set, the default system process nice level is used.
+
+
+After modifying the configuration file, restart the
+**++globus-gatekeeper++** using the methods described in
+link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
+
+
+[[gram5-configuring-seg]]
+=== Scheduler Event Generator Configuration ===
+
+The **++globus-scheduler-event-generator++** has several configuration
+options related to filesystem paths. This configuration is located in: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>Scheduler Event Generator Configuration Path</title>
+                <tgroup cols='2'>
+                    <thead>
+                        <row>
+                            <entry>Installation Type</entry>
+                            <entry>Configuration Path</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>RPM</entry>
+                            <entry><filename>/etc/sysconfig/globus-scheduler-event-generator</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Debian Package</entry>
+                            <entry><filename>/etc/default/globus-scheduler-event-generator</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Source Installer</entry>
+                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-scheduler-event-generator.conf</filename></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+The following configuration variables are available in the
+**++globus-scheduler-event-generator++** configuration file: 
+
+**GLOBUS_SEG_PIDFMT**::
+     Scheduler Event Generator PID file path format. Modify this to be the location where the **++globus-scheduler-event-generator++** writes its process IDs (one per configured LRM). The format is a ++printf++ format string with one ++%s++ to be replaced by the LRM name. By default, **++globus-scheduler-event-generator++** uses ++/var/run/globus-scheduler-event-generator-%s.pid++..
+
+**GLOBUS_SEG_LOGFMT**::
+     Scheduler Event Generator Log path format. Modify this to be the location where **++globus-scheduler-event-generator++** writes its event logs. The format is a ++printf++ format string with one ++%s++ to be replaced by the LRM name. By default, **++globus-scheduler-event-generator++** uses ++/var/lib/globus/globus-seg-%s++. If you modify this value, you'll need to also update the LRM configuration file to look for the log file in the new location.. If you modify this value, you'll need to also update the LRM configuration file to look for the log file in the new location.
+
+**GLOBUS_SEG_NICE_LEVEL**::
+     Process nice level for **++globus-scheduler-event-generator++** processes. If not set, the default system process nice level is used.
+
+
+After modifying the configuration file, restart the
+**++globus-scheduler-event-generator++** using the methods described in
+link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
+
+
+[[gram5-configuring-jobmanager]]
+=== Job Manager Configuration ===
+
+The **++globus-job-manager++** process is started by the
+**++globus-gatekeeper++** and uses the configuration defined in the
+service entry for the resource name. By default, these service entries
+use a common configuration file for most job manager features. This
+configuration is located in: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>Job Manager Configuration Path</title>
+                <tgroup cols='2'>
+                    <thead>
+                        <row>
+                            <entry>Installation Type</entry>
+                            <entry>Configuration Path</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>RPM</entry>
+                            <entry><filename>/etc/globus/globus-gram-job-manager.conf</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Debian Package</entry>
+                            <entry><filename>/etc/globus/globus-gram-job-manager.conf</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Source Installer</entry>
+                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-gram-job-manager.conf</filename></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+This configuration file is used to construct the command-line options
+for the **++globus-job-manager++** program. Thus, all of the options
+described in link:#gram5-cmd-globus-job-manager[] may be used. 
+
+
+==== Job Manager Logging ====
+
+From an administrator's perspective, the most important job manager
+configuration options are likely the ones related to logging and
+auditing. The default GRAM5 configuration puts logs in
+++/var/log/globus/gram_USERNAME.log++, with logging enabled at the ,
+with logging enabled at the ++FATAL++ and ++ERROR++ levels. To enable
+more fine-grained logging, add the option '-log-levels ' to
+++/etc/globus/globus-gram-job-manager.conf++. The value for . The value
+for 'LEVELS' is a set of log levels joined by the ++|++ character. The
+available log levels are:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table id='gram5-log-levels'>
+                    <title>GRAM5 Log Levels</title>
+                    <tgroup align='left' colsep='1' cols='3' rowsep='1'>
+                        <colspec colname='gram5-log-level-name'></colspec>
+                        <colspec colname='gram5-log-level-meaning'></colspec>
+                        <colspec colname='gram5-log-level-default'></colspec>
+                        <thead>
+                            <row>
+                                <entry>Level</entry>
+                                <entry>Meaning</entry>
+                                <entry>Default Behavior</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><literal>FATAL</literal></entry>
+                                <entry>Problems which cause the job manager to terminate
+                                    prematurely.</entry>
+                                <entry>Enabled</entry>
+                            </row>
+                            <row>
+                                <entry><literal>ERROR</literal></entry>
+                                <entry>Problems which cause a job or operation to fail.</entry>
+                                <entry>Enabled</entry>
+                            </row>
+                            <row>
+                                <entry><literal>WARN</literal></entry>
+                                <entry>Problems which cause minor problems with job execution or
+                                    monitoring.</entry>
+                                <entry>Disabled</entry>
+                            </row>
+                            <row>
+                                <entry><literal>INFO</literal></entry>
+                                <entry>Major events in the lifetime of the job manager and its
+                                    jobs.</entry>
+                                <entry>Disabled</entry>
+                            </row>
+                            <row>
+                                <entry><literal>DEBUG</literal></entry>
+                                <entry>Minor events in the lifetime of jobs.</entry>
+                                <entry>Disabled</entry>
+                            </row>
+                            <row>
+                                <entry><literal>TRACE</literal></entry>
+                                <entry>Job processing details.</entry>
+                                <entry>Disabled</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+In RPM or Debian package installs, these logs will be configured to be
+rotated via **++logrotate++**. See
+++/etc/logrotate.d/globus-job-manager++ for details on the default log
+rotation configuration.  for details on the default log rotation
+configuration. 
+
+
+==== Firewall Configuration ====
+
+There are also a few configuration options related to the TCP ports the
+the Job Manager users. This port configuration is useful when dealing
+with firewalls that restrict incoming or outgoing ports. To restrict
+incoming ports (those that the Job Manager listens on), add the
+command-line option '-globus-tcp-port-range' to the Job Manager
+configuration file like this: 
+
+--------
+-globus-tcp-port-range MIN-PORT,MAX-PORT
+--------
+Where 'MIN-PORT' is the minimum TCP port number the Job Manager will
+listen on and 'MAX-PORT' is the maximum TCP port number the Job Manager
+will listen on. 
+
+Similarly, to restrict the outgoing port numbers that the job manager
+connects form, use the command-line option '-globus-tcp-source-range',
+like this: 
+
+--------
+-globus-tcp-source-range MIN-PORT,MAX-PORT
+--------
+Where 'MIN-PORT' is the minimum outgoing TCP port number the Job Manager
+will use and 'MAX-PORT' is the maximum TCP outgoing port number the Job
+Manager will use. 
+
+For more information about Globus and firewalls, see
+link:../../admin/install/index.html#gt-admin-firewall[]. 
+
+
+[[gram5-configuring-lrm]]
+=== LRM Adapter Configuration ===
+
+Each LRM adapter has its own configuration file which can help customize
+the adapter to the site configuration. Some LRMs use non-standard
+programs to launch parallel or MPI jobs, and some might want to provide
+queue or project validation to make it easier to translate job failures
+into problems that can be described by GRAM5. All of the LRM adapter
+configuration files consist of simple ++variable="value"++ pairs, with a
+leading ++#++ starting a comment until end-of-line. 
+
+Generally, the GRAM5 LRM configuration files are located in the globus
+configuration directory, with each configuration file named by the LRM
+name (++fork++, ++condor++, ++pbs++, ++sge++, or ++slurm++). The
+following table contains the paths to these configurations: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>LRM Adapter Configuration Path</title>
+                <tgroup cols='2'>
+                    <thead>
+                        <row>
+                            <entry>Installation Type</entry>
+                            <entry>Configuration Path</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>RPM</entry>
+                            <entry><filename>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Debian Package</entry>
+                            <entry><filename>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Source Installer</entry>
+                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+==== Fork ====
+
+The ++globus-fork.conf++ configuration file can define the following
+configuration parameters:  configuration file can define the following
+configuration parameters: 
+
+**log_path**::
+     Path to the ++globus-fork.log++ file used by the  file used by the **++globus-fork-starter++** and fork SEG module.
+
+**mpiexec, mpirun**::
+     Path to **++mpiexec++** and **++mpirun++** for parallel jobs which use MPI. By default, these are not configured. The LRM adapter will use **++mpiexec++** over **++mpirun++** if both are defined.
+
+**softenv_dir**::
+     Path to an installation of http://www.mcs.anl.gov/hs/software/systems/softenv/softenv-intro.html[softenv], which is used on some systems to manage application environment variables.
+
+
+
+==== Condor ====
+
+The ++globus-condor.conf++ configuration file can define the following
+configuration parameters:  configuration file can define the following
+configuration parameters: 
+
+**condor_os**::
+     Custom value for the ++OpSys++ requirement for condor jobs. If not specified, the system-wide default will be used.
+
+**condor_arch**::
+     Custom value for the ++OpSys++ requirement for condor jobs. If not specified, the system-wide default will be used.
+
+**condor_submit, condor_rm**::
+     Path to the condor commands that the LRM adapter uses. These are usually determined when the LRM adapter is compiled if the commands are in the ++PATH++.
+
+**condor_config**::
+     Value of the ++CONDOR_CONFIG++ environment variable, which might be needed to use condor in some cases.
+
+**check_vanilla_files**::
+     Enable checking if executable, standard input, and directory are valid paths for ++vanilla++ universe jobs. This can detect some types of errors before submitting jobs to condor, but only if the filesystems between the condor submit host and condor execution hosts are equivalent. In other cases, this may cause unneccessary job failures.
+
+**condor_mpi_script**::
+     Path to a script to launch MPI jobs on condor
+
+
+
+==== PBS ====
+
+The ++globus-pbs.conf++ configuration file can define the following
+configuration parameters:  configuration file can define the following
+configuration parameters: 
+
+**log_path**::
+     Path to PBS server_logs directory. The PBS SEG module parses these logs to generate LRM events.
+
+**pbs_default**::
+     Name of the PBS server node, if not the same as the GRAM service node.
+
+**mpiexec, mpirun**::
+     Path to **++mpiexec++** and **++mpirun++** for parallel jobs which use MPI. By default these are not configured. The LRM adapter will use **++mpiexec++** over **++mpirun++** if both are defined.
+
+**qsub, qstat, qdel**::
+     Path to the LRM-specific command to submit, check, and delete PBS jobs. These are usually determined when the LRM adapter is compiled if they are in the ++PATH++.
+
+**cluster**::
+     If this value is set to ++yes++, then the LRM adapter will attempt to use a remote shell command to launch multiple instances of the executable on different nodes, as defined by the file named by the ++PBS_NODEFILE++ environment variable.
+
+**remote_shell**::
+     Remote shell command to launch processes on different nodes when ++cluster++ is set to ++yes++.
+
+**cpu_per_node**::
+     Number of instances of the executable to launch per allocated node.
+
+**softenv_dir**::
+     Path to an installation of http://www.mcs.anl.gov/hs/software/systems/softenv/softenv-intro.html[softenv] which is used on some systems to manage application environment variables.
+
+
+
+==== SGE ====
+
+The ++globus-sge.conf++ configuration file can define the following
+configuration parameters:  configuration file can define the following
+configuration parameters: 
+
+**sge_root**::
+     Root location of the GridEngine installation. If this is set to ++undefined++, then the LRM adapter will try to determine it from the **++globus-job-manager++** environment, or if not there, the contents of the file named by the ++sge_config++ configuration parameter.
+
+**sge_cell**::
+     Name of the GridEngine cell to interact with. If this is set to ++undefined++, then the LRM adapter will try to determine it from the **++globus-job-manager++** environment, or if not there, the contents of the file named by the ++sge_config++ configuration parameter.
+
+**sge_config**::
+     Path to a file which defines the ++SGE_ROOT++ and the ++SGE_CELL++ environment variables.
+
+**log_path**::
+     Path to GridEngine reporting file. This value is used by the SGE SEG module. If this is used, GridEngine must be configured to write a reporting file and not load reporting data into an ARCo database.
+
+**qsub, qstat, qdel, qconf**::
+     Path to the LRM-specific command to submit, check, and delete GridEngine jobs. These are usually determined when the LRM adapter is compiled if they are in the ++PATH++.
+
+**sun_mprun, mpirun**::
+     Path to **++mprun++** and **++mpirun++** for parallel jobs which use MPI. By default these are not configured. The LRM adapter will use **++mprun++** over **++mpirun++** if both are defined.
+
+**default_pe**::
+     Default parallel environment to submit parallel jobs to. If this is not set, then clients must use the ++parallel_environment++ RSL attribute to choose one.
+
+**validate_pes**::
+     If this value is set to ++yes++, then the LRM adapter will verify that the ++parallel_environment++ RSL attribute value matches one of the parallel environments supported by this GridEngine service.
+
+**available_pes**::
+     If this value is defined, use it as a list of parallel environments supported by this GridEngine deployment for validation when ++validate_pes++ is set to ++yes++. If validation is being done but this value is not set, then the LRM adapter will query the GridEngine service to determine available parallel environments at startup.
+
+**default_queue**::
+     Default queue to use if the job description does not name one.
+
+**validate_queues**::
+     If this value is set to ++yes++, then the LRM adapter will verify that the ++queue++ RSL attribute value matches one of the queues supported by this GridEngine service.
+
+**available_queues**::
+     If this value is defined, use it as a list of queues supported by this GridEngine deployment for validation when ++validate_queues++ is set to ++yes++. If validation is being done but this value is not set, then the LRM adapter will query the GridEngine service to determine available queues at startup.
+
+
+
+===== Enabling reporting for the GridEngine Scheduler Event Generator =====
+
+In order to use the Scheduler Event Generator with GridEngine, the job
+reporting feature must be enabled, and ARCo database storage must not be
+enabled. To enable this, use the command **++qconf -mconf++** and modify
+the ++reporting_params++ parameter so that the options ++reporting++ and
+++joblog++ are set to ++true++. 
+
+
+==== SLURM ====
+
+The ++globus-slurm.conf++ configuration file can define the following
+configuration parameters:  configuration file can define the following
+configuration parameters: 
+
+**srun, sbatch, salloc, scancel**::
+     Path to the SLURM commands.
+
+**mpi_type**::
+     MPI implementation to use (either openmpi or mpich2).
+
+**openmpi_path**::
+     Path to the OpenMPI implementation if available
+
+**mpich2_path**::
+     Path to the MPICH 2 implementation if available
+
+
+
+=== Auditing ===
+
+The **++globus-gram-audit++** configuration defines information about
+the database to load the GRAM5 audit records into. This configuration is
+located in: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>GRAM Audit Configuration Path</title>
+                <tgroup cols='2'>
+                    <thead>
+                        <row>
+                            <entry>Installation Type</entry>
+                            <entry>Configuration Path</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>RPM</entry>
+                            <entry><filename>/etc/globus/gram-audit.conf</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Debian Package</entry>
+                            <entry><filename>/etc/globus/gram-audit.conf</filename></entry>
+                        </row>
+                        <row>
+                            <entry>Source Installer</entry>
+                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus/gram-audit.conf</filename></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+This configuration file contains the following attributes. Each
+attribute is defined by a ++ATTRIBUTE:VALUE++ pair. 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>Audit Configuration Attributes</title>
+                <tgroup cols='3'>
+                    <thead>
+                        <row>
+                            <entry>Attribute Name</entry>
+                            <entry>Values</entry>
+                            <entry>Default</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>DRIVER</entry>
+                            <entry>
+                                <simpara> The name of the Perl 5 DBI driver for the database to be
+                                    used. The supported drivers for this program are <literal>SQLite</literal>, <literal>Pg</literal> (for PostgreSQL),
+                                    and <literal>mysql</literal>. </simpara>
+                            </entry>
+                            <entry><literal>SQLite</literal></entry>
+                        </row>
+                        <row>
+                            <entry>DATABASE</entry>
+                            <entry>
+                                <simpara> The DBI data source specfication to contact the audit
+                                    database. </simpara>
+                            </entry>
+                            <entry><literal>dbname=</literal><filename>/var/gram_audit_database/gram_audit.db</filename></entry>
+                        </row>
+                        <row>
+                            <entry>USERNAME</entry>
+                            <entry>Username to authenticate as to the database</entry>
+                            <entry></entry>
+                        </row>
+                        <row>
+                            <entry>PASSWORD</entry>
+                            <entry>Password to use to authenticate with the database</entry>
+                            <entry></entry>
+                        </row>
+                        <row>
+                            <entry>AUDITVERSION</entry>
+                            <entry>Version of the audit database table schemas to use. May be
+                                    <literal>1</literal> or <literal>1TG</literal> for this version
+                                of the software.</entry>
+                            <entry>1</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+=== RSL Attributes ===
+
+GRAM5 uses the link:../..gram5/pi/index.html#gram5-rsl[RSL language] to
+encode job descriptions. The attributes supported by gram are defined in
+link:../..gram5/pi/index.html#gram5-rvf[RSL Validation Files]. These
+definitions contain information about when the different RSL attributes
+are valid and what their default values might be if not present. GRAM5
+will look in ++/etc/globus/gram/job-manager.rvf++ and  and
+++/etc/globus/gram/LRM.rvf++ for site-specfic changes to the RSL
+validation file.  for site-specfic changes to the RSL validation file. 
+

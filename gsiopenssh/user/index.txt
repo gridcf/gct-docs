@@ -1,0 +1,149 @@
+
+[[gsiopensshUser,User's Guide]]
+:doctype: book
+= GT 6.0 GSI-OpenSSH: User's Guide =
+
+  
+[[gsiopenssh-user-introduction]]
+
+.Introduction
+--
+This is a guide for using the GSI-enabled OpenSSH client. It assumes
+that you (or your system administrator) have already installed the GSI
+OpenSSH and that you have also acquired a user certificate from an
+appropriate Certificate Authority. 
+
+--
+
+  
+[[gsiopenssh-user-usagescenarios]]
+== Using GSI-OpenSSH ==
+
+
+[[gsiopenssh-user-create-proxy]]
+=== Creating a proxy ===
+
+First, set the GLOBUS_LOCATION environment variable to the location of
+your GSI-enabled OpenSSH installation. It may already be set for you by
+your system administrator.
+
+Then, create a proxy credential for GSI authentication by running the
+**++grid-proxy-init++** program. This is your single sign-on to the
+Grid. By default, **++grid-proxy-init++** will create a proxy credential
+good for 12 hours. 
+
+To create a proxy credential with a different lifetime, use the
+**++-hours++** option.
+
+For example: 
+
+--------
+% grid-proxy-init -hours 8
+--------
+
+
+
+[[gsiopenssh-user-delete-proxy]]
+=== Deleting a proxy ===
+
+To delete a proxy that was previously create with grid-proxy-init, run:
+
+
+
+--------
+% grid-proxy-destroy
+--------
+
+
+[[gsiopenssh-user-authorization]]
+=== Getting authorized to connect to a site ===
+
+Before you can connect to a site, the site needs to know the identity in
+your certificate so that it can map that identity to your local account.
+At a minimum, the site will need to know your subject name from your
+certificate. You can get your subject name by running
+**++grid-cert-info++** with the **++-subject++** argument. For example: 
+
+
+
+--------
+
+% grid-cert-info -subject
+
+--------
+
+Email your subject name to the administrator of the system you wish to
+connect to so that they can add your entry to the appropriate
+authorization files. 
+
+Once you have your proxy credential, all you should have to do is run
+gsissh, providing it with the hostname of the host you want to connect
+to. For example: 
+
+--------
+
+% gsissh myhost.somedomain.edu
+
+--------
+You should then find yourself automatically logged into your account on
+the remote system. If something goes wrong, please see
+link:#gsiopenssh-user-troubleshooting[] for assistance. 
+
+ 
+include::../Util_OpenSSH_Interface_Commandline_Frag.txt[]
+
+ 
+[[gsiopenssh-user-troubleshooting]]
+== Troubleshooting ==
+
+
+--
+Some common errors are listed below. If you need additional assistance,
+please run gsissh with the '-vvv' argument (specifying verbose output)
+and send the output to your system administrator for assistance.
+
+
+--
+
+include::../Util_OpenSSH_Errors_Frag.txt[]
+
+
+[[gsiopenssh-user-passphrase]]
+=== The gsissh command prompts you for a pass phrase when you run it ===
+
+This could mean that you don't have a proxy certificate; try running
+**++grid-proxy-init++** and then running gsissh again. It could also
+mean that the GSI authentication is failing for some reason and gsissh
+is falling back to a different authentication mechanism. Reasons that it
+might fail include:
+
+
+
+
+* The host you are connecting to does not have a GSI-enabled OpenSSH server.
+
+* You are not authorized to use GSI authentication to the host. Contact the administrator.
+
+
+ 
+[[gsiopenssh-user-debugging]]
+== Debugging ==
+
+
+--
+For information about sys admin debugging, see
+link:../..gsiopenssh/admin/index.html#gsiopenssh-admin-debugging[].
+
+
+--
+
+=== Specifying verbose output ===
+
+If you need additional assistance, please run gsissh with the '-vvv'
+argument (specifying verbose output) and send the output to your system
+administrator for assistance.
+
+ 
+include::../Util_OpenSSH_Usage_Statistics_Frag.txt[]
+
+  

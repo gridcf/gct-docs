@@ -1,0 +1,19 @@
+
+[[admin,Admin Manuals]]
+:doctype: book
+= GT 6.0: Admin Manuals =
+
+  :doctype: article
+
+--
+
+* link:../../admin/install/index.html[] [link:install/installingGT.pdf[PDF]]
+
+* link:../../admin/quickstart/index.html[] [link:quickstart/gtQuickstart.pdf[PDF]]
+
+* link:../../admin/install/appendix.html[] [link:install/installationAppendix.pdf[PDF]]
+
+
+ 
+--
+ 

@@ -1,0 +1,27 @@
+
+[[gtadmin]]
+:doctype: book
+= Installing GT 6.0 =
+
+ 
+include::intro.txt[]
+
+ 
+include::before.txt[]
+
+ 
+include::install.txt[]
+
+ 
+include::basic_security.txt[]
+
+ 
+include::basic_setup.txt[]
+
+ 
+include::platform.txt[]
+
+ 
+include::appendixptr.txt[]
+
+  

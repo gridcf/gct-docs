@@ -1,0 +1,3 @@
+SimpleCA provides a simple implementation of a certification authority
+which can issue X.509 certificates to Globus Toolkit users and services.
+

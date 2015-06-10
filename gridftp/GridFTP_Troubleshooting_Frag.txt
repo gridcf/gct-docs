@@ -1,0 +1,198 @@
+
+[[gridftp-troubleshooting]]
+== Troubleshooting ==
+
+
+--
+If you are having problems using the GridFTP server, try the steps
+listed below. If you have an error, try checking the server logs if you
+have access to them. By default, the server logs to stderr, unless it is
+running from inetd, or its execution mode is detached, in which case
+logging is disabled by default. 
+
+The command line options -d , -log-level, -L and -logdir can affect
+where logs will be written, as can the configuration file options
+log_single and log_unique. See the
+link:../..gridftp/pi/index.html#globus-gridftp-server[] for more
+information on these and other configuration options.
+
+
+--
+
+include::GridFTP_Errors_Frag.txt[]
+
+
+=== Establish control channel connection ===
+
+Verify that you can establish a control channel connection and that the
+server has started successfully by telnetting to the port on which the
+server is running: 
+
+
+
+--------
+% telnet localhost 2811
+                Trying 127.0.0.1...
+                Connected to localhost.
+                Escape character is '^]'.
+                220 GridFTP Server mldev.mcs.anl.gov 2.0 (gcc32dbg, 1113865414-1) ready.
+--------
+
+If you see anything other than a 220 banner such as the one above, the
+server has not started correctly.
+
+Verify that there are no configuration files being unexpectedly loaded
+from /etc/grid-security/gridftp.conf or
+$GLOBUS_LOCATION/etc/gridftp.conf. If those files exist, and you did not
+intend for them to be used, rename them to .save, or specify -c none on
+the command line and try again.
+
+If you can log into the machine where the server is, try running the
+server from the command line with only the -s option: 
+
+
+
+--------
+$GLOBUS_LOCATION/sbin/globus-gridftp-server -s
+--------
+
+The server will print the port it is listening on: 
+
+
+
+--------
+Server listening at gridftp.mcs.anl.gov:57764
+--------
+
+Now try and telnet to that port. If you still do not get the banner
+listed above, something is preventing the socket connection. Check
+firewalls, tcp-wrapper, etc.
+
+If you now get a correct banner, add -p 2811 (you will have to disable
+(x)inetd on port 2811 if you are using them or you will get port already
+in use):
+
+
+
+--------
+$GLOBUS_LOCATION/sbin/globus-gridftp-server -s -p 2811
+--------
+
+Now telnet to port 2811. If this does not work, something is blocking
+port 2811. Check firewalls, tcp-wrapper, etc.
+
+If this works correctly then re-enable your normal server, but remove
+all options but -i, -s, or -S.
+
+Now telnet to port 2811. If this does not work, something is wrong with
+your service configuration. Check /etc/services and (x)inetd config,
+have (x)inetd restarted, etc.
+
+If this works, begin adding options back one at a time, verifying that
+you can telnet to the server after each option is added. Continue this
+till you find the problem or get all the options you want. 
+
+At this point, you can establish a control connection. Now try running
+globus-url-copy.
+
+
+=== Try running globus-url-copy ===
+
+Once you've verified that you can establish a control connection, try to
+make a transfer using globus-url-copy.
+
+If you are doing a client/server transfer (one of your URLs has
+++file:++ in it) then try: in it) then try:
+
+
+
+--------
+globus-url-copy -vb -dbg gsiftp://host.server.running.on/dev/zero file:///dev/null
+--------
+
+This will run until you control-c the transfer. If that works, reverse
+the direction:
+
+
+
+--------
+globus-url-copy -vb -dbg file:///dev/zero gsiftp://host.server.running.on/dev/null
+--------
+
+Again, this will run until you control-c the transfer.
+
+If you are doing a third party
+            transfer, run this command:
+
+
+
+--------
+globus-url-copy -vb -dbg gsiftp://host.server1.on/dev/zero gsiftp://host.server2.on/dev/null
+--------
+
+Again, this will run until you control-c the transfer.
+
+If the above transfers work, try your transfer again. If it fails, you
+likely have some sort of file permissions problem, typo in a file name,
+etc.
+
+
+=== If your server starts... ===
+
+If the server has started correctly, and your problem is with a security
+failure or gridmap lookup failure, verify that you have security
+configured properly
+link:../../admin/install/index.html#gtadmin-basic-security[here].
+
+If the server is running and your client successfully authenticates but
+has a problem at some other time during the session, please ask for help
+on http://dev.globus.org/wiki/Mailing%5fLists[gt-user@globus.org]. When
+you send mail or submit bugs, please always include as much of the
+following information as possible:
+
+
+
+
+* Specs on all hosts involved (OS, processor, RAM, etc).
+
+* globus-url-copy -version
+
+* globus-url-copy -versions
+
+* Output from the telnet test above.
+
+* The actual command line you ran with -dbg added. Don't worry if the output gets long.
+
+* Check that you are getting a FQDN and /etc/hosts that is sane.
+
+* The server configuration and setup (/etc/services entries, (x)inetd configs, etc.).
+
+* Any relevant lines from the server logs (not the entire log please).
+
+
+
+[[gridftp-troubleshooting-latency]]
+=== High latency for GridFTP server connections ===
+
+If you run GridFTP servers via Xinetd and notice high latency for
+connections and/or transfers, check if ++/etc/xinetd.conf++ or the
+gsiftp service configuration inside  or the gsiftp service configuration
+inside ++/etc/xinetd.d++ is set to log USERID as follows:  is set to log
+USERID as follows: 
+
+--------
+log_on_success += USERID
+log_on_failure += USERID
+--------
+
+
+Such a configuration tells Xinetd to log the remote user using the
+method defined in RFC 1413, which causes an ident client to attempt to
+query the machine that the connection is coming from before the service
+will run. Even when this succeeds, the response can't be trusted, and
+more often than not it is rejected or simply dropped (which results in
+the longest delays) by the remote firewall.
+
+Latency can be reduced by making sure Xinetd does **not** log the
+USERID.
+

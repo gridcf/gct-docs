@@ -1,0 +1,163 @@
+
+[[gram5-migrating-gt2]]
+== Migrating GRAM from GT2 ==
+
+
+=== Admin - Migration Guide ===
+
+
+[[gram5-migrating-gt2-install]]
+==== Installation / Deployment Differences ====
+
+In GRAM2, jobs are submitted to a job manager process started by a
+Gatekeeper process. In GRAM5, the job submit protocol is the same;
+however, all jobs for a particular user and LRM run in the same job
+manager process. 
+
+
+[[gram5-migrating-gt2-security]]
+==== Security Differences ====
+
+
+[[gram5-migrating-gt2-proxies]]
+===== Proxies and Delegation =====
+
+In GRAM2, the GRAM client is required to delegate a proxy credential to
+the Gatekeeper so that the job manager can send authenticated job state
+change messages. Because each job is monitored by a separate job manager
+in GRAM2, each job manager has access to a different delegated
+credential. In GRAM5, the shared job manager uses the delegated
+credential with the latest expiration time as its credential. 
+
+In GRAM2, the client can control the job manager proxy timeout by
+setting the value of ++proxy_timeout++ RSL attribute to a time interval
+in seconds indicating when the job manager will exit if the proxy is
+about to expire. In GRAM5, this is a job manager-wide setting and the
+++proxy_timeout++ RSL attribute is ignored. 
+
+
+[[gram5-migrating-gt2-network]]
+==== Network Communication ====
+
+In GRAM2, the standard output and standard error streams of a job may be
+sent in near real time to a file server such as the GASS server embedded
+in a **++globusrun++** execution. In GRAM5 the same RSL syntax is used
+to name output and error stream destinations, but those are not sent
+until after the job execution is complete. 
+
+In GRAM2, the job manager implements intra-job communication via DUCT
+and task synchronization via DUROC. These features have been dropped in
+GRAM5. 
+
+GRAM5 adds various protocol extensions to the GRAM2 protocol. This is
+done in a way such that the existing GRAM2 protocol processors will
+ignore the extensions to the messages. Details about the protocol and
+its extensions can be found in the
+link:../..gram5/pi/index.html#gram5-interface-protocol[GRAM5 public
+interface document]. 
+
+
+[[gram5-migrating-gt2-lrmdiff]]
+==== LRM Interaction Differences ====
+
+In GRAM2, all file system and LRM interactions occur within a perl
+module called by the globus-job-manager-script.pl program.
+Scheduler-specific perl modules implement a number of methods which are
+used by the job manager: 
+
+
+
+
+* submit
+
+* poll
+
+* cancel
+
+* signal
+
+* make_scratchdir
+
+* remove_scratchdir
+
+* stage_in
+
+* stage_out
+
+* cache_cleanup
+
+* remote_io_file_create
+
+* proxy_relocate
+
+* proxy_update
+
+
+Only a small set of these script methods are used in the GRAM5
+implementation. The subset used is: 
+
+* submit
+
+* signal (called when not using SEG)
+
+* poll (called when not using SEG)
+
+* cancel
+
+
+Some of the functionality has been moved into the job manager or other
+services for performance reasons. 
+
+
+[[gram5-migrating-gt2-localnode]]
+==== Local Node Impact ====
+
+In GRAM2, each job submitted would cause the following processes to be
+created: 
+
+
+
+
+* gatekeeper (short lived)
+
+* job manager (lives the duration of the job)
+
+* perl script (short lived 4 or more instances depending on job type)
+
+* perl script poll called periodically
+
+
+In GRAM5, each job causes the following processes to be created 
+
+
+
+
+* **++globus-gatekeeper++** (short lived)
+
+* **++globus-job-manager++** (short lived for all but one concurrent instance)
+
+* **++globus-job-manager-script++** (up to 5 per lifetime of the job manager)
+
+* **++globus-fork-starter++** (up to 5 per job manager when using the fork LRM and the SEG).
+
+
+Additionally, there will be a per-scheduler instance of the SEG-related
+program, **++globus-job-manager-event-generator++**. 
+
+
+[[gram5-migrating-gt2-user]]
+=== User - Migration Guide ===
+
+
+[[gram5-migrating-gt2-commandlinetools]]
+==== Command Line Tools ====
+
+The **++globusrun++** tool in GRAM2 supports DUROC and MPICH-G jobs.
+This feature has been removed in GRAM5, as well as the command-line
+options related to it. 
+
+
+=== Developer - API and RSL Migration Guide ===
+
+The DUROC and DUCT APIs have been removed in GRAM5. 
+

@@ -1,0 +1,12 @@
+
+[[gridftp-tested-platforms]]
+=== Tested platforms ===
+
+
+include::../platforms.txt[]
+
+While the above list includes platforms on which we have tested GridFTP,
+it does not imply support for a specific platform. However, we are
+interested in hearing reports of success or bug reports on any platform.
+
+

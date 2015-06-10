@@ -1,0 +1,11 @@
+
+[[myproxy-cmd]]
+== Command-line tools ==
+
+
+--
+Please refer to the http://myproxy.ncsa.uiuc.edu/man/[MyProxy Reference
+Manual] for documentation of the MyProxy command-line tools. 
+
+
+--

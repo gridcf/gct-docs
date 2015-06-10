@@ -1,0 +1,142 @@
+
+[[xioDeveloper, Developer's Guide]]
+:doctype: book
+= GT 6.0 XIO : Developer's Guide =
+
+  
+[[xio-developer-introduction]]
+
+.Introduction
+--
+This guide contains information of interest to developers working with
+XIO. It provides reference information for application developers,
+including APIs, architecture, procedures for using the APIs and code
+samples. 
+
+--
+
+  
+[[xio-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../XIO_Feature_Summary_Frag.txt[]
+
+
+include::../XIO_Platform_Summary_Frag.txt[]
+
+
+include::../XIO_Compatibility_Summary_Frag.txt[]
+
+
+include::../XIO_Dependencies_Summary_Frag.txt[]
+
+
+include::../XIO_Security_Considerations_Frag.txt[]
+
+ 
+include::UserQuickStart.txt[]
+
+ 
+include::DriverQuickStart.txt[]
+
+ 
+[[xio-developer-tutorials]]
+== Tutorials ==
+
+
+--
+
+* link:../xio.ppt[PowerPoint Tutorial]
+
+
+
+--
+ 
+include::xio_arch.txt[]
+
+ 
+include::../XIO_Interface_API_Frag.txt[]
+
+ 
+[[xio-developer-env]]
+== Environment Variable Interface ==
+
+
+include::../XIO_Interface_Env_Frag.txt[]
+
+ 
+[[xio-developer-debugging]]
+== Debugging ==
+
+
+--
+All standard C debugging techniques apply to debugging XIO applications.
+Also, Globus XIO provides users with some additional debugging
+information. If the environment variable GLOBUS_XIO_DEBUG is set
+debugging information will be written to a file or stdout. The
+information generated is particularly useful to identify a suspect bug
+in Globus XIO. GLOBUS_XIO_DEBUG is set in the following way: 
+
+--------
+
+GLOBUS_XIO_DEBUG="<level>  [,[[#]<file name>][,<flag>[,<timestamp_levels>]]"
+
+--------
+
+The value of ++<level>++ can take on the logical OR of any of the
+following: 
+
+
+* GLOBUS_XIO_DEBUG_ERROR = 1
+
+* GLOBUS_XIO_DEBUG_WARNING = 2
+
+* GLOBUS_XIO_DEBUG_TRACE = 4
+
+* GLOBUS_XIO_DEBUG_INTERNAL_TRACE = 8
+
+* GLOBUS_XIO_DEBUG_INFO = 16
+
+* GLOBUS_XIO_DEBUG_STATE = 32
+
+* GLOBUS_XIO_DEBUG_INFO_VERBOSE = 64
+
+
+++<file name>++ is a debug output file, if empty stderr will be used by
+default. If a '#' precedes the filename, the file will be overwritten on
+each run. Otherwise, the output will be appended to the existing file. 
+
+++<flags>++ 
+
+
+* 0 = default
+
+* 1 = show thread ids
+
+* 2 = append the pid to debug filename
+
+
+
+--
+ 
+include::../admin/index.txt[]
+
+ 
+[[xio-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+
+* http://www-unix.mcs.anl.gov/~kettimut/xio/XIO%5fPerformance.pdf[Performance]
+
+* http://www-unix.mcs.anl.gov/~bresnaha/xio[Previous HTML doc]
+
+
+
+--
+ 
+include::../drivers/index.txt[]
+
+ 

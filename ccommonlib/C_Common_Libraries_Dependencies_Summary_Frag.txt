@@ -1,0 +1,6 @@
+
+[[ccommonlib-tech-dependencies]]
+=== Technology dependencies ===
+
+C Common Libraries only depend on the globus_core module.
+

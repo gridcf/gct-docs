@@ -1,0 +1,41 @@
+[[xioQP,Quality Profile]]
+:doctype: article
+= GT 6.0 XIO: Quality Profile =
+
+  
+[[xio-qp-test]]
+== Test coverage reports ==
+
+
+
+
+* http://www.globus.org/xio/coverage/[http://www.globus.org/xio/coverage/]
+
+
+ 
+[[xio-qp-code]]
+== Code analysis reports ==
+
+
+
+
+* http://www.globus.org/xio/coverage/[http://www.globus.org/xio/coverage/]
+
+
+ 
+include::../XIO_Known_Problems_Frag.txt[]
+
+ 
+include::../XIO_Fixed_Bugs_Frag.txt[]
+
+ 
+[[xio-qp-performance]]
+== Performance reports ==
+
+
+
+
+* http://www-unix.mcs.anl.gov/~kettimut/xio/XIO%5fPerformance.pdf[http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf]
+
+
+ 

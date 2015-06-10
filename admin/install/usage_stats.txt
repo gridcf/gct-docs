@@ -1,0 +1,24 @@
+
+[[gtadmin-config-usage-stats]]
+== Usage Statistics ==
+
+
+--
+The following components collect usage statistics as outlined here
+(along with information about how to opt-out):
+link:../../Usage_Stats.html[Usage Statistics in GT]
+
+
+--
+
+=== Data Management Usage Statistics ===
+
+
+include::../../gridftp/GridFTP_Usage_Statistics_Frag.txt[]
+
+
+=== Execution Management Usage Statistics ===
+
+
+include::../../gram5/GRAM5_Usage_Statistics_Frag.txt[]
+

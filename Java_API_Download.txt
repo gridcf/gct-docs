@@ -1,0 +1,7 @@
+
+[[java-api-download]]
+=== Java Client API Download ===
+
+Java client APIs to the GT 6.0 services are available from the
+http://www.globus.org/toolkit/jglobus/[jGlobus] project.
+

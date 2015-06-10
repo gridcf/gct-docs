@@ -1,0 +1,92 @@
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table frame='all' id='tested-platforms'>
+    <title>Tested Platforms</title>
+    <tgroup align='left' colsep='1' cols='4' rowsep='1'>
+        <colspec align='center' colname='Operating System'></colspec>
+        <colspec colname='Distribution'></colspec>
+        <colspec colname='Versions'></colspec>
+        <colspec colname='Architectures'></colspec>
+        <spanspec spanname='osnodist' namest='Operating System' align='center' nameend='Distribution'></spanspec>
+
+        <thead>
+            <row>
+                <entry>Operating System</entry>
+                <entry>Distribution</entry>
+                <entry>Version(s)</entry>
+                <entry>Architecture(s)</entry>
+            </row>
+        </thead>
+        <tbody>
+            <row>
+                <entry colname='Operating System' morerows='8'>Linux</entry>
+                <entry colname='Distribution' morerows='1'>CentOS</entry>
+                <entry>5, 6</entry>
+                <entry>i386, x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Versions'>7</entry>
+                <entry>x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Distribution'>Fedora</entry>
+                <entry>19, 20</entry>
+                <entry>i386, x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Distribution' morerows='1'>Red Hat Enterprise Linux</entry>
+                <entry>5, 6</entry>
+                <entry>i386, x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Versions'>7</entry>
+                <entry>x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Distribution'>Scientific Linux</entry>
+                <entry>5, 6</entry>
+                <entry>i386, x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Distribution'>SUSE Linux Enterprise Server</entry>
+                <entry>11SP3</entry>
+                <entry>x86_64</entry>
+            </row>
+            <row>
+                <entry colname='Distribution'>Debian</entry>
+                <entry>6, 7</entry>
+                <entry>i386, amd64</entry>
+            </row>
+            <row>
+                <entry colname='Distribution'>Ubuntu</entry>
+                <entry>10.04LTS, 12.04LTS, 14.04LTS</entry>
+                <entry>i386, amd64</entry>
+            </row>
+            <row>
+                <entry spanname='osnodist'>Mac OS X</entry>
+                <entry>10.6.x-10.9.x (Snow Leopard and newer)</entry>
+                <entry>i386, x86_64</entry>
+            </row>
+            <row>
+                <entry>Solaris</entry>
+                <entry>OmniOS</entry>
+                <entry>r151006</entry>
+                <entry>x86_64</entry>
+            </row>
+            <row>
+                <entry morerows='1'>Windows 7</entry>
+                <entry>Cygwin</entry>
+                <entry></entry>
+                <entry>i386, x86_64</entry>
+            </row>
+            <row>
+                <entry>MingW64</entry>
+                <entry></entry>
+                <entry>i386, x86_64</entry>
+            </row>
+        </tbody>
+    </tgroup>
+</table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+

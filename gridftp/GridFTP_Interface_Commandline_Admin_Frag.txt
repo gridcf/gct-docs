@@ -1,0 +1,939 @@
+[[globus-gridftp-server]]
+= GLOBUS-GRIDFTP-SERVER(8) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+globus-gridftp-server - Configures the GridFTP Server
+
+== SYNOPSIS ==
+**++globus-gridftp-server++** 
+
+== Tool description ==
+
+**++globus-gridftp-server++** configures the GridFTP server using a
+config file and/or commandline options.
+
+[NOTE]
+--
+Command line options and configuration file options may both be used,
+but the command line **overrides** the config file.
+
+--
+The configuration file for the GridFTP server is read from the following
+locations, in the given order. Only the first file found will be loaded:
+
+* Path specified with the ++-c <configfile>++ command line option.
+
+* ++$GLOBUS_LOCATION/etc/gridftp.conf++
+
+* ++/etc/grid-security/gridftp.conf++
+
+
+
+Options are one per line, with the format: 
+
+--------
+<option> <value>
+--------
+If the value contains spaces, they should be enclosed in double-quotes
+("). Flags or boolean options should only have a value of 0 or 1. Blank
+lines and lines beginning with # are ignored.
+
+For example: 
+
+--------
+  port 5000
+  allow_anonymous 1
+  anonymous_user bob
+  banner "Welcome!"
+      
+--------
+
+
+
+=== Developer notes ===
+
+The Globus implementation of the GridFTP server draws on: 
+
+* three IETF RFCs: 
+
+* RFC 959
+
+* RFC 2228
+
+* RFC 2389
+
+* an IETF Draft: MLST-16
+
+* the GridFTP protocol specification, which is Global Grid Forum (GGF) Standard GFD.020.
+
+
+
+The command line tools and the client library completely hide the
+details of the protocol from the user and the developer. Unless you
+choose to use the control library, it is not necessary to have a
+detailed knowledge of the protocol.
+
+
+
+== Command syntax ==
+
+The basic syntax for **++globus-gridftp-server++** is: 
+
+--------
+globus-gridftp-server [optional command line switches]
+--------
+
+
+To use **++globus-gridftp-server++** with a config file, make sure to
+use the '-c <configfile>' option.
+
+
+[[commandlineoptions-server]]
+== Command line options ==
+
+The table below lists config file options, associated command line
+options (if available) and descriptions. 
+
+[NOTE]
+--
+Any boolean option can be negated on the command line by preceding the
+specified option with '-no-' or '-n'. example: -no-cas or -nf.
+
+--
+
+[[gridftp-server-config_options-info]]
+=== Informational Options ===
+
+
+
+**help <0|1> , -h , -help **::
+     Show usage information and exit.
++
+Default value: FALSE
+
+**version <0|1> , -v , -version **::
+     Show version information for the server and exit.
++
+Default value: FALSE
+
+**versions <0|1> , -V , -versions **::
+     Show version information for **all** loaded globus libraries and exit.
++
+Default value: FALSE
+
+
+
+
+[[gridftp-server-config_options-modes]]
+=== Modes of Operation ===
+
+
+
+**inetd <0|1> , -i , -inetd **::
+     Run under an inetd service.
++
+Default value: FALSE
+
+**daemon <0|1> , -s , -daemon **::
+     Run as a daemon. All connections will fork off a new process and setuid
+if allowed. See
+link:../..gridftp/admin/index.html#gridftp-admin-daemon_mode[] for more
+information.
++
+Default value: TRUE
+
+**detach <0|1> , -S , -detach **::
+     Run as a background daemon detached from any controlling terminals. See
+link:../..gridftp/admin/index.html#gridftp-admin-daemon_mode[] for more
+information.
++
+Default value: FALSE
+
+**ssh , -ssh **::
+     Run over a connected ssh session.
++
+Default value: not set
+
+**exec <string> , -exec <string> **::
+     For statically compiled or non-GLOBUS_LOCATION standard binary
+locations, specify the full path of the server binary here. Only needed
+when run in
+link:../..gridftp/admin/index.html#gridftp-admin-daemon_mode[daemon
+mode].
++
+Default value: not set
+
+**chdir <0|1> , -chdir **::
+     Change directory when the server starts. This will change directory to
+the dir specified by the chdir_to option.
++
+Default value: TRUE
+
+**chdir_to <string> , -chdir-to <string> **::
+     Directory to chdir to after starting. Will use ++/++ if not set.
++
+Default value: not set
+
+**fork <0|1> , -f , -fork **::
+     Server will fork for each new connection. Disabling this option is only
+recommended when debugging. Note that non-forked servers running as
+'root' will only accept a single connection and then exit.
++
+Default value: TRUE
+
+**single <0|1> , -1 , -single **::
+     Exit after a single connection.
++
+Default value: FALSE
+
+**chroot_path <string> , -chroot-path <string> **::
+     Path to become the new root after authentication. This path must contain
+a valid certificate structure, ++/etc/passwd++, and , and
+++/etc/groups++. The command globus-gridftp-server-setup-chroot can help
+create a suitable directory structure. . The command
+globus-gridftp-server-setup-chroot can help create a suitable directory
+structure.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-security]]
+=== Authentication, Authorization, and Security Options ===
+
+
+
+**auth_level <number> , -auth-level <number> **::
+     * 0 = Disables all authorization checks.
+
+* 1 = Authorize identity only.
+
+* 2 = Authorize all file/resource accesses.
++
+If not set, the GridFTP Server uses level 2 for front ends and level 1
+for data nodes.
++
+Default value: not set
+
+**ipc_allow_from <string> , -ipc-allow-from <string> **::
+     Only allow IPC connections (applicable for backend servers in a striped
+configuration) from these source IP addresses. Specify a comma-separated
+list of IP address fragments. A match is any IP address that starts with
+the specified fragment. Example: '192.168.1.' will match and allow a
+connection from 192.168.1.45. Note that if this option is used, any
+address not specifically allowed will be denied.
++
+Default value: not set
+
+**ipc_deny_from <string> , -ipc-deny-from <string> **::
+     Deny IPC connections (applicable for backend servers in a striped
+configuration) from these source IP addresses. Specify a comma-separated
+list of IP address fragments. A match is any IP address that starts with
+the specified fragment. Example: '192.168.2.' will match and deny a
+connection from 192.168.2.45.
++
+Default value: not set
+
+**allow_from <string> , -allow-from <string> **::
+     Only allow connections from these source IP addresses. Specify a
+comma-separated list of IP address fragments. A match is any IP address
+that starts with the specified fragment. Example: '192.168.1.' will
+match and allow a connection from 192.168.1.45. Note that if this option
+is used, any address not specifically allowed will be denied.
++
+Default value: not set
+
+**deny_from <string> , -deny-from <string> **::
+     Deny connections from these source IP addresses. Specify a
+comma-separated list of IP address fragments. A match is any IP address
+that starts with the specified fragment. Example: '192.168.2.' will
+match and deny a connection from 192.168.2.45.
++
+Default value: not set
+
+**secure_ipc <0|1> , -si , -secure-ipc **::
+     Use GSI security on the IPC channel.
++
+Default value: TRUE
+
+**ipc_auth_mode <string> , -ia <string> , -ipc-auth-mode <string> **::
+     Set GSI authorization mode for the IPC connection. Options are one of
+the following: 
+
+* none
+
+* host
+
+* self
+
+* subject:[subject]
++
+Default value: host
+
+**allow_anonymous <0|1> , -aa , -allow-anonymous **::
+     Allow cleartext anonymous access. If server is running as root,
+anonymous_user must also be set. Disables IPC security.
++
+Default value: FALSE
+
+**anonymous_names_allowed <string> , -anonymous-names-allowed <string> **::
+     Comma-separated list of names to treat as anonymous users when allowing
+anonymous access. If not set, the default names of 'anonymous' and 'ftp'
+will be allowed. Use '*' to allow any username.
++
+Default value: not set
+
+**anonymous_user <string> , -anonymous-user <string> **::
+     User to setuid to for an anonymous connection. Only applies when running
+as root.
++
+Default value: not set
+
+**anonymous_group <string> , -anonymous-group <string> **::
+     Group to setgid to for an anonymous connection. If not set, the default
+group of anonymous_user will be used.
++
+Default value: not set
+
+**allow_root , -allow-root **::
+     Allow clients to be mapped to the root account.
++
+Default value: FALSE
+
+**pw_file <string> , -password-file <string> **::
+     Enable cleartext access and authenticate users against this
+++/etc/passwd++ formatted file. formatted file.
++
+Default value: not set
+
+**connections_max <number> , -connections-max <number> **::
+     Maximum concurrent connections allowed. Only applies when running in
+link:../..gridftp/admin/index.html#gridftp-admin-daemon_mode[daemon
+mode]. Unlimited if not set.
++
+Default value: not set
+
+**connections_disabled <0|1> , -connections-disabled **::
+     Disable all new connections. Does not affect ongoing connections. This
+must be set in the configuration file and then a SIGHUP issued to the
+server in order to reload the configuration.
++
+Default value: FALSE
+
+**offline_msg <string> , -offline-msg <string> **::
+     Custom message to be displayed to clients when the server is offline via
+the connections_disabled or connections_max = 0 options.
++
+Default value: not set
+
+**disable_command_list <string> , -disable-command-list <string> **::
+     A comma seperated list of client commands that will be disabled.
++
+Default value: not set
+
+**authz_callouts  , -authz-callouts  **::
+     Enable the GSI authorization callout framework.
++
+Default value: TRUE
+
+**restrict_paths  , -rp  , -restrict-paths  **::
+     A comma separated list of full paths that clients may access. Each path
+may be prefixed by R and/or W, denoting read or write access, otherwise
+full access is granted. If a given path is a directory, all contents and
+subdirectories will be given the same access. Order of paths does not
+matter -- the permissions on the longest matching path will apply. The
+special character '~' will be replaced by the authenticated user's home
+directory. Note that if the authenticated user's home directory is not
+accessible, the home directory and starting path will be set to '/'. By
+default all paths are allowed, and access control is handled by the OS.
++
+Default value: not set
+
+**rp_follow_symlinks  , -rp-follow-symlinks  **::
+     Allow following symlinks that lead to restricted paths.
++
+Default value: FALSE
+
+**acl  , -em , -acl  **::
+     A comma seperated list of ACL or event modules to load.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-logging]]
+=== Logging Options ===
+
+
+
+**log_level <string> , -d <string> , -log-level <string> **::
+     Log level. A comma-separated list of levels from the following: 
+
+* ERROR
+
+* WARN
+
+* INFO
+
+* DUMP
+
+* ALL
+
+
+For example: 
++
+--------
+globus-gridftp-server -d error,warn,info
+--------
+You may also specify a numeric level of 1-255.
++
+Default value: ERROR
+
+**log_module <string> , -log-module <string> **::
+     Indicates the ++globus_logging++ module that will be loaded. If not set,
+the default  module that will be loaded. If not set, the default
+++stdio++ module will be used and the logfile options (see next option)
+will apply.
++
+Built-in modules are ++stdio++ and ++syslog++. Log module options may be
+set by specifying ++module:opt1=val1:opt2=val2++. Available options for
+the built-in modules are: 
+
+* 'interval' - Indicates buffer flush interval. Default is 5 seconds. A 0
+second flush interval will disable periodic flushing, and the buffer
+will only flush when it is full.
+
+* 'buffer' - Indicates buffer size. Default is 64k. A value of 0k will
+disable buffering and all messages will be written immediately.
+
+
+Example: 
++
+--------
+-log-module stdio:buffer=4096:interval=10
+--------
++
+Default value: not set
+
+**log_single <string> , -l <string> , -logfile <string> **::
+     Indicates the path of a single file to which you want to log all
+activity. If neither this option nor ++log_unique++ is set, logs will be
+written to stderr, unless the execution mode is detached, or inetd, in
+which case logging will be disabled.
++
+[NOTE]
+--
+You have to provide full path 
+
+--
++
+Default value: not set
+
+**log_unique <string> , -L <string> , -logdir <string> **::
+     Partial path to which ++gridftp.(pid).log++ will be appended to
+construct the log filename. Example: 
++
+--------
+-L /var/log/gridftp/
+--------
+will create a separate log (++/var/log/gridftp/gridftp.xxxx.log++) for
+each process (which is normally each new ) for each process (which is
+normally each new client session). If neither this option nor
+++log_single++ is set, logs will be written to stderr, unless the
+execution mode is detached, or inetd, in which case logging will be
+disabled.
++
+[NOTE]
+--
+You have to provide full path 
+
+--
++
+Default value: not set
+
+**log_transfer <string> , -Z <string> , -log-transfer <string> **::
+     Log NetLogger-style info for each transfer into this file.
++
+[NOTE]
+--
+You have to provide full path 
+
+--
++
+Default value: not set
++
+Example: DATE=20050520163008.306532 HOST=localhost
+PROG=globus-gridftp-server NL.EVNT=FTP_INFO START=20050520163008.305913
+USER=ftp FILE=/etc/group BUFFER=0 BLOCK=262144 NBYTES=542 VOLUME=/
+STREAMS=1 STRIPES=1 DEST=[127.0.0.1] TYPE=RETR CODE=226
++
+Time format is YYYYMMDDHHMMSS.UUUUUU (microsecs).
++
+* DATE: time the transfer completed.
+
+* START: time the transfer started.
+
+* HOST: hostname of the server.
+
+* USER: username on the host that transfered the file.
+
+* BUFFER: tcp buffer size (if 0 system defaults were used).
+
+* BLOCK: the size of the data block read from the disk and posted to the network.
+
+* NBYTES: the total number of bytes transfered.
+
+* VOLUME: the disk partition where the transfer file is stored.
+
+* STREAMS: the number of parallel TCP streams used in the transfer.
+
+* STRIPES: the number of stripes used on this end of the transfer.
+
+* DEST: the destination host.
+
+* TYPE: the transfer type, RETR is a send and STOR is a receive (ftp 959 commands).
+
+* CODE: the FTP rfc959 completion code of the transfer. 226 indicates success, 5xx or 4xx are failure codes.
+
+**log_filemode <string> , -log-filemode <string> **::
+     File access permissions of log files. Should be an octal number such as
+0644 (the leading 0 is required).
++
+Default value: not set
+
+**disable_usage_stats <0|1> , -disable-usage-stats **::
+     Disable transmission of per-transfer usage statistics. See the
+link:../../../Usage_Stats.html[Usage Statistics] section in the online
+documentation for more information.
++
+Default value: FALSE
+
+**usage_stats_target <string> , -usage-stats-target <string> **::
+     Comma-separated list of contact strings for usage statistics listeners.
+The format of <string> is ++host:port++.
++
+Default value: ++usage-stats.globus.org:4810++
++
+**Example:**
++
+--------
+-usage-stats-target usage-stats.globus.org:4810,usage-stats.uc.teragrid.org:5920
+--------
++
+In this example, the usage statistics will be transmitted to the default
+Globus target (++usage-stats.globus.org:4810++) and another target
+(++usage-stats.uc.teragrid.org:5920++).
++
+The usage stats sent to a particular receiver may be customized by
+configuring it with a taglist (host:port!taglist) The taglist is a list
+of characters that each correspond to a usage stats tag. When this
+option is unset, stats are reported to usage-stats.globus.org:4810. If
+you set your own receiver, and wish to continue reporting to the Globus
+receiver, you will need to add it manually. The list of available tags
+follow. Tags marked * are reported by default.
++
+* *(e) START - start time of transfer
+
+* *(E) END - end time of transfer
+
+* *(v) VER - version string of gridftp server
+
+* *(b) BUFFER - tcp buffer size used for transfer
+
+* *(B) BLOCK - disk blocksize used for transfer
+
+* *(N) NBYTES - number of bytes transferred
+
+* *(s) STREAMS - number of parallel streams used
+
+* *(S) STRIPES - number of stripes used
+
+* *(t) TYPE - transfer command: RETR, STOR, LIST, etc
+
+* *(c) CODE - ftp result code (226 = success, 5xx = fail)
+
+* *(D) DSI - DSI module in use
+
+* *(A) EM - event modules in use
+
+* *(T) SCHEME - ftp, gsiftp, sshftp, etc. (client supplied)
+
+* *(a) APP - guc, rft, generic library app, etc. (client supplied)
+
+* *(V) APPVER - version string of above. (client supplied)
+
+* (f) FILE - name of file/data transferred
+
+* (i) CLIENTIP - ip address of host running client (control channel)
+
+* (I) DATAIP - ip address of source/dest host of data (data channel)
+
+* (u) USER - local user name the transfer was performed as
+
+* (d) USERDN - DN that was mapped to user id
+
+* (C) CONFID - ID defined by -usage-stats-id config option
+
+* (U) SESSID - unique id that can be used to match transfers in a session and transfers across source/dest of a third party transfer. (client supplied)
+
+**usage_stats_id <string> , -usage-stats-id <string> **::
+     Identifying tag to include in usage statistics data.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-remotedata]]
+=== Single and Striped Remote Data Node Options ===
+
+
+
+**remote_nodes <string> , -r <string> , -remote-nodes <string> **::
+     Comma-separated list of remote node contact strings. See
+link:../..gridftp/admin/index.html#gridftp-admin-striped[Remote
+data-nodes and striped operations] and
+link:../..gridftp/admin/index.html#gridftp-admin-separated[Separation of
+processes for higher security] for examples of using this option.
++
+Default value: not set
+
+**data_node <0|1> , -dn , -data-node **::
+     This server is a back end data node. See
+link:../..gridftp/admin/index.html#gridftp-admin-separated[Separation of
+processes for higher security] for an example of using this option.
++
+Default value: FALSE
+
+**stripe_blocksize <number> , -sbs <number> , -stripe-blocksize <number> **::
+     Size in bytes of sequential data that each stripe will transfer.
++
+Default value: 1048576
+
+**stripe_count <number> , -stripe-count <number> **::
+     Number of stripes to use per transfer when this server controls that
+number. If remote nodes are statically configured (via -r or
+remote_nodes), this will be set to that number of nodes, otherwise the
+default is 1.
++
+Default value: not set
+
+**stripe_layout <number> , -sl <number> , -stripe-layout <number> **::
+     Stripe layout. 1 = Partitioned, 2 = Blocked.
++
+Default value: 2
+
+**stripe_blocksize_locked <0|1> , -stripe-blocksize-locked; **::
+     Do not allow client to override stripe blocksize with the **++OPTS
+RETR++** command.
++
+Default value: FALSE
+
+**stripe_layout_locked <0|1> , -stripe-layout-locked **::
+     Do not allow client to override stripe layout with the **++OPTS RETR++**
+command.
++
+Default value: FALSE
+
+
+
+
+[[gridftp-server-config_options-disk]]
+=== Disk Options ===
+
+
+
+**blocksize <number> , -bs <number> , -blocksize <number> **::
+     Size in bytes of data blocks to read from disk before posting to the
+network.
++
+Default value: 262144
+
+**sync_writes <0|1> , -sync-writes **::
+     Flush disk writes before sending a restart marker. This attempts to
+ensure that the range specified in the restart marker has actually been
+committed to disk. This option will probably impact performance and may
+result in different behavior on different storage systems. See the man
+page for **++sync()++** for more information.
++
+Default value: FALSE
+
+**use_home_dirs  , -use-home-dirs  **::
+     Set the startup directory to the authenticated users home dir.
++
+Default value: TRUE
+
+**perms <string> , -perms <string> **::
+     Set the default permissions for created files. Should be an octal number
+such as 0644. The default is 0644. Note: If umask is set it will affect
+this setting -- i.e. if the umask is 0002 and this setting is 0666, the
+resulting files will be created with permissions of 0664.
++
+Default value: not set
+
+**file_timeout <number> , -file-timeout <number> **::
+     Timeout in seconds for all disk accesses. A value of 0 disables the
+timeout.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-network]]
+=== Network Options ===
+
+
+
+**port <number> , -p <number> , -port <number> **::
+     Port on which a front end will listen for client control channel
+connections or on which a data node will listen for connections from a
+front end. If not set, a random port will be chosen and printed via the
+logging mechanism. See
+link:../..gridftp/admin/index.html#gridftp-admin-striped[Remote
+data-nodes and striped operations] and
+link:../..gridftp/admin/index.html#gridftp-admin-separated[Separation of
+processes for higher security] for examples of using this option.
++
+Default value: not set
+
+**control_interface <string> , -control-interface <string> **::
+     Hostname or IP address of the interface to listen for control
+connections on. If not set, will listen on all interfaces.
++
+Default value: not set
+
+**data_interface <string> , -data-interface <string> **::
+     Hostname or IP address of the interface to use for data connections. If
+not set will use the current control interface.
++
+Default value: not set
+
+**ipc_interface <string> , -ipc-interface <string> **::
+     Hostname or IP address of the interface to use for IPC connections. If
+not set, will listen on all interfaces.
++
+Default value: not set
+
+**hostname <string> , -hostname <string> **::
+     Effectively sets the above 'control_interface', 'data_interface' and
+'ipc_interface' options.
++
+Default value: not set
+
+**ipc_port <number> , -ipc-port <number> **::
+     Port on which the front end will listen for data node connections.
++
+Default value: not set
+
+
+
+
+**control_preauth_timeout <number> , -control-preauth-timeout <number> **::
+     Time in seconds to allow a client to remain connected to the control
+channel without activity before authenticating.
++
+Default value: 120
+
+**control_idle_timeout <number>; , -control-idle-timeout <number> **::
+     Time in seconds to allow a client to remain connected to the control
+channel without activity.
++
+Default value: 600
+
+**ipc_idle_timeout <number> , -ipc-idle-timeout <number> **::
+     Idle time in seconds before an unused IPC connection will close.
++
+Default value: 900
+
+**ipc_connect_timeout <number> , -ipc-connect-timeout <number> **::
+     Time in seconds before cancelling an attempted IPC connection.
++
+Default value: 60
+
+**port_range <string> , -port-range <string> **::
+     Port range to use for incoming connections. The format is
+"startport,endport". This, along with -data-interface, can be used to
+enable operation behind a firewall and/or when NAT is involved. This is
+the same as setting the environment variable GLOBUS_TCP_PORT_RANGE.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-user-msg]]
+=== User Messages ===
+
+
+
+**banner <string> , -banner <string> **::
+     Message that is displayed to the client before authentication.
++
+Default value: not set
+
+**banner_file <string> , -banner-file <string> **::
+     Read banner message from this file.
++
+Default value: not set
+
+**banner_terse <0|1> , -banner-terse **::
+     When this is set, the minimum allowed banner message will be displayed
+to unauthenticated clients.
++
+Default value: FALSE
+
+**banner_append <0|1> , -banner-append **::
+     When this is set, the message set in the 'banner' or 'banner_file'
+option will be appended to the default banner message rather than
+replacing it.
++
+Default value: FALSE
+
+**login_msg <string> , -login-msg <string> **::
+     Message that is displayed to the client after authentication.
++
+Default value: not set
+
+**login_msg_file <string> , -login-msg-file <string> **::
+     Read login message from this file.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-module]]
+=== Module Options ===
+
+
+
+**load_dsi_module <string> , -dsi <string> **::
+     Load this Data Storage Interface module. File and remote modules are
+defined by the server. If not set, the file module is loaded, unless the
+'remote' option is specified, in which case the remote module is loaded.
+An additional configuration string can be passed to the DSI using the
+format ++[module name]:[configuration string]++. The format of the
+configuration string is defined by the DSI being loaded.
++
+Default value: not set
+
+**allowed_modules <string> , -allowed-modules <string> **::
+     Comma-separated list of ERET/ESTO modules to allow and, optionally,
+specify an alias for. Example: 
++
+--------
+-allowed-modules module1,alias2:module2,module3
+--------
+(module2 will be loaded when a client asks for alias2).
++
+Default value: not set
+
+**dc_whitelist <string> , -dc-whitelist <string> **::
+     A comma separated list of drivers allowed on the network stack.
++
+Default value: not set
+
+**fs_whitelist <string> , -fs-whitelist <string> **::
+     A comma separated list of drivers allowed on the disk stack.
++
+Default value: not set
+
+**popen_whitelist <string> , -popen-whitelist <string> **::
+     A comma seperated list of programs that the popen driver is allowed to
+execute, when used on the network or disk stack. An alias may also be
+specified, so that a client does not need to specify the full path.
+Format is [alias:]prog,[alias:]prog. example: /bin/gzip,tar:/bin/tar
++
+Default value: not set
+
+**dc_default <string> , -dc-default <string> **::
+     A comma separated list of XIO drivers and options representing the
+default network stack. Format is of each driver entry is
+driver1[:opt1=val1;opt2=val2;...]. The bottom of the stack, the
+transport driver, is always first.
++
+Default value: not set
+
+**fs_default <string> , -fs-default <string> **::
+     A comma separated list of XIO drivers and options representing the
+default disk stack. Format is of each driver entry is
+driver1[:opt1=val1;opt2=val2;...]. The bottom of the stack, the
+transport driver, is always first.
++
+Default value: not set
+
+
+
+
+[[gridftp-server-config_options-other]]
+=== Other Options ===
+
+
+
+**configfile <string> , -c <string> **::
+     Path to configuration file that should be loaded. Otherwise will attempt
+to load ++$GLOBUS_LOCATION/etc/gridftp.conf++ and  and
+++/etc/grid-security/gridftp.conf++..
++
+[NOTE]
+--
+You have to provide full path 
+
+--
++
+Default value: not set
+
+**config_dir <string> , -C <string> **::
+     Path to directory holding configuration files that should be loaded.
+Files will be loaded in alphabetical order, and in the event of
+duplicate parameters the last loaded file will take precedence. Note
+that the main configuration file, if one exists, will always be loaded
+last.
++
+Default value: not set
+
+**config_base_path <string> , -config-base-path <string> **::
+     Base path to use when config and log path options are not full paths. By
+default this is the current directory when the process is started.
++
+Default value: not set
+
+**debug <0|1> , -debug **::
+     Set options that make the server easier to debug. Forces no-fork,
+no-chdir, and allows core dumps on bad signals instead of exiting
+cleanly. Not recommended for production servers. Note that non-forked
+servers running as root will only accept a single connection and then
+exit.
++
+Default value: FALSE
+
+**pidfile <string> , -pidfile <string> **::
+     Write PID of the GridFTP server to this path. May contain variable
+references to ${localstatedir}
++
+Default value: not set
+
+
+[WARNING]
+--
+Any FLAG can be negated by prepending '-no' or '-n' to the command line
+option.
+
+--
+
+
+== Limitations ==
+
+For transfers using parallel data transport streams and for transfers
+using multiple computers at each end, the direction of the connection on
+the data channels must go from the sending to the receiving side. For
+more information about this limitations see
+http://www.ogf.org/documents/GFD.20.pdf[http://www.ogf.org/documents/GFD.20.pdf].
+
+Globus GridFTP server does not run on windows
+

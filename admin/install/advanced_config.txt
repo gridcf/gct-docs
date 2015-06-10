@@ -1,0 +1,41 @@
+
+[[gtadmin-config-details]]
+== Detailed Configuration by Component ==
+
+
+--
+The following is a list of links that take you to information about
+detailed configuration for each component.
+
+
+* Common Runtime components
++
+
+** link:../..xio/admin/index.html#xio-configuring[XIO]
+
+
+* Security components
++
+
+** link:../..gsic/admin/index.html#gsic-configuring[GSI C]
+
+** link:../..myproxy/admin/index.html#myproxy-configuring[MyProxy]
+
+** link:../..gsiopenssh/admin/index.html#gsiopenssh-configuring[GSI-OpenSSH]
+
+
+* Data Management components
++
+
+** link:../..gridftp/admin/index.html#gridftp-configuring[GridFTP]
+
+
+* Execution Management components
++
+
+** link:../..gram5/admin/index.html#gram5-configuring[GRAM5]
+
+
+
+
+--

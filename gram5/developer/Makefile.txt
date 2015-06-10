@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/bester/docbook-to-asciidoc.py", line 1324, in <module>
+    tree = ET.parse(fn)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/etree/ElementTree.py", line 1182, in parse
+    tree.parse(source, parser)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/etree/ElementTree.py", line 656, in parse
+    parser.feed(data)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/etree/ElementTree.py", line 1642, in feed
+    self._raiseerror(v)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/etree/ElementTree.py", line 1506, in _raiseerror
+    raise err
+xml.etree.ElementTree.ParseError: syntax error: line 1, column 0

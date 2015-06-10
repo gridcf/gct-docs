@@ -1,0 +1,12 @@
+
+[[myproxy-dependencies]]
+=== Technology dependencies ===
+
+MyProxy depends on the following GT component:
+
+
+
+
+* link:[]
+
+

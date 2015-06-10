@@ -1,0 +1,28 @@
+
+[[gridftp-changes-summary]]
+=== Summary of Changes in GridFTP ===
+
+
+==== New Features: GridFTP ====
+
+
+
+* UDT Support for Wide-Area, Lossy Networks
+
+* UDT NAT Traversal, supported by Globus Connect Personal for peer-to-peer transfers.
+
+* S3/HTTP support, allowing GridFTP transfers to and from Amazon S3
+
+* DCSC for cross-domain transfers without mutual trust
+
+
+
+
+==== Improvements: GridFTP ====
+
+
+
+* Improved testing
+
+
+

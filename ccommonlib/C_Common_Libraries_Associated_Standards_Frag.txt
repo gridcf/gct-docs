@@ -1,0 +1,6 @@
+
+[[ccommonlib-rn-associatedstandards]]
+=== Associated Standards ===
+
+There are no standards implemented by the C common libraries.
+

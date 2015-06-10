@@ -1,0 +1,47 @@
+[[mig,Migrating Guides]]
+:doctype: article
+= GT 6.0 Migrating Guides =
+
+  
+--
+This page contains links to each GT 6.0 component's Migrating Guide.
+
+ 
+--
+
+--
+[NOTE]
+--
+At this time, many components are still working on updating their migration guides for this version.
+--
+
+ 
+--
+
+--
+
+* link:../..gridftp/mig/index.html[GridFTP]
+
+* link:../..gram5/mig/index.html[GRAM5]
+
+* Security
++
+
+** link:../..gsic/mig/index.html[GSI C]
+
+** link:../..myproxy/mig/index.html[MyProxy]
+
+** link:../..gsiopenssh/mig/index.html[GSI-OpenSSH]
+
+
+* Common Runtime Components
++
+
+** link:../..xio/mig/index.html[XIO]
+
+** link:../..ccommonlib/mig/index.html[C Common Libraries]
+
+
+
+ 
+--

@@ -1,0 +1,11 @@
+[[myproxyMig,Migrating Guide]]
+:doctype: article
+= GT 6.0 Migrating Guide for MyProxy =
+
+  
+--
+No special procedures are required for upgrading MyProxy installations.
+MyProxy is backward compatible.
+
+ 
+--

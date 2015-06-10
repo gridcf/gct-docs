@@ -1,0 +1,33 @@
+
+[[xio-driver-token_bucket]]
+=== Bandwidth Limiting Driver ===
+
+This is a bandwidth limiting driver. It allows the user to specify a
+bandwidth cap for a given connection.
+
+Features
+
+
+
+
+* 
+
+
+String Options
+
+
+
+
+* rate=
+
+* read_rate=
+
+* write_rate=
+
+* period=
+
+* read_period=
+
+* write_period=
+
+

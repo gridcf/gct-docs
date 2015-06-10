@@ -1,0 +1,20 @@
+
+[[xio-env-var]]
+=== Environmental variables for XIO ===
+
+The vast majority of the environment variables that affect the Globus
+XIO framework are defined by the driver in use. The following are links
+to descriptions of the more common driver environment variables:
+
+
+
+
+* http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5ftcp%5f%5fdriver%5f%5fenvs.html[TCP Driver Environment Variables]
+
+* http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5ffile%5f%5fdriver%5f%5fenvs.html[File Driver Environment Variables]
+
+* http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5fgsi%5f%5fdriver%5f%5fenvs.html[GSI Driver Environment Variables]
+
+* http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5fudp%5f%5fdriver%5f%5fenvs.html[UDP Driver Environment Variables]
+
+

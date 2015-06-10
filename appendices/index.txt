@@ -1,0 +1,18 @@
+[[appendices,Appendices]]
+:doctype: article
+= GT 6.0: Appendices =
+
+  
+--
+
+* link:[] [link:commands/gtCommands.pdf[PDF]]
+
+* link:[] [link:developer/gtDeveloperGuide.pdf[PDF]]
+
+* link:../..gt/key/index.html[] [link:key/gtKeyConcepts.pdf[PDF]]
+
+* link:[] [link:mig/gtMigratingGuide.pdf[PDF]]
+
+
+ 
+--

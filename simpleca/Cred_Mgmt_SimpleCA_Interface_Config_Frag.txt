@@ -1,0 +1,39 @@
+
+[[simpleca-configuring]]
+== Configuring ==
+
+
+[[simpleca-multiplemachines]]
+=== Configure SimpleCA for multiple machines ===
+
+So far, you have a single machine configured with SimpleCA certificates.
+Recall that in
+link:../..simpleca/admin/index.html#simpleca-confirmcert[] a CA setup
+package was created in
+++.globus/simpleCA/globus_simple_ca_HASH_setup-0.17.tar.gz++. If you
+want to use your certificates on another machine, you must install that
+CA setup package on that machine. . If you want to use your certificates
+on another machine, you must install that CA setup package on that
+machine. 
+
+To install it, copy that package to the second machine and run: 
+
+--------
+$GLOBUS_LOCATION/sbin/gpt-build globus_simple_ca_HASH_setup-0.17.tar.gz gcc32dbg
+$GLOBUS_LOCATION/sbin/gpt-postinstall
+--------
+
+
+Then you will have to perform **++setup-gsi -default++** from
+link:../..simpleca/admin/index.html#simpleca-finalizing[]. 
+
+If you are going to run services on the second host, it will need its
+own host certificate
+(link:../..simpleca/admin/index.html#simpleca-hostcert[]) and
+grid-mapfile (as described in the basic configuration instructions in
+link:../../admin/install/index.html#gtadmin-basic-gridmap[]). 
+
+You may re-use your user certificates on the new host. You will need to
+copy the requests to the host where the SimpleCA was first installed in
+order to sign them. 
+

@@ -1,0 +1,11 @@
+[[gsiopensshMig,Migrating Guide]]
+:doctype: article
+= GT 6.0 Migrating Guide for GSI-OpenSSH =
+
+  
+--
+No special procedures are required for upgrading GSI-OpenSSH
+installations. GSI-OpenSSH is backward compatible.
+
+ 
+--

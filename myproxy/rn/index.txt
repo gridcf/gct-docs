@@ -1,0 +1,39 @@
+[[myproxyRN,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes: MyProxy =
+
+  
+[[myproxy-rn-overview]]
+== Component Overview ==
+
+
+include::../Cred_Mgmt_MyProxy_Overview_Brief_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Feature_Summary_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Change_Summary_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Known_Problems_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Dependencies_Summary_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Platform_Summary_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Associated_Standards_Frag.txt[]
+
+ 
+[[myproxy-rn-formoreinfo]]
+== For More Information ==
+
+See link:[] for more information about this component. 
+
+  

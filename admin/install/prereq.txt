@@ -1,0 +1,95 @@
+
+[[gtadmin-prereq-chap]]
+== Software Prerequisites ==
+
+
+[[gtadmin-prereq]]
+=== Required software ===
+
+To build the Globus Toolkit from the source installer, first download
+the source from
+http://www.globus.org/toolkit/downloads/{$version}[download page], and
+be sure you have all of the following prerequisites installed. 
+
+This table shows specific package names (where available) for systems
+supported by GT 6.0: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<informaltable>
+                <tgroup cols='6'>
+                <thead>
+                    <row>
+                        <entry>Prerequisite</entry>
+                        <entry>Reason</entry>
+                        <entry>RedHat-based Systems</entry>
+                        <entry>Debian-based Systems</entry>
+                        <entry>Solaris 11</entry>
+                        <entry>Mac OS X</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>C Compiler</entry>
+                        <entry>Most of the toolkit is written in C, using C99
+                        and POSIX.1 features and libraries.</entry>
+                        <entry>gcc</entry>
+                        <entry>gcc</entry>
+                        <entry>pkg:/developer/gcc-45 or <ulink url='http://www.oracle.com/technetwork/server-storage/solarisstudio/downloads/index.html'>Solaris
+                        Studio</ulink> 12.3</entry>
+                        <entry><ulink url='https://developer.apple.com/xcode/'>XCode</ulink></entry>
+                    </row>
+                    <row>
+                        <entry>GNU or BSD sed</entry>
+                        <entry>Standard sed does not support long enough lines
+                        to process autoconf-generated scripts and
+                        Makefiles</entry>
+                        <entry>sed</entry>
+                        <entry>sed</entry>
+                        <entry>pkg:/text/gnu-sed</entry>
+                        <entry>(included in OS)</entry>
+                    </row>
+                    <row>
+                        <entry>GNU Make</entry>
+                        <entry>Standard make does not support long enough lines
+                        to process autoconf-generated makefiles</entry>
+                        <entry>make</entry>
+                        <entry>make</entry>
+                        <entry>pkg:/developer/build/gnu-make</entry>
+                        <entry>(included in XCode)</entry>
+                    </row>
+                    <row>
+                        <entry>OpenSSL 0.9.8 or higher</entry>
+                        <entry>GSI security uses OpenSSL's implementation of the
+                        SSL protocol and X.509 certificates.</entry>
+                        <entry>openssl-devel</entry>
+                        <entry>libssl-dev</entry>
+                        <entry>pkg:/library/security/openssl</entry>
+                        <entry>(included in base OS)</entry>
+                    </row>
+                    <row>
+                        <entry>Perl 5.10 or higher</entry>
+                        <entry>Parts of GRAM5 are written in Perl, as are many test scripts</entry>
+                        <entry>perl</entry>
+                        <entry>perl</entry>
+                        <entry>pkg:/runtime/perl-512</entry>
+                        <entry>(included in base OS)</entry>
+                    </row>
+                    <row>
+                        <entry>pkg-config</entry>
+                        <entry>Parts of GRAM5 are written in Perl</entry>
+                        <entry>pkgconfig</entry>
+                        <entry>pkg-config</entry>
+                        <entry>pkg:/developer/gnome/gettext</entry>
+                        <entry>Download and install from <ulink url='http://pkgconfig.freedesktop.org/releases/'>freedesktop.org source packages</ulink></entry>
+                    </row>
+                </tbody>
+                </tgroup>
+            </informaltable>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[NOTE]
+--
+In order to use the GNU versions of sed, tar, and make on Solaris, put ++/usr/gnu/bin++ at the head of your path. Also, to use all of the perl executables, add  at the head of your path. Also, to use all of the perl executables, add ++/usr/perl5/bin++ to your path. to your path.
+--
+
+

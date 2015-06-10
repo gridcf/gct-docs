@@ -1,0 +1,12 @@
+
+[[ccommonlib-platform-summary]]
+=== Tested platforms ===
+
+The C common libraries have been tested on the following platforms
+
+
+include::../platforms.txt[]
+
+
+ 
+

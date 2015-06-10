@@ -1,0 +1,10 @@
+
+[[ccommonlib-configuring]]
+== Configuring ==
+
+
+--
+There is no configuration interface to the C common libraries.
+
+
+--

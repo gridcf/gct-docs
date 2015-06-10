@@ -1,0 +1,31 @@
+
+[[gtadmin-env-var]]
+== Environment Variables in GT 6.0 ==
+
+
+=== Common Runtime Environmental Variables ===
+
+
+include::../../xio/XIO_Interface_Env_Frag.txt[]
+
+
+include::../../ccommonlib/C_Common_Libraries_Interface_Env_Frag.txt[]
+
+
+=== Security Environmental Variables ===
+
+
+include::../../gsic/GSIC_Interface_Env_Frag.txt[]
+
+
+include::../../myproxy/Cred_Mgmt_MyProxy_Interface_Env_Frag.txt[]
+
+
+include::../../gsiopenssh/Util_OpenSSH_Interface_Env_Frag.txt[]
+
+
+=== Data Management Environmental Variables ===
+
+
+include::../../gridftp/GridFTP_Interface_Env_Frag.txt[]
+

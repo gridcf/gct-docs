@@ -1,0 +1,14 @@
+
+[[gsic-outstanding]]
+=== Known Problems in GSIC ===
+
+
+
+* https://globus.atlassian.net/browse/GT-106[GT-106]: Free requirement for cred_get_subject_name not in API docs
+
+* https://globus.atlassian.net/browse/GT-373[GT-373]: gridmap_eppn_callout doesn't work with proxies
+
+* https://globus.atlassian.net/browse/GT-449[GT-449]: GCMU Install Incomplete When Use Aborts via no response to not fully qualified domain question
+
+
+

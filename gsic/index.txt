@@ -1,0 +1,107 @@
+[[gsic,GSI C]]
+:doctype: article
+= GT 6.0: Grid Security Infrastructure in C (GSI C) =
+
+  
+include::GSIC_Overview_Brief_Frag.txt[]
+
+ 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<informaltable frame='none'>
+    <tgroup cols='2'>
+      <colspec colname='c1'></colspec>
+
+      <colspec colname='c2'></colspec>
+
+      <tbody>
+        <row>
+          <entry namest='c1' nameend='c2'>The following guides are available
+          for this component:</entry>
+        </row>
+
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicKey'>Security Key Concepts</olink>
+          </emphasis></entry>
+
+          <entry>For important general concepts.  [<ulink url='key/securityKeyConcepts.pdf'>pdf</ulink>]</entry>
+
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicAdmin'>Admin Guide</olink> </emphasis></entry>
+
+          <entry>For system administrators and those installing, building and
+          deploying GT. You should already have read the <olink targetdoc='gtadmin'>Installation Guide</olink> and <olink targetdoc='quickstart'>Quickstart</olink>.  [<ulink url='admin/gsicAdminGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicUser'>User's Guide</olink> </emphasis></entry>
+
+          <entry>Describes how end-users typically interact with this
+            component. [<ulink url='user/gsicUserGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicDeveloper'>Developer's Guide</olink>
+          </emphasis></entry>
+
+          <entry>Reference and usage scenarios for developers.  [<ulink url='developer/gsicDeveloperGuide.pdf'>pdf</ulink>]</entry>
+
+        </row>
+
+        <row>
+          <entry namest='c1' nameend='c2'>Other information available for this
+          component are:</entry>
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicRN'>Release
+          Notes</olink> </emphasis></entry>
+
+          <entry>What's new with the <replaceable role='entity'>version</replaceable> release for this
+          component.  [<ulink url='rn/gsicReleaseNotes.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicPI'>Public
+          Interface Guide</olink> </emphasis></entry>
+
+          <entry>Information for all public interfaces (including APIs,
+          commands, etc). Please note this is a subset of information in
+          the <olink targetdoc='gsicDeveloper'>Developer's
+          Guide</olink>.  [<ulink url='pi/gsicPublicInterfacesGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicQP'>Quality
+          Profile</olink> </emphasis></entry>
+
+          <entry>Information about test coverage reports, etc.  [<ulink url='qp/gsicQualityProfile.pdf'>pdf</ulink>]</entry>
+
+        </row>
+
+        <row>
+          <entry><emphasis role='strong'> <olink targetdoc='gsicMig'>Migrating Guide</olink> </emphasis></entry>
+
+          <entry>Information for migrating to this version if you were using a
+          previous version of GT.  [<ulink url='mig/gsicMigratingGuide.pdf'>pdf</ulink>]</entry>
+
+        </row>
+
+        <row>
+          <entry><ulink url='gsic.pdf'><emphasis role='strong'>All GSI C Guides (PDF only)</emphasis></ulink>
+          </entry>
+
+          <entry>Includes all GSI C guides
+          except Public Interfaces (which is a subset of the Developer's
+          Guide)</entry>
+
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  

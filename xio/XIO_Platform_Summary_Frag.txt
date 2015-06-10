@@ -1,0 +1,9 @@
+
+[[xio-platforms]]
+=== Tested platforms ===
+
+Tested Platforms for XIO: 
+
+
+include::../platforms.txt[]
+

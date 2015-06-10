@@ -1,0 +1,328 @@
+
+[[gtadmin-install]]
+== Installing GT 6.0 ==
+
+
+[[install-bininst]]
+=== Installing Binary Packages ===
+
+
+include::../quickstart/prereq.txt[]
+
+
+[[install-toolkit]]
+==== Installing the Toolkit on Linux ====
+
+The components of the toolkit can be installed separately, or all at
+once. This section will show how to install various components, on both
+RPM based and Debian based Linux systems.
+
+For Fedora or Red Hat-based systems, used the **++yum++** command to
+install the Globus components and their dependencies. For SUSE Linux
+Enterprise Server systems, use **++zypper++**. For Debian-based systems,
+used the **++apt-get++** or **++aptitude++** commands. 
+
+For example, to install the GridFTP client tools, do the following for
+RPM-based systems: 
+
+--------
+root# yum install globus-data-management-client
+--------
+Do the following for Debian-based systems: 
+
+--------
+root# apt-get install globus-data-management-client
+--------
+
+
+
+[[install-packagegroups]]
+===== Package Groups =====
+
+The Globus Toolkit distribution includes several high-level package
+groups that can be used to install multiple packages to enable full
+client or server functionality of some Globus Toolkit component.
+
+These packages are: 
+
+**++globus-gridftp++**::
+     GridFTP client and server tools
+
+**++globus-gram5++**::
+     GRAM5 client and server tools
+
+**++globus-gsi++**::
+     Globus Security Infrastructure tools for managing certificates and proxies
+
+**++globus-data-management-server++**::
+     Server tools for deploying a GridFTP server.
+
+**++globus-data-management-client++**::
+     Client Tools for data management, including the GridFTP client programs and globus-url-copy
+
+**++globus-data-management-sdk++**::
+     Development headers and documentation for writing applications using the GridFTP APIs.
+
+**++globus-resource-management-server++**::
+     Server tools for deploying a GRAM5 resource manager
+
+**++globus-resource-management-client++**::
+     Client tools for resource management, including the globusrun tool, and the globus-job-* tools.
+
+**++globus-resource-management-sdk++**::
+     Development headers and documentation for writing applications using the GRAM5 APIs.
+
+
+
+===== Updating a Globus Installation =====
+
+In GT 6, there are three Globus Toolkit package repositories:
+**Stable**, **Testing**, and **Unstable**. The **Stable** repository is
+enabled by default, and is updated to to include fixes for major bugs
+and security issues. These can be easily installed via **++yum++** or
+**++apt-get++**. These updates will be published in the
+http://www.globus.org/toolkit/rss/advisories/{$shortversion}.rss[GT].
+Also, this means that when the next point release is made, collecting
+other minor bug fixes, the upgrade can be done via **++yum++** or
+**++apt-get++** without installing a new repository definition package. 
+
+In addition, users may enable the **Testing** or **Unstable** package
+repositories. These have different levels of documentation and testing
+done to them. 
+
+The **Testing** repository contains packages which have passed our
+automated test suite and are made available to people who are interested
+in the latest bug fixes. These packages will likely be migrated to the
+**Stable** repository once the package has been verified to fix a bug or
+issue and the documentation has been updated to include informtion about
+the issue. 
+
+The **Unstable** repository contains packages which have compiled
+successfully, but may not have completed all tests or are experimental
+in some way. Packages from the **Unstable** will potentially make it to
+the **Testing** repository once they seem to be functional. 
+
+
+==== Installing the Toolkit on Mac OS X ====
+
+Download the Mac OS X Globus Toolkit Installation Package from the
+Globus Toolkit web site. Click on ++globus_toolkit-6.0.pkg++, and follow
+the installation instructions. If you select the "Install for me only"
+option, your , and follow the installation instructions. If you select
+the "Install for me only" option, your ++$HOME/.profile++ is modified to
+add the Globus Toolkit components to your path. If you are using a
+different shell, you may need to incorporate those changes into your
+shell initialization file. If you install for all users, the global path
+will be updated.  is modified to add the Globus Toolkit components to
+your path. If you are using a different shell, you may need to
+incorporate those changes into your shell initialization file. If you
+install for all users, the global path will be updated. 
+
+To uninstall the toolkit, run the **++globus-uninstall++** script which
+will remove the toolkit and revert the PATH changes. 
+
+
+==== Installing the Toolkit on Windows ====
+
+There are four options when installing the Globus Toolkit on Windows:
+either using cygwin (32- and 64- bit builds) or MingW (32- and 64- bit
+builds). 
+
+The Cygwin installation requires the cygwin runtime (either 32-bit or
+64-bit) to be installed: see http://www.cygwin.com[cygwin.com] for
+details. To use the Globus Toolkit on cygwin, download the
+globus_toolkit-6.0-x86_64-pc-cygwin.zip or To use the Globus Toolkit on
+cygwin, download and unzip the globus_toolkit-6.0-i386-pc-cygwin.zip
+file and in the cygwin root directory. This will create files in
+/opt/globus 
+
+The mingw installtion does not require a special runtime, but some parts
+of the toolkit do not work with it: (LIST PENDING). To install the MingW
+packages, download the globus_toolkit-6.0-x86_64-w64-mingw32.zip or To
+use the Globus Toolkit on cygwin, download and unzip the
+globus_toolkit-6.0-i386-w64-mingw32.zip file. Add the unzipped
+directory's Globus\bin and Globus\sbin paths to your PATH environment to
+be able to use the Globus Toolkit. 
+
+
+[[gtadmin-installation-from-source-installer]]
+=== Installation from Source Installer ===
+
+[NOTE]
+--
+Installing using the Source Installer is only recommended on platforms
+for which native packages are not available. If you are installing onto
+a RedHat or Debian based Linux system, please see the section above.
+
+--
+[NOTE]
+--
+Make you sure you check out link:#gtadmin-platform[Platform Notes] for
+specific installation information related to your platform.
+
+--
+
+include::prereq.txt[]
+
+
+==== Installing from Source Installer ====
+
+
+
+. Create a user named **++globus++**. This non-privileged user will be
+used to perform administrative tasks, deploying services, etc. Pick an
+installation directory, and make sure this account has read and write
+permissions in the installation directory.
++
+[TIP]
+--
+You might need to create the target directory as **++root++**, then
+chown it to the **++globus++** user: 
+
+--------
+root# mkdir 
+root# chown globus:globus 
+--------
+
+
+--
++
+[IMPORTANT]
+--
+If for some reason you do **not** create a user named **++globus++**, be
+sure to run the installation as a **non-root** user. In that case, make
+sure to pick an install directory that your user account has write
+access to. 
+
+--
+
+. Download the required software noted in link:#gtadmin-prereq[].
+
+. The Globus Toolkit Source Installer sets the installation directory by
+default to ++/usr/local/globus-6++, but you may replace , but you may
+replace ++/usr/local/globus-6++ with whatever directory you wish to
+install to, by setting the prefix when you configure. with whatever
+directory you wish to install to, by setting the prefix when you
+configure.
++
+As the globus user, run:
++
+--------
+globus% ./configure --prefix=
+--------
++
+You can use command line arguments to ./configure for a more custom
+install.
++
+For a full list of options, see **++./configure --help++**.
+
+. The source installer will build all of the Globus Toolkit packages in
+the default make rule. The following Makefile targets can be used to
+build subsets of the Globus Toolkit: 
++
+**ccommonlibs**::
+     C Common Libraries
+
+**gridftp**::
+     GridFTP Client and Server
+
+**gsi**::
+     Security Libraries and Tools
+
+**gsi**::
+     Security Libraries and Tools
+
+**udt**::
+     Globus XIO UDT Driver
+
+**myproxy**::
+     MyProxy Client and Server
+
+**gsi-openssh**::
+     GSI OpenSSH Client and Server
+
+**gram5**::
+     GRAM5 Client and Libraries
+
+**gram5-server**::
+     GRAM5 Service
+
+**gram5-lsf**::
+     GRAM5 LSF Adapter
+
+**gram5-sge**::
+     GRAM5 SGE Adapter
+
+**gram5-slurm**::
+     GRAM5 SLURM Adapter
+
+**gram5-condor**::
+     GRAM5 Condor Adapter
+
+**gram5-pbs**::
+     GRAM5 PBS Adapter
+
+**gram5-auditing**::
+     GRAM5 Auditing Support
++
+Run:
++
+--------
+globus% make 
+--------
++
+Note that this command can take a while to complete. If you wish to have
+a log file of the build, use **++tee++**:
++
+--------
+globus% make 2>&1 | tee build.log
+--------
++
+The syntax above assumes a Bourne shell. If you are using another shell,
+redirect stderr to stdout and then pipe it to **++tee++**.
+
+. To test the toolkit, or particular packages within the toolkit, run: 
++
+--------
+globus% make check
+--------
+or 
++
+--------
+globus% make 
+--------
+where 'COMPONENT' is the name of the package to test. As an example, you
+could run 
++
+--------
+globus% make globus_gssapi_gsi-check
+--------
+to run the GSSAPI test programs.
+
+. Finally, run:
++
+--------
+globus% make install
+--------
++
+This completes your installation. Now you may move on to the
+configuration sections of the following chapters.
++
+We recommend that you install any security advisories available for your
+installation, which are available from the
+http://www.globus.org/toolkit/advisories.html?version={$shortversion}[Advisories
+page]. You may also be interested in subscribing to some
+http://dev.globus.org/wiki/Mailing%5fLists[mailing lists] for general
+discussion and security-related announcements.
+
+
+
+==== Updating an Installation ====
+
+The updates available in the native packages described above are also
+published as source packages on the
+http://www.globus.org/toolkit/advisories.html?version={$shortversion}[updates
+page]. To install update packages, follow their download link, untar
+them, and then configure them with the same prefix as your original
+installation. 
+

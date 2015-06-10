@@ -1,0 +1,6 @@
+
+Usability improvements for MyProxy: 
+
+Please see the http://www-unix.globus.org/ftppub/myproxy/VERSION[MyProxy
+Release Notes] for details on this and other MyProxy versions.
+

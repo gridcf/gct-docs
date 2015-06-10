@@ -1,0 +1,245 @@
+
+[[gridftpDeveloper,Developer's Guide]]
+:doctype: book
+= GT 6.0 GridFTP : Developer's Guide =
+
+  
+.Introduction
+--
+This guide contains information of interest to developers working with
+GridFTP. It provides reference information for application developers,
+including APIs, architecture, procedures for using the APIs and code
+samples.
+
+--
+
+  
+[[gridftp-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../GridFTP_Feature_Summary_Frag.txt[]
+
+
+include::../GridFTP_Platform_Summary_Frag.txt[]
+
+
+include::../GridFTP_Compatibility_Summary_Frag.txt[]
+
+
+include::../GridFTP_Dependencies_Summary_Frag.txt[]
+
+ 
+[[gridftp-developer-scenarios]]
+== Usage Scenarios ==
+
+
+--
+Do you have a need to move large quantities of data rapidly and reliably
+to remote locations? Globus GridFTP is a software suite optimized for
+the gamut of data access issues — from bulk file transfer to the details
+of getting data out of complex storage systems within sites. 
+
+Are you concerned about authenticating and authorizing the users? Globus
+GridFTP supports various authentication and authorization mechanisms. In
+fact, it is easy to plugin in different authorization mechanism. 
+
+Do you need to move data in and out of a complex storage systems? In
+addition to the POSIX file systems, Globus GridFTP can move data in and
+out of HPSS and SRB. Capability to access other storage systems can be
+easily added by implementing a well-defined pluggable interface called
+Data Storage Interface (DSI). 
+
+Do you need transfer huge volume of data and you do not want to babysit
+the transfer? Use the GridFTP client 'Reliable File Transfer Service'.
+
+Do you need to protect the data while moving it to the remote location?
+Globus GridFTP provides support for data integrity and data encryption.
+
+Do you need move your data to remote location that is far away and TCP
+limits the performance? Globus GridFTP supports UDT as an alternate
+transport protocol for UDT. GridFTP also allows you to use parallel TCP
+streams. 
+
+Do you want to move data from one location to many locations
+efficiently? Multicasting capability in Globus GridFTP allows you to do
+it.
+
+Do you have a network link between source and destination that supports
+much higher data rate than the data rate supported by individual nodes
+at either end? GridFTP supports cluster-to-cluster data movement –
+coordinated data transfer using multiple computer nodes at source and
+destination.
+
+Do you want to limit the resources used for each client connection on
+the server node? Globus GridFTP can be configured to run with GFork to
+limit the resource usage. Customized resource control modules can be
+plugged in easily.
+
+Globus GridFTP has pervasive use in the e-Science Grid community. The
+high energy physics community in particular has been a huge user from
+the start. The Relativistic Heavy Ion Collider (RHIC) community in
+Brookhaven used Globus GridFTP to sustain 600 megabytes per second of
+data transfer (from Long Island, New York, to Japan) over 11 days. 
+
+Frequent large file transfer demands for the British Broadcasting
+Corporation (BBC) are met by GridFTP. Typical broadcast hour today
+requires 280 GB for all pre-processed media streams. "Everything in
+Gridcast is built using Globus Toolkit," said Terry Harmer, Technical
+Director at the Belfast e-Science Centre, in an interview
+(http://www.globusconsortium.org/journal/20050816/harmer.html) in '05
+with the Globus Consortium Journal. "We use it as a means by which we
+create, define, and deploy services. We are big users of GridFTP."
+
+Recently, US Department of Energy's Advanced Photon Source user facility
+at Argonne transferred more than a terabyte of data (partitioned into
+lots of small files) to Australia using GridFTP at a rate 30 times
+faster than traditional data transfer mechanisms such as SCP. The Laser
+Interferometer Gravitational Wave Observatory (LIGO) project moved 1.5
+Terabytes of data from University of Wisconsin at Milwaukee, USA to
+Hannover, Germany at a sustained rate of 80 MB/s.
+
+
+--
+ 
+[[gridftp-developer-tutorials]]
+== Tutorials ==
+
+
+--
+There is an online tutorial available at:
+http://gridftp.globus.org/tutorials/[http://gridftp.globus.org/tutorials/].
+
+
+--
+ 
+[[gridftp-developer-Spec]]
+== Command Specifications ==
+
+
+--
+Globus implemention of GridFTP is based on the following standards: RFC
+959, RFC 2228, RFC 2389, IETF Draft MLST-16 , OGF GFD.020. In addition
+to these standards, some additional commands are implemented as well.
+The specification for one such command Data Channel Security Context
+(DCSC) is available at
+link:../..gridftp/developer/index.html#gridftp-developer-dcsc-spec[]. 
+
+
+--
+ 
+[[gridftp-developer-archdes]]
+== Architecture and design overview ==
+
+
+--
+GridFTP represents a service that a host is providing. Therefore, the
+service must be listening on a port waiting for client to request access
+to that service. This is generally handled one of two ways:
+
+
+* Either an application daemon is running listening for connections, or
+
+* inetd/xinetd is used.
+
+
+
+--
+
+=== GridFTP Listening ===
+
+The following list describes the process between the service listening
+for connection and an exchange of data taking place:
+
+
+
+. These services (application daemon or inetd/xinetd) listen for connections.
+
+. When a connection is received on a "well known" port such as 2811 for GridFTP, inetd does a fork/exec to start up a GridFTP server process and then does a Switch User (SU) so that the server is running in a user account rather than as root for security reasons. At this point, the client has established a control channel to the server.
+
+. The client will then send a series of commands to configure or describe the transfer that it wants to take place.
+
+
+
+=== GridFTP Transfer ===
+
+There are basically four important components of the exchange:
+
+
+
+. The first is security. You must authenticate, and for GridFTP, you must establish encryption on the control channel. The control channel is encrypted by default, though it can be switched off (see the security section for more detail).
+
+. The second is setup and informational exchanges. The client may specify the type of the file (Binary or ASCII), the MODE of the transfer, he might request the size of a file before transferring it, etc..
+
+. Third, the information and negotiation for the data channel must be done. How this is handled, depends on whether you are doing a client/server transfer or third party transfer.
+
+. Finally, a store (STOR), retrieve (RETR), extended store (ESTO) or extended retrieve (ERET) to indicate direction of the transfer and to start data moving.
+
+
+
+=== GridFTP Server and DSIs ===
+
+
+include::../GridFTP_DSI_General_Frag.txt[]
+
+
+include::../GridFTP_DSI_HPSS_Frag.txt[]
+
+
+include::../GridFTP_DSI_SRB_Frag.txt[]
+
+ 
+include::../GridFTP_Interface_API_Frag.txt[]
+
+ 
+include::../GridFTP_Interface_Commandline_Frag.txt[]
+
+ 
+include::../GridFTP_Interface_GUI_Frag.txt[]
+
+ 
+include::../GridFTP_Interface_Config_Frag.txt[]
+
+ 
+[[gridftp-developer-env-var]]
+== Environment variable interface ==
+
+
+include::../GridFTP_Interface_Env_Frag.txt[]
+
+ 
+[[gridftp-developer-debugging]]
+== Debugging ==
+
+
+--
+You can find information on sys admin logs in
+link:../..gridftp/admin/index.html#gridftp-admin-debugging[].
+
+
+--
+ 
+include::../GridFTP_Troubleshooting_Frag.txt[]
+
+ 
+[[gridftp-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+
+* http://www.globus.org/alliance/publications/papers/gridftp%5ffinal.pdf[The Globus Striped GridFTP Framework and Server]
+
+
+
+--
+ 
+include::DCSC_Spec.txt[]
+
+ 
+include::GridFTP_DSI_Dev.txt[]
+
+ 
+include::GridFTP_Multicast.txt[]
+
+   

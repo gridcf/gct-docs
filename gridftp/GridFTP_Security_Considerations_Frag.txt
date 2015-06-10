@@ -1,0 +1,96 @@
+
+[[gridftp-security-considerations]]
+=== Security Considerations ===
+
+
+[[gridftp-security-config]]
+==== Ways to configure your server ====
+
+There are various ways to configure your GridFTP server that provide
+varying levels of security. For more information, see
+link:../..gridftp/admin/index.html[].
+
+
+[[gridftp-security-firewalls]]
+==== Firewall requirements ====
+
+If the GridFTP **server** is behind a firewall:
+
+
+
+. Contact your network administrator to open up port 2811 (for GridFTP
+control channel connection) and a range of ports (for GridFTP data
+channel connections) for the incoming connections. If the firewall
+blocks the outgoing connections, open up a range of ports for outgoing
+connections as well.
+
+. Set the environment variable GLOBUS_TCP_PORT_RANGE: 
++
+--------
+export GLOBUS_TCP_PORT_RANGE=min,max 
+--------
+where 'min','max' specify the port range that you have opened for the
+incoming connections on the firewall. This restricts the listening ports
+of the GridFTP server to this range. Recommended range is 1000 (e.g.,
+50000-51000) but it really depends on how much use you expect.
+
+. If you have a firewall blocking the outgoing connections and you have
+opened a range of (local) ports, set the environment variable
+GLOBUS_TCP_SOURCE_RANGE: 
++
+--------
+export GLOBUS_TCP_SOURCE_RANGE=min,max 
+--------
+where 'min','max' specify the port range that you have opened for the
+outgoing connections on the firewall. This restricts the GridFTP server
+to bind to a local port in this range for outbound connections.
+Recommended range is twice the range used for GLOBUS_TCP_PORT_RANGE,
+because if parallel TCP streams are used for transfers, the listening
+port would remain the same for each connection but the connecting port
+would be different for each connection.
+
+
+[NOTE]
+--
+If the server is behind NAT, the ++--data-interface <real ip/hostname>++
+option needs to be used on the server.
+
+--
+If the GridFTP **client** is behind a firewall:
+
+
+
+. Contact your network administrator to open up a range of ports (for
+GridFTP data channel connections) for the incoming connections. If the
+firewall blocks the outgoing connections, open up a range of ports for
+outgoing connections as well.
+
+. Set the environment variable GLOBUS_TCP_PORT_RANGE 
++
+--------
+export GLOBUS_TCP_PORT_RANGE=min,max 
+--------
+where min,max specify the port range that you have opened for the
+incoming connections on the firewall. This restricts the listening ports
+of the GridFTP client to this range. Recommended range is 1000 (e.g.,
+50000-51000) but it really depends on how much use you expect.
+
+. If you have a firewall blocking the outgoing connections and you have
+opened a range of ports, set the environment variable
+GLOBUS_TCP_SOURCE_RANGE: 
++
+--------
+export GLOBUS_TCP_PORT_RANGE=min,max 
+--------
+where min,max specify the port range that you have opened for the
+outgoing connections on the firewall. This restricts the GridFTP client
+to bind to a local port in this range for outbound connections.
+Recommended range is twice the range used for GLOBUS_TCP_PORT_RANGE,
+because if parallel TCP streams are used for transfers, the listening
+port would remain the same for each connection but the connecting port
+would be different for each connection.
+
+
+Additional information on Globus Toolkit Firewall Requirements is
+available http://www.globus.org/toolkit/security/firewalls/[here].
+

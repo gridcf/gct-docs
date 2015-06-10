@@ -1,0 +1,23 @@
+
+[[xioPI,Public Interface Guide]]
+:doctype: book
+= GT 6.0 Component Guide to Public Interfaces: XIO =
+
+  
+include::../XIO_Interface_API_Frag.txt[]
+
+ 
+[[xio-pi-env-vars]]
+== Environmental variables ==
+
+
+include::../XIO_Interface_Env_Frag.txt[]
+
+ 
+[[xio-error-codes]]
+== Errors ==
+
+
+include::../XIO_Errors_Frag.txt[]
+
+ 

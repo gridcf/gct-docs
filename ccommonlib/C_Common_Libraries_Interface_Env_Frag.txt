@@ -1,0 +1,28 @@
+
+[[ccommonlib-env-var]]
+=== Environment variables for C Common Libraries ===
+
+
+
+**GLOBUS_HOSTNAME**::
+     Set this variable to the fully qualified name of the local machine's hostname.
+
+**GLOBUS_DOMAIN_NAME**::
+     Set this variable to the domain name to be used to qualify the local machine's hostname.
+
+**GLOBUS_ERROR_OUTPUT**::
+     Set this variable to 1 to cause Globus libraries to display error information to stderr.
+
+**GLOBUS_ERROR_VERBOSE**::
+     Set this variable to 1 to enable verbose error messages.
+
+**GLOBUS_I18N**::
+     Set this variable to 1 to attempt to use localized messages. (Currently not working)
+
+**GLOBUS_LOCATION**::
+     Set this variable to the path where the Globus Toolkit is installed, so that Globus tools can find libraries and data files. This is only needed if the Globus Toolkit was built with the source installer.
+
+**GLOBUS_THREAD_MODEL**::
+     Set to the name of a thread model to control the operation of the Globus event driver. Valid values are (depending on the platform) ++none++ for non-threaded operation (the default), ++pthread++ for POSIX threads, or ++windows++ for Windows threads.
+
+

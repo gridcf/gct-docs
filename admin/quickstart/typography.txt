@@ -1,0 +1,27 @@
+
+[[q-typography]]
+=== Typographical Conventions ===
+
+Where there is a command to be typed, it will be preceded by one of the
+following prompts: 
+
+**++root# ++, ++root@donkey# ++**::
+     Run this command as the **++root++** super-user, on the **++elephant++** or **++donkey++** hosts respectively. You might have to use a command like **++su++**(8) or **++sudo++**(8) to start a root shell before executing the command.
+
+**++myproxy% ++**::
+     Run this command as the **++myproxy++** user, on the **++elephant++** host. This user is created automatically when the **++myproxy-server++** package is installed.
+
+**++quser% ++, ++quser@donkey% ++**::
+     Run this command as the normal user account you are intending to interact with your Globus sevices, on the **++elephant++** or **++donkey++** hosts. In this document, we use the **++quser++** accout for this, but if you have another user, you can use it for that purpose.
+
+
+Commands themselves will be typeset as **++run-this-command
+-with-arguments++**, and responses to the commands like this ++Some
+Response Text++. If there is some portion of a command which should be
+replaced by value, such as a version number, it will be typeset like
+this: 'REPLACEME'. 
+
+Finally, in some cases you will be prompted for a passphrase. When that
+occurs, the entry of the passphrase will be indicated by ++******++,
+even though nothing will be printed to the screen. 
+

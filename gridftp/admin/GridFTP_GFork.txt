@@ -1,0 +1,347 @@
+
+[[gridftp-admin-gfork-master]]
+== Running the Globus GridFTP Server With GFork ==
+
+
+[[gridftp-gfork-master-intro]]
+=== Introduction ===
+
+GFork is a user-configurable super-server daemon very similar to xinetd
+in that it listens on a TCP port. When clients connect to a port, it
+runs an administrator-defined program which services that client
+connection, just as xinetd does.
+
+An unfortunate drawback to xinetd is that there is no way to maintain or
+share long-term information. Every time a client connects, a new process
+is created; and every time that client disconnects, the process is
+destroyed. All of the information regarding the specific interactions
+with a given client is lost with these transient processes. A further
+disadvantage is that there is no way for these service instances to
+share service-specific information with each other while they are
+running.
+
+There are times when it is useful for a service to maintain long-term
+service-specific state, or for a service to share state across client
+connections. GFork is designed to address this situation. GFork runs a
+long term master program (that is user-defined) and forms communication
+links via UNIX pipes between this process and all client connection
+child processes. This allows long-term state to be maintained in memory
+and allows for communication between all nodes.
+
+Associated with a GFork instance is a master process. When GFork starts,
+it runs a user-defined master program and opens up bi-directional pipes
+to it. The master program runs for the lifetime of the GFork daemon. The
+master is free to do whatever it wants; it is a user-defined program.
+Some master programs listen on alternative TCP connections to have state
+remotely injected. Others monitor system resources, such as memory, in
+order to best share resources. As clients connect to the TCP listener,
+child processes are forked which then service the client connection.
+Bi-directional pipes are opened up to the child processes as well. These
+pipes allow for communication between the master program and all child
+processes. The master program and the child programs have their own
+protocol for information exchange over these links. GFork is just a
+framework for safely and quickly creating these links.
+
+
+[[gridftp-gfork-master-use-case]]
+=== Use Cases ===
+
+The creation of GFork was motivated by the Globus GridFTP server.
+GridFTP can be run as a striped server where there is a frontend and
+several backends. The backends run in tandem to transfer files faster by
+tying together many NICs. The frontend is the contact point for the
+client where transfer requests are made. When the frontend is run out of
+inetd, the list of possible backends must be statically configured.
+Unfortunately, backends tend to come and go. Sometimes backends fail,
+and sometimes backends are added to a pool. We needed a way to have a
+[fixme good synopsis: dynamic pool of backends for use in live
+transfers]. To accomplish this we created GFork.
+
+
+[[gridftp-gfork-config]]
+=== Configuration ===
+
+A major difference between GFork configuration and xinetd is that GFork
+only runs one service per instance, where xinetd runs many services per
+instance all associated with many different ports. GFork takes a single
+configuration file and handles a single service. If there is demand,
+GFork will be enhanced to handle many services in the way that xinetd
+does.
+
+Running the globus-gridftp-server under GFork is almost identical to
+running it under xinetd. First, you need a configuration file:
+
+
+
+--------
+service gridftp2
+{
+env += GLOBUS_LOCATION=<path to GL>
+env += LD_LIBRARY_PATH=<path to GL>/lib
+server = <path to GL>/sbin/globus-gridftp-server
+server_args = -i 
+server_args += -d ALL -l <path to GL>/var/gridftp.log
+port = 5000
+}
+--------
+
+That portion is identical to xinetd. In fact, an existing xinetd
+configuration file should work.
+
+When running GridFTP out of GFork, the server should be run with a
+master program. The master program provides enhanced functionality such
+as dynamic backend registration for striped servers, managed system
+memory pools and internal data monitoring for both striped and
+non-striped servers.
+
+To run with a master program, the following two lines are needed in the
+config file.
+
+
+
+--------
+
+master = <path to GL>/libexec/gfs-gfork-master
+master_args = <options>
+--------
+
+These last two options relate to the master program and work in the same
+way that ++server++ and ++server_args++ do. The first line tells GFork
+what master program to use (for the GridFTP server, we use
+**++gfs-gfork-master++**). The second line provides options to the
+master program.
+
+The full list of master options are as follows (this is to date only,
+run the program with '--help' for newer options):
+
+
+
+**-b | --reg-cs <contact string>**::
+     Contact to the frontend registry. This option makes it a data node.
+
+**-df | --dn-file <path>**::
+     Path to a file containing the list of acceptable DNs. Default is system
+gridmap file.
+
+**-G | --gsi <bool>**::
+     Enable or disable GSI. Default is on.
+
+**-h | --help**::
+     Print the help message.
+
+**-l | --logfile <path>**::
+     Path to the logfile.
+
+**-p | --port <int>**::
+     Port where the server listens for connections.
+
+**-s | --stripe-count <int>**::
+     The maximum number of stripes to give to each server. A value of 0
+indicates all stripes are available.
+
+**-u | --update-interval <int>**::
+     Number of seconds between registration updates.
+
+
+The following is an example GFork configuration file:
+
+
+
+--------
+service gridftp2
+    {
+    instances = 100
+    env += GLOBUS_LOCATION=/home/bresnaha/Dev/Globus-gfork3/GL
+    env += LD_LIBRARY_PATH=/home/bresnaha/Dev/Globus-gfork3/GL/lib
+    server = /home/bresnaha/Dev/Globus-gfork3/GL/sbin/globus-gridftp-server
+    server_args = -i -aa
+    server_args += -d ALL -l /home/bresnaha/tst.log
+    server_args += -dsi remote -repo-count 1
+    nice = 10
+    port = 5000
+    master = /home/bresnaha/Dev/Globus-gfork3/GL/libexec/gfs-gfork-master
+    master_args = -port 6065 -l /home/bresnaha/master.log -G n
+    master_args += -dn /home/bresnaha/master_gridmap
+    }
+--------
+
+Once you have a configuration file, run GFork with:
+
+
+
+--------
+% gfork -c <path to config file>
+--------
+
+
+[[gridftp-gfork-striped]]
+=== GFork and Striped Servers ===
+
+As mentioned in link:#gridftp-admin-striped[], GridFTP offers a powerful
+enhancement called striped servers. In this mode a GridFTP server is set
+up with a single frontend and one or more backends. All of the backends
+work in concert to transfer a single file and thereby achieve high
+throughput rates. Here we describe how to configure one frontend and
+multiple backends for use as a striped server with GFork.
+
+
+[[gridftp-gfork-striped-frontend]]
+==== Frontend Configuration ====
+
+The frontend server described here is run using dynamic backends. We
+need additional options for both the GridFTP server and the master
+program. The following lines are added to the config file:
+
+
+
+--------
+server_args += -dsi remote 
+master_args = -port 8588
+master_args += -df <path to gridmap file>
+--------
+
+The first line is an additional argument to the GridFTP server. It tells
+the server that it will be operating in split mode (separate frontend
+and backend processes) and that it will be using the frontend.
+(Specifically it tells the server to use the 'remote' DSI).
+
+The second line tells the master program on which port it should listen
+for backend registrations. Backend services can then connect to this
+port to notify the frontend of their existence. By default, a
+registration is good for 10 minutes, but a backend is free to refresh
+its registration. In this way, a frontend is provided with the list of
+possible backends (stripes) which may be used for a transfer.
+
+The third line provides the master program with a list of authorized
+DNs. Each line in the file must contain a GSI DN (certificate subject).
+In order to register, the backend must authenticate and provide its DN.
+The provided DN is checked against this file. In other words, the file
+is a list of DNs that may register with the frontend. If the master
+program is not given a '-df' option and is given the '-G' option, then
+there is no registration security at all.
+
+
+[[gridftp-gfork-striped-backend]]
+==== Backend Configuration ====
+
+Any striped server setup can have more than one backend service.
+Furthermore, any one computer can run multiple backends. The following
+explains how to set up a backend server. These steps should be repeated
+for each needed backend instance.
+
+A backend server may also be run with GFork, it just needs different
+options for both the GridFTP server and the master program. A sample
+backend config file is shown here:
+
+
+
+--------
+service gridftp2
+{
+env += GLOBUS_LOCATION=<path to GL>
+env += LD_LIBRARY_PATH=<path to GL>/lib
+
+server = <path to GL>/sbin/globus-gridftp-server
+server_args = -i  
+server_args += -dn
+master = <path to GL>/libexec/gfs-gfork-master
+master_args = -b localhost:8588
+}
+--------
+
+Notable additions to this file are:
+
+
+
+--------
+server_args += -dn
+master_args = -b localhost:8588
+--------
+
+The first line tells the GridFTP server that it will be a 'data node',
+which is another name for a backend.
+
+The second line tells the master program two things, first that it will
+be a master of a data node, and second what the frontend's registration
+contact point is. Note that in our example we have a hostname of
+'localhost' and a port of '8588'. 8588 is (and must be) the same port
+that was provided to the frontend's master program in the previous step.
+
+Once the configuration file is complete, run GFork again as follows:
+
+
+
+--------
+% gfork -c <conf file>
+--------
+
+This will start up the data node and the master program will register
+itself to the frontend and refresh its registration every 5 minutes
+(default setting).
+
+
+[[gridftp-gfork-memory-mgt]]
+=== GFork with Memory Management ===
+
+Another feature of the GridFTP GFork plugin is memory usage limiting.
+Under extreme client loads, it is possible that GridFTP servers require
+more memory than the system has available. Due to a common kernel memory
+allocation scheme known as optimistic provisioning, this situation can
+lead to a full consumption of memory resources and thus trigger the out
+of memory handler. The OOM handler will kill processes in a
+difficult-to-predict way in order to free up memory. This will leave the
+system in an unpredicatable and unstable state; obviously, this is a
+situation that we want to avoid.
+
+To control this situation, the GridFTP GFork plugin has a memory
+limiting option. This will attempt to limit memory usage to a given
+value or to the maximum amount of RAM in the system. Most of the memory
+is given to the first few connections, but when the plugin detects that
+it is overloaded, each session is limited to half the available memory.
+
+To enable this feature, one of two options must be passed to the master
+program via the 'master_args' in the config file:
+
+
+
+**-m**::
+     Limits memory consumption to amount of RAM in the system.
+
+**-M <formated int>**::
+     Limits memory to the given value.
+
+
+Another important option should be provided in the GFork config file:
+'instance'. When a client connects to GFork, a GridFTP server instance
+is executed. This instance requires a certain amount of RAM. If
+connections are coming in too fast, this can act as a DOS attack.
+Limiting the number of allowed simultaneous connections will help the
+memory management algorithm do its job. This limit is set with:
+
+
+
+--------
+instance = <int>
+--------
+
+We recommend a value of 100 or |RAM|/2M, whichever is smaller.
+
+The following is an example of a GFork configuration file with memory
+limiting enabled:
+
+
+
+--------
+service gridftp2
+{
+instance = 100  
+env += GLOBUS_LOCATION=<path to GL>
+env += LD_LIBRARY_PATH=<path to GL>/lib
+server = <path to GL>/sbin/globus-gridftp-server
+server_args = -i
+server_args += -dn
+master = <path to GL>/libexec/gfs-gfork-master
+master_args = -M 512M
+}
+--------
+

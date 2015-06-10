@@ -1,0 +1,12 @@
+
+[[gram5-fixed-bugs]]
+=== Fixed Bugs for GRAM5 ===
+
+
+
+* Fix crash when USER environment variable is not set
+
+* Incorrect argument order in ++globus_cond_wait()++ in ++globus-scheduler-event-generator++ package
+
+
+

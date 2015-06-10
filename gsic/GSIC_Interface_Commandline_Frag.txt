@@ -1,0 +1,87 @@
+[[gsic-cmd]]
+= GSI Commands =
+
+
+:leveloffset: 2
+
+include::globus-update-certificate-dir-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid_cert_diagnostics-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-cert-info-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-cert-request-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-default-ca-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-change-pass-phrase-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid_proxy_init-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid_proxy_destroy-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid_proxy_info-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-mapfile-add-entry-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-mapfile-check-consistency-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-mapfile-delete-entry-manual.txt[]
+
+
+:leveloffset: 0

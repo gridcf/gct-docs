@@ -1,0 +1,79 @@
+
+[[gridftp-api-summary]]
+== API Summary ==
+
+
+=== Programming Model Overview ===
+
+The Globus FTP Client library provides a convenient way of accessing
+files on remote FTP servers. In addition to supporting the basic FTP
+protocol, the FTP Client library supports several security and
+performance extensions to make FTP more suitable for Grid applications.
+These extensions are described in the
+http://www.globus.org/alliance/publications/papers/GFD-R.0201.pdf[GridFTP
+Protocol document].
+
+In addition to protocol support for grid applications, the FTP Client
+library provides a
+http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fplugins.html[plugin
+architecture] for installing application or grid-specific fault recovery
+and performance tuning algorithms within the library. Application
+writers may then target their code toward the FTP Client library and, by
+simply enabling the appropriate plugins, easily tune their application
+to run it on a different grid.
+
+All applications which use the Globus FTP Client API must include the
+header file ++globus_ftp_client.h++ and activate the  and activate the
+http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5factivation.html[GLOBUS_FTP_CLIENT_MODULE].
+
+To use the Globus FTP Client API, one must create an
+http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fhandle.html[FTP
+Client handle]. This structure contains: 
+
+* context information about FTP operations which are being executed,
+
+* a cache of FTP control and data connections, and
+
+* information about plugins which are being used.
+
+
+The specifics of the connection caching and plugins are found in the
+"http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fhandleattr.html[Handle
+Attributes]" section of the API documentation.
+
+Once the handle is created, one may begin transferring files or doing
+other FTP operations by calling the functions in the
+"http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5foperations.html[FTP
+Operations]" section of the API documentation. In addition to whole-file
+transfers, the API supports partial file transfers, restarting transfers
+from a known point, and various FTP directory management commands. All
+FTP operations may have a set of attributes, defined in the
+operationattr section, associated with them to tune various FTP
+parameters. The data structures and functions needed to restart a file
+transfer are described in the
+"http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5frestart%5f%5fmarker.html[Restart
+Markers]" section of the API documentation. For operations which require
+the user to send to or receive data from an FTP server they must call
+the functions described in the "globus_ftp_client_data" section of the
+manual.
+
+The globus_ftp_control library provides low-level services needed to
+implement FTP clients and servers. The API provided is protocol
+specific. The data transfer portion of this API provides support for the
+standard data methods described in the FTP Specification as well as
+extensions for parallel, striped, and partial data transfer. 
+
+
+=== Component API ===
+
+
+
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/index.html[C Client Library API]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fcontrol/html/index.html[C Control Library API]
+
+
+For information on the internationalization API, see
+link:../..ccommonlib/pi/index.html#ccommonlib-apis[]. 
+

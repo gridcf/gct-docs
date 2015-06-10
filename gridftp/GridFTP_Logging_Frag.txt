@@ -1,0 +1,62 @@
+
+[[gridftp-logging]]
+=== Logging ===
+
+As of Globus 4.2.0, GridFTP server provides system administration logs
+in 2 different formats. The CEDPS best practices compliant format is a
+new format provided by GridFTP server available in Globus 6.0. For more
+details on the CEDPS Logging format, see
+http://cedps.net/index.php/LoggingBestPractices[http://cedps.net/index.php/LoggingBestPractices].
+
+
+==== Configuring CEDPS format system administration logs ====
+
+
+
+--------
+globus-gridftp-server -log-module stdio_ng -log-level info,warn,error -logfile /var/log/gridftp.log
+--------
+
+For more information about the logging options, see
+link:../..gridftp/admin/index.html#globus-gridftp-server[].
+
+Sample log file:
+link:/toolkit/docs/{$shortversion}/{$version}/data/gridftp/gridftp.log1[gridftp.log1]
+
+
+==== Configuring traditional format system administration logs ====
+
+
+
+--------
+globus-gridftp-server -log-module stdio -log-level info,warn,error -logfile /var/log/gridftp.log
+--------
+
+which is the same as
+
+
+
+--------
+globus-gridftp-server -log-level info,warn,error -logfile /var/log/gridftp.log
+--------
+
+**++stdio++** is the default log-module.
+
+Sample log file:
+link:/toolkit/docs/{$shortversion}/{$version}/data/gridftp/gridftp.log2[gridftp.log2]
+
+
+==== Netlogger-style logging ====
+
+Apart from the 2 formats mentioned above, GridFTP server can log
+netlogger style information for each transfer.
+
+
+
+--------
+globus-gridftp-server -log-transfer /var/log/gridftp.log
+--------
+
+Sample log file:
+link:/toolkit/docs/{$shortversion}/{$version}/data/gridftp/gridftp.log3[gridftp.log3]
+

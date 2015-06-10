@@ -1,0 +1,3 @@
+
+The interface to SimpleCA remains unchanged.
+

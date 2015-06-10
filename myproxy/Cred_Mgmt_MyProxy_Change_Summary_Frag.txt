@@ -1,0 +1,8 @@
+
+[[myproxy-changessummary]]
+=== Summary of Changes in MyProxy ===
+
+GT 6.0 contains link:[MyProxy] 6.0rc3. See the
+http://grid.ncsa.illinois.edu/myproxy/dl/VERSION[MyProxy Release Notes]
+for more details on this and other MyProxy versions.
+

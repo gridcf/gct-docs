@@ -1,0 +1,26 @@
+
+[[simpleca-featuresummary]]
+=== Feature Summary ===
+
+Features new in GT 6 
+
+* Remove dependency on GPT to generate and use SimpleCA
+
+* Support for generating native RPM and Debian packages for SimpleCA files.
+
+
+
+Other Supported Features 
+
+* Easy creation of X.509 certificates for use with the Globus Toolkit
+
+* Easy creation of GPT packages for the created SimpleCA
+
+
+
+Deprecated Features 
+
+* GPT package distribution of CA data
+
+
+

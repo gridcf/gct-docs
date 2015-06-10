@@ -1,0 +1,9 @@
+
+[[myproxy-platforms]]
+=== Tested platforms ===
+
+Tested Platforms for MyProxy:
+
+
+include::../platforms.txt[]
+

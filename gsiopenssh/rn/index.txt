@@ -1,0 +1,42 @@
+[[gsiopensshRN,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes: GSI-OpenSSH =
+
+  
+[[gsiopenssh-rn-overview]]
+== Component Overview ==
+
+
+include::../Util_OpenSSH_Overview_Brief_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Feature_Summary_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Change_Summary_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Fixed_Bugs_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Known_Problems_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Dependencies_Summary_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Platform_Summary_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Compatibility_Summary_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Associated_Standards_Frag.txt[]
+
+ 
+[[gsiopenssh-rn-formoreinfo]]
+== For More Information ==
+
+See link:[] more information about this component. 
+
+  

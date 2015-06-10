@@ -1,0 +1,11 @@
+
+[[gtadmin-basic-setup]]
+== Basic Setup for GT 6.0 ==
+
+
+--
+The link:../../admin/quickstart/index.html[Quickstart Guide] walks you
+through setting up basic services on multiple machines.
+
+
+--

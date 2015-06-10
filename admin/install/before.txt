@@ -1,0 +1,50 @@
+
+[[gtadmin-before]]
+== Before you begin ==
+
+
+--
+Before you start installing the Globus Toolkit 6.0, there are a few
+things you should consider. The toolkit contains several components, and
+you may only be interested in some of them. 
+
+The Globus Toolkit version 6.0 includes:
+
+
+* link:[GSI]: security
+
+* link:[GridFTP]: file transfer
+
+* link:[GRAM]: job execution/resource management
+
+* link:[MyProxy]: credential repository/certificate authority
+
+* link:[GSI-OpenSSH]: GSI secure single sign-on remote shell
+
+
+
+--
+
+--
+[IMPORTANT]
+--
+These all run on Unix platforms only.
+--
+
+If you are new to the toolkit and want to experiment with the
+components, you may want to use a supported RedHat based or Debian based
+Linux system. With the new supported native packaging installs, they are
+the simplest platforms on which to install GT services. 
+
+For the purposes of this documentation, Globus is being installed on a
+machine called **++elephant++**. 
+
+
+--
+
+:leveloffset: 2
+
+include::../quickstart/typography.txt[]
+
+
+:leveloffset: 0

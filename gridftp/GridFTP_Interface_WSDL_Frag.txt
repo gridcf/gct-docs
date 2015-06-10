@@ -1,0 +1,10 @@
+
+[[gridftp-pi-wsdl]]
+== Semantics and syntax of the WSDL ==
+
+
+--
+GridFTP has no WSDL as it is not Web Service based at this time.
+
+
+--

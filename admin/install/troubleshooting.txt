@@ -1,0 +1,43 @@
+
+[[gtadmin-troubleshooting]]
+== Troubleshooting your installation ==
+
+
+--
+The following is a list of links that take you to information about
+troubleshooting your installation by component
+
+
+* Common Runtime components
++
+
+** link:../..xio/admin/index.html#xio-admin-troubleshooting[XIO]
+
+** link:../..ccommonlib/developer/index.html#ccommonlib-developer-troubleshooting[C Common Libraries]
+
+
+* Security components
++
+
+** link:../..gsic/admin/index.html#gsic-admin-troubleshooting[GSI C]
+
+** link:../..myproxy/admin/index.html#myproxy-user-troubleshooting[MyProxy]
+
+** link:../..gsiopenssh/admin/index.html#gsiopenssh-admin-troubleshooting[GSI-OpenSSH]
+
+
+* Data Management components
++
+
+** link:../..gridftp/admin/index.html#gridftp-troubleshooting[GridFTP]
+
+
+* Execution Management components
++
+
+** link:../..gram5/admin/index.html#gram5-admin-troubleshooting[GRAM5]
+
+
+
+
+--

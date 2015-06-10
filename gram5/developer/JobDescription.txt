@@ -1,0 +1,136 @@
+[[Globus::GRAM::JobDescription]]
+= GLOBUS::GRAM::JOBDESCRIPTION(3pm) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+Globus::GRAM::JobDescription - GRAM Job Description
+
+== NAME ==
+ - 
+
+[[ID-0438a8e2a51c2613b43085fb482b3c22]]
+== DESCRIPTION ==
+
+This object contains the parameters of a job request in a simple object
+wrapper. The object may be queried to determine the value of any RSL
+parameter, may be updated with new parameters, and may be saved in the
+filesystem for later use. 
+
+
+[[ID-2f6bf008e67124e4a12aa84b09ebfce3]]
+=== Methods ===
+
+
+
+**new Globus::GRAM::JobDescription(**$filename**)**::
+     A JobDescription is constructed from a file consisting of a Perl hash of
+parameter => array mappings. Every value in the Job Description is
+stored internally as an array, even single literals, similar to the way
+an RSL tree is parsed in C. An example of such a file is
++
+--------
+$description =
+{
+    executable  => [ '/bin/echo' ], 
+    arguments   => [ 'hello', 'world' ],
+    environment => [
+                       [
+                           'GLOBUS_GRAM_JOB_CONTACT',
+                           'https://globus.org:1234/2345/4332'
+                       ]
+                   ]
+};
+--------
++
+which corresponds to the rsl fragment
++
+--------
+&(executable  = /bin/echo)
+ (arguments   = hello world)
+ (environment =
+     (GLOBUS_GRAM_JOB_CONTACT 'https://globus.org:1234/2345/4332')
+ )
+--------
++
+When the library_path RSL attribute is specified, this object modifies
+the environment RSL attribute value to append its value to any system
+specific variables.
+
+**$description->**add**('name', **$value**);**::
+     Add a parameter to a job description. The parameter will be normalized
+internally so that the access methods described below will work with
+this new parameter. As an example,
++
+--------
+$description->add('new_attribute', $new_value)
+--------
++
+will create a new attribute in the JobDescription, which can be accessed
+by calling the **$description-**new_attribute>() method.
+
+****$value** $description->**get**('name');**::
+     Get a parameter from a job description. As an example,
++
+--------
+$description->get('attribute')
+--------
++
+will return the appropriate attribute in the JobDescription by name.
+
+**$description->**save**([$filename])**::
+     Save the JobDescription, including any added parameters, to the file
+named by $filename if present, or replacing the file used in
+constructing the object.
+
+**$description->**print_recursive**($file_handle)**::
+     Write the value of the job description object to the file handle
+specified in the argument list.
+
+**$description->**parameter**()**::
+     For any parameter defined in the JobDescription can be accessed by
+calling the method named by the parameter. The method names are
+automatically created when the JobDescription is created, and may be
+invoked with arbitrary SillyCaps or underscores. That is, the parameter
+gram_myjob may be accessed by the GramMyJob, grammyjob, or gram_my_job
+method names (and others).
++
+If the attributes does not in this object, then undef will be returned.
++
+In a list context, this returns the list of values associated with an
+attribute.
++
+In a scalar context, if the attribute's value consist of a single
+literal, then that literal will be returned, otherwise undef will be
+returned.
++
+For example, from a JobDescription called $d constructed from a
+description file containing
++
+--------
+{
+    executable => [ '/bin/echo' ],
+    arguments  => [ 'hello', 'world' ]
+}
+--------
++
+The following will hold:
++
+--------
+$executable = $d->executable()    # '/bin/echo'
+$arguments = $d->arguments()      # undef
+@executable = $d->executable()    # ('/bin/echo')
+@arguments = $d->arguments()      # ('hello', 'world')
+$not_present = $d->not_present()  # undef
+@not_present = $d->not_present()  # ()
+--------
++
+To test for existence of a value:
++
+--------
+@not_present = $d->not_present()
+print "Not defined\n" if(!defined($not_present[0]));
+--------
+
+
+

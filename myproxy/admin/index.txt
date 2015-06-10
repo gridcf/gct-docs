@@ -1,0 +1,164 @@
+
+[[myproxyAdmin,System Administrator's Guide]]
+:doctype: book
+= GT 6.0 MyProxy: System Administrator's Guide =
+
+  
+[[myproxy-admin-introduction]]
+
+.Introduction
+--
+This guide contains advanced configuration information for system
+administrators working with MyProxy. It provides references to
+information on procedures typically performed by system administrators,
+including installation, configuring, deploying, and testing the
+installation.
+[IMPORTANT]
+--
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in link:../../admin/install/index.html[]. Read through this guide before continuing!
+--
+
+A typical MyProxy configuration has one dedicated myproxy-server for the
+site, with MyProxy clients installed on all systems where other Globus
+Toolkit client software is installed. 
+
+--
+
+  
+[[myproxy-admin-installing]]
+== Building and Installing ==
+
+
+--
+MyProxy is built and installed as part of a default GT 6.0 installation.
+For basic installation instructions, see
+link:../../admin/install/index.html[]. No extra installation steps are
+required for this component.
+
+If you wish to install MyProxy without installing the rest of the Globus
+Toolkit, follow the instructions in
+link:../../admin/install/index.html[] with the following changes. First,
+you do not need Ant, a JDK, or a JDBC database to build only MyProxy.
+Second, instead of running "make", run: 
+
+--------
+globus$ make gsi-myproxy
+--------
+
+This will install the MyProxy client and server programs. For
+client-only installations, simply do not configure or use the installed
+server. 
+
+
+--
+ 
+include::../Cred_Mgmt_MyProxy_Interface_Config_Frag.txt[]
+
+ 
+[[myproxy-admin-deploying]]
+== Deploying ==
+
+
+--
+A sample SysV-style boot script for MyProxy is installed at
+++$GLOBUS_LOCATION/share/myproxy/etc.init.d.myproxy++. To install on
+Linux, copy the file to . To install on Linux, copy the file to
+++/etc/rc.d/init.d/myproxy++ and run  and run **++chkconfig --add
+myproxy++**. You will need to edit the file to set the
+++GLOBUS_LOCATION++ environment variable correctly.  environment
+variable correctly. 
+
+Alternatively, to run the myproxy server out of inetd or xinetd, you
+need to do the following as root: 
+
+
+* Add the entries in ++$GLOBUS_LOCATION/share/myproxy/etc.services++.modifications to the .modifications to the ++/etc/services++ or  or ++/etc/inet/services++ file. file.
+
+* Add the entries in ++$GLOBUS_LOCATION/share/myproxy/etc.inetd.conf.modifications++ to  to ++/etc/inetd.conf++ or  or ++/etc/inet/inetd.conf++, or copy , or copy ++$GLOBUS_LOCATION/share/myproxy/etc.xinetd.myproxy++ to  to ++/etc/xinetd.d/myproxy++. You'll need to modify the paths in the file according to your installation.. You'll need to modify the paths in the file according to your installation.
+
+* Reactivate the inetd (or xinetd). This is typically accomplished by sending the SIGHUP signal to the daemon. Refer to the inetd or xinetd man page for your system.
+
+
+In addition, an example cron script is provided in
+++$GLOBUS_LOCATION/share/myproxy/myproxy.cron++ for removing
+expired/revoked credentials from the repository. You will need to edit
+the file to set the  for removing expired/revoked credentials from the
+repository. You will need to edit the file to set the
+++GLOBUS_LOCATION++ environment variable correctly before installing in
+(for example)  environment variable correctly before installing in (for
+example) ++/etc/cron.hourly++. . 
+
+
+--
+ 
+[[myproxy-admin-testing]]
+== Testing ==
+
+
+--
+To verify your myproxy-server installation and configuration, you can
+run the myproxy-server directly from your shell. If using a host
+certificate, you will need to run the myproxy-server as root. First,
+make sure your Globus environment is setup in your shell. Set the
+++GLOBUS_LOCATION++ environment variable to the location of your MyProxy
+installation. Then, depending on your shell, run one of the following
+commands.  environment variable to the location of your MyProxy
+installation. Then, depending on your shell, run one of the following
+commands. 
+
+For csh shells: 
+
+
+--
+
+***********************************************************************
+**++source $GLOBUS_LOCATION/etc/globus-user-env.csh++** 
+
+***********************************************************************
+
+--
+For sh shells: 
+
+
+--
+
+***********************************************************************
+**++. $GLOBUS_LOCATION/etc/globus-user-env.sh++** 
+
+***********************************************************************
+
+--
+Then, run **++$GLOBUS_LOCATION/sbin/myproxy-server -d++**. The '-d'
+argument runs the myproxy-server in debug mode. It will write debugging
+messages to the terminal and exit after servicing a single request. You
+will need to start it once for each test request. In another shell, you
+can run the MyProxy client programs to test the server. 
+
+If run without the '-d' argument, the myproxy-server program will start
+up and background itself. It accepts connections on TCP port 7512,
+forking off a separate child to handle each incoming connection. It logs
+information via the syslog service under the daemon facility. 
+
+
+--
+ 
+[[myproxy-admin-security_considerations]]
+== Security Considerations ==
+
+
+include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.txt[]
+
+ 
+[[myproxy-admin-debugging]]
+== Debugging ==
+
+
+include::../Cred_Mgmt_MyProxy_Logging_Frag.txt[]
+
+ 
+include::../user/index.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.txt[]
+
+  

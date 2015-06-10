@@ -1,0 +1,54 @@
+
+[[gram5-migrating-gt40]]
+== Migrating GRAM from GT4.0 ==
+
+
+--
+The GRAM5 protocol has been designed to be backward compatible with
+GRAM2 protocol from GT 4.0.x. There is no compatibility between GRAM5
+and the GRAM4 protocol.
+
+
+--
+
+=== Admin - Migration Guide ===
+
+
+[[gram5-admin-migrating-gt5-audit]]
+==== Audit Logging ====
+
+GRAM5 supports generating audit records the same as GRAM2. It also adds
+support for a Teragrid-specific Gateway User field in the audit records.
+The **++globus_gram_job_manager_auditing++** package contains the audit
+database interface code. The
+**++globus_gram_job_manager_auditing_setup++** setup package configures
+this package. GRAM5 auditing is enabled by using the '-audit-directory'
+command-line option in the job manager configuration file. For more
+information about GRAM5 audit support, see the
+link:../..gram5/admin/index.html#gram5-audit-logging[GRAM5 admin guide].
+
+
+
+=== User - Migration Guide ===
+
+
+[[gram5-user-migrating-tools]]
+==== Command-line Tools ====
+
+GRAM5 provides the **++globusrun++** program to submit jobs to GRAM5
+services. It no longer supports multi-request (duroc or MPI) jobs. GRAM5
+does not provide the **++globusrun-ws++** as it does not support the
+WSRF protocols. 
+
+
+=== Developer - Migration Guide ===
+
+
+[[gram5-developer-extensions]]
+==== API Changes ====
+
+The GRAM5 version of the GRAM Client API adds support for receiving
+protocol extension information in callbacks and responses. All GRAM
+Client API functions from GRAM2 are provided in the GRAM5 API. The
+DUROC, DUCT, and Nexus APIs are no longer provided in GRAM5. 
+

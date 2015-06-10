@@ -1,0 +1,10 @@
+
+[[gridftp-protocols]]
+== Semantics and syntax of non-WSDL protocols ==
+
+
+--
+[describe non-WSDL protocols. if none, state so.]
+
+
+--

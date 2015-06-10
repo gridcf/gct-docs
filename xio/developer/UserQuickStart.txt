@@ -1,0 +1,172 @@
+
+[[x-xio-user-quick-start]]
+== Using the Globus XIO API for IO operations within C programs ==
+
+
+[[x-xio-user-quick-start-Introduction-quick]]
+=== Introduction ===
+
+This Guide explains how to use the Globus XIO API for IO operations
+within C programs. Since Globus XIO is a simple API it is pretty
+straight forward. The best way to become familiar with it is by looking
+at an example. See link:../globus_xio_example.c[globus_xio_example.c]. 
+
+
+[[x-xio-user-quick-start-ActivateGlobus]]
+=== Activate Globus ===
+
+Let's examine the case where a user wishes to use Globus XIO for reading
+data from a file. As in all globus programs the first thing that must be
+done is to activate the globus module. Until activated no globus_xio
+function calls can be successfully executed. It is activated with the
+following line: 
+
+
+
+--------
+
+    globus_module_activate(GLOBUS_XIO_MODULE);
+
+--------
+
+
+[[x-xio-user-quick-start-LoadDriver]]
+=== Load Driver ===
+
+Let's examine the case where a user wishes to use Globus XIO for reading
+data. The next step is to load all the drivers needed to complete the IO
+operations in which you are interested. The function
+globus_xio_load_driver() is used to load a driver. In order to
+successfully call this function you must know the name of all the
+drivers you wish to load. For this example we only want to load the file
+IO driver. The prepackaged file IO driver's name is: "file". This driver
+would be loaded with the following code: 
+
+
+
+--------
+
+    globus_result_t                     res;
+    globus_xio_driver_t                 driver;
+
+    res = globus_xio_driver_load(&driver, "file");
+
+--------
+
+If upon completion of the above function call ++res++ returns
+GLOBUS_SUCCESS then the driver was successfully loaded and can be
+referenced with the variable "driver". 
+
+
+[[x-xio-user-quick-start-CreateStack]]
+=== Create Stack ===
+
+Now that globus_xio is activated and we have a driver loaded we need to
+build a driver stack. In our example the stack is very simple as it
+consists of only one driver, the file driver. The stack is established
+with the following code (building off of the above code snippets): 
+
+
+
+--------
+
+    globus_xio_stack_t              stack;
+    
+    globus_xio_stack_init(&stack);
+    globus_xio_stack_push_driver(stack, driver);
+
+
+--------
+
+
+[[x-xio-user-quick-start-OpeningHandle]]
+=== Opening Handle ===
+
+Now that the stack is created we can open a handle to the file. There
+are two ways that a handle can be opened. The first is a passive open.
+An example of this is a TCP listener. The open is performed passively by
+waiting for some other entity to act upon it. The second is an active
+open. An active open is the opposite of a passive open. The TCP counter
+example for this is a connect. The users initiates the open. In our
+example we shall be performing an active open. 
+
+Before opening a handle it must be initialized. The following
+illustrates initialization for client side handles: 
+
+
+
+--------
+
+    globus_xio_handle_t             handle;
+
+    res = globus_xio_handle_create(&handle, stack);
+
+--------
+
+Server side handles are a bit more complicated. First we must introduce
+the data structure ++globus_xio_server_t++. This structure shares many
+concepts with a TCP listener, mainly that it spawns handles
+("connections") as passive open requests are made. If the user wishes to
+accept a new connection a call to globus_xio_accept() or
+globus_xio_register_accept() will initialize a new handle: 
+
+
+
+--------
+
+
+    globus_xio_server_t         server;
+    globus_xio_handle_t         handle;
+    globus_result_t             res;
+
+    res = globus_xio_server_create(&server_handle, NULL, stack);
+    res = globus_xio_server_accept(&handle, server);
+
+
+--------
+
+Once the handle is initialized it should be opened in order to perform
+read and write operations upon it. It the handle is a client then a
+"contact string" is required. This string represents the target that the
+user wishes to open: 
+
+
+
+--------
+
+    globus_xio_attr_t           attr;
+    char *                      contact_string = "file:/etc/groups";
+
+    globus_xio_attr_init(&attr);
+    globus_xio_open(xio_handle, contact_string, attr);
+    globus_xio_attr_destroy(attr);
+
+--------
+
+note: attrs can be used to color the behaviors of a handle. For a
+conceptual understanding, they are not important and a user is free to
+simple pass NULL wherever an attr is required. 
+
+Now that we have an open handle to a file we can read or write data to
+it with either globus_xio_read() or globus_xio_write(). Once we are
+finished performing IO operations on the handle globus_xio_close(handle)
+should be called. 
+
+
+[[x-xio-user-quick-start-PayOff]]
+=== Pay Off ===
+
+This may seem like quite a bit of effort for simple reading a file, and
+it is. However the advantages become clear when exploring the swapping
+of other drivers. In the above example it would be trivial to change the
+IO operations from file IO to TCP, or HTTP, or ftp. All the the user
+would need to do is change the driver name string passed to
+globus_xio_load_driver() and the contact string passed to
+globus_xio_target_init(). This can easily be done at runtime, as the
+program link:../globus_xio_example.c[globus_xio_example.c] demonstrates.
+
+
+So the little program link:../globus_xio_example.c[globus_xio_example.c]
+has the ability to be any reading client or server (HTTP, ftp, TCP,
+file, etc) as long as the proper drivers are in the LD_LIBRARY_PATH. 
+

@@ -1,0 +1,575 @@
+
+[[simplecaAdmin,Admin Guide]]
+:doctype: book
+= GT 6.0 SimpleCA: Admin Guide =
+
+  
+[[simpleca-admin-introduction]]
+
+.Introduction
+--
+This guide contains advanced configuration information for system
+administrators working with SimpleCA. It provides references to
+information on procedures typically performed by system administrators,
+including installation, configuring, deploying, and testing the
+installation.
+[IMPORTANT]
+--
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[]. Read through this guide before continuing!
+--
+
+The following are instructions for how to use SimpleCA to request and
+sign a certificate for a GT 6.0 installation. 
+SimpleCA provides an easy way to create and package a Certificate
+Authority
+    (CA), as well as tools for requesting and signing user and
+host certificates. It is similar to OpenSSL's **++CA.sh++** command but
+includes support for packaging the CA certificate, creating a signing
+policy file, and generating information needed by clients to request
+certificates. You can find other CA options in
+link:../../admin/install/index.html#gtadmin-basic-host[]. 
+
+--
+
+  
+
+[[simpleca-admin-guide]]
+= Simple CA Administration Guide =
+
+
+[[simpleca-admin-installing]]
+== Building and Installing ==
+
+
+[[simpleca-users]]
+=== Create users ===
+
+Make sure you have the following users on your machine:
+
+
+
+
+* Your **user** account, which will be used to run the client programs.
+
+* A **++simpleca++** account, which will be used to administer the Simple CA. This is created automatically if you install SimpleCA from RPM or Debian packages.
+
+* A generic **++globus++** account, if you will be building from the source installer.
+
+
+
+[[simpleca-install]]
+=== Install SimpleCA ===
+
+SimpleCA can be installed in three ways, from a debian package, from an
+RPM package, and from the source installer. These installation methods
+are described in link:../../admin/install/index.html[]
+
+To install SimpleCA from binary packages, install the packages
+**++globus-simple-ca++** and **++globus-gsi-cert-utils-progs++** and
+their dependencies. On Debian based systems, use the command 
+
+--------
+root# apt-get install 
+--------
+On RPM-based systems, use the command 
+
+--------
+root# yum install 
+--------
+
+
+To install SimpleCA from the source installer, build the
+++globus_simple_ca++ and ++globus_gsi_cert_utils++ installer targets
+with the command 
+
+--------
+globus% make 
+--------
+Afterward, run the command 
+
+--------
+globus% make install
+--------
+
+
+
+[[simpleca-create-ca]]
+== Creating a SimpleCA ==
+
+
+--
+If you install the globus-simpleca Debian or RPM package, it will
+automatically create a **++simpleca++** user and a Simple CA in
+++/var/lib/globus/simple_ca++. If want to create a custom CA, or are
+using the source installer, you'll need to do the following. Otherwise,
+you can skip to the . If want to create a custom CA, or are using the
+source installer, you'll need to do the following. Otherwise, you can
+skip to the link:../..simpleca/admin/index.html#simplecaAdmin-using[]
+chapter of the SimpleCA documentation, as these steps have already been
+done. 
+
+
+--
+
+=== Create SimpleCA Administrator Account ===
+
+Create a user to adminster the SimpleCA. You can use the the
+**++globus++** user you used to build Globus, or another user that you
+create. For the purposes of this document, we'll assume a user named
+**++simpleca++**. Log in to that user, and run the
+**++grid-ca-create++** command. This will prompt for information needed
+to name the certificate, how to contact the CA administrator, lifetime
+of the CA certificate, and passphrase, and will then generate the new CA
+certificate and private key. Command-line options described in
+link:../..simpleca/admin/index.html#grid-ca-create[] can be used to
+avoid some of these prompts. 
+
+
+=== Invoking **++grid-ca-create++** ===
+
+If you are creating a SimpleCA for testing purposes, you can use the
+'-noint' command-line option to **++grid-ca-create++** to use the
+default values for all prompts like this: 
+
+--------
+simpleca% grid-ca-create -noint
+--------
+This will create a SimpleCA in the **++simpleca++**'s home directory
+with the passphrase ++globus++. You can then move on to the
+link:../..simpleca/admin/index.html#simplecaAdmin-using[] chapter of
+this document. For step-by-step details to create a customized SimpleCA,
+continue reading this chapter. 
+
+As the **++simpleca++** user, run the command **++grid-ca-create++**,
+and you'll see output like this: 
+
+--------
+simpleca% grid-ca-create
+    C e r t i f i c a t e    A u t h o r i t y    S e t u p
+
+This script will setup a Certificate Authority for signing Globus
+users certificates.  It will also generate a simple CA package
+that can be distributed to the users of the CA.
+
+The CA information about the certificates it distributes will
+be kept in:
+
+/home/simpleca/.globus/simpleCA
+--------
+This intro screen shows the path that the CA will be created into (in
+this example, ++/home/simpleca/.globus/simpleCA++). The other commands
+needed by SimpleCA will automatically look in that path by default when
+invoked by the ). The other commands needed by SimpleCA will
+automatically look in that path by default when invoked by the
+**++simpleca++** user. 
+
+
+[[simpleca-subjectname]]
+=== Configure the subject name ===
+
+The **++grid-ca-create++** program next prompts you for information
+about the name of CA you wish to create: 
+
+--------
+The unique subject name for this CA is:
+cn=Globus Simple CA, ou=simpleCA-elephant.globus.org, ou=GlobusTest, o=Grid
+
+Do you want to keep this as the CA subject (y/n) [y]:
+--------
+
+
+To accept the default name, enter ++y++. To choose a different name,
+type ++n++, after which you will be prompted by 
+
+--------
+Enter a unique subject name for this CA: 
+--------
+
+
+The subject name is an X.509 distinguished name. Typical name component
+type abbreviations used in Grids are: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>CA Name components</title>
+                <tgroup cols='2'>
+                    <tbody>
+                        <row>
+                            <entry>cn</entry>
+                            <entry>Represents "common name".  It identifies
+                            this particular certificate as the
+                            <glossterm>CA Certificate</glossterm> within the 
+                            "GlobusTest/simpleCA-elephant.globus.org" domain,
+                            which in this case is Globus Simple CA.</entry>
+                        </row>
+                        <row>
+                            <entry>ou</entry>
+                            <entry>Represents "organizational unit".  It
+                            identifies this CA from other CAs created by
+                            SimpleCA by other people. The second "ou" is
+                            specific to your hostname (in this case
+                            GlobusTest).</entry>
+                        </row>
+                        <row>
+                            <entry>o</entry>
+                            <entry>Represents "organization". It identifies the
+                            Grid.</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+[[simpleca-email]]
+=== Configure the CA's email ===
+
+The next prompt looks like this: 
+
+--------
+Enter the email of the CA (this is the email where certificate
+requests will be sent to be signed by the CA) [simpleca@elephant.globus.org]: 
+--------
+
+
+Enter the email address where you intend to receive certificate
+requests. It should be your real email address that you check, not the
+address of the globus user. When users request certificates with
+**++grid-cert-request++**, they will be instructed to send the request
+to this address.
+
+
+[[simpleca-expiration]]
+=== Configure the expiration date ===
+
+Then you'll see: 
+
+
+
+--------
+
+The CA certificate has an expiration date. Keep in mind that 
+once the CA certificate has expired, all the certificates 
+signed by that CA become invalid.  A CA should regenerate 
+the CA certificate and start re-issuing ca-setup packages 
+before the actual CA certificate expires.  This can be done 
+by re-running this setup script.  Enter the number of DAYS 
+the CA certificate should last before it expires.
+[default: 5 years 1825 days]:
+--------
+
+This is the number of days for which the CA certificate is valid. Once
+this time expires, the CA certificate will have to be recreated. 
+
+To accept the default, hit **++enter++**, or otherwise, enter a value in
+days.
+
+
+[[simpleca-passphrase]]
+=== Create a Passphrase to Encrypt the CA's Private Key ===
+
+The next prompt will be for the passphrase for the CA's private key. It
+will be used to decrypt the CA's private key when signing certificates.
+It should be hard to guess, as its compromise might compromise all the
+certificates signed by the CA. You will be prompted twice for the
+passphrase, to verify that you typed it correctly. Enter the passphrase
+at these prompts. 
+
+--------
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+--------
+
+
+
+[[simpleca-packageoutput]]
+=== SimpleCA Distribution Files ===
+
+Finally **++grid-ca-create++** will create a tarball containing the
+public information about the CA, including its public certificate,
+signing policy, and supported X.509v3 extensions. This information is
+needed on machines that will be trusting the CA, and also on machines
+which will be used to request certificates from this CA. 
+
+Since we didn't run in this example as root, **++grid-ca-create++** will
+not be able to write the CA files to system paths, so it displays a
+warning message indicating that. We can use the tarball output here, or
+packages described below to install the CA support files on this and
+other machines.
+
+The package output summary looks like this: 
+
+--------
+Insufficient permissions to install CA into the trusted certifiicate
+directory (tried ${sysconfdir}/grid-security/certificates and
+${datadir}/certificates)
+Creating RPM source tarball... done
+	globus_simple_ca_68ea3306
+--------
+
+
+This information will be important for setting up other machines in your
+grid. The number '68ea3306' in the last line is known as your **CA
+hash**. It is an 8 digit hexadecimal string which is a hash of the
+subject name of the CA certificate.
+
+The tarball contains Debian and RPM package metadata, so that it can be
+compiled to a binary package which can be easily installed on this and
+other systems on your Grid. It can also be packaged as a GPT setup
+package for compatibility with older versions of the Globus Toolkit.
+
+
+[[simpleca-binarypkgs]]
+=== Generating Binary CA Packages ===
+
+The link:../..simpleca/admin/index.html#grid-ca-package[] command can be
+used to generate RPM, debian, or legacy GPT packages for a SimpleCA, or
+for any other CA which is installed on a host. These packages can make
+it easy to distribute the CA certificate and policy to other hosts with
+which you want to establish Grid trust relationships. 
+
+
+==== Generating RPM Packages ====
+
+To generate an RPM package for the CA which we created, use the
+following command: 
+
+--------
+simpleca% grid-ca-package -r -cadir ~/.globus/simpleCA
+Creating RPM source tarball... done
+        globus_simple_ca_68ea3306.tar.gz
+Creating RPM binary.../home/simpleca/globus-simple-ca-68ea3306
+--------
+The resulting rpm package will be placed in the current directory. As
+root, you can install this via the **++yum++** or **++rpm++** tools.
+This package can then be installed on any RPM-based system. 
+
+
+==== Generating Debian Packages ====
+
+To generate an Debian package for the CA which we created, use the
+following command: 
+
+--------
+simpleca% grid-ca-package -d -cadir ~/.globus/simpleCA
+    Creating RPM source tarball... done
+        globus_simple_ca_68ea3306.tar.gz
+Creating debian binary...dpkg-buildpackage: export CFLAGS from dpkg-buildflags (origin: vendor): -g -O2
+
+--------
+The resulting debian package will be placed in the current directory. As
+root, you can install this via the **++dpkg++** tool.
+
+
+==== Generating GPT Packages ====
+
+The **++grid-ca-package++** command can also generate GPT packages in
+the form similar to previous versions of the Globus Toolkit. This is
+done with the '-g' and '-b' command-line options. See
+link:../..simpleca/admin/index.html#grid-ca-package[] for more details. 
+
+== Using a SimpleCA ==
+
+
+--
+As a CA, your main task will be to sign certificates. To sign a
+certificate request, use the tool **++grid-ca-sign++**. This tool reads
+a certificate request (such as those created by
+link:../..gsic/user/index.html#grid-cert-request[]) and creates a
+certificate signed by the CA certificate with the public key from in the
+certificate request. This indicates that you confirm that the identity
+of the certificate matches its name. You can use the **++openssl++**
+command to view the contents of the certificate request. 
+
+
+--
+
+=== Examining a Certificate Request ===
+
+To examine a certificate request, use the command **++openssl req -text
+-in ++**, as shown in the following example. 
+
+
+
+
+.Examine a Certificate Request
+=======================================================================
+
+
+--------
+simpleca% openssl req -noout -text -in certreq.pem
+Certificate Request:
+    Data:
+        Version: 0 (0x0)
+        Subject: o=Grid, OU=GlobusTest, OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    79:bd:a7:29:16:77:4c:e9:82:d3:73:a0:25:34:c7:
+                    25:07:67:b3:2d:11:c1:e2:c9:b1:ec:41:20:a7:9a:
+                    b7:2f:ee:d4:88:78:14:ff:d4:f2:f9:1b:d3:56:bc:
+                    37:6f:f0:06:ea:b0:6f:70:12:a8:34:ac:8e:be:98:
+                    00:b9:b8:ec:39:b5:6b:23:ad:1b:00:62:4b:cc:79:
+                    97:cc:56:fb:54:7b:03:6d:a7:76:27:4e:ce:bd:94:
+                    d0:eb:59:6b:25:c5:30:b0:47:15:bc:11:d5:7e:ff:
+                    04:13:70:de:3b:8f:80:65:ae:63:82:61:38:f9:c6:
+                    03:4a:92:b0:de:6f:bb:0a:bd
+                Exponent: 65537 (0x10001)
+        Attributes:
+        Requested Extensions:
+            Netscape Cert Type: 
+                SSL CA, S/MIME CA, Object Signing CA
+    Signature Algorithm: sha1WithRSAEncryption
+        85:70:a6:5d:de:be:61:45:83:48:43:8d:4b:4b:4a:79:79:98:
+        0d:6c:d4:a9:96:26:41:a4:c2:94:10:92:ad:eb:ad:c5:3c:bf:
+        d6:4e:84:0a:db:46:96:a9:52:5b:90:cc:6a:d1:57:73:27:98:
+        9e:e2:8c:9a:7f:b4:ab:a8:28:2b:02:98:a2:d8:69:73:5e:12:
+        ad:5b:de:0c:6e:60:e0:0f:2c:ad:8d:b9:59:3b:d3:49:19:52:
+        e0:e1:8a:57:f2:c3:a6:4d:b9:2c:5c:58:ef:0e:59:84:55:8e:
+        16:fc:f4:39:82:13:6f:28:a9:59:e3:c8:f1:4e:87:75:33:4f:
+        ae:be
+--------
+
+In this case, you see a certificate request with the subject
+distinguished name ++o=Grid, OU=GlobusTest,
+OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User++. 
+
+=======================================================================
+
+
+=== Signing a Certificate Request ===
+
+If you are satisfied with the certificate request and are willing to
+sign it, use the **++grid-ca-sign++** command to do so. The command will
+store a copy of the newly signed certificate in the SimpleCA directory,
+so that you can keep track of what you've signed, and will also write it
+to the value of the '-out' parameter. Transmit this result file back to
+the user which requested the certificate. 
+
+
+
+
+.Sign with **++grid-ca-sign++**
+=======================================================================
+--------
+simpleca% grid-ca-sign -in certreq.pem -out cert.pem
+
+
+To sign the request
+please enter the password for the CA key: 
+
+The new signed certificate is at: /home/simpleca/.globus/simpleCA/newcerts/01.pem
+--------
+
+=======================================================================
+
+Once you've signed the certificate, if it is a user certificate, you
+must communicate it back to the user, perhaps via email. 
+
+
+=== Revoking a Certificate ===
+
+SimpleCA does not yet provide a convenient interface to revoke a signed
+certificate, but it can be done with the **++openssl++** command. 
+
+
+.Revoke a certificate
+=======================================================================
+--------
+simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -revoke ~/.globus/simpleCA/newcerts/01.pem
+Using configuration from /home/simpleca/.globus/simpleCA/grid-ca-ssl.conf
+Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:
+Revoking Certificate 01.
+Data Base Updated
+--------
+
+=======================================================================
+
+
+Once a certificate is revoked, you can generate a Certificate Revocation
+List (CRL) for your CA, which will be a signed list of certificates
+which have been revoked. Sites which use your CA will need to keep the
+CRL up to date to be able to reject revoked certificates. This CRL can
+be generated with an **++openssl++** command. See ++ca(1)++ for details
+about how to control the CRL lifetime and other options.
+
+
+.Create CRL
+=======================================================================
+--------
+simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -gencrl > 
+Using configuration from /home/simpleca/.globus/simpleCA/grid-ca-ssl.conf
+Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:
+
+--------
+
+=======================================================================
+
+
+The output file ++CAHASH.crl++ (based on the hash of your CA subject
+name) should be distributed to sites which trust your CA, so that they
+can install it into the trusted certificate directory.  (based on the
+hash of your CA subject name) should be distributed to sites which trust
+your CA, so that they can install it into the trusted certificate
+directory. 
+
+
+=== Renewing a CA ===
+
+The **++openssl++** command can be used to renew a CA certificate. This
+will generate a new CA certificate with the same subject name and
+private key as before, but valid for a different time interval. This new
+certificate packaged and distributed as before using
+link:../..simpleca/admin/index.html#grid-ca-package[]. 
+
+
+
+
+.Renew CA Certificate
+=======================================================================
+
+
+--------
+simpleca% openssl req -key ~/.globus/simpleCA/private/cakey.pem -new -x509 -days 1825 -out newca.pem -config ~/.globus/simpleCA/grid-ca-ssl.conf
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+ -----
+Level 0 Organization [Grid]:
+Level 0 Organizational Unit [GlobusTest]:
+Level 1 Organizational Unit [simpleCA-elephant.globus.org]:
+Name (E.g., John M. Smith) []:Globus Simple CA
+--------
+
+[IMPORTANT]
+--
+The Subject Name of the new certificate must match **exactly** the
+previous certificate name, or clients will not recognize it as the
+correct certificate.
+
+--
+
+
+=======================================================================
+
+
+[[simpleca-admin-security_considerations]]
+== Security Considerations ==
+
+
+include::../Cred_Mgmt_SimpleCA_Security_Considerations_Frag.txt[]
+
+ 
+
+[[simpleca-admin-reference]]
+= Simple CA Command Reference =
+
+
+include::../Cred_Mgmt_SimpleCA_Interface_Commandline_Frag.txt[]
+
+  

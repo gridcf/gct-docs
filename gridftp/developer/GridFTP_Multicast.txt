@@ -1,0 +1,259 @@
+
+[[gridftp-developer-multicast-driver]]
+== GridFTP Multicast ==
+
+
+--
+GridFTP is a well known, extremely fast and efficient protocol for
+transferring data from one destination to another. Here we present how
+GridFTP can be used to transfer a single file to many destinations in a
+multicast/broadcast.
+
+
+--
+
+=== Architecture ===
+
+The purpose of this work is to efficiently transfer a single data set to
+many locations. Our goal is to use all available network cycles,
+effectively moving the total amount of data (destinations * file size)
+at network speeds. Ideally, we would like to transfer to all
+destinations in the same time it takes to transfer to a single
+destination.
+
+Distributing the data to many endpoints is not difficult, and has been a
+feature of  (a popular GridFTP client) for some time. It would be quite
+simple to have the client loop over the destination set and send to each
+destination in series. Of course, this would be quite slow and the
+transfer time would scale linearly with the data set.
+
+In our architecture, destination servers are configured so that they can
+forward packets along to other endpoints. Thus, the GridFTP servers act
+as both servers receiving data and clients sending data. The server is
+set up as a tree such that the first destination writes the data to disk
+and then forwards it on to N more hosts (by default N is 2). This
+process is repeated until all destinations have received the data.
+
+For further explanation, the architecture can be thought of as a
+directed graph. Each destination is a vertex with N edges connecting it
+to N other vertices. A spanning tree is formed connecting all vertices.
+The degree of any one vertex is a client -side configuration option.
+
+The following image illustrates this:
+
+
+.GridFTP Spanning Tree
+--
+image::mc.gif[scaledwidth="75%"]
+--
+In the image, data blocks are purple and are sent first from the client
+to a root destination. The root destination then forwards it on to two
+more servers.
+
+
+=== Globus XIO ===
+
+The figure in the previous section shows 4 colored boxes. Orange
+represents client logic, blue is server logic, and as stated above,
+purple is for data block. The final box type is yellow and it is used to
+show globus XIO drivers.
+
+More information on Globus XIO can be found link:[here]. For our
+purposes we can think of each XIO driver as a modular protocol
+interpreter that can be plugged in to an IO stack without involving the
+application using it. In this way, we can add functionality to an
+existing application without disturbing its tested code base.
+
+Because the  uses Globus XIO for all of its IO, we are able to forward
+data at the block level. We achieve this by allowing the client to add a
+new XIO driver, the ++gridftp_multicast++ driver, to the GridFTP
+server's disk stack. Because of the modular driver abstraction that
+Globus XIO provides as the GridFTP server writes data blocks to its file
+system, the data blocks are first passed through the
+++gridftp_multicast++ driver. As the ++gridftp_multicast++ driver passes
+the data block on to be written to disk, it also forwards the block on
+to other GridFTP servers in the tree.
+
+Using this approach to add the multicast functionality is minimally
+invasive to the tested and robust GridFTP server and is entirely
+modular. The driver is written to a well defined and clean abstraction.
+Enabling this feature is a simple matter of inserting the driver in the
+disk stack and passing the driver stack the destination list.
+
+
+[[gridftp-multicast-networkoverlay-arch]]
+=== Network Overlay ===
+
+In addition to allowing for multicast, the ++gridftp_multicast++ driver
+and this architecture allow us to create a network overlay where many
+GridFTP servers act as routers forwarding packets along to each other
+until they get to the final destination where there are written to disk.
+The advantage of this type of system is actively researched by
+http://e2epi.internet2.edu/phoebus.html[Phoebus].
+
+The ++gridftp_multicast++ driver can be configured to only forward data
+along to the next server, and to not write it to disk. Furthermore, it
+can be told to only forward to a single endpoint. When configured in
+this way, we achieve the network overlay described above.
+
+The following images illustrate this. In the first image we show the
+standard case where data is sent from a client to a server through the
+Internet. The routing is done by the Internet outside of the clients
+control.
+
+
+.From client to server through Internet
+--
+image::overlay1-s.png[scaledwidth="75%"]
+--
+In the next image we show how the ++gridftp_multicast++ driver can route
+data through the network via GridFTP servers. This allows the user to
+have greater control over the network path which the data takes.
+
+
+.Routing data through network via multicast
+--
+image::overlay2-s.png[scaledwidth="75%"]
+--
+
+=== Results ===
+
+To show the effectiveness of this architecture we ran experiments on the
+http://www.uc.teragrid.org/tg-docs/[UC TeraGrid]. We show some of those
+results here.
+
+
+==== Experiment 1 ====
+
+In the first experiment, we leased nodes from the UC TeraGrid. 29 hosts
+were designated as destinations and we ran ++gridftp_multicast++-enabled
+GridFTP servers on them. 1 node was designated as the client node and
+from it all transfers were started. 
+
+All transfers were performed with **++globus-url-copy++** and a tcp
+buffer size of 128KB. As a control group, we ran a transfer using
+**++globus-url-copy++** with the '-f' option. This caused the source
+file to be sent to each endpoint in serial. We then transferred the
+source to all destinations using this architecture. 
+
+The first graph shows the completion time of a multicast session against
+the number of destinations. The first line is when the transfers are
+performed in a serial fashion from the client. All other lines are
+multicast sessions performed using this architecture. Each line
+represents a different vertex degree in the spanning tree (ie, each
+server forwarding to a different number of destinations).
+
+
+--
+image::complete_time.png[scaledwidth="75%"]
+--
+As expected, the results for the serial transfer scales linearly while
+the multicast sessions very slowly increase with more destinations.
+
+The next graph shows the same experiment; but instead of graphing
+completion time, we graph the clients sending throughput. This is the
+size of the files being sent (1GB) divided by the time it takes for this
+file to reach all destinations.
+
+
+--
+image::broadcast_bw.png[scaledwidth="75%"]
+--
+The final graph shows the collective bandwidth of a transfer. The
+graphing function is (# of destinations * file size) / time.
+
+
+--
+image::collective_bw.png[scaledwidth="75%"]
+--
+
+==== Future Experiments ====
+
+We created another XIO driver that allows each endpoint in the session
+to buffer the data. This prevents stalls in sending data transfers due
+to the latency required to reach a leaf node, and gets data to the disks
+of nodes higher in the tree faster. Early results show slight
+improvements on a LAN, but we expect greater results when broadcasting
+across WANs.
+
+
+=== Protocol Details ===
+
+The additions to the protocol are exceptionally minor. Every server in
+the tree (except for leaf nodes) becomes a client to another server, but
+that client speaks the standard GridFTP protocol. The only change needed
+is a command to add the driver to the file system stack, and that
+command has existed in the GridFTP server for some time.
+
+The command is:
+
+
+
+--------
+SITE SETDISKSTACK 1*{driver name[:driver options]},
+--------
+
+The second parameter to the site command is a comma-separated list of
+driver names optionally followed by a colon (:) and a set of
+driver-specific URL-encoded options. From left to right, the driver
+names form a stack from bottom to top.
+
+Adding the ++gridftp_multicast++ driver to this list will enable the
+multicast functionality. The set of options are the same as those
+specified in the previous section. The only difference is that each url
+in the urls= options must be url encoded.
+
+
+=== Usage ===
+
+The broadcast functionality can be used with **++globus-url-copy++**. We
+added the following option:
+
+
+
+--------
+-mc filename
+--------
+
+The file must contain a line separated list of destination urls. For
+example:
+
+
+
+--------
+gsiftp://localhost:5000/home/user/tst1
+gsiftp://localhost:5000/home/user/tst2
+gsiftp://localhost:5000/home/user/tst4
+--------
+
+The source url is specified on the command line as always. A single
+destination url may also be specified on the command line in addition to
+the urls in the file. An example globus-url-copy command is:
+
+
+
+--------
+% globus-url-copy -MC multicast.file gsiftp://localhost/home/user/src_file
+--------
+
+
+include::../user/index.txt[]
+
+
+==== Required Server Options ====
+
+For security reasons the GridFTP server does not allow clients to load
+arbitrary xio drivers into the server. The GridFTP server admin must
+whitelist the driver individually. White-listing the mlink driver is
+done with the following parameter to the server:
+
+
+
+--------
+-fs-whitelist file,gridftp_multicast
+--------
+
+Notice that ++file++ must also be specified. Without this option, the
+++file++ driver is the default; however, if used, you must specifically
+list it.
+

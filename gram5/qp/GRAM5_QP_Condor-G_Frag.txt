@@ -1,0 +1,198 @@
+
+[[gram5-reports-condorg]]
+=== GRAM5 Condor-G Tests ===
+
+
+
+
+[[gram5-reports-condorg-configuration]]
+==== Experiment Hardware and Software Configuration ====
+
+The following experiments were run on the **++nomer.mcs.anl.gov++**
+virtual cluster. The cluster consists of 6 partitions, each having a
+single **++Intel(R) Xeon(R) CPU E5430 @ 2.66GHz++** core, and 2GB RAM.
+The virtual machines in the cluster each had a single virtual network
+interface. The cluster was configured as follows: 
+
+* 1 node: Master node
+
+* 1 nodes: Test/execution nodes
+
+* 4 nodes: execution nodes
+
+
+
+All nodes ran an **++apache2++** http server, **++gmond++** (ganglia
+monitoring), and **++pbs_mom++** (torque LRM). 
+
+The master node also ran a **++globus-gatekeeper++**,
+**++globus-gridftp-server++**,
+**++globus-job-manager-event-generator++**, **++gmetad++** (Ganglia Meta
+Daemon), **++pbs_sched++** (Torque LRM scheduler), **++pbs_server++**
+(Torque LRM server), and **++nfsd++** linux kernel NFSv4 server for the
+execution nodes. 
+
+The test/execution node ran the condor-g daemons. The condor job
+classified ad included attributes to submit the jobs to the GRAM5
+service running on the service node. The tests were done with Condor
+version 7.4.1. The Condor-G configuration parameters in the
+++condor_config++ file were as follows:  file were as follows: 
+
+
+.Condor-G Experiment Configuration
+--
+--------
+GRIDMANAGER_MAX_PENDING_SUBMITS_PER_RESOURCE=50
+GRIDMANAGER_MAX_SUBMITTED_JOBS_PER_RESOURCE=2000
+GRIDMANAGER_MAX_PENDING_REQUESTS=50
+GRIDMANAGER_JOB_PROBE_INTERVAL=300
+GRIDMANAGER_MAX_JOBMANAGERS_PER_RESOURCE=0
+ENABLE_GRID_MONITOR=FALSE
+GRIDMANAGER_DEBUG= D_FULLDEBUG
+GRIDMANAGER_GLOBUS_COMMIT_TIMEOUT=12000
+--------
+
+--
+The execution nodes executed the test job executables as scheduled by
+the LRM. 
+
+For this test, the test/execution node and the execution nodes where
+configured to run up 20 job processes each simultaneously. 
+
+
+==== Experiment Scenario ====
+
+This test submitted a 2000 job condor job cluster, using the following
+classified ad: 
+
+
+.Condor-G Classified Ad
+--
+--------
+Universe=grid
+grid_resource = gt5 nomer1.mcs.anl.gov:2119/jobmanager-pbs
+executable=/bin/sleep
+arguments=300
+transfer_executable=False
+stream_output = False
+stream_error  = False
+output = test.out.$(Process)
+error  = test.err.$(Process)
+log    = test.log
+notification=Never
+queue 2000
+--------
+
+--
+The configuration parameters are similar to the GRAM5 tests described in
+link:#gram5-reports-throughput[GRAM5 Throughput Tests] section. The key
+difference being that this test runs until all 2000 jobs have completed
+and does not submit any jobs after the maximum of 2000 has been reached.
+
+
+To provide a point of comparison, another test using similar parameters
+was run using the **++gram-throughput-tester++** program in place of
+Condor-G. Note that the Condor-G service provides file staging and a
+scratch directory beyond what the throughput tester job did. 
+
+The two experiments consist of: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+            <title>GRAM5 Condor-G Experiments</title>
+
+            <tgroup cols='5'>
+                <thead>
+                    <row>
+                        <entry>Experiment Name</entry>
+                        <entry>LRM monitoring method</entry>
+                        <entry>Number of clients</entry>
+                        <entry>Number of users</entry>
+                        <entry>Total number of jobs</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Condor-G</entry>
+                        <entry>SEG</entry>
+                        <entry>1</entry>
+                        <entry>1</entry>
+                        <entry>2000</entry>
+                    </row>
+                    <row>
+                        <entry>Throughput Tester</entry>
+                        <entry>SEG</entry>
+                        <entry>1</entry>
+                        <entry>1</entry>
+                        <entry>2000</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+==== Condor-G Test Results ====
+
+The following table contains a summary of the results of these
+experiments. The columns contain the following information: 
+
+**Experiment**::
+     Experiment name, the same as in the previous section
+
+**Time to Submit 2000 Jobs**::
+     The total number of GRAM jobs that were **submitted** to the GRAM5 service by the throughput tester in one hour.
+
+**Time For All Jobs To Complete**::
+     The amount of time it took for all 2000 jobs to complete. The theoretical minimum value for this is 50 minutes if all 2000 jobs were submitted instantaneously and there was no overhead for them to be deployed to the 200 execution nodes.
+
+**LRM Submit Rate (Jobs/Minute)**::
+     The total number of jobs that were being managed by the GRAM5 service when the one hour test period elapsed. These jobs were terminated using the GRAM5 cancel protocol message by the throughput tester.
+
+**Master Node Max 1 min. Load Average**::
+     The maximum value of the one-minute load average on the master node, that is, the node running the GRAM5 and Torque service.
+
+**Master Node Average 1 min. Load Average**::
+     The average value of the one-minute load average on the master node over the duration of the test.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+        <title>GRAM5 Throughput Tester Results Summary</title>
+        <tgroup cols='6'>
+            <thead>
+                <row>
+                    <entry>Experiment</entry>
+                    <entry>Time to Submit 2000 Jobs (hh:mm:ss)</entry>
+                    <entry>Time For All Jobs To Complete (hh:mm:ss)</entry>
+                    <entry>LRM Submit Rate (Jobs/Minute)</entry>
+                    <entry>Master Node Max 1 min. Load Average</entry>
+                    <entry>Master Node Average 1 min. Load Average</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>Condor-G</entry>
+                    <entry>00:32:34</entry>
+                    <entry>02:00:56</entry>
+                    <entry>94</entry>
+                    <entry>6.56</entry>
+                    <entry>1.64</entry>
+                </row>
+
+                <row>
+                    <entry>Throughput Tester</entry>
+                    <entry>00:17:58</entry>
+                    <entry>01:54:49</entry>
+                    <entry>111</entry>
+                    <entry>2.43</entry>
+                    <entry>0.53</entry>
+               </row>
+            </tbody>
+        </tgroup>
+    </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+

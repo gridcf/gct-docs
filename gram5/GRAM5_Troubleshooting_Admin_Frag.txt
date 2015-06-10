@@ -1,0 +1,180 @@
+
+[[gram5-troubleshooting-admin]]
+=== Admin Troubleshooting ===
+
+
+==== Security ====
+
+GRAM requires a host certificate and private key in order for the
+**++globus-gatekeeeper++** service to run. These are typically located
+in ++/etc/grid-security/hostcert.pem++ and  and
+++/etc/grid-security/hostkey.pem++, but the path is configurable in the
+, but the path is configurable in the
+link:../..gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
+configuration file]. The key must be protected by file permissions
+allowing only the root user to read it. 
+
+GRAM also (by default) uses a ++grid-mapfile++ to authorize Grid users
+as local users. This file is typically located in  to authorize Grid
+users as local users. This file is typically located in
+++/etc/grid-security/grid-mapfile++, but is configurable in the , but is
+configurable in the
+link:../..gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
+configuration file]. 
+
+Problems in either of these configurations will show up in the
+gatekeeper log described below. See the link:[GSI] documentation for
+more detailed information about obtaining and installing host
+certificates and maintaining a ++grid-mapfile++. . 
+
+
+==== Verify that Services are Running ====
+
+GRAM relies on the **++globus-gatekeeper++** program and (in some cases)
+the **++globus-scheduler-event-generator++** programs to process jobs.
+If the former is not running, jobs requests will fail with a "connection
+refused" error. If the latter is not running, GRAM jobs will appear to
+"hang" in the ++PENDING++ state. 
+
+The **++globus-gatekeeper++** is typically started via an init script
+installed in ++/etc/init.d/globus-gatekeeper++. The command . The
+command **++/etc/init.d/globus-gatekeeper status++** will indicate
+whether the service is running. See
+link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[] for
+more information about starting and stopping the
+**++globus-gatekeeper++** program. 
+
+If the **++globus-gatekeeper++** service fails to start, the output of
+the command **++globus-gatekeeper -test++** will output information
+describing some types of configuration problems. 
+
+The **++globus-scheduler-event-generator++** is typically started via an
+init script installed in
+++/etc/init.d/globus-scheduler-event-generator++. It is only needed when
+the LRM-specific "setup-seg" package is installed. The command . It is
+only needed when the LRM-specific "setup-seg" package is installed. The
+command **++/etc/init.d/globus-scheduler-event-generator status++** will
+indicate whether the service is running. See
+link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[] for
+more information about starting and stopping the
+**++globus-scheduler-event-generator++** program. 
+
+
+==== Verify that LRM packages are installed ====
+
+The **++globus-gatekeeper++** program starts the
+**++globus-job-manager++** service with different command-line
+parameters depending on the LRM being used. Use the command
+**++globus-gatekeeper-admin -l++** to list which LRMs the gatekeeper is
+configured to use. 
+
+The **++globus-job-manager-script.pl++** is the interface between the
+GRAM job manager process and the LRM adapter. The command
+**++/usr/share/globus/globus-job-manager-script.pl -h++** will print the
+list of available adapters. 
+
+--------
+%  /usr/share/globus/globus-job-manager-script.pl -h
+USAGE: /usr/share/globus/globus-job-manager-script.pl -m MANAGER -f FILE -c COMMAND
+Installed managers: condor fork
+--------
+
+
+The **++globus-scheduler-event-generator++** also uses an LRM-specific
+module to generate scheduler events for GRAM to reduce the amount of
+resources GRAM uses on the machine where it runs. To determine which
+LRMs are installed and configured, use the command
+**++globus-scheduler-event-generator-admin -l++**. 
+
+--------
+%  globus-scheduler-event-generator-admin -l
+fork [DISABLED]
+--------
+
+
+If any of these do not show the LRM you are trying to use, install the
+relevant packages related to that LRM and restart the GRAM services. See
+the link:../..gram5/admin/index.html[GRAM Administrator's Guide] for
+more information about starting and stopping the GRAM services. 
+
+
+==== Verify that the LRM packages are configured ====
+
+All GRAM5 LRM adapters have a configuration file for site
+customizations, such as queue names, paths to executables needed to
+interface with the LRM, etc. Check that the values in these files are
+correct. These files are described in
+link:../..gram5/admin/index.html#gram5-configuring-lrm[]. 
+
+
+[[gram5-troubleshooting-gatekeeper-log]]
+==== Check the Gatekeeper Log ====
+
+The ++/var/log/globus-gatekeeper.log++ file contains information about
+service requests from clients, and will be useful when diagnosing
+service startup failures, authentication failures, and authorization
+failures.  file contains information about service requests from
+clients, and will be useful when diagnosing service startup failures,
+authentication failures, and authorization failures. 
+
+
+===== Authorization failures =====
+
+GRAM uses GSI to authenticate client job requests. If there is a problem
+with the GSI configuration for your host, or a client is trying to
+connect with a certificate signed by a CA your host does not trust, the
+job request will fail. This will show up in the log as a "GSS
+authentication failure". See the link:../..gsic/admin/index.html[GSI
+Administrator's Guide] for information about diagnosing authentication
+failures. 
+
+
+===== Gridmap failures =====
+
+After authentication is complete, GRAM maps the Grid identity to a local
+user prior to starting the **++globus-job-manager++** process. If this
+fails, an error will show up in the log as "globus_gss_assist_gridmap()
+failed authorization". See the link:../..gsic/admin/index.html[GSI
+Administrator's Guide] for information about managing gridmap files. 
+
+
+[[gram5-troubleshooting-jobmanager-log]]
+==== Job Manager Logs ====
+
+A per-user job manager log is typically located in
+++/var/log/globus/gram_$USERNAME.log++. This log contains information
+from the job manager as it attempts to execute GRAM jobs via a local
+resource manager. The logs can be fairly verbose. Sometimes looking for
+log entries near those containing the string . This log contains
+information from the job manager as it attempts to execute GRAM jobs via
+a local resource manager. The logs can be fairly verbose. Sometimes
+looking for log entries near those containing the string ++level=ERROR++
+will show more information about what caused a particular failure. 
+
+Once you've found an error in the log, it is generally useful to find
+log entries related to the job which hit that error. There are two job
+IDs associated with each job, one a GRAM-specific ID, and one an
+LRM-specific ID. To determine the GRAM ID associated with a job, look
+for the attribute ++gramid++ in the log message. Finding that, looking
+for all other log messages which contain that ++gramid++ value will give
+a better picture of what the job manager is doing. To determine the
+LRM-specific ID, look for a message at ++TRACE++ level with the matching
+GRAM ID found above with the ++response++ value matching
+++GRAM_SCRIPT_JOB_ID:++'LRM-ID'. You can then find follow the state of
+the 'LRM-ID' as well as the GRAM ID in the log, and correlate the
+'LRM-ID' information with local resource manager logs and administrative
+tools. 
+
+
+==== Email Support ====
+
+If all else fails, please send information about your problem to
+gram-user@globus.org. You'll have to subscribe to a list before you can
+send an e-mail to it. See
+http://dev.globus.org/wiki/Mailing%5fLists[here] for general e-mail
+lists and information on how to subscribe to a list and
+http://dev.globus.org/wiki/GRAM#Mailing%5fLists[here] for GRAM-specific
+lists. Depending on the problem, you may be requested to file a bug
+report to the Globus project's https://globus.atlassian.net[Issue
+Tracker]. 
+

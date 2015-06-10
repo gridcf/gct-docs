@@ -1,0 +1,34 @@
+
+[[gram5-features]]
+=== Feature summary ===
+
+New Features new since 5.2: 
+
+* Bug fixes and improved testing
+
+
+
+Other Standard Supported Features
+
+
+
+
+* Remote job execution and management
+
+* Uniform and flexible interface to local resource managers, including Condor, LSF, and SLURM, and GridEngine
+
+* File staging before and after job execution
+
+* File and directory clean up after job termination
+
+* Service auditing for each submitted
+
+
+Removed Features
+
+
+
+
+* None.
+
+

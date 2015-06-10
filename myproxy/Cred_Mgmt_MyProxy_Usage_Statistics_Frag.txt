@@ -1,0 +1,14 @@
+
+[[myproxy-usage]]
+== Usage statistics collection ==
+
+
+[[myproxy-usage-stats]]
+=== MyProxy usage statistics collection ===
+
+By default, the myproxy-server will send a UDP packet containing usage
+information to usage-stats.cilogon.org:4810 after serving each request.
+See the http://myproxy.ncsa.uiuc.edu/privacy[MyProxy Privacy Policy] for
+details. You can see the Globus Usage Statistics policy
+link:/toolkit/docs/latest-stable/Usage_Stats.html[here]. 
+

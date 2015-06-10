@@ -1,0 +1,11 @@
+
+[[simpleca-security_considerations]]
+=== Security considerations for SimpleCA ===
+
+The operator of a CA must protect the private key of the CA. It should
+not be stored unencrypted or on a network filesystem. 
+
+Simple CA enforces the subject name policies in the simple CA's
+configuration files. If modified, the signing_policy file distributed to
+clients of the CA must also be modified. 
+

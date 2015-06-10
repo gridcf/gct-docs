@@ -1,0 +1,225 @@
+
+[[gsicDeveloper,Developer's Guide]]
+:doctype: book
+= GT 6.0 GSI C: Developer's Guide =
+
+  
+[[gsic-developer-introduction]]
+
+.Introduction
+--
+This component provides an API for authentication and two APIs for
+authorization.
+The authentication API is an implementation of the GSS-API (RFC 2743 and
+RFC 2744) extended with the functions described in the GSS-API
+Extensions document.
+On the authorization front there is a coarse-grained API, which in
+addition to authorizing also provides a mapping function, and an API
+that allows finer grained authorization decisions to be made. The finer
+grained API follows the subject, object, action paradigm.
+Both of the authorization APIs allow different back end implementations
+through the use of dynamic library loading. 
+
+--
+
+  
+[[gsic-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../GSIC_Feature_Summary_Frag.txt[]
+
+
+include::../GSIC_Platform_Summary_Frag.txt[]
+
+
+include::../GSIC_Compatibility_Summary_Frag.txt[]
+
+
+include::../GSIC_Dependencies_Summary_Frag.txt[]
+
+
+include::../GSIC_Security_Considerations_Frag.txt[]
+
+ 
+[[gsic-developer-scenarios]]
+== Usage scenarios ==
+
+
+--
+There is no content available at this time.
+
+
+--
+ 
+[[gsic-developer-tutorials]]
+== Tutorials ==
+
+
+--
+There are no tutorials available at this time
+
+
+--
+ 
+[[gsic-developer-archdes]]
+== Architecture and design overview ==
+
+
+=== Authentication ===
+
+As mentioned in the introduction, the GSI C security framework uses the
+GSSAPI API and extensions to it to abstract security mechanism specific
+details. Below the GSSAPI layer there exist multiple APIs for dealing
+with credential management, X.509 certificates in general and proxy
+certificates in particular as well as security configuration. Each of
+these APIs is described in more detail below.
+
+The general design principle guiding these APIs is data encapsulation.
+Data structures (handles and attributes) capture and encapsulate the
+state of the system. These data structures are then acted upon by
+various getters and setters, as well as other functions.
+
+
+==== The GSS Assist API ====
+
+The GSS Assist API provides helper functions wrapping the process of
+security (GSS) context establishment, support for gridmap authorization
+and various other helper functions that wrap GSSAPI functions and
+capture common usage.
+
+
+==== GSSAPI ====
+
+The GSSAPI implementation provided by the toolkit is based upon SSL/TLS
+with extensions to the standard path validation mechanism to handle
+proxy certificates. It relies upon the credential and certificate
+utility APIs for general certificate acquisition and inspection
+functionality.
+
+
+==== The Callback API ====
+
+This API provides a callback that can be plugged into the OpenSSL path
+validation framework. This callback provides the additions to path
+validation required for dealing with proxy certificates and X.509
+extensions. Furthermore, it allows applications to inspect data, e.g.
+the validated certificate chain, after the validation is done.
+
+
+==== The Certificate Utilities API ====
+
+The Certificate Utilities API provides helper functions for dealing with
+X.509 certificates. This API does not use the "handle" concept mentioned
+in the introduction. Rather, it operates on datatypes provided by the
+OpenSSL APIs.
+
+
+==== The Credential API ====
+
+The Credential API deals with reading and writing certificates from and
+to the file system and the OpenSSL I/O abstraction layer. It also
+provides functions for inspecting and validating the read credentials.
+
+
+==== The Proxy APIs ====
+
+The Proxy APIs provide a implementation of the X.509 Proxy Certificate
+Extension ASN.1 structure as well as functions for creating new proxies.
+
+
+==== The System Configuration API ====
+
+This API serves as a abstraction layer for OS specific information
+needed by the security infrastructure. It provides OS specific functions
+for discovering certificates from a set of predefined standard locations
+as well as functions for doing the same for various configuration files.
+
+
+=== Authorization ===
+
+As described in the introduction the GSI C security framework
+essentially provides two authorization APIs, the generic Authorization
+API and the Gridmap API. These APIs differ in various ways:
+
+The Authorization API provides a framework that allows callouts to 3rd
+party authorization solutions, does not provide a default authorization
+mechanism and is geared to authorizing the subject-action-object tuple. 
+
+The Gridmap API on the other hand, while allowing for custom callouts to
+be plugged in and override the default behavior, provides a default
+authorization and mapping mechanism based on the grid map file. Also, it
+only furnishes the callouts with information about the entity to be
+authorized, i.e. it does not provide information on the action and the
+object, so it is somewhat simpler in its approach. Finally, it provides
+the ability to map authorized entities to local system entities, e.g.
+UNIX user names. More information on the interface used for Gridmap
+callouts can be found
+link:../GSIAuthorizationCalloutSpecification-04.pdf[here].
+
+ 
+include::../GSIC_Interface_API_Frag.txt[]
+
+ 
+include::../GSIC_Interface_Protocol_Frag.txt[]
+
+ 
+include::../GSIC_Interface_Commandline_Frag.txt[]
+
+ 
+include::../GSIC_Interface_Config_Frag.txt[]
+
+ 
+[[gsic-developer-env]]
+== Environment variable interface ==
+
+
+include::../GSIC_Interface_Env_Frag.txt[]
+
+ 
+[[gsic-developer-debugging]]
+== Debugging ==
+
+
+--
+For information about system administrator logs, see
+link:../..gsic/admin/index.html#gsic-admin-debugging[] in the GSI C
+Admin Guide.
+
+
+--
+ 
+[[gsic-developer-troubleshooting]]
+== Troubleshooting ==
+
+
+include::../../Credential_Troubleshooting_Frag.txt[]
+
+
+include::../../Gridmap_Troubleshooting_Frag.txt[]
+
+ 
+[[gsic-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+
+
+* http://www.faqs.org/rfcs/rfc3820.html[RFC 3820] Proxy Certificates
+
+* http://www.faqs.org/rfcs/rfc2744.html[RFC 2744] GSSAPI: C-bindings
+
+* http://www.faqs.org/rfcs/rfc2743.html[RFC 2743] GSSAPI
+
+* http://www.ggf.org/documents/GWD-I-E/GFD-E.024.pdf[GSSAPI Extensions]
+
+* http://www.faqs.org/rfcs/rfc2246.html[RFC 2246] TLS
+
+* http://www.globus.org/toolkit/docs/3.0/gsi/GSI-message-specification-02.doc[Grid Security Infrastructure Message Specification]
+
+
+
+
+--
+  

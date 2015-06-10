@@ -1,0 +1,50 @@
+
+[[gsic-apis]]
+== APIs ==
+
+
+--
+Documentation for the APIs in this component can be found here:
+
+
+* http://www.globus.org/api/c-globus-{$version}/gaa%5fcore/html/index.html#%5ftop[gaa_core] [http://www.globus.org/api/c-globus-{$version}/gaa%5fcore/html/main.html#%5ftop[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/gaa%5fgss%5fgeneric/html/index.html#%5ftop[gaa_gss_generic] [http://www.globus.org/api/c-globus-{$version}/gaa%5fgss%5fgeneric/html/main.html#%5ftop[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/gaa%5fplugin/html/index.html#%5ftop[gaa_plugin] [http://www.globus.org/api/c-globus-{$version}/gaa%5fplugin/html/main.html#%5ftop[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fauthz/html/index.html#%5ftop[globus_authz] [http://www.globus.org/api/c-globus-{$version}/globus%5fauthz/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fauthz%5fcallout%5ferror/html/index.html#%5ftop[globus_authz_callout_error] [http://www.globus.org/api/c-globus-{$version}/globus%5fauthz%5fcallout%5ferror/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgridmap%5fcallout%5ferror/html/index.html#%5ftop[globus_gridmap_callout_error] [http://www.globus.org/api/c-globus-{$version}/globus%5fgridmap%5fcallout%5ferror/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fcallback/html/index.html#%5ftop[globus_gsi_callback] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fcallback/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fcert%5futils/html/index.html#%5ftop[globus_gsi_cert_utils] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fcert%5futils/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fcredential/html/index.html#%5ftop[globus_gsi_credential] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fcredential/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fopenssl%5ferror/html/index.html#%5ftop[globus_gsi_openssl_error] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fopenssl%5ferror/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fproxy%5fcore/html/index.html#%5ftop[globus_gsi_proxy_core] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fproxy%5fcore/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fproxy%5fssl/html/index.html#%5ftop[globus_gsi_proxy_ssl] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fproxy%5fssl/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fsysconfig/html/index.html#%5ftop[globus_gsi_sysconfig] [http://www.globus.org/api/c-globus-{$version}/globus%5fgsi%5fsysconfig/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgss%5fassist/html/index.html#%5ftop[globus_gss_assist] [http://www.globus.org/api/c-globus-{$version}/globus%5fgss%5fassist/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fgssapi%5fgsi/html/index.html#%5ftop[globus_gssapi_gsi] [http://www.globus.org/api/c-globus-{$version}/globus%5fgssapi%5fgsi/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/globus%5fopenssl%5fmodule/html/index.html#%5ftop[globus_openssl_module] [http://www.globus.org/api/c-globus-{$version}/globus%5fopenssl%5fmodule/html/main.html[no frames]]
+
+* http://www.globus.org/api/c-globus-{$version}/gssapi%5ferror/html/index.html#%5ftop[gssapi_error] [http://www.globus.org/api/c-globus-{$version}/gssapi%5ferror/html/main.html[no frames]]
+
+
+For information on the internationalization API, see the
+link:../..ccommonlib/pi/index.html#ccommonlib-apis[CCommon Libraries
+Public Interface]. 
+
+
+--

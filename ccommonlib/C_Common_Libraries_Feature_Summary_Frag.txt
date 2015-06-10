@@ -1,0 +1,18 @@
+
+[[ccommonlib-feature-summary]]
+=== Feature summary ===
+
+
+
+
+* Globus Callback - Portable event handling layer for signal handling and periodic and one-shot events in a single- more multi-threaded environment.
+
+* Globus Error - An abstraction for providing context-specific information in error response in C.
+
+* Portable Threading API for POSIX and Windows
+
+* URL String Parser
+
+* Configuration handlers for command-line, environment-variable, and configuration file based application configuration.
+
+

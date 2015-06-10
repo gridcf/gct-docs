@@ -1,0 +1,26 @@
+
+[[gsic-security-considerations]]
+=== Security considerations for GSI C ===
+
+
+
+
+* During host authorization, the toolkit treats host names of the form "hostname-'ANYTHING'.edu" as equivalent to "hostname.edu". This means that if a service was set up to do host authorization and hence accept the certificate "hostname.edu", it would also accept certificates with DNs "hostname-'ANYTHING'.edu".
++
+The feature is in place to allow a multi-homed host following a "hostname-interface" naming convention, to have a single host certificate. For example, host "grid.test.edu" would also accept the likes of "grid-1.test.edu" or "grid-foo.test.edu".
++
+[NOTE]
+--
+The string 'ANYTHING' matches only the name of the host and not domain components. This means that "hostname.edu" will not match "hostname-foo.sub.edu", but will match "host-foo.edu".
+--
++
+[NOTE]
+--
+If a host was set up to accept "hostname-1.edu", it will not accept "hostname-'ANYTHING'.edu" but will accept "hostname.edu". That is, only one of the names being compared may contain the hyphen character in the host name.
+--
++
+A http://bugzilla.globus.org/bugzilla/show%5fbug.cgi?id=2969[bug] has been opened to see if this feature needs to be modified.
++
+In GT 6.0, it is possible to disable this behavior, by setting the enviornment variable ++GLOBUS_GSSAPI_NAME_COMPATIBILITY++ to ++STRICT_RFC2818++.
+
+

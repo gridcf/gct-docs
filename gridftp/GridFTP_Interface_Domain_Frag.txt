@@ -1,0 +1,31 @@
+
+[[gridftp-server]]
+== GridFTP Server ==
+
+
+=== Interface introduction ===
+
+The Globus implementation of the GridFTP server draws on: 
+
+* three IETF RFCs: 
+
+* RFC 959
+
+* RFC 2228
+
+* RFC 2389
+
+* an IETF Draft: MLST-16
+
+* the GridFTP protocol specification, which is Global Grid Forum (GGF) Standard GFD.020.
+
+
+
+
+=== Syntax of the interface ===
+
+The command line tools and the client library completely hide the
+details of the protocol from the user and the developer. Unless you
+choose to use the control library, it is not necessary to have a
+detailed knowledge of the protocol.
+

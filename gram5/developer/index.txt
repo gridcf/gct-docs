@@ -1,0 +1,473 @@
+
+[[gram5Developer,Developer's Guide]]
+:doctype: book
+= GT 6.0 GRAM5: Developer's Guide =
+
+  
+.Introduction 
+--
+This guide is intended to help a developer interact with GRAM5. It
+includes sections on implementing clients in C and implementing a Local
+Resource Manager interface, as well as an overview of concepts and APIs
+used to interact with GRAM. 
+ 
+--
+
+ 
+= Introduction =
+
+
+[[gram5-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../GRAM5_Feature_Summary_Frag.txt[]
+
+
+include::../GRAM5_Platform_Summary_Frag.txt[]
+
+
+include::../GRAM5_Compatibility_Summary_Frag.txt[]
+
+
+include::../GRAM5_Dependencies_Summary_Frag.txt[]
+
+
+include::../GRAM5_Security_Considerations_Frag.txt[]
+
+
+[[gram5-developer-concepts]]
+== GRAM5 Concepts for Developers ==
+
+
+[[gram5-developer-concepts-blocking]]
+=== Blocking and Nonblocking Function Variants ===
+
+In the GRAM Client API, all functions that involve sending messages over
+the network have both blocking and nonblocking variants. These are
+useful in different programming situations. 
+
+The blocking variants, such as the
+**++globus_gram_client_job_request++** function require less application
+code, but will prevent subsequent instructions from executing until the
+request has been sent and the reply parsed. In a non-threaded
+environment, other callback functions registered with the Globus event
+driver may be invoked while the blocking function is running. In a
+threaded environment, other events may occur in other threads while the
+function is blocking, but the current thread will be blocked until the
+response is parsed. 
+
+The nonblocking variants, such as
+**++globus_gram_client_register_job_request++** require the application
+to include a callback function which will be called by the Globus event
+driver when the reply has been parsed. In a non-threaded environment,
+applications must poll the event driver using functions from the
+**++globus_poll++** or **++globus_cond_wait++** families of functions.
+In a threaded environment, the callback function may be invoked in
+another thread than the one calling the non-blocking function, even
+before the non-blocking function has returned. Application writers must
+be careful in using synchronization primitives such as
+**++globus_mutex_t++** and **++globus_cond_t++** when using non-blocking
+functions. 
+
+An application writer should use the non-blocking variants if the
+application will be submitting many jobs concurrently or requires custom
+network or security attributes. Using the non-blocking variants allows
+the Globus event driver to better schedule network I/O in these cases. 
+
+
+=== Service Contact Strings ===
+
+GRAM uses three types of **contact strings** to describe how to contact
+different services. These service contacts are: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+            <title>GRAM Contact String Types</title>
+            <tgroup cols='2'>
+                <thead>
+                    <row>
+                        <entry><simpara>Type</simpara></entry>
+                        <entry><simpara>Meaning</simpara></entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry><simpara>Gatekeeper Service Contact</simpara></entry>
+                        <entry><simpara>This string describes how to contact a
+                        gatekeeper service. It is used to submit jobs, send
+                        "ping" requests to determine if a service is properly
+                        deployed, and version requests to determine what
+                        version of the software is deployed. Full details of
+                        the syntax of this contact is located in the next
+                        section.</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara>Callback Contact</simpara></entry>
+                        <entry><simpara>This string is an HTTPS URL that 
+                        is an endpoint for GRAM job state callbacks. An https
+                        message is posted to this address when the Job Manager
+                        detects a job state change.</simpara></entry>
+                    </row>
+                    <row>
+                        <entry><simpara>Job Contact</simpara></entry>
+                        <entry><simpara>This string is an HTTPS URL that
+                        is an endpoint for contacting an existing GRAM job.
+                        An https message is posted to this address to cancel,
+                        signal, or query a GRAM job.</simpara></entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+[[gram5-developer-resource-names]]
+==== Resource Names ====
+
+In GRAM5, a Gatekeeper Service Contact contains the host, port, service
+name, and service identity required to contact a particular GRAM
+service. For convenience, default values are used when parts of the
+contact are omitted. An example of a full gatekeeper service contact is
+++grid.example.org:2119/jobmanager:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++.
+
+
+The various forms of the resource name using default values follow: 
+
+* 'HOST'
+* 'HOST'++:++'PORT'
+* 'HOST'++:++'PORT'++/++'SERVICE'
+* 'HOST'++/++'SERVICE'
+* 'HOST'++:/++'SERVICE'
+* 'HOST'++:++'PORT'++:++'SUBJECT'
+* 'HOST'++/++'SERVICE'++:++'SUBJECT'
+* 'HOST'++:/++'SERVICE'++:++'SUBJECT'
+* 'HOST'++:++'PORT'++/++'SERVICE'++:++'SUBJECT'
+
+Where the various values have the following meaning: 
+
+**'HOST'**::
+     Network name of the machine hosting the service.
+**'PORT'**::
+     Network port number that the service is listening on. If not specified, the default of ++2119++ is used.
+**'SERVICE'**::
+     Path of the service entry in ++$GLOBUS_LOCATION/etc/grid-services++. If not specified, the default of . If not specified, the default of ++jobmanager++ is used.
+**'SUBJECT'**::
+     X.509 identity of the credential used by the service. If not specified, the default of ++host@++'HOST' is used.
+
+
+
+
+
+.Gatekeeper Service Contact Examples
+=======================================================================
+The following strings all name the service
+++grid.example.org:2119/jobmanager:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++
+using the formats with the various defaults described above. 
+
+* ++grid.example.org++
+* ++grid.example.org:2119++
+* ++grid.example.org:2119/jobmanager++
+* ++grid.example.org/jobmanager++
+* ++grid.example.org:/jobmanager++
+* ++grid.example.org:2119:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++
+* ++grid.example.org/jobmanager:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++
+* ++grid.example.org:/jobmanager:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++
+* ++grid.example.org:2119/jobmanager:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++
+
+
+=======================================================================
+
+
+[[gram5-developer-jobstatecallbacks]]
+=== Job State Callbacks and Polling ===
+
+GRAM clients and learn about a job's state in two ways: by registering
+for job state callbacks and by polling for status. These two methods
+have different performance characteristics and costs. 
+
+In order to receive job state callbacks, a client application must
+create an HTTPS listener using the
+**++globus_gram_client_callback_allow++** or
+**++globus_gram_client_info_callback_allow++** functions. A non-threaded
+application must then periodically call a function from either the
+**++globus_cond_wait++** or **++globus_poll++** families in order to
+process the job state callbacks. Additionally, the network must be
+configured to allow the GRAM job manager to send messages to the port
+that the client is listening on. This may be difficult if there is a
+firewall between the client and service. 
+
+The GRAM service initiates the job state callbacks, and thus they are
+usually sent very shortly after the job state changes, so clients can be
+notified about the state changes quickly. 
+
+In order to poll for job states, a client can call either the blocking
+or nonblocking variant of the **++globus_gram_client_job_status++** or
+**++globus_gram_client_job_status_with_info++** functions. These
+functions require that the network be configured to allow the client to
+contact the network port that the GRAM service is listening on (the Job
+Contact). 
+
+The client intiates these polling operations, so they are only as
+accurate as the polling frequence of the client. If the client polls
+very often, it will receive job state changes more quickly, at the risk
+of increasing the computing and network cost of both the client and
+service. 
+
+
+=== Credential Management ===
+
+The GRAM5 protocols all use GSSAPIv2 abstractions to provide
+authentication and authorization. By default, GRAM uses an SSL-based
+GSSAPI for its security. 
+
+The client delegates a credential to the gatekeeper service after
+authentication, and the GRAM job manager service uses this delegated
+credential as both a job-specific credential and for subsequent
+communication with GRAM clients. 
+
+If a client or clients submit multiple jobs to a gatekeeper service,
+they will eventually all be handled by a single job manager process.
+This process will use whichever delegated credential will remain valid
+the longest for accepting new connections and connecting to clients to
+send job state callbacks. When a client delegates a new credential to a
+job, this credential may also be used as the job manager's credential
+for future connections. 
+
+
+=== RSL ===
+
+GRAM5 jobs are described using the RSL language. The GRAM client API
+submits jobs using the string representation of the RSL, rather than the
+RSL parse tree. Clients can, if they need to modify of construct RSL at
+runtime, use the functions in the RSL API to do so. 
+
+ 
+= GRAM Client Developer's Guide =
+
+
+[[gram5-developer-scenarios]]
+== Basic GRAM Client Scenarios ==
+
+
+--
+This chapter contains a series of examples demonstrating how to use
+different features of the GRAM APIs to interact with the GRAM service.
+These examples can be compiled by using GNU make with the makefile from
+link:Makefile.examples[Makefile.examples]. 
+
+
+--
+
+=== "Ping" a Job Manager ===
+
+This example shows how to use a gatekeeper "ping" request to determine
+if a service is running and if the client is authorized to contact it.
+It takes a gatekeeper service contact as its only command-line option.
+The link:gram_ping_example.c[source to this example] can be downloaded. 
+
+
+
+--------
+
+include::gram_ping_example.c[]
+
+
+--------
+
+
+=== Check a Job Manager Version ===
+
+This example shows how to use the "version" command to determine what
+software version a gatekeeper service is running. The
+link:gram_version_example.c[source to this example] can be downloaded. 
+
+
+
+--------
+
+include::gram_version_example.c[]
+
+
+--------
+
+
+=== Submitting a Job ===
+
+This example shows how to submit a job to a GRAM service. The
+link:gram_submit_example.c[source to this example] can be downloaded. 
+
+
+
+--------
+
+include::gram_submit_example.c[]
+
+
+--------
+
+
+=== Submitting a Job and Processing Job State Callbacks ===
+
+This example shows how to submit a job to a GRAM service and then wait
+until the job reaches the FAILED or DONE state. The
+link:gram_submit_and_wait_example.c[source to this example] can be
+downloaded. 
+
+
+
+--------
+
+include::gram_submit_and_wait_example.c[]
+
+
+--------
+
+
+=== Polling Job Status ===
+
+This example shows how to submit a job to a GRAM service and then wait
+until the job reaches the FAILED or DONE state. The
+link:gram_poll_example.c[source to this example] can be downloaded. 
+
+
+
+--------
+
+include::gram_poll_example.c[]
+
+
+--------
+
+
+=== Canceling a Job ===
+
+This example shows how to cancel a job being run by a GRAM service. The
+link:gram_cancel_example.c[source to this example] can be downloaded. 
+
+
+
+--------
+
+include::gram_cancel_example.c[]
+
+
+--------
+
+
+=== Refreshing Job Credential ===
+
+This example shows how to refresh a GRAM job's credential after the job
+has been submitted by some other means. The
+link:gram_refresh_example.c[source to this example] can be downloaded. 
+
+
+
+--------
+
+include::gram_refresh_example.c[]
+
+
+--------
+
+
+[[gram5-developer-scenarios-advanced]]
+== Advanced GRAM Client Scenarios ==
+
+
+=== Non-blocking Job Submission ===
+
+This example shows how to submit a series of GRAM jobs using the
+non-blocking function **++globus_gram_client_register_job_request++**
+and wait until all submissions have completed. This example throttles
+the number of concurrent job submissions to reduce the load on the
+service node. The link:gram_nonblocking_submit_example.c[source to this
+example] can be downloaded. 
+
+--------
+
+include::gram_nonblocking_submit_example.c[]
+
+
+--------
+
+
+
+=== Custom Security Attributes ===
+
+This example shows how to submit a job and delegate a full credential to
+the job. The link:gram_attr_example.c[source to this example] can be
+downloaded. 
+
+--------
+
+include::gram_attr_example.c[]
+
+
+--------
+
+
+
+=== Modifying RSL ===
+
+This example shows how to programmatically add environment variable
+definitions to an RSL prior to submitting a job. The
+link:gram_rsl_example.c[source to this example] can be downloaded. 
+
+--------
+
+include::gram_rsl_example.c[]
+
+
+--------
+
+
+ 
+= GRAM Server Developer's Guide =
+
+
+include::GRAM5_LRM_Adapter_Tutorial.txt[]
+
+ 
+= GRAM5 Developer's Reference =
+
+
+include::../GRAM5_Interface_API_Frag.txt[]
+
+
+include::../GRAM5_Interface_RSL_Frag.txt[]
+
+
+include::../GRAM5_Debugging_Frag.txt[]
+
+
+include::../GRAM5_Troubleshooting_Frag.txt[]
+
+
+[[gram5-developer-protocols]]
+== Semantics and syntax of protocols ==
+
+
+include::../GRAM5_Interface_Protocol_Frag.txt[]
+
+ 
+[[gram5-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+No related documentation links have been determined at this time.
+
+
+--
+ 
+[[gram5-developer-internal-components]]
+== Internal Components ==
+
+
+--
+link:internal-components.html[Internal Components]
+
+
+--
+   

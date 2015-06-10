@@ -1,0 +1,29 @@
+
+[[myproxyPI,Public Interface Guide]]
+:doctype: book
+= GT 6.0 Component Guide to Public Interfaces: MyProxy =
+
+  
+include::../Cred_Mgmt_MyProxy_Interface_API_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Interface_Config_Frag.txt[]
+
+ 
+include::../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.txt[]
+
+ 
+[[myproxy-pi-env]]
+== Environment variable interface ==
+
+
+include::../Cred_Mgmt_MyProxy_Interface_Env_Frag.txt[]
+
+ 
+[[myproxy-error-codes]]
+== Errors ==
+
+
+include::../Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+
+  

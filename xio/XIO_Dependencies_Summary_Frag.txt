@@ -1,0 +1,16 @@
+
+[[xio-dependencies]]
+=== Technology dependencies ===
+
+XIO depends on the following GT components:
+
+
+
+
+* Globus Core
+
+* Globus Common
+
+* Globus GSSAPI
+
+

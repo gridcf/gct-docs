@@ -1,0 +1,7 @@
+
+The API for GlobusXIO has not changed to any significant degree since
+its introduction. All other usability issues relate to the compilation
+and installation of the libraries and are therefore subject to the
+usability of the installation tools found at the
+http://www.globus.org/toolkit/downloads/[Toolkit Downloads] page.
+

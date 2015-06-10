@@ -1,0 +1,4 @@
+
+Please refer to the http://myproxy.ncsa.uiuc.edu/protocol[MyProxy
+Protocol Specification]. 
+

@@ -1,0 +1,284 @@
+
+[[gsicKey,GSI C Security Key Concepts]]
+:doctype: book
+= GT 6.0 GSI C Security: Key Concepts =
+
+  
+[[gsic-key-overview]]
+
+.Overview
+--
+GSI uses public key cryptography (also known as asymmetric cryptography)
+as the basis for its functionality. Many of the terms and concepts used
+in this description of GSI come from its use of public key cryptography.
+
+For a good overview of GSI contained in the Web Services-based
+components of GT4, see link:../../GT4-GSI-Overview.pdf[Globus Toolkit
+Version 4 Grid Security Infrastructure: A Standards Perspective].
+A reference for detailed information about public key cryptography is
+available in the book http://www.cacr.math.uwaterloo.ca/hac/[Handbook of
+Applied Cryptography], by A. Menezes, P. van Oorschot, and S. Vanstone,
+CRC Press, 1996.
+http://www.cacr.math.uwaterloo.ca/hac/about/chap8.pdf[Chapter 8] of this
+book deals exclusively with public key cryptography. 
+The primary motivations behind GSI are: 
+
+
+* The need for secure communication (authenticated and perhaps confidential) between elements of a computational Grid.
+
+* The need to support security across organizational boundaries, thus prohibiting a centrally-managed security system.
+
+* The need to support "single sign-on" for users of the Grid, including delegation of credentials for computations that involve multiple resources and/or sites.
+
+
+
+--
+
+  
+[[gsic-key-concepts]]
+== Conceptual Details ==
+
+
+[[gsic-key-publickey]]
+=== Public Key Cryptography ===
+
+The most important thing to know about public key cryptography is that,
+unlike earlier cryptographic systems, it relies not on a single key (a
+password or a secret "code"), but on two keys. These keys are numbers
+that are mathematically related in such a way that if either key is used
+to encrypt a message, the other key must be used to decrypt it. Also
+important is the fact that it is next to impossible (with our current
+knowledge of mathematics and available computing power) to obtain the
+second key from the first one and/or any messages encoded with the first
+key. 
+
+By making one of the keys available publicly (a public key) and keeping
+the other key private (a private key), a person can prove that he or she
+holds the private key simply by encrypting a message. If the message can
+be decrypted using the public key, the person must have used the private
+key to encrypt the message. 
+
+**Important:** It is critical that private keys be kept private! Anyone
+who knows the private key can easily impersonate the owner. 
+
+
+[[gsic-key-digitalsig]]
+=== Digital Signatures ===
+
+Using public key cryptography, it is possible to digitally "sign" a
+piece of information. Signing information essentially means assuring a
+recipient of the information that the information hasn't been tampered
+with since it left your hands. 
+
+To sign a piece of information, first compute a mathematical hash of the
+information. (A hash is a condensed version of the information. The
+algorithm used to compute this hash must be known to the recipient of
+the information, but it isn't a secret.) Using your private key, encrypt
+the hash, and attach it to the message. Make sure that the recipient has
+your public key. 
+
+To verify that your signed message is authentic, the recipient of the
+message will compute the hash of the message using the same hashing
+algorithm you used, and will then decrypt the encrypted hash that you
+attached to the message. If the newly-computed hash and the decrypted
+hash match, then it proves that you signed the message and that the
+message has not been changed since you signed it. 
+
+
+[[gsic-key-certificates]]
+=== Certificates ===
+
+A central concept in GSI authentication is the **certificate**. Every
+user and service on the Grid is identified via a certificate, which
+contains information vital to identifying and authenticating the user or
+service.
+
+A GSI certificate includes four primary pieces of information:
+
+
+
+
+* A subject name, which identifies the person or object that the certificate represents.
+
+* The public key belonging to the subject.
+
+* The identity of a Certificate Authority (CA) that has signed the certificate to certify that the public key and the identity both belong to the subject.
+
+* The digital signature of the named CA.
+
+
+Note that a third party (a CA) is used to certify the link between the
+public key and the subject in the certificate. In order to trust the
+certificate and its contents, the CA's certificate must be trusted. The
+link between the CA and its certificate must be established via some
+non-cryptographic means, or else the system is not trustworthy.
+
+GSI certificates are encoded in the X.509 certificate format, a standard
+data format for certificates established by the Internet Engineering
+Task Force (IETF). These certificates can be shared with other public
+key-based software, including commercial web browsers from Microsoft and
+Netscape.
+
+
+[[gsic-key-mutualauthentication]]
+=== Mutual Authentication ===
+
+If two parties have certificates, and if both parties trust the CAs that
+signed each other's certificates, then the two parties can prove to each
+other that they are who they say they are. This is known as **mutual
+authentication**. GSI uses the Secure Sockets Layer (SSL) for its mutual
+authentication protocol, which is described
+link:#gsic-key-delegation[below]. (SSL is also known by a new, IETF
+standard name: Transport Layer Security, or TLS.)
+
+Before mutual authentication can occur, the parties involved must first
+trust the CAs that signed each other's certificates. In practice, this
+means that they must have copies of the CAs' certificates--which contain
+the CAs' public keys--and that they must trust that these certificates
+really belong to the CAs.
+
+To mutually authenticate, the first person (**A**) establishes a
+connection to the second person (**B**). 
+
+To start the authentication process, **A** gives **B** his certificate. 
+
+The certificate tells **B** who **A** is claiming to be (the identity),
+what **A**'s public key is, and what CA is being used to certify the
+certificate. 
+
+**B** will first make sure that the certificate is valid by checking the
+CA's digital signature to make sure that the CA actually signed the
+certificate and that the certificate hasn't been tampered with. (This is
+where **B** must trust the CA that signed **A**'s certificate.) 
+
+Once **B** has checked out **A**'s certificate, **B** must make sure
+that **A** really is the person identified in the certificate. 
+
+**B** generates a random message and sends it to **A**, asking **A** to
+encrypt it. 
+
+**A** encrypts the message using his private key, and sends it back to
+**B**. 
+
+**B** decrypts the message using **A**'s public key. 
+
+If this results in the original random message, then **B** knows that
+**A** is who he says he is. 
+
+Now that **B** trusts **A**'s identity, the same operation must happen
+in reverse. 
+
+**B** sends **A** her certificate, **A** validates the certificate and
+sends a challenge message to be encrypted. 
+
+**B** encrypts the message and sends it back to **A**, and **A**
+decrypts it and compares it with the original. 
+
+If it matches, then **A** knows that **B** is who she says she is. 
+
+At this point, **A** and **B** have established a connection to each
+other and are certain that they know each others' identities. 
+
+
+[[gsic-key-confcommunication]]
+=== Confidential Communication ===
+
+By default, GSI does not establish confidential (encrypted)
+communication between parties. Once mutual authentication is performed,
+GSI gets out of the way so that communication can occur without the
+overhead of constant encryption and decryption. 
+
+GSI can easily be used to establish a shared key for encryption if
+confidential communication is desired. Recently relaxed United States
+export laws now allow us to include encrypted communication as a
+standard optional feature of GSI. 
+
+A related security feature is communication integrity. Integrity means
+that an eavesdropper may be able to read communication between two
+parties but is not able to modify the communication in any way. GSI
+provides communication integrity by default. (It can be turned off if
+desired). Communication integrity introduces some overhead in
+communication, but not as large an overhead as encryption. 
+
+
+[[gsic-key-securingprivatekeys]]
+=== Securing Private Keys ===
+
+The core GSI software provided by the Globus Toolkit expects the user's
+private key to be stored in a file in the local computer's storage. To
+prevent other users of the computer from stealing the private key, the
+file that contains the key is encrypted via a password (also known as a
+passphrase). To use GSI, the user must enter the passphrase required to
+decrypt the file containing their private key. 
+
+We have also prototyped the use of cryptographic smartcards in
+conjunction with GSI. This allows users to store their private key on a
+smartcard rather than in a file system, making it still more difficult
+for others to gain access to the key. 
+
+
+[[gsic-key-delegation]]
+=== Delegation, Single Sign-On and Proxy Certificates ===
+
+GSI provides a delegation capability: an extension of the standard SSL
+protocol which reduces the number of times the user must enter his
+passphrase. If a Grid computation requires that several Grid resources
+be used (each requiring mutual authentication), or if there is a need to
+have agents (local or remote) requesting services on behalf of a user,
+the need to re-enter the user's passphrase can be avoided by creating a
+**proxy**. 
+
+A proxy consists of a new certificate and a private key. The key pair
+that is used for the proxy, i.e. the public key embedded in the
+certificate and the private key, may either be regenerated for each
+proxy or obtained by other means. The new certificate contains the
+owner's identity, modified slightly to indicate that it is a proxy. The
+new certificate is signed by the owner, rather than a CA. (See diagram
+below.) The certificate also includes a time notation after which the
+proxy should no longer be accepted by others. Proxies have limited
+lifetimes. 
+
+
+[[gssapi1]]
+
+.The new certificate is signed by the owner, rather than a CA.
+--
+image::gssapi1.gif[scaledwidth="75%",align="center"]
+--
+The proxy's private key must be kept secure, but because the proxy isn't
+valid for very long, it doesn't have to kept quite as secure as the
+owner's private key. It is thus possible to store the proxy's private
+key in a local storage system without being encrypted, as long as the
+permissions on the file prevent anyone else from looking at them easily.
+Once a proxy is created and stored, the user can use the proxy
+certificate and private key for mutual authentication without entering a
+password.
+
+When proxies are used, the mutual authentication process differs
+slightly. The remote party receives not only the proxy's certificate
+(signed by the owner), but also the owner's certificate. During mutual
+authentication, the owner's public key (obtained from her certificate)
+is used to validate the signature on the proxy certificate. The CA's
+public key is then used to validate the signature on the owner's
+certificate. This establishes a chain of trust from the CA to the proxy
+through the owner. 
+
+[NOTE]
+--
+GSI, and software based on it (notably the Globus Toolkit, GSI-SSH, and GridFTP), is currently the only software which supports the delegation extensions to TLS (a.k.a. SSL). The Globus Alliance has worked in the GGF and the IETF to standardize this extension in the form of Proxy Certificates (RFC 3820) [http://www.ietf.org/rfc/rfc3820.txt[http://www.ietf.org/rfc/rfc3820.txt]].
+--
+ 
+[[gsic-key-relateddocs]]
+== Related Documents ==
+
+
+--
+
+* link:../../GT4-GSI-Overview.pdf[Globus Toolkit Version 4 Grid Security Infrastructure: A Standards Perspective]
+
+* http://www.cacr.math.uwaterloo.ca/hac/[Handbook of Applied Cryptography]
+
+
+
+--
+  

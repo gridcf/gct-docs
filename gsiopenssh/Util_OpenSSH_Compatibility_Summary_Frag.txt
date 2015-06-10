@@ -1,0 +1,6 @@
+
+[[gsiopenssh-compatibility]]
+=== Backward compatibility summary ===
+
+GSI-OpenSSH is backward compatible.
+

@@ -1,0 +1,12 @@
+
+[[gram5-platforms]]
+=== Tested platforms ===
+
+GRAM5 has been tested extensively on the following platforms:
+
+
+include::../platforms.txt[]
+
+
+ 
+

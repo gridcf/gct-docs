@@ -1,0 +1,63 @@
+
+[[gram5-performance-guide]]
+== Scalability and Performance Recommendations ==
+
+
+--
+This document includes recommendations for increasing the scalability
+and performance of GRAM5 in a Grid.
+
+
+--
+
+=== Server-side Recommendations ===
+
+
+==== Filesystem related settings ====
+
+
+
+. The GRAM5 service stores job state for crash recovery on disk. By
+default, the ++$GLOBUS_LOCATION/tmp/gram_job_state++ directory is used
+for these files. If this path is located on a distributed file system
+mount, locking and updating the job state files can negatively effect
+performance.  directory is used for these files. If this path is located
+on a distributed file system mount, locking and updating the job state
+files can negatively effect performance.
++
+To configure GRAM5 to use a local disk for job state files, modify
+++$GLOBUS_LOCATION/etc/globus-job-manager.conf++ or  or
+++$GLOBUS_LOCATION/etc/grid-services/jobmanager-LRM++ so that the
+argument to the  so that the argument to the '-state-file-dir' is a
+local directory path. That directory must be world writable with the
+"sticky bit" set (mode ++1777++).
+
+
+
+==== LRM-related settings ====
+
+
+
+. The GRAM5 service can use two different interfaces to obtain job state
+changes, polling and using the SEG. The default method is to poll the
+LRM via the GRAM5 script interface. This polling method is often less
+efficient than the SEG method and results in a higher load on the GRAM5
+service node, even when all managed jobs are waiting in the queue for
+execution.
++
+The other method, uses a program implementing the SEG interface to
+generate LRM events which can be stored in a log file for job managers
+run by many different users to process. When this is used, the multiple
+job managers may detect job state changes without having to directly
+interact with the LRM.
++
+To enable the SEG to monitor jobs for a particular LRM,
+link:#gram5-admin-installing-pbs-lrm-adapter[install and configure] the
+LRM-specific gram5 bundle, run the
+link:#gram5-cmd-globus-job-manager-event-generator[**++globus-job-manager-event-generator++**]
+program on a node which can access the LRM interfaces needed by the
+LRM-specific SEG module, and
+link:#gram5-Interface_Config_Frag-seg_module[configure the LRM-specific
+service instance to use the SEG] to monitor jobs for state changes.
+
+

@@ -1,0 +1,63 @@
+[[globus-scheduler-event-generator-admin]]
+= GLOBUS-SCHEDULER-EVENT-GENERATOR-ADMIN(8) =
+:doctype: manpage
+:man source: University of Chicago
+
+== NAME ==
+globus-scheduler-event-generator-admin - Manage SEG modules
+
+== SYNOPSIS ==
+**++globus-scheduler-event-generator-admin++** [++-h++ ] 
+
+== Description ==
+
+The **++globus-scheduler-event-generator-admin++** program manages SEG
+modules which are used by the **++globus-scheduler-event-generator++**
+to monitor a local resource manager or batch system for events. The
+**++globus-scheduler-event-generator-admin++** can list, enable, or
+disable specific SEG modules. The '-h' command-line option shows a brief
+usage message. 
+
+
+=== Listing SEG Modules ===
+
+The '-l' command-line option to
+**++globus-scheduler-event-generator-admin++** will cause it to list all
+of the SEG modules which are available to be run by the
+**++globus-scheduler-event-generator++**. In the output, the service
+name will be followed by its status in brackets. Possible status strings
+are ++ENABLED++ and ++DISABLED++. 
+
+
+
+=== Enabling SEG Modules ===
+
+The '-e ' command-line option to
+**++globus-scheduler-event-generator-admin++** will cause it to enable
+the module so that the init script for the
+**++globus-scheduler-event-generator++** will run it. 
+
+
+
+=== Disabling SEG Modules ===
+
+The '-d ' command-line option to
+**++globus-scheduler-event-generator-admin++** will cause it to disable
+the module so that it will not be started by the
+**++globus-scheduler-event-generator++** init script. 
+
+
+
+== Files ==
+
+
+
+**++/etc/globus/scheduler-event-generator++**::
+     Default location of enabled SEG modules.
+
+
+
+== See Also ==
+
+++globus-scheduler-event-generator(8)++ 
+

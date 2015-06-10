@@ -1,0 +1,47 @@
+
+[[security-gridmap-troubleshooting]]
+=== Grid map Troubleshooting ===
+
+
+==== Grid map errors ====
+
+The following are some common problems that may cause clients or servers
+to report that user are not authorized: 
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table frame='all' id='gridmap-errors-table'><title>Gridmap Errors</title>
+<tgroup align='left' colsep='1' cols='3' rowsep='1'>
+<colspec colname='c1'></colspec>
+<colspec colname='c2'></colspec>
+<colspec colname='c3'></colspec>
+<thead>
+<row>
+  <entry>Error Code</entry>
+  <entry>Definition</entry>
+  <entry>Possible Solutions</entry>
+</row>
+</thead>
+<tbody>
+   <row>
+  <entry><code>The content of the grid map file does not conform to the expected format</code></entry>
+  <entry>The content of the grid map file does not conform to the expected format</entry>
+  <entry>
+Run <olink targetdoc='gsicPI' targetptr='grid-mapfile-check-consistency'>grid-mapfile-check-consistency</olink> to make sure that your 
+   gridmap file conforms to the expected format.
+  </entry>
+ </row>
+ <row>
+  <entry><code>The grid map file does not contain a entry for your DN</code></entry>
+  <entry>The grid map file does not contain a entry for your DN</entry>
+  <entry>
+Use <olink targetdoc='gsicPI' targetptr='grid-mapfile-add-entry'>grid-mapfile-add-entry</olink> to add the relevant entry.
+  </entry>
+</row>
+ 
+</tbody>
+</tgroup>
+   </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+

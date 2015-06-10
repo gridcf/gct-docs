@@ -1,0 +1,32 @@
+
+[[xio-driver-addons,Add-on]]
+== GT 6.0 XIO : Driver Add-ons ==
+
+
+[[xio-drivers-addon-intro]]
+=== Introduction ===
+
+Here we describe a GPT bundle of some useful GlobusXIO drivers. The
+drivers are not packaged with the standard globus release because they
+require external dependencies, or are otherwise best distributed in a
+separate release. Here you can get each driver individually, or a bundle
+of all the drivers.
+
+
+include::XIO_Driver_UDT_REF.txt[]
+
+
+include::XIO_Driver_Token_Bucket.txt[]
+
+
+include::XIO_Driver_Popen.txt[]
+
+
+include::XIO_Driver_BIDI.txt[]
+
+
+include::XIO_Driver_Netlog.txt[]
+
+
+include::XIO_Driver_Skeleton.txt[]
+

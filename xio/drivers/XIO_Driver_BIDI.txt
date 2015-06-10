@@ -1,0 +1,26 @@
+
+[[xio-driver-bidi]]
+=== Bidirectional Driver ===
+
+The BIDI driver, bi-directional driver allows a user to turn a
+unidirectional pipe, into a bidirectional stream. It does this simply by
+opening up 1 uni-directional pipe in each direction. By default it
+assumes the use of the ModeE driver, but it can be configured to use any
+driver. 
+
+Important attribute controls are listed here. For a complete list see:
+http://www.globus.org/api/c-globus-6.0/globus%5fxio%5fbidi%5fdriver/html/index.html[BIDI
+API] 
+
+
+
+
+* GLOBUS_XIO_BIDI_SET_READ_STACK
+
+* GLOBUS_XIO_BIDI_SET_WRITE_STACK
+
+* GLOBUS_XIO_BIDI_SET_READ_ATTR
+
+* GLOBUS_XIO_BIDI_SET_WRITE_ATTR
+
+

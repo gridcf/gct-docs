@@ -1,0 +1,59 @@
+[[gsicQP,Quality Profile]]
+:doctype: article
+= GT6.0 GSI C Quality Profile =
+
+  
+[[gsic-qp-test]]
+== Test Reports ==
+
+
+
+* link:globus-gss-assist-test.html[Unit Test Report: GSS Assist]
+
+* link:globus-proxy-ssl-test.html[Unit Test Report: Proxy SSL]
+
+* link:globus-gssapi-gsi-test.html[Unit Test Report: GSSAPI (GSI)]
+
+* link:globus-proxy-utils-test.html[Unit Test Report: Proxy Utils]
+
+* link:globus-openssl-error-test.html[Unit Test Report: OpenSSL Error]
+
+
+
+ 
+[[gsic-qp-coverage]]
+== Test coverage reports ==
+
+
+
+* A test coverage report is available at http://www.mcs.anl.gov/~bester/gsi/coverage/{$version}.
+
+
+
+ 
+[[gsic-qp-code]]
+== Code analysis reports ==
+
+
+
+* There are no code analysis reports available at this time.
+
+
+
+ 
+include::../GSIC_Known_Problems_Frag.txt[]
+
+ 
+include::../GSIC_Fixed_Bugs_Frag.txt[]
+
+ 
+[[gsic-qp-performance]]
+== Performance reports ==
+
+
+
+* There are no performance reports available at this time.
+
+
+
+  

@@ -1,0 +1,25 @@
+
+[[xio-apis]]
+== XIO APIs ==
+
+
+=== Programming Model Overview ===
+
+Globus XIO is based on an event based asynchronous programming model.
+This model is described in great detail at:
+link:#globus-async[Asynchronous Event Handling]. In short, with Globus
+XIO, connections are opened and closed. While open, read and write
+requests are posted with a callback function pointer given by the user.
+When the event completes, the given callback is called. 
+
+
+=== Component API ===
+
+You can find documentation of the XIO library at: 
+
+http://www.globus.org/api/c/globus%5fxio/html/index.html[http://www.globus.org/api/c/globus_xio/html/index.html]
+
+
+For information on the internationalization API, see
+link:../..ccommonlib/pi/index.html#ccommonlib-apis[]. 
+

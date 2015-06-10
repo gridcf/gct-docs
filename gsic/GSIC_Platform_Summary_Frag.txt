@@ -1,0 +1,12 @@
+
+[[gsic-platforms]]
+=== Tested platforms ===
+
+GSI C has been tested on the following platforms:
+
+
+include::../platforms.txt[]
+
+
+ 
+

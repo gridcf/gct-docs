@@ -1,0 +1,43 @@
+[[ccommonlibRN,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes: C Common Libraries =
+
+  
+[[ccommonlib-rn-overview]]
+== Component Overview ==
+
+
+include::../C_Common_Libraries_Overview_Brief_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Feature_Summary_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Change_Summary_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Fixed_Bugs_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Known_Problems_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Dependencies_Summary_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Platform_Summary_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Compatibility_Summary_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Associated_Standards_Frag.txt[]
+
+ 
+[[ccommonlib-rn-formoreinfo]]
+== For More Information ==
+
+See the http://www.globus.org/api/c-globus-{$version}/[C API pages] for
+more information about this component. 
+
+ 

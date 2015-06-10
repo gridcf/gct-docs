@@ -1,0 +1,29 @@
+[[gsiopensshQP,Quality Profile]]
+:doctype: article
+= GT 6.0 GSI-OpenSSH: Quality Profile =
+
+  
+[[gsiopenssh-qp-test]]
+== Test coverage reports ==
+
+Not yet available.
+
+ 
+[[gsiopenssh-qp-code]]
+== Code analysis reports ==
+
+Not yet available.
+
+ 
+include::../Util_OpenSSH_Known_Problems_Frag.txt[]
+
+ 
+include::../Util_OpenSSH_Fixed_Bugs_Frag.txt[]
+
+ 
+[[gsiopenssh-qp-performance]]
+== Performance reports ==
+
+None.
+
+ 

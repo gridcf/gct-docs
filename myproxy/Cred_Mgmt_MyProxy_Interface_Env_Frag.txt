@@ -1,0 +1,7 @@
+
+[[myproxy-env-var]]
+=== Environmental variables for MyProxy ===
+
+Please refer to the http://myproxy.ncsa.uiuc.edu/man/[MyProxy Reference
+Manual] for documentation of MyProxy environment variable interfaces. 
+

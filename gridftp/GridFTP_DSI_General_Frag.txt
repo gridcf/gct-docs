@@ -1,0 +1,77 @@
+
+=== GridFTP and DSIs ===
+
+The following information is helpful if you want to use GridFTP to
+access data in DSIs (such as HPSS and SRB), and non-POSIX data sources.
+
+Architecturally, the Globus GridFTP server can be divided into 3
+modules: 
+
+
+
+
+* the GridFTP protocol module,
+
+* the (optional) data transform module, and
+
+* the Data Storage Interface (DSI).
+
+
+In the GT 6.0 implementation, the data transform module and the DSI have
+been merged, although we plan to have separate, chainable, data
+transform modules in the future.
+
+[NOTE]
+--
+This architecture does NOT apply to the WU-FTPD implementation (GT3.2.1 and lower).
+--
+
+[[gridftp-protocol]]
+==== GridFTP Protocol Module ====
+
+The GridFTP protocol module is the module that reads and writes to the
+network and implements the GridFTP protocol. This module should not need
+to be modified since to do so would make the server non-protocol
+compliant, and unable to communicate with other servers.
+
+
+[[gridftp-data_transform]]
+==== Data Transform Functionality ====
+
+The data transform functionality is invoked by using the ERET (extended
+retrieve) and ESTO (extended store) commands. It is seldom used and
+bears careful consideration before it is implemented, but in the right
+circumstances can be very useful. In theory, any computation could be
+invoked this way, but it was primarily intended for cases where some
+simple pre-processing (such as a partial get or sub-sampling) can
+greatly reduce the network load. The disadvantage to this is that you
+remove any real option for planning, brokering, etc., and any
+significant computation could adversely affect the data transfer
+performance. Note that the client must also support the ESTO/ERET
+functionality as well.
+
+
+[[gridftp-dsi]]
+==== Data Storage Interface (DSI) / Data Transform module ====
+
+The Data Storage Interface (DSI) / Data Transform module knows how to
+read and write to the "local" storage system and can optionally
+transform the data. We put local in quotes because in a complicated
+storage system, the storage may not be directly attached, but for
+performance reasons, it should be relatively close (for instance on the
+same LAN). 
+
+The interface consists of functions to be implemented such as send
+(get), receive (put), command (simple commands that simply succeed or
+fail like mkdir), etc.. 
+
+Once these functions have been implemented for a specific storage
+system, a client should not need to know or care what is actually
+providing the data. The server can either be configured specifically
+with a specific DSI, i.e., it knows how to interact with a single class
+of storage system, or one particularly useful function for the ESTO/ERET
+functionality mentioned above is to load and configure a DSI on the fly.
+
+See link:../..gridftp/developer/index.html#gridftp-developer-dsi[] for
+more information.
+

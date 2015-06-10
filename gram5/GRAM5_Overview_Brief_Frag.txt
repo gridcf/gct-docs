@@ -1,0 +1,7 @@
+The Grid Resource Allocation and Management (GRAM5) component is used to
+locate, submit, monitor, and cancel jobs on Grid computing resources.
+GRAM5 is not a Local Resource Manager, but rather a set of services and
+clients for communicating with a range of different batch/cluster job
+schedulers using a common protocol. GRAM5 is meant to address a range of
+jobs where reliable operation, stateful monitoring, credential
+management, and file staging are important. 

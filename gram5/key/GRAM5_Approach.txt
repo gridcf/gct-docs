@@ -1,0 +1,98 @@
+
+[[gram5-approach,GRAM5 Approach]]
+== GT 6.0 GRAM5 Approach ==
+
+
+[[gram5-approach-intro]]
+=== Introduction ===
+
+The GRAM5 software implements a solution to the job-management problem
+described above. This solution is specific to operating systems
+following the POSIX programming and security model. 
+
+
+[[gram5-approach-approach]]
+=== Component architecture approach ===
+
+GRAM5's job management services interact with local resource managers
+(LRMs) and other service components of GT 6.0 in order to support job
+execution with coordinated file staging. 
+
+
+==== GRAM5 Architecture ====
+
+The GRAM5 service architecture consists of several components which work
+together to authenticate users, manage jobs, interface with the LRM, and
+stage files. These components are described in the following table. 
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table>
+                <title>GRAM5 Service Components</title>
+                <tgroup cols='2'>
+                    <tbody>
+                        <row>
+                            <entry>
+                                <simpara>Gatekeeper</simpara>
+                            </entry>
+                            <entry>
+                                <simpara>The <application>globus-gatekeeper</application> service
+                                    provides a network interface to the GRAM5 system. It
+                                    authenticates client identities and starts Job Manager processes
+                                    using the local user account to which the client identity is
+                                    mapped. Typically, one instance of the <application>globus-gatekeeper</application> process runs to accept
+                                    network connections, and forks a new short-lived process to
+                                    process each new conneciton.</simpara>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <simpara>Job Manager</simpara>
+                            </entry>
+                            <entry>
+                                <simpara>The <application>globus-job-manager</application> daemon
+                                    processes job requests and coordinates file transfers. There is
+                                    one long-lived instance of this per user per LRM and one
+                                    short-lived instance per job. </simpara>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <simpara>Scheduler Event Generator</simpara>
+                            </entry>
+                            <entry>
+                                <simpara>The <application>globus-scheduler-event-generator</application> process
+                                    parses LRM-specific data relating to job startup, execution, and
+                                    termination into an LRM-independent data format. There is
+                                    optionally one instance of this program per LRM.</simpara>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <simpara>LRM Adapter</simpara>
+                            </entry>
+                            <entry>
+                                <simpara>The LRM adapter provides an interface between the GRAM5
+                                    system components and the LRM. It provides concrete
+                                    implementations of the submit, cancel, and poll functionality
+                                    for a particular system's LRM and to generate job status change
+                                    events.</simpara>
+                            </entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+==== External Components used by GRAM5 ====
+
+
+===== Local resource manager =====
+
+GRAM5 uses a local resource manager (LRM) to schedule and run jobs on a
+compute element. GRAM5 supports several common LRM systems (Condor,
+Torque, Oracle GridEngine) and can also be configured to manage jobs
+without an LRM.
+

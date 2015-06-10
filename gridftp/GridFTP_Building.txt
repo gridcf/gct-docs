@@ -1,0 +1,48 @@
+
+[[gridftp-admin-installing]]
+== Building and Installing ==
+
+
+[[gridftp-building-installing]]
+=== Building and Installing GridFTP ===
+
+GridFTP is built and installed as part of a default GT 6.0 installation.
+For basic installation instructions, see
+link:../../admin/install/index.html[]. No extra installation steps are
+required for this component.
+
+If you wish to install GridFTP without installing the rest of the Globus
+Toolkit, follow the instructions in the above link but just use the
+group install target 'globus-gridftp' with Linux native packages and
+make target 'gridftp' (make gridftp) with source installer. 
+
+
+[[gridftp-admin-installing-static-gridftp]]
+=== Building and Installing a static GridFTP server ===
+
+If you wish to build and install a statically linked set of GridFTP
+binaries from the source installer, follow the instructions on GT
+installation from the source installer in the link above but use the
+following for configure and make: 
+
+
+
+--------
+globus% ./configure --prefix=
+--------
+
+
+
+--------
+globus% make gpt globus_gridftp_server
+--------
+
+
+[[gridftp-admin-installing-threaded]]
+=== Enabling Threading in GridFTP ===
+
+In GT 6.0 the GridFTP server and the client 'globus-url-copy' are
+non-threaded by default. To enable threading, set the environment
+variable 'GLOBUS_THREAD_MODEL=pthread'. On the server, threading can be
+enabled using command-line option '-threads 1' as well. 
+

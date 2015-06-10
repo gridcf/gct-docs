@@ -1,0 +1,20 @@
+
+[[simpleca-techdependencies]]
+=== Technology Dependencies ===
+
+SimpleCA depends on the following GT components:
+
+
+
+
+* Non-WS Authentication and Authorization
+
+
+SimpleCA depends on the following 3rd party software:
+
+
+
+
+* OpenSSL
+
+

@@ -1,0 +1,38 @@
+
+[[gtadmin-advanced-setup]]
+== Setting up VO-level Services for GT 6.0 ==
+
+
+--
+This section introduces more advanced setup for VO-level services. Note
+that these are introductions to advanced ways of using some of the tools
+availabe in the GT distribution. For more information, see the
+components' admin guides...
+
+
+--
+
+[[gtadmin-advanced-setup-myproxy]]
+=== Making Proxy Certificates Available with MyProxy ===
+
+adapt info from quickstart
+
+
+[[gtadmin-advanced-setup-multiple-machines]]
+=== Setting Up on Multiple Machines ===
+
+general info about multiple machines
+
+
+[[gtadmin-advanced-setup-cluster]]
+=== Setting Up Clusters ===
+
+from quickstart - general information about clusters? or should that
+stay in quickstart?
+
+
+[[gtadmin-advanced-setup-cross-ca-trust]]
+=== Establishing Cross-CA Trust ===
+
+adapt info from quickstart
+

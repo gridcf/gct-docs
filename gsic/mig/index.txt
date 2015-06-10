@@ -1,0 +1,48 @@
+[[gsicMig,Migrating Guide]]
+:doctype: article
+= GT 6.0 Migrating Guide for GSI C =
+
+  
+--
+The following provides available information about migrating from
+previous versions of the Globus Toolkit.
+
+ 
+--
+
+[[gsic-migrating-GT5.2]]
+== Migrating GSI from GT5.2 ==
+
+Nothing should have to be done when migrating from GT5.2.
+
+ 
+[[gsic-migrating-GT5.0]]
+== Migrating GSI from GT5.0 ==
+
+Nothing should have to be done when migrating from GT5.0.
+
+ 
+[[gsic-migrating-GT4.2]]
+== Migrating GSI from GT4.2 ==
+
+Nothing should have to be done when migrating from GT4.2.
+
+ 
+[[gsic-migrating-GT4]]
+== Migrating GSI from GT4.0 ==
+
+Nothing should have to be done when migrating from GT4.0.
+
+ 
+[[gsic-migrating-GT3]]
+== Migrating from GT3 ==
+
+Nothing should have to be done when migrating from GT3.
+
+ 
+[[gsic-migrating-GT2]]
+== Migrating GSI from GT2 ==
+
+Nothing should have to be done when migrating from GT2.
+
+ 

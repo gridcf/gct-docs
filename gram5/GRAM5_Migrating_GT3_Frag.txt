@@ -1,0 +1,12 @@
+
+[[gram5-migrating-gt3]]
+== Migrating GRAM from GT3 ==
+
+
+--
+The GRAM5 protocol has been designed to be backward compatible with
+GRAM2 protocol from GT 3.0.x. There is no compatibility between GRAM5
+and the Web Service GRAM protocol GT3.
+
+
+--

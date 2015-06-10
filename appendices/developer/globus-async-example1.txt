@@ -1,0 +1,54 @@
+
+[[globus-async-example1,Asynchronous Event Handling: Example 1]]
+== GT 6.0: Asynchronous Event Handling: Example 1 ==
+
+
+--
+--------
+#include <globus_common.h>
+
+void
+user_callback(
+    void *                              user_arg)
+{
+    int *                               count;
+
+    count = (int *) user_arg;
+    fprintf(stdout, "User callback, count = %d\n", *count);
+    exit(0);
+}
+
+int
+main(
+    int                                 argc,
+    char **                             argv)
+{
+    globus_reltime_t                    delay;
+    int                                 count = 0;
+
+    globus_module_activate(GLOBUS_COMMON_MODULE);
+
+    GlobusTimeReltimeSet(delay, 1, 0);
+    globus_callback_register_oneshot(
+        NULL,
+        &delay,
+        user_callback,
+        &count);
+
+    while(1)
+    {
+        usleep(10000);
+        globus_poll_nonblocking();
+        fprintf(stdout, "After poll\n");
+        count++;
+    }
+
+    globus_module_deactivate(GLOBUS_COMMON_MODULE);
+
+    return 0;
+}
+
+--------
+
+
+--

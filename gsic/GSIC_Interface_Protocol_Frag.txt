@@ -1,0 +1,12 @@
+
+[[gsic-protocol]]
+== Protocol Specifications ==
+
+
+=== GSI Message Specification ===
+
+The GSSAPI implementation contained in this component produces security
+tokens that follow an extended version of the SSL/TLS protocol. More
+information about the protocol can be found
+link:../GSI-message-specification-02.doc[here].
+

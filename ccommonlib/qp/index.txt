@@ -1,0 +1,29 @@
+[[ccommonlibQP,Quality Profile]]
+:doctype: article
+= GT 6.0 C Common Libraries: Quality Profile =
+
+  
+[[ccommonlib-qp-test]]
+== Test coverage reports ==
+
+There are no reports on this component.
+
+ 
+[[ccommonlib-qp-code]]
+== Code analysis reports ==
+
+There are no reports on this component.
+
+ 
+include::../C_Common_Libraries_Known_Problems_Frag.txt[]
+
+ 
+include::../C_Common_Libraries_Fixed_Bugs_Frag.txt[]
+
+ 
+[[ccommonlib-qp-performance]]
+== Performance reports ==
+
+There are no reports on this component.
+
+ 

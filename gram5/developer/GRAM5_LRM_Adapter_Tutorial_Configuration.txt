@@ -1,0 +1,50 @@
+
+=== Configuration File ===
+
+For the fake LRM, there's not much to configure: a path to a file where
+the LRM should write its job files. For real LRMs, there are other
+things which might belong there: paths to LRM-specific executables such
+as **++qsub++**, tuning parameters fo the LRM adapter script such as the
+number of available cores per execution node, or the host to contact
+when using a remote submit protocol between GRAM the the LRM. The
+configuation parameters used by the LRM adapters included in GRAM5 are
+described in link:../..gram5/admin/index.html#gram5-configuring-lrm[]. 
+
+The LRM adapter configuration files consist of attribute="value" pairs,
+which comment lines beginning with the ++#++ character. For the example
+fake LRM, the configuration file looks like this: 
+
+--------
+
+include::globus-fake.conf[]
+
+
+--------
+
+
+
+==== Parsing the Configuration File ====
+
+The Globus Toolkit contains API functions for parsing files in the
+format used by the LRM configuration files. In Perl, use the
+++Globus::Core::Config++ class. In C/C++, use the
+**++globus_common_get_attribute_from_config_file()++** function. 
+
+
+===== Perl API =====
+
+The ++Globus::Core::Config++ API is quite simple. The **++new()++**
+constructor parses the configuration file and returns an object
+containing the attribute=value pairs. The **++get_attribute()++** method
+returns the value of the named attribute. These functions are used in
+link:#gram5-LRM-Adapter-Perl-Config[the fake LRM Perl Module]. 
+
+
+===== C/C++ API =====
+
+The **++globus_common_get_attribute_from_config_file()++** function will
+load the configuration file and return the value of the attribute passed
+to it. This function is ued in the SEG module below. Note that this
+function returns a pointer to a copy of the string value in the location
+pointed to by the 'value' parameter. The caller must free this value. 
+

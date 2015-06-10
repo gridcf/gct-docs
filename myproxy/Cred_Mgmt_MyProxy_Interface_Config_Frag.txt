@@ -1,0 +1,16 @@
+
+[[myproxy-configuring]]
+== Configuring ==
+
+
+--
+No additional configuration is required to use MyProxy clients after
+they are installed, although you may want to set the MYPROXY_SERVER
+environment variable to the hostname of your myproxy-server in the
+default user environment on your systems.
+
+Please refer to the http://myproxy.ncsa.uiuc.edu/adminguide.html[MyProxy
+Admin Guide] for MyProxy server configuration instructions. 
+
+
+--

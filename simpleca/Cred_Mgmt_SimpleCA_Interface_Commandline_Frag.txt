@@ -1,0 +1,24 @@
+[[simpleca-cmd]]
+= Simple CA Commands =
+
+
+:leveloffset: 2
+
+include::grid-ca-create-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-ca-package-manual.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 2
+
+include::grid-ca-sign-manual.txt[]
+
+
+:leveloffset: 0

@@ -1,0 +1,22 @@
+
+[[gram5Mig,Migrating Guide]]
+:doctype: book
+= GT 6.0 Migrating Guide for GRAM5 =
+
+  
+--
+The following provides available information about migrating from
+previous versions of the Globus Toolkit.
+
+--
+
+ 
+include::../GRAM5_Migrating_GT50_Frag.txt[]
+
+ 
+include::../GRAM5_Migrating_GT42_Frag.txt[]
+
+ 
+include::../GRAM5_Migrating_GT40_Frag.txt[]
+
+  

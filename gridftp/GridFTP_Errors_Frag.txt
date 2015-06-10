@@ -1,0 +1,80 @@
+
+[[gridftp-error-codes]]
+=== Error Codes in GridFTP ===
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<table frame='all' id='gridftp-errors-table'><title>GridFTP Errors</title>
+<tgroup align='left' colsep='1' cols='3' rowsep='1'>
+<colspec colwidth='1*' colname='c1'></colspec>
+<colspec colwidth='1*' colname='c2'></colspec>
+<colspec colwidth='1*' colname='c3'></colspec>
+<thead>
+<row>
+  <entry>Error Code</entry>
+  <entry>Definition</entry>
+  <entry>Possible Solutions</entry>
+</row>
+</thead>
+<tbody>
+<row>
+  <entry><code>
+    globus_ftp_client: the server responded with an error
+530 530-globus_xio: Authentication Error
+530-OpenSSL Error: s3_srvr.c:2525: in library: SSL routines, 
+     function SSL3_GET_CLIENT_CERTIFICATE: no certificate returned
+530-globus_gsi_callback_module: Could not verify credential
+530-globus_gsi_callback_module: Can't get the local trusted CA certificate: 
+Untrusted self-signed certificate in chain with hash d1b603c3
+530 End.
+  </code></entry>
+  <entry>This error message indicates that the GridFTP server doesn't trust the certificate authority (CA) that issued your certificate.</entry>
+  <entry>
+You need to ask the GridFTP server administrator to install your CA certificate chain in the GridFTP server's trusted certificates directory.
+  </entry>
+</row>
+  
+  <row>
+  <entry><code>
+  globus_ftp_control: gss_init_sec_context failed
+OpenSSL Error: s3_clnt.c:951: in library: SSL routines, function 
+SSL3_GET_SERVER_CERTIFICATE: certificate verify failed
+globus_gsi_callback_module: Could not verify credential
+globus_gsi_callback_module: Can't get the local trusted CA certificate: 
+Untrusted self-signed certificate in chain with hash d1b603c3
+    </code></entry>
+  <entry>This error message indicates that your local system doesn't trust the certificate authority (CA) that issued the certificate on the resource you are connecting to.</entry>
+  <entry>
+You need to ask the resource administrator which CA issued their certificate and  install the CA certificate in the local trusted certificates directory.
+  </entry>
+  </row>
+ 
+  <row>
+  <entry><code>
+  530-globus_xio: Authentication Error
+  530-globus_gsi_callback_module: Could not verify credential
+  530-globus_gsi_callback_module: Could not verify credential
+  530-globus_gsi_callback_module: Invalid CRL: The available CRL has expired
+  530 End.
+    </code></entry>
+  <entry>This error message indicates one of the following: 
+  Certificate
+  Revocation List (CRL) for the source or destination server CA at the client has
+  expired or CRL for client CA has expired at source or destination server or
+  CRL for source (destination) server CA has expired at destination (source)
+  server. CRL is a file {CA_hash}.r0 in /etc/grid-security/certificates or
+  ${USER_HOME}/.globus/certificates or ${X509_CERT_DIR}
+  </entry>
+  <entry>
+  The tool available at http://dist.eugridpma.info/distribution/util/fetch-crl/
+  can be run in a crontab to keep the CRLs up to date.
+  </entry>
+  </row>
+
+ 
+</tbody>
+</tgroup>
+   </table>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+

@@ -1,0 +1,271 @@
+[[Globus::GRAM::JobManager]]
+= GLOBUS::GRAM::JOBMANAGER(3pm) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+Globus::GRAM::JobManager - Base class for all Job Manager scripts
+
+== NAME ==
+ - 
+
+[[ID-e96f19759006b55f2a0d9c05142531b8]]
+== DESCRIPTION ==
+
+The Globus::GRAM::JobManager module implements the base behavior for a
+Job Manager script interface. Scheduler-specific job manager scripts
+must inherit from this module in order to be used by the job manager. 
+
+
+[[ID-68252c34977081809bd73a304acda1f6]]
+=== Methods ===
+
+
+
+**$manager = Globus::GRAM::JobManager->new($JobDescription)**::
+     Each Globus::GRAM::JobManager object is created by calling the
+constructor with a single argument, a Globus::GRAM::JobDescription
+object containing the information about the job request which the script
+will be modifying. Modules which subclass Globus::GRAM::JobManager MUST
+call the super-class's constructor, as in this code fragment:
++
+--------
+my $proto = shift;
+my $class = ref($proto) || $proto;
+my $self = $class->SUPER::new(@_);
+
+bless $self, $class;
+--------
+
+**$manager->log($string)**::
+     Log a message to the job manager log file. The message is preceded by a
+timestamp.
+
+**$manager->nfssync($object,$create)**::
+     Send an NFS update by touching the file (or directory) in question. If
+the $create is true, a file will be created. If it is false, the $object
+will not be created.
+
+**$manager->respond($message)**::
+     Send a response to the job manager program. The response may either be a
+hash reference consisting of a hash of (variable, value) pairs, which
+will be returned to the job manager, or an already formatted string.
+This only needs to be directly called by a job manager implementation
+when the script wants to send a partial response while processing one of
+the scheduler interface methods (for example, to indicate that a file
+has been staged).
++
+The valid keys for a response are defined in the RESPONSES section.
+
+**$manager->submit()**::
+     Submit a job request to the scheduler. The default implementation
+returns with the Globus::GRAM::Error::UNIMPLEMENTED error. Scheduler
+specific subclasses should reimplement this method to submit the job to
+the scheduler.
++
+A scheduler which implements this method should return a hash reference
+containing a scheduler-specific job identifier as the value of the
+hash's JOB_ID key, and optionally, the a GRAM job state as the value of
+the hash's JOB_STATE key if the job submission was successful; otherwise
+a Globus::GRAM::Error value should be returned. The job state values are
+defined in the Globus::GRAM::JobState module. The job parameters (as
+found in the job rsl) are defined in Globus::GRAM::Jobdescription object
+in $self->{JobDescription}.
++
+For example:
++
+--------
+return {JOB_STATE => Globus::GRAM::JobState::PENDING,
+        JOB_ID => $job_id};
+--------
+
+**$manager->poll()**::
+     Poll a job's status. The default implementation returns with the
+Globus::GRAM::Error::UNIMPLEMENTED error. Scheduler specific subclasses
+should reimplement this method to poll the scheduler.
++
+A scheduler which implements this method should return a hash reference
+containing the JOB_STATE value. The job's ID can be accessed by calling
+the $self->{JobDescription}->jobid() method.
+
+**$manager->cancel()**::
+     Cancel a job. The default implementation returns with the
+Globus::GRAM::Error::UNIMPLEMENTED error. Scheduler specific subclasses
+should reimplement this method to remove the job from the scheduler.
++
+A scheduler which implements this method should return a hash reference
+containing the JOB_STATE value. The job's ID can be accessed by calling
+the $self->{JobDescription}->jobid() method.
+
+**$manager->signal()**::
+     Signal a job. The default implementation returns with the
+Globus::GRAM::Error::UNIMPLEMENTED error. Scheduler specific subclasses
+should reimplement this method to remove the job from the scheduler. The
+JobManager module can determine the job's ID, the signal number, and the
+(optional) signal arguments from the Job Description by calling it's
+job_id(), signal(), and and signal_arg() methods, respectively.
++
+Depending on the signal, it may be appropriate for the JobManager object
+to return a hash reference containing a JOB_STATE update.
+
+**$manager->make_scratchdir()**::
+     Create a scratch directory for a job. The scratch directory location is
+based on the JobDescription's scratch_dir_base() and scratch_dir()
+methods.
++
+If the scratch_dir() value is a relative path, then a directory will be
+created as a subdirectory of scratch_dir_base()/scratch_dir(),
+otherwise, it will be created as a subdirectory of scratch_dir(). This
+method will return a hash reference containing mapping SCRATCH_DIR to
+the absolute path of newly created scratch directory if successful.
+
+**$manager->remove_scratchdir()**::
+     Delete a job's scratch directory. All files and subdirectories of the
+JobDescription's scratch_directory() will be deleted.
+
+**$manager->file_cleanup()**::
+     Delete some job-related files. All files listed in the JobDescription's
+file_cleanup() array will be deleted.
+
+**$manager->rewrite_urls()**::
+     Looks up URLs listed in the JobDescription's stdin() and executable(),
+and replaces them with paths to locally cached copies.
+
+**$manager->stage_in()**::
+     Stage input files need for the job from remote storage. The files to be
+staged are defined by the array of [URL, path] pairs in the job
+description's file_stage_in() and file_stage_in_shared() methods. The
+Globus::GRAM::JobManager module provides an implementation of this
+functionality using the globus-url-copy and globus-gass-cache programs.
+Files which are staged in are not automatically removed when the job
+terminates.
++
+This function returns intermediate responses using the
+Globus::GRAM::JobManager::response() method to let the job manager know
+when each individual file has been staged.
+
+**$manager->stage_out()**::
+     Stage output files generated by this job to remote storage. The files to
+be staged are defined by the array of [URL, destination] pairs in the
+job description's file_stage_out() method. The Globus::GRAM::JobManager
+module provides an implementation of this functionality using the
+globus-url-copy program. Files which are staged out are not removed by
+this method.
+
+**$manager->cache_cleanup()**::
+     Clean up cache references in the GASS which match this job's cache tag .
+
+**$manager->remote_io_file_create()**::
+     Create the remote I/O file in the job dir which will contain the
+remote_io_url RSL attribute's value.
+
+**$manager->proxy_relocate()**::
+     Relocate the delegated proxy for job execution. Job Managers need to
+override the default if they intend to relocate the proxy into some
+common file system other than the cache. The job manager program does
+not depend on the new location of the proxy. Job Manager modules must
+not remove the default proxy.
+
+**$hashref = $manager->proxy_update();**::
+     
+
+**$manager->append_path($ref, $var, $path)**::
+     Append $path to the value of $ref->{$var}, dealing with the case where
+$ref->{$var} is not yet defined.
+
+**$manager->pipe_out_cmd(@arg)**::
+     Create a new process to run the first argument application with the
+remaining arguments (which may be empty). No shell metacharacter will be
+evaluated, avoiding a shell invocation. Stderr is redirected to
+/dev/null and stdout is being captured by the parent process, which is
+also the result returned. In list mode, all lines are returned, in
+scalar mode, only the first line is being returned. The line termination
+character is already cut off. Use this function as more efficient
+backticks, if you do not need shell metacharacter evaluation.
++
+Caution: This function deviates in two manners from regular backticks.
+Firstly, it chomps the line terminator from the output. Secondly, it
+returns only the first line in scalar context instead of a multiline
+concatinated string. As with regular backticks, the result may be
+undefined in scalar context, if no result exists.
++
+A child error code with an exit code of 127 indicates that the
+application could not be run. The scalar result returned by this
+function is usually undef'ed in this case.
+
+**($stder, $rc) = $manager->pipe_err_cmd(@arg)**::
+     Create a new process to run the first argument application with the
+remaining arguments (which may be empty). No shell metacharacter will be
+evaluated, avoiding a shell invocation.
++
+This method returns a list of two items, the standard error of the
+program, and the exit code of the program. If the error code is 127,
+then the application could not be run. Standard output is discarded.
+
+**$manager->fork_and_exec_cmd(@arg)**::
+     Fork off a child to run the first argument in the list. Remaining
+arguments will be passed, but shell interpolation is avoided. Signals
+SIGINT and SIGQUIT are ignored in the child process. Stdout is appended
+to /dev/null, and stderr is dup2 from stdout. The parent waits for the
+child to finish, and returns the value for the CHILD_ERROR variable as
+result. Use this function as more efficient system() call, if you can do
+not need shell metacharacter evaluation.
++
+Note that the inability to execute the program will result in a status
+code of 127.
+
+**$manager->job_dir()**::
+     Return the temporary directory to store job-related files, which have no
+need for file caching.
+
+**$manager->setup_softenv()**::
+     Either add a line to the specified command script file handle to load
+the user's default SoftEnv configuration, or create a custom SoftEnv
+script and add commands to the specified command script file handle to
+load it.
+
+
+
+
+[[ID-bcb5fd9dba9a920db0007cc56619dab1]]
+== RESPONSES ==
+
+When returning from a job interface method, or when sending an
+intermediate response via the **response**() method, the following hash
+keys are valid: 
+
+
+
+*** JOB_STATE**::
+     An integer job state value. These are enumerated in the
+Globus::GRAM::JobState module.
+
+*** ERROR**::
+     An integer error code. These are enumerated in the Globus::GRAM::Error
+module.
+
+*** JOB_ID**::
+     A string containing a job identifier, which can be used to poll, cancel,
+or signal a job in progress. This response should only be returned by
+the **submit** method.
+
+*** SCRATCH_DIR**::
+     A string containing the path to a newly-created scratch directory. This
+response should only be returned by the **make_scratchdir** method.
+
+*** STAGED_IN**::
+     A string containing the (URL, path) pair for a file which has now been
+staged in. This response should only be returned by the **stage_in**
+method.
+
+*** STAGED_IN_SHARED**::
+     A string containing the (URL, path) pair for a file which has now been
+staged in and symlinked from the cache. This response should only be
+returned by the **stage_in_shared** method.
+
+*** STAGED_OUT**::
+     A string containing the (path, URL) pair for a file which has now been
+staged out by the script. This response should only be returned by the
+**stage_out** method.
+
+

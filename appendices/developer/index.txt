@@ -1,0 +1,62 @@
+
+[[gtdeveloper]]
+:doctype: book
+= Globus Toolkit 6.0 Developer's Guide =
+
+ 
+.Introduction
+--
+[NOTE]
+--
+Please note that the Best Practices need to be updated for GT6 and are not being published at this time. 
+--
+
+You can download the link:gtDeveloperGuide.pdf[PDF version here].
+Following are some docs you should be familiar with as well:
+
+
+* link:../../admin/install/index.html[Installation Guide]
+
+* link:../../admin/quickstart/index.html[Quickstart]
+
+* All GT command line clients are listed link:[here].
+
+
+
+--
+
+  
+= Asynchronous Event Handling with Examples =
+
+
+:leveloffset: 1
+
+include::globus-async.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 1
+
+include::globus-async-example1.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 1
+
+include::globus-async-example2.txt[]
+
+
+:leveloffset: 0
+
+:leveloffset: 1
+
+include::globus-async-example3.txt[]
+
+
+:leveloffset: 0
+ 
+include::../user/public_interfaces.txt[]
+
+  

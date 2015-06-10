@@ -1,0 +1,137 @@
+[[rn,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes =
+
+  
+[[rn-intro]]
+== Introduction ==
+
+The GT development team is pleased to make a new stable release of the
+Globus Toolkit available for download. 
+
+By following the link:../../admin/quickstart/index.html[Quickstart]
+guide, you can easily install and setup a full GT environment in
+minutes.
+
+Highlights of this release include:
+
+
+
+
+* Overall
++
+
+** Migrate from CVS to https://github.com/globus/globus-toolkit
+
+** Simplified package by eliminating GPT and library flavors
+
+** Integrate tests into native package build process
+
+** Porting to windows -- mingw (partial) and cygwin
+
+** Add support for el7 (CentOS 7, RHEL 7)
+
+** Add binary package for Mac OS X
+
+** Make binaries and scripts more easily relocatable (don't need to set GLOBUS_LOCATION for most cases)
+
+
+* GridFTP
++
+
+
+* C Common Libraries
++
+
+
+
+To view details for each component, see link:#rn-bycomponents[].
+
+ 
+[[rn-software]]
+== Obtaining and Installing Software ==
+
+To download this release, go to the link:/toolkit/downloads/{$version}/.
+
+For information on installing this release, go to the
+link:../../admin/install/index.html[6.0 Installation Guide].
+
+
+include::../Java_API_Download.txt[]
+
+ 
+[[rn-platform]]
+== Platform Notes ==
+
+Check out platform-specific installation issues
+link:../../admin/install/index.html#gtadmin-platform[here].
+
+ 
+[[rn-documentation]]
+== Documentation ==
+
+Use the documentation which starts link:[here].
+
+Feel free to offer any suggestions or feedback using
+https://globus.atlassian.net[JIRA] (the "Documentation" project). 
+
+ 
+[[rn-support]]
+== Support ==
+
+An overview on GT support can be found
+http://www.globus.org/toolkit/support.html[here].
+
+ 
+[[rn-license]]
+== Licensing ==
+
+The Globus Toolkit is distributed and licensed for use under the terms
+of the http://www.apache.org/licenses/LICENSE-2.0[Apache License,
+Version 2.0].
+
+To view the licenses of the 3rd party software used by the developers of
+the Globus Toolkit, click
+http://www.globus.org/toolkit/docs/{$shortversion}/{$version}/licenses/[here].
+
+ 
+[[rn-usagestats]]
+== Usage Statistics ==
+
+For full information about usage statistics collected by GT 6.0 and how
+to opt-out, see link:../Usage_Stats.html[Usage Statistics Collection by
+the Globus Alliance].
+
+ 
+[[rn-bycomponents]]
+== Release Notes by Component ==
+
+
+
+
+* link:../..gridftp/rn/index.html[GridFTP]
+
+* link:../..gram5/rn/index.html[GRAM5]
+
+* Security
++
+
+** link:../..gsic/rn/index.html[GSI C]
+
+** link:../..simpleca/rn/index.html[SimpleCA]
+
+** link:../..myproxy/rn/index.html[MyProxy]
+
+** link:../..gsiopenssh/rn/index.html[GSI-OpenSSH]
+
+
+* Common Runtime Components
++
+
+** link:../..xio/rn/index.html[XIO]
+
+** link:../..ccommonlib/rn/index.html[C Common Libraries]
+
+
+
+ 

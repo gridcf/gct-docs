@@ -1,0 +1,24 @@
+
+[[gsiopenssh-features]]
+=== Feature summary ===
+
+
+***********************************************************************
+Supported Features
+
+* The **++gsissh++** command provides a secure remote login service with forwarding of X.509 proxy credentials.
+
+* The **++gsiscp++** and **++gsisftp++** commands provide a secure file transfer service authenticated with X.509 proxy credentials, mimicking the **++rcp/scp++** and **++ftp/sftp++** commands.
+
+* All standard OpenSSH features are supported, excluding Kerberos authentication. Kerberos authentication is **not** compatible with GSI-enabled OpenSSH.
+
+* The GSI-OpenSSH server can replace the standard system SSH server in typical environments.
+
+* If no username is given on the command-line, GSI-OpenSSH automatically determines the username that corresponds to the X.509 proxy certificate subject in the server's ++grid-mapfile++.
+
+Deprecated Features
+
+* None
+
+
+***********************************************************************

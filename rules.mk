@@ -195,5 +195,7 @@ dependencies:
 $(SUBDIRS):
 	@make -C $@
 
+%.txt: %.xml
+	@$(TOPDIR)/docbook/docbook-to-asciidoc.py -t $(TOPDIR) $< 
 .SUFFIXES: .db .xml .lint .pdf .fo
 .PHONY: all olink-recursive olink lint-recursive lint clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS)

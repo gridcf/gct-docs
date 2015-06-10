@@ -1,0 +1,16 @@
+
+[[myproxy-associatedstandards]]
+=== Associated Standards ===
+
+Associated standards for MyProxy: 
+
+
+
+
+* http://www.ggf.org/documents/GFD.54.pdf[GFD-E.054] MyProxy Protocol
+
+* http://www.faqs.org/rfcs/rfc3820.html[RFC 3820] Proxy Certificates
+
+* http://www.faqs.org/rfcs/rfc2246.html[RFC 2246] TLS
+
+

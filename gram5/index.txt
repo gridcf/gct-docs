@@ -1,0 +1,98 @@
+[[gram5,GRAM5]]
+:doctype: article
+= GT 6.0 GRAM5 =
+
+  
+include::GRAM5_Overview_Brief_Frag.txt[]
+
+ 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<informaltable frame='none'>
+    <tgroup cols='2'>
+      
+
+      <colspec colname='c1'></colspec>
+
+      <colspec colname='c2'></colspec>
+
+      <tbody>
+        <row>
+          <entry namest='c1' nameend='c2'>The following guides are available
+          for this component:</entry>
+        </row>
+
+        <row><entry><olink targetdoc='gram5Key'><emphasis role='strong'>Key Concepts</emphasis></olink></entry>
+
+          <entry>For important general concepts about job management in Globus. Includes <olink targetdoc='gram5Key' targetptr='gram5-approach'>GRAM5 Approach</olink>. [<ulink url='key/gram5KeyConcepts.pdf'>pdf</ulink>]</entry>
+        </row>
+        <row>
+          <entry><olink targetdoc='gram5Admin'><emphasis role='strong'>Admin Guide</emphasis></olink></entry>
+
+          <entry>For system administrators and those installing, building and
+          deploying GT. You should already have read the <olink targetdoc='gtadmin'>Installation Guide</olink> and <olink targetdoc='quickstart'>Quickstart</olink>.  [<ulink url='admin/gram5AdminGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+        <row>
+          <entry><olink targetdoc='gram5User'><emphasis role='strong'>User's Guide</emphasis></olink></entry>
+
+          <entry>Describes how end-users typically interact with this
+            component. [<ulink url='user/gram5UserGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><olink targetdoc='gram5Developer'><emphasis role='strong'>Developer's Guide</emphasis></olink>
+</entry>
+
+          <entry>Reference and usage scenarios for developers. [<ulink url='developer/gram5DeveloperGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry namest='c1' nameend='c2'><simpara>Other information available for this
+          component are:</simpara></entry>
+        </row>
+
+        <row>
+          <entry><olink targetdoc='gram5RN'><emphasis role='strong'>Release Notes</emphasis></olink></entry>
+
+          <entry>What's new with the <replaceable role='entity'>version</replaceable> release for this
+          component. [<ulink url='rn/gram5ReleaseNotes.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><olink targetdoc='gram5PI'><emphasis role='strong'>Public Interfaces</emphasis></olink></entry>
+
+          <entry>Information for all public interfaces (including APIs,
+          commands, protocols, etc). Please note this is a subset of
+          information in
+          the <olink targetdoc='gram5Developer'>Developer's
+          Guide</olink>.  [<ulink url='pi/gram5PublicInterfacesGuide.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><olink targetdoc='gram5QP'><emphasis role='strong'>Quality Profile</emphasis></olink></entry>
+
+          <entry>Information about test coverage reports, etc. [<ulink url='qp/gram5QualityProfile.pdf'>pdf</ulink>]</entry>
+        </row>
+
+        <row>
+          <entry><olink targetdoc='gram5Mig'><emphasis role='strong'>Migrating Guide</emphasis></olink>
+</entry>
+
+          <entry>Information for migrating to this version if you were using a
+          previous version of GT. [<ulink url='mig/gram5MigratingGuide.pdf'>pdf</ulink>]</entry>
+
+        </row>
+
+        <row>
+          <entry><ulink url='gram5.pdf'><emphasis role='strong'>All GRAM5 Guides (PDF only)</emphasis></ulink>
+</entry>
+
+          <entry>Includes all GRAM5 guides except Public Interfaces (which is
+          a subset of the Developer's Guide)</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  

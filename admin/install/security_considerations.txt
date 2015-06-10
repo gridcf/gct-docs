@@ -1,0 +1,37 @@
+
+[[gtadmin-sec-considerations]]
+== Security Considerations in GT 6.0 ==
+
+
+[[gtadmin-sec-consid-common-runtime]]
+=== Common Runtime ===
+
+
+include::../../xio/XIO_Security_Considerations_Frag.txt[]
+
+
+[[gtadmin-sec-consid-security]]
+=== Security ===
+
+
+include::../../gsic/GSIC_Security_Considerations_Frag.txt[]
+
+
+include::../../myproxy/Cred_Mgmt_MyProxy_Security_Considerations_Frag.txt[]
+
+
+include::../../gsiopenssh/Util_OpenSSH_Security_Considerations_Frag.txt[]
+
+
+[[gtadmin-sec-consid-data]]
+=== Data Management ===
+
+
+include::../../gridftp/GridFTP_Security_Considerations_Frag.txt[]
+
+
+=== Execution Management ===
+
+
+include::../../gram5/GRAM5_Security_Considerations_Frag.txt[]
+

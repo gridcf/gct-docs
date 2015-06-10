@@ -1,0 +1,23 @@
+
+=== Latest information about HPSS ===
+
+Last Update: August 2005
+
+Working with Los Alamos National Laboratory and the High Performance
+Storage System (HPSS) collaboration
+(http://www.hpss-collaboration.org[http://www.hpss-collaboration.org]),
+we have written a Data Storage Interface (DSI) for read/write access to
+HPSS. This DSI would allow an existing application that uses a GridFTP
+compliant client to utilize an HPSS data resources.
+
+This DSI is currently in testing. Due to changes in the HPSS security
+mechanisms, it requires HPSS 6.2 or later, which is due to be released
+in Q4 2005. Distribution for the DSI has not been worked out yet, but it
+will *probably* be available from both Globus and the HPSS
+collaboration. While this code will be open source, it requires
+underlying HPSS libraries which are NOT open source (proprietary). 
+
+[NOTE]
+--
+This is a purely server side change, the client does not know what DSI is running, so only a site that is already running HPSS and wants to allow GridFTP access needs to worry about access to these proprietary libraries. 
+--

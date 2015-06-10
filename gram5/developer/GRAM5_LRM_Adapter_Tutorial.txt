@@ -1,0 +1,56 @@
+
+[[gram5-developer-lrm-adapter-tutorial]]
+== LRM Adapter Tutorial ==
+
+
+=== Introduction ===
+
+GRAM5 provides a resource-independent abstraction to remote job
+management. The resource abstraction contains methods for job submission
+and cancelling, and a method for monitoring job state changes. This set
+of tutorials describes how to implement and bundle all packages needed
+for a complete LRM Adapter interface for GRAM5. 
+
+For purposes of this tutorial, we will create a fake LRM adapter that
+pretends to run jobs, but in fact just keeps track of jobs and expires
+them after the job's ++max_wall_time++ expires. We'll call this LRM the
+++fake++ LRM adapter. 
+
+
+=== Parts of a GRAM5 LRM Adapter ===
+
+A GRAM5 LRM Adapter consists of a few parts which work together to
+provide a full interface between the GRAM5 Job Manager and the Local
+Resource Manager. These parts include: 
+
+**RSL Validation File**::
+     An option file which defines any custom RSL attributes which the LRM Adapter implements, or sets any custom defaults for RSL attributes that the LRM processes. Defining new RSL attributes in this file allows the GRAM5 service to detect some sets of RSL errors without invoking the Perl LRM Adapter Module. For this example, the file will be called ++fake.rvf++..
+
+**Perl LRM Adapter Module**::
+     A Perl module which implements the execution interface to the LRM. This module translates the Resource Specification Language description of a job's requirements to a concrete way of starting the job on a particular LRM. For this example, this file will be called ++fake.pm++..
+
+**Configuration File**::
+     The GRAM5 service implements a simple configuration file parser which can be used to provide a way to add site customizations to LRM Adapters. These files are usually shared between the Perl LRM Adapter Module and the Scheduler Event Generator Module. For this example, this file will be called ++fake.conf++..
+
+**Gatekeeper Service File**::
+     The Gatekeeper is a privileged service which authenticates and authorizes clients and then starts a Job Manager process on their behalf. The Gatekeeper Service File contains the LRM-specific command-line options to the job manager. For this example, this file will be called ++jobmanager-fork++..
+
+**Scheduler Event Generator Module**::
+     A dynamic object which parses LRM state and generates job state change events in a generic format for GRAM5 to consume. For this example, the SEG module will be called ++libglobus_seg_fake.so++..
+
+
+
+include::GRAM5_LRM_Adapter_Tutorial_RVF.txt[]
+
+
+include::GRAM5_LRM_Adapter_Tutorial_Configuration.txt[]
+
+
+include::GRAM5_LRM_Adapter_Tutorial_Perl.txt[]
+
+
+include::GRAM5_LRM_Adapter_Tutorial_SEG.txt[]
+
+
+include::GRAM5_LRM_Adapter_Tutorial_Changelog.txt[]
+

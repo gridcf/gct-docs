@@ -1,0 +1,51 @@
+
+[[gsiopenssh-env-var]]
+=== Environmental variables for GSI-OpenSSH ===
+
+The GSI-enabled OpenSSHD needs to be able to find certain files and
+directories in order to properly function.
+
+The items that OpenSSHD needs to be able to locate, their default
+location and the environment variable to override the default location
+are:
+
+
+
+
+* **Host key**
+
+***********************************************************************
+Default
+location: /etc/grid-security/hostkey.pemOverride with X509_USER_KEY
+environment variable
+
+***********************************************************************
+
+* Host certificate
+
+***********************************************************************
+Default
+location: /etc/grid-security/hostcert.pemOverride with X509_USER_CERT
+environment
+variable
+***********************************************************************
+
+* Grid map file
+
+***********************************************************************
+Default
+location: /etc/grid-security/grid-mapfileOverride with GRIDMAP
+environment
+variable
+***********************************************************************
+
+* **Certificate directory**
+
+***********************************************************************
+Default
+location: /etc/grid-security/certificatesOverride with X509_CERT_DIR
+environment variable
+
+***********************************************************************
+
+

@@ -1,0 +1,45 @@
+
+[[errors]]
+== Globus Toolkit 6.0 Errors ==
+
+
+--
+
+* link:#xio-errors-table[XIO]
+
+* link:#credential-errors-table[GSI credentials]
+
+* link:#gridmap-errors-table[GSI gridmap]
+
+* link:#myproxy-errors-table[MyProxy]
+
+* link:#gsiopenssh-errors-table[GSI-OpenSSH]
+
+* link:#gridftp-errors-table[GridFTP]
+
+* link:#gram5-errors-table[GRAM5]
+
+
+
+--
+
+include::../../xio/XIO_Errors_Frag.txt[]
+
+
+include::../../Credential_Troubleshooting_Frag.txt[]
+
+
+include::../../Gridmap_Troubleshooting_Frag.txt[]
+
+
+include::../../myproxy/Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+
+
+include::../../gsiopenssh/Util_OpenSSH_Errors_Frag.txt[]
+
+
+include::../../gridftp/GridFTP_Errors_Frag.txt[]
+
+
+include::../../gram5/GRAM5_Errors_Frag.txt[]
+

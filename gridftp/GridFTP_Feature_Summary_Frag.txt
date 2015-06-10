@@ -1,0 +1,74 @@
+
+[[gridftp-featuresummary]]
+=== Feature Summary ===
+
+Features new in GT 6.0: 
+
+* Wider support for UDT
+
+
+
+Features that continue to be supported from previous versions 
+
+* Chrooting GridFTP server
+
+* Synchronize datasets
+
+* Improved failure restart capability in globus-url-copy
+
+* Stall detection
+
+* Load balancing in globus-url-copy
+
+* GridFTP over UDT
+
+* SSH security for GridFTP control channel
+
+* Running the GridFTP server with GFork GridFTP
+
+* Multicasting / Network overlays (EXPERIMENTAL)
+
+* Netlogger's bottleneck detection for GridFTP transfers (EXPERIMENTAL)
+
+* GSI security: This is the PKI based, de facto standard security system used in Grid applications. Kerberos is also possible but is not supported and can be difficult to use due to divergence in the capabilities of GSI and Kerberos.
+
+* Third-party transfers: Very common in Grid applications, this is where a client mediates a transfer between two servers (both likely at remote sites) rather than between the server and itself (called a client/server
+            transfer).
+
+* Cluster-to-cluster data movement or Striping: GridFTP can do coordinated data transfer by using multiple computer nodes at the source and destination.
+
+* Partial file access: Regions of a file may be accessed by specifying an offset into the file and the length of the block desired.
+
+* Reliability/restart: The receiving server periodically (the default is 5 seconds, but this can be changed) sends **restart markers** to the client. This marker is a messages specifying what bytes have been successfully written to the disk. If the transfer fails, the client may restart the transfer and provide these markers (or an aggregated equivalent marker), and the transfer will pick up where it left off. This can include holes in the file.
+
+* Large file support: All file sizes, lengths, and offsets are 64 bits in length.
+
+* Data channel reuse: Data channel can be held open and reused if the next transfer has the same source, destination, and credentials. This saves the time of connection establishment, authentication, and delegation. This can be a huge performance difference when moving lots of small files.
+
+* Integrated instrumentation (Performance Markers).
+
+* Logging/audit trail (Extensive Logging in the server).
+
+* Parallel transfers (Multiple TCP streams between a pair of hosts).
+
+* TCP Buffer size control (Protocol supports Manual and Automatic; Only Manual Implemented).
+
+* Server-side computation (Extended Retrieve (ERET) / Extended Store (ESTO) commands).
+
+* Based on Standards: RFC 959, RFC 2228, RFC 2389, IETF Draft MLST-16 , GGF GFD.020.
+
+
+
+Other Supported Features 
+
+* On the client side we provide a scriptable tool called globus-url-copy. This tool can take advantage of all the GridFTP protocol features and can also do protocol translation between FTP, HTTP, HTTPS, and POSIX file IO on the client machine.
+
+* We also provide a set of development libraries and APIs for developers wishing to add GridFTP functionality to their application.
+
+
+Deprecated Features 
+
+* None
+
+
+

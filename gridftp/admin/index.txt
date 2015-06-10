@@ -1,0 +1,575 @@
+
+[[gridftpAdmin,System Administrator's Guide]]
+:doctype: book
+= GT 6.0 GridFTP : System Administrator's Guide =
+
+  
+.Introduction
+--
+This guide contains advanced configuration information for system
+administrators working with GridFTP. It provides references to
+information on procedures typically performed by system administrators,
+including installation, configuring, deploying, and testing the
+installation. This guide should help you configure and run the GridFTP
+server in some standard configurations.
+[IMPORTANT]
+--
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[]. Read through this guide before continuing!
+--
+
+
+--
+
+  
+include::../GridFTP_Building.txt[]
+
+ 
+include::../GridFTP_Interface_Config_Frag.txt[]
+
+ 
+[[gridftp-admin-tuning]]
+== Key Admin Settings and Tuning Recommendations ==
+
+
+--
+The **++globus-gridftp-server++** is a flexible and tunable piece of
+software. It is easy for an admin to get lost in all of the options it
+offers. This document intends to highlight some of the more commonly
+important options related to performance and robustness. It does not
+intend to account for all of the options but rather to give the system
+administator a better perspective into how to set some of the less
+obvious controls.
+
+
+--
+
+=== Concurrent Instances ===
+
+A very important option for a system administrator to set is the number
+of simultaneous GridFTP transfers allowed. In other words, the number of
+clients that are allowed to connect to the server at the same time.
+
+GridFTP is designed to be a high performance, on-demand data transfer
+service. Quite a bit of system resources (mainly memory) are allocated
+to each client connection and this is with the assumption that the
+session will consume even more system resources (CPU, net/disk
+bandwidth) when performing a high speed data transfer. For this reason,
+the system administrator must evaluate the resource their host machine
+has to offer and set a reasonable limit to the number of client connects
+allowed at one time.
+
+When determining the instance concurrency level, there are two major
+factors to consider: **system memory** helps determine the upper limit
+of the instance range and **available I/O bandwidth** helps determine
+the lower limit.
+
+
+==== System memory considerations ====
+
+First and foremost is system memory. The recommended instance count
+based on system memory is: 
+
+--------
+instance count = system memory / 34
+--------
+
+
+Each instance of a GridFTP server will require about 2MB of memory just
+to handle the connection in a sane way. Beyond that is the amount of
+memory required to handle a fast, TCP-based data transfer. A safe rule
+of thumb here is 32MB. This allows for a TCP buffer size of 16MB (which
+is a common client selection for high performance WAN bandwidth delay
+products) and a user space buffer to match that value. 2MB + 16MB + 16MB
+= 34MB, thus the denominator in the above formula.
+
+
+==== I/O bandwidth considerations ====
+
+Simultaneous clients share the available I/O resources. Most often it is
+beneficial to allocate enough bandwidth so that each client can transfer
+data at an acceptable rate. In a simple model, the higher the instance
+count, the lower the transfer rates for each client. At some point it is
+beneficial for the GridFTP server to reject connections in an attempt to
+provide a higher level of service to its currently connected clients.
+There is also a point where too many simultaneous clients can cause
+thrashing and drop network packets. Obviously this situation should be
+avoided.
+
+While no client wants to be rejected, a higher level service can take
+advantage of this by either trying again later at a more efficient time,
+reordering its work load, or finding a replica. RFT provides some of
+this functionality and other such services are being researched and
+designed.
+
+
+==== Why More Than One? ====
+
+When considering the right concurrent instance level it is helpful to
+consider why there should ever be more than one at a time. There are
+three major reasons for this:
+
+
+
+. **The other side of the connection is the bottleneck.**
++
+If we assume that each transfer moves as fast as our system can send it,
+then, when considering overall throughput, having two connections going
+at half speed is roughly the same thing as having 2 full speed
+connections run one at a time. However, if the remote end of the
+connection is the bottleneck, then there is unused local bandwidth from
+which another simultaneous connection and thus the overall system can
+benefit.
+
+. **Hide the overhead.**
++
+Another important aspect of simultaneous connections is that the needed
+overhead of control messaging can be overlapped with the payload of
+another sessions data transfer. Hiding this processing and messaging
+latency makes for a more efficient system with a higher overall
+throughput.
+
+. **Provide an interactive service.**
++
+In some case, users may find connection rejections unacceptable and
+would prefer a slower overall system provided they could connect to it
+immediately for the purpose of an interactive session.
+
+
+In the case of #3 the the highest safe level of instance count possible
+is ideal. In the other two case the ideal number is less deterministic.
+At least 10 instance is always recommended.
+
+
+==== Setting the instance cap ====
+
+If using GFork or Xinetd, set the instance cap by adding the following
+line to the configuration file: 
+
+--------
+instance = <integer>
+--------
+
+
+If running the GridFTP server as a daemon, use the following option to
+set the instance cap: 
+
+--------
+ -connections-max <integer>
+--------
+
+
+
+=== Disk Block Size ===
+
+The **++globus-gridftp-server++** sits on top of various file systems.
+Each file system has its own ideal access patterns and I/O buffer sizes.
+To provide the user with some means of control, we offer the option: 
+
+--------
+-blocksize <number>
+--------
+
+
+This number indicates the size of the read requests posted to the disk.
+
+
+=== Host Tuning ===
+
+We recommend that you update the kernel TCP buffer settings and TCP
+congestion control algorithm as recommended
+http://fasterdata.es.net/fasterdata/host-tuning/[here] for achieving
+maximum performance.
+
+
+=== Data Interface ===
+
+On systems that have multiple network interfaces, the system admin
+likely wants to associate data transfers with the fastest possible NIC
+available. This can be done in the GridFTP server by using the option: 
+
+--------
+--data-interface <ip address>
+--------
+
+
+ 
+[[gridftp-admin-advanced]]
+== Advanced Configuration ==
+
+
+--
+It is assumed that the toolkit installation was successful. For more
+information, see the link:../../admin/install/index.html[]. Also be sure
+to reference link:#gridftp-configuring[] and
+link:../..gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-server++**].
+
+
+--
+
+[[gridftp-config-udt]]
+=== Configuring GridFTP to use UDT instead of TCP ===
+
+UDT is bundled with Globus starting with Globus v4.2, so downloading UDT
+separately is no longer needed. 
+
+
+==== Prerequisites ====
+
+
+
+. Threaded Globus GridFTP server. In GT6, the server is non-threaded by
+default. Refer to
+link:../..gridftp/admin/index.html#gridftp-admin-installing-threaded[]
+for information on how to enable threading in GridFTP server.
+
+. For client-server transfers, threaded globus-url-copy. For third-party
+(server-server) transfers, threaded globus-url-copy is not needed. Refer
+to
+link:../..gridftp/admin/index.html#gridftp-admin-installing-threaded[]
+for information on how to enable threading in globus-url-copy.
+
+
+
+==== Steps ====
+
+
+
+. Build and install UDT
++
++
+--------
+globus$ make udt
+--------
+or 
++
+--------
+globus$ make gridftp udt
+--------
+if gridftp is not built and installed already)
++
++
+--------
+globus$ make install
+--------
+
+. Configure GridFTP server
++
+If you run the GridFTP server from xinetd, add ++-dc-whitelist
+udt,gsi,tcp++ to ++server_args++ in ++/etc/xinetd.d/gsiftp++
++
+Alternatively, you can use the file
+++$GLOBUS_LOCATION/etc/gridftp.conf++ to configure this. Add the
+following to that file:  to configure this. Add the following to that
+file: 
++
+--------
+dc_whitelist udt,gsi,tcp
+--------
+.
++
+If you run the server from the command line: 
++
+--------
+$GLOBUS_LOCATION/sbin/globus-gridftp-server -dc-whitelist udt,gsi,tcp
+--------
+
+. Run globus-url-copy with new command line option "-udt"
+
+
+
+[[gridftp-admin-separated]]
+=== Separation of Processes (Split Process) ===
+
+The GridFTP server can be separated into front end and data node
+processes. This is the architecture used to achieve a striped server,
+but it can also be exploited to achieve a higher level of security.
+
+Running the server as ++root++ is often desirable because it allows the
+server to fork and setuid on a child process related to an authenticated
+user. This allows the server to leverage the operating system's file
+system permissions and other security devices. However, it is not at all
+desirable to have a ++root++-running process listening on a port open to
+the world. If an attacker were to compromise the process, they could
+obtain root-level access to the machine.
+
+To overcome this security risk, the GridFTP server can be run in a front
+end/back end manner. The front end can be run as any user, say user
+++globus++, that has very limited access to the machine. The front end
+is the process open to the outside world. If it is compromised, an
+attacker has only gained access to that limited account. The back end is
+run as root, but configured to only allow connections from the front
+end.
+
+This does, however, require that a copy of the
+link:../../admin/install/index.html#gtadmin-basic-host[host cert and
+host key] be owned by the non-privileged user. If you use this
+configuration, the non-privileged user should not have write permission
+to executables, configuration files, etc. This provides greater security
+and also allows for proxying and load balancing. Many backend data
+movers can be behind a single point of client contact. Each client is
+assigned a different backend in a round robin fashion.
+
+To start the front end, run:
+
+
+
+--------
+globus-gridftp-server -p 7000 -r localhost:7001
+--------
+
+To start the back end, run:
+
+
+
+--------
+globus-gridftp-server -p 7001 -dn -allow-from 127.0.0.1
+--------
+
+
+[[gridftp-admin-striped]]
+=== Configuring GridFTP for Cluster-to-Cluster (or Striped) data movement ===
+
+The GridFTP server supports separate front end (client control
+connection) and back end (data node) processes. In addition, a single
+front end process may connect to multiple back end data nodes.
+
+When multiple back end data nodes are available, the server is said to
+be in a **striped** configuration, or simply, is a striped server. In
+this mode, transfers are divided over all available data nodes, thus
+allowing the combined bandwidth of all data nodes to be used.
+
+This is recommended for improved performance of large (1GB+) file
+transfers. This can also be useful if you want to use full data
+encryption and need to tether together many hosts to handle the
+processing load. 
+
+[NOTE]
+--
+The connection between the front end and data nodes is referred to as
+the **IPC channel**.
+
+--
+The ability to use inetd or daemon execution modes applies to both front
+end servers and data nodes, and the same certificate and user
+requirements apply.
+
+To start the front end, run: 
+
+--------
+globus-gridftp-server <args> -r <host:port>[,<host:port>,...]
+--------
+To start the data-node, run: 
+
+--------
+globus-gridftp-server -p <port> -dn
+--------
+The ++-p <port>++ option used on the data-node is the port that will be
+used for IPC connections. This is the port that you will register with
+the front end server.
+
+For example: 
+
+--------
+machineB> globus-gridftp-server -p 6000 -dn
+machineC> globus-gridftp-server -p 7000 -dn
+machineA> globus-gridftp-server -p 5000 -r machineB:6000,machineC:7000
+--------
+The client would only connect to the front end at ++machineA:5000++, for
+example, using globus-url-copy with the '-stripe' option: 
+
+--------
+globus-url-copy -stripe gsiftp://machineA:5000/file file:///destination
+   or
+globus-url-copy -stripe gsiftp://machineA:5000/file gsiftp://machineX/destination
+--------
+Where machineX may be another striped server or a standard GridFTP
+server.
+
+
+[[combo-striped-split]]
+=== Combining Split Process and Striped configuration ===
+
+Furthermore striped servers and split process can be combined. You can
+have an 8 node cluster that only uses 2 nodes at a time in a striped
+server configuration and load balances across the rest of the nodes.
+TODO: any other details here?
+
+
+[[chroot-gridftp]]
+=== Configuring chrooted GridFTP server ===
+
+GridFTP server can be configured to restrict access to specific path
+using the command-line option '-chroot-path <path>' This path must
+contain a valid certificate structure, /etc/passwd, and /etc/groups. A
+helper script 'globus-gridftp-server-setup-chroot' available in
+$GLOBUS_LOCATION/sbin, can help create a suitable directory structure. 
+
+
+[[gridftp-admin-server-gfork]]
+=== Running with GFork Master Plugin ===
+
+GFork is a service like inetd that listens on a TCP port and runs a
+configurable executable in a child process whenever a connection is
+made. GFork also creates bi-directional pipes between the child
+processes and the master service. These pipes are used for interprocess
+communication between the child process executables and a master process
+plugin. More information on GFork can be found
+link:#gridftp-admin-gfork-master[here].
+
+
+[[gridftp-user-access]]
+=== Accessing data from other data interfaces ===
+
+
+include::../GridFTP_DSI_General_Frag.txt[]
+
+
+[[gridftp-admin-dsis]]
+==== Plugging in a Data Storage Interface (DSI) ====
+
+GridFTP can be used as a network interface to existing Data Storage
+Interfaces (DSIs) using the '-dsi' option. With this option the DSI
+plugs into the backend (compatible with striping) and is transparent to
+the client or remote party. It can be used with either the GT standard
+DSI plugins or with
+link:../..gridftp/developer/index.html#gridftp-developer-dsi[custom-built
+DSI plugins]. The standard DSI plugins available in a default GT
+installation are:
+
+
+
+
+* link:#gridftp-SRB[Storage Resource Broker (SRB)]
+
+
+The above link point to complete information about setting up and
+running the GridFTP server with these DSIs.
+
+
+[[gridftp-howto-access-posix]]
+==== Accessing data in a non-POSIX file data source that has a POSIX interface ====
+
+If you want to access data in a non-POSIX file data source that has a
+POSIX interface, the standard server will do just fine. Just make sure
+it is really POSIX-like (out of order writes, contiguous byte writes,
+etc).
+
+ 
+[[gridftp-admin-experimental]]
+== Experimental Features ==
+
+
+[[gridftp-config-netlogger]]
+=== Configuring GridFTP to enable Netlogger's bottleneck detection ===
+
+For information on enabling bottleneck detection via Netlogger, see the
+http://www.cedps.net/index.php/Gridftp-netlogger[Gridftp-netlogger] page
+on the CEDPS website.
+
+
+[[gridftp-config-multi]]
+=== Configuring multicasting/broadcasting ===
+
+To enable
+link:../..gridftp/user/index.html#gridftp-user-experimental-multicasting[multicasting],
+you must whitelist the ++gridftp_multicast++ driver with the
+'-fs-whitelist file,gridftp_multicast' option:
+
+
+
+--------
+globus-gridftp-server -fs-whitelist file,gridftp_multicast
+--------
+
+The above command whitelists both the ++file++ driver and the
+++gridftp_multicast++ driver. [NOTE]
+--
+The ++file++ driver is the default link:[XIO] driver that handles
+reading and writing to file systems (disks). By default, this driver is
+already whitelisted. However, if you use the '-fs-whitelist' option, you
+must set **all** the drivers you want whitelisted (and the ++file++
+driver will still be needed to allow reads and writes to disk for
+non-multicast users.
+
+--
+
+
+For information about using multicasting, click
+link:../..gridftp/user/index.html#gridftp-user-experimental-multicasting[here].
+
+
+[[gridftp-admin-gwtftp]]
+=== GridFTP Where There Is FTP (GWTFTP) ===
+
+GridFTP Where There Is FTP (GWTFTP) is an intermediate program that acts
+as a proxy between existing FTP clients and GridFTP servers. Users can
+connect to GWFTP with their favorite standard FTP client, and GWFTP will
+then connect to a GridFTP server on the client’s behalf. To clients,
+GWFTP looks much like an FTP proxy server. When wishing to contact a
+GridFTP server, FTP clients instead contact GWTFTP.
+
+Clients tell GWFTP their ultimate destination via the FTP **++USER ++**
+command. Instead of entering their username, client users send the
+following:
+
+
+
+--------
+USER <GWTFTP username>::<GridFTP server URL>
+--------
+
+This command tells GWTFTP the GridFTP endpoint with which the client
+wants to communicate. For example:
+
+
+
+--------
+USER bresnaha::gsiftp://wiggum.mcs.anl.gov:2811/
+--------
+
+[NOTE]
+--
+Requires link:[GSI C security].
+
+--
+ 
+[[gridftp-admin-testing]]
+== Testing ==
+
+
+--
+If the globus-ftp-client-test package has been installed, our standard
+test suite may be run to verify functionality on your platform. Simply
+set up the globus environment, chdir to
+++$GLOBUS_LOCATION/test/globus_ftp_client_test/++ and run
+++./TESTS.pl++.
+
+
+--
+ 
+[[gridftp-admin-debugging]]
+== Debugging ==
+
+
+include::../GridFTP_Logging_Frag.txt[]
+
+ 
+include::../GridFTP_Troubleshooting_Frag.txt[]
+
+ 
+include::../GridFTP_Usage_Statistics_Frag.txt[]
+
+ 
+[[gridftp-admin-command]]
+== GridFTP Admin Tool ==
+
+
+include::../GridFTP_Interface_Commandline_Admin_Frag.txt[]
+
+ 
+include::GridFTP_SRB.txt[]
+
+ 
+include::GridFTP_GFork.txt[]
+
+   

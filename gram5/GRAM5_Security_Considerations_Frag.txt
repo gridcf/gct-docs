@@ -1,0 +1,37 @@
+
+[[gram5-security-considerations]]
+=== Security Considerations ===
+
+
+==== Gatekeeper Security Considerations ====
+
+GRAM5 runs different parts of itself under different privilege levels.
+The **++globus-gatekeeper++** runs as root, and uses its root privilege
+to access the host's private key. It uses the grid map file to map Grid
+Certificates to local user ids and then uses the **++setuid()++**
+function to change to that user and execute the
+**++globus-job-manager++** program 
+
+
+==== Job Manager Security Considerations ====
+
+The **++globus-job-manager++** program runs as a local non-root account.
+It receives a delegated limited proxy certificate from the GRAM5 client
+which it uses to access Grid storage resources via GridFTP and to
+authenticate job signals (such as client cancel requests), and send job
+state callbacks to registered clients. This proxy is generally
+short-lived, and is automatically removed by the job manager when the
+job completes. 
+
+The **++globus-job-manager++** program uses a publicly-writable
+directory for job state files. This directory has the **sticky** bit
+set, so users may not remove other users files. Each file is named by a
+UUID, so it should be unique. 
+
+
+==== Fork SEG Module Security Considerations ====
+
+The Fork Scheduler Event Generator module uses a globally writable file
+for job state change events. This is not recommended for production use.
+
+

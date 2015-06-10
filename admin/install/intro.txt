@@ -1,0 +1,16 @@
+
+[[gtadmin-intro]]
+
+.Introduction
+--
+This guide is the starting point for everyone who wants to install
+Globus Toolkit 6.0. It will take you through a basic installation that
+installs the following basic services: a security infrastructure (GSI),
+GridFTP, and Execution Services (GRAM5). 
+This guide is also available as a link:installingGT.pdf[PDF]. However,
+each component includes online reference material, which this guide
+sometimes links to. 
+
+--
+
+ 

@@ -1,0 +1,34 @@
+
+[[gtadminappendix]]
+:doctype: book
+= GT 6.0 Installation Appendix =
+
+ 
+include::advanced_build.txt[]
+
+ 
+include::packaging.txt[]
+
+ 
+include::env_vars.txt[]
+
+ 
+[[gtadmin-simpleca]]
+== Installing SimpleCA ==
+
+
+include::../../simpleca/admin/index.txt[]
+
+ 
+include::troubleshooting.txt[]
+
+ 
+include::advanced_config.txt[]
+
+ 
+include::security_considerations.txt[]
+
+ 
+include::usage_stats.txt[]
+
+  

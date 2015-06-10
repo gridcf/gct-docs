@@ -1,0 +1,22 @@
+
+[[gsic-changes-summary]]
+=== Summary of Changes in GSIC ===
+
+
+==== New Features: GSIC ====
+
+
+
+* globus-gssapi-gsi-11.16: Add new configuration options
+
+
+
+
+==== Improvements: GSIC ====
+
+
+
+* More test cases
+
+
+

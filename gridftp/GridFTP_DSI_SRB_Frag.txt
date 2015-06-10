@@ -1,0 +1,29 @@
+
+=== Latest information about SRB ===
+
+Last Update: August 2005
+
+Working with the SRB team at the San Diego Supercomputing Center, we
+have written a Data Storage Interface (DSI) for read/write access to
+data in the Storage Resource Broker (SRB)
+(http://www.npaci.edu/DICE/SRB). This DSI will enable GridFTP compliant
+clients to read and write data to an SRB server, similar in
+functionality to the sput/sget commands.
+
+This DSI is currently in testing and is not yet publicly available, but
+will be available from both the SRB web site (here) and the Globus web
+site (here). It will also be included in the next stable release of the
+toolkit. We are working on performance tests, but early results indicate
+that for wide area network (WAN) transfers, the performance is
+comparable. 
+
+When might you want to use this functionality:
+
+
+
+
+* You have existing tools that use GridFTP clients and you want to access data that is in SRB
+
+* You have distributed data sets that have some of the data in SRB and some of the data available from GridFTP servers.
+
+

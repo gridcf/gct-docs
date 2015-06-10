@@ -1,0 +1,12 @@
+
+[[simpleca-testedplatforms]]
+=== Tested Platforms ===
+
+SimpleCA is tested on the following platforms:
+
+
+include::../platforms.txt[]
+
+
+ 
+

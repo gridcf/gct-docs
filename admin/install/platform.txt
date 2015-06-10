@@ -1,0 +1,41 @@
+
+[[gtadmin-platform]]
+== Platform Notes ==
+
+
+=== Platform Notes ===
+
+
+[[gtadmin-platform-osx]]
+==== Mac OS X 10.8+ (Mountain Lion, Mavericks) ====
+
+The GNU autotools and libtool is no longer distributed with OS X 10.8+.
+If you are building from git repository, you'll need to install the
+latest versions of those tools. If you are building from the source
+installer, these do not need to be installed. 
+
+* http://ftpmirror.gnu.org/autoconf/[GNU Autoconf]
+
+* http://ftpmirror.gnu.org/automake/[GNU Automake]
+
+* http://ftpmirror.gnu.org/libtool/[GNU Libtool]
+
+
+
+Configure libtool with the configuration option
+**++--program-prefix=g++** to cause the libtool script to be named
+**++glibtool++** to avoid conflicts with the OS X libtool program which
+provides different functionality than GNU libtool. Install libtool (and
+the other tools) into the a common directory. If you do so, you'll need
+to set the ++LIBTOOLIZE++ environment variable to the path to the
+**++glibtoolize++** program. You'll need to include the autotools in
+your path to regenerate the configurable scripts and Makefile.in files
+for the toolkit. 
+
+The Globus Toolki build requires the **++pkg-config++** package to be
+installed. It is available from
+http://pkgconfig.freedesktop.org/releases/[freedesktop.org].
+Additionally, you'll need to set the environment variable
+++PKG_CONFIG_PATH++ to ++/usr/lib/pkgconfig++ prior to running the
+configure script.  prior to running the configure script. 
+

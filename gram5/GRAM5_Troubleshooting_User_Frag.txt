@@ -1,0 +1,311 @@
+
+[[gram5-troubleshooting-client]]
+=== GRAM Client Troubleshooting ===
+
+
+==== Credential Problems ====
+
+GRAM requires a client certificate and private key in order authenticate
+with the GRAM service. If these are not available, the GRAM client will
+fail. In typical use, a user will create a temporary proxy certificate
+either derived from their identity certificate issued by some
+certificate authority, or from a service such as myproxy. If a GRAM
+client command returns any error containing the string ++GSS Major
+Status++ you've hit a credential problem. Look at the
+link:../..gsic/user/index.html#security-credential-errors[Troubleshooting
+Section] of the GSI manual for details about how to diagnose and correct
+these errors. The  tool with the '-p' command-line option is especially
+helpful for diagnosing some of these types of problems. 
+
+
+==== Connection Problems ====
+
+There are a few things which can go wrong when trying to contact a GRAM
+service. These have slightly different error types which can help
+diagnose which problem is occurring. 
+
+
+===== Invalid Resource Name =====
+
+If the hostname or TCP port you are using for a GRAM resource name is
+not correct, then the GRAM client will be unable to access the service.
+Errors of this type will look like this: 
+
+--------
+%  globus-job-run grid.example.org/jobmanager-fork /bin/hostname
+
+GRAM Job submission failed because the connection to the server failed (check host and port) (error code 12)
+    
+--------
+When this occurs, check with the resource administrator for correct
+resource naming so that you can contact the service. 
+
+
+===== Mutual Authentication Failure =====
+
+GRAM performs mutual authentication, that is, both the client and
+service provide certificates indicating who they are. The service uses
+the client's identity to map the user to a local unix account. The
+client uses the server's identity to verify that the service is running
+with a host credential. The failure of the client to trust the server's
+certificate will generate an error message that looks like this:
+++globus_gsi_gssapi: Authorization denied: The expected name for the
+remote host (host@alias.example.org) does not match the authenticated
+name of the remote host (host@grid.example.org). This happens when the
+name in the host certificate does not match the information obtained
+from DNS and is often a DNS configuration problem.++ 
+
+This mismatch can happen for a number of reasons: a site administrator
+has multiple hosts sharing a certificate, a host has multiple DNS
+aliases, and the client is not aware of which name the server is using
+for its certificate, or a host's name has changed since the certificate
+was issued. The remedy for the client, after confirming with the GRAM
+administrator that the name after "authenticated name of the remote
+host" is the correct certificate name is to use a form of the GRAM
+resource name which includes this name. For example, explicitly adding a
+name to the abbreviated GRAM contact so that instead of
+++alias.example.org++, you would use
+++alias.example.org::host@grid.example.org++. 
+
+
+===== Certificate Trust Issues =====
+
+Because of the mutual authentication, both GRAM users and services can
+hit problems if they do not trust their peer's certificate or the
+Certificate Authority which issued it. If the client doesn't trust the
+server's certificate, it is easier to diagnose, because the GRAM service
+doesn't send much information back to the client if it doesn't trust it.
+However, working with the system administrator to get information from
+the GRAM logs will usually fix these problems fairly easily. 
+
+If the service's certificate is not trusted, the client will receive a
+message like this: 
+
+--------
+%  globus-job-run grid.example.org /bin/hostname
+GRAM Job submission failed because an authentication operation failed
+OpenSSL Error: s3_clnt.c:915: in library: SSL routines, function SSL3_GET_SERVER_CERTIFICATE: certificate verify failed
+globus_gsi_callback_module: Could not verify credential
+globus_gsi_callback_module: Can't get the local trusted CA certificate: Untrusted self-signed certificate in chain with hash bbfccedf
+--------
+
+
+This error indicates that certificate chain from the service certificate
+to the client contained a self-signed certificate (usually an indication
+that it's a CA certificate), which the client doesn't trust, and
+includes the hash of the certificate name (++bbfccedf++ in this case).
+If you hit this particular type of error, you should send the
+information to the GRAM administrator and determine which CA should be
+trusted and what its signing policy is, to determine if you want to add
+it to your local set of trust roots. 
+
+[NOTE]
+--
+Different versions of OpenSSL produce different hashes for the same
+certificate names. If you upgrade a system (or transfer CA certificates
+between systems) to a different version of OpenSSL, you may hit this
+problem even if you think you have the CA certificate in your trusted
+certificate directory. If so, run the
+**++globus-update-certificate-dir++** program to update your hashes. 
+
+--
+There are other reasons why a certificate might not be trusted (it's in
+a revoked list, it has expired or was issued in the future, etc). For
+more details look at the
+link:../..gsic/user/index.html#gsic-user-troubleshooting[troubleshooting
+information] in the GSI user's guide. 
+
+If for some reason the service does not trust your certificate, you'll
+get a rather cryptic message from GRAM that looks like this: 
+
+--------
+%  globus-job-run grid.example.org /bin/hostname
+GRAM Job submission failed because an authentication operation failed
+globus_gsi_gssapi: Unable to verify remote side's credentials
+globus_gsi_gssapi: Unable to verify remote side's credentials: Couldn't verify the remote certificate
+OpenSSL Error: s3_pkt.c:1086: in library: SSL routines, function SSL3_READ_BYTES: sslv3 alert bad certificate SSL alert number 42
+ (error code 7)
+--------
+
+
+To remedy this, consult the GRAM administrator to get information from
+the ++/var/log/globus-gatekeeper.log++ file to determine the reason why
+the gatekeeper didn't like your certificate. Again it could be CA trust
+issues, clock skew, or a revoked certificate. The error in the
+gatekeeper log would typically look like the client-side trust issue
+above.  file to determine the reason why the gatekeeper didn't like your
+certificate. Again it could be CA trust issues, clock skew, or a revoked
+certificate. The error in the gatekeeper log would typically look like
+the client-side trust issue above. 
+
+
+===== Authentication with the Remote Server Failed =====
+
+Once the GRAM service has authenticated the client, it maps the client's
+identity to a local user account using a grid-mapfile or other mapping
+service. If this fails, the client will receive a message that looks
+like this: 
+
+--------
+%  globus-job-run grid.example.org /bin/hostname
+GRAM Job submission failed because authentication with the remote server failed (error code 7)
+--------
+
+
+To remedy this, consult the system administrator of the GRAM resource to
+be added to the authorized user's list. Be sure to send your credential
+subject name to make it easier for them. To get that information, run
+the command **++grid-cert-info -s++**. 
+
+
+===== Unable to Find the Requested Service =====
+
+Recall that a GRAM resource name includes a component called the
+++service name++. The default if not specified is ++jobmanager++, but
+some sites may not use that name, or have a different LRM name than you
+expect. If you specify an incorrect service name, or the default is not
+present, you'll get an error that looks like this: 
+
+--------
+%  globus-job-run grid.example.org /bin/hostname
+GRAM Job submission failed because the gatekeeper failed to find the requested service (error code 93)
+--------
+
+
+If you get this error, you'll need to determine which services are
+available on that GRAM resource, either by asking the admin or by
+looking at the entries in ++/etc/grid-services++  
+
+
+===== Failed to Run the Job Manager =====
+
+The GRAM service is split between a priveleged process called the
+++globus-gatekeeper++ and a non-privileged process called the  and a
+non-privileged process called the ++globus-job-manager++ which runs as a
+user process. If the  which runs as a user process. If the
+++globus-gatekeeper++ is unable to locate the  is unable to locate the
+++globus-job-manager++ process, then this misconfiguration will show up
+like this:  process, then this misconfiguration will show up like this: 
+
+--------
+%  globus-job-run grid.example.org /bin/hostname
+GRAM Job submission failed because the gatekeeper failed to run the job manager (error code 47)
+--------
+
+
+This is an installation mistake, and the administrator of the GRAM
+resource must fix this. 
+
+
+==== Jobs are Hanging ====
+
+One problem GRAM users sometimes encounter is that it looks like jobs
+submitted to GRAM are not making any progress, even though the local
+resource manager thinks they've run. There are a couple of reasons why
+this might occur: GRAM is not getting the information it needs from the
+local resource manager or the GRAM client is not getting the information
+it needs. We'll cover diagnosing and handling the latter case in this
+document, as the other is an system administrator issue. 
+
+The way **++globus-job-run++** and **++globusrun++** determine that jobs
+have completed is via GRAM job state callbacks. These are messages sent
+by the GRAM service to the client node indicating that something
+significant has happened in the lifecycle of the job. If for some reason
+the GRAM service can not get those messages to the client, the client
+will not be able to detect job state changes. 
+
+In order to determine if this is the case, submit a job using
+**++globus-job-submit++**, and then use the **++globus-job-status++**
+command to see if the job state changes. If it does not, then consult
+the GRAM administrator---there might be some problem with the
+installation. If it does, then for some reason the callbacks are not
+happening. This might be firewall issues or host naming issues. 
+
+The GRAM client sends a "callback contact" to the GRAM service when it
+submits a job, in order that it can receive notifications. This contact
+is a reference to a https server embedded in the GRAM client which only
+handles GRAM state callbacks. As with all web servers, it has a URL
+which defines how to contact it, which in this case consists of the
+client host name and the service port number. If the host name that is
+used is not resolvable (such as a for a laptop with a dynamic address),
+then the GRAM service will not be able to contact it. If that's the
+case, you can set the ++GLOBUS_HOSTNAME ++ environment variable to the
+IP address that your client can be reached at, and then submit your
+jobs. This will cause GRAM to publish that address instead of what it
+thinks the client's host name is. 
+
+Another way that the GRAM service would be unable to send job state
+updates to a client would be if there's a firewall between the service
+and the client. If that's the case, you might need to set the
+++GLOBUS_TCP_PORT_RANGE++ environment variable to a comma-separated list
+of numbers which represent a range of minimum and maximum TCP port
+numbers to listen on. You might have to contact your site administrator
+to determine what TCP ports are allowed. If there are none, you can
+still use **++globus-job-submit++** and **++globus-job-status++** to
+track your job's state changes, or use another tool like those mentioned
+in the link:../..gram5/user/index.html#gram5-user-client-tools[section
+about client tools]. 
+
+
+==== Logs and Debugging ====
+
+The GRAM service has a log file which contains information about the job
+as it is processed. These logs are located by default in
+++/var/log/globus/gram_$USERNAME.log++. There are some different logging
+levels available, as . There are some different logging levels
+available, as
+link:../..gram5/admin/index.html#gram5-log-levels[described in the GRAM
+Adminstrator's Guide]. These can be controlled on a per-job basis by
+adding the ++loglevel++ RSL attribute to your job description. The
+default is to log only ++FATAL++ and ++ERROR++ messages, but other
+levels can sometimes help understand what is going on. 
+
+
+==== Diagnosing LRM Errors ====
+
+Sometimes, bugs creep into the LRM adapter scripts. When that occurs,
+the GRAM job will usually fail with an error like this: 
+
+--------
+GRAM Job failed because the job manager detected an invalid script status (error
+code 25)
+--------
+
+
+If this occurs, you may have to work with a GRAM administrator to help
+debug this problem. One helpful thing you can do when reporting it is to
+save the GRAM internal script data so that it can be used outside of the
+GRAM service to see what the low-level error looks like. To do this, add
+the RSL fragment ++(savejobdescription = yes)++ to your job request.
+This will cause GRAM to leave a file called something like
+++$HOME/gram_[0-9]*.pl++ in your home directory. You can use this with
+the internal tool  in your home directory. You can use this with the
+internal tool ++/usr/share/globus/globus-job-manager-script.pl++ to try
+to submit the job to the LRM without using the GRAM service. The command
+line  to try to submit the job to the LRM without using the GRAM
+service. The command line
+**++/usr/share/globus/globus-job-manager-script.pl -m ++** will attempt
+to submit the job to the LRM. It will show all the information the LRM
+script sends to the GRAM service, which might include some perl-language
+error or badly formatted output from the script (which must only output
+lines which begin with ++GRAM_SCRIPT_++. 
+
+In some extreme cases, the savejobdescription option will not generate a
+file. If that's the case, pass ++/dev/null++ as the argument to the  as
+the argument to the '-f' command-line option. The problem is likely a
+perl syntax error which will be reached before the job description is
+loaded. 
+
+
+==== Email Support ====
+
+If all else fails, please send information about your problem to
+gram-user@globus.org. You'll have to subscribe to a list before you can
+send an e-mail to it. See
+http://dev.globus.org/wiki/Mailing%5fLists[here] for general e-mail
+lists and information on how to subscribe to a list and
+http://dev.globus.org/wiki/GRAM#Mailing%5fLists[here] for GRAM specific
+lists. Depending on the problem, you may be requested to file a bug
+report to the globus project's https://globus.atlassian.net[Issue
+Tracker]. 
+

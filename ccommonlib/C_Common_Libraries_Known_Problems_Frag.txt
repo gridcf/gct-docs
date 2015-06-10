@@ -1,0 +1,18 @@
+
+[[ccommonlib-outstanding]]
+=== Known Problems in C Common Libraries ===
+
+
+
+* https://globus.atlassian.net/browse/GT-108[GT-108]: --libdir is being ignored
+
+* https://globus.atlassian.net/browse/GT-114[GT-114]: i18n rules in installer don't work
+
+* https://globus.atlassian.net/browse/GT-360[GT-360]: signals ignored by subprocesses
+
+* https://globus.atlassian.net/browse/GT-452[GT-452]: autoconf macros for globus-core can't handle absolute path in CC variable (e.g. CC=/usr/bin/gcc)
+
+* https://globus.atlassian.net/browse/GT-470[GT-470]: Globus IO reports timeout error as cancellation
+
+
+
