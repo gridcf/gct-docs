@@ -544,7 +544,7 @@ Name (E.g., John M. Smith) []:</computeroutput><userinput>Globus Simple CA</user
 <part id="simpleca-admin-reference">
     <title>Simple CA Command Reference</title>
 
-<xi:include xmlns="xi:http://www.w3.org/2001/XInclude"
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../Cred_Mgmt_SimpleCA_Interface_Commandline_Frag.xml"/>
 </part>
     <glossary role="auto" id="glossary-simplecaAdmin">
