@@ -2,11 +2,11 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
 [
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
 <!ENTITY rootuser "<systemitem class='username'>root</systemitem>" >
 <!ENTITY globususer "<systemitem class='username'>globus</systemitem>" >
  
+<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
+%xinclude;
 ]>
 <chapter id="gtadmin-install" xreflabel="Installing GT">
     <title>Installing GT <replaceable role="entity">version</replaceable></title>
