@@ -16,7 +16,7 @@ It has the following features:
             <itemizedlist>
                 <listitem>
                     <para>With a one-click <ulink
-		    url="https://www.globusonline.org/globus_connect/">Globus
+		    url="https://www.globus.org/globus_connect/">Globus
 		    Connect</ulink> (modified GridFTP server binary) installed
 		    on your local system, you can browse the local file system and transfer files and directories between the local system and remote GridFTP servers 
 
@@ -30,12 +30,6 @@ It has the following features:
                 </listitem>
             </itemizedlist>
         </para>
-        <para> Prerequisites: </para>
-        <itemizedlist>
-            <listitem>
-                <para> JDK 1.5.0+ </para>
-            </listitem>
-        </itemizedlist>
         <para> Supported Platforms: </para>
         <itemizedlist>
             <listitem>
@@ -45,24 +39,9 @@ It has the following features:
                 <para> Linux </para>
             </listitem>
             <listitem>
-                <para> MAC </para>
+                <para> Mac </para>
             </listitem>
         </itemizedlist>
-        <para> The GUI provides two ways for generating a proxy credential required for the data
-            transfer: </para>
-        <orderedlist>
-            <listitem>
-                <para> Creating a proxy credential using a locally stored key pair. </para>
-            </listitem>
-            <listitem>
-                <para> Obtaining a proxy from a MyProxy Server. For more information about MyProxy,
-                    please visit: <ulink url="http://myproxy.ncsa.uiuc.edu/"
-                        >http://myproxy.ncsa.uiuc.edu/</ulink>. </para>
-            </listitem>
-        </orderedlist>
-        <para><ulink url="../demo.tar.gz">A demo of using the GridFTP GUI is available here</ulink>. 
-            Open the file ending in .htm with any browser with the Flash plugin to start the Flash demo - 
-            then just click the green arrows to progress through each screen.</para>
     </section>
 
 </chapter>
