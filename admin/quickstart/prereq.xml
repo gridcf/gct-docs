@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+    <!ENTITY elephant "<systemitem class='systemname'>elephant</systemitem>" >
+    <!ENTITY donkey "<systemitem class='systemname'>donkey</systemitem>" >
+
+    <!ENTITY rootuser "<systemitem class='username'>root</systemitem>" >
+    <!ENTITY myproxyuser "<systemitem class='username'>myproxy</systemitem>" >
+    <!ENTITY quser "<systemitem class='username'>quser</systemitem>" >
+
+    <!ENTITY doquserprompt "<prompt>quser@donkey&#37; </prompt>" >
+    <!ENTITY passphrase "<userinput>******</userinput>" >
+]
+>
+    <section id="q-prereq">
+        <title>Prerequisites</title>
+        <para>
+            We distribute the Globus Toolkit <replaceable
+            role="entity">shortversion</replaceable> as a set of RPM and Debian
+            packages for Linux systems, as an installable package for Mac OS X,
+            as a .zip file for Windows and Cygwin, as well as a source
+            installer which can be used on other operating systems. In this
+            quickstart, we will be
+            installing RPM packages. Thus, it is a prerequisite for following
+            this quickstart that you are running a distribution for which we
+            provide RPMs. If you are running a supported Debian or Ubuntu
+            system, the process is very similar, but you'll need to use the
+            <command>apt-get</command> or similar tools to install the
+            packages. For the source installer, there is more work involved,
+            and you'll need to consult the full installation guide.
+        </para>
+        <para>
+            First, we will to set up our system to use the Globus package
+            repository. This repository contains the Globus software packages,
+            signed by our build manager. We provide RPM and Debian packages
+            that contain a source configuration file and the public key which
+            can be used to verify the packages.  If your distribution has
+            Globus <replaceable role="entity">version</replaceable> packages
+            within its repository, you can skip to the next section.
+        </para>
+        <para>
+            The globus toolkit package repo RPM can be downloaded from
+            <ulink
+            url="http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo-latest.noarch.rpm">the repo RPM package on globus.org</ulink>.
+        </para>
+        <para>
+            To install binary RPMs, download the globus-toolkit-repo
+            package from the link above and install it with the command:
+            <screen><prompt role="root"/><command>rpm -hUv globus-toolkit-repo-latest.noarch.rpm</command></screen>
+        </para>
+        <para>
+        The globus toolkit package repo Debian file can be downloaded from
+            <ulink
+            url="http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo_latest_all.deb">the repo Debian package on globus.org</ulink>.
+        </para>
+        <para>
+            To install Debian or Ubuntu package, download the
+            globus-toolkit-repo package from the link above and install it with
+            the command:
+            <screen><prompt role="root"/><command>dpkg -i globus-toolkit-repo_latest_all.deb</command></screen>
+        </para>
+        <para>
+            Once you've installed the Globus repository package, you can use
+            your operating system's packaging tools: 
+            <command>yum</command> or <command>apt-get</command>, to install
+            the Globus components.
+        </para>
+        <important>
+            <para>
+                For operating systems based on RHEL (such as Red Hat Enterprise
+                Linux, CentOS, and Scientific Linux), the compatible EPEL
+                repository must be enabled before installing myproxy. For OS
+                versions 5.x, install the <ulink
+                url="http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm">EPEL
+                5 package</ulink>, and for OS version 6.x, use <ulink
+                url="http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-7.noarch.rpm">
+                6 package</ulink>.
+            </para>
+            <para>
+                For information about installing these, see the <ulink
+                url="http://fedoraproject.org/wiki/EPEL/FAQ#How_can_I_install_the_packages_from_the_EPEL_software_repository.3F">EPEL
+                FAQ</ulink>.
+            </para>
+            <para>
+                This step is not needed for Fedora, Debian, or Ubuntu systems.
+            </para>
+        </important>
+        <important>
+            <para>
+                For SUSE Linux Enterprise Server systems which will be using
+                globus-connect-server, a newer version of apache2 must be
+                installed in order for myproxy-oauth to work. This is available
+                by adding the Apache2 and Apache2 Modules for SLES11
+                repositories from opensuse.org.
+            </para>
+            <para>
+                These can be installed by running these commands:
+                <screen><prompt role="root"/><command>zypper ar http://download.opensuse.org/repositories/Apache/SLE_11_SP3/Apache.repo</command>
+<prompt role="root"/><command>zypper ar http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_11_SP3/Apache:Modules.repo</command>
+<prompt role="root"/><command>rpm --import http://download.opensuse.org/repositories/Apache/SLE_11_SP3/repodata/repomd.xml.key</command>
+<prompt role="root"/><command>rpm --import http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_11_SP3/repodata/repomd.xml.key</command></screen>
+            </para>
+        </important>
+    </section>

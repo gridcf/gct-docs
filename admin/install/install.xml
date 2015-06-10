@@ -14,8 +14,7 @@
 
     <title>Installing Binary Packages</title>
          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                href="../quickstart/index.xml"
-                xpointer="xpointer(id('q-prereq'))"/>
+                href="../quickstart/prereq.xml"/>
 
     <section id="install-toolkit"><title>Installing the Toolkit on Linux</title>
         <para>The components of the toolkit can be installed separately, or all at once.  This section will show how

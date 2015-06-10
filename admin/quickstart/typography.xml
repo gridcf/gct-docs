@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+[
+    <!ENTITY elephant "<systemitem class='systemname'>elephant</systemitem>" >
+    <!ENTITY donkey "<systemitem class='systemname'>donkey</systemitem>" >
+
+    <!ENTITY rootuser "<systemitem class='username'>root</systemitem>" >
+    <!ENTITY myproxyuser "<systemitem class='username'>myproxy</systemitem>" >
+    <!ENTITY quser "<systemitem class='username'>quser</systemitem>" >
+
+    <!ENTITY doquserprompt "<prompt>quser@donkey&#37; </prompt>" >
+    <!ENTITY passphrase "<userinput>******</userinput>" >
+]
+>
+    <section id="q-typography">
+        <title>Typographical Conventions</title>
+        <para>
+            Where there is a command to be typed, it will be preceded by one of
+            the following prompts:
+            <variablelist>
+                <varlistentry>
+                    <term><prompt role="root"/></term>
+                    <term><prompt role="root@donkey"/></term>
+                    <listitem>
+                        <simpara>
+                            Run this command as the &rootuser; super-user, on
+                            the &elephant; or &donkey;
+                            hosts respectively.  You might have to use a
+                            command like <command>su</command>(8) or
+                            <command>sudo</command>(8) to start a root shell
+                            before executing the command.
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><prompt role="myproxy"/></term>
+                    <listitem>
+                        <simpara>
+                            Run this command as the &myproxyuser; user, on the
+                            &elephant; host. This user is created automatically
+                            when the <package>myproxy-server</package> package
+                            is installed.
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><prompt role="quser"/></term>
+                    <term><prompt role="quser@donkey"/></term>
+                    <listitem>
+                        <simpara>
+                            Run this command as the normal user account you are
+                            intending to interact with your Globus sevices, on
+                            the &elephant; or &donkey; hosts. In this document,
+                            we use the &quser; accout for this, but if you have
+                            another user, you can use it for that purpose. 
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </para>
+        <para>
+            Commands themselves will be typeset as <command>run-this-command
+            -with-arguments</command>, and responses to the commands like this
+            <computeroutput>Some Response Text</computeroutput>. If there
+            is some portion of a command which should be replaced by value, such
+            as a version number, it will be typeset like this:
+            <replaceable>REPLACEME</replaceable>.
+        </para>
+        <para>
+            Finally, in some cases you will be prompted for a passphrase. When
+            that occurs, the entry of the passphrase will be indicated by
+            &passphrase;, even though nothing will be printed to the screen.
+        </para>
+    </section>

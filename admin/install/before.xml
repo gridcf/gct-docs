@@ -43,6 +43,5 @@
         </para>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../quickstart/index.xml"
-        xpointer="xpointer(id('q-typography'))"/>
+        href="../quickstart/typography.xml" />
 </chapter>
