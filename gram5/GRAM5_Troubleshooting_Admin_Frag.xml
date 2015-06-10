@@ -2,10 +2,11 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
 
-<!ENTITY % xinclude SYSTEM "../xinclude.mod">
-%xinclude;
 <!ENTITY prompt "<prompt>&#37; </prompt>" >
 <!ENTITY GRAM "GRAM5" >
+
+<!ENTITY % xinclude SYSTEM "../xinclude.mod">
+%xinclude;
 ]>
 <section id="gram5-troubleshooting-admin">
     <title>Admin Troubleshooting</title>
