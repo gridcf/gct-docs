@@ -6,52 +6,23 @@
 include::Cred_Mgmt_SimpleCA_Overview_Brief_Frag.txt[]
 
  
+The following guides are available for this component:
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<informaltable frame='none'>
-    <tgroup cols='2'>
-      <colspec colname='c1'></colspec>
+link:key/index.html[Security Key Concepts::
+    For important general concepts.  [link:../gsic/key/gsicKeyConcepts.pdf[pdf]]
 
-      <colspec colname='c2'></colspec>
-      <tbody>
-        <row>
-          <entry namest='c1' nameend='c2'>The following guides are available
-          for this component:</entry>
-        </row>
 
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsicKey'>Security Key Concepts</olink>
-          </emphasis></entry>
+link:admin/index.html[Admin Guide]::
+    For system administrators and those installing, building and deploying GT.
+    You should already have read the 
+    link:../admin/index.html[Installation Guide] and 
+    link:../admin/quickstart/index.html[Quickstart] which contains an example
+    of using SimpleCA.
+    [link:admin/simplecaAdminGuide.pdf[pdf]]
 
-          <entry>For important general concepts.  [<ulink url='../gsic/key/gsicKeyConcepts.pdf'>pdf</ulink>]</entry>
+link:rn/index.html[Release Notes]::
+    What's new with the <replaceable role='entity'>version</replaceable>
+    release for this component.  [link:rn/simplecaReleaseNotes.pdf[pdf]] 
 
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='simplecaAdmin'>Admin Guide</olink> </emphasis></entry>
-
-          <entry>For system administrators and those installing, building and
-          deploying GT. You should already have read the <olink targetdoc='gtadmin'>Installation Guide</olink> and <olink targetdoc='quickstart'>Quickstart</olink> (which contains an example
-          of using SimpleCA).  [<ulink url='admin/simplecaAdminGuide.pdf'>pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='simplecaRN'>Release Notes</olink> </emphasis></entry>
-
-          <entry>What's new with the <replaceable role='entity'>version</replaceable> release for this
-          component.  [<ulink url='rn/simplecaReleaseNotes.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><ulink url='simpleca.pdf'><emphasis role='strong'>All SimpleCA Guides (PDF only)</emphasis></ulink></entry>
-
-          <entry>Includes all SimpleCA guides</entry>
-
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
- 
+link:simpleca.pdf[All SimpleCA Guides (PDF only)]::
+    Includes all SimpleCA guides

@@ -2,87 +2,56 @@
 [[gsiopenssh-error-codes]]
 === Errors ===
 
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table frame='all' id='gsiopenssh-errors-table'><title>GSI-OpenSSH Errors</title>
-<tgroup align='left' colsep='1' cols='3' rowsep='1'>
-<colspec colname='c1'></colspec>
-<colspec colname='c2'></colspec>
-<colspec colname='c3'></colspec>
-<thead>
-<row>
-  <entry>Error Code</entry>
-  <entry>Definition</entry>
-  <entry>Possible Solutions</entry>
-</row>
-</thead>
-<tbody>
-<row>
-  <entry><code>GSS-API error Failure acquiring GSSAPI credentials: GSS_S_CREDENTIALS_EXPIRED</code></entry>
-  <entry>This means that your proxy certificate has expired.</entry>
-  <entry>
-Run <olink targetdoc='gsicPI' targetptr='grid-proxy-init'>grid-proxy-init</olink> to acquire a new proxy certificate, then run <code>gsissh</code> again.
-  </entry>
-</row>
- <row>
-  <entry><code>...no proxy credentials...</code></entry>
-  <entry>Failing to run grid-proxy-init to create a user proxy with which to connect will result in the client notifying you that no local credentials 
-   exist. Any attempt to authenticate using GSI will fail in this case.
-
-</entry>
-  <entry>
-Verify that your GSI proxy has been properly initialized via <olink targetdoc='gsicPI' targetptr='grid-proxy-info'>grid-proxy-info</olink>. 
-   If you need to initialize the proxy, use the command <olink targetdoc='gsicPI' targetptr='grid-proxy-init'>grid-proxy-init</olink>.
-  </entry>
- </row>
- <row>
-  <entry><code>...bad file system permissions on private key; key must only be readable by the user...</code></entry>
-  <entry>The host key that the SSH server is using for GSI authentication must only be readable by the user which owns it. 
-   Any other permissions will cause this error.
-
-</entry>
-  <entry>
-Make sure that the host key's UNIX permissions are mode 400 (that is, it should only have mode readable for the user that owns the file, 
-and no other mode bits should be set).
-  </entry>
- </row>
- <row>
-  <entry><code>...gssapi received empty username; failed to set username from gssapi context; Failed external-keyx for <user> from <host> <port>...</code></entry>
-  <entry>If the server was passed an "implicit username" (i.e. requested to map the incoming connection to a username based on some 
-   contextual clues such as the certificate's subject), and no entry exists in the grid-mapfile for the incoming connection's certificate subject, 
-   the server should output a clue that states it is unable to set the username against which to authenticate.
-
-</entry>
-  <entry>
-Add an entry for the user to the <olink targetdoc='gsicPI' targetptr='gsic-env-gridmapfile'></olink>.
-  </entry>
- </row>
- <row>
-  <entry><code>...INTERNAL ERROR: authenticated invalid user xxx...</code></entry>
-  <entry>If the subject name given in the system's grid-mapfile points to a non-existent user, the server will give an internal error 
-   which is best caught when it is running in debugging mode.
-
-</entry>
-  <entry>
-Add a new account to the system matching the username pointed at by the user's subject in the grid-mapfile.
-  </entry>
- </row>
- <row>
-  <entry><code>...gssapi received empty username; no suitable client data; failed to set username from gssapi context; Failed external-keyx for <user> from <host> <port>...</code></entry>
-  <entry> Should the user attempt to connect without first creating a proxy certificate, or if the user is connecting via a SSH client that does 
-   not support GSI authentication, the server will note that no GSSAPI data was sent to it. Verify that the client is able to connect through 
-   another GSI service (such as the gatekeeper) to make sure that the user's proxy has been created correctly.
-
-</entry>
-  <entry>
-Verify that you are using a GSI-enabled SSH client and that your GSI proxy has been properly initialized via 
-   <olink targetdoc='gsicPI' targetptr='grid-proxy-info'>grid-proxy-info</olink>. If you need to initialize this proxy, use the command <olink targetdoc='gsicPI' targetptr='grid-proxy-init'>grid-proxy-init</olink>.
-  </entry>
-</row>
- 
-</tbody>
-</tgroup>
-   </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+[[gsiopenssh-errors-table]]
+[options='header']
+.GSI-OpenSSH Errors
+|=======================================================================
+| Error Code | Definition | Possible Solutions
+| ++GSS-API error Failure acquiring GSSAPI credentials: GSS_S_CREDENTIALS_EXPIRED++
+| This means that your proxy certificate has expired.
+| Run link:../../gsic/pi/index.html#grid-proxy-init[**++grid-proxy-init++**] to
+  acquire a new proxy certificate, then run ++gsissh++ again.
+| ++...no proxy credentials...++
+| Failing to run grid-proxy-init to create a user proxy with which to connect
+  will result in the client notifying you that no local credentials exist. Any
+  attempt to authenticate using GSI will fail in this case.
+| Verify that your GSI proxy has been properly initialized via
+  link:../../gsic/pi/index.html#grid-proxy-info[**++grid-proxy-info++**].  If
+  you need to initialize the proxy, use the command
+  link:../../gsic/pi/index.html#grid-proxy-init[**++grid-proxy-init++**].
+| ++...bad file system permissions on private key; key must only be readable by
+  the user...++
+| The host key that the SSH server is using for GSI authentication must only be
+  readable by the user which owns it.  Any other permissions will cause this
+  error.
+| Make sure that the host key's UNIX permissions are mode 400 (that is, it
+  should only have mode readable for the user that owns the file, 
+  and no other mode bits should be set).
+| ++...gssapi received empty username; failed to set username from gssapi
+  context; Failed external-keyx for <user> from <host> <port>...++
+| If the server was passed an "implicit username" (i.e. requested to map the
+  incoming connection to a username based on some contextual clues such as the
+  certificate's subject), and no entry exists in the grid-mapfile for the
+  incoming connection's certificate subject, the server should output a clue
+  that states it is unable to set the username against which to authenticate.
+| Add an entry for the user to the 
+  link:../../gsic/pi/index.html#gsic-env-gridmapfile[gridmap file].
+| ++...INTERNAL ERROR: authenticated invalid user xxx...++
+| If the subject name given in the system's grid-mapfile points to a
+  non-existent user, the server will give an internal error which is best
+  caught when it is running in debugging mode.
+| Add a new account to the system matching the username pointed at by the
+  user's subject in the grid-mapfile.
+| ++...gssapi received empty username; no suitable client data; failed to set username from gssapi context; Failed external-keyx for <user> from <host> <port>...++
+| Should the user attempt to connect without first creating a proxy
+  certificate, or if the user is connecting via a SSH client that does not
+  support GSI authentication, the server will note that no GSSAPI data was sent
+  to it. Verify that the client is able to connect through another GSI service
+  (such as the gatekeeper) to make sure that the user's proxy has been created
+  correctly.
+| Verify that you are using a GSI-enabled SSH client and that your GSI proxy
+  has been properly initialized via
+  link:../../gsic/pi/index.html#grid-proxy-info[**++grid-proxy-info++**]. If
+  you need to initialize this proxy, use the command
+  link:../../gsic/pi/index.html#grid-proxy-init[**++grid-proxy-init++**].
+|=======================================================================

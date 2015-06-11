@@ -115,55 +115,30 @@ described in link:../../admin/install/index.html[].
 
 LRM adapter packages included in the GT 6.0 release are: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-          <title>GRAM5 LRM Adapters</title>
-          <tgroup cols='4'>
-            <thead>
-              <row>
-                <entry>LRM Adapter</entry>
-                <entry>Poll Package</entry>
-                <entry>SEG Package</entry>
-                <entry>Installer Target</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>fork</entry>
-                <entry>globus-gram-job-manager-fork-setup-poll</entry>
-                <entry>
-                  <simpara>globus-gram-job-manager-fork-setup-seg<footnote>
-                      <para>Not recommended for production use</para>
-                    </footnote></simpara>
-                </entry>
-                <entry>globus_gram_job_​manager_fork</entry>
-              </row>
-              <row>
-                <entry><ulink url='http://www.clusterresources.com/products/torque-resource-manager.php'>pbs</ulink></entry>
-                <entry>globus-gram-job-manager-pbs-setup-poll</entry>
-                <entry>globus-gram-job-manager-pbs-setup-seg</entry>
-                <entry>globus_gram_job_​manager_pbs</entry>
-              </row>
-              <row>
-                <entry><ulink url='http://www.cs.wisc.edu/condor/'>Condor</ulink></entry>
-                <entry>N/A</entry>
-                <entry>
-                  <simpara>globus-gram-job-manager-condor<footnote>
-                      <para>This LRM uses a SEG-like mechanism included in the <command>globus-job-manager</command> program, but not the <command>globus-scheduler-event-generator</command> service.</para>
-                    </footnote></simpara>
-                </entry>
-                <entry>globus_gram_job_​manager_condor</entry>
-              </row>
-              <row>
-                <entry><glossterm baseform='Sun GridEngine'>SGE</glossterm></entry>
-                <entry>globus-gram-job-manager-sge-setup-poll</entry>
-                <entry>globus-gram-job-manager-sge-setup-seg</entry>
-                <entry>globus_gram_job_​manager_sge</entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[options="header"]
+.GRAM5 LRM Adapters
+|=======================================================================
+| LRM Adapter | Poll Package | SEG Package | Installer Target
+| fork
+| globus-gram-job-manager-fork-setup-poll
+| globus-gram-job-manager-fork-setup-seg footnote:[Not recommended for
+production use]
+| globus_gram_job_manager_fork
+| http://www.clusterresources.com/products/torque-resource-manager.php[pbs]
+| globus-gram-job-manager-pbs-setup-poll
+| globus-gram-job-manager-pbs-setup-seg
+| globus_gram_job_manager_pbs
+| http://www.cs.wisc.edu/condor/[Condor]
+| N/A
+| globus-gram-job-manager-condor footnote:[This LRM uses a SEG-like mechanism
+included in the **++globus-job-manager++** program, but not the
+**++globus-scheduler-event-generator++** service.]
+| globus_gram_job_manager_condor
+| GridEngine
+| globus-gram-job-manager-sge-setup-poll
+| globus-gram-job-manager-sge-setup-seg
+| globus_gram_job_manager_sge
+|=======================================================================
 
 
  

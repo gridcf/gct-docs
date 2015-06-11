@@ -15,7 +15,7 @@ including installation, configuring, deploying, and testing the
 installation.
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in link:../../admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in link:../..//admin/install/index.html[]. Read through this guide before continuing!
 --
 
 This guide is meant solely to cover the GSI aspects of GSI-OpenSSH, and
@@ -33,7 +33,7 @@ OpenSSH.
 --
 GSI-OpenSSH is built and installed as part of a default GT 6.0
 installation. For basic installation instructions, see
-link:../../admin/install/index.html[]. No extra installation steps are
+link:../..//admin/install/index.html[]. No extra installation steps are
 required for this component. 
 
 
@@ -61,41 +61,22 @@ for your GT 6.0 installation. For example:
 
 No options are typically needed for client-only installations, but
 options are often needed for full server functionality. The following
-table lists suggested options for different platforms. 
+lists suggested options for different platforms. 
+
+**Linux**::
+     ++--with-pam --with-md5-passwords --with-tcp-wrappers++
+
+**Solaris**::
+     ++--with-pam --with-md5-passwords --with-tcp-wrappers++++
 
 
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table id='gsiopenssh-admin-configure'><title>GSI-OpenSSH build arguments</title>
-<tgroup cols='2'><tbody>
-<row>
-<entry>Platform</entry>
-<entry>Configuration</entry>
-</row>
-<row>
-<entry>Linux</entry>
-<entry>--with-pam --with-md5-passwords --with-tcp-wrappers</entry>
-</row>
-<row>
-<entry>Solaris</entry>
-<entry>--with-pam --with-md5-passwords --with-tcp-wrappers</entry>
-</row>
-<row>
-<entry>Irix</entry>
-<entry>--with-tcp-wrappers</entry>
-</row>
-<row>
-<entry>AIX</entry>
-<entry>--with-tcp-wrappers</entry>
-</row>
-</tbody></tgroup>
-</table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+[NOTE]
+--
 Note: If you enable PAM support with the --with-pam configuration
 option, be sure to also set "UsePAM yes" in
 $GLOBUS_LOCATION/etc/ssh/sshd_config after installation. 
 
+--
 If you have an already configured and installed system-wide SSHD and you
 would like your build of GSI-OpenSSH to behave similarly, investigate
 the configure options available in GSI-OpenSSH and select those options
@@ -123,8 +104,8 @@ functionality is turned on by default.
 
 If you wish to install GSI-OpenSSH without installing the rest of the
 Globus Toolkit, follow the instructions in
-link:../../admin/install/index.html[] with the following changes. First,
-you do not need Ant, a JDK, or a JDBC database to build only
+link:../..//admin/install/index.html[] with the following changes.
+First, you do not need Ant, a JDK, or a JDBC database to build only
 GSI-OpenSSH. Second, instead of running "make", run: 
 
 

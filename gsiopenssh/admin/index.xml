@@ -47,38 +47,24 @@ For example:
 No options are typically needed for client-only
 installations, but options are often needed for full server
 functionality.
-The following table lists suggested options for different platforms.
+The following lists suggested options for different platforms.
+
+<variablelist id="gsiopenssh-admin-configure">
+    <varlistentry>
+        <term>Linux</term>
+        <listitem><simpara><literal>--with-pam --with-md5-passwords --with-tcp-wrappers</literal></simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term>Solaris</term>
+        <listitem><simpara><literal>--with-pam --with-md5-passwords --with-tcp-wrappers++</literal></simpara></listitem>
+    </varlistentry>
+</variablelist>
 </para>
 
-<table id="gsiopenssh-admin-configure"><title>GSI-OpenSSH build arguments</title>
-<tgroup cols="2"><tbody>
-<row>
-<entry>Platform</entry>
-<entry>Configuration</entry>
-</row>
-<row>
-<entry>Linux</entry>
-<entry>--with-pam --with-md5-passwords --with-tcp-wrappers</entry>
-</row>
-<row>
-<entry>Solaris</entry>
-<entry>--with-pam --with-md5-passwords --with-tcp-wrappers</entry>
-</row>
-<row>
-<entry>Irix</entry>
-<entry>--with-tcp-wrappers</entry>
-</row>
-<row>
-<entry>AIX</entry>
-<entry>--with-tcp-wrappers</entry>
-</row>
-</tbody></tgroup>
-</table>
-
-<para>Note: If you enable PAM support with the --with-pam configuration option,
-be sure to also set "UsePAM yes" in
+<note><para>Note: If you enable PAM support with the --with-pam configuration
+option, be sure to also set "UsePAM yes" in
 $GLOBUS_LOCATION/etc/ssh/sshd_config after installation.
-</para>
+</para></note>
 
 <para>
 If you have an already configured and installed system-wide SSHD and

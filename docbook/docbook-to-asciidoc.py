@@ -271,11 +271,23 @@ def olink(el):
                 found = True
         if not found:
             if targetdoc == 'gtadmin':
-                o += toplevel_doc + "/admin/install/index.html"
+                o += toplevel_doc + "admin/install/index.html"
             elif targetdoc == 'quickstart':
-                o += toplevel_doc + "/admin/quickstart/index.html"
+                o += toplevel_doc + "admin/quickstart/index.html"
             elif targetdoc == 'gtadminappendix':
-                o += toplevel_doc + "/admin/install/appendix.html"
+                o += toplevel_doc + "admin/install/appendix.html"
+            elif targetdoc == 'gtcommands':
+                o += toplevel_doc + "appendices/commands/index.html"
+            elif targetdoc == 'gtdeveloper':
+                o += toplevel_doc + "appendices/developer/index.html"
+            elif targetdoc in ['gridftp', 'gram5', 'gsic', 'ccommonlib', 'xio', 'myproxy', 'gsiopenssh', 'simpleca']:
+                o += toplevel_doc + targetdoc + "/index.html"
+            elif targetdoc == 'gram5':
+                o += toplevel_doc + "gram5/index.html"
+            elif targetdoc == 'rn':
+                o += toplevel_doc + "rn/index.html"
+            else:
+                raise Exception("targetdoc: " + targetdoc)
     if targetptr is not None:
         o += "#" + targetptr
 
@@ -349,6 +361,8 @@ def emphasis(el):
             e += olink(child)
         else:
             raise Exception(child.tag + " in " + el.tag)
+        if child.tail is not None and child.tail.strip() != "":
+            e += normalize(child.tail)
 
     e += "**"
     return e

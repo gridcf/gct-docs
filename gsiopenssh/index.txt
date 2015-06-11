@@ -7,98 +7,39 @@ include::Util_OpenSSH_Overview_Brief_Frag.txt[]
 
  
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<informaltable frame='none'>
-    <tgroup cols='2'>
-      <colspec colname='c1'></colspec>
+The following guides are available for this component:
 
-      <colspec colname='c2'></colspec>
+link:../gsic/key/index.html[Security Key Concepts]::
+    For important general concepts.  [link:../key/securityKeyConcepts.pdf[pdf]]
+link:admin/index.html[Admin Guide]::
+    For system administrators and those installing, building and deploying GT.
+    You should already have read the 
+    link:../admin/index.html[Installation Guide] and 
+    link:../admin/quickstart/index.html[Quickstart]
+    [link:admin/gsiopensshAdminGuide.pdf[pdf]]
+link:user/index.html[User's Guide]::
+    Describes how end-users typically interact with this
+    component. [link:user/gsiopensshUserGuide.pdf[pdf]]
+link:developer/index.html[Developer's Guide]::
+    Reference and usage scenarios for developers.
+    [link:developer/gsiopensshDeveloperGuide.pdf[pdf]]
 
-      <tbody>
-        <row>
-          <entry namest='c1' nameend='c2'>The following guides are available
-          for this component:</entry>
-        </row>
 
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsicKey'>Security Key Concepts</olink>
-          </emphasis></entry>
-
-          <entry>For important general concepts.  [<ulink url='../key/securityKeyConcepts.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshAdmin'>Admin Guide</olink> </emphasis></entry>
-
-          <entry>For system administrators and those installing, building and
-          deploying GT. You should already have read the <olink targetdoc='gtadmin'>Installation Guide</olink> and <olink targetdoc='quickstart'>Quickstart</olink>.  [<ulink url='admin/gsiopensshAdminGuide.pdf'>pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshUser'>User's Guide</olink> </emphasis></entry>
-
-          <entry>Describes how end-users typically interact with this
-            component. [<ulink url='user/gsiopensshUserGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshDeveloper'>Developer's Guide</olink>
-          </emphasis></entry>
-
-          <entry>Reference and usage scenarios for developers.  [<ulink url='developer/gsiopensshDeveloperGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry namest='c1' nameend='c2'>Other information available for this
-          component are:</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshRN'>Release
-          Notes</olink> </emphasis></entry>
-
-          <entry>What's new with the <replaceable role='entity'>version</replaceable> release for this
-          component.  [<ulink url='rn/gsiopensshReleaseNotes.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshPI'>Public
-          Interface Guide</olink> </emphasis></entry>
-
-          <entry>Information for all public interfaces (including APIs,
-          commands, etc). Please note this is a subset of information in
-          the <olink targetdoc='gsiopensshDeveloper'>Developer's
-          Guide</olink>.  [<ulink url='pi/gsiopensshPublicInterfacesGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshQP'>Quality
-          Profile</olink> </emphasis></entry>
-
-          <entry>Information about test coverage reports, etc.  [<ulink url='qp/gsiopensshQualityProfile.pdf'>pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='gsiopensshMig'>Migrating Guide</olink> </emphasis></entry>
-
-          <entry>Information for migrating to this version if you were using a
-          previous version of GT.  [<ulink url='mig/gsiopensshMigratingGuide.pdf'>pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><ulink url='gsiopenssh.pdf'><emphasis role='strong'>All GSI-OpenSSH Guides (PDF only)</emphasis></ulink></entry>
-
-          <entry>Includes all GSI-OpenSSH guides except Public Interfaces
-          (which is a subset of the Developer's Guide)</entry>
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-  
+Other information available for this component are:
+link:rn/index.html[Release Notes]::
+    What's new with the 6.0 release for this component.
+    [link:rn/gsiopensshReleaseNotes.pdf[pdf]]
+link:pi/index.html[Public Interface Guide]::
+    Information for all public interfaces (including APIs,
+    commands, etc). Please note this is a subset of information in
+    the link:developer/index.html[Developer's
+    Guide].  [link:pi/gsiopensshPublicInterfacesGuide.pdf[pdf]]
+link:qp/index.html[Quality Profile]::
+    Information about test coverage reports, etc.
+    [link:qp/gsiopensshQualityProfile.pdf[pdf]]
+link:mig/index.html[Migrating Guide]::
+    Information for migrating to this version if you were using a
+    previous version of GT.  [link:mig/gsiopensshMigratingGuide.pdf[pdf]]
+link:gsiopenssh.pdf[All GSI-OpenSSH Guides (PDF only)::
+    Includes all GSI-OpenSSH guides except Public Interfaces (which is a subset
+    of the Developer's Guide)

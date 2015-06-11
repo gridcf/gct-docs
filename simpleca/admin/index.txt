@@ -15,7 +15,7 @@ including installation, configuring, deploying, and testing the
 installation.
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../..//admin/install/index.html[]. Read through this guide before continuing!
 --
 
 The following are instructions for how to use SimpleCA to request and
@@ -27,7 +27,7 @@ host certificates. It is similar to OpenSSL's **++CA.sh++** command but
 includes support for packaging the CA certificate, creating a signing
 policy file, and generating information needed by clients to request
 certificates. You can find other CA options in
-link:../../admin/install/index.html#gtadmin-basic-host[]. 
+link:../..//admin/install/index.html#gtadmin-basic-host[]. 
 
 --
 
@@ -62,7 +62,7 @@ Make sure you have the following users on your machine:
 
 SimpleCA can be installed in three ways, from a debian package, from an
 RPM package, and from the source installer. These installation methods
-are described in link:../../admin/install/index.html[]
+are described in link:../..//admin/install/index.html[]
 
 To install SimpleCA from binary packages, install the packages
 **++globus-simple-ca++** and **++globus-gsi-cert-utils-progs++** and
@@ -104,7 +104,7 @@ automatically create a **++simpleca++** user and a Simple CA in
 using the source installer, you'll need to do the following. Otherwise,
 you can skip to the . If want to create a custom CA, or are using the
 source installer, you'll need to do the following. Otherwise, you can
-skip to the link:../..simpleca/admin/index.html#simplecaAdmin-using[]
+skip to the link:../../simpleca/admin/index.html#simplecaAdmin-using[]
 chapter of the SimpleCA documentation, as these steps have already been
 done. 
 
@@ -121,7 +121,7 @@ create. For the purposes of this document, we'll assume a user named
 to name the certificate, how to contact the CA administrator, lifetime
 of the CA certificate, and passphrase, and will then generate the new CA
 certificate and private key. Command-line options described in
-link:../..simpleca/admin/index.html#grid-ca-create[] can be used to
+link:../../simpleca/admin/index.html#grid-ca-create[] can be used to
 avoid some of these prompts. 
 
 
@@ -136,7 +136,7 @@ simpleca% grid-ca-create -noint
 --------
 This will create a SimpleCA in the **++simpleca++**'s home directory
 with the passphrase ++globus++. You can then move on to the
-link:../..simpleca/admin/index.html#simplecaAdmin-using[] chapter of
+link:../../simpleca/admin/index.html#simplecaAdmin-using[] chapter of
 this document. For step-by-step details to create a customized SimpleCA,
 continue reading this chapter. 
 
@@ -189,36 +189,15 @@ Enter a unique subject name for this CA:
 The subject name is an X.509 distinguished name. Typical name component
 type abbreviations used in Grids are: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>CA Name components</title>
-                <tgroup cols='2'>
-                    <tbody>
-                        <row>
-                            <entry>cn</entry>
-                            <entry>Represents "common name".  It identifies
-                            this particular certificate as the
-                            <glossterm>CA Certificate</glossterm> within the 
-                            "GlobusTest/simpleCA-elephant.globus.org" domain,
-                            which in this case is Globus Simple CA.</entry>
-                        </row>
-                        <row>
-                            <entry>ou</entry>
-                            <entry>Represents "organizational unit".  It
-                            identifies this CA from other CAs created by
-                            SimpleCA by other people. The second "ou" is
-                            specific to your hostname (in this case
-                            GlobusTest).</entry>
-                        </row>
-                        <row>
-                            <entry>o</entry>
-                            <entry>Represents "organization". It identifies the
-                            Grid.</entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+**cn**::
+     Represents "common name". It identifies this particular certificate as the CA
+                    Certificate within the "GlobusTest/simpleCA-elephant.globus.org" domain, which in this case is Globus Simple CA.
+
+**ou**::
+     Represents "organizational unit". It identifies this CA from other CAs created by SimpleCA by other people. The second "ou" is specific to your hostname (in this case GlobusTest).
+
+**o**::
+     Represents "organization". It identifies the Grid.
 
 
 
@@ -323,11 +302,11 @@ package for compatibility with older versions of the Globus Toolkit.
 [[simpleca-binarypkgs]]
 === Generating Binary CA Packages ===
 
-The link:../..simpleca/admin/index.html#grid-ca-package[] command can be
-used to generate RPM, debian, or legacy GPT packages for a SimpleCA, or
-for any other CA which is installed on a host. These packages can make
-it easy to distribute the CA certificate and policy to other hosts with
-which you want to establish Grid trust relationships. 
+The link:../../simpleca/admin/index.html#grid-ca-package[] command can
+be used to generate RPM, debian, or legacy GPT packages for a SimpleCA,
+or for any other CA which is installed on a host. These packages can
+make it easy to distribute the CA certificate and policy to other hosts
+with which you want to establish Grid trust relationships. 
 
 
 ==== Generating RPM Packages ====
@@ -367,7 +346,8 @@ root, you can install this via the **++dpkg++** tool.
 The **++grid-ca-package++** command can also generate GPT packages in
 the form similar to previous versions of the Globus Toolkit. This is
 done with the '-g' and '-b' command-line options. See
-link:../..simpleca/admin/index.html#grid-ca-package[] for more details. 
+link:../../simpleca/admin/index.html#grid-ca-package[] for more details.
+
 
 == Using a SimpleCA ==
 
@@ -376,7 +356,7 @@ link:../..simpleca/admin/index.html#grid-ca-package[] for more details.
 As a CA, your main task will be to sign certificates. To sign a
 certificate request, use the tool **++grid-ca-sign++**. This tool reads
 a certificate request (such as those created by
-link:../..gsic/user/index.html#grid-cert-request[]) and creates a
+link:../../gsic/user/index.html#grid-cert-request[]) and creates a
 certificate signed by the CA certificate with the public key from in the
 certificate request. This indicates that you confirm that the identity
 of the certificate matches its name. You can use the **++openssl++**
@@ -522,7 +502,7 @@ The **++openssl++** command can be used to renew a CA certificate. This
 will generate a new CA certificate with the same subject name and
 private key as before, but valid for a different time interval. This new
 certificate packaged and distributed as before using
-link:../..simpleca/admin/index.html#grid-ca-package[]. 
+link:../../simpleca/admin/index.html#grid-ca-package[]. 
 
 
 

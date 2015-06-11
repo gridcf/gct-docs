@@ -16,31 +16,22 @@
     <section id="gram5-configuring-gatekeeper">
         <title>Gatekeeper Configuration</title>
         <para> The &gatekeeper; has many configuration options related to network configuration,
-            security, logging, service path, and nice level. This configuration is located in: <table>
-                <title>Gatekeeper Configuration Path</title>
-                <tgroup cols="2">
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/sysconfig/globus-gatekeeper</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/default/globus-gatekeeper</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-gatekeeper.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table></para>
+            security, logging, service path, and nice level. This configuration is located in:
+            <variablelist>
+                <varlistentry>
+                    <term>RPM Package</term>
+                    <listitem><simpara><filename>/etc/sysconfig/globus-gatekeeper</filename></simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Debian Package</term>
+                    <listitem><simpara><filename>/etc/default/globus-gatekeeper</filename></simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Source Installer</term>
+                    <listitem><simpara><replaceable>PREFIX</replaceable><filename>/etc/globus-gatekeeper.conf</filename></simpara></listitem>
+                </varlistentry>
+                </variablelist>
+            </para>
         <para> The following configuration variables are available in the &gatekeeper; configuration
             file: <variablelist>
             <?dbfo term-width="55%"?>
@@ -143,31 +134,22 @@
     <section id="gram5-configuring-seg">
         <title>Scheduler Event Generator Configuration</title>
         <para> The &seg; has several configuration options related to filesystem paths. This
-            configuration is located in: <table>
-                <title>Scheduler Event Generator Configuration Path</title>
-                <tgroup cols="2">
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/sysconfig/globus-scheduler-event-generator</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/default/globus-scheduler-event-generator</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-scheduler-event-generator.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table></para>
+            configuration is located in:
+            <variablelist>
+                <varlistentry>
+                    <term>RPM Package</term>
+                    <listitem><simpara><filename>/etc/sysconfig/globus-scheduler-event-generator</filename></simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Debian Package</term>
+                    <listitem><simpara><filename>/etc/default/globus-scheduler-event-generator</filename></simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Source Installer</term>
+                    <listitem><simpara><replaceable>PREFIX</replaceable><filename>/etc/globus-scheduler-event-generator.conf</filename></simpara></listitem>
+                </varlistentry>
+            </variablelist>
+        </para>
         <para> The following configuration variables are available in the &seg; configuration file: <variablelist>
                 <varlistentry>
                     <term>GLOBUS_SEG_PIDFMT</term>
@@ -209,31 +191,22 @@
         <para> The &jobmanager; process is started by the &gatekeeper; and uses the configuration
             defined in the service entry for the resource name. By default, these service entries
             use a common configuration file for most job manager features. This configuration is
-            located in: <table>
-                <title>Job Manager Configuration Path</title>
-                <tgroup cols="2">
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/globus/globus-gram-job-manager.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/globus/globus-gram-job-manager.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-gram-job-manager.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table></para>
+            located in:
+                <variablelist>
+                    <varlistentry>
+                        <term>RPM Package</term>
+                        <listitem><simpara><filename>/etc/globus/globus-gram-job-manager.conf</filename></simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>Debian Package</term>
+                            <listitem><simpara><filename>/etc/globus/globus-gram-job-manager.conf</filename></simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>Source Installer</term>
+                            <listitem><simpara><replaceable>PREFIX</replaceable><filename>/etc/globus-gram-job-manager.conf</filename></simpara></listitem>
+                    </varlistentry>
+                </variablelist>
+            </para>
         <para>This configuration file is used to construct the command-line options for the
             &jobmanager; program. Thus, all of the options described in <olink
                 targetptr="gram5-cmd-globus-job-manager"/> may be used. </para>
@@ -355,31 +328,22 @@
         <para> Generally, the &GRAM; LRM configuration files are located in the globus configuration
             directory, with each configuration file named by the LRM name (<literal>fork</literal>,
                 <literal>condor</literal>, <literal>pbs</literal>, <literal>sge</literal>, or <literal>slurm</literal>). The
-            following table contains the paths to these configurations: <table>
-                <title>LRM Adapter Configuration Path</title>
-                <tgroup cols="2">
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table></para>
+            following table contains the paths to these configurations:
+                <variablelist>
+                    <varlistentry>
+                        <term>RPM Package</term>
+                        <listitem><simpara><filename>/etc/globus/globus-LRM.conf</filename></simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>Debian Package</term>
+                        <listitem><simpara><filename>/etc/globus/globus-LRM.conf</filename></simpara></listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>Source Installer</term>
+                        <listitem><simpara><replaceable>PREFIX</replaceable><filename>/etc/globus/globus-LRM.conf</filename></simpara></listitem>
+                    </varlistentry>
+                </variablelist>
+            </para>
         <section>
             <title>Fork</title>
             <para> The <filename>globus-fork.conf</filename> configuration file can define the
@@ -712,31 +676,22 @@
     <section>
         <title>Auditing</title>
         <para> The <command>globus-gram-audit</command> configuration defines information about the
-            database to load the &GRAM; audit records into. This configuration is located in: <table>
-                <title>GRAM Audit Configuration Path</title>
-                <tgroup cols="2">
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/globus/gram-audit.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/globus/gram-audit.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus/gram-audit.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table></para>
+            database to load the &GRAM; audit records into. This configuration is located in: 
+            <variablelist>
+                <varlistentry>
+                    <term>RPM Package</term>
+                    <listitem><simpara><filename>/etc/globus/gram-audit.conf</filename></simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Debian Package</term>
+                    <listitem><simpara><filename>/etc/globus/gram-audit.conf</filename></simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Source Installer</term>
+                    <listitem><simpara><replaceable>PREFIX</replaceable><filename>/etc/globus/gram-audit.conf</filename></simpara></listitem>
+                </varlistentry>
+            </variablelist>
+        </para>
         <para>This configuration file contains the following attributes. Each attribute is defined
             by a <literal>ATTRIBUTE:VALUE</literal> pair. <table>
                 <title>Audit Configuration Attributes</title>

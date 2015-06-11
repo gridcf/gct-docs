@@ -14,23 +14,23 @@ The following documents are good places to start with Globus Toolkit
 
 * For everyone: 
 
-* link:[GT6.0 Release Notes]
+* link:./rn/index.html[GT6.0 Release Notes]
 
-* link:[GT Commands]
+* link:./appendices/commands/index.html[GT Commands]
 
 * For system administrators and those installing GT: 
 
-* link:../../admin/install/index.html[Installation Guide]
+* link:./admin/install/index.html[Installation Guide]
 
-* link:../../admin/quickstart/index.html[Quickstart]
+* link:./admin/quickstart/index.html[Quickstart]
 
 * For End Users: 
 
-* link:#java-api-download[Java API Download]
+* link:./rn/index.html#java-api-download[Java API Download]
 
 * For Developers: 
 
-* link:[GT Developer's Guide]
+* link:./appendices/developer/index.html[GT Developer's Guide]
 
 
  
@@ -43,21 +43,21 @@ GT 6.0 release manuals are divided into the following areas:
 
 --
 
-* ** link:[GridFTP]**
+* ** link:./gridftp/index.html[GridFTP] for Data Management **
 +
 GridFTP provides high-performance and reliable data transport.
 
-* ** link:[GRAM5]**
+* ** link:./gram5/index.html[GRAM5] for Jobs Management **
 +
 The Grid Resource Allocation and Management (GRAM5) interface as a basic mechanism for initiation, monitoring, management, scheduling, and/or coordination of remote computations.
 
-* ** link:[GSI C]link:[MyProxy]link:[GSI-OpenSSH]**
+* ** link:./gsic/index.html[GSI C], link:./myproxy/index.html[MyProxy] and link:./gsiopenssh/index.html[GSI-OpenSSH] for Grid Security **
 +
 These components establish the identity of users or services (authentication), protect communications, and determine who is allowed to perform what actions (authorization), as well as manage user credentials.
 
 * ** Other Components **
 +
-GT 6 also includes a set of link:[C Common libraries] needed for building grid infrastructure, link:[XIO], a sophisticated and extensible I/O library suitable for the dynamic needs of grid applications and link:[SimpleCA], a simple certificate authority available for testing purposes.
+GT 6 also includes a set of link:./ccommonlib/index.html[C Common libraries] needed for building grid infrastructure, link:./xio/index.html[XIO], a sophisticated and extensible I/O library suitable for the dynamic needs of grid applications and link:./simpleca/index.html[SimpleCA], a simple certificate authority available for testing purposes.
 
 
  

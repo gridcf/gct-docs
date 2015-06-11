@@ -323,59 +323,34 @@ NAT firewalls.
 
 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table frame='all'>
-				<title>Summary of Globus Toolkit Traffic</title>
-				<tgroup align='left' colsep='1' cols='3' rowsep='1'>
-					<colspec colname='Application'></colspec>
-					<colspec colname='Network Ports'></colspec>
-					<colspec colname='Comments'></colspec>
-					<thead>
-						<row>
-							<entry>Application</entry>
-							<entry>Network Ports</entry>
-							<entry>Comments</entry>
-						</row>
-					</thead>
-					<tbody>
-						<row>
-							<entry>GRAM Gatekeeper(to start jobs)</entry>
-							<entry>To 2119/tcp on server from controllable ephemeral port on
-								client</entry>
-							<entry>Connections back to client (controllable ephemeral port to
-								controllable ephemeral port) required if executable or data staged
-								from client or output from job sent back to client. Port 2119/tcp
-								defined by IANA</entry>
-						</row>
-						<row>
-							<entry>GRAM Job-Manager</entry>
-							<entry>From controllable ephemeral port on client to controllable
-								ephemeral port on server.</entry>
-							<entry>Port on server selected when original connection made by the
-								client to the Gatekeeper and returned to the client in a URL. May
-								result in connection back to client from ephemeral port on server to
-								controllable ephemeral port on client.</entry>
-						</row>
-						<row>
-							<entry>GridFTP</entry>
-							<entry>From controllable ephemeral port on client to port 2811/tcp on
-								server for control channel.</entry>
-							<entry>Port 2811/tcp defined by IANA.</entry>
-						</row>
-						<row>
-							<entry>GSI-Enabled SSH</entry>
-							<entry>From ephemeral port on client to port 22/tcp on server.</entry>
-							<entry>Same as standard SSH. Port 22/tcp defined by IANA.</entry>
-						</row>
-						<row>
-							<entry>MyProxy</entry>
-							<entry>From ephemeral port on client to port 7512/tcp on server.</entry>
-							<entry>Default. Can be modified by site.</entry>
-						</row>
-					</tbody>
-				</tgroup>
-			</table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[options='header']
+.Summary of Globus Toolkit Traffic
+|=======================================================================
+| Application | Network Ports | Comments
+| GRAM Gatekeeper(to start jobs)
+| To 2119/tcp on server from controllable ephemeral port on client
+| Connections back to client (controllable ephemeral port to
+controllable ephemeral port) required if executable or data staged
+from client or output from job sent back to client. Port 2119/tcp
+defined by IANA
+| GRAM Job-Manager
+| From controllable ephemeral port on client to controllable
+ephemeral port on server.
+| Port on server selected when original connection made by the
+client to the Gatekeeper and returned to the client in a URL. May
+result in connection back to client from ephemeral port on server to
+controllable ephemeral port on client.
+| GridFTP
+| From controllable ephemeral port on client to port 2811/tcp on
+server for control channel.
+| Port 2811/tcp defined by IANA.
+| GSI-Enabled SSH
+| From ephemeral port on client to port 22/tcp on server.
+| Same as standard SSH. Port 22/tcp defined by IANA.
+| MyProxy
+| From ephemeral port on client to port 7512/tcp on server.
+| Default. Can be modified by site.
+|=======================================================================
 
 
 ==== Controlling The Ephemeral Port Range ====

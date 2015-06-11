@@ -56,60 +56,40 @@ PENDING state during the duration of the test.
 
 The different **++gram-throughput-tester++** experiments consisted of: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-            <title>GRAM5 Throughput Tester Experiments</title>
+.GRAM5 Throughput Tester Experiments
+[options='header']
+|=======================================================================
+| Experiment Name | LRM monitoring method | Number of clients | Number of users | Maximum number of simultaneous jobs / client
+| 1-client-poll
+| POLL
+| 1
+| 1
+| 2000
 
-            <tgroup cols='5'>
-                <thead>
-                    <row>
-                        <entry>Experiment Name</entry>
-                        <entry>LRM monitoring method</entry>
-                        <entry>Number of clients</entry>
-                        <entry>Number of users</entry>
-                        <entry>Maximum number of simultaneous jobs / client</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>1-client-poll</entry>
-                        <entry>POLL</entry>
-                        <entry>1</entry>
-                        <entry>1</entry>
-                        <entry>2000</entry>
-                    </row>
-                    <row>
-                        <entry>1-client-seg</entry>
-                        <entry>SEG</entry>
-                        <entry>1</entry>
-                        <entry>1</entry>
-                        <entry>2000</entry>
-                    </row>
-                    <row>
-                        <entry>1-client-seg-uncapped</entry>
-                        <entry>SEG</entry>
-                        <entry>1</entry>
-                        <entry>1</entry>
-                        <entry>unlimited</entry>
-                    </row>
-                    <row>
-                        <entry>5-client-seg</entry>
-                        <entry>SEG</entry>
-                        <entry>5</entry>
-                        <entry>1</entry>
-                        <entry>2000</entry>
-                    </row>
-                    <row>
-                        <entry>5-client-seg-diffusers</entry>
-                        <entry>SEG</entry>
-                        <entry>5</entry>
-                        <entry>5</entry>
-                        <entry>2000</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| 1-client-seg
+| SEG
+| 1
+| 1
+| 2000
+
+| 1-client-seg-uncapped
+| SEG
+| 1
+| 1
+| unlimited
+
+| 5-client-seg
+| SEG
+| 5
+| 1
+| 2000
+
+| 5-client-seg-diffusers
+| SEG
+| 5
+| 5
+| 2000
+|=======================================================================
 
 
 
@@ -140,74 +120,48 @@ experiments. The columns contain the following information:
      Description of any errors which occurred on the client side that prevented operations from completing as expected.
 
 
+[options='header']
+.GRAM5 Throughput Tester Results Summary
+|=======================================================================
+| Experiment | Total Jobs | Termination Tasks  After 1 Hour | Termination Duration (hh:mm:ss) | Master Node Max 1 min. Load Average | Master Node Average 1 min. Load Average | Errors
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-        <title>GRAM5 Throughput Tester Results Summary</title>
-        <tgroup cols='6'>
-            <thead>
-                <row>
-                    <entry>Experiment</entry>
-                    <entry>Total Jobs</entry>
-                    <entry>Termination Tasks  After 1 Hour</entry>
-                    <entry>Termination Duration (hh:mm:ss)</entry>
-                    <entry>Master Node Max 1 min. Load Average</entry>
-                    <entry>Master Node Average 1 min. Load Average</entry>
-                    <entry>Errors</entry>
-                </row>
-            </thead>
-            <tbody>
-                <row>
-                    <entry>1-client-poll</entry>
-                    <entry>2110</entry>
-                    <entry>2000</entry>
-                    <entry>00:14:18</entry>
-                    <entry>11.46</entry>
-                    <entry>7.96</entry>
-                    <entry>None</entry>
-                </row>
+| 1-client-poll
+| 2110
+| 2000
+| 00:14:18
+| 11.46
+| 7.96
+| None
 
-                <row>
-                    <entry>1-client-seg</entry>
-                    <entry>2110</entry>
-                    <entry>2000</entry>
-                    <entry>00:10:36</entry>
-                    <entry>2.82</entry>
-                    <entry>0.93</entry>
-                    <entry>None</entry>
-                </row>
+| 1-client-seg
+| 2110
+| 2000
+| 00:10:36
+| 2.82
+| 0.93
+| None
 
-                <row>
-                    <entry>1-client-seg-uncapped</entry>
-                    <entry>6664</entry>
-                    <entry>6584</entry>
-                    <entry>00:42:46</entry>
-                    <entry>3.26</entry>
-                    <entry>2.75</entry>
-                    <entry>None</entry>
-                </row>
-                
-                <row>
-                    <entry>5-client-seg</entry>
-                    <entry>6800</entry>
-                    <entry>6434</entry>
-                    <entry>00:57:20</entry>
-                    <entry>3.19</entry>
-                    <entry>2.49</entry>
-                    <entry>Connection refused during termination</entry>
-                </row>
-                <row>
-                    <entry>5-client-seg-diffusers</entry>
-                    <entry>7226</entry>
-                    <entry>6720</entry>
-                    <entry>00:45:41</entry>
-                    <entry>3.79</entry>
-                    <entry>3.13</entry>
-                    <entry>None</entry>
-                </row>
-            </tbody>
-        </tgroup>
-    </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| 1-client-seg-uncapped
+| 6664
+| 6584
+| 00:42:46
+| 3.26
+| 2.75
+| None
 
+| 5-client-seg
+| 6800
+| 6434
+| 00:57:20
+| 3.19
+| 2.49
+| Connection refused during termination
 
+| 5-client-seg-diffusers
+| 7226
+| 6720
+| 00:45:41
+| 3.79
+| 3.13
+| None
+|=======================================================================

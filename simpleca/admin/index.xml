@@ -183,34 +183,28 @@ Do you want to keep this as the CA subject (y/n) [y]:</computeroutput></screen>
             <para>The subject name is an X.509 distinguished name. Typical 
             name component type abbreviations used in Grids are:
 
-            <table>
-                <title>CA Name components</title>
-                <tgroup cols="2">
-                    <tbody>
-                        <row>
-                            <entry>cn</entry>
-                            <entry>Represents "common name".  It identifies
-                            this particular certificate as the
-                            <glossterm>CA Certificate</glossterm> within the 
-                            "GlobusTest/simpleCA-elephant.globus.org" domain,
-                            which in this case is Globus Simple CA.</entry>
-                        </row>
-                        <row>
-                            <entry>ou</entry>
-                            <entry>Represents "organizational unit".  It
-                            identifies this CA from other CAs created by
-                            SimpleCA by other people. The second "ou" is
-                            specific to your hostname (in this case
-                            GlobusTest).</entry>
-                        </row>
-                        <row>
-                            <entry>o</entry>
-                            <entry>Represents "organization". It identifies the
-                            Grid.</entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
+                <variablelist>
+                <varlistentry>
+                    <term>cn</term>
+                    <listitem><simpara>Represents "common name".  It identifies
+                    this particular certificate as the <glossterm>CA
+                    Certificate</glossterm> within the
+                    "GlobusTest/simpleCA-elephant.globus.org" domain, which in
+                    this case is Globus Simple CA.</simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>ou</term>
+                    <listitem><simpara>Represents "organizational unit".  It
+                    identifies this CA from other CAs created by SimpleCA by
+                    other people. The second "ou" is specific to your hostname
+                    (in this case GlobusTest).</simpara></listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>o</term>
+                    <listitem><simpara>Represents "organization". It identifies
+                    the Grid.</simpara></listitem>
+                </varlistentry>
+            </variablelist>
             </para>
         </section> <!-- Configure the subject name -->
 

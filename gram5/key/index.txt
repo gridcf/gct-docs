@@ -57,81 +57,45 @@ implementation as well as the abstract design and features.
 
 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<informaltable>
-        <tgroup cols='2'>
-          <tbody>
-            <row>
-              <entry>Service model</entry>
-              <entry>
-                <para> For GRAM5, the <command>globus-gatekeeper</command> daemon and GSI library
-                  are used for secure communications and service dispatch. </para>
-                <para> The <command>globus-job-manager</command> daemon implements the job
-                  management and file transfer functionality. </para>
-              </entry>
-            </row>
-            <row>
-              <entry><glossterm baseform='LRM Adapter'>Local Resource Manager Adapters</glossterm></entry>
-              <entry>
-                <para> GRAM provides a scripted plug-in architecture to enable extension with
-                  adapters to control a variety of local resource systems. </para>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Service model::
+    For GRAM5, the ++**globus-gatekeeper++** daemon and GSI library are used
+    for secure communications and service dispatch.
++
+    The **++globus-job-manager++** daemon implements the job management and
+    file transfer functionality.
+
+Local Resource Manager Adapters::
+    GRAM provides a scripted plug-in architecture to enable extension with
+    adapters to control a variety of local resource systems.
 
 
 === Security ===
 
 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<informaltable>
-        <tgroup cols='2'>
-          <tbody>
-            <row>
-              <entry>Secure operation</entry>
-              <entry>
-                <para>GRAM5 uses SSL-based protocols to establish identity or provide other security
-                  tokens needed to authorize GRAM5 service requests. Once authorized, each instance
-                  of the job service runs as a local POSIX user. GRAM5 restricts job monitoring and
-                  management operations to those who are authorized by the local site policy.
-                </para>
-              </entry>
-            </row>
-            <row>
-              <entry>Local system protection domains</entry>
-              <entry>
-                <para>To protect users from each other, the GRAM5 job manager and the jobs it starts
-                  are executed in separate local security contexts. Additionally, GRAM mechanisms
-                  used to interact with the local resource are designed to minimize the privileges
-                  required and to minimize the risks of service malfunction or compromise. </para>
-              </entry>
-            </row>
-            <row>
-              <entry>Credential delegation and management</entry>
-              <entry>
-                <para>A client delegates some of its rights to the GRAM service in order to allow it
-                  to perform file transfers on behalf of the client and send state notifications to
-                  registered clients. Additionally, GRAM5 provides per-job credentials so that job
-                  instances may perform further authentication with other services. </para>
-              </entry>
-            </row>
-            <row>
-              <entry>Audit</entry>
-              <entry>
-                <para>GRAM uses a range of audit and logging techniques to record a history of job
-                  submissions and critical system operations. These records may be used to assist
-                  with accounting functions as well as to further mitigate risks from abuse or
-                  malfunction.</para>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Secure operation::
+    GRAM5 uses SSL-based protocols to establish identity or provide other
+    security tokens needed to authorize GRAM5 service requests. Once
+    authorized, each instance of the job service runs as a local POSIX user.
+    GRAM5 restricts job monitoring and management operations to those who are
+    authorized by the local site policy.
+Local system protection domains::
+    To protect users from each other, the GRAM5 job manager and the jobs it
+    starts are executed in separate local security contexts. Additionally, GRAM
+    mechanisms used to interact with the local resource are designed to
+    minimize the privileges required and to minimize the risks of service
+    malfunction or compromise.
+Credential delegation and management::
+    A client delegates some of its rights to the GRAM service in order to allow
+    it to perform file transfers on behalf of the client and send state
+    notifications to registered clients. Additionally, GRAM5 provides per-job
+    credentials so that job instances may perform further authentication with
+    other services.
+Audit::
+    GRAM uses a range of audit and logging techniques to record a history of
+    job submissions and critical system operations. These records may be used
+    to assist with accounting functions as well as to further mitigate risks
+    from abuse or malfunction.
 
  
 include::GRAM5_Approach.txt[]

@@ -80,45 +80,29 @@ the Globus event driver to better schedule network I/O in these cases.
 
 GRAM uses three types of **contact strings** to describe how to contact
 different services. These service contacts are: 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-            <title>GRAM Contact String Types</title>
-            <tgroup cols='2'>
-                <thead>
-                    <row>
-                        <entry><simpara>Type</simpara></entry>
-                        <entry><simpara>Meaning</simpara></entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry><simpara>Gatekeeper Service Contact</simpara></entry>
-                        <entry><simpara>This string describes how to contact a
-                        gatekeeper service. It is used to submit jobs, send
-                        "ping" requests to determine if a service is properly
-                        deployed, and version requests to determine what
-                        version of the software is deployed. Full details of
-                        the syntax of this contact is located in the next
-                        section.</simpara></entry>
-                    </row>
-                    <row>
-                        <entry><simpara>Callback Contact</simpara></entry>
-                        <entry><simpara>This string is an HTTPS URL that 
-                        is an endpoint for GRAM job state callbacks. An https
-                        message is posted to this address when the Job Manager
-                        detects a job state change.</simpara></entry>
-                    </row>
-                    <row>
-                        <entry><simpara>Job Contact</simpara></entry>
-                        <entry><simpara>This string is an HTTPS URL that
-                        is an endpoint for contacting an existing GRAM job.
-                        An https message is posted to this address to cancel,
-                        signal, or query a GRAM job.</simpara></entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[options='header']
+.GRAM Contact String Types
+|=======================================================================
+| Type | Meaning | Gatekeeper Service Contact
+| This string describes how to contact a
+gatekeeper service. It is used to submit jobs, send
+"ping" requests to determine if a service is properly
+deployed, and version requests to determine what
+version of the software is deployed. Full details of
+the syntax of this contact is located in the next
+section.
+| Callback Contact
+| This string is an HTTPS URL that 
+is an endpoint for GRAM job state callbacks. An https
+message is posted to this address when the Job Manager
+detects a job state change.
+| Job Contact
+| This string is an HTTPS URL that
+is an endpoint for contacting an existing GRAM job.
+An https message is posted to this address to cancel,
+signal, or query a GRAM job.
+|=======================================================================
 
 
 

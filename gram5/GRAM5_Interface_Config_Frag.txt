@@ -8,7 +8,7 @@ GRAM5 is designed to be usable by default without any manual
 configuration. However, there are many ways to customize a GRAM5
 installation to better interact with site policies, filesystem layouts,
 LRM interactions, logging, and auditing. In addition to GRAM5-specific
-configuration, see link:../..gsic/admin/index.html#gsic-configuring[]
+configuration, see link:../../gsic/admin/index.html#gsic-configuring[]
 for information about configuring GSI security. 
 
 
@@ -21,33 +21,14 @@ The **++globus-gatekeeper++** has many configuration options related to
 network configuration, security, logging, service path, and nice level.
 This configuration is located in: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>Gatekeeper Configuration Path</title>
-                <tgroup cols='2'>
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/sysconfig/globus-gatekeeper</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/default/globus-gatekeeper</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-gatekeeper.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+**RPM Package**::
+     ++/etc/sysconfig/globus-gatekeeper++
+
+**Debian Package**::
+     ++/etc/default/globus-gatekeeper++
+
+**Source Installer**::
+     'PREFIX'++/etc/globus-gatekeeper.conf++
 
 
 The following configuration variables are available in the
@@ -92,7 +73,7 @@ The following configuration variables are available in the
 
 After modifying the configuration file, restart the
 **++globus-gatekeeper++** using the methods described in
-link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
+link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
 
 
 [[gram5-configuring-seg]]
@@ -101,33 +82,14 @@ link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[].
 The **++globus-scheduler-event-generator++** has several configuration
 options related to filesystem paths. This configuration is located in: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>Scheduler Event Generator Configuration Path</title>
-                <tgroup cols='2'>
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/sysconfig/globus-scheduler-event-generator</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/default/globus-scheduler-event-generator</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-scheduler-event-generator.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+**RPM Package**::
+     ++/etc/sysconfig/globus-scheduler-event-generator++
+
+**Debian Package**::
+     ++/etc/default/globus-scheduler-event-generator++
+
+**Source Installer**::
+     'PREFIX'++/etc/globus-scheduler-event-generator.conf++
 
 
 The following configuration variables are available in the
@@ -145,7 +107,7 @@ The following configuration variables are available in the
 
 After modifying the configuration file, restart the
 **++globus-scheduler-event-generator++** using the methods described in
-link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
+link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
 
 
 [[gram5-configuring-jobmanager]]
@@ -157,33 +119,12 @@ service entry for the resource name. By default, these service entries
 use a common configuration file for most job manager features. This
 configuration is located in: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>Job Manager Configuration Path</title>
-                <tgroup cols='2'>
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/globus/globus-gram-job-manager.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/globus/globus-gram-job-manager.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus-gram-job-manager.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RPM Package::
+    ++/etc/globus/globus-gram-job-manager.conf++
+Debian Package::
+    ++/etc/globus/globus-gram-job-manager.conf++
+Source Installer::
+    'PREFIX'++/etc/globus-gram-job-manager.conf++
 
 
 This configuration file is used to construct the command-line options
@@ -203,58 +144,30 @@ more fine-grained logging, add the option '-log-levels ' to
 for 'LEVELS' is a set of log levels joined by the ++|++ character. The
 available log levels are:
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table id='gram5-log-levels'>
-                    <title>GRAM5 Log Levels</title>
-                    <tgroup align='left' colsep='1' cols='3' rowsep='1'>
-                        <colspec colname='gram5-log-level-name'></colspec>
-                        <colspec colname='gram5-log-level-meaning'></colspec>
-                        <colspec colname='gram5-log-level-default'></colspec>
-                        <thead>
-                            <row>
-                                <entry>Level</entry>
-                                <entry>Meaning</entry>
-                                <entry>Default Behavior</entry>
-                            </row>
-                        </thead>
-                        <tbody>
-                            <row>
-                                <entry><literal>FATAL</literal></entry>
-                                <entry>Problems which cause the job manager to terminate
-                                    prematurely.</entry>
-                                <entry>Enabled</entry>
-                            </row>
-                            <row>
-                                <entry><literal>ERROR</literal></entry>
-                                <entry>Problems which cause a job or operation to fail.</entry>
-                                <entry>Enabled</entry>
-                            </row>
-                            <row>
-                                <entry><literal>WARN</literal></entry>
-                                <entry>Problems which cause minor problems with job execution or
-                                    monitoring.</entry>
-                                <entry>Disabled</entry>
-                            </row>
-                            <row>
-                                <entry><literal>INFO</literal></entry>
-                                <entry>Major events in the lifetime of the job manager and its
-                                    jobs.</entry>
-                                <entry>Disabled</entry>
-                            </row>
-                            <row>
-                                <entry><literal>DEBUG</literal></entry>
-                                <entry>Minor events in the lifetime of jobs.</entry>
-                                <entry>Disabled</entry>
-                            </row>
-                            <row>
-                                <entry><literal>TRACE</literal></entry>
-                                <entry>Job processing details.</entry>
-                                <entry>Disabled</entry>
-                            </row>
-                        </tbody>
-                    </tgroup>
-                </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[gram5-log-levels]]
+[options='header']
+.GRAM5 Log Levels
+|=======================================================================
+| Level | Meaning | Default Behavior
+| ++FATAL++
+| Problems which cause the job manager to terminate prematurely.
+| Enabled
+| ++ERROR++
+| Problems which cause a job or operation to fail.
+| Enabled
+| ++WARN++
+| Problems which cause minor problems with job execution or monitoring.
+| Disabled
+| ++INFO++
+| Major events in the lifetime of the job manager and its jobs.
+| Disabled
+| ++DEBUG++
+| Minor events in the lifetime of jobs.
+| Disabled
+| ++TRACE++
+| Job processing details.
+| Disabled
+|=======================================================================
 
 
 In RPM or Debian package installs, these logs will be configured to be
@@ -292,7 +205,7 @@ will use and 'MAX-PORT' is the maximum TCP outgoing port number the Job
 Manager will use. 
 
 For more information about Globus and firewalls, see
-link:../../admin/install/index.html#gt-admin-firewall[]. 
+link:../..//admin/install/index.html#gt-admin-firewall[]. 
 
 
 [[gram5-configuring-lrm]]
@@ -309,36 +222,14 @@ leading ++#++ starting a comment until end-of-line.
 Generally, the GRAM5 LRM configuration files are located in the globus
 configuration directory, with each configuration file named by the LRM
 name (++fork++, ++condor++, ++pbs++, ++sge++, or ++slurm++). The
-following table contains the paths to these configurations: 
+following are the paths to these configurations: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>LRM Adapter Configuration Path</title>
-                <tgroup cols='2'>
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus/globus-<replaceable>LRM</replaceable>.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+RPM Package::
+    ++/etc/globus/globus-++'LRM'++.conf++
+Debian Package::
+    ++/etc/globus/globus-++'LRM'++.conf++:
+Source Installer::
+    'PREFIX'++/etc/globus/globus-++'LRM'++.conf++
 
 
 ==== Fork ====
@@ -495,96 +386,51 @@ The **++globus-gram-audit++** configuration defines information about
 the database to load the GRAM5 audit records into. This configuration is
 located in: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>GRAM Audit Configuration Path</title>
-                <tgroup cols='2'>
-                    <thead>
-                        <row>
-                            <entry>Installation Type</entry>
-                            <entry>Configuration Path</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>RPM</entry>
-                            <entry><filename>/etc/globus/gram-audit.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Debian Package</entry>
-                            <entry><filename>/etc/globus/gram-audit.conf</filename></entry>
-                        </row>
-                        <row>
-                            <entry>Source Installer</entry>
-                            <entry><filename><replaceable>PREFIX</replaceable>/etc/globus/gram-audit.conf</filename></entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RPM Package::
+    ++/etc/globus/gram-audit.conf++
+Debian Package::
+    ++/etc/globus/gram-audit.conf++
+Source Installer::
+    'PREFIX'++/etc/globus/gram-audit.conf++
 
 
 This configuration file contains the following attributes. Each
 attribute is defined by a ++ATTRIBUTE:VALUE++ pair. 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>Audit Configuration Attributes</title>
-                <tgroup cols='3'>
-                    <thead>
-                        <row>
-                            <entry>Attribute Name</entry>
-                            <entry>Values</entry>
-                            <entry>Default</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>DRIVER</entry>
-                            <entry>
-                                <simpara> The name of the Perl 5 DBI driver for the database to be
-                                    used. The supported drivers for this program are <literal>SQLite</literal>, <literal>Pg</literal> (for PostgreSQL),
-                                    and <literal>mysql</literal>. </simpara>
-                            </entry>
-                            <entry><literal>SQLite</literal></entry>
-                        </row>
-                        <row>
-                            <entry>DATABASE</entry>
-                            <entry>
-                                <simpara> The DBI data source specfication to contact the audit
-                                    database. </simpara>
-                            </entry>
-                            <entry><literal>dbname=</literal><filename>/var/gram_audit_database/gram_audit.db</filename></entry>
-                        </row>
-                        <row>
-                            <entry>USERNAME</entry>
-                            <entry>Username to authenticate as to the database</entry>
-                            <entry></entry>
-                        </row>
-                        <row>
-                            <entry>PASSWORD</entry>
-                            <entry>Password to use to authenticate with the database</entry>
-                            <entry></entry>
-                        </row>
-                        <row>
-                            <entry>AUDITVERSION</entry>
-                            <entry>Version of the audit database table schemas to use. May be
-                                    <literal>1</literal> or <literal>1TG</literal> for this version
-                                of the software.</entry>
-                            <entry>1</entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[options='header']
+.Audit Configuration Attributes
+|=======================================================================
+| Attribute Name | Value | Default
+
+| DRIVER
+| The name of the Perl 5 DBI driver for the database to be used. The supported
+  drivers for this program are <literal>SQLite</literal>, <literal>Pg</literal>
+  (for PostgreSQL), and <literal>mysql</literal>. </simpara>
+| ++SQLite++
+
+| DATABASE
+| The DBI data source specfication to contact the audit database.
+| ++dbname=/var/gram_audit_database/gram_audit.db++
+
+| USERNAME
+| Username to authenticate as to the database
+| 
+| PASSWORD
+| Password to use to authenticate with the database
+| 
+| AUDITVERSION
+| Version of the audit database table schemas to use. May be ++1++ or ++1TG++
+for this version of the software.
+| ++1++
+|=======================================================================
 
 
 
 === RSL Attributes ===
 
-GRAM5 uses the link:../..gram5/pi/index.html#gram5-rsl[RSL language] to
+GRAM5 uses the link:../../gram5/pi/index.html#gram5-rsl[RSL language] to
 encode job descriptions. The attributes supported by gram are defined in
-link:../..gram5/pi/index.html#gram5-rvf[RSL Validation Files]. These
+link:../../gram5/pi/index.html#gram5-rvf[RSL Validation Files]. These
 definitions contain information about when the different RSL attributes
 are valid and what their default values might be if not present. GRAM5
 will look in ++/etc/globus/gram/job-manager.rvf++ and  and

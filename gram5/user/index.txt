@@ -180,54 +180,38 @@ A fully-qualified resource name looks something like
 ++grid.example.org:2120/jobmanager-sge:/C=US/O=Example/OU=Grid/CN=host/grid.example.org++.
 Breaking this down, the resource name includes: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<informaltable>
-      <tgroup cols='4'>
-        <thead>
-          <row>
-            <entry>Name Component</entry>
-            <entry>Example</entry>
-            <entry>Meaning</entry>
-            <entry>Default</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry><simpara>Host Name</simpara></entry>
-            <entry><simpara><literal>grid.example.org</literal></simpara></entry>
-            <entry><simpara>Host which the GRAM service is running on.</simpara></entry>
-            <entry><simpara>None. This is always a required component.</simpara></entry>
-          </row>
-          <row>
-            <entry><simpara>TCP Port</simpara></entry>
-            <entry><simpara><literal>2120</literal></simpara></entry>
-            <entry><simpara>TCP port which the GRAM service is listening on. If multiple GRAM services
-            are running on the same machine, they may use alternate TCP ports.</simpara></entry>
-            <entry><simpara><literal>2119</literal></simpara></entry>
-          </row>
-          <row>
-            <entry><simpara>Service Name</simpara></entry>
-            <entry><simpara><literal>jobmanager-sge</literal></simpara></entry>
-            <entry><simpara>The name of the GRAM service on the given host. A
-            host may provide access to multiple resources
-            using different local resource managers.  This name is used to
-            distinguish which service to use for a particular job request. Typically, a host
-            will provide a default entry called <literal>jobmanager</literal> which will interface
-            with a batch computing or high-throughput scheduling system, and another called
-            <literal>jobmanager-fork</literal> for simple non-compute jobs.</simpara></entry>
-            <entry><simpara><literal>jobmanager</literal></simpara></entry>
-          </row>
-          <row>
-            <entry><simpara>Credential Name</simpara></entry>
-            <entry><simpara><literal>/C=US/O=Example/OU=Grid /CN=host/grid.example.org</literal></simpara></entry>
-            <entry><simpara>The name of the credential which the GRAM service is using. This is only
-            needed if the credential's common name does not match the host name.</simpara></entry>
-            <entry><simpara><literal>host@</literal><replaceable>hostname</replaceable></simpara></entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </informaltable>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[options='header']
+|=======================================================================
+| Name Component | Example | Meaning | Default
+
+| Host Name
+| ++grid.example.org++
+| Host which the GRAM service is running on.
+| None. This is always a required component.
+
+| TCP Port
+| ++2120++
+| TCP port which the GRAM service is listening on. If multiple GRAM services
+are running on the same machine, they may use alternate TCP ports.
+| ++2119++
+
+| Service Name
+| ++jobmanager-sge++
+| The name of the GRAM service on the given host. A
+host may provide access to multiple resources
+using different local resource managers.  This name is used to
+distinguish which service to use for a particular job request. Typically, a host
+will provide a default entry called ++jobmanager++ which will interface
+with a batch computing or high-throughput scheduling system, and another called
+++jobmanager-fork++ for simple non-compute jobs.
+| ++jobmanager++
+
+| Credential Name
+| ++/C=US/O=Example/OU=Grid /CN=host/grid.example.org++
+| The name of the credential which the GRAM service is using. This is only
+needed if the credential's common name does not match the host name.
+| ++host@++'hostname'
+|=======================================================================
 
 
 Any component of the resource name may be omitted, except for the host

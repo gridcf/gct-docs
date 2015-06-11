@@ -1,92 +1,20 @@
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table frame='all' id='tested-platforms'>
-    <title>Tested Platforms</title>
-    <tgroup align='left' colsep='1' cols='4' rowsep='1'>
-        <colspec align='center' colname='Operating System'></colspec>
-        <colspec colname='Distribution'></colspec>
-        <colspec colname='Versions'></colspec>
-        <colspec colname='Architectures'></colspec>
-        <spanspec spanname='osnodist' namest='Operating System' align='center' nameend='Distribution'></spanspec>
-
-        <thead>
-            <row>
-                <entry>Operating System</entry>
-                <entry>Distribution</entry>
-                <entry>Version(s)</entry>
-                <entry>Architecture(s)</entry>
-            </row>
-        </thead>
-        <tbody>
-            <row>
-                <entry colname='Operating System' morerows='8'>Linux</entry>
-                <entry colname='Distribution' morerows='1'>CentOS</entry>
-                <entry>5, 6</entry>
-                <entry>i386, x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Versions'>7</entry>
-                <entry>x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Distribution'>Fedora</entry>
-                <entry>19, 20</entry>
-                <entry>i386, x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Distribution' morerows='1'>Red Hat Enterprise Linux</entry>
-                <entry>5, 6</entry>
-                <entry>i386, x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Versions'>7</entry>
-                <entry>x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Distribution'>Scientific Linux</entry>
-                <entry>5, 6</entry>
-                <entry>i386, x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Distribution'>SUSE Linux Enterprise Server</entry>
-                <entry>11SP3</entry>
-                <entry>x86_64</entry>
-            </row>
-            <row>
-                <entry colname='Distribution'>Debian</entry>
-                <entry>6, 7</entry>
-                <entry>i386, amd64</entry>
-            </row>
-            <row>
-                <entry colname='Distribution'>Ubuntu</entry>
-                <entry>10.04LTS, 12.04LTS, 14.04LTS</entry>
-                <entry>i386, amd64</entry>
-            </row>
-            <row>
-                <entry spanname='osnodist'>Mac OS X</entry>
-                <entry>10.6.x-10.9.x (Snow Leopard and newer)</entry>
-                <entry>i386, x86_64</entry>
-            </row>
-            <row>
-                <entry>Solaris</entry>
-                <entry>OmniOS</entry>
-                <entry>r151006</entry>
-                <entry>x86_64</entry>
-            </row>
-            <row>
-                <entry morerows='1'>Windows 7</entry>
-                <entry>Cygwin</entry>
-                <entry></entry>
-                <entry>i386, x86_64</entry>
-            </row>
-            <row>
-                <entry>MingW64</entry>
-                <entry></entry>
-                <entry>i386, x86_64</entry>
-            </row>
-        </tbody>
-    </tgroup>
-</table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+[[tested-platforms]]
+[options='header']
+.Tested Platforms
+|=======================================================================
+| Operating System | Distribution | Version(s) | Architecture(s)
+.10+| Linux .2+| CentOS | 5, 6 | i386, x86_64
+| 7 | x86_64
+| Fedora | 20, 21, 22 | i386, x86_64
+.2+| Red Hat Enterprise Linux | 5, 6 | i386, x86_64
+| 7 | x86_64
+.2+| Scientific Linux | 5, 6 | i386, x86_64
+| 7 | x86_64
+| SUSE Linux Enterprise Server | 11SP3 | x86_64
+| Debian | 6, 7, 8 | i386, amd64
+| Ubuntu | 12.04LTS, 14.04LTS, 14.10, 15.04 | i386, amd64
+2+| Mac OS X | 10.6-10.10 | i386, x86_64
+| Solaris | OmniOS | r151006 | x86_64
+.2+| Windows 7 2+| Cygwin | i386, x86_64
+2+| MingW64 | i386, x86_64
+|=======================================================================

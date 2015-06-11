@@ -49,46 +49,45 @@ package. If the upload completes successfully, the audit files will be removed.
 The full set of command-line options to <command>globus-gram-audit</command>
 consist of:
 
-<informaltable frame="none">
-    <tgroup cols="2" align="left">
-        <tbody>
-            <row>
-                <entry><option>--conf <replaceable>CONFIG_FILE</replaceable></option></entry>
-                <entry>
-                    <simpara>Use <replaceable>CONFIG_FILE</replaceable> instead
-                    of the default from the configuration file
-                    for audit database configuration.</simpara>
-                </entry>
-            </row>
-            <row>
-                <entry><option>--check</option></entry>
-                <entry>
-                    <simpara>
-                    Check whether the insertion of a record was successful by
-                    querying the database after inserting the records. This is
-                    used in tests.
-                    </simpara>
-                </entry>
-            </row>
-            <row>
-                <entry><option>--delete</option></entry>
-                <entry>Delete audit records from the database right after inserting them. This is used in tests to avoid filling the databse with test records.</entry>
-            </row>
-            <row>
-                <entry><option>--audit-directory <replaceable>DIR</replaceable></option></entry>
-                <entry>Look for audit records in <replaceable>DIR</replaceable>, instead of looking in the directory specified in the job manager configuration. This is used in tests to control which records are loaded to the database and then deleted.</entry>
-            </row>
-            <row>
-                <entry><option>--query <replaceable>SQL</replaceable></option></entry>
-                <entry>Perform the given SQL query on the audit database. This uses the database information from the configuration file to determine how to contact the database.</entry>
-            </row>
-            <row>
-                <entry><option>--quiet</option></entry>
-                <entry>Reduce the amount of output for common operations.</entry>
-            </row>
-        </tbody>
-    </tgroup>
-</informaltable>
+<variablelist>
+    <varlistentry>
+        <term><option>--conf <replaceable>CONFIG_FILE</replaceable></option></term>
+        <listitem><simpara>Use <replaceable>CONFIG_FILE</replaceable> instead
+            of the default from the configuration file
+            for audit database configuration.</simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term><option>--check</option></term>
+        <listitem><simpara>Check whether the insertion of a record was
+        successful by querying the database after inserting the records. This
+        is used in tests. </simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term><option>--delete</option></term>
+        <listitem><simpara>Delete audit records from the database right after
+        inserting them. This is used in tests to avoid filling the databse with
+        test records.</simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term><option>--audit-directory <replaceable>DIR</replaceable></option></term>
+        <listitem><simpara>Look for audit records in
+        <replaceable>DIR</replaceable>, instead of looking in the directory
+        specified in the job manager configuration. This is used in tests to
+        control which records are loaded to the database and then
+        deleted.</simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term><option>--query <replaceable>SQL</replaceable></option></term>
+        <listitem><simpara>Perform the given SQL query on the audit database.
+        This uses the database information from the configuration file to
+        determine how to contact the database.</simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term><option>--quiet</option></term>
+        <listitem><simpara>Reduce the amount of output for common
+        operations.</simpara></listitem>
+    </varlistentry>
+</variablelist>
 </para>
 </refsect1>
 
@@ -96,28 +95,20 @@ consist of:
 
 <para>
 The <command>globus-gram-audit</command> uses the following files (paths
-relative to <envar>$GLOBUS_LOCATION</envar>.
+relative to <envar>$GLOBUS_LOCATION</envar>).
 
-<informaltable frame="none">
-    <tgroup cols="2" align="left">
-        <tbody>
-            <row>
-                <entry><filename>etc/globus-gram-job-manager.conf</filename></entry>
-                <entry>
-                    <simpara>GRAM5 job manager configuration. It includes the
-                    default path to the audit directory</simpara>
-                </entry>
-            </row>
-            <row>
-                <entry><filename>etc/globus-gram-audit.conf</filename></entry>
-                <entry>
-                    <simpara>Audit configuration. It includes the
-                    information needed to contact the audit database.</simpara>
-                </entry>
-            </row>
-        </tbody>
-    </tgroup>
-</informaltable>
+<variablelist>
+    <varlistentry>
+        <term><filename>etc/globus-gram-job-manager.conf</filename></term>
+        <listitem><simpara>GRAM5 job manager configuration. It includes the
+        default path to the audit directory</simpara></listitem>
+    </varlistentry>
+    <varlistentry>
+        <term><filename>etc/globus-gram-audit.conf</filename></term>
+        <listitem><simpara>Audit configuration. It includes the
+                    information needed to contact the audit database.</simpara></listitem>
+    </varlistentry>
+</variablelist>
 </para>
 
 </refsect1>

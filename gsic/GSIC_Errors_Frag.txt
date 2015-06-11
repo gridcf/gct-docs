@@ -2,112 +2,80 @@
 [[gsic-error-codes]]
 === Errors ===
 
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table frame='all' id='gsic-errors-table'><title>Credential and Gridmap Errors</title>
-<tgroup align='left' colsep='1' cols='3' rowsep='1'>
-<colspec colname='c1'></colspec>
-<colspec colname='c2'></colspec>
-<colspec colname='c3'></colspec>
-<thead>
-<row>
-  <entry>Error Code</entry>
-  <entry>Definition</entry>
-  <entry>Possible Solutions</entry>
-</row>
-</thead>
-<tbody>
-<row>
-  <entry><code>Your proxy credential may have expired</code></entry>
-  <entry>Your proxy credential may have expired.</entry>
-  <entry>
-Use <olink targetdoc='gsicPI' targetptr='grid-proxy-info'>grid-proxy-info</olink> to check whether the proxy credential has actually expired. 
-   If it has, generate a new proxy with <olink targetdoc='gsicPI' targetptr='grid-proxy-init'>grid-proxy-init</olink>.
-  </entry>
-</row>
- <row>
-  <entry><code>The system clock on either the local or remote system is wrong.</code></entry>
-  <entry>This may cause the server or client to conclude that a credential has expired.</entry>
-  <entry>
+[[gsic-errors-table]]
+[options='header']
+.Credential and Gridmap Errors
+|=======================================================================
+| Error Code | Definition | Possible Solutions
+| ++Your proxy credential may have expired++ | Your proxy credential may have expired.
+| Use link:../../gsic/pi/index.html#grid-proxy-info[**++grid-proxy-info++**] to
+  check whether the proxy credential has actually expired.  If it has, generate
+  a new proxy with 
+  link:../../gsic/pi/index.html#grid-proxy-init[**++grid-proxy-init++**].
+  
+| ++The system clock on either the local or remote system is wrong.++
+| This may cause the server or client to conclude that a credential has expired.
+| 
 Check the system clocks on the local and remote system.
-  </entry>
- </row>
- <row>
-  <entry><code>Your end-user certificate may have expired</code></entry>
-  <entry>Your end-user certificate may have expired</entry>
-  <entry>
-Use <olink targetdoc='gsicPI' targetptr='grid-cert-info'>grid-cert-info</olink> to check your certificate's expiration date. 
-   If it has expired, follow your CA's procedures to get a new one.
-  </entry>
- </row>
- <row>
-  <entry><code>The permissions may be wrong on your proxy file</code></entry>
-  <entry>If the permissions on your proxy file are too lax (for example, if others can read your proxy file), Globus Toolkit clients will not use that 
-   file to authenticate. </entry>
-  <entry>
-You can "fix" this problem by changing the permissions on the file or by destroying it (with 
-   <olink targetdoc='gsicPI' targetptr='grid-proxy-destroy'>grid-proxy-destroy</olink>) and creating a new one (with 
-   <olink targetdoc='gsicPI' targetptr='grid-proxy-init'>grid-proxy-init</olink>). 
-   <simpara><emphasis role='strong'>Important:</emphasis> However, it is still possible that someone else has made a copy of that file during the time that the permissions were 
-    wrong. In that case, they will be able to impersonate you until the proxy file expires or your permissions or end-user certificate are revoked, 
-    whichever happens first.</simpara>
-  </entry>
- </row>
-  <row>
-  <entry><code>The permissions may be wrong on your private key file</code></entry>
-  <entry>If the permissions on your end user certificate private key file are too lax (for example, if others can read the file), grid-proxy-init will refuse to create a proxy certificate. </entry>
-  <entry>
-You can "fix" this by changing the permissions on the private key file. 
-
-<simpara><emphasis role='strong'>Important:</emphasis> However, you will still have a much more serious problem: 
-it's possible that someone has made a copy of your private key file. Although this file is encrypted, it is possible that someone will 
-be able to decrypt the private key, at which point they will be able to impersonate you as long as your end user certificate is valid. 
-You should contact your CA to have your end-user certificate revoked and get a new one.</simpara>
-  </entry>
-  </row>
-  <row>
-  <entry><code>The remote system may not trust your CA</code></entry>
-  <entry>The remote system may not trust your CA</entry>
-  <entry>
-Verify that the remote system is configured to trust the CA that issued your end-entity certificate. See <olink targetdoc='gtadmin'></olink> for details.
-  </entry>
-  </row>
-   <row>
-  <entry><code>You may not trust the remote system's CA</code></entry>
-  <entry>You may not trust the remote system's CA</entry>
-  <entry>
-Verify that your system is configured to trust the remote CA (or that your environment is set up to trust the remote CA). See 
-   <olink targetdoc='gtadmin'></olink> for details.
-  </entry>
-   </row>
-   <row>
-  <entry><code>There may be something wrong with the remote service's credentials</code></entry>
-  <entry>There may be something wrong with the remote service's credentials</entry>
-  <entry>
-It is sometimes difficult to distinguish between errors reported by the remote service regarding your credentials and errors reported by the 
-client interface regarding the remote service's credentials. If you can't find anything wrong with your credentials, check for the same conditions 
-on the remote system (or ask a remote administrator to do so) .
-  </entry>
-   </row>
- <row>
-  <entry><code>The content of the grid map file does not conform to the expected format</code></entry>
-  <entry>The content of the grid map file does not conform to the expected format</entry>
-  <entry>
-Run <olink targetdoc='gsicPI' targetptr='grid-mapfile-check-consistency'>grid-mapfile-check-consistency</olink> to make sure that your 
-   gridmap file conforms to the expected format.
-  </entry>
- </row>
- <row>
-  <entry><code>The grid map file does not contain a entry for your DN</code></entry>
-  <entry>The grid map file does not contain a entry for your DN</entry>
-  <entry>
-Use <olink targetdoc='gsicPI' targetptr='grid-mapfile-add-entry'>grid-mapfile-add-entry</olink> to add the relevant entry.
-  </entry>
-</row>
- 
-</tbody>
-</tgroup>
-   </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  
+| ++Your end-user certificate may have expired++
+| Your end-user certificate may have expired
+| Use link:../../gsic/pi/index.html#grid-cert-info[**++grid-cert-info++**] to
+check your certificate's expiration date.  If it has expired, follow your CA's
+procedures to get a new one.
+| ++The permissions may be wrong on your proxy file++
+| If the permissions on your proxy file are too lax (for example, if others can read your proxy file), Globus Toolkit clients will not use that 
+   file to authenticate. 
+| You can "fix" this problem by changing the permissions on the file or by
+destroying it (with 
+link:../../gsic/pi/index.html#grid-proxy-destroy[**++grid-proxy-destroy++**]) and creating a new one (with 
+link:../../gsic/pi/index.html#grid-proxy-init[**++grid-proxy-init++**]).
++
+**Important**: However, it is still possible that someone else has made a copy
+of that file during the time that the permissions were wrong. In that case,
+they will be able to impersonate you until the proxy file expires or your
+permissions or end-user certificate are revoked, whichever happens
+first.
+| ++The permissions may be wrong on your private key file++
+| If the permissions on your end user certificate private key file are too lax
+(for example, if others can read the file), grid-proxy-init will refuse to
+create a proxy certificate. 
+| You can "fix" this by changing the permissions on the private key file. 
++
+**Important:** However, you will still have a much more serious problem: 
+it's possible that someone has made a copy of your private key file. Although
+this file is encrypted, it is possible that someone will be able to decrypt the
+private key, at which point they will be able to impersonate you as long as
+your end user certificate is valid.  You should contact your CA to have your
+end-user certificate revoked and get a new one.
+  
+| ++The remote system may not trust your CA++
+| The remote system may not trust your CA
+| Verify that the remote system is configured to trust the CA that issued your
+  end-entity certificate. See the link:../../admin/install.html[admin guide]
+  for details.
+| ++You may not trust the remote system's CA++
+| You may not trust the remote system's CA
+| Verify that your system is configured to trust the remote CA (or that your
+  environment is set up to trust the remote CA). See  the
+  link:../../admin/install.html[Admin Guide] for details.
+| ++There may be something wrong with the remote service's credentials++
+| There may be something wrong with the remote service's credentials
+| It is sometimes difficult to distinguish between errors reported by the
+  remote service regarding your credentials and errors reported by the client
+  interface regarding the remote service's credentials. If you can't find
+  anything wrong with your credentials, check for the same conditions on the
+  remote system (or ask a remote administrator to do so) .
+  
+| ++The content of the grid map file does not conform to the expected format++
+| The content of the grid map file does not conform to the expected format
+| Run
+link:../../gsic/index.html#grid-mapfile-check-consistency[**++grid-mapfile-check-consistency++**]
+to make sure that your gridmap file conforms to the expected format.
+  
+| ++The grid map file does not contain a entry for your DN++
+| The grid map file does not contain a entry for your DN
+| Use link:../../gsic/pi/index.html#grid-mapfile-add-entry[**++grid-mapfile-add-entry++**] to add the relevant entry.
+  
+|=======================================================================
 

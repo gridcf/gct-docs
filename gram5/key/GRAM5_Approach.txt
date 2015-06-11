@@ -23,67 +23,30 @@ execution with coordinated file staging.
 
 The GRAM5 service architecture consists of several components which work
 together to authenticate users, manage jobs, interface with the LRM, and
-stage files. These components are described in the following table. 
+stage files. These components are:
 
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-                <title>GRAM5 Service Components</title>
-                <tgroup cols='2'>
-                    <tbody>
-                        <row>
-                            <entry>
-                                <simpara>Gatekeeper</simpara>
-                            </entry>
-                            <entry>
-                                <simpara>The <application>globus-gatekeeper</application> service
-                                    provides a network interface to the GRAM5 system. It
-                                    authenticates client identities and starts Job Manager processes
-                                    using the local user account to which the client identity is
-                                    mapped. Typically, one instance of the <application>globus-gatekeeper</application> process runs to accept
-                                    network connections, and forks a new short-lived process to
-                                    process each new conneciton.</simpara>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <simpara>Job Manager</simpara>
-                            </entry>
-                            <entry>
-                                <simpara>The <application>globus-job-manager</application> daemon
-                                    processes job requests and coordinates file transfers. There is
-                                    one long-lived instance of this per user per LRM and one
-                                    short-lived instance per job. </simpara>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <simpara>Scheduler Event Generator</simpara>
-                            </entry>
-                            <entry>
-                                <simpara>The <application>globus-scheduler-event-generator</application> process
-                                    parses LRM-specific data relating to job startup, execution, and
-                                    termination into an LRM-independent data format. There is
-                                    optionally one instance of this program per LRM.</simpara>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <simpara>LRM Adapter</simpara>
-                            </entry>
-                            <entry>
-                                <simpara>The LRM adapter provides an interface between the GRAM5
-                                    system components and the LRM. It provides concrete
-                                    implementations of the submit, cancel, and poll functionality
-                                    for a particular system's LRM and to generate job status change
-                                    events.</simpara>
-                            </entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+**Gatekeeper**::
+    The **++globus-gatekeeper++** service provides a network
+    interface to the GRAM5 system. It authenticates client identities and
+    starts Job Manager processes using the local user account to which the
+    client identity is mapped. Typically, one instance of the
+    **++globus-gatekeeper++** process runs to accept network
+    connections, and forks a new short-lived process to process each new
+    connection.
+**Job Manager**::
+    The **++globus-job-manager++** daemon processes job
+    requests and coordinates file transfers. There is one long-lived instance
+    of this per user per LRM and one short-lived instance per job.
+**Scheduler Event Generator**::
+    The **++globus-scheduler-event-generator++** process parses LRM-specific
+    data relating to job startup, execution, and termination into an
+    LRM-independent data format. There is optionally one instance of this
+    program per LRM.
+**LRM Adapter**::
+    The LRM adapter provides an interface between the GRAM5 system components
+    and the LRM. It provides concrete implementations of the submit, cancel,
+    and poll functionality for a particular system's LRM and to generate job
+    status change events.
 
 
 ==== External Components used by GRAM5 ====

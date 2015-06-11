@@ -6,92 +6,35 @@
 include::XIO_Overview_Brief_Frag.txt[]
 
  
+The following guides are available for this component:
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<informaltable frame='none'>
-    <tgroup cols='2'>
-      <colspec colname='c1'></colspec>
+link:admin/index.html[Admin Guide]::
+    For system administrators and those installing, building and deploying GT.
+    Contains information specific to the XIO.
+    You should already have read the 
+    link:../admin/index.html[Installation Guide] and 
+    link:../admin/quickstart/index.html[Quickstart]
+    [link:admin/xioAdminGuide.pdf[pdf]]
+link:developer/index.html[Developer's Guide::
+    Reference and usage scenarios for developers.
+    [link:developer/xioDeveloperGuide.pdf[pdf]]
 
-      <colspec colname='c2'></colspec>
+Other information available for this component are:
 
-      <tbody>
-        <row>
-          <entry namest='c1' nameend='c2'>The following guides are available
-          for this component:</entry>
-
-        </row>
-
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='xioAdmin'>Admin
-          Guide</olink> </emphasis></entry>
-
-          <entry>For system administrators and those installing, building and
-          deploying GT. Contains information specific to the XIO. You should
-          already have read <olink targetdoc='gtadmin'>Installation
-          Guide</olink> and <olink targetdoc='quickstart'>Quickstart</olink>.  [<ulink url='admin/xioAdminGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='xioDeveloper'>Developer's Guide</olink>
-          </emphasis></entry>
-
-          <entry>Reference and usage scenarios for developers.  [<ulink url='developer/xioDeveloperGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry namest='c1' nameend='c2'>Other information available for this
-          component are:</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='xioRN'>Release
-          Notes</olink> </emphasis></entry>
-
-          <entry>What's new with the <replaceable role='entity'>version</replaceable> release for this
-          component.  [<ulink url='developer/xioDeveloperGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='xioPI'>Public
-          Interface Guide</olink> </emphasis></entry>
-
-          <entry>Information for all public interfaces (including APIs,
-          commands, etc). Please note this is a subset of information in
-          the <olink targetdoc='xioDeveloper'>Developer's
-          Guide</olink>.  [<ulink url='pi/xioPublicInterfacesGuide.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='xioQP'>Quality
-          Profile</olink> </emphasis></entry>
-
-          <entry>Information about test coverage reports, etc.  [<ulink url='qp/xioQualityProfile.pdf'>pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role='strong'> <olink targetdoc='xioMig'>Migrating
-          Guide</olink> </emphasis></entry>
-
-          <entry>Information for migrating to this version if you were using a
-          previous version of GT.  [<ulink url='mig/xioMigratingGuide.pdf'>pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><ulink url='xio.pdf'><emphasis role='strong'>All XIO Guides (PDF only)</emphasis></ulink></entry>
-
-          <entry>Includes all XIO guides except Public Interfaces (which is a
-          subset of the Developer's Guide)</entry>
-
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
- 
+link:rn/index.html[Release Notes]::
+    What's new with the 6.0 release for this component.
+    [link:developer/xioDeveloperGuide.pdf[pdf]]
+link:pi/index.html[Public Interface Guide]::
+    Information for all public interfaces (including APIs, commands, etc).
+    Please note this is a subset of information in the 
+    link:developer/index.html[Developer's Guide]
+    [link:pi/xioPublicInterfacesGuide.pdf[pdf]].
+link:qp/index.html[Quality Profile]::
+    Information about test coverage reports, etc.
+    [link:qp/xioQualityProfile.pdf[pdf]]
+link:mig/index.html[Migrating Guide]::
+    Information for migrating to this version if you were using a
+    previous version of GT.  [link:mig/xioMigratingGuide.pdf[pdf]]
+link:xio.pdf[All XIO Guides (PDF only)]::
+    Includes all XIO guides except Public Interfaces (which is a
+    subset of the Developer's Guide)

@@ -97,39 +97,23 @@ scratch directory beyond what the throughput tester job did.
 
 The two experiments consist of: 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-            <title>GRAM5 Condor-G Experiments</title>
+[options='header']
+.GRAM5 Condor-G Experiments
+|=======================================================================
+| Experiment Name | LRM monitoring method | Number of clients | Number of users | Total number of jobs
 
-            <tgroup cols='5'>
-                <thead>
-                    <row>
-                        <entry>Experiment Name</entry>
-                        <entry>LRM monitoring method</entry>
-                        <entry>Number of clients</entry>
-                        <entry>Number of users</entry>
-                        <entry>Total number of jobs</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>Condor-G</entry>
-                        <entry>SEG</entry>
-                        <entry>1</entry>
-                        <entry>1</entry>
-                        <entry>2000</entry>
-                    </row>
-                    <row>
-                        <entry>Throughput Tester</entry>
-                        <entry>SEG</entry>
-                        <entry>1</entry>
-                        <entry>1</entry>
-                        <entry>2000</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Condor-G
+| SEG
+| 1
+| 1
+| 2000
+
+| Throughput Tester
+| SEG
+| 1
+| 1
+| 2000
+|=======================================================================
 
 
 
@@ -157,42 +141,10 @@ experiments. The columns contain the following information:
      The average value of the one-minute load average on the master node over the duration of the test.
 
 
+.GRAM5 Throughput Tester Results Summary
+|=======================================================================
+| Experiment | Time to Submit 2000 Jobs (hh:mm:ss) | Time For All Jobs To Complete (hh:mm:ss) | LRM Submit Rate (Jobs/Minute) | Master Node Max 1 min. Load Average | Master Node Average 1 min. Load Average 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table>
-        <title>GRAM5 Throughput Tester Results Summary</title>
-        <tgroup cols='6'>
-            <thead>
-                <row>
-                    <entry>Experiment</entry>
-                    <entry>Time to Submit 2000 Jobs (hh:mm:ss)</entry>
-                    <entry>Time For All Jobs To Complete (hh:mm:ss)</entry>
-                    <entry>LRM Submit Rate (Jobs/Minute)</entry>
-                    <entry>Master Node Max 1 min. Load Average</entry>
-                    <entry>Master Node Average 1 min. Load Average</entry>
-                </row>
-            </thead>
-            <tbody>
-                <row>
-                    <entry>Condor-G</entry>
-                    <entry>00:32:34</entry>
-                    <entry>02:00:56</entry>
-                    <entry>94</entry>
-                    <entry>6.56</entry>
-                    <entry>1.64</entry>
-                </row>
-
-                <row>
-                    <entry>Throughput Tester</entry>
-                    <entry>00:17:58</entry>
-                    <entry>01:54:49</entry>
-                    <entry>111</entry>
-                    <entry>2.43</entry>
-                    <entry>0.53</entry>
-               </row>
-            </tbody>
-        </tgroup>
-    </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
+| Condor-G | 00:32:34 | 02:00:56 | 94 | 6.56 | 1.64
+| Throughput Tester | 00:17:58 | 01:54:49 | 111 | 2.43 | 0.53
+|=======================================================================

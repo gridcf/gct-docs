@@ -2,135 +2,78 @@
 [[xio-error-codes]]
 === Errors ===
 
+[options='header']
+.XIO Errors
+|=======================================================================
+| Error Code | Definition | Possible Solutions
+| ++Operation was canceled++
+| An I/O operation has been canceled by a close or a cancel
+| In most cases this will be intentionally performed by the
+  application developer.  In unexpected cases the applciation
+  developer should verify that there is not a race condition
+  relating to closing a handle.
 
+| ++Operation timed out++
+| Occurs when the application developer associates a timeout with
+  a handle's I/O operations.  If no I/O is performed before the
+  timeout expires this error will be triggered.
+|  The remote side of connection might be hung and busy.  The network
+   could have higher latencies than expected.  The filesystem might
+   be over worked.
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-<table frame='all' id='xio-errors-table'><title>XIO Errors</title>
-<tgroup align='left' colsep='1' cols='3' rowsep='1'>
-<colspec colname='c1'></colspec>
-<colspec colname='c2'></colspec>
-<colspec colname='c3'></colspec>
-<thead>
-<row>
-  <entry>Error Code</entry>
-  <entry>Definition</entry>
-  <entry>Possible Solutions</entry>
-</row>
-</thead>
-<tbody>
-<row>
-  <entry><code>Operation was canceled</code></entry>
-  <entry>An I/O operation has been canceled by a close or a cancel</entry>
-  <entry>
-        In most cases this will be intentionally performed by the
-        application developer.  In unexpected cases the applciation
-        developer should verify that there is not a race condition
-        relating to closing a handle.
-  </entry>
-</row>
-<row>
-  <entry><code>Operation timed out</code></entry>
-  <entry> Occurs when the application developer associates a timeout with
-        a handle's I/O operations.  If no I/O is performed before the
-        timeout expires this error will be triggered.
-</entry>
-  <entry>
-        The remote side of connection might be hung and busy.  The network
-        could have higher latencies than expected.  The filesystem might
-        be over worked.
-  </entry>
-</row>
-<row>
-  <entry><code>An end of file occurred</code></entry>
-  <entry> This occurs when and EOF is detected on the file descriptor</entry>
-  <entry>
-        When doing file I/O this like means you read to the end of the file
-        and thus you are finished and should now close it.  On network
-        connections however it means the socket was closed on the remote
-        end.  This can happen it the remote side suddenly dies (seg-fault
-        is common here) or if the remote side chooses to close the connection.
-  </entry>
-</row>
-<row>
-  <entry><code>Contact string invalid</code></entry>
-  <entry>A poorly formed contact string was passed in to open</entry>
-  <entry>
- Verify the format of the contact string with the documentation of
-    the drivers in use.
-  </entry>
-</row>
-<row>
-  <entry><code>Memory allocation failed on XXXX</code></entry>
-  <entry>malloc failed.  The system is likely quite overloaded</entry>
-  <entry>
-    Free up memory in your application
-  </entry>
-</row>
-<row>
-  <entry><code> System error in XXXX</code></entry>
-  <entry>A low level system error occurred.  The errno and errstring should
+| ++An end of file occurred++
+| This occurs when and EOF is detected on the file descriptor
+| When doing file I/O this like means you read to the end of the file
+  and thus you are finished and should now close it.  On network
+  connections however it means the socket was closed on the remote
+  end.  This can happen it the remote side suddenly dies (seg-fault
+  is common here) or if the remote side chooses to close the connection.
+
+| ++Contact string invalid++
+| A poorly formed contact string was passed in to open
+| Verify the format of the contact string with the documentation of
+  the drivers in use.
+
+| ++Memory allocation failed on XXXX++
+| malloc failed.  The system is likely quite overloaded
+| Free up memory in your application
+
+| ++ System error in XXXX++
+| A low level system error occurred.  The errno and errstring should
     indicate more information.
-</entry>
-  <entry>
-  </entry>
-</row>
-<row>
-  <entry><code>Invalid stack</code></entry>
-  <entry>    The requested stack does not meet XIO standards
-</entry>
-  <entry>
- Most likely a transport driver is not on the bottom of the stack,
-    or 2 transport drivers are in the stack.
-  </entry>
-</row>
-<row>
-  <entry><code>Operation already registered</code></entry>
-  <entry> With certain common drivers like TCP and FILE, only one specific
-    operations can be registered at a time (1 read, 1 write).  If
-    another operation of the same type is posted to the handle before
-    receiving the previous operations callback, this error can occur.
-</entry>
-  <entry>
-    Restructure the application code so that it waits for the callback
-    before registering the next IO operation.
-  </entry>
-</row>
-<row>
-  <entry><code>Unexpected state</code></entry>
-  <entry>The internal logic of XIO came across a logical path that should
-    not be possible.  Often times this is due to application memory
-    corruption or trying to perform an IO operation on a closed or
-    otherwise invalid handle.
-</entry>
-  <entry>
-    Use valgrind or some sort of memory managment tool to verify there
-    is no memory corruption.  Try to recreate the problem in a small 
-    program.  Submit the program and the memory trace at 
-    <ulink url='https://globus.atlassian.net'></ulink>.
-  </entry>
-</row>
-<row>
-  <entry><code>Driver in handle has been unloaded</code></entry>
-  <entry>A driver associated with the offending operation has already been
-    unloaded by the application code.
-</entry>
-  <entry>
-   Verify that you are not unloading drivers until they are no longer
-   in use.
-  </entry>
-</row>
-<row>
-  <entry><code>Module not activated</code></entry>
-  <entry>globus_module_activate(GLOBUS_XIO_MODULE); has not been called.</entry>
-  <entry>
-    Call this before making any other XIO API calls.
-  </entry>
-</row>
+| 
 
- 
-</tbody>
+| ++Invalid stack++
+| The requested stack does not meet XIO standards
+| Most likely a transport driver is not on the bottom of the stack,
+  or 2 transport drivers are in the stack.
 
-</tgroup>
-   </table>
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| ++Operation already registered++
+| With certain common drivers like TCP and FILE, only one specific
+  operations can be registered at a time (1 read, 1 write).  If
+  another operation of the same type is posted to the handle before
+  receiving the previous operations callback, this error can occur.
+| Restructure the application code so that it waits for the callback
+  before registering the next IO operation.
+
+| ++Unexpected state++
+| The internal logic of XIO came across a logical path that should
+  not be possible.  Often times this is due to application memory
+  corruption or trying to perform an IO operation on a closed or
+  otherwise invalid handle.
+| Use valgrind or some sort of memory managment tool to verify there
+  is no memory corruption.  Try to recreate the problem in a small 
+  program.  Submit the program and the memory trace to the
+  https://globus.atlassian.net[Globus bug tracker].
+
+| ++Driver in handle has been unloaded++
+| A driver associated with the offending operation has already been
+  unloaded by the application code.
+| Verify that you are not unloading drivers until they are no longer
+  in use.
+
+| ++Module not activated++
+| globus_module_activate(GLOBUS_XIO_MODULE); has not been called.
+| Call this before making any other XIO API calls.
+|=======================================================================
 
