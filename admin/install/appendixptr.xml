@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<chapter id="gtadmin-appendixptr" xreflabel="Appendix">
-    <title>Appendix</title>
-   
-    <para>The Install Guide appendix can be found <olink targetdoc="gtadminappendix">here.</olink></para>
-  
-</chapter>

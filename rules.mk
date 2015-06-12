@@ -23,13 +23,6 @@ ifeq (,$(YAML_FILES))
 endif
 
 
-# default lint file if not specified
-ifeq (,$(LINT_FILES))
-    ifneq (,$(HTML_FILES))
-        LINT_FILES = $(patsubst %.html,%.lint,$(HTML_FILES))
-    endif
-endif
-
 # default olink db file if not specified
 ifeq (,$(DB_FILES))
     DB_FILES    = target.db
@@ -41,7 +34,7 @@ ifeq (,$(FO_FILES))
 endif
 
 CLEANFILES = $(HTML_FILES) $(PDF_FILES) $(LINT_FILES) $(DB_FILES) $(FO_FILES)
-DISTCLEANFILES = dependencies
+DISTCLEANFILES = dependencies $(patsubst %.html,%.xml,$(HTML_FILES))
 
 # Determine if xep or fop are available automatically
 ifeq (,$(XEP)$(FOP))
@@ -111,7 +104,6 @@ all: dependencies olink html yaml $(PDF_TARGET)
 include dependencies
 
 olink: olink-recursive $(DB_FILES)
-lint: lint-recursive $(LINT_FILES)
 html: html-recursive $(HTML_FILES)
 yaml: yaml-recursive $(YAML_FILES)
 pdf: pdf-recursive $(PDF_FILES) $(PDF_COLLECTIONS)
@@ -120,7 +112,7 @@ clean: clean-recursive
 distclean: distclean-recursive
 	@for f in $(CLEANFILES) $(DISTCLEANFILES); do [ -f "$$f" ] && rm "$$f" || true; done
 	
-olink-recursive lint-recursive html-recursive yaml-recursive pdf-recursive clean-recursive distclean-recursive:
+olink-recursive html-recursive yaml-recursive pdf-recursive clean-recursive distclean-recursive:
 	@if [ "$(SUBDIRS)" != "" ]; then \
             for dir in $(SUBDIRS); do echo "Entering $$dir [$(subst -recursive,,$@])" ; $(MAKE) -C $$dir $(subst -recursive,,$@) || exit 1; done \
         fi
@@ -146,16 +138,7 @@ dependencies:
 	$(TOPDIR)/docbook/dependencies.py $(patsubst %.html,%.xml,$(HTML_FILES))> $@
 	$(SET_FILE_PERMISSIONS)
 
-%.lint: %.xml
-	@xmllint \
-	--noout \
-	--noent \
-	--xinclude \
-	--postvalid \
-	$< > $@ || (rm $@ && false)
-	@$(SET_FILE_PERMISSIONS)
-
-%.html: %.xml %.lint $(DB_FILES)
+%.html: %.xml $(DB_FILES)
 	@xsltproc --nonet \
 	--xinclude \
 	--stringparam target.database.document "$(CURDIR)/$(TOPDIR)/olinkdb.xml" \
@@ -166,7 +149,7 @@ dependencies:
 	$(TOPDIR)/custom_html.xsl $<
 	@$(SET_FILE_PERMISSIONS)
 
-%.yaml: %.xml %.lint $(DB_FILES)
+%.yaml: %.xml $(DB_FILES)
 	@xsltproc --nonet \
 	--xinclude \
 	--stringparam target.database.document "$(CURDIR)/$(TOPDIR)/olinkdb.xml" \
@@ -177,7 +160,7 @@ dependencies:
 	$(TOPDIR)/yaml.xsl $< > $@
 	@$(SET_FILE_PERMISSIONS)
 
-%.fo: %.xml %.lint $(DB_FILES)
+%.fo: %.xml $(DB_FILES)
 	@xsltproc --nonet --xinclude -o $@ $(FO_PARAMS) \
 	--stringparam target.database.document "$(CURDIR)/$(TOPDIR)/olinkdb.xml" \
 	--stringparam collect.xref.targets no \
@@ -201,5 +184,5 @@ dependencies:
 $(SUBDIRS):
 	@make -C $@
 
-.SUFFIXES: .db .xml .lint .pdf .fo .txt
-.PHONY: all olink-recursive olink lint-recursive lint clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS)
+.SUFFIXES: .db .xml .pdf .fo .txt
+.PHONY: all olink-recursive olink clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS)

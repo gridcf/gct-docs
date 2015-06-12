@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-
-<section id="java-api-download"><title>Java Client API Download</title>
-    <para>Java client APIs to the GT <replaceable role="entity">version</replaceable> services are available from the <ulink url="http://www.globus.org/toolkit/jglobus/">jGlobus</ulink> project.</para>
-</section>
-
