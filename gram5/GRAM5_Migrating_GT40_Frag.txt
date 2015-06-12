@@ -25,7 +25,7 @@ database interface code. The
 this package. GRAM5 auditing is enabled by using the '-audit-directory'
 command-line option in the job manager configuration file. For more
 information about GRAM5 audit support, see the
-link:../..gram5/admin/index.html#gram5-audit-logging[GRAM5 admin guide].
+link:../../gram5/admin/index.html#gram5-audit-logging[GRAM5 admin guide].
 
 
 

@@ -7,7 +7,7 @@ use the new '-mc' option.
 [NOTE]
 --
 To use this option, the admin must enable multicasting. Click
-link:../..gridftp/admin/index.html#gridftp-config-multi[here] for more
+link:../../gridftp/admin/index.html#gridftp-config-multi[here] for more
 information.
 
 --

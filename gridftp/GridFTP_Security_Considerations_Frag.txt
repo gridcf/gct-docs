@@ -8,7 +8,7 @@
 
 There are various ways to configure your GridFTP server that provide
 varying levels of security. For more information, see
-link:../..gridftp/admin/index.html[].
+link:../../gridftp/admin/index.html[].
 
 
 [[gridftp-security-firewalls]]

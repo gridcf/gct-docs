@@ -79,10 +79,10 @@ certificates of the GridFTP server(s)
 * link:../../admin/install/index.html#gtadmin-basic-host[Obtaining user
 certificates]
 
-* link:../..gsic/admin/index.html#gsic-configuring-trustCA[Configuring the
+* link:../../gsic/admin/index.html#gsic-configuring-trustCA[Configuring the
 client to trust a particular certificate authority]
 
-* link:../..gsic/user/index.html#grid-proxy-init[Creating a proxy
+* link:../../gsic/user/index.html#grid-proxy-init[Creating a proxy
 credential]
 
 
@@ -117,7 +117,7 @@ where:
      Specifies the number of parallel data connections that should be used.
 This is one of the most commonly used options.
 +
-link:../..gridftp/user/index.html#globus-url-copy-parallelismvalue[How
+link:../../gridftp/user/index.html#globus-url-copy-parallelismvalue[How
 do I pick a value?]
 
 
@@ -215,8 +215,8 @@ globus-url-copy -vb -p 4 gsiftp://other.machine.my.edu/tmp/foo gsiftp://remote.m
 ==== For more information ====
 
 If you want more information and details on URLs and the
-link:../..gridftp/user/index.html#globus-url-copy-commandlineoptions[command
-line options], the link:../..gridftp/key/index.html[] gives basic
+link:../../gridftp/user/index.html#globus-url-copy-commandlineoptions[command
+line options], the link:../../gridftp/key/index.html[] gives basic
 definitions and an overview of the GridFTP protocol as well as our
 implementation of it.
 
@@ -240,7 +240,7 @@ or username/password based authentication
 * Your local system administrator has installed "GridFTP Where There is
 FTP (GWTFTP)", which acts as a proxy between standard FTP clients and
 GridFTP servers. More information on GWTFTP is available at
-link:../..gridftp/admin/index.html#gridftp-admin-gwtftp[].
+link:../../gridftp/admin/index.html#gridftp-admin-gwtftp[].
 
 
 
@@ -359,7 +359,7 @@ GridFTP transfers, use the '-udt' option.
 --
 Note: In order to use this for a third-party transfer, the server must
 be configured to
-link:../..gridftp/admin/index.html#gridftp-config-udt[enable UDT]. In
+link:../../gridftp/admin/index.html#gridftp-config-udt[enable UDT]. In
 order to use this for a client-server transfer, you need to enable
 multi-threading in **++globus-url-copy++**. To switch to threaded
 flavor, set the environment variable 'GLOBUS_THREAD_MODEL=pthread'. 
@@ -394,7 +394,7 @@ To perform striped data movement, use the '-stripe' option.
 [NOTE]
 --
 This option is useful only if the server is
-link:../..gridftp/admin/index.html#gridftp-admin-striped[configured for
+link:../../gridftp/admin/index.html#gridftp-admin-striped[configured for
 striped data movement].
 
 --

@@ -109,7 +109,7 @@ definitions.
 *ValidWhen*::
      A list indicating when the attribute is valid in an RSL document. If the RSL attribute is included in a document which is not being used for the purpose described by this aspect's value, it will be rejected. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
 *Default*::
-     A default value for the RSL attribute if it's used in a context which matches the ++DefaultWhen++ aspect for this attribute's record. The value of this attribute must parsable into be a valid RSL link:../..gram5/pi/index.html#gram5-rsl.value-sequence[value-sequence].
+     A default value for the RSL attribute if it's used in a context which matches the ++DefaultWhen++ aspect for this attribute's record. The value of this attribute must parsable into be a valid RSL link:../../gram5/pi/index.html#gram5-rsl.value-sequence[value-sequence].
 *Values*::
      An enumeration of values for the RSL attribute. The value must be simple single-word strings (such as ++yes no++. RSL documents which include the attribute this record is for and do not match one of the single-word values will be rejected by the RSL validator.
 *Publish*::

@@ -47,13 +47,13 @@ information available for the following components:
 
 
 
-* link:../..gram5/admin/index.html#gram5-admin-install[]
+* link:../../gram5/admin/index.html#gram5-admin-install[]
 
-* link:../..gridftp/admin/index.html#gridftp-admin-installing[]
+* link:../../gridftp/admin/index.html#gridftp-admin-installing[]
 
-* link:../..myproxy/admin/index.html#myproxy-admin-installing[]
+* link:../../myproxy/admin/index.html#myproxy-admin-installing[]
 
-* link:../..gsiopenssh/admin/index.html#gsiopenssh-admin-installing-configure-options[]
+* link:../../gsiopenssh/admin/index.html#gsiopenssh-admin-installing-configure-options[]
 
 
 

@@ -6,9 +6,9 @@ The GridFTP server or client libraries do not read any environment
 variable directly, but the security and networking related variables
 described below may be useful. 
 
-* link:../..gsic/pi/index.html#gsic-env-var[Non-WS (General) Authentication & Authorization Environment Variables].
+* link:../../gsic/pi/index.html#gsic-env-var[Non-WS (General) Authentication & Authorization Environment Variables].
 
-* link:../..xio/pi/index.html#xio-env-var[XIO Network Driver Environment Variables].
+* link:../../xio/pi/index.html#xio-env-var[XIO Network Driver Environment Variables].
 
 
 

@@ -12,7 +12,7 @@ either derived from their identity certificate issued by some
 certificate authority, or from a service such as myproxy. If a GRAM
 client command returns any error containing the string ++GSS Major
 Status++ you've hit a credential problem. Look at the
-link:../..gsic/user/index.html#security-credential-errors[Troubleshooting
+link:../../gsic/user/index.html#security-credential-errors[Troubleshooting
 Section] of the GSI manual for details about how to diagnose and correct
 these errors. The  tool with the '-p' command-line option is especially
 helpful for diagnosing some of these types of problems. 
@@ -112,7 +112,7 @@ certificate directory. If so, run the
 There are other reasons why a certificate might not be trusted (it's in
 a revoked list, it has expired or was issued in the future, etc). For
 more details look at the
-link:../..gsic/user/index.html#gsic-user-troubleshooting[troubleshooting
+link:../../gsic/user/index.html#gsic-user-troubleshooting[troubleshooting
 information] in the GSI user's guide. 
 
 If for some reason the service does not trust your certificate, you'll
@@ -243,7 +243,7 @@ numbers to listen on. You might have to contact your site administrator
 to determine what TCP ports are allowed. If there are none, you can
 still use **++globus-job-submit++** and **++globus-job-status++** to
 track your job's state changes, or use another tool like those mentioned
-in the link:../..gram5/user/index.html#gram5-user-client-tools[section
+in the link:../../gram5/user/index.html#gram5-user-client-tools[section
 about client tools]. 
 
 
@@ -254,7 +254,7 @@ as it is processed. These logs are located by default in
 ++/var/log/globus/gram_$USERNAME.log++. There are some different logging
 levels available, as . There are some different logging levels
 available, as
-link:../..gram5/admin/index.html#gram5-log-levels[described in the GRAM
+link:../../gram5/admin/index.html#gram5-log-levels[described in the GRAM
 Adminstrator's Guide]. These can be controlled on a per-job basis by
 adding the ++loglevel++ RSL attribute to your job description. The
 default is to log only ++FATAL++ and ++ERROR++ messages, but other

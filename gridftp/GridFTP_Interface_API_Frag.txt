@@ -75,5 +75,5 @@ extensions for parallel, striped, and partial data transfer.
 
 
 For information on the internationalization API, see
-link:../..ccommonlib/pi/index.html#ccommonlib-apis[]. 
+link:../../ccommonlib/pi/index.html#ccommonlib-apis[]. 
 

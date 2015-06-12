@@ -18,7 +18,7 @@ globus-gridftp-server -log-module stdio_ng -log-level info,warn,error -logfile /
 --------
 
 For more information about the logging options, see
-link:../..gridftp/admin/index.html#globus-gridftp-server[].
+link:../../gridftp/admin/index.html#globus-gridftp-server[].
 
 Sample log file:
 link:/toolkit/docs/{$shortversion}/{$version}/data/gridftp/gridftp.log1[gridftp.log1]

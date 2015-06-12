@@ -10,7 +10,7 @@ This section describes the configuration steps required to:
 +
 determine whether or not to trust certificates issued by a particular Certificate Authority (CA),
 
-* provide appropriate default values for use by the link:../..gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**] command, which is used to generate certificates,
+* provide appropriate default values for use by the link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**] command, which is used to generate certificates,
 
 * request service certificates, used by services to authenticate themselves to users, and
 
@@ -94,7 +94,7 @@ exists either on a per-machine or on a per-installation basis.
 to the trusted certificates directory. This directory contains
 information about which CAs are trusted (including the CA certificates
 themselves) and, in some cases, configuration information used by
-link:../..gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
 to formulate certificate requests. The location of the trusted
 certificates directory is looked for in the following order: 
 . value of the ++X509_CERT_DIR++ environment variable
@@ -175,7 +175,7 @@ research settings can be found https://www.tacar.org/certs.html[here].
 === Configuring Globus to Create Appropriate Certificate Requests ===
 
 The
-link:../..gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
 command, which is used to create certificates, uses the following
 configuration files:
 
@@ -236,11 +236,11 @@ a request for.
 ==== Specifying a default CA for certificate requests ====
 
 The default CA is the CA that will be used for certificate requests if
-link:../..gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
 is invoked without the '-ca' flag. 
 
 You can specify a default CA by invoking the
-link:../..gsic/pi/index.html#grid-default-ca[**++grid-default-ca++**]
+link:../../gsic/pi/index.html#grid-default-ca[**++grid-default-ca++**]
 command (follow the link for examples of using the command).
 
 
@@ -308,7 +308,7 @@ service. This will create the following three files:
     **++grid-cert-request++**.
 
 The
-link:../..gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
 command recognizes several other useful options; you can list these
 with:
 

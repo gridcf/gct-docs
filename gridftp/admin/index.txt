@@ -201,7 +201,7 @@ available. This can be done in the GridFTP server by using the option:
 It is assumed that the toolkit installation was successful. For more
 information, see the link:../../admin/install/index.html[]. Also be sure
 to reference link:#gridftp-configuring[] and
-link:../..gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-server++**].
+link:../../gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-server++**].
 
 
 --
@@ -219,13 +219,13 @@ separately is no longer needed.
 
 . Threaded Globus GridFTP server. In GT6, the server is non-threaded by
 default. Refer to
-link:../..gridftp/admin/index.html#gridftp-admin-installing-threaded[]
+link:../../gridftp/admin/index.html#gridftp-admin-installing-threaded[]
 for information on how to enable threading in GridFTP server.
 
 . For client-server transfers, threaded globus-url-copy. For third-party
 (server-server) transfers, threaded globus-url-copy is not needed. Refer
 to
-link:../..gridftp/admin/index.html#gridftp-admin-installing-threaded[]
+link:../../gridftp/admin/index.html#gridftp-admin-installing-threaded[]
 for information on how to enable threading in globus-url-copy.
 
 
@@ -434,7 +434,7 @@ Interfaces (DSIs) using the '-dsi' option. With this option the DSI
 plugs into the backend (compatible with striping) and is transparent to
 the client or remote party. It can be used with either the GT standard
 DSI plugins or with
-link:../..gridftp/developer/index.html#gridftp-developer-dsi[custom-built
+link:../../gridftp/developer/index.html#gridftp-developer-dsi[custom-built
 DSI plugins]. The standard DSI plugins available in a default GT
 installation are:
 
@@ -473,7 +473,7 @@ on the CEDPS website.
 === Configuring multicasting/broadcasting ===
 
 To enable
-link:../..gridftp/user/index.html#gridftp-user-experimental-multicasting[multicasting],
+link:../../gridftp/user/index.html#gridftp-user-experimental-multicasting[multicasting],
 you must whitelist the ++gridftp_multicast++ driver with the
 '-fs-whitelist file,gridftp_multicast' option:
 
@@ -497,7 +497,7 @@ non-multicast users.
 
 
 For information about using multicasting, click
-link:../..gridftp/user/index.html#gridftp-user-experimental-multicasting[here].
+link:../../gridftp/user/index.html#gridftp-user-experimental-multicasting[here].
 
 
 [[gridftp-admin-gwtftp]]

@@ -11,29 +11,29 @@ testing your installation by component
 * Common Runtime components
 +
 
-** link:../..xio/admin/index.html#xio-admin-testing[XIO]
+** link:../../xio/admin/index.html#xio-admin-testing[XIO]
 
 
 * Security components
 +
 
-** link:../..gsic/admin/index.html#gsic-admin-testing[GSI C]
+** link:../../gsic/admin/index.html#gsic-admin-testing[GSI C]
 
-** link:../..myproxy/admin/index.html#myproxy-admin-testing[MyProxy]
+** link:../../myproxy/admin/index.html#myproxy-admin-testing[MyProxy]
 
-** link:../..gsiopenssh/admin/index.html#gsiopenssh-admin-testing[GSI-OpenSSH]
+** link:../../gsiopenssh/admin/index.html#gsiopenssh-admin-testing[GSI-OpenSSH]
 
 
 * Data Management components
 +
 
-** link:../..gridftp/admin/index.html#gridftp-admin-testing[GridFTP]
+** link:../../gridftp/admin/index.html#gridftp-admin-testing[GridFTP]
 
 
 * Execution Management components
 +
 
-** link:../..gram5/admin/index.html#gram5-admin-testing[GRAM5]
+** link:../../gram5/admin/index.html#gram5-admin-testing[GRAM5]
 
 
 

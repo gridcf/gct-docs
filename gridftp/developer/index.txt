@@ -205,7 +205,7 @@ include::../GridFTP_Interface_Env_Frag.txt[]
 
 --
 You can find information on sys admin logs in
-link:../..gridftp/admin/index.html#gridftp-admin-debugging[].
+link:../../gridftp/admin/index.html#gridftp-admin-debugging[].
 
 
 --

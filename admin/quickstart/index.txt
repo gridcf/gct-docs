@@ -197,7 +197,7 @@ Certificate subject is:
 Finally, we'll create a grid map file entry for this credential, so that
 the holder of that credential can use it to access globus services.
 We'll use the
-link:../..gsic/user/index.html#grid-mapfile-add-entry[**++grid-mapfile-add-entry++**]
+link:../../gsic/user/index.html#grid-mapfile-add-entry[**++grid-mapfile-add-entry++**]
 program for this. We need to use the exact string from the output above
 as the parameter to the '-dn' command-line option, and the local account
 name of user to authorize as the parameter to the '-ln' command-line
@@ -221,7 +221,7 @@ New entry:
 
 Now that we have our host and user credentials in place, we can start a
 globus service. This set up comes from the
-link:../..gridftp/admin/index.html[GridFTP Admin Guide]. 
+link:../../gridftp/admin/index.html[GridFTP Admin Guide]. 
 
 Start the GridFTP server: 
 
@@ -261,7 +261,7 @@ quser% diff /tmp/quser.test.copy /etc/group
 At this point, we've configured the myproxy and GridFTP services and
 verified that we can create a security credential and transfer a file.
 If you had trouble, check the security troubleshooting section in the
-link:../..gsic/admin/index.html[Security Admin Guide]. Now we can move
+link:../../gsic/admin/index.html[Security Admin Guide]. Now we can move
 on to setting up GRAM5 resource management. 
 
 
@@ -273,7 +273,7 @@ resource management. There are several different Local Resource Managers
 (LRMs) that one could configure GRAM to use, but this guide will explain
 the simple case of setting up a "fork" jobmanager, without auditing. For
 details on all other configuration options, and for reference, you can
-see the link:../..gram5/admin/index.html[GRAM5 Admin Guide]. The GRAM
+see the link:../../gram5/admin/index.html[GRAM5 Admin Guide]. The GRAM
 service will use the same host credential as the GridFTP service, and is
 configured by default to use the fork manager, so all we need to do now
 is start the service. 
@@ -313,9 +313,9 @@ quser
 
 
 If you had trouble, check the security troubleshooting section in the
-link:../..gsic/admin/index.html[Security Admin Guide]. To learn more
+link:../../gsic/admin/index.html[Security Admin Guide]. To learn more
 about using GRAM 5, take a look at the
-link:../..gram5/user/index.html#gram5-user-submitting-jobs[GRAM User's
+link:../../gram5/user/index.html#gram5-user-submitting-jobs[GRAM User's
 Guide]. 
 
  
@@ -481,7 +481,7 @@ error: globus_ftp_client: the server responded with an error
 --------
 You can set up a range of ports to be open on the firewall and configure
 GridFTP to use them. See
-link:../..gridftp/admin/index.html#gridftp-config-security-firewalls[the
+link:../../gridftp/admin/index.html#gridftp-config-security-firewalls[the
 GridFTP admin firewall doc.] 
 
 
@@ -505,7 +505,7 @@ This example staged in a file, had an executable act on that file, and
 cleaned up the file afterward. 
 
 You can get other examples of GRAM files from
-link:../..gram5/user/index.html#gram5-user-usagescenarios[GRAM usage
+link:../../gram5/user/index.html#gram5-user-usagescenarios[GRAM usage
 scenarios]. 
 
  

@@ -43,7 +43,7 @@ Documentation for the APIs in this component can be found here:
 
 
 For information on the internationalization API, see the
-link:../..ccommonlib/pi/index.html#ccommonlib-apis[CCommon Libraries
+link:../../ccommonlib/pi/index.html#ccommonlib-apis[CCommon Libraries
 Public Interface]. 
 
 

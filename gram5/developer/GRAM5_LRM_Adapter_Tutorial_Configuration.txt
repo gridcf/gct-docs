@@ -8,7 +8,7 @@ as **++qsub++**, tuning parameters fo the LRM adapter script such as the
 number of available cores per execution node, or the host to contact
 when using a remote submit protocol between GRAM the the LRM. The
 configuation parameters used by the LRM adapters included in GRAM5 are
-described in link:../..gram5/admin/index.html#gram5-configuring-lrm[]. 
+described in link:../../gram5/admin/index.html#gram5-configuring-lrm[]. 
 
 The LRM adapter configuration files consist of attribute="value" pairs,
 which comment lines beginning with the ++#++ character. For the example

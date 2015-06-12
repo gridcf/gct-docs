@@ -24,11 +24,11 @@ will need to authenticate yourself to Globus services.
 
 In most cases, an individual will do the following: 
 
-* Acquire a user certificate from a certification authority (CA) with link:../..gsic/user/index.html#grid-cert-request[grid-cert-request]. This certificate will typically be valid for a year or more and will be stored in a file in the individual's home directory.
+* Acquire a user certificate from a certification authority (CA) with link:../../gsic/user/index.html#grid-cert-request[grid-cert-request]. This certificate will typically be valid for a year or more and will be stored in a file in the individual's home directory.
 +
 It is important to keep in mind when your cert will expire - after your user certificate expires, you may not be able to use secure services in GT!
 
-* Use the end-user certificate to create a proxy certificate using link:../..gsic/user/index.html#grid-proxy-init[grid-proxy-init]. This will be used to authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user certificates (usually 12 hours). Once your proxy certificate expires, simply rerun **++grid-proxy-init++**.
+* Use the end-user certificate to create a proxy certificate using link:../../gsic/user/index.html#grid-proxy-init[grid-proxy-init]. This will be used to authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user certificates (usually 12 hours). Once your proxy certificate expires, simply rerun **++grid-proxy-init++**.
 
 
 
@@ -43,7 +43,7 @@ include::../GSIC_Interface_Commandline_Frag.txt[]
 --
 The following includes common errors for credentials and gridmap files.
 For information about system administrator logs, see
-link:../..gsic/admin/index.html#gsic-admin-debugging[] in the GSI C
+link:../../gsic/admin/index.html#gsic-admin-debugging[] in the GSI C
 Admin Guide.
 
 

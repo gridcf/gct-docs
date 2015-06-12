@@ -46,7 +46,7 @@ the extensions element of a job description. This is not done if the
 SoftEnv feature is disabled. 
 
 For more information and examples, please look in the
-link:../..gram5/user/index.html#gram5-user-softenv[SoftEnv section of
+link:../../gram5/user/index.html#gram5-user-softenv[SoftEnv section of
 the User's Guide]. 
 
 

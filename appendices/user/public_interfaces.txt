@@ -8,26 +8,26 @@ This page contains links to each GT 6.0 component's Public Interfaces
 Guide.
 
 
-* link:../..gridftp/pi/index.html[GridFTP]
+* link:../../gridftp/pi/index.html[GridFTP]
 
-* link:../..gram5/pi/index.html[GRAM5]
+* link:../../gram5/pi/index.html[GRAM5]
 
 * Security
 +
 
-** link:../..gsic/pi/index.html[GSI C]
+** link:../../gsic/pi/index.html[GSI C]
 
-** link:../..myproxy/pi/index.html[MyProxy]
+** link:../../myproxy/pi/index.html[MyProxy]
 
-** link:../..gsiopenssh/pi/index.html[GSI-OpenSSH]
+** link:../../gsiopenssh/pi/index.html[GSI-OpenSSH]
 
 
 * Common Runtime Components
 +
 
-** link:../..xio/pi/index.html[XIO]
+** link:../../xio/pi/index.html[XIO]
 
-** link:../..ccommonlib/pi/index.html[C Common Libraries]
+** link:../../ccommonlib/pi/index.html[C Common Libraries]
 
 
 

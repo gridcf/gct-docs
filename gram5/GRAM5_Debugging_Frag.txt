@@ -6,7 +6,7 @@
 --
 Log output from GRAM5 is a useful tool for debugging issues. GRAM5 can
 log to either local files or syslog. See the
-link:../..gram5/admin/index.html#gram5-troubleshooting-admin[Admin
+link:../../gram5/admin/index.html#gram5-troubleshooting-admin[Admin
 Guide] for information about how to configure logging.
 
 In most cases, logging at the ++INFO++ level will produce enough
@@ -53,7 +53,7 @@ malformed configuration file. See ) to see if there is an error message.
 A common error is having a missing library path environment variable in
 the gatekeeper's environment or having a malformed configuration file.
 See
-link:../..gram5/pi/index.html#gram5-globus-gatekeeper[the**++globus-gatekeeper++**]
+link:../../gram5/pi/index.html#gram5-globus-gatekeeper[the**++globus-gatekeeper++**]
 for information on the configuration options. 
 
 The next recommended diagnostic is to run the same telnet command from

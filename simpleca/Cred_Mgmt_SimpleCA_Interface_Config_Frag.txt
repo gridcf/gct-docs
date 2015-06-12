@@ -8,7 +8,7 @@
 
 So far, you have a single machine configured with SimpleCA certificates.
 Recall that in
-link:../..simpleca/admin/index.html#simpleca-confirmcert[] a CA setup
+link:../../simpleca/admin/index.html#simpleca-confirmcert[] a CA setup
 package was created in
 ++.globus/simpleCA/globus_simple_ca_HASH_setup-0.17.tar.gz++. If you
 want to use your certificates on another machine, you must install that
@@ -25,11 +25,11 @@ $GLOBUS_LOCATION/sbin/gpt-postinstall
 
 
 Then you will have to perform **++setup-gsi -default++** from
-link:../..simpleca/admin/index.html#simpleca-finalizing[]. 
+link:../../simpleca/admin/index.html#simpleca-finalizing[]. 
 
 If you are going to run services on the second host, it will need its
 own host certificate
-(link:../..simpleca/admin/index.html#simpleca-hostcert[]) and
+(link:../../simpleca/admin/index.html#simpleca-hostcert[]) and
 grid-mapfile (as described in the basic configuration instructions in
 link:../../admin/install/index.html#gtadmin-basic-gridmap[]). 
 

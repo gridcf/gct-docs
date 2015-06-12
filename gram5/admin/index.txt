@@ -10,7 +10,7 @@ This guide contains configuration information for system administrators
 working with GRAM5. It describes procedures typically performed by
 system administrators, including GRAM5 software installation,
 configuration, testing, and debugging. Readers should be familiar with
-the link:../..gram5/key/index.html[GRAM5 Key Concepts] to understand the
+the link:../../gram5/key/index.html[GRAM5 Key Concepts] to understand the
 motivation for and interaction between the various deployed components. 
 
 --
@@ -78,7 +78,7 @@ high-throughput job scheduling.
 GRAM5 can be configured to support multiple LRMs on the same service
 machine. In that case, one LRM is typically configured as the default
 LRM which is used when a client uses a shortened version of a GRAM5
-link:../..gram5/user/index.html#gram5-user-resource-names[resource
+link:../../gram5/user/index.html#gram5-user-resource-names[resource
 name]. A common configuration is to configure a batch system interface
 as the default, and provide the ++jobmanager-fork++ service as well for
 simple jobs, such as creating directories or staging data. 
@@ -163,8 +163,8 @@ she must be authorized to use the service. In order to be authorized, a
 GRAM5 administrator must add the user's credential name and local
 account mapping to the ++/etc/grid-mapfile++. This can be done using the
 . This can be done using the
-link:../..gsic/pi/index.html#grid-mapfile-add-entry[] and
-link:../..gsic/pi/index.html#grid-mapfile-delete-entry[] tools. For more
+link:../../gsic/pi/index.html#grid-mapfile-add-entry[] and
+link:../../gsic/pi/index.html#grid-mapfile-delete-entry[] tools. For more
 information, see the link:[] manual. 
 
 

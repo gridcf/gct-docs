@@ -73,7 +73,7 @@ Attribute: AttributeName
 ValidWhen: ""
 --------
 The common list of attributes is described in
-link:../..gram5/pi/index.html#gram5-rsl-attribute-summary[]. 
+link:../../gram5/pi/index.html#gram5-rsl-attribute-summary[]. 
 
 
 ==== Creating a RSL Validation File for the Fake LRM ====

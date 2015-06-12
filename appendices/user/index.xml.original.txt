@@ -108,7 +108,7 @@ are refreshed.
 
 Before using many of the tools in GT, a user must generate a valid user
 proxy. Use
-link:../..gsic/user/index.html#grid-proxy-init[grid-proxy-init]. The
+link:../../gsic/user/index.html#grid-proxy-init[grid-proxy-init]. The
 following is an example:
 
 
@@ -139,7 +139,7 @@ the following:
 
 For more information about gridmaps see
 link:../../admin/install/index.html#gtadmin-basic-gridmap[],
-link:../..gsic/admin/index.html#setting-up-gridmap[] and
+link:../../gsic/admin/index.html#setting-up-gridmap[] and
 http://dev.globus.org/wiki/Gridmap[Globus Toolkit Gridmap Processing].
 
 

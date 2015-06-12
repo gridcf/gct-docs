@@ -53,7 +53,7 @@ GRAM5 adds various protocol extensions to the GRAM2 protocol. This is
 done in a way such that the existing GRAM2 protocol processors will
 ignore the extensions to the messages. Details about the protocol and
 its extensions can be found in the
-link:../..gram5/pi/index.html#gram5-interface-protocol[GRAM5 public
+link:../../gram5/pi/index.html#gram5-interface-protocol[GRAM5 public
 interface document]. 
 
 

@@ -132,7 +132,7 @@ might fail include:
 
 --
 For information about sys admin debugging, see
-link:../..gsiopenssh/admin/index.html#gsiopenssh-admin-debugging[].
+link:../../gsiopenssh/admin/index.html#gsiopenssh-admin-debugging[].
 
 
 --

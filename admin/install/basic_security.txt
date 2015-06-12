@@ -9,9 +9,9 @@
 You must have X.509 certificates to use the GT 6.0 software securely
 (referred to in this documentation as **host certificates**). For an
 overview of certificates for GSI (security) see
-link:../..gsic/admin/index.html#gsic-configuring[GSI Configuration
+link:../../gsic/admin/index.html#gsic-configuring[GSI Configuration
 Information] and
-link:../..gsic/developer/index.html#gsic-developer-env[GSI Environment
+link:../../gsic/developer/index.html#gsic-developer-env[GSI Environment
 Variables].
 
 If you will need to be interoperable with other sites, you will need to
@@ -51,7 +51,7 @@ instruction on how to install the setup package. If they do not, you
 will need to create an ++/etc/grid-security/certificates++ directory and
 include the CA cert and signing policy in that directory. See  directory
 and include the CA cert and signing policy in that directory. See
-link:../..gsic/admin/index.html#gsic-configuring[Configuring a Trusted
+link:../../gsic/admin/index.html#gsic-configuring[Configuring a Trusted
 CA] for more details. 
 
 This type of certificate is best for service deployment and Grid
@@ -184,7 +184,7 @@ gtuser$ grid-cert-diagnostics
 --------
 
 For more troubleshooting information, see the GSI
-link:../..gsic/admin/index.html#gsic-admin-troubleshooting[troubleshooting
+link:../../gsic/admin/index.html#gsic-admin-troubleshooting[troubleshooting
 guide]
 
 
@@ -223,7 +223,7 @@ sites.
 ===== Allowed Incoming Ports =====
 
 As described in
-link:../..gram5/developer/index.html#gram5-developer-jobstatecallbacks[],
+link:../../gram5/developer/index.html#gram5-developer-jobstatecallbacks[],
 the Globus Toolkit GRAM service uses callbacks to communicate state
 changes to clients and, optionally, to stage files to/from the client.
 If connections are not allowed back to the Globus Toolkit clients, the
@@ -261,7 +261,7 @@ This configuration involves:
 
 * Configure the NAT to direct incoming connections in the port range for each host back to the appropriate host (e.g., configure 45000-45099 on the NAT to forward to 45000-45099 on host A).
 
-* Configure the Globus Toolkit clients on each site host to use the selected port range for the host using the techniques described in link:../..gridftp/user/index.html#gridftp-user-config-client-firewall[].
+* Configure the Globus Toolkit clients on each site host to use the selected port range for the host using the techniques described in link:../../gridftp/user/index.html#gridftp-user-config-client-firewall[].
 
 * Configure Globus Toolkit clients to advertise the firewall as the hostname to use for callbacks from the server host. This is done using the GLOBUS_HOSTNAME environment variable. The client must also have the GLOBUS_HOSTNAME environment variable set to the hostname of the external side of the NAT firewall. This will cause the client software to advertise the firewall's hostname as the hostname to be used for callbacks causing connections from the server intended for it to go to the firewall (which redirects them to the client).
 
@@ -375,9 +375,9 @@ are started from within the environment in which it is set. There are
 better ways, however, to configure a globus-job-manager or a GridFTP
 server to restrict its port range. 
 
-* globus-job-manager has an option, -globus-tcp-port-range PORT_RANGE that acts in the same manner as the environment variable. It can be specified on the command line or in the configuration file. See the link:../..gram5/admin/index.html#gram5-cmd-globus-job-manager[job manager documentation] for all of its options.
+* globus-job-manager has an option, -globus-tcp-port-range PORT_RANGE that acts in the same manner as the environment variable. It can be specified on the command line or in the configuration file. See the link:../../gram5/admin/index.html#gram5-cmd-globus-job-manager[job manager documentation] for all of its options.
 
-* See the link:../..gridftp/admin/index.html#gridftp-config-security-firewalls[GridFTP documentation] for information about using GridFTP with firewalls.
+* See the link:../../gridftp/admin/index.html#gridftp-config-security-firewalls[GridFTP documentation] for information about using GridFTP with firewalls.
 
 
 

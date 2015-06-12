@@ -45,7 +45,7 @@ intrusive or private and yet still provides us with information that
 will help improve and gauge the usage of the GridFTP server.
 Nevertheless, if you wish to disable this feature for GridFTP only, use
 the '-disable-usage-stats' option of
-link:../..gridftp/admin/index.html#globus-gridftp-server[globus-gridftp-server].
+link:../../gridftp/admin/index.html#globus-gridftp-server[globus-gridftp-server].
 Note that you can disable transmission of usage statistics globally for
 all C components by setting "GLOBUS_USAGE_OPTOUT=1" in your environment.
 

@@ -183,7 +183,7 @@ include::../GSIC_Interface_Env_Frag.txt[]
 
 --
 For information about system administrator logs, see
-link:../..gsic/admin/index.html#gsic-admin-debugging[] in the GSI C
+link:../../gsic/admin/index.html#gsic-admin-debugging[] in the GSI C
 Admin Guide.
 
 

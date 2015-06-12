@@ -10,7 +10,7 @@ GRAM requires a host certificate and private key in order for the
 in ++/etc/grid-security/hostcert.pem++ and  and
 ++/etc/grid-security/hostkey.pem++, but the path is configurable in the
 , but the path is configurable in the
-link:../..gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
+link:../../gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
 configuration file]. The key must be protected by file permissions
 allowing only the root user to read it. 
 
@@ -19,7 +19,7 @@ as local users. This file is typically located in  to authorize Grid
 users as local users. This file is typically located in
 ++/etc/grid-security/grid-mapfile++, but is configurable in the , but is
 configurable in the
-link:../..gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
+link:../../gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
 configuration file]. 
 
 Problems in either of these configurations will show up in the
@@ -40,7 +40,7 @@ The **++globus-gatekeeper++** is typically started via an init script
 installed in ++/etc/init.d/globus-gatekeeper++. The command . The
 command **++/etc/init.d/globus-gatekeeper status++** will indicate
 whether the service is running. See
-link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[] for
+link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[] for
 more information about starting and stopping the
 **++globus-gatekeeper++** program. 
 
@@ -55,7 +55,7 @@ the LRM-specific "setup-seg" package is installed. The command . It is
 only needed when the LRM-specific "setup-seg" package is installed. The
 command **++/etc/init.d/globus-scheduler-event-generator status++** will
 indicate whether the service is running. See
-link:../..gram5/admin/index.html#gram5-admin-starting-and-stopping[] for
+link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[] for
 more information about starting and stopping the
 **++globus-scheduler-event-generator++** program. 
 
@@ -94,7 +94,7 @@ fork [DISABLED]
 
 If any of these do not show the LRM you are trying to use, install the
 relevant packages related to that LRM and restart the GRAM services. See
-the link:../..gram5/admin/index.html[GRAM Administrator's Guide] for
+the link:../../gram5/admin/index.html[GRAM Administrator's Guide] for
 more information about starting and stopping the GRAM services. 
 
 
@@ -104,7 +104,7 @@ All GRAM5 LRM adapters have a configuration file for site
 customizations, such as queue names, paths to executables needed to
 interface with the LRM, etc. Check that the values in these files are
 correct. These files are described in
-link:../..gram5/admin/index.html#gram5-configuring-lrm[]. 
+link:../../gram5/admin/index.html#gram5-configuring-lrm[]. 
 
 
 [[gram5-troubleshooting-gatekeeper-log]]
@@ -124,7 +124,7 @@ GRAM uses GSI to authenticate client job requests. If there is a problem
 with the GSI configuration for your host, or a client is trying to
 connect with a certificate signed by a CA your host does not trust, the
 job request will fail. This will show up in the log as a "GSS
-authentication failure". See the link:../..gsic/admin/index.html[GSI
+authentication failure". See the link:../../gsic/admin/index.html[GSI
 Administrator's Guide] for information about diagnosing authentication
 failures. 
 
@@ -134,7 +134,7 @@ failures.
 After authentication is complete, GRAM maps the Grid identity to a local
 user prior to starting the **++globus-job-manager++** process. If this
 fails, an error will show up in the log as "globus_gss_assist_gridmap()
-failed authorization". See the link:../..gsic/admin/index.html[GSI
+failed authorization". See the link:../../gsic/admin/index.html[GSI
 Administrator's Guide] for information about managing gridmap files. 
 
 

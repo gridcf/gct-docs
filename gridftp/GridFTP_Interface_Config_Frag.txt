@@ -49,9 +49,9 @@ For complete command documentation including all options, see .
 
 This page includes information about general configuration of the
 GridFTP server. Security options are discussed
-link:../..gridftp/admin/index.html#gridftp-admin-config-security[here],
+link:../../gridftp/admin/index.html#gridftp-admin-config-security[here],
 and more advanced configuration is described
-link:../..gridftp/admin/index.html#gridftp-admin-advanced[here].
+link:../../gridftp/admin/index.html#gridftp-admin-advanced[here].
 
 
 [[gridftp-config-types]]
@@ -60,7 +60,7 @@ link:../..gridftp/admin/index.html#gridftp-admin-advanced[here].
 The following describes a typical GridFTP configuration of the front end
 (control channel) and back end (data channels). For other alternatives
 that provide greater levels of security, see
-link:../..gridftp/admin/index.html#gridftp-admin-advanced[Advanced
+link:../../gridftp/admin/index.html#gridftp-admin-advanced[Advanced
 Configuration].
 
 By default, the data channel and control channel are separate socket
@@ -361,7 +361,7 @@ link:../../admin/install/index.html#gtadmin-basic-security[]):
 --
 We also feature a user-configurable, super-server daemon plugin called
 GFork. Click
-link:../..gridftp/admin/index.html#gridftp-admin-gfork-master[here] for
+link:../../gridftp/admin/index.html#gridftp-admin-gfork-master[here] for
 more information.
 
 --
@@ -415,7 +415,7 @@ in the above examples.
 [NOTE]
 --
 You should NOT include USERID in the log lines. See
-link:../..gridftp/admin/index.html#gridftp-troubleshooting-latency[] for
+link:../../gridftp/admin/index.html#gridftp-troubleshooting-latency[] for
 more information.
 
 --
@@ -514,7 +514,7 @@ globus-gridftp-server --help
 --------
 
 Start the server in anonymous mode (discussed more fully
-link:../..gridftp/admin/index.html#gridftp-admin-config-security-anonymous[here]):
+link:../../gridftp/admin/index.html#gridftp-admin-config-security-anonymous[here]):
 
 
 
@@ -590,7 +590,7 @@ Ctrl-c - Kill the server.
 There are many possible options and configurations with
 **++globus-gridftp-server++**. For some guidelines on setting it up for
 your situation, see
-link:../..gridftp/admin/index.html#gridftp-admin-tuning[].
+link:../../gridftp/admin/index.html#gridftp-admin-tuning[].
 
 --
 

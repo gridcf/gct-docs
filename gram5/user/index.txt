@@ -32,7 +32,7 @@ failures, file staging, and asynchronous notification messages.
 
 GRAM achieves its uniform interface by implementing a domain-specific
 language called the
-link:../..gram5/developer/index.html#gram5-rsl[Resource Specification
+link:../../gram5/developer/index.html#gram5-rsl[Resource Specification
 Language] (RSL) which provides a simple way to express job requirements,
 environment, and commands in a specification which is independent of the
 local resource manager which will actually execute the job. 
@@ -116,7 +116,7 @@ describes how to use GridWay.
 
 In addition to the tools above, you can write your own GRAM clients,
 using the public APIs described in the
-link:../..gram5/developer/index.html[GRAM5 Developer's Guide]. The
+link:../../gram5/developer/index.html[GRAM5 Developer's Guide]. The
 client APIs there can be used to write custom applications that interact
 with GRAM services in C/C++ or Java. 
 
@@ -159,7 +159,7 @@ requesting a certificate from a site-specific CA, or by using a portal
 to obtain a temporary credential. In typical use, GRAM uses a
 http://www.ietf.org/rfc/rfc3820.txt[proxy certificate] which is a
 short-term credential digitally signed by a private key. Please read the
-link:../..gsic/user/index.html#gsic-user-basic-procedure[] to learn more
+link:../../gsic/user/index.html#gsic-user-basic-procedure[] to learn more
 about how to obtain and use a GSI credential before continuing this
 guide. 
 
@@ -258,8 +258,8 @@ included on the section on running jobs with **++globusrun++** below.
 
 The following examples show some of the common command-line options to
 **++globus-job-run++**. Full
-link:../..gram5/pi/index.html#gram5-cmd-globus-job-run[**++globus-job-run++**
-documentation] is available in the link:../..gram5/pi/index.html[GRAM5
+link:../../gram5/pi/index.html#gram5-cmd-globus-job-run[**++globus-job-run++**
+documentation] is available in the link:../../gram5/pi/index.html[GRAM5
 public interface guide]. 
 
 
@@ -404,13 +404,13 @@ GLOBUS_LOCATION=/opt/globus-
 ==== Submitting Basic Jobs with **++globus-job-submit++** ====
 
 A related tool to **++globus-job-run++** is
-link:../..gram5/pi/index.html#gram5-cmd-globus-job-submit[**++globus-job-submit++**].
+link:../../gram5/pi/index.html#gram5-cmd-globus-job-submit[**++globus-job-submit++**].
 This command submits a job to a GRAM5 service then exits without waiting
 for the job to terminate. Other tools
-(link:../..gram5/pi/index.html#gram5-cmd-globus-job-cancel[**++globus-job-cancel++**],
-link:../..gram5/pi/index.html#gram5-cmd-globus-job-clean[**++globus-job-clean++**],
+(link:../../gram5/pi/index.html#gram5-cmd-globus-job-cancel[**++globus-job-cancel++**],
+link:../../gram5/pi/index.html#gram5-cmd-globus-job-clean[**++globus-job-clean++**],
 and
-link:../..gram5/pi/index.html#gram5-cmd-globus-job-get-output[**++globus-job-get-output++**])
+link:../../gram5/pi/index.html#gram5-cmd-globus-job-get-output[**++globus-job-get-output++**])
 allow futher interaction with the job. 
 
 [IMPORTANT]
@@ -517,14 +517,14 @@ be run later.
 [[gram5-user-globusrun]]
 === Advanced GRAM Client with the globusrun tool ===
 
-The link:../..gram5/pi/index.html#gram5-cmd-globusrun[**++globusrun++**]
+The link:../../gram5/pi/index.html#gram5-cmd-globusrun[**++globusrun++**]
 tool provides a more flexible tool for submitting, monitoring, and
 canceling jobs. With this tool, most of the functionality of the GRAM5
 APIs are made available from the command-line. 
 
 One major difference between **++globusrun++** and the other tools
 described above is that **++globusrun++** uses the
-link:../..gram5/pi/index.html#gram5-rsl[RSL language] to provide the job
+link:../../gram5/pi/index.html#gram5-rsl[RSL language] to provide the job
 description, instead of multiple command-line options to describe the
 various aspects of the job. The section on **++globus-job-run++**
 contained a brief example RSL in the '-dumprsl' example above. 
@@ -1094,7 +1094,7 @@ include::../globus-job-submit-manual.txt[]
 
 --
 The GRAM RSL language is described in detail in the
-link:../..gram5/developer/index.html#gram5-rsl[GRAM Developer's Guide].
+link:../../gram5/developer/index.html#gram5-rsl[GRAM Developer's Guide].
 For basic use, job description RSLs consist of a set of RSL attributes
 preceded by the & character. The basic job description looks like: 
 
