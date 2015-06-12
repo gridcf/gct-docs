@@ -6,10 +6,10 @@
 
 <!-- the following resolves the DTD's public and system identifiers locally -->
 
-<public publicId="-//OASIS//DTD DocBook XML V4.4//EN"
+<public publicId="-//OASIS//DTD DocBook XML V4.5//EN"
        uri="docbook/dtds/docbookx.dtd"/>
 
-<uri name="http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+<uri name="http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
        uri="docbook/dtds/docbookx.dtd"/>
        
 <public publicId="-//OASIS//DTD DocBook EBNF Module V1.2CR1//EN"
