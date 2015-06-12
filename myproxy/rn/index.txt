@@ -34,6 +34,5 @@ include::../Cred_Mgmt_MyProxy_Associated_Standards_Frag.txt[]
 [[myproxy-rn-formoreinfo]]
 == For More Information ==
 
-See link:[] for more information about this component. 
-
-  
+See link:../../myproxy/index.html[MyProxy] for more information about this
+component. 

@@ -1,42 +1,31 @@
 [[xioRN,Release Notes]]
 :doctype: article
 = GT 6.0 Release Notes: XIO =
-
   
 [[xio-rn-overview]]
 == Component Overview ==
 
-
 include::../XIO_Overview_Brief_Frag.txt[]
-
  
 include::../XIO_Feature_Summary_Frag.txt[]
-
  
 include::../XIO_Change_Summary_Frag.txt[]
-
  
 include::../XIO_Fixed_Bugs_Frag.txt[]
-
  
 include::../XIO_Known_Problems_Frag.txt[]
-
  
 include::../XIO_Dependencies_Summary_Frag.txt[]
-
  
 include::../XIO_Platform_Summary_Frag.txt[]
-
  
 include::../XIO_Compatibility_Summary_Frag.txt[]
-
  
 include::../XIO_Associated_Standards_Frag.txt[]
-
  
 [[xio-rn-formoreinfo]]
 == For More Information ==
 
-See link:[] for more information about this component. 
+See link:../../xio/index.html[XIO] for more information about this component. 
 
  

@@ -108,9 +108,10 @@ powerful client library to develop custom client functionality.
 For more information about GridFTP, see:
 
 
-* the link:[documentation].
+* the link:../../gridftp/index.html[documentation].
 
-* http://www.globus.org/alliance/publications/papers/gridftp%5ffinal.pdf[The Globus Striped GridFTP Framework and Server]
+* http://www.globus.org/alliance/publications/papers/gridftp%5ffinal.pdf[The
+  Globus Striped GridFTP Framework and Server]
 
 
 

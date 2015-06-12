@@ -1,20 +1,10 @@
-
 [[gsiopenssh-dependencies]]
 === Technology dependencies ===
 
 GSI-OpenSSH depends on the following GT components:
 
-
-
-
-* link:[]
-
+* link:../../gsic/index.html[GSI C]
 
 GSI-OpenSSH depends on the following 3rd party software:
 
-
-
-
 * http://www.openssh.org/[OpenSSH]
-
-

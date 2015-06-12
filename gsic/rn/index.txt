@@ -37,6 +37,6 @@ include::../GSIC_Associated_Standards_Frag.txt[]
 [[gsic-rn-formoreinfo]]
 == For More Information ==
 
-See link:[] for more information about this component. 
+See link:../../gsic/index.html[GSI C] for more information about this component. 
 
   

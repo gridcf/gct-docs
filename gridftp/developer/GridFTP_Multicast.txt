@@ -58,8 +58,8 @@ represents client logic, blue is server logic, and as stated above,
 purple is for data block. The final box type is yellow and it is used to
 show globus XIO drivers.
 
-More information on Globus XIO can be found link:[here]. For our
-purposes we can think of each XIO driver as a modular protocol
+More information on Globus XIO can be found link:../../xio/index.html[here].
+For our purposes we can think of each XIO driver as a modular protocol
 interpreter that can be plugged in to an IO stack without involving the
 application using it. In this way, we can add functionality to an
 existing application without disturbing its tested code base.

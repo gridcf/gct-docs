@@ -151,7 +151,8 @@ California.
 
 ==== GRAM and Security ====
 
-GRAM uses the link:[Grid Security Infrastructure] for its security
+GRAM uses the link:../../gsic/index.html[Grid Security Infrastructure]
+for its security
 implementation, based on X.509 certificates and the TLSv1 protocol to
 authenticate user identities with GRAM services. Before using GRAM, you
 must first obtain a security credential. This is typically done by

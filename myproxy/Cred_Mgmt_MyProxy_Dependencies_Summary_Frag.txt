@@ -1,12 +1,6 @@
-
 [[myproxy-dependencies]]
 === Technology dependencies ===
 
 MyProxy depends on the following GT component:
 
-
-
-
-* link:[]
-
-
+* link:gsic[GSI C]

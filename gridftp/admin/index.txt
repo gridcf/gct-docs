@@ -486,7 +486,8 @@ globus-gridftp-server -fs-whitelist file,gridftp_multicast
 The above command whitelists both the ++file++ driver and the
 ++gridftp_multicast++ driver. [NOTE]
 --
-The ++file++ driver is the default link:[XIO] driver that handles
+The ++file++ driver is the default link:../../xio/index.html[XIO] driver that
+handles
 reading and writing to file systems (disks). By default, this driver is
 already whitelisted. However, if you use the '-fs-whitelist' option, you
 must set **all** the drivers you want whitelisted (and the ++file++
@@ -531,7 +532,7 @@ USER bresnaha::gsiftp://wiggum.mcs.anl.gov:2811/
 
 [NOTE]
 --
-Requires link:[GSI C security].
+Requires link:../../gsic/index.html[GSI C security].
 
 --
  

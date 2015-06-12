@@ -37,6 +37,4 @@ include::../GRAM5_Associated_Standards_Frag.txt[]
 [[gram5-rn-formoreinfo]]
 == For More Information ==
 
-See link:[] for more information about this component. 
-
-  
+See link:../../gram5/index.html[GRAM5 Documentation] for more information about this component. 

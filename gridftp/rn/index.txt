@@ -37,6 +37,4 @@ include::../GridFTP_Associated_Standards_Frag.txt[]
 [[gridftp-rn-formoreinfo]]
 == For More Information ==
 
-See link:[] for more information about this component. 
-
-  
+See link:../../gridftp/index.html[GridFTP] for more information about this component. 

@@ -46,7 +46,8 @@ For Debian and Ubuntu systems, use **++apt-get++** or **++aptitude++** or anothe
 
 The Globus Toolkit uses X.509 certificates and proxy certificates to
 authenticate and authorize grid users. For this quickstart, we use the
-Globus link:[SimpleCA] tools to manage our own Certificate Authority, so
+Globus link:../../simpleca/index.html[SimpleCA] tools to manage our own
+Certificate Authority, so
 that we don't need to rely on any external entitty to authorize our grid
 users. 
 

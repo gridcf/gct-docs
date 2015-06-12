@@ -23,7 +23,8 @@ link:../../gram5/admin/index.html#gram5-configuring-gatekeeper[gatekeeper
 configuration file]. 
 
 Problems in either of these configurations will show up in the
-gatekeeper log described below. See the link:[GSI] documentation for
+gatekeeper log described below. See the link:../../gsic/index.html[GSI]
+documentation for
 more detailed information about obtaining and installing host
 certificates and maintaining a ++grid-mapfile++. . 
 

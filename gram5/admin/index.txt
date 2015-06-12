@@ -30,8 +30,9 @@ benefit from accessing output data files as the job is running.
 Monitoring consists of querying for and/or subscribing to status
 information, such as job state changes. 
 
-GRAM5 relies on link:[] mechanisms for security, and interacts with
-link:[GridFTP services] to stage files to compute resources. Please see
+GRAM5 relies on link:../../gsic/index.html[GSI C] mechanisms for security, and
+interacts with
+link:../../gridftp/index.html[GridFTP] services to stage files to compute resources. Please see
 their respective Administrator's guides for information about
 installing, configuring, and managing those systems. In particular, you
 must understand the tasks in
@@ -165,7 +166,7 @@ account mapping to the ++/etc/grid-mapfile++. This can be done using the
 . This can be done using the
 link:../../gsic/pi/index.html#grid-mapfile-add-entry[] and
 link:../../gsic/pi/index.html#grid-mapfile-delete-entry[] tools. For more
-information, see the link:[] manual. 
+information, see the link:../../gsic/index.html[GSI C] manual. 
 
 
 [[gram5-admin-starting-and-stopping]]

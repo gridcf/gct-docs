@@ -318,17 +318,21 @@ def screen(el):
     if el.text is not None and el.text.strip() != '':
         s += el.text
     for child in el:
-        if child.tag in ['command', 'computeroutput', 'userinput', 'option', 'replaceable', 'literal', 'emphasis', 'xref', 'olink']:
+        if child.tag in ['command', 'computeroutput', 'userinput', 'option', 'replaceable', 'literal', 'emphasis', 'olink']:
             if child.text is not None:
                 s += child.text
             if child.tail is not None:
                 s += child.tail
+        elif child.tag == 'xref':
+            s += link(child)
         elif child.tag == 'prompt':
             s += prompt(child, True)
         elif child.tag == '{http://www.w3.org/2001/XInclude}include':
             s += include(child)
         else:
-            raise Exception(child.tag + " in screen")
+            raise Exception(child.tag + " in " + el.tag)
+        if child.tail is not None:
+            s += child.tail
     s = re.sub("\n-", "\n -", s)
     return "--------\n" + s + "\n--------\n"
 
@@ -380,7 +384,12 @@ def para(el, fold=True, formal=False, inlist=False):
     p = ""
     unfolded = ''
 
-    if formal and 'title' in el:
+    elid = el.attrib.get('id')
+    if elid is not None:
+        anchor = "\n[[" + strip_space(elid) + "]]\n"
+        p += anchor
+
+    if formal and el.find('title') is not None:
         p += informaltitle(el.find('title'))
 
     cc = "\n\n"
