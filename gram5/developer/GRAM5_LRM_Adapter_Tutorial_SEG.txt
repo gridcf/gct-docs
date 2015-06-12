@@ -25,16 +25,15 @@ source] can be downloaded as well.
 
 The outline for our SEG module is: 
 
---------
+* link:#gram5-lrm-seg-module-headers[Include Headers]
+* link:#gram5-lrm-seg-module-specific-data[Module Specific Data]
+* link:#gram5-lrm-seg-module-prototypes[Module Specific Prototypes]
+* link:#gram5-lrm-seg-module-descriptor[Extension Module Descriptor]
+* link:#gram5-lrm-seg-module-activation[Module Activation]
+* link:#gram5-lrm-seg-module-deactivation[Module Deactivation]
+* link:#gram5-lrm-seg-module-process[Process Events]
+* link:#gram5-lrm-seg-module-utils[Utility Functions]
 
-
-
-
-
-
-
-
---------
 From this outline, we'll explain the various sections of the source file
 below. 
 
@@ -48,6 +47,9 @@ also uses the Scheduler Event Generator APIs, which provide functions
 for defining and emitting LRM events. 
 
 
+[[gram5-lrm-seg-module-headers]]
+
+.Include Headers
 For our implementation, we'll need to include the headers for the
 Globus
 modules we'll be using. In this case we'll be using
@@ -63,11 +65,9 @@ SEG event type
 definitions). 
 
 --------
-#include
-"globus_common.h"
+#include "globus_common.h"
 #include "globus_scheduler_event_generator.h"
-#include
-"globus_scheduler_event_generator_app.h"
+#include "globus_scheduler_event_generator_app.h"
 --------
 
 
@@ -83,113 +83,83 @@ be sending in the future. To do this, we define two data structures, a
 with a job, and ++fake_state_t++ which contains the state of the fake
 SEG parser. 
 
---------
-
-
---------
+* link:#gram5-lrm-seg-fake-job-info[Fake Job Info]
+* link:#gram5-lrm-seg-fake-state[Parser State]
 
 
 
-For the ++fake_job_info_t++ structure, we will want to keep track of
-the
-LRM id (an up to 64-character long string), and the timestamps for
-the
-pending, active, failed, and done events for the job. We use
-the
-timestamp value of ++0++ to indicate an event which will not happen
-or
-has already been processed. 
+[[gram5-lrm-seg-fake-job-info]]
+.Fake Job Info
+For the ++fake_job_info_t++ structure, we will want to keep track of the LRM id
+(an up to 64-character long string), and the timestamps for the pending,
+active, failed, and done events for the job. We use the timestamp value of
+++0++ to indicate an event which will not happen or has already been processed. 
 
 --------
 typedef struct
 {
-    char  
-jobid[64];
+    char  jobid[64];
     time_t pending;
     time_t active;
     time_t failed;
-   
-time_t done;
+    time_t done;
 }
 fake_job_info_t;
 
 --------
-In addition, we will keep a
-null initializer for the ++fake_job_info_t++
-structure so that we can
-simply initialize dynamically allocated data. 
-
+In addition, we will keep a null initializer for the ++fake_job_info_t++
+structure so that we can simply initialize dynamically allocated data.  
 --------
 
-/* A
-statically-initialized empty job info which is used to initialize
- *
-dynamically allocated fake_job_info_t structs
+/* A statically-initialized empty job info which is used to initialize
+ * dynamically allocated fake_job_info_t structs
  */
-static fake_job_info_t
-fake_job_info_initializer;
+static fake_job_info_t fake_job_info_initializer;
 --------
 
-
- 
-
-For the LRM parser state, we will keep track of the start time for
-which
-we will emit events, the path to the fake job log, a file pointer
-open
-to that log, and a list of ++fake_job_info_t++ structs for each job
-we
-have data for. We also use a mutex/condition variable combination
-to
-block deactivation until all callback functions have completed. The
-data
-in this struct is initialized in the module's activation function
-below.
+[[gram5-lrm-seg-fake-state]]
+.LRM Parser State
+For the LRM parser state, we will keep track of the start time for which we
+will emit events, the path to the fake job log, a file pointer open to that
+log, and a list of ++fake_job_info_t++ structs for each job we have data for.
+We also use a mutex/condition variable combination to block deactivation until
+all callback functions have completed. The data in this struct is initialized
+in the module's activation function below.
 
 
 --------
 /**
  * State of the FAKE log file parser.
  */
-static
-struct 
+static struct 
 {
     /** Timestamp of when to start generating events from */
  
-time_t                              start_timestamp;
-    /** Log file
-path */
+    time_t                              start_timestamp;
+    /** Log file path */
     char *                              log_path;
-    /** Log
-file pointer */
+    /** Log file pointer */
     FILE *                              log;
-    /**
-List of job info containing future info we might need to
-      * turn
-into job state changes
+    /** List of job info containing future info we might need to
+      * turn into job state changes
       */
-    globus_list_t *                    
-jobs;
+    globus_list_t *                     jobs;
     /**
      * shutdown mutex
      */
-    globus_mutex_t          
-mutex;
+    globus_mutex_t                      mutex;
     /**
      * shutdown condition
      */
-    globus_cond_t      
-cond;
+    globus_cond_t                       cond;
     /**
      * shutdown flag
      */
-    globus_bool_t            
-shutdown_called;
+    globus_bool_t                       shutdown_called;
     /**
      * callback count
      */
-    int          
-callback_count;
+    int                                 callback_count;
 } globus_l_fake_state;
 --------
 
@@ -266,119 +236,98 @@ is not passed any parameters, and is expected to return
 activation function will do the following: 
 
 --------
-
 static
 int
 globus_l_fake_module_activate(void)
 {
+--------
 
+* link:#gram5-lrm-module-activate-declare-vars[Declare Variables]
+* link:#gram5-lrm-module-activate-dependencies[Activate Dependencies]
+* link:#gram5-lrm-module-activate-prepare-shutdown-handler[Prepare Shutdown
+  Handler]
+* link:#gram5-lrm-module-activate-read-configuration[Read Configuration]
+* link:#gram5-lrm-module-activate-register-event[Register Event]
+* link:#gram5-lrm-module-activate-cleanup-on-failure[Cleanup on Failure]
 
-
-
-
-
+--------
     return result;
 } /* globus_l_fake_module_activate() */
 --------
 
 
 
-For our activation function, we'll use variables to store the path
-to
-the configuration file as well as return values from functions we
-call. 
+[[gram5-lrm-module-activate-declare-vars]]
+
+.Declare Variables
+For our activation function, we'll use variables to store the path to the
+configuration file as well as return values from functions we call. 
 
 --------
-char *                              config_path =
-NULL;
+char *                              config_path = NULL;
 char *                              log_dir;
-int                  
-rc;
-globus_result_t                     result =
-GLOBUS_SUCCESS;
+int                                 rc;
+globus_result_t                     result = GLOBUS_SUCCESS;
 --------
 
-
- 
-
-The headers we've just included contain the module descriptors which
-we
-will activate in our LRM-specific activation function, so that we
-are
-able to use the APIs in those modules. Our module is only ever
-activated
-by the SEG module, so we shouldn't activate it. In the
-activation
-function for our module, we'll include this fragment
-
+[[gram5-lrm-module-activate-dependencies]]
+.Activate Dependencies
+The headers we've just included contain the module descriptors which we will
+activate in our LRM-specific activation function, so that we are able to use
+the APIs in those modules. Our module is only ever activated by the SEG module,
+so we shouldn't activate it. In the activation function for our module, we'll
+include this fragment
 
 --------
 rc = globus_module_activate(GLOBUS_COMMON_MODULE);
-if (rc !=
-GLOBUS_SUCCESS)
+if (rc != GLOBUS_SUCCESS)
 {
-    fprintf(stderr, "Fatal error activating
-GLOBUS_COMMON_MODULE\n");
+    fprintf(stderr, "Fatal error activating GLOBUS_COMMON_MODULE\n");
 
     result = GLOBUS_FAILURE;
-    goto
-activation_failure;
+    goto activation_failure;
 }
 --------
 
 
  
 
-To handling deactivation safely, we'll create a mutex and
-condition
-variable to handle the case of when a shutdown is called while
-our event
-handler is running. In that case, we'll set the
-**++shutdown_called++**
-variable to ++GLOBUS_TRUE++ and then wait until
-the callback has
-terminated. Here we just set the variables to their
-non-shutdown values.
+[[gram5-lrm-module-activate-prepare-shutdown-handler]]
 
+.Prepare Shutdown Handler
+To handling deactivation safely, we'll create a mutex and condition variable to
+handle the case of when a shutdown is called while our event handler is
+running. In that case, we'll set the **++shutdown_called++** variable to
+++GLOBUS_TRUE++ and then wait until the callback has terminated. Here we just
+set the variables to their non-shutdown values.
 
 --------
-rc =
-globus_mutex_init(&globus_l_fake_state.mutex, NULL);
-if (rc !=
-GLOBUS_SUCCESS)
-{
-    result = GLOBUS_FAILURE;
-    goto
-mutex_init_failed;
-}
-
-rc = globus_cond_init(&globus_l_fake_state.cond,
-NULL);
+rc = globus_mutex_init(&globus_l_fake_state.mutex, NULL);
 if (rc != GLOBUS_SUCCESS)
 {
     result = GLOBUS_FAILURE;
-    goto
-cond_init_failed;
+    goto mutex_init_failed;
 }
-globus_l_fake_state.shutdown_called =
-GLOBUS_FALSE;
+
+rc = globus_cond_init(&globus_l_fake_state.cond, NULL);
+if (rc != GLOBUS_SUCCESS)
+{
+    result = GLOBUS_FAILURE;
+    goto cond_init_failed;
+}
+globus_l_fake_state.shutdown_called = GLOBUS_FALSE;
 globus_l_fake_state.callback_count = 0;
 --------
 
-
- 
-
 [[gram5-lrm-module-activate-read-configuration]]
 ===== LRM SEG Module Configuration =====
+[[gram5-lrm-module-activate-prepare-read-configuration]]
 
-
-There are two main pieces of configuation information we'll need
-to
-process SEG events: the earliest timestamp we care about (which we
-get
-from the SEG module) and the path to our fake job log file (which we
-get
-from our configuration file as in the perl module). 
+.Read Configuration
+There are two main pieces of configuation information we'll need to process SEG
+events: the earliest timestamp we care about (which we get from the SEG module)
+and the path to our fake job log file (which we get from our configuration file
+as in the perl module). 
 
  
 So first, to get the timestamp, we'll use the
@@ -495,8 +444,6 @@ mutex_init_failed:
 activation_failure:
 --------
 
-
-
 [[gram5-lrm-seg-module-deactivation]]
 ==== Module Deactivation ====
 
@@ -509,81 +456,64 @@ static
 int
 globus_l_fake_module_deactivate(void)
 {
-    
-    
+--------
+
+* link:#gram5-lrm-seg-deactivate-shutdown[Shutdown Handling]
+* link:#gram5-lrm-seg-deactivate-free-state[Cleanup State]
+
+--------
 } /* globus_l_fake_module_deactivate() */
 --------
 
 
 
-To handle shutdown safely, we must wait until pending callbacks
-have
-terminated. To do this, we set the ++shutdown_called++ field in
-the
-state structure and wait until the ++callback_count++ field is
-++0++.
-Inside the callback function, if we see that the
-++shutdown_called++
-field is ++GLOBUS_TRUE++ then it will not reregister
-itself and will
-signal when it terminates.
+[[gram5-lrm-seg-deactivate-shutdown]]
 
+.Shutdown Handling
+To handle shutdown safely, we must wait until pending callbacks have
+terminated. To do this, we set the ++shutdown_called++ field in the state
+structure and wait until the ++callback_count++ field is ++0++.  Inside the
+callback function, if we see that the ++shutdown_called++ field is
+++GLOBUS_TRUE++ then it will not reregister itself and will signal when it
+terminates.
 
 --------
 globus_mutex_lock(&globus_l_fake_state.mutex);
-globus_l_fake_state.shutdown_called
-= GLOBUS_TRUE;
+globus_l_fake_state.shutdown_called = GLOBUS_TRUE;
 while (globus_l_fake_state.callback_count > 0)
 {
-   
-globus_cond_wait(&globus_l_fake_state.cond,
-&globus_l_fake_state.mutex);
+    globus_cond_wait(&globus_l_fake_state.cond, &globus_l_fake_state.mutex);
 }
 globus_mutex_unlock(&globus_l_fake_state.mutex);
 --------
 
-
-
-
+[[gram5-lrm-seg-deactivate-free-state]]
+.Cleanup State
 Finally, we'll free data we allocated in the activation function.
-
 
 --------
 globus_mutex_destroy(&globus_l_fake_state.mutex);
 globus_cond_destroy(&globus_l_fake_state.cond);
-if
-(globus_l_fake_state.log_path)
-{
-   
 free(globus_l_fake_state.log_path);
-}
 if (globus_l_fake_state.log)
 {
-   
-fclose(globus_l_fake_state.log);
+    fclose(globus_l_fake_state.log);
 }
-while
-(!globus_list_empty(globus_l_fake_state.jobs))
+while (!globus_list_empty(globus_l_fake_state.jobs))
 {
-    fake_job_info_t
-*info;
+    fake_job_info_t *info;
     
     info = globus_list_remove(
-           
-&globus_l_fake_state.jobs,
+            &globus_l_fake_state.jobs,
             globus_l_fake_state.jobs);
    
-free(info);
+    free(info);
 }
 
 globus_module_deactivate(GLOBUS_COMMON_MODULE);
 
-return
-GLOBUS_SUCCESS;
+return GLOBUS_SUCCESS;
 --------
-
-
- 
 
 [[gram5-lrm-seg-module-process]]
 ==== Process Events ====
@@ -595,438 +525,314 @@ to have occurred for the jobs in the fake job log. The structure of the
 processing function is this 
 
 --------
-
 static
 void
 globus_l_fake_read_callback(void * arg)
 {
+--------
 
+* link:#gram5-lrm-seg-read-declare-vars[Declare Variables]
+* link:#gram5-lrm-seg-read-check-for-shutdown[Check for Shutdown]
+* link:#gram5-lrm-seg-read-open-log[Open Log]
+* link:#gram5-lrm-seg-read-read-log[Read Log]
+* link:#gram5-lrm-seg-read-create-events[Create Events]
+* link:#gram5-lrm-seg-read-emit-events[Emit Events]
+* link:#gram5-lrm-seg-read-reregister[Reregister Callback]
+* link:#gram5-lrm-seg-read-error-handling[Error Handling]
 
-
-
-
-
-
-
+--------
 } /* globus_l_fake_read_callback() */
 --------
 
 
 
-
-
+[[gram5-lrm-seg-read-declare-vars]]
+.Declare Variables
 --------
 char                                jobid[64];
-globus_list_t
-*l, *events;
+globus_list_t                      *l, *events;
 fake_job_info_t                     *info;
-globus_reltime_t
-delay = {0};
+globus_reltime_t                    delay = {0};
 time_t                              now;
-unsigned long     
-pending_time, active_time, done_time,
-failed_time;
+unsigned long                       pending_time, active_time, done_time,
+                                    failed_time;
 globus_scheduler_event_t            *e;
-time_t             
-last_timestamp;
-globus_result_t                     result =
-GLOBUS_SUCCESS;
+time_t                              last_timestamp;
+globus_result_t                     result = GLOBUS_SUCCESS;
 --------
 
-
- 
-
-To check for shutdown, we'll first lock the mutex associated with
-the
-state structure and check if the ++shutdown_called++ field is set
-to
-true. If so, we'll jump to our error handling code.
-
+[[gram5-lrm-seg-read-check-for-shutdown]]
+.Check for Shutdown
+To check for shutdown, we'll first lock the mutex associated with the state
+structure and check if the ++shutdown_called++ field is set to true. If so,
+we'll jump to our error handling code.
 
 --------
 globus_mutex_lock(&globus_l_fake_state.mutex);
-if
-(globus_l_fake_state.shutdown_called)
+if (globus_l_fake_state.shutdown_called)
 {
     result = GLOBUS_FAILURE;
    
-goto error;
+    goto error;
 }
 --------
 
-
- 
-
-In general, we'll keep a file open to parse the log, but the first
-time
-around, or before any events have been written, the log file might
-not
-exist. So we'll check to see if we have a ++NULL++ file pointer, and
-if
-so, try to open the file. Once opened, we'll use line buffering while
-we
-process the file. 
-
+[[gram5-lrm-seg-read-open-log]]
+.Open Log
+In general, we'll keep a file open to parse the log, but the first time around,
+or before any events have been written, the log file might not exist. So we'll
+check to see if we have a ++NULL++ file pointer, and if so, try to open the
+file. Once opened, we'll use line buffering while we process the file. 
 --------
 if (globus_l_fake_state.log == NULL)
 {
- 
-globus_l_fake_state.log = fopen(globus_l_fake_state.log_path, "r");
+    globus_l_fake_state.log = fopen(globus_l_fake_state.log_path, "r");
    
-if (globus_l_fake_state.log != NULL)
+    if (globus_l_fake_state.log != NULL)
     {
-        /* Enable line
-buffering */
+        /* Enable line buffering */
         setvbuf(globus_l_fake_state.log, NULL, _IOLBF, 0);
 
-}
+    }
 }
 if (globus_l_fake_state.log == NULL)
 {
     result = GLOBUS_FAILURE;
 
-GlobusTimeReltimeSet(delay, 30, 0);
+    GlobusTimeReltimeSet(delay, 30, 0);
     goto reregister;
 }
 --------
 
-
- 
-
-Now we will read all of the log entries from our current position
-until
-the end of file. If we've already parsed an entry for a particular
-job,
-we will zero out its timestamps and replace with the new timestamps
-to
-handle cancel events in the fake job log. 
+[[gram5-lrm-seg-read-read-log]]
+.Read Log
+Now we will read all of the log entries from our current position until the end
+of file. If we've already parsed an entry for a particular job, we will zero
+out its timestamps and replace with the new timestamps to handle cancel events
+in the fake job log. 
 
 --------
-
-/* previous
-read might have hit EOF, so clear it before trying to read
-*/
+/* previous read might have hit EOF, so clear it before trying to read */
 clearerr(globus_l_fake_state.log);
 
-/* Read any new job info from the
-log */
-while (fscanf(globus_l_fake_state.log,
-"%63[^;];%ld;%ld;%ld;%ld\n",
-            jobid,
-           
-&pending_time,
-            &active_time,
-            &done_time,
-       
-&failed_time) == 5)
+/* Read any new job info from the log */
+    while (fscanf(globus_l_fake_state.log,
+                "%63[^;];%ld;%ld;%ld;%ld\n",
+                jobid, &pending_time, &active_time, &done_time, &failed_time)
+        == 5)
 {
-    l =
-globus_list_search_pred(globus_l_fake_state.jobs,
-globus_l_fake_find_by_job_id, jobid);
+    l = globus_list_search_pred(globus_l_fake_state.jobs,
+            globus_l_fake_find_by_job_id, jobid);
     if (l != NULL)
     {
-       
-info = globus_list_first(l);
-        /* If there's a second entry for
-the same job, it was cancelled, so
-         * clear done/failed
-timestamps and copy them below
+        info = globus_list_first(l);
+        /* If there's a second entry for the same job, it was cancelled, so
+         * clear done/failed timestamps and copy them below
          */
-        info->done =
-info->failed = 0;
+        info->done = info->failed = 0;
     }
     else
     {
-        /* First time we've seen
-this job, set jobid and insert*/
-        info =
-malloc(sizeof(fake_job_info_t));
-        *info =
-fake_job_info_initializer;
+        /* First time we've seen this job, set jobid and insert*/
+        info = malloc(sizeof(fake_job_info_t));
+        *info = fake_job_info_initializer;
         strcpy(info->jobid, jobid);
        
-globus_list_insert(&globus_l_fake_state.jobs, info);
+        globus_list_insert(&globus_l_fake_state.jobs, info);
     }
-    /* set
-timestamps */
+    /* set timestamps */
     info->pending = pending_time;
-    info->active =
-active_time;
+    info->active = active_time;
     info->done = done_time;
-    info->failed =
-failed_time;
+    info->failed = failed_time;
 }
 --------
 
-
- 
-
-Now, we'll walk our list of jobs and create SEG events for each
-state
-transition which has occurred since our last timestamp and the
-current
-time. These events will be out of order in our events list,
-because they
-are created in order of job IDs in the jobs list, and not
-in timestamp
-list. We'll deal with this later. Note that we set the
-timestamp values
-in the job info to 0 after we create an event. This
-keeps us from
-generating an event multiple times. 
+[[gram5-lrm-seg-read-create-events]]
+.Create Events
+Now, we'll walk our list of jobs and create SEG events for each state
+transition which has occurred since our last timestamp and the current time.
+These events will be out of order in our events list, because they are created
+in order of job IDs in the jobs list, and not in timestamp list. We'll deal
+with this later. Note that we set the timestamp values in the job info to 0
+after we create an event. This keeps us from generating an event multiple
+times. 
 
 --------
-/* Create
-set of events that we'll emit this time through: jobs which will
- *
-changed state since our last event update
+/* Create set of events that we'll emit this time through: jobs which will
+ * changed state since our last event update
  */
 now = time(NULL);
 
-events
-= NULL;
-for (l = globus_l_fake_state.jobs; l != NULL; l =
-globus_list_rest(l))
+events = NULL;
+for (l = globus_l_fake_state.jobs; l != NULL; l = globus_list_rest(l))
 {
     info = globus_list_first(l);
 
-    if
-(info->pending >= globus_l_fake_state.start_timestamp &&
-       
-info->pending < now)
+    if (info->pending >= globus_l_fake_state.start_timestamp &&
+        info->pending < now)
     {
-        e =
-malloc(sizeof(globus_scheduler_event_t));
-        e->event_type =
-GLOBUS_SCHEDULER_EVENT_PENDING;
-        e->job_id = info->jobid;
-       
-e->timestamp = info->pending;
-        e->exit_code = 0;
-       
-e->failure_code = 0;
-        e->raw_event = NULL;
-
-        info->pending
-= 0;
-
-        globus_list_insert(&events, e);
-    }
-    if (info->active
->= globus_l_fake_state.start_timestamp &&
-        info->active < now)
-  
-{
         e = malloc(sizeof(globus_scheduler_event_t));
-       
-e->event_type = GLOBUS_SCHEDULER_EVENT_ACTIVE;
-        e->job_id =
-info->jobid;
-        e->timestamp = info->active;
-        e->exit_code =
-0;
+        e->event_type = GLOBUS_SCHEDULER_EVENT_PENDING;
+        e->job_id = info->jobid;
+        e->timestamp = info->pending;
+        e->exit_code = 0;
         e->failure_code = 0;
         e->raw_event = NULL;
 
-       
-info->active = 0;
+        info->pending = 0;
 
         globus_list_insert(&events, e);
     }
-    if
-(info->done != 0 &&
-        info->done >=
-globus_l_fake_state.start_timestamp &&
-        info->done < now)
+    if (info->active >= globus_l_fake_state.start_timestamp &&
+        info->active < now)
     {
- 
-e = malloc(sizeof(globus_scheduler_event_t));
-        e->event_type =
-GLOBUS_SCHEDULER_EVENT_DONE;
+        e = malloc(sizeof(globus_scheduler_event_t));
+        e->event_type = GLOBUS_SCHEDULER_EVENT_ACTIVE;
         e->job_id = info->jobid;
-       
-e->timestamp = info->done;
+        e->timestamp = info->active;
         e->exit_code = 0;
-       
-e->failure_code = 0;
+        e->failure_code = 0;
         e->raw_event = NULL;
 
-        info->done =
-0;
+        info->active = 0;
 
         globus_list_insert(&events, e);
     }
-    if (info->failed
-!= 0 &&
-        info->failed >= globus_l_fake_state.start_timestamp &&
- 
-info->failed < now)
+    if (info->done != 0 && info->done >= globus_l_fake_state.start_timestamp &&
+        info->done < now)
     {
-        e =
-malloc(sizeof(globus_scheduler_event_t));
-        e->event_type =
-GLOBUS_SCHEDULER_EVENT_FAILED;
+        e = malloc(sizeof(globus_scheduler_event_t));
+        e->event_type = GLOBUS_SCHEDULER_EVENT_DONE;
         e->job_id = info->jobid;
-       
-e->timestamp = info->failed;
+        e->timestamp = info->done;
         e->exit_code = 0;
-       
-e->failure_code = GLOBUS_GRAM_PROTOCOL_ERROR_USER_CANCELLED;
-       
-e->raw_event = NULL;
+        e->failure_code = 0;
+        e->raw_event = NULL;
+
+        info->done = 0;
+
+        globus_list_insert(&events, e);
+    }
+    if (info->failed != 0 &&
+        info->failed >= globus_l_fake_state.start_timestamp &&
+        info->failed < now)
+    {
+        e = malloc(sizeof(globus_scheduler_event_t));
+        e->event_type = GLOBUS_SCHEDULER_EVENT_FAILED;
+        e->job_id = info->jobid;
+        e->timestamp = info->failed;
+        e->exit_code = 0;
+        e->failure_code = GLOBUS_GRAM_PROTOCOL_ERROR_USER_CANCELLED;
+        e->raw_event = NULL;
 
         info->failed = 0;
-
-       
-globus_list_insert(&events, e);
+        globus_list_insert(&events, e);
     }
 }
 --------
 
-
- 
-
-Now we have a set of events, we will sort them by timestamp and then
-use
-the SEG API to emit them. After we've emitted an event, we have to
-free
-it. If the event is a terminal one (DONE or FAILED) we'll remove
-the job
-from the list of jobs in the state structure. 
+[[gram5-lrm-seg-read-emit-events]]
+.Emit Events
+Now we have a set of events, we will sort them by timestamp and then use the
+SEG API to emit them. After we've emitted an event, we have to free it. If the
+event is a terminal one (DONE or FAILED) we'll remove the job from the list of
+jobs in the state structure. 
 
 --------
-/* Sort
-the events so that they're in timestamp order */
-events =
-globus_list_sort_destructive(events, globus_l_fake_compare_events,
-NULL);
+/* Sort the events so that they're in timestamp order */
+events = globus_list_sort_destructive(
+        events, globus_l_fake_compare_events, NULL);
 
 /* Emit events in proper order */
-while (!
-globus_list_empty(events))
+while (! globus_list_empty(events))
 {
-    e = globus_list_remove(&events,
-events);
+    e = globus_list_remove(&events, events);
     last_timestamp = e->timestamp;
 
     switch (e->event_type)
-
-{
+    {
         case GLOBUS_SCHEDULER_EVENT_PENDING:
-           
-globus_scheduler_event_pending(e->timestamp, e->job_id);
-           
-break;
-        case GLOBUS_SCHEDULER_EVENT_ACTIVE:
-           
-globus_scheduler_event_active(e->timestamp, e->job_id);
-           
-break;
-        case GLOBUS_SCHEDULER_EVENT_FAILED:
-           
-globus_scheduler_event_failed(e->timestamp, e->job_id,
-e->failure_code);
+            globus_scheduler_event_pending(e->timestamp, e->job_id);
             break;
-        case
-GLOBUS_SCHEDULER_EVENT_DONE:
-           
-globus_scheduler_event_done(e->timestamp, e->job_id, e->exit_code);
-    
-break;
+        case GLOBUS_SCHEDULER_EVENT_ACTIVE:
+            globus_scheduler_event_active(e->timestamp, e->job_id);
+            break;
+        case GLOBUS_SCHEDULER_EVENT_FAILED:
+            globus_scheduler_event_failed(e->timestamp, e->job_id,
+                    e->failure_code);
+            break;
+        case GLOBUS_SCHEDULER_EVENT_DONE:
+            globus_scheduler_event_done(e->timestamp, e->job_id, e->exit_code);
+            break;
     }
-    /* If this is a terminal event, we can remove the job
-from the list */
-    if (e->event_type == GLOBUS_SCHEDULER_EVENT_FAILED
-||
+    /* If this is a terminal event, we can remove the job from the list */
+    if (e->event_type == GLOBUS_SCHEDULER_EVENT_FAILED ||
         e->event_type == GLOBUS_SCHEDULER_EVENT_DONE)
     {
-        l
-= globus_list_search_pred(globus_l_fake_state.jobs,
-globus_l_fake_find_by_job_id, e->job_id);
-        info =
-globus_list_remove(&globus_l_fake_state.jobs, l);
+        l = globus_list_search_pred(globus_l_fake_state.jobs,
+                globus_l_fake_find_by_job_id, e->job_id);
+        info = globus_list_remove(&globus_l_fake_state.jobs, l);
         free(info);
-  
-}
+    }
 
     free(e);
 }
-globus_l_fake_state.start_timestamp =
-last_timestamp;
+globus_l_fake_state.start_timestamp = last_timestamp;
 
 --------
 
+[[gram5-lrm-seg-read-reregister]]
 
- 
-
+.Reregister Callback
 We'll register a new callback instance now (provided we haven't had
-an
-error occur) so that we can continue to process jobs later.
-
+an error occur) so that we can continue to process jobs later.
 
 --------
-GlobusTimeReltimeSet(delay, 1, 0);
+    GlobusTimeReltimeSet(delay, 1, 0);
 reregister:
-result =
-globus_callback_register_oneshot(
-        NULL,
-        &delay,
-       
-globus_l_fake_read_callback,
-        &globus_l_fake_state);
-if (result
-!= GLOBUS_SUCCESS)
-{
-    goto
-error;
-}
-globus_mutex_unlock(&globus_l_fake_state.mutex);
+    result = globus_callback_register_oneshot(
+            NULL,
+            &delay,
+           
+    globus_l_fake_read_callback, &globus_l_fake_state);
+    if (result != GLOBUS_SUCCESS)
+    {
+        goto error;
+    }
+    globus_mutex_unlock(&globus_l_fake_state.mutex);
 return;
-
 --------
 
-
-
-
-If an error occurred registering the event or the shutdown handler
-is
-invoked, we'll exit this function without registering a new event.
-In
-the case the shutdown handling is in place, we'll signal that as well
+[[gram5-lrm-seg-read-error-handling]]
+.Error Handling
+If an error occurred registering the event or the shutdown handler is invoked,
+we'll exit this function without registering a new event.  In the case the
+shutdown handling is in place, we'll signal that as well
 
 
 --------
 error:
-if (globus_l_fake_state.shutdown_called)
-{
-   
-globus_l_fake_state.callback_count--;
-
-    if
-(globus_l_fake_state.callback_count == 0)
+    if (globus_l_fake_state.shutdown_called)
     {
-       
-globus_cond_signal(&globus_l_fake_state.cond);
+        globus_l_fake_state.callback_count--;
+
+        if (globus_l_fake_state.callback_count == 0)
+        {
+            globus_cond_signal(&globus_l_fake_state.cond);
+        }
     }
-}
-else
-{
+    else
+    {
+        fprintf(stderr,
+            "FATAL: Unable to register callback. FAKE SEG exiting\n");
    
-fprintf(stderr,
-            "FATAL: Unable to register callback. FAKE
-SEG exiting\n");
-   
-exit(EXIT_FAILURE);
-}
-globus_mutex_unlock(&globus_l_fake_state.mutex);
+        exit(EXIT_FAILURE);
+    }
+    globus_mutex_unlock(&globus_l_fake_state.mutex);
 
-return;
-
-
+    return;
 --------
-
-
-
 
 [[gram5-lrm-seg-module-utils]]
 ==== Utility Functions ====
@@ -1034,97 +840,67 @@ return;
 We have two utility functions to implement for this module to manage our
 lists of pending events and jobs. 
 
---------
+* link:#gram5-lrm-seg-module-find-job[Find By Job ID]
+* link:#gram5-lrm-seg-module-compare-events[Sort Events]
 
-
---------
-
-
-
-The **++globus_l_fake_find_by_job_id()++** function is used to
-search
-the ++jobs++ field of the state structure for a
-++fake_job_info_t++
-containing info about a particular job. This
-predicate returns a
-non-zero value if the 'datum' passed to the function
-has the same job ID
-as the 'arg' parameter.
+[[gram5-lrm-seg-module-find-job]]
+.Find By Job ID
+The **++globus_l_fake_find_by_job_id()++** function is used to search the
+++jobs++ field of the state structure for a ++fake_job_info_t++ containing info
+about a particular job. This predicate returns a non-zero value if the 'datum'
+passed to the function has the same job ID as the 'arg' parameter.
 
 
 --------
 static
 int
-globus_l_fake_find_by_job_id(void * datum, void *
-arg)
+globus_l_fake_find_by_job_id(void * datum, void * arg)
 {
     fake_job_info_t * info = datum;
 
-    return
-(strcmp(info->jobid, arg) == 0);
-} /* globus_l_fake_find_by_job_id()
-*/
+    return (strcmp(info->jobid, arg) == 0);
+} /* globus_l_fake_find_by_job_id() */
 --------
 
-
- 
-
-The **++globus_l_fake_compare_events()++** function is used as
-a
-predicate to compare the timestamps and job ids of a pair of events.
-If
-the 'log_datum' points to an event which happens earlier in the
-job
-lifecycle than the 'high_datum', this function returns
-++GLOBUS_TRUE++;
-otherwise it returns ++GLOBUS_FALSE++.
+[[gram5-lrm-seg-module-compare-events]]
+.Sort Events
+The **++globus_l_fake_compare_events()++** function is used as a predicate to
+compare the timestamps and job ids of a pair of events.  If the 'log_datum'
+points to an event which happens earlier in the job lifecycle than the
+'high_datum', this function returns ++GLOBUS_TRUE++; otherwise it returns
+++GLOBUS_FALSE++.
 
 
 --------
 static
 int
-globus_l_fake_compare_events(void * low_datum,
-void * high_datum, void * relation_args)
+globus_l_fake_compare_events(void * low_datum, void * high_datum,
+        void * relation_args)
 {
-    globus_scheduler_event_t
-*low_event = low_datum, *high_event = high_datum;
+    globus_scheduler_event_t *low_event = low_datum, *high_event = high_datum;
 
-    if
-(low_event->timestamp < high_event->timestamp)
+    if (low_event->timestamp < high_event->timestamp)
     {
-        return
-GLOBUS_TRUE;
+        return GLOBUS_TRUE;
     }
-    else if (low_event->timestamp ==
-high_event->timestamp)
+    else if (low_event->timestamp == high_event->timestamp)
     {
-        if (low_event->event_type ==
-GLOBUS_SCHEDULER_EVENT_PENDING)
+        if (low_event->event_type == GLOBUS_SCHEDULER_EVENT_PENDING)
         {
-            return
-GLOBUS_TRUE;
+            return GLOBUS_TRUE;
         }
-        else if (low_event->event_type ==
-GLOBUS_SCHEDULER_EVENT_ACTIVE &&
-                 high_event->event_type
-!= GLOBUS_SCHEDULER_EVENT_PENDING)
+        else if (low_event->event_type == GLOBUS_SCHEDULER_EVENT_ACTIVE &&
+                high_event->event_type != GLOBUS_SCHEDULER_EVENT_PENDING)
         {
-            return
-GLOBUS_TRUE;
+            return GLOBUS_TRUE;
         }
-        else if (high_event->event_type !=
-GLOBUS_SCHEDULER_EVENT_PENDING &&
-                
-high_event->event_type != GLOBUS_SCHEDULER_EVENT_ACTIVE)
+        else if (high_event->event_type != GLOBUS_SCHEDULER_EVENT_PENDING &&
+            high_event->event_type != GLOBUS_SCHEDULER_EVENT_ACTIVE)
         {
-     
-return GLOBUS_TRUE;
+            return GLOBUS_TRUE;
         }
     }
     return GLOBUS_FALSE;
 } /*
 globus_l_fake_compare_events() */
 --------
-
-
- 
