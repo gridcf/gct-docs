@@ -2,6 +2,8 @@
 export XML_CATALOG_FILES=$(CURDIR)/$(TOPDIR)/catalog
 #export XML_DEBUG_CATALOG= 1
 
+parentdir=.
+
 # Allow local overrides if wanted
 ifneq ($(wildcard $(TOPDIR)/local.mk),)
 include $(TOPDIR)/local.mk
@@ -114,7 +116,7 @@ distclean: distclean-recursive
 	
 olink-recursive html-recursive yaml-recursive pdf-recursive clean-recursive distclean-recursive:
 	@if [ "$(SUBDIRS)" != "" ]; then \
-            for dir in $(SUBDIRS); do echo "Entering $$dir [$(subst -recursive,,$@])" ; $(MAKE) -C $$dir $(subst -recursive,,$@) || exit 1; done \
+            for dir in $(SUBDIRS); do echo "Entering $(parentdir)/$$dir [$(subst -recursive,,$@])" ; $(MAKE) -C $$dir parentdir=$(parentdir)/$$dir $(subst -recursive,,$@) || exit 1; done \
         fi
 
 
