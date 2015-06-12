@@ -1,0 +1,146 @@
+:doctype: article
++++++++++
+<?dbhtml filename="Usage_Stats.html" ?>
++++++++++
+
+== Usage Statistics Collection by the Globus Alliance ==
+
+Beginning with GT 3.9.5, the Globus Toolkit has the capability to send usage
+statistics back to the Globus Alliance.
+
+* link:#whyarewedoingthis[Why are we doing this?]
+* link:#theoverview[The overview]
+* link:#optout[Opt-out]
+* link:#whatissent[What is sent?]
+* link:#howisthedatasent[How is the data sent?]
+* link:#whenisthedatasent[When is it sent?]
+* link:#whatwillitbeusedfor[What will the data be used for?]
+* link:#feedback[Feedback]
+
+[[whyarewedoingthis]]
+=== Why are we doing this? ===
+
+The Globus Alliance receives support from government funding agencies. In
+a time of funding scarcity, these agencies must be able to demonstrate that
+the scientific community is benefiting from their investment. To this end,
+we want to provide generic usage data about such things as the following:
+
+* how many people use GridFTP
+* how many jobs run using GRAM
+
+To this end, we have added support to the Globus Toolkit that will allow
+installations to send us generic usage statistics. By participating in this
+project, you help our funders to justify continuing their support for the
+software on which you rely.
+
+[[theoverview]]
+=== The overview ===  
+
+* Components affected for GT6 are:
+** GridFTP
+** GRAM5
+** MyProxy
+** GSI-OpenSSH
+
+
+* The data sent is as generic as possible (see link:#whatissent[What is Sent?]
+  below).
+* Every component affected has a section titled "Usage Statistics" in its Users
+  and Admin guides that lists precisely what is sent and the configuration
+  control that is available (which you can use to *disable* the
+  ability to send the data).
+* To make this a win-win proposition, we have made the receiver for the data
+  available (follow the directions
+  http://www.mcs.anl.gov/%7fbester/usagestats_server/[here] This means that a
+  (virtual) organization could set up their own listener and collect
+  organization wide usage statistics.
+
+[[optout]]
+=== Opt-out === 
+We are using opt-out rather than opt-in. The reason is that we _need_
+this data - it is a requirement for funding. We're sure our fellow users would
+be willing to help show that Grid Computing works and is in use. Realistically,
+however, we know that if it requires any additional effort to set up usage
+statistic reporting, it would drastically reduce the number of users that would
+actually report the data. To be effective, we need to require zero additional
+effort.
+
+By not opting out, and allowing these statistics to be reported back, you are
+explicitly supporting the further development of the Globus Toolkit.
+
+[[whatissent]]
+=== What is sent? === 
+
+The components affected for GT6 are GridFTP, RLS, GRAM5, MyProxy and
+GSI-OpenSSH. We send the "how much" data, not "the what" data.  
+
+For instance, GridFTP sends the number of bytes, how long the transfer took,
+how many streams were used, etc. It does NOT send filenames, usernames, or even
+the destination IP since that would mean that the source site would make a
+decision about sending information about the destination site. 
+
+Each component has a section in its Users  and Admin guides listing what
+component specific data is sent, and the Admin guide explains 
+configurations related to the usage statistics. 
+Links to these sections are provided here:
+
+
+* link:gridftp/admin/index.html#gridftp/admin/#gridftp-usage[GridFTP]
+* link:gram5/admin/index.html#gram5-usage[GRAM5]
+* link:myproxy/admin/index.html#myproxy-usage[MyProxy]
+* link:openssh/admin/index.html#openssh-usage[GSI-OpenSSH]
+
+
+Header data that may be sent by every component, not including the
+component-specific data listed above, are:
+
+* Component identifier
+* Usage data format identifier
+* Time stamp
+* Source IP address
+* Source hostname (to differentiate between hosts with identical private IP
+  addresses)
+
+
+[[howisthedatasent]]
+=== How is the data sent? ===
+The messages are sent as a single UDP packet.  While this may cause us to lose
+some data, it drastically reduces the possibility that the usage statistics
+reporting can adversely affect the operation of the software.
+
+[[whenisthedatasent]]
+=== When is the data sent? ===
+Once per "task" (GridFTP transfer, GRAM Job, etc), either immediately upon
+startup, or at completion of the task.
+
+[[whatwillitbeusedfor]]
+=== What will the data be used for? === 
+
+The data will be used for answering questions such as:
+
+* How many jobs were run with GRAM last month?
+* How many gigabytes of data has GridFTP moved?
+
+We will also try and mine the data to answer operational questions such as:
+
+* What percentage of the jobs run complete successfully?
+* Of the ones that fail, what is the most common fault code returned?
+
+
+The data will *NOT* be used to answer questions such as "IP 123.456.789.012
+  sent 10 TB of data last month"
+
+Our intent is to make the data that we get generic enough that we do not have
+to worry what is done with it. We record the IP only for counting purposes to
+know how many sites there are, but we will not produce site-specific
+statistics. 
+
+[[feedback]]
+=== Feedback ===
+
+Please send us your feedback at usage-stats@globus.org.
+Feedback from our user communities will be useful in determining our path
+forward with this in the future. We do ask that if you have concerns or
+objections, please be specific in your feedback. For example: "Our site has a
+policy against sending such data" is good information for us to know in the
+future.  A link to such a policy would be even better.

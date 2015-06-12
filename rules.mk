@@ -35,8 +35,8 @@ ifeq (,$(FO_FILES))
     FO_FILES    = index.fo
 endif
 
-CLEANFILES = $(HTML_FILES) $(PDF_FILES) $(LINT_FILES) $(DB_FILES) $(FO_FILES)
-DISTCLEANFILES = dependencies $(patsubst %.html,%.xml,$(HTML_FILES))
+CLEANFILES = $(patsubst %.html,%.xml,$(HTML_FILES)) $(HTML_FILES) $(PDF_FILES) $(LINT_FILES) $(DB_FILES) $(FO_FILES)
+DISTCLEANFILES = dependencies
 
 # Determine if xep or fop are available automatically
 ifeq (,$(XEP)$(FOP))
@@ -60,7 +60,7 @@ ifeq (,$(A2X))
         ifneq (,$(shell which a2x.py))
             A2X=$(shell which a2x.py)
         else
-            A2X=echo missing tool a2x
+            A2X=echo Missing tool a2x; exit 1 :
         endif
     endif
 endif
@@ -84,10 +84,20 @@ endif
 
 # if pdftk is available, us it to concatenate pdf files, otherwise, use gs
 # if available
-ifneq (,$(shell which pdftk))
+ifeq (,$(PDFTK)$(GS)$(NO_PDF_CONCAT))
+    PDFTK := $(shell which pdftk)
+    ifeq (,$(PDFTK))
+        GS := $(shell which gs))
+        ifeq (,$(GS))
+            NO_PDF_CONCAT := :
+        endif
+    endif
+endif
+
+ifneq (,$(PDFTK))
     CONCAT_PDFS = pdftk $(filter %.pdf,$^) cat output $@
 else
-    ifneq (,$(shell which gs))
+    ifneq (,$(GS))
     CONCAT_PDFS = gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$@ $(filter %.pdf,$^)
     else
 	CONCAT_PDFS=:
@@ -105,15 +115,21 @@ all: dependencies olink html yaml $(PDF_TARGET)
 
 include dependencies
 
-olink: olink-recursive $(DB_FILES)
-html: html-recursive $(HTML_FILES)
-yaml: yaml-recursive $(YAML_FILES)
-pdf: pdf-recursive $(PDF_FILES) $(PDF_COLLECTIONS)
-clean: clean-recursive
+olink: olink-recursive olink-local
+olink-local: $(DB_FILES)
+html: html-recursive html-local
+html-local: $(HTML_FILES)
+yaml: yaml-recursive yaml-local
+yaml-local: $(YAML_FILES)
+pdf: pdf-recursive pdf-local
+pdf-local: $(PDF_FILES) $(PDF_COLLECTIONS)
+clean: clean-recursive clean-local
+clean-local:
 	@for f in $(CLEANFILES); do [ -f "$$f" ] && rm "$$f" || true; done
-distclean: distclean-recursive
+distclean: distclean-recursive distclean-local
+distclean-local:
 	@for f in $(CLEANFILES) $(DISTCLEANFILES); do [ -f "$$f" ] && rm "$$f" || true; done
-	
+
 olink-recursive html-recursive yaml-recursive pdf-recursive clean-recursive distclean-recursive:
 	@if [ "$(SUBDIRS)" != "" ]; then \
             for dir in $(SUBDIRS); do echo "Entering $(parentdir)/$$dir [$(subst -recursive,,$@])" ; $(MAKE) -C $$dir parentdir=$(parentdir)/$$dir $(subst -recursive,,$@) || exit 1; done \
@@ -184,7 +200,7 @@ dependencies:
 	$(A2X) -f docbook $<
 
 $(SUBDIRS):
-	@make -C $@
+	@make XEP="$(XEP)" FOP="$(FOP)" A2X="$(A2X)" PDFTK="$(PDFTK)" GS="$(GS)) -C $@
 
 .SUFFIXES: .db .xml .pdf .fo .txt
-.PHONY: all olink-recursive olink clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS)
+.PHONY: all olink-recursive olink clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS) olink-local html-local yaml-local pdf-local
