@@ -19,4 +19,3 @@ At this time, many components are still working on updating their migration guid
 * Common Runtime Components
 ** link:../../xio/mig/index.html[XIO]
 ** link:../../ccommonlib/mig/index.html[C Common Libraries]
---
