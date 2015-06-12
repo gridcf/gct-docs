@@ -486,5 +486,5 @@ transitions. These states and their meanings follow:
 
 .GRAM State Transitions
 --
-image::GRAM5_states.png[scaledwidth="75%",align="center"]
+image::../../gram5/GRAM5_states.png[align="center"]
 --

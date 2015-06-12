@@ -243,7 +243,7 @@ lifetimes.
 
 .The new certificate is signed by the owner, rather than a CA.
 --
-image::gssapi1.gif[scaledwidth="75%",align="center"]
+image::../../gsic/key/gssapi1.gif[scaledwidth="75%",align="center"]
 --
 The proxy's private key must be kept secure, but because the proxy isn't
 valid for very long, it doesn't have to kept quite as secure as the
