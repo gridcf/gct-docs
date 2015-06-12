@@ -4,9 +4,9 @@ PDF_FILES=gram5DeveloperGuide.pdf
 
 # This rule is used to create docbook files from the Pod documentation
 # in the perl module
-ifneq (,$(shell which pod2docbook))
+ifneq (,$(shell which pod2docbook 2>/dev/null))
 %.xml: %.sgml
-	echo '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">' > $@
+	echo '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">' > $@
 	sed -e 1d -e 's/><anchor//' -e s'/<refentry>/<refentry id="Globus::GRAM::$(shell basename $*)">/' < $< >> $@
 
 %.sgml: %.pm
@@ -18,9 +18,6 @@ endif
 fake.pm: fake-prologue.pm fake-config.pm fake-constructor.pm fake-submit.pm fake-poll.pm fake-cancel.pm fake-epilogue.pm
 	cat $+ > $@
 
-# somewhat inverted to above, extract the SEG module from the tutorial
-seg_fake_module.c: GRAM5_LRM_Adapter_Tutorial_SEG.xml
-	xsltproc extract-seg-module.xsl $<
 
 TOPDIR=../..
 include $(TOPDIR)/rules.mk
