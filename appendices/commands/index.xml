@@ -3143,13 +3143,31 @@ Path to become the new root after authentication.  This path must contain a vali
 <listitem>
 <simpara>
 Add levels together to use more than one.
-    0 = Disables all authorization checks.
-    1 = Authorize identity.
-    2 = Authorize all file/resource accesses.
-    4 = Disable changing process uid to authenticated user (no setuid)&#8201;&#8212;&#8201;DO NOT use this when process is started as root.
-If not set uses level 2 for front ends and level 1 for data nodes.  Note that levels 2 and 4 imply level 1 as well.
 </simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+0 = Disables all authorization checks.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+1 = Authorize identity.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+2 = Authorize all file/resource accesses.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+4 = Disable changing process uid to authenticated user (no setuid)&#8201;&#8212;&#8201;DO NOT use this when process is started as root.
+</simpara>
+<simpara>If not set uses level 2 for front ends and level 1 for data nodes.  Note that levels 2 and 4 imply level 1 as well.</simpara>
 <simpara>This option can also be set in the configuration file as <literal>auth_level</literal>.</simpara>
+</listitem>
+</itemizedlist>
 </listitem>
 </varlistentry>
 <varlistentry>

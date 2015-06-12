@@ -1138,22 +1138,24 @@ driver, which provides a driver that allows for secure connections.</simpara>
 <title>Security</title>
 <section id="gsic-security-considerations">
 <title>Security considerations for GSI C</title>
-<itemizedlist>
-<listitem>
-<simpara>
-During host authorization, the toolkit treats host names of the form "hostname-<emphasis>ANYTHING</emphasis>.edu" as equivalent to "hostname.edu". This means that if a service was set up to do host authorization and hence accept the certificate "hostname.edu", it would also accept certificates with DNs "hostname-<emphasis>ANYTHING</emphasis>.edu".
-</simpara>
-<simpara>The feature is in place to allow a multi-homed host following a "hostname-interface" naming convention, to have a single host certificate. For example, host "grid.test.edu" would also accept the likes of "grid-1.test.edu" or "grid-foo.test.edu".</simpara>
+<simpara>During host authorization, the toolkit treats host names of the form
+<literal>hostname-</literal><emphasis>ANYTHING</emphasis><literal>.edu</literal> as equivalent to <literal>hostname.edu</literal>. This means that if
+a service was set up to do host authorization and hence accept the certificate
+<literal>hostname.edu</literal>, it would also accept certificates with DNs
+<literal>hostname-</literal><emphasis>ANYTHING</emphasis><literal>.edu</literal>.</simpara>
+<simpara>The feature is in place to allow a multi-homed host following a
+"hostname-interface" naming convention, to have a single host certificate. For
+example, host <literal>grid.test.edu</literal> would also accept the likes of <literal>grid-1.test.edu</literal>
+or <literal>grid-foo.test.edu</literal>.</simpara>
 <note>
-<simpara>The string <emphasis>ANYTHING</emphasis> matches only the name of the host and not domain components. This means that "hostname.edu" will not match "hostname-foo.sub.edu", but will match "host-foo.edu".</simpara>
+<simpara>The string <emphasis>ANYTHING</emphasis> matches only the name of the host and not domain
+components. This means that <literal>hostname.edu</literal> will not match
+<literal>hostname-foo.sub.edu</literal>, but will match <literal>host-foo.edu</literal>.</simpara>
+<simpara>If a host was set up to accept <literal>hostname-1.edu</literal>, it will not accept
+<literal>hostname-</literal><emphasis>ANYTHING</emphasis><literal>.edu</literal> but will accept <literal>hostname.edu</literal>. That is, only one
+of the names being compared may contain the hyphen character in the host name.</simpara>
 </note>
-<note>
-<simpara>If a host was set up to accept "hostname-1.edu", it will not accept "hostname-<emphasis>ANYTHING</emphasis>.edu" but will accept "hostname.edu". That is, only one of the names being compared may contain the hyphen character in the host name.</simpara>
-</note>
-<simpara>A <ulink url="http://bugzilla.globus.org/bugzilla/show%5fbug.cgi?id=2969">bug</ulink> has been opened to see if this feature needs to be modified.</simpara>
 <simpara>In GT 6.0, it is possible to disable this behavior, by setting the enviornment variable <literal>GLOBUS_GSSAPI_NAME_COMPATIBILITY</literal> to <literal>STRICT_RFC2818</literal>.</simpara>
-</listitem>
-</itemizedlist>
 </section>
 <section id="myproxy-security-considerations">
 <title>MyProxy Security Considerations</title>

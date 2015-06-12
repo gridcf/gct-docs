@@ -2380,10 +2380,14 @@ Set the environment variable GLOBUS_TCP_PORT_RANGE
 <simpara>where min,max specify the port range that you have opened for the
 incoming connections on the firewall. This restricts the listening ports
 of the GridFTP client to this range. Recommended range is 1000 (e.g.,
-50000-51000) but it really depends on how much use you expect.
-. If you have a firewall blocking the outgoing connections and you have
+50000-51000) but it really depends on how much use you expect.</simpara>
+</listitem>
+<listitem>
+<simpara>
+If you have a firewall blocking the outgoing connections and you have
 opened a range of (local) ports, set the environment variable
-GLOBUS_TCP_SOURCE_RANGE:</simpara>
+GLOBUS_TCP_SOURCE_RANGE:
+</simpara>
 <screen>export GLOBUS_TCP_PORT_RANGE=min,max</screen>
 <simpara>where min,max specify the port range that you have opened for the
 outgoing connections on the firewall. This restricts the GridFTP client

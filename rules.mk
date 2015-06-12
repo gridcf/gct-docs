@@ -58,6 +58,18 @@ ifeq (,$(XEP)$(FOP))
     endif
 endif
 
+ifeq (,$(A2X))
+    ifneq (,$(shell which a2x))
+        A2X=$(shell which a2x)
+    else
+        ifneq (,$(shell which a2x.py))
+            A2X=$(shell which a2x.py)
+        else
+            A2X=echo missing tool a2x
+        endif
+    endif
+endif
+
 # If we can use xep or fop, define some macros to build the pdf documentation
 ifneq (,$(XEP))
     FO_PARAMS=--param xep.extensions 1 --param fop1.extensions 0
@@ -131,16 +143,7 @@ dependencies-recursive: dependencies
         fi
 
 dependencies:
-	printf "" > $@
-	for target in target.db $(FO_FILES) $(HTML_FILES) $(LINT_FILES) $(YAML_FILES); do \
-            xsltproc --nonet \
-            --stringparam  target  "$$target" \
-            --stringparam  source  "$(SOURCE)" \
-            --stringparam  topdir  "$(TOPDIR)" \
-	    $(EXTRA_XSLTPROC_PARAMS) \
-            $(TOPDIR)/depends.xsl \
-            $(SOURCE) >> $@; \
-        done;
+	$(TOPDIR)/docbook/dependencies.py $(patsubst %.html,%.xml,$(HTML_FILES))> $@
 	$(SET_FILE_PERMISSIONS)
 
 %.lint: %.xml
@@ -192,10 +195,11 @@ dependencies:
         fi
 	@$(SET_FILE_PERMISSIONS)
 
+%.xml: %.txt
+	$(A2X) -f docbook $<
+
 $(SUBDIRS):
 	@make -C $@
 
-%.txt: %.xml
-	@$(TOPDIR)/docbook/docbook-to-asciidoc.py -t $(TOPDIR) $< 
-.SUFFIXES: .db .xml .lint .pdf .fo
+.SUFFIXES: .db .xml .lint .pdf .fo .txt
 .PHONY: all olink-recursive olink lint-recursive lint clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS)
