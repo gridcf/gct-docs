@@ -1,117 +1,100 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<article id="xioMig">
-  <title> GT <replaceable role="entity">version</replaceable> Migrating Guide for XIO</title>
-  <titleabbrev>Migrating Guide</titleabbrev>
-
-  <para>The following provides information about migrating from previous versions of the Globus
-  Toolkit.</para>
-    
-    <section id="xio-migrating-GT4.2">
-        <title>Migrating XIO from GT4.2.x</title>
-        <para>The only significant change to Globus XIO in this release is the 
-            addition of "string attributes".  The previous method of handling
-            attributes still works in an entirely backward compatible way,
-            but the string attributes adds a much needed convenience. Drivers
-            can now provide a list of key=value pairs.  A user can then
-            specify these options at the command line and at run time.  This
-            make run time configuration much more flexible.
-        </para>
-        </section>
-  
-  <section id="xio-migrating-GT4">
-    <title>Migrating XIO from GT4.0.x</title>
-    <para>The only significant change to Globus XIO in this release is the 
-          addition of "string attributes".  The previous method of handling
-          attributes still works in an entirely backward compatible way,
-          but the string attributes adds a much needed convenience. Drivers
-          can now provide a list of key=value pairs.  A user can then
-          specify these options at the command line and at run time.  This
-          make run time configuration much more flexible.
-    </para>
-    <para>
-        A driver can choose to expose parameters in a string form. 
-        Providing this feature makes dynamically setting driver specific 
-        options much easier. A user can then load the driver by name and 
-        set specific options by name all at runtime with no object module 
-        references. For example, a TCP driver can be loaded with the string 
-        <emphasis> tcp</emphasis>  and the options can be set with the string 
-        <emphasis> port=50668;keepalive=yes;nodelay=N</emphasis>.
-    </para>
-    <para>
-        This would set the port to 50668, keepalive to true and nodelay to 
-        false.  The particular string definition is defined by the tcp 
-        driver.  This is done by creating a globus_i_xio_attr_parse_table_t 
-        array within the drivers source code.  
-See the TCP driver source code for an example.
-        Each row of the array is 1 option.  There are 3 sub-members of 
-        each row entry: key, cmd, and parse function. 
-        The key is a string that defines what option is to be set. 
-        In the above example string  <emphasis>port</emphasis> would be a 
-        key.   <emphasis>cmd</emphasis> tells the driver what cntl is 
-        associated with the key.  In other words, once the string is 
-        parsed out it converts the key into a driver specific control enum.
-        XIO then uses that enum as it would if a driver specific option
-        was set in the source code.  For more information on controls see 
-        globus_xio_attr_cntl. 
-    </para>
-    <para>
-     The final value in the array entry is the parsing function. The passing 
-     function takes the value of the key=value string and turns it into
-     the specific data type associated with that function.  There are
-     many available parsing functions but the developer is free to right
-     their own.  Here are some examples:
-     <itemizedlist> 
-         <listitem>
-             <para>globus_i_xio_attr_string_single_bool</para>
-         </listitem>
-     </itemizedlist>
-     <itemizedlist> 
-         <listitem>
-             <para>globus_i_xio_attr_string_single_float</para>
-         </listitem>
-     </itemizedlist>
-     <itemizedlist> 
-         <listitem>
-             <para>globus_i_xio_attr_string_single_int</para>
-         </listitem>
-     </itemizedlist>
-     <itemizedlist> 
-         <listitem>
-             <para>globus_i_xio_attr_string_single_string</para>
-         </listitem>
-     </itemizedlist>
-     <itemizedlist> 
-         <listitem>
-             <para>globus_i_xio_attr_string_dual_positive_int</para>
-         </listitem>
-     </itemizedlist>
-    </para>
-
-    <para>
-        <replaceable role="entity">version</replaceable> No other differences 
-       will be noticed by those previously familiar with globus_xio.
-      </para>
-  </section>
-  
-  
-  <section id="xio-migrating-GT3">
-    <title>Migrating XIO from GT3</title>
-    <para>Globus XIO has made very few changes in the API since its introduction. Users of GT
-        <replaceable role="entity">version</replaceable> who are previously familiar with globus_xio
-      will notice no difference. </para>
-  </section>
-
-  <section id="xio-migrating-GT2">
-    <title>Migrating XIO from GT2</title>
-    <para>Globus XIO is a new component as of Globus 3.2. Previous versions of Globus provided an
-      API called <computeroutput>globus_io</computeroutput>. XIO is a replacement for
-        <computeroutput>globus_io</computeroutput>; however, a compatibility layer exists to allow
-      full backward compatibility for applications written against globus_io. For users familiar
-      with globus_io the learning curve for XIO will be very small. The APIs use the same event
-      model and only significantly differ in connection establishment. </para>
-  </section>
-
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 Migrating Guide for XIO</title>
+</articleinfo>
+<simpara>The following provides information about migrating from previous
+versions of the Globus Toolkit.</simpara>
+<section id="xio-migrating-GT4.2">
+<title>Migrating XIO from GT4.2.x</title>
+<simpara>The only significant change to Globus XIO in this release is the
+addition of "string attributes". The previous method of handling
+attributes still works in an entirely backward compatible way, but the
+string attributes adds a much needed convenience. Drivers can now
+provide a list of key=value pairs. A user can then specify these options
+at the command line and at run time. This make run time configuration
+much more flexible.</simpara>
+</section>
+<section id="xio-migrating-GT4">
+<title>Migrating XIO from GT4.0.x</title>
+<simpara>The only significant change to Globus XIO in this release is the
+addition of "string attributes". The previous method of handling
+attributes still works in an entirely backward compatible way, but the
+string attributes adds a much needed convenience. Drivers can now
+provide a list of key=value pairs. A user can then specify these options
+at the command line and at run time. This make run time configuration
+much more flexible.</simpara>
+<simpara>A driver can choose to expose parameters in a string form. Providing
+this feature makes dynamically setting driver specific options much
+easier. A user can then load the driver by name and set specific options
+by name all at runtime with no object module references. For example, a
+TCP driver can be loaded with the string <emphasis role="strong"> tcp</emphasis> and the options can be
+set with the string <emphasis role="strong"> port=50668;keepalive=yes;nodelay=N</emphasis>.</simpara>
+<simpara>This would set the port to 50668, keepalive to true and nodelay to
+false. The particular string definition is defined by the tcp driver.
+This is done by creating a globus_i_xio_attr_parse_table_t array within
+the drivers source code. See the TCP driver source code for an example.
+Each row of the array is 1 option. There are 3 sub-members of each row
+entry: key, cmd, and parse function. The key is a string that defines
+what option is to be set. In the above example string <emphasis role="strong">port</emphasis> would be
+a key. <emphasis role="strong">cmd</emphasis> tells the driver what cntl is associated with the key. In
+other words, once the string is parsed out it converts the key into a
+driver specific control enum. XIO then uses that enum as it would if a
+driver specific option was set in the source code. For more information
+on controls see globus_xio_attr_cntl.</simpara>
+<simpara>The final value in the array entry is the parsing function. The passing
+function takes the value of the key=value string and turns it into the
+specific data type associated with that function. There are many
+available parsing functions but the developer is free to right their
+own. Here are some examples:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+globus_i_xio_attr_string_single_bool
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+globus_i_xio_attr_string_single_float
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+globus_i_xio_attr_string_single_int
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+globus_i_xio_attr_string_single_string
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+globus_i_xio_attr_string_dual_positive_int
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>6.0 No other differences will be noticed by those previously familiar
+with globus_xio.</simpara>
+</section>
+<section id="xio-migrating-GT3">
+<title>Migrating XIO from GT3</title>
+<simpara>Globus XIO has made very few changes in the API since its introduction.
+Users of GT 6.0 who are previously familiar with globus_xio will notice
+no difference.</simpara>
+</section>
+<section id="xio-migrating-GT2">
+<title>Migrating XIO from GT2</title>
+<simpara>Globus XIO is a new component as of Globus 3.2. Previous versions of
+Globus provided an API called <literal>globus_io</literal>. XIO is a replacement for
+<literal>globus_io</literal>; however, a compatibility layer exists to allow full
+backward compatibility for applications written against globus_io. For
+users familiar with globus_io the learning curve for XIO will be very
+small. The APIs use the same event model and only significantly differ
+in connection establishment.</simpara>
+</section>
 </article>

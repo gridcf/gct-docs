@@ -1,19 +1,32 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<article id="appendices">
-      <title>GT <replaceable role="entity">version</replaceable>: Appendices</title>
-      <titleabbrev>Appendices</titleabbrev>
-
-      <itemizedlist>
-            <listitem><simpara><olink targetdoc="gtcommands"/> [<ulink url="commands/gtCommands.pdf">PDF</ulink>]</simpara></listitem>
-            <listitem><simpara><olink targetdoc="gtdeveloper"/> [<ulink url="developer/gtDeveloperGuide.pdf">PDF</ulink>]</simpara></listitem>
-            <listitem><simpara><olink targetdoc="gtKey"/> [<ulink url="key/gtKeyConcepts.pdf">PDF</ulink>]</simpara></listitem>
-            <listitem><simpara><olink targetdoc="mig"/> [<ulink url="mig/gtMigratingGuide.pdf">PDF</ulink>]</simpara></listitem>
-      </itemizedlist>
-      
-</article>  
-
-
-
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0: Appendices</title>
+</articleinfo>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url=""></ulink> [<ulink url="commands/gtCommands.pdf">PDF</ulink>]
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url=""></ulink> [<ulink url="developer/gtDeveloperGuide.pdf">PDF</ulink>]
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="../..gt/key/index.html">../..gt/key/index.html</ulink> [<ulink url="key/gtKeyConcepts.pdf">PDF</ulink>]
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url=""></ulink> [<ulink url="mig/gtMigratingGuide.pdf">PDF</ulink>]
+</simpara>
+</listitem>
+</itemizedlist>
+</article>

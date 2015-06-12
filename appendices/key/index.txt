@@ -1,0 +1,12 @@
+= Globus Toolkit 6.0 Key Concepts =
+:doctype: book
+
+:leveloffset: 1
+
+include::../../gridftp/key/index.txt[]
+
+include::../../gram5/key/index.txt[]
+
+include::../../gsic/key/index.txt[]
+
+:leveloffset: 0

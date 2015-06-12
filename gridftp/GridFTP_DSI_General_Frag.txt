@@ -72,6 +72,6 @@ with a specific DSI, i.e., it knows how to interact with a single class
 of storage system, or one particularly useful function for the ESTO/ERET
 functionality mentioned above is to load and configure a DSI on the fly.
 
-See link:../..gridftp/developer/index.html#gridftp-developer-dsi[] for
-more information.
+See link:../../gridftp/developer/index.html#gridftp-developer-dsi[Developing
+DSIs for GridFTP] for more information.
 

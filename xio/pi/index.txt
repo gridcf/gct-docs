@@ -14,7 +14,7 @@ include::../XIO_Interface_API_Frag.txt[]
 include::../XIO_Interface_Env_Frag.txt[]
 
  
-[[xio-error-codes]]
+[[xio-pi-error-codes]]
 == Errors ==
 
 

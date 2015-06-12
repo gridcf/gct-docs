@@ -20,10 +20,8 @@ include::../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.txt[]
 include::../Cred_Mgmt_MyProxy_Interface_Env_Frag.txt[]
 
  
-[[myproxy-error-codes]]
+[[myproxy-pi-error-codes]]
 == Errors ==
-
-
 include::../Cred_Mgmt_MyProxy_Errors_Frag.txt[]
 
   

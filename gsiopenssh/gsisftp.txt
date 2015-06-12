@@ -1,0 +1,21 @@
+[[gsisftp]]
+= GSISFTP(1) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+gsisftp - Secure file transfer
+
+== SYNOPSIS ==
+**++gsisftp++** 
+
+== Tool description ==
+
+The **gsisftp** command provides an interactive interface for
+transferring files to and from remote machines.
+
+
+== Command syntax ==
+
+**gsisftp** pass:[[[user@]host[:dir[/]]] ]
+

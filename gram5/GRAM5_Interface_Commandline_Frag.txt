@@ -1,122 +1,40 @@
 [[gram5-cmd]]
-= GRAM5 Commands =
-
+== GRAM5 Commands ==
 
 :leveloffset: 2
 
 include::globus-fork-starter-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-gatekeeper-admin-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-gatekeeper-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-gram-audit-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-job-cancel-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-job-clean-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-job-get-output-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-job-manager-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-job-run-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-job-status-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-job-submit-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-personal-gatekeeper-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-rvf-check-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-rvf-edit-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::globus-scheduler-event-generator-admin-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globus-scheduler-event-generator-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::globusrun-manual.txt[]
-
 
 :leveloffset: 0

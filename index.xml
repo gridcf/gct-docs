@@ -1,109 +1,105 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<article id="gt">
-            <title>Globus Toolkit <replaceable role="entity">version</replaceable> Release
-                        Manuals</title>
-            <para>The following documents are good places to start with Globus Toolkit <replaceable
-                                    role="entity">version</replaceable>:</para>
-            <itemizedlist>
-                        <listitem>
-                                    <para>For everyone: <itemizedlist>
-                                                  <listitem>
-                                                  <simpara>
-                                                  <olink targetdoc="rn">GT <replaceable
-                                                  role="entity">version</replaceable> Release
-                                                  Notes</olink>
-                                                  </simpara>
-                                                  </listitem>
-                                                                                                  <listitem>
-                                                  <simpara><olink targetdoc="gtcommands">GT
-                                                  Commands</olink></simpara>
-                                                  </listitem>
-                                                </itemizedlist></para>
-                        </listitem>
-                        <listitem>
-                                    <para>For system administrators and those installing GT: <itemizedlist>
-                                                  <listitem>
-                                                  <simpara>
-                                                  <olink targetdoc="gtadmin">Installation
-                                                  Guide</olink>
-                                                  </simpara>
-                                                  </listitem>
-                                                  <listitem>
-                                                  <simpara>
-                                                  <olink targetdoc="quickstart">Quickstart</olink>
-                                                  </simpara>
-                                                  </listitem>
-                                                </itemizedlist></para>
-                        </listitem>
-                       <listitem>
-                                    <para>For End Users: <itemizedlist>
-                                                <!--     <listitem>
-                                                  <simpara><olink targetdoc="gtuser">GT User's
-                                                  Guide</olink></simpara>
-                                                  </listitem> -->
-                                                <listitem>
-                                                            <simpara><olink targetdoc="rn" targetptr="java-api-download">Java API Download</olink></simpara>
-                                                </listitem>
-                                                </itemizedlist></para>
-                        </listitem>
-                        <listitem>
-                                    <para>For Developers: <itemizedlist>
-                                                  <listitem>
-                                                  <simpara>
-                                                  <olink targetdoc="gtdeveloper">GT Developer's
-                                                  Guide</olink>
-                                                  </simpara>
-                                                  </listitem>
-                                                </itemizedlist></para>
-                        </listitem>
-            </itemizedlist>
-            <simpara>GT <replaceable role="entity">version</replaceable> release manuals are divided
-                        into the following areas:</simpara>
-            <itemizedlist>
-                        <listitem>
-                                    <simpara>
-                                                <emphasis role="strong">
-                                                            <olink targetdoc="gridftp">GridFTP</olink> for Data Management
-                                                </emphasis>
-                                    </simpara>
-                                    <simpara>GridFTP provides high-performance and reliable data transport.</simpara>
-                        </listitem>
-                        <listitem>
-                                    <simpara>
-                                                <emphasis role="strong">
-                                                  <olink targetdoc="gram5">GRAM5</olink> for Jobs Management
-                                                </emphasis>
-                                    </simpara>
-                                    <simpara>The Grid Resource Allocation and Management
-                                                (GRAM5) interface as a basic mechanism for initiation, monitoring, management, scheduling,
-                                                and/or coordination of remote computations.</simpara>
-                        </listitem>
-                        <listitem>
-                                    <simpara>
-                                                <emphasis role="strong">
-                                                            <olink targetdoc="gsic">GSI C</olink>, <olink targetdoc="myproxy">MyProxy</olink> and <olink targetdoc="gsiopenssh">GSI-OpenSSH</olink> for Grid Security
-                                                </emphasis>
-                                    </simpara>
-                                    <simpara>These components establish the identity of users or
-                                                services (authentication), protect communications,
-                                                and determine who is allowed to perform what actions
-                                                (authorization), as well as manage user
-                                                credentials.</simpara>
-                        </listitem>
-                        <listitem>
-                                    <simpara>
-                                                <emphasis role="strong">
-                                                  Other Components
-                                                </emphasis>
-                                    </simpara>
-                                    <simpara>GT <replaceable role="entity">shortversion</replaceable> also includes a set of <olink targetdoc="ccommonlib">C Common libraries</olink>
-                                                needed for building grid infrastructure, <olink targetdoc="xio">XIO</olink>, a
-                                                sophisticated and extensible I/O library suitable
-                                                for the dynamic needs of grid
-                                                applications and <olink targetdoc="simpleca">SimpleCA</olink>, a simple certificate 
-                                                authority available for testing purposes.</simpara>
-                        </listitem>
-            </itemizedlist>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>Globus Toolkit 6.0 Release Manuals</title>
+</articleinfo>
+<simpara id="gt">The following documents are good places to start with Globus Toolkit
+6.0:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+For everyone:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="./rn/index.html">GT6.0 Release Notes</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="./appendices/commands/index.html">GT Commands</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+For system administrators and those installing GT:
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="./admin/install/index.html">Installation Guide</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="./admin/quickstart/index.html">Quickstart</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>
+For End Users:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="./rn/index.html#java-api-download">Java API Download</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>
+For Developers:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="./appendices/developer/index.html">GT Developer&#8217;s Guide</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+<simpara>GT 6.0 release manuals are divided into the following areas:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<emphasis role="strong"> <ulink url="./gridftp/index.html">GridFTP</ulink> for Data Management </emphasis>
+</simpara>
+<simpara>GridFTP provides high-performance and reliable data transport.</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis role="strong"> <ulink url="./gram5/index.html">GRAM5</ulink> for Jobs Management </emphasis>
+</simpara>
+<simpara>The Grid Resource Allocation and Management (GRAM5) interface as a basic
+mechanism for initiation, monitoring, management, scheduling, and/or
+coordination of remote computations.</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis role="strong"> <ulink url="./gsic/index.html">GSI C</ulink>, <ulink url="./myproxy/index.html">MyProxy</ulink> and <ulink url="./gsiopenssh/index.html">GSI-OpenSSH</ulink> for Grid Security </emphasis>
+</simpara>
+<simpara>These components establish the identity of users or services (authentication),
+protect communications, and determine who is allowed to perform what actions
+(authorization), as well as manage user credentials.</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis role="strong"> Other Components </emphasis>
+</simpara>
+<simpara>GT 6 also includes a set of <ulink url="./ccommonlib/index.html">C Common libraries</ulink>
+needed for building grid infrastructure, <ulink url="./xio/index.html">XIO</ulink>, a
+sophisticated and extensible I/O library suitable for the dynamic needs of grid
+applications and <ulink url="./simpleca/index.html">SimpleCA</ulink>, a simple certificate
+authority available for testing purposes.</simpara>
+</listitem>
+</itemizedlist>
 </article>

@@ -1,65 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
-<!ENTITY % xinclude SYSTEM "../xinclude.mod">
-%xinclude;
-]>
-<article id="simpleca" xreflabel="SimpleCA">
-  <title>GT <replaceable role="entity">version</replaceable>: SimpleCA</title>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-  <titleabbrev>SimpleCA</titleabbrev>
-
-  <xi:include href="Cred_Mgmt_SimpleCA_Overview_Brief_Frag.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
-
-  <informaltable frame="none">
-    <tgroup cols="2">
-      <colspec colname="c1" />
-
-      <colspec colname="c2" />
-      <tbody>
-        <row>
-          <entry nameend="c2" namest="c1">The following guides are available
-          for this component:</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-            targetdoc="gsicKey">Security Key Concepts</olink>
-          </emphasis></entry>
-
-          <entry>For important general concepts.  [<ulink url="../gsic/key/gsicKeyConcepts.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="simplecaAdmin">Admin Guide</olink> </emphasis></entry>
-
-          <entry>For system administrators and those installing, building and
-          deploying GT. You should already have read the <olink
-          targetdoc="gtadmin">Installation Guide</olink> and <olink
-          targetdoc="quickstart">Quickstart</olink> (which contains an example
-          of using SimpleCA).  [<ulink url="admin/simplecaAdminGuide.pdf">pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="simplecaRN">Release Notes</olink> </emphasis></entry>
-
-          <entry>What's new with the <replaceable
-          role="entity">version</replaceable> release for this
-          component.  [<ulink url="rn/simplecaReleaseNotes.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><ulink url="simpleca.pdf"><emphasis role="strong">All SimpleCA Guides (PDF only)</emphasis></ulink></entry>
-
-          <entry>Includes all SimpleCA guides</entry>
-
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0: SimpleCA</title>
+</articleinfo>
+<simpara id="simpleca" xreflabel="SimpleCA">SimpleCA provides a simple implementation of a certification authority
+which can issue X.509 certificates to Globus Toolkit users and services.</simpara>
+<simpara>The following guides are available for this component:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+link:key/index.html[Security Key Concepts
+</term>
+<listitem>
+<simpara>
+    For important general concepts.  [<ulink url="../gsic/key/gsicKeyConcepts.pdf">pdf</ulink>]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="admin/index.html">Admin Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    For system administrators and those installing, building and deploying GT.
+    You should already have read the
+    <ulink url="../admin/index.html">Installation Guide</ulink> and
+    <ulink url="../admin/quickstart/index.html">Quickstart</ulink> which contains an example
+    of using SimpleCA.
+    [<ulink url="admin/simplecaAdminGuide.pdf">pdf</ulink>]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="rn/index.html">Release Notes</ulink>
+</term>
+<listitem>
+<simpara>
+    What&#8217;s new with the &lt;replaceable role=<emphasis>entity</emphasis>&gt;version&lt;/replaceable&gt;
+    release for this component.  [<ulink url="rn/simplecaReleaseNotes.pdf">pdf</ulink>]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="simpleca.pdf">All SimpleCA Guides (PDF only)</ulink>
+</term>
+<listitem>
+<simpara>
+    Includes all SimpleCA guides
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
 </article>

@@ -1,0 +1,13 @@
+[[xio-admin-troubleshooting]]
+== Troubleshooting ==
+
+
+=== Set GLOBUS_LOCATION correctly ===
+
+
+
+* The environment variable ++GLOBUS_LOCATION++ must be set to a valid Globus 6.0 installation.
+
+* Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: ++source $GLOBUS_LOCATION/etc/globus-user-env.sh++ or ++source $GLOBUS_LOCATION/etc/globus-user-env.csh++ depending on the shell you are using.
+
+include::XIO_Errors_Frag.txt[]

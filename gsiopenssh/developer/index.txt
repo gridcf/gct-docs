@@ -1,11 +1,8 @@
-
 [[gsiopensshDeveloper,Developer's Guide]]
-:doctype: book
 = GT 6.0 GSI-OpenSSH: Developer's Guide =
-
+:doctype: book
   
 [[gsiopenssh-developer-introduction]]
-
 .Introduction
 --
 This document provides information for GSI-OpenSSH developers. 
@@ -89,10 +86,11 @@ include::../Util_OpenSSH_Interface_Env_Frag.txt[]
 === Common GT Errors ===
 
 
-
+:leveloffset: 1
 
 include::../Util_OpenSSH_Errors_Frag.txt[]
 
+:leveloffset: 0
 
 [[gsiopenssh-errors]]
 === Additional GSI-OpenSSH Troubleshooting ===

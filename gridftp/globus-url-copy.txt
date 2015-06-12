@@ -1,3 +1,4 @@
+[[globus-url-copy]]
 GLOBUS-URL-COPY(1)
 ==================
 :doctype:       manpage
@@ -5,27 +6,23 @@ GLOBUS-URL-COPY(1)
 :man manual:    Globus Toolkit Manual
 
 
-NAME
-----
+== NAME ==
 globus-url-copy - globus-url-copy
 
 [[globus-url-copy-SYNOPSIS]]
-SYNOPSIS
---------
+== SYNOPSIS ==
 *globus-url-copy* [options] SOURCE-URL DESTINATION-URL
 
 
 [[globus-url-copy-DESCRIPTION]]
-DESCRIPTION
------------
+== DESCRIPTION ==
 The *globus-url-copy* program is a command line
 tool for multi-protocol data movement. It supports gsiftp:// (GridFTP),
 ftp://, http://, https://, sshftp:// and file:/// protocol specifiers
 in the URL.
 
 [[globus-url-copy-OPTIONS]]
-OPTIONS
--------
+== OPTIONS ==
 *-help, -usage*::
     Print help.
 
@@ -307,6 +304,5 @@ OPTIONS
 
 
 [[globus-url-copy-AUTHOR]]
-AUTHOR
-------
+== AUTHOR ==
 Copyright (C) 1999-2014 University of Chicago

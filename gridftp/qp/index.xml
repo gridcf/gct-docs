@@ -1,44 +1,148 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-]>
-<article id="gridftpQP">
-  <title>GT <replaceable role="entity">version</replaceable> GridFTP: Quality Profile</title>
-  <titleabbrev>Quality Profile</titleabbrev>
-  <section id="gridftp-qp-test">
-    <title>Test coverage reports </title>
-    <para>There are no test coverage reports available at this time.</para>
-  </section>
-  <section id="gridftp-qp-code">
-    <title>Code analysis reports </title>
-    <para>There are no code analysis reports available at this time.</para>
-  </section>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Known_Problems_Frag.xml"/>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GridFTP_Fixed_Bugs_Frag.xml"/>
-
-  <section id="gridftp-qp-performance">
-    <title>Performance reports </title>
-    <indexterm type="gridftp">
-      <primary>performance reports (GridFTP)</primary>
-    </indexterm>
-    <itemizedlist>
-      <listitem>
-        <simpara>
-          <ulink url="../gridftp_performance.doc">Performance of Globus
-            Striped GridFTP Server on TeraGrid</ulink>
-        </simpara>
-      </listitem>
-      <listitem>
-        <simpara>
-          <ulink url="../gridftp_scalability.doc">GridFTP Scalability and
-            Performance Results</ulink>
-        </simpara>
-      </listitem>
-    </itemizedlist>
-  </section>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 GridFTP: Quality Profile</title>
+</articleinfo>
+<section id="gridftp-qp-test" xreflabel="Quality Profile">
+<title>Test coverage reports</title>
+<simpara>There are no test coverage reports available at this time.</simpara>
+</section>
+<section id="gridftp-qp-code">
+<title>Code analysis reports</title>
+<simpara>There are no code analysis reports available at this time.</simpara>
+<section id="gridftp-outstanding">
+<title>Known Problems in GridFTP</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GRIDFTP-178">GRIDFTP-178</ulink>: Hanging server processes with GT5.0.4 striped GridFTP servers
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-2">GT-2</ulink>: GUC will treat directory as if its a file for the purpose of sync comparison
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-4">GT-4</ulink>: Can&#8217;t build gridftp server with alternate CC, needed by LTA
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-5">GT-5</ulink>: globus-url-copy doesn&#8217;t pipeline url input from a file
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-6">GT-6</ulink>: GridFTP installation on OpenBSD 4.9
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-7">GT-7</ulink>: Issues with netlogger style logs
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-8">GT-8</ulink>: globus-url-copy -rst &#8230; -st &#8230; segfault if the options are not correctly synchronized
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-10">GT-10</ulink>: Problem checking directory permissions with MLST
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-11">GT-11</ulink>: globus-url-copy -rst segfault if the network is not working
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-12">GT-12</ulink>: GUC exits with zero when it hits a stall-timeout
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-273">GT-273</ulink>: can discover user names even with restrict path
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-284">GT-284</ulink>: GridFTP pipelining and reliability issues
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-318">GT-318</ulink>: globus-url-copy (guc) and "-do" option inconsistency
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-374">GT-374</ulink>: Can&#8217;t share files in a path structure with symlinks: <emphasis>path not allowed</emphasis> error
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-397">GT-397</ulink>: gridftp doesn&#8217;t error if file with unrepresentable name is used (MLSC)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-413">GT-413</ulink>: Clarify errors whenever sharing file operations fail
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-414">GT-414</ulink>: globus-gridftp-server closing connection before returning cksm value
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-428">GT-428</ulink>: Improve handling of hanging GridFTP server processes
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-450">GT-450</ulink>: extra newline in PASV error message
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-472">GT-472</ulink>: GridFTP server fails to detect client disconnection with piplining
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gridftp-fixed-bugs">
+<title>Fixed Bugs for GridFTP</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Fix crash on DCAU N with custom net stack
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="gridftp-qp-performance">
+<title>Performance reports</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="../gridftp_performance.doc">Performance of Globus Striped GridFTP Server on TeraGrid</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="../gridftp_scalability.doc">GridFTP Scalability and Performance Results</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
 </article>

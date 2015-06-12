@@ -53,8 +53,8 @@ The NAME strings that are currently understood are
 | Configuration Entry | Description | Environment Override | Default Value
 | ++FORCE_TLS++
 | A flag to choose whether to force TLS or
-  to allow SSLv3 as well. Set this to <literal>true</literal> to
-  disable SSLv3, or <literal>false</literal> to allow either to be
+  to allow SSLv3 as well. Set this to ++true++ to
+  disable SSLv3, or ++false++ to allow either to be
   negotiated.
 | ++GLOBUS_GSSAPI_FORCE_TLS++
 | ++false++
@@ -112,9 +112,9 @@ certificates directory is looked for in the following order:
 
 The following two files must exist in the directory for each trusted CA:
 
-++'cert_hash'.0++::
+'cert_hash'++.0++::
     The trusted CA Certificate.
-++'cert_hash'.signing_policy++::
+'cert_hash'++.signing_policy++::
     A configuration file defining the distinguished names of certificates
     signed by the CA.
 
@@ -198,13 +198,10 @@ configuration files:
 Many CAs provide tools to install configuration files with the following
 names in the Trusted Certificates directory:
 
-* ++globus-user-ssl.conf.'cert_hash'++
-
-* ++globus-host-ssl.conf.'cert_hash'++
-
-* ++grid_security.conf.'cert_hash'++
-
-* ++directions.'cert_hash'++
+* ++globus-user-ssl.conf.++'cert_hash'
+* ++globus-host-ssl.conf.++'cert_hash'
+* ++grid_security.conf.++'cert_hash'
+* ++directions.++'cert_hash'
 
 
 
@@ -300,12 +297,12 @@ service. This will create the following three files:
 
 
 
-++'GRID_SECURITY/service_name/service_name'cert.pem++::
+'GRID_SECURITY/service_name/service_name'++cert.pem++::
     An empty file. When you receive your actual service certificate from your
     CA, you should place it in this file.
-++'GRID_SECURITY/service_name/service_name'cert_request.pem++::
+'GRID_SECURITY/service_name/service_name'++cert_request.pem++::
     The certificate request, which you should send to your CA.
-++'GRID_SECURITY/service_name/service_name'key.pem++::
+'GRID_SECURITY/service_name/service_name'++key.pem++::
     The private key associated with your certificate request, encrypted with
     the pass phrase that you entered when prompted by
     **++grid-cert-request++**.

@@ -5,15 +5,20 @@
 
 === Common Runtime Environmental Variables ===
 
+:leveloffset: 1
 
 include::../../xio/XIO_Interface_Env_Frag.txt[]
 
 
 include::../../ccommonlib/C_Common_Libraries_Interface_Env_Frag.txt[]
 
+:leveloffset: 0
+
 
 === Security Environmental Variables ===
 
+
+:leveloffset: 1
 
 include::../../gsic/GSIC_Interface_Env_Frag.txt[]
 
@@ -23,9 +28,14 @@ include::../../myproxy/Cred_Mgmt_MyProxy_Interface_Env_Frag.txt[]
 
 include::../../gsiopenssh/Util_OpenSSH_Interface_Env_Frag.txt[]
 
+:leveloffset: 0
+
 
 === Data Management Environmental Variables ===
+
+:leveloffset: 1
 
 
 include::../../gridftp/GridFTP_Interface_Env_Frag.txt[]
 
+:leveloffset: 0

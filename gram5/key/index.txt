@@ -58,11 +58,11 @@ implementation as well as the abstract design and features.
 
 
 Service model::
-    For GRAM5, the ++**globus-gatekeeper++** daemon and GSI library are used
+    For GRAM5, the **++globus-gatekeeper++** daemon and GSI library are used
     for secure communications and service dispatch.
 +
-    The **++globus-job-manager++** daemon implements the job management and
-    file transfer functionality.
+The **++globus-job-manager++** daemon implements the job management and
+file transfer functionality.
 
 Local Resource Manager Adapters::
     GRAM provides a scripted plug-in architecture to enable extension with

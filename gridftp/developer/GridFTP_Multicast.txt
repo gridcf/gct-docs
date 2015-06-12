@@ -237,7 +237,9 @@ the urls in the file. An example globus-url-copy command is:
 --------
 
 
-include::../user/index.txt[]
+:leveloffset: 1
+include::../user/GridFTP_User_Multicasting.txt[]
+:leveloffset: 0
 
 
 ==== Required Server Options ====

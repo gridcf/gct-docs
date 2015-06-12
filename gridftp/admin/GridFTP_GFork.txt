@@ -324,7 +324,7 @@ memory management algorithm do its job. This limit is set with:
 instance = <int>
 --------
 
-We recommend a value of 100 or |RAM|/2M, whichever is smaller.
+We recommend a value of 100 or 'RAM'/2M, whichever is smaller.
 
 The following is an example of a GFork configuration file with memory
 limiting enabled:

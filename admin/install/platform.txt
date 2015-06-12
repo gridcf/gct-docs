@@ -2,12 +2,10 @@
 [[gtadmin-platform]]
 == Platform Notes ==
 
-
 === Platform Notes ===
 
-
 [[gtadmin-platform-osx]]
-==== Mac OS X 10.8+ (Mountain Lion, Mavericks) ====
+==== Mac OS X 10.8+ (Mountain Lion, Mavericks, Yosemite ) ====
 
 The GNU autotools and libtool is no longer distributed with OS X 10.8+.
 If you are building from git repository, you'll need to install the
@@ -15,12 +13,8 @@ latest versions of those tools. If you are building from the source
 installer, these do not need to be installed. 
 
 * http://ftpmirror.gnu.org/autoconf/[GNU Autoconf]
-
 * http://ftpmirror.gnu.org/automake/[GNU Automake]
-
 * http://ftpmirror.gnu.org/libtool/[GNU Libtool]
-
-
 
 Configure libtool with the configuration option
 **++--program-prefix=g++** to cause the libtool script to be named

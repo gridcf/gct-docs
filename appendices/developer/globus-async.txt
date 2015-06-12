@@ -464,22 +464,10 @@ model when designing and developing your own software components using
 the Globus Toolkit.
 
 
-[[References]]
-=== References ===
-
-
-
-
-* http://www.opengroup.org/onlinepubs/007908799/xsh/pthread.h.html[Posix
+=== Further Reading ===
+* http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html[Posix
 Threads API]
-
-* http://msdn.microsoft.com/library/default.asp?url=/library/en-us/fileio/base/i%5fo%5fcompletion%5fports.asp[Microsoft's
-description of Completion Ports and Thread Pooling]
-
-* http://www-unix.globus.org/api/c-globus-6.0/globus%5fcommon/html/index.html[Globus
-Common API]
-
+* https://msdn.microsoft.com/en-us/library/windows/desktop/aa365198(v=vs.85).aspx[MSDN: Completion Ports and Thread Pooling]
+* http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fcommon.html[Globus Common API]
 * http://www.cs.bgu.ac.il/~elhadad/se/events.html[Documentation on
 Programming with Events]
-
-

@@ -1,48 +1,251 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="simplecaRN">
-<title>GT <replaceable role="entity">version</replaceable> Release Notes: SimpleCA</title>
-<titleabbrev>Release Notes</titleabbrev>
-
-<section id="simpleca-rn-overview"><title>Component Overview</title>
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Overview_Brief_Frag.xml"/>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 Release Notes: SimpleCA</title>
+</articleinfo>
+<section id="simpleca-rn-overview" xreflabel="Release Notes">
+<title>Component Overview</title>
+<simpara>SimpleCA provides a simple implementation of a certification authority
+which can issue X.509 certificates to Globus Toolkit users and services.</simpara>
+<section id="simpleca-featuresummary">
+<title>Feature Summary</title>
+<simpara>Features new in GT 6</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Remove dependency on GPT to generate and use SimpleCA
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Support for generating native RPM and Debian packages for SimpleCA files.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Other Supported Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Easy creation of X.509 certificates for use with the Globus Toolkit
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Easy creation of GPT packages for the created SimpleCA
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Deprecated Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+GPT package distribution of CA data
+</simpara>
+</listitem>
+</itemizedlist>
 </section>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Feature_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Change_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Fixed_Bugs_Frag.xml"/>
-
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Known_Problems_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Dependencies_Summary_Frag.xml"/>
-
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Platform_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Compatibility_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../Cred_Mgmt_SimpleCA_Associated_Standards_Frag.xml"/>
-
-<section id="simpleca-rn-formoreinfo"><title>For More Information </title>
-    <para>See <olink targetdoc="gtadminappendix" targetptr="gtadmin-simpleca"/> for  more information about this component. </para>
+<section id="simpleca-changes-summary">
+<title>Summary of Changes in SimpleCA</title>
+<section id="_new_features_simpleca">
+<title>New Features: SimpleCA</title>
+<itemizedlist>
+<listitem>
+<simpara>
+None.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="_improvements_simpleca">
+<title>Improvements: SimpleCA</title>
+<itemizedlist>
+<listitem>
+<simpara>
+None.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="simpleca-fixed-bugs">
+<title>Fixed Bugs for SimpleCA</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-362">GT-362</ulink>: simple ca loses spaces in dn in signing policy
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-405">GT-405</ulink>: Non-portable use of echo in shell script
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="simpleca-outstanding">
+<title>Known Problems in SimpleCA</title>
+<simpara>None.</simpara>
+</section>
+<section id="simpleca-techdependencies">
+<title>Technology Dependencies</title>
+<simpara>SimpleCA depends on the following GT components:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Non-WS Authentication and Authorization
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>SimpleCA depends on the following 3rd party software:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+OpenSSL
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="simpleca-testedplatforms">
+<title>Tested Platforms</title>
+<simpara>SimpleCA is tested on the following platforms:</simpara>
+<table id="tested-platforms"
+frame="all"
+rowsep="1" colsep="1"
+>
+<title>Tested Platforms</title>
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="25*"/>
+<colspec colname="col_3" colwidth="25*"/>
+<colspec colname="col_4" colwidth="25*"/>
+<thead>
+<row>
+<entry align="left" valign="top"> Operating System </entry>
+<entry align="left" valign="top"> Distribution </entry>
+<entry align="left" valign="top"> Version(s) </entry>
+<entry align="left" valign="top"> Architecture(s)</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top" morerows="9"><simpara>Linux</simpara></entry>
+<entry align="left" valign="top" morerows="1"><simpara>CentOS</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Fedora</simpara></entry>
+<entry align="left" valign="top"><simpara>20, 21, 22</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Red Hat Enterprise Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Scientific Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>SUSE Linux Enterprise Server</simpara></entry>
+<entry align="left" valign="top"><simpara>11SP3</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Debian</simpara></entry>
+<entry align="left" valign="top"><simpara>6, 7, 8</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Ubuntu</simpara></entry>
+<entry align="left" valign="top"><simpara>12.04LTS, 14.04LTS, 14.10, 15.04</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_1" nameend="col_2"><simpara>Mac OS X</simpara></entry>
+<entry align="left" valign="top"><simpara>10.6-10.10</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Solaris</simpara></entry>
+<entry align="left" valign="top"><simpara>OmniOS</simpara></entry>
+<entry align="left" valign="top"><simpara>r151006</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Windows 7</simpara></entry>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>Cygwin</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>MingW64</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="simpleca-compatibilitysummary">
+<title>Backward Compatibility Summary</title>
+<simpara>Protocol changes for SimpleCA since GT 5.2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Not applicable
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>API changes since GT 5.2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Not applicable
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Exception changes since GT 5.2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Not applicable
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Schema changes since GT 5.2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Not applicable
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="simpleca-associatedstandards">
+<title>Associated Standards</title>
+<simpara>Globus SimpleCA generates X.509v3 certificates</simpara>
+</section>
+</section>
+<section id="simpleca-rn-formoreinfo">
+<title>For More Information</title>
+<simpara>See <ulink url="../../admin/install/appendix.html#gtadmin-simpleca">../../admin/install/appendix.html#gtadmin-simpleca</ulink> for more
+information about this component.</simpara>
 </section>
 </article>

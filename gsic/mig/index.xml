@@ -1,34 +1,36 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<article id="gsicMig">
-<title> GT <replaceable role="entity">version</replaceable> Migrating Guide for GSI C</title>
-<titleabbrev>Migrating Guide</titleabbrev>
-<para>The following provides available information about migrating from previous versions of the Globus Toolkit.</para>
-  <!-- fixme plz verify -->
-  <section id="gsic-migrating-GT5.2">
-    <title>Migrating GSI from GT5.2</title>
-    <para>Nothing should have to be done when migrating from GT5.2.</para>
-  </section>
-  <section id="gsic-migrating-GT5.0">
-    <title>Migrating GSI from GT5.0</title>
-    <para>Nothing should have to be done when migrating from GT5.0.</para>
-  </section>
-  <section id="gsic-migrating-GT4.2">
-    <title>Migrating GSI from GT4.2</title>
-    <para>Nothing should have to be done when migrating from GT4.2.</para>
-  </section>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 Migrating Guide for GSI C</title>
+</articleinfo>
+<simpara>The following provides available information about migrating from
+previous versions of the Globus Toolkit.</simpara>
+<section id="gsic-migrating-GT5.2">
+<title>Migrating GSI from GT5.2</title>
+<simpara>Nothing should have to be done when migrating from GT5.2.</simpara>
+</section>
+<section id="gsic-migrating-GT5.0">
+<title>Migrating GSI from GT5.0</title>
+<simpara>Nothing should have to be done when migrating from GT5.0.</simpara>
+</section>
+<section id="gsic-migrating-GT4.2">
+<title>Migrating GSI from GT4.2</title>
+<simpara>Nothing should have to be done when migrating from GT4.2.</simpara>
+</section>
 <section id="gsic-migrating-GT4">
-  <title>Migrating GSI from GT4.0</title>
-<para>Nothing should have to be done when migrating from GT4.0.</para>
+<title>Migrating GSI from GT4.0</title>
+<simpara>Nothing should have to be done when migrating from GT4.0.</simpara>
 </section>
 <section id="gsic-migrating-GT3">
-  <title>Migrating from GT3</title>
-  <para>Nothing should have to be done when migrating from GT3.</para>
+<title>Migrating from GT3</title>
+<simpara>Nothing should have to be done when migrating from GT3.</simpara>
 </section>
-  <section id="gsic-migrating-GT2">
-  <title>Migrating GSI from GT2</title>
-<para>Nothing should have to be done when migrating from GT2.</para>
+<section id="gsic-migrating-GT2">
+<title>Migrating GSI from GT2</title>
+<simpara>Nothing should have to be done when migrating from GT2.</simpara>
 </section>
 </article>

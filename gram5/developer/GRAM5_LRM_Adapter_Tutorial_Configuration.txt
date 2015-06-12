@@ -27,7 +27,7 @@ include::globus-fake.conf[]
 
 The Globus Toolkit contains API functions for parsing files in the
 format used by the LRM configuration files. In Perl, use the
-++Globus::Core::Config++ class. In C/C++, use the
+++Globus::Core::Config++ class. In C, use the
 **++globus_common_get_attribute_from_config_file()++** function. 
 
 
@@ -40,7 +40,7 @@ returns the value of the named attribute. These functions are used in
 link:#gram5-LRM-Adapter-Perl-Config[the fake LRM Perl Module]. 
 
 
-===== C/C++ API =====
+===== C API =====
 
 The **++globus_common_get_attribute_from_config_file()++** function will
 load the configuration file and return the value of the attribute passed

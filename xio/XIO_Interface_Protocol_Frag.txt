@@ -1,3 +1,0 @@
-
-[describe non-WSDL protocols. if none, state so.]
-

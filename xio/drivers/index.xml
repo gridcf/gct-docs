@@ -1,38 +1,157 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-
-  <appendix id="xio-driver-addons">
-    <title> GT <replaceable role="entity">version</replaceable> XIO : Driver Add-ons</title>
-    <titleabbrev>Add-on</titleabbrev>
-    <section id="xio-drivers-addon-intro">
-        <title>Introduction</title>
-        <para>Here we describe a GPT bundle of some useful GlobusXIO drivers. The drivers are not
-            packaged with the standard globus release because they require external dependencies, or
-            are otherwise best distributed in a separate release. Here you can get each driver
-            individually, or a bundle of all the drivers.</para>
-    </section>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_UDT_REF.xml"/>
-
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Token_Bucket.xml"/>
-    
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Popen.xml"/>
-    
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_BIDI.xml"/>
-
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Netlog.xml"/>
-    
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="XIO_Driver_Skeleton.xml"/>
-    
-</appendix>
+<article lang="en">
+<articleinfo>
+    <date>2015-06-10</date>
+</articleinfo>
+<section id="xio-driver-addons" xreflabel="Add-on">
+<title>GT 6.0 XIO : Driver Add-ons</title>
+<section id="xio-drivers-addon-intro">
+<title>Introduction</title>
+<simpara>Here we describe a GPT bundle of some useful GlobusXIO drivers. The
+drivers are not packaged with the standard globus release because they
+require external dependencies, or are otherwise best distributed in a
+separate release. Here you can get each driver individually, or a bundle
+of all the drivers.</simpara>
+</section>
+<section id="xio-driver-udt_ref">
+<title>UDT Reference Implementation Driver</title>
+<simpara>This driver uses the reference implementation of UDT provided at LINK
+and the Globus XIO wrapblock feature to create a Globus XIO UDT driver.</simpara>
+</section>
+<section id="xio-driver-token_bucket">
+<title>Bandwidth Limiting Driver</title>
+<simpara>This is a bandwidth limiting driver. It allows the user to specify a
+bandwidth cap for a given connection.</simpara>
+<simpara>Features</simpara>
+<simpara>*</simpara>
+<simpara>String Options</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+rate=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+read_rate=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+write_rate=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+period=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+read_period=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+write_period=
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-popen">
+<title>Pipe Open Driver</title>
+<simpara>This driver will run an executable program with pipes connecting STDIN
+and STDOUT of the program to this Globus XIO driver. In this way buffers
+are routed from Globus XIO to the executable. This driver is most
+notably used with ssh for running remote programs over a secure link.</simpara>
+<simpara>String Options</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+blocking=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+pass_env=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+argv=
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-bidi">
+<title>Bidirectional Driver</title>
+<simpara>The BIDI driver, bi-directional driver allows a user to turn a
+unidirectional pipe, into a bidirectional stream. It does this simply by
+opening up 1 uni-directional pipe in each direction. By default it
+assumes the use of the ModeE driver, but it can be configured to use any
+driver.</simpara>
+<simpara>Important attribute controls are listed here. For a complete list see:
+<ulink url="http://www.globus.org/api/c-globus-6.0/globus%5fxio%5fbidi%5fdriver/html/index.html">BIDI
+API</ulink></simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_READ_STACK
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_WRITE_STACK
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_READ_ATTR
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_WRITE_ATTR
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-netlog">
+<title>Netlogger Driver</title>
+<simpara>This driver observes IO events on a driver stack and uses netlogger to
+log these events.</simpara>
+<simpara>String Options</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+filename=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+mask=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+type=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+id=
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-skeleton">
+<title>Skeleton Driver</title>
+<simpara>This is a very simple driver to serve as an example and base for writing
+additional drivers. It does nothing but pass operations along the stack</simpara>
+</section>
+</section>
+</article>

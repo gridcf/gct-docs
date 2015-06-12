@@ -1,274 +1,387 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<book id="gsiopensshAdmin">
-<title>GT <replaceable role="entity">version</replaceable> GSI-OpenSSH: System Administrator's Guide</title>
-<titleabbrev>System Administrator's Guide</titleabbrev>
-
-  <bookinfo id="gsiopenssh-admin-introduction"><abstract><title>Introduction</title>
-<para>
-This guide contains advanced configuration information for system administrators
-  working with GSI-OpenSSH. It provides references to information
-  on procedures typically performed by system administrators, including installation,
-  configuring, deploying, and testing the installation.</para>
-<para>  <important>
-    <simpara> This information is in addition to the basic Globus Toolkit prerequisite, 
-      overview, installation, security configuration instructions in <olink targetdoc="gtadmin"/>.  
-      Read through this guide before continuing!</simpara>  
-  </important></para>
-<para>This guide is meant solely to cover the GSI aspects of GSI-OpenSSH,
-  and is not meant to be a full manual for OpenSSH itself.
-  Please refer to the <ulink url="http://www.openssh.org/">OpenSSH Home Page</ulink> for
-  general documentation for OpenSSH.</para></abstract>
+<book lang="en">
+<bookinfo>
+    <title>GT 6.0 GSI-OpenSSH: System Administrator&#8217;s Guide</title>
 </bookinfo>
-  <chapter id="gsiopenssh-admin-installing"><title>Building and Installing</title>
-  <para>GSI-OpenSSH is built and installed as part of a default GT <replaceable role="entity">version</replaceable> installation.
-  For basic installation
-  instructions, see <olink targetdoc="gtadmin"/>. No extra installation steps are required
-  for this component.
-</para>
+<preface>
+<title></title>
+<simpara>This guide contains advanced configuration information for system
+administrators working with GSI-OpenSSH. It provides references to
+information on procedures typically performed by system administrators,
+including installation, configuring, deploying, and testing the
+installation.</simpara>
+<important><simpara>This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in <ulink url="../..//admin/install/index.html">../..//admin/install/index.html</ulink>. Read through this guide before continuing!</simpara></important>
+<simpara>This guide is meant solely to cover the GSI aspects of GSI-OpenSSH, and
+is not meant to be a full manual for OpenSSH itself. Please refer to the
+<ulink url="http://www.openssh.org/">OpenSSH Home Page</ulink> for general documentation for
+OpenSSH.</simpara>
+</preface>
+<chapter id="gsiopenssh-admin-installing">
+<title>Building and Installing</title>
+<simpara>GSI-OpenSSH is built and installed as part of a default GT 6.0
+installation. For basic installation instructions, see
+<ulink url="../..//admin/install/index.html">../..//admin/install/index.html</ulink>. No extra installation steps are
+required for this component.</simpara>
+<section id="gsiopenssh-admin-installing-configure-options">
+<title>Optional Build-Time Configuration</title>
+<simpara>You can optionally pass build-time configure options to the GSI-OpenSSH
+package using the --with-gsiopensshargs option when running configure
+for your GT 6.0 installation. For example:</simpara>
+<sidebar>
+<screen>./configure
+--prefix=$HOME/globus
 
-    <section id="gsiopenssh-admin-installing-configure-options" xreflabel="Optional Build-Time Configuration for GSI-OpenSSH"><title>Optional Build-Time Configuration</title>
-<para>
-You can optionally pass build-time configure options to the
-GSI-OpenSSH package using the --with-gsiopensshargs option when
-  running configure for your GT <replaceable role="entity">version</replaceable> installation.
-For example:
-<blockquote><para>
-<screen>./configure --prefix=$HOME/globus 
-      --with-gsiopensshargs="--with-pam"</screen>
-</para></blockquote>
-No options are typically needed for client-only
-installations, but options are often needed for full server
-functionality.
-The following lists suggested options for different platforms.
-
-<variablelist id="gsiopenssh-admin-configure">
-    <varlistentry>
-        <term>Linux</term>
-        <listitem><simpara><literal>--with-pam --with-md5-passwords --with-tcp-wrappers</literal></simpara></listitem>
-    </varlistentry>
-    <varlistentry>
-        <term>Solaris</term>
-        <listitem><simpara><literal>--with-pam --with-md5-passwords --with-tcp-wrappers++</literal></simpara></listitem>
-    </varlistentry>
-</variablelist>
-</para>
-
-<note><para>Note: If you enable PAM support with the --with-pam configuration
-option, be sure to also set "UsePAM yes" in
-$GLOBUS_LOCATION/etc/ssh/sshd_config after installation.
-</para></note>
-
-<para>
-If you have an already configured and installed system-wide SSHD and
-you would like your build of GSI-OpenSSH to behave similarly,
-investigate the configure options available in GSI-OpenSSH and select
-those options that would add the functionality that your current SSHD
-possesses.  Be aware that since GSI-OpenSSH is based on OpenSSH, the
-standard set of functionality is turned on by default.
-</para>
-
-<para>
-<emphasis>Please do not attempt to override the following options:</emphasis>
-</para>
-<screen>
---prefix
---sysconfdir
---with-globus
---with-globus-flavor
---with-ssl-dir
-</screen>
-</section>
-
-<section id="gsiopenssh-admin-installing-openssh-only"><title>Building and Installing only GSI-OpenSSH</title>
-<para>If you wish to install GSI-OpenSSH without installing the rest
-  of the Globus Toolkit, follow the instructions in <olink targetdoc="gtadmin"/> 
-  with the following changes.  First, you do not need Ant, a JDK, or a
-  JDBC database to build only GSI-OpenSSH.
-  Second, instead of running "make",
-  run:
-</para>
-<screen>globus$ make gsi-openssh</screen>
-<para>
-  This will install the GSI-OpenSSH client and server programs.
-  For client-only installations, simply do not configure or use the installed server.
-</para>
-</section>
-
-</chapter>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../Util_OpenSSH_Interface_Config_Frag.xml"/>
-
-<chapter id="gsiopenssh-admin-deploying"><title>Deploying</title>
-
-<orderedlist>
-
-<listitem><para>
-To install the GSI-Enabled OpenSSH Server on most systems, you must be
-a privileged user, such as root.
-
-<screen>sh$ /bin/su - root </screen>
-
-Note: If your system functions like this and you attempt to run these
-commands as a user other than root, these commands should fail.
-</para>
+--with-gsiopensshargs="--with-pam"</screen>
+</sidebar>
+<simpara>No options are typically needed for client-only installations, but
+options are often needed for full server functionality. The following
+lists suggested options for different platforms.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">Linux</emphasis>
+</term>
+<listitem>
+<simpara>
+     <literal>--with-pam --with-md5-passwords --with-tcp-wrappers</literal>
+</simpara>
 </listitem>
-
-<listitem><para>(optional) Start a copy of your system's currently running SSH server
-on an alternate port by running, eg.
-
-<screen>
-sh# /usr/sbin/sshd -p 2000 &amp;
-</screen>
-
-You may then choose to log in to this server and continue the rest of
-these steps from that shell.  We recommend doing this since some sshd
-shutdown scripts do particularly nasty things like killing <emphasis>all</emphasis>
-of the running SSH servers on a system, not just the parent server
-that may be listening on port 22.
-
-Roughly translated, this step is about guaranteeing that an alternate
-method of access is available should the main SSH server be shutdown
-and your connection via that server be terminated.
-</para></listitem>
-
-<listitem><para>
-Locate your server's startup/shutdown script directory.  On some
-systems this directory may be located at /etc/rc.d/init.d, but since
-this location is not constant across operating systems, for the
-purposes of this document we will refer to this directory as INITDIR.
-Consult your operating system's documentation for your system's
-location.
-</para></listitem>
-
-<listitem><para>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">Solaris</emphasis>
+</term>
+<listitem>
+<simpara>
+     <literal>--with-pam --with-md5-passwords --with-tcp-wrappers</literal>++
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<note>
+<simpara>Note: If you enable PAM support with the --with-pam configuration
+option, be sure to also set "UsePAM yes" in
+$GLOBUS_LOCATION/etc/ssh/sshd_config after installation.</simpara>
+</note>
+<simpara>If you have an already configured and installed system-wide SSHD and you
+would like your build of GSI-OpenSSH to behave similarly, investigate
+the configure options available in GSI-OpenSSH and select those options
+that would add the functionality that your current SSHD possesses. Be
+aware that since GSI-OpenSSH is based on OpenSSH, the standard set of
+functionality is turned on by default.</simpara>
+<simpara><emphasis role="strong">Please do not attempt to override the following options:</emphasis></simpara>
+<screen> --prefix
+ --sysconfdir
+ --with-globus
+ --with-globus-flavor
+ --with-ssl-dir</screen>
+</section>
+<section id="gsiopenssh-admin-installing-openssh-only">
+<title>Building and Installing only GSI-OpenSSH</title>
+<simpara>If you wish to install GSI-OpenSSH without installing the rest of the
+Globus Toolkit, follow the instructions in
+<ulink url="../..//admin/install/index.html">../..//admin/install/index.html</ulink> with the following changes.
+First, you do not need Ant, a JDK, or a JDBC database to build only
+GSI-OpenSSH. Second, instead of running "make", run:</simpara>
+<screen>globus$ make gsi-openssh</screen>
+<simpara>This will install the GSI-OpenSSH client and server programs. For
+client-only installations, simply do not configure or use the installed
+server.</simpara>
+</section>
+</chapter>
+<chapter id="gsiopenssh-configuring">
+<title>Configuring</title>
+<simpara>The GSI-enabled OpenSSH software is installed with a default set of
+configuration files, described below. You may want to modify the
+<literal>ssh_config</literal> file before using the clients and the  file before using
+the clients and the <literal>sshd_config</literal> file before using the server.  file
+before using the server.</simpara>
+<simpara>If the GSI-enabled OpenSSH install script finds existing SSH key pairs,
+it will create symbolic links to them rather than generating new key
+pairs. The SSH key pairs are not required for GSI authentication.
+However, if you wish to support other SSH authentication methods, make
+sure the sshd (running as root) can read the key pair files (i.e.,
+beware of NFS mounts with root_squash). If running multiple sshds on a
+system, we recommend configuring them so they all use the same key pairs
+(i.e., use symbolic links) to avoid client-side confusion.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/moduli</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>moduli
+is a crypto parameter for generating
+keys.</simpara>
+</sidebar>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/ssh_config</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>ssh_config
+contains options that are read by ssh, scp, and sftp at run-time. The
+installed version is the default provided by OpenSSH, with GSI
+authentication and X11Forwarding enabled. You may need to customize this
+file for compatibility with your system SSH installation (i.e., compare
+it with
+/etc/ssh/ssh_config).</simpara>
+</sidebar>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/ssh_host_key[.pub]</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>Your
+system&#8217;s RSA public-/private-key pair for SSH protocol 1
+communications.</simpara>
+</sidebar>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/ssh_host_dsa[.pub]</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>Your
+system&#8217;s DSA public-/private-key pair for SSH protocol 2
+communications.</simpara>
+</sidebar>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/ssh_host_rsa[.pub]</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>Your
+system&#8217;s RSA public-/private-key pair for SSH protocol 2
+communications.</simpara>
+</sidebar>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/ssh_prng_cmds</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>ssh_prng_cmds
+contains paths to a number of files that ssh-keygen may need to use if
+your system does not have a built-in entropy pool (like
+/dev/random).</simpara>
+</sidebar>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/ssh/sshd_config</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<simpara>sshd_config
+contains options that are read by sshd when it starts up. The installed
+version is the default provided by OpenSSH, with X11Forwarding enabled.
+You may need to customize this file for compatibility with your system
+SSH installation (i.e., compare it with /etc/ssh/sshd_config). For
+example, to enable PAM authentication, you may need to set "UsePAM yes"
+in this
+file.</simpara>
+</sidebar>
+</chapter>
+<chapter id="gsiopenssh-admin-deploying">
+<title>Deploying</title>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+To install the GSI-Enabled OpenSSH Server on most systems, you must be a
+privileged user, such as root.
+</simpara>
+<screen>sh$ /bin/su - root</screen>
+</listitem>
+</orderedlist>
+<simpara>Note: If your system functions like this and you attempt to run these
+commands as a user other than root, these commands should fail.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+(optional) Start a copy of your system&#8217;s currently running SSH server on
+an alternate port by running, eg.
+</simpara>
+<screen>sh# /usr/sbin/sshd -p 2000 &amp;</screen>
+</listitem>
+</orderedlist>
+<simpara>You may then choose to log in to this server and continue the rest of
+these steps from that shell. We recommend doing this since some sshd
+shutdown scripts do particularly nasty things like killing <emphasis role="strong">all</emphasis> of
+the running SSH servers on a system, not just the parent server that may
+be listening on port 22. Roughly translated, this step is about
+guaranteeing that an alternate method of access is available should the
+main SSH server be shutdown and your connection via that server be
+terminated.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+Locate your server&#8217;s startup/shutdown script directory. On some systems
+this directory may be located at /etc/rc.d/init.d, but since this
+location is not constant across operating systems, for the purposes of
+this document we will refer to this directory as INITDIR. Consult your
+operating system&#8217;s documentation for your system&#8217;s location.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
 Run the following command.
-
-<screen>
-sh# mv $INITDIR/sshd $INITDIR/sshd.bak
-</screen>
-</para></listitem>
-
-<listitem><para>
-Either copy or link the new sshd script to your system's
+</simpara>
+<screen>sh# mv $INITDIR/sshd $INITDIR/sshd.bak</screen>
+</listitem>
+<listitem>
+<simpara>
+Either copy or link the new sshd script to your system&#8217;s
 startup/shutdown script directory.
-
-<screen>
-sh# cp $GLOBUS_LOCATION/sbin/SXXsshd $INITDIR/sshd
-</screen>
-</para></listitem>
-
-<listitem><para>
+</simpara>
+<screen>sh# cp $GLOBUS_LOCATION/sbin/SXXsshd $INITDIR/sshd</screen>
+</listitem>
+<listitem>
+<simpara>
 Shutdown the currently running main SSH server.
-
-<screen>
-sh# $INITDIR/sshd.bak stop
-</screen>
-</para></listitem>
-
-<listitem><para>
+</simpara>
+<screen>sh# $INITDIR/sshd.bak stop</screen>
+</listitem>
+<listitem>
+<simpara>
 Provided you still have a connection to the machine, start the new SSH
 server.
-
-<screen>
-sh# $INITDIR/sshd start
-</screen>
-</para></listitem>
-
-<listitem><para>
+</simpara>
+<screen>sh# $INITDIR/sshd start</screen>
+</listitem>
+<listitem>
+<simpara>
 Test the new server by connecting to the standard SSH port (22) and
-authenticating via multiple methods.  Especially test that GSI
+authenticating via multiple methods. Especially test that GSI
 authentication works correctly.
-</para></listitem>
-
-<listitem><para>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
 If you are performing a new install, or if the old server was not
 configured to be started at run-time and shutdown automatically at
-system halt or reboot, either use a system utility such as RedHat's
+system halt or reboot, either use a system utility such as RedHat&#8217;s
 chkconfig to configure the system for the correct run-levels, or
 manually link up the correct run-levels.
-
-<screen>
-sh# /sbin/chkconfig sshd reset
-</screen>
-
-The recommended run-levels are listed in a set of comments within the
-SXXsshd startup script.  For example, on standard Unix systems we
-recommend running the GSI-Enabled OpenSSH server in run-levels two,
-three, four, and five.
-</para></listitem>
-
-<listitem><para>
-Finally, if, as a precautionary measure, you started a SSH server on
-an alternate port in order to complete the install process, you can
-now safely stop all instances of that server.
-</para></listitem>
-
+</simpara>
+<screen>sh# /sbin/chkconfig sshd reset</screen>
+</listitem>
 </orderedlist>
-
+<simpara>The recommended run-levels are listed in a set of comments within the
+SXXsshd startup script. For example, on standard Unix systems we
+recommend running the GSI-Enabled OpenSSH server in run-levels two,
+three, four, and five.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+Finally, if, as a precautionary measure, you started a SSH server on an
+alternate port in order to complete the install process, you can now
+safely stop all instances of that server.
+</simpara>
+</listitem>
+</orderedlist>
 </chapter>
-
-<chapter id="gsiopenssh-admin-testing"><title>Testing</title>
-
-<orderedlist>
-<listitem><para>
+<chapter id="gsiopenssh-admin-testing">
+<title>Testing</title>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
 Edit the file $GLOBUS_LOCATION/sbin/SXXsshd so that the GSI-Enabled
 OpenSSH server starts up on an alternate port.
-</para></listitem>
-
-<listitem><para>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
 Run the command
-<screen>
-sh# $GLOBUS_LOCATION/sbin/SXXsshd start
-</screen>
-and verify that the server is running by checking that it both shows
-up in a process listing and creates a file named
-$GLOBUS_LOCATION/var/sshd.pid.
-</para></listitem>
-
-<listitem><para>
+</simpara>
+<screen>sh# $GLOBUS_LOCATION/sbin/SXXsshd start</screen>
+</listitem>
+</orderedlist>
+<simpara>and verify that the server is running by checking that it both shows up
+in a process listing and creates a file named
+$GLOBUS_LOCATION/var/sshd.pid.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
 From a remote machine attempt to connect to the local server on the
 modified test port using the standard SSH authentication methods plus
-authenticating via your GSI credentials.
-This may require you to authorize these users via an appropriate entry
-in the grid-mapfile.
-</para></listitem>
-
-<listitem><para>
+authenticating via your GSI credentials. This may require you to
+authorize these users via an appropriate entry in the grid-mapfile.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
 Stop the SSH server by running the command
-<screen>
-sh# $GLOBUS_LOCATION/sbin/SXXsshd stop
-</screen>
-and reverse any changes you made that altered the port on which the server resided upon startup.  After this step,
-running SXXsshd start should start the server on the default port (22).
-</para></listitem>
+</simpara>
+<screen>sh# $GLOBUS_LOCATION/sbin/SXXsshd stop</screen>
+</listitem>
 </orderedlist>
+<simpara>and reverse any changes you made that altered the port on which the
+server resided upon startup. After this step, running SXXsshd start
+should start the server on the default port (22).</simpara>
 </chapter>
-
-  <chapter id="gsiopenssh-admin-security_considerations"><title>Security Considerations </title>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../Util_OpenSSH_Security_Considerations_Frag.xml"/>
+<chapter id="gsiopenssh-admin-security_considerations">
+<title>Security Considerations</title>
+<section id="gsi-openssh-security-considerations">
+<title>GSI-OpenSSH Security Considerations</title>
+<simpara>GSI-OpenSSH is a modified version of <ulink url="http://www.openssh.org/">OpenSSH</ulink>
+and includes full OpenSSH functionality. For more information on OpenSSH
+security, see the <ulink url="http://www.openssh.org/security.html">OpenSSH Security</ulink>
+page.</simpara>
+</section>
 </chapter>
-  
-  <chapter id="gsiopenssh-admin-debugging">
-  <title>Debugging</title>
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../Util_OpenSSH_Logging_Frag.xml"/>
+<chapter id="gsiopenssh-admin-debugging">
+<title>Debugging</title>
+<section id="gsiopenssh-logging">
+<title>Logging</title>
+<simpara>The GSI-OpenSSH server logs to the system logger (syslog). Log messages
+from OpenSSH are unmodified in GSI-OpenSSH. GSI-specific log messages
+include:</simpara>
+<screen>failed to map GSI user DN
+GSI user DN mapped to target user username
+GSI user DN is authorized as target user username
+GSI user DN is not authorized as target user username</screen>
+<simpara>In the messages above, DN is replaced with the client certificate
+subject distinguished name, and username is replaced with the local Unix
+username.</simpara>
+</section>
 </chapter>
-  
-  
-  <chapter id="gsiopenssh-admin-troubleshooting"><title>Troubleshooting</title>
-  <para>Please see the <ulink url="http://grid.ncsa.illinois.edu/ssh/ts_common.html">GSI-OpenSSH Troubleshooting Page</ulink>.</para>
+<chapter id="gsiopenssh-admin-troubleshooting">
+<title>Troubleshooting</title>
+<simpara>Please see the
+<ulink url="http://grid.ncsa.illinois.edu/ssh/ts%5fcommon.html">GSI-OpenSSH
+Troubleshooting Page</ulink>.</simpara>
 </chapter>
-  
-  <xi:include href="../Util_OpenSSH_Usage_Statistics_Frag.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  
+<chapter id="gsiopenssh-usage">
+<title>Usage statistics collection</title>
+<section id="gsiopenssh-usage-stats">
+<title>GSI-OpenSSH usage statistics collection</title>
+<simpara>By default, the GSI-OpenSSH server (sshd) will send a UDP packet
+containing usage information to usage-stats.cilogon.org:4810 after
+serving each request. See the
+<ulink url="http://grid.ncsa.illinois.edu/ssh/privacy.html">Privacy Policy</ulink> for
+details. You can see the Globus Usage Statistics policy
+<ulink url="/toolkit/docs/latest-stable/Usage_Stats.html">here</ulink>.</simpara>
+</section>
+</chapter>
 </book>

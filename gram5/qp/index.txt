@@ -35,7 +35,7 @@
 
 
 
-* http://www.mcs.anl.gov/~bester/gram5/coverage/{$version}
+* http://www.mcs.anl.gov/%7ebester/gram5/coverage/6.0
 
 
  

@@ -6,13 +6,16 @@
 [[gtadmin-sec-consid-common-runtime]]
 === Common Runtime ===
 
+:leveloffset: 1
 
 include::../../xio/XIO_Security_Considerations_Frag.txt[]
 
+:leveloffset: 0
 
 [[gtadmin-sec-consid-security]]
 === Security ===
 
+:leveloffset: 1
 
 include::../../gsic/GSIC_Security_Considerations_Frag.txt[]
 
@@ -22,16 +25,21 @@ include::../../myproxy/Cred_Mgmt_MyProxy_Security_Considerations_Frag.txt[]
 
 include::../../gsiopenssh/Util_OpenSSH_Security_Considerations_Frag.txt[]
 
+:leveloffset: 0
 
 [[gtadmin-sec-consid-data]]
 === Data Management ===
 
+:leveloffset: 1
 
 include::../../gridftp/GridFTP_Security_Considerations_Frag.txt[]
 
+:leveloffset: 0
 
 === Execution Management ===
 
+:leveloffset: 1
 
 include::../../gram5/GRAM5_Security_Considerations_Frag.txt[]
 
+:leveloffset: 0

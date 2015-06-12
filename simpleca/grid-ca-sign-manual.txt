@@ -1,9 +1,7 @@
 [[grid-ca-sign]]
-
-:man source: University of Chicago
 = GRID-CA-SIGN(1) =
 :doctype: manpage
-:man source: 
+:man source: University of Chicago
 
 == NAME ==
 grid-ca-sign - Sign a certificate with a SimpleCA for use on a grid

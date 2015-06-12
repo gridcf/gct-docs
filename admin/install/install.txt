@@ -4,7 +4,6 @@
 
 
 [[install-bininst]]
-=== Installing Binary Packages ===
 
 
 include::../quickstart/prereq.txt[]
@@ -286,17 +285,20 @@ redirect stderr to stdout and then pipe it to **++tee++**.
 --------
 globus% make check
 --------
++
 or 
 +
 --------
-globus% make 
+globus% make COMPONENT-check
 --------
++
 where 'COMPONENT' is the name of the package to test. As an example, you
 could run 
 +
 --------
 globus% make globus_gssapi_gsi-check
 --------
++
 to run the GSSAPI test programs.
 
 . Finally, run:

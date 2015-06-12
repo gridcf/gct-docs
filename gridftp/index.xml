@@ -1,125 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
-<!ENTITY % xinclude SYSTEM "../xinclude.mod">
-%xinclude;
-]>
-<article id="gridftp" xreflabel="GridFTP">
-  <?dbhtml filename="index.html" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-  <title>GT <replaceable role="entity">version</replaceable> GridFTP</title>
-
-  <titleabbrev>GridFTP</titleabbrev>
-
-  <xi:include href="GridFTP_Overview_Brief_Frag.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
-
-  <informaltable frame="none">
-    <tgroup cols="2">
-      <colspec colname="c1" />
-
-      <colspec colname="c2" />
-
-
-      <tbody>
-        <row>
-          <entry nameend="c2" namest="c1">The following guides are available
-             for this component:</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gridftpKey">Data
-          Management Key Concepts</olink> </emphasis></entry>
-
-          <entry>For important general concepts.  [<ulink url="key/gridftpKeyConcepts.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gridftpAdmin">Admin Guide</olink> </emphasis></entry>
-
-          <entry>For system administrators and those installing, building and
-          deploying GT. You should already have read <olink
-          targetdoc="gtadmin">Installation Guide</olink> and <olink
-          targetdoc="quickstart">Quickstart</olink>.  [<ulink url="admin/gridftpAdminGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gridftpUser">User's Guide</olink> </emphasis></entry>
-
-          <entry>Describes how end-users typically interact with this
-            component. [<ulink url="user/gridftpUserGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gridftpDeveloper">Developer's Guide</olink>
-          </emphasis></entry>
-
-          <entry>Reference and usage scenarios for developers.   [<ulink url="developer/gridftpDeveloperGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry nameend="c2" namest="c1">Other information available for this
-          component are:</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gridftpRN">Release
-          Notes</olink> </emphasis></entry>
-
-          <entry>What's new with the <replaceable
-          role="entity">version</replaceable> release for this
-          component.  [<ulink url="rn/gridftpReleaseNotes.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gridftpPI">Public
-          Interface Guide</olink> </emphasis></entry>
-
-          <entry>Information for all public interfaces (including APIs,
-          commands, etc). Please note this is a subset of information in
-          the <olink targetdoc="gridftpDeveloper">Developer's
-          Guide</olink>.  [<ulink url="pi/gridftpPublicInterfacesGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gridftpQP">Quality
-          Profile</olink> </emphasis></entry>
-
-          <entry>Information about test coverage reports, etc.  [<ulink url="qp/gridftpQualityProfile.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gridftpMig">Migrating Guide</olink> </emphasis></entry>
-
-          <entry>Information for migrating to this version if you were using a
-          previous version of GT. [<ulink url="mig/gridftpMigratingGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><ulink url="gridftp.pdf"><emphasis role="strong">All GridFTP Guides (PDF only)</emphasis></ulink></entry>
-
-          <entry>Includes all GridFTP guides except Public Interfaces (which
-          is a subset of the Developer's Guide)</entry>
-
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
-
-  <!--  
-  <index id="gridftp-howto" type="gridftp-howto">
-    <title>How-tos for GridFTP</title></index>
-  -->
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 GridFTP</title>
+</articleinfo>
+<simpara id="gridftp" xreflabel="GridFTP">GridFTP is a high-performance, secure, reliable data transfer protocol
+optimized for high-bandwidth wide-area networks. The GridFTP protocol is
+based on FTP, the highly-popular Internet file transfer protocol. We
+have selected a set of protocol features and extensions defined already
+in IETF RFCs and added a few additional features to meet requirements
+from current data grid projects.</simpara>
+<simpara>The following guides are available for this component:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<ulink url="key/index.html">Data Management Key Concepts</ulink>
+</term>
+<listitem>
+<simpara>
+    For important general concepts
+    [<ulink url="key/gridftpKeyConcepts.pdf">pdf</ulink>].
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="admin/index.html">Admin Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    For system administrators and those installing, building and deploying GT.
+    You should already have read the
+    <ulink url="../admin/index.html">Installation Guide</ulink> and
+    <ulink url="../admin/quickstart/index.html">Quickstart</ulink>
+    [<ulink url="admin/gridftpAdminGuide.pdf">pdf</ulink>]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="user/index.html">User&#8217;s Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Describes how end-users typically interact with this
+    component. [<ulink url="user/gridftpUserGuide.pdf">pdf</ulink>].
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="developer/index.html">Developer&#8217;s Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Reference and usage scenarios for developers.
+    [<ulink url="developer/gridftpDeveloperGuide.pdf">pdf</ulink>].
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>Other information available for this component are:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<ulink url="rn/index.html">Release Notes</ulink>
+</term>
+<listitem>
+<simpara>
+    What&#8217;s new with the 6.0 release for this component.
+    [<ulink url="rn/gridftpReleaseNotes.pdf">pdf</ulink>]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="pi/index.html">Public Interface Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Information for all public interfaces (including APIs, commands, etc).
+    Please note this is a subset of information in the
+    <ulink url="developer/index.html">Developer&#8217;s Guide</ulink>
+    [<ulink url="pi/gridftpPublicInterfacesGuide.pdf">pdf</ulink>].
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="qp/index.html">Quality Profile</ulink>
+</term>
+<listitem>
+<simpara>
+    Information about test coverage reports, etc.
+    [<ulink url="qp/gridftpQualityProfile.pdf">pdf</ulink>].
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="mig/index.html">Migrating Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Information for migrating to this version if you were using a previous
+    version of GT.
+    [<ulink url="mig/gridftpMigratingGuide.pdf">pdf</ulink>]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="gridftp.pdf">All GridFTP Guides (PDF only)</ulink>
+</term>
+<listitem>
+<simpara>
+    Includes all GridFTP guides except Public Interfaces (which is a subset of
+    the Developer&#8217;s Guide)
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
 </article>

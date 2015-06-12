@@ -1,37 +1,60 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="xioQP">
-<title>GT <replaceable role="entity">version</replaceable> XIO: Quality Profile</title>
-<titleabbrev>Quality Profile</titleabbrev>
-
-<section id="xio-qp-test"><title>Test coverage reports </title>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 XIO: Quality Profile</title>
+</articleinfo>
+<section id="xio-qp-test" xreflabel="Quality Profile">
+<title>Test coverage reports</title>
 <itemizedlist>
-  <listitem><simpara><ulink url="http://www.globus.org/xio/coverage/">http://www.globus.org/xio/coverage/</ulink></simpara></listitem>
+<listitem>
+<simpara>
+<ulink url="http://www.globus.org/xio/coverage/">http://www.globus.org/xio/coverage/</ulink>
+</simpara>
+</listitem>
 </itemizedlist>
 </section>
-
-  <section id="xio-qp-code"><title>Code analysis reports </title>
-  <itemizedlist>
-  <listitem><simpara><ulink url="http://www.globus.org/xio/coverage/">http://www.globus.org/xio/coverage/</ulink></simpara></listitem>
+<section id="xio-qp-code">
+<title>Code analysis reports</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="http://www.globus.org/xio/coverage/">http://www.globus.org/xio/coverage/</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+<section id="xio-outstanding">
+<title>Known Problems in XIO</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-54">GT-54</ulink>: Globus XIO close call can deadlock
+</simpara>
+</listitem>
 </itemizedlist>
 </section>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../XIO_Known_Problems_Frag.xml"/>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../XIO_Fixed_Bugs_Frag.xml"/>
-
-<section id="xio-qp-performance"><title>Performance reports </title>
+<section id="xio-fixed-bugs">
+<title>Fixed Bugs for XIO</title>
 <itemizedlist>
-  <listitem><simpara><ulink url="http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf">http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf</ulink></simpara></listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-546">GT-546</ulink>: HTTP transfers larger than 4GB fail
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="xio-qp-performance">
+<title>Performance reports</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="http://www-unix.mcs.anl.gov/%7ekettimut/xio/XIO%5fPerformance.pdf">http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf</ulink>
+</simpara>
+</listitem>
 </itemizedlist>
 </section>
 </article>

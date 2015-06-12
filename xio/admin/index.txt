@@ -12,7 +12,7 @@ link:../../admin/install/index.html#gtadmin-install[GT6.0 installation
 instructions].
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[GT Admin Guide]. Read through this guide before continuing!
 --
 
 
@@ -25,7 +25,7 @@ This information is in addition to the basic Globus Toolkit prerequisite, overvi
 
 --
 XIO is built and installed with a default GT 6.0 installation, see the
-link:../../admin/install/index.html#gtadmin-install[].
+link:../../admin/install/index.html#gtadmin-install[GT Admin Guide].
 
 
 --
@@ -51,11 +51,13 @@ runtime by Globus XIO so long as it can be found in the LD_LIBRARY_PATH.
 
 
 --
-A test suite is available to test the Globus XIO framework. To test it,
-simply run: 
+A test suite is available to test the Globus XIO framework. The tests
+are included in the XIO source packages, and are run automatically when
+the XIO binary packages are generated. If you are building from the source
+installer, you can run the following command to run the tests:
 
 --------
-$GLOBUS_LOCATION/test/globus_xio_test/TESTS.pl
+    % make globus_xio-check
 --------
 
 
@@ -67,22 +69,4 @@ $GLOBUS_LOCATION/test/globus_xio_test/TESTS.pl
 
 include::../XIO_Security_Considerations_Frag.txt[]
 
- 
-[[xio-admin-troubleshooting]]
-== Troubleshooting ==
-
-
-=== Set GLOBUS_LOCATION correctly ===
-
-
-
-* The environment variable ++GLOBUS_LOCATION++ must be set to a valid Globus 6.0 installation.
-
-* Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: ++source $GLOBUS_LOCATION/etc/globus-user-env.sh++ or ++source $GLOBUS_LOCATION/etc/globus-user-env.csh++ depending on the shell you are using.
-
-
-
-
-include::../XIO_Errors_Frag.txt[]
-
- 
+include::../XIO_Troubleshooting_Admin_Frag.txt[] 

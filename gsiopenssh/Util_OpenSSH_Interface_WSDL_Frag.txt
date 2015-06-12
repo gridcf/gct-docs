@@ -1,3 +1,0 @@
-
-GSI-enabled OpenSSH does not have a WSDL interface.
-

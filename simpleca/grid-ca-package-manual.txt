@@ -1,9 +1,7 @@
 [[grid-ca-package]]
-
-:man source: University of Chicago
 = GRID-CA-PACKAGE(1) =
 :doctype: manpage
-:man source: 
+:man source: University of Chicago
 
 == NAME ==
 grid-ca-package - Prepare a CA certificate, configuration, and policy for distribution

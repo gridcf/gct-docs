@@ -1,74 +1,20 @@
 [[gsiopenssh-cmd]]
-= GSI-OpenSSH Commands =
-
+== GSI-OpenSSH Commands ==
 
 --
-The link:#gsissh[], link:#gsiscp[], and link:#gsisftp[] commands provide
+The link:#gsissh[gsissh], link:#gsiscp[gsiscp], and link:#gsisftp[gsiftp] commands provide
 the same interfaces as the standard OpenSSH **ssh**, **scp**, and
 **sftp** commands, respectively, with the added ability to perform X.509
 proxy credential authentication and delegation.
 
 --
 
-[[gsissh]]
-= GSISSH(1) =
-:doctype: manpage
-:man source: 
+:leveloffset: 2
 
-== NAME ==
-gsissh - Secure remote login
+include::gsissh.txt[]
 
-== SYNOPSIS ==
-**++gsissh++** 
+include::gsiscp.txt[]
 
-== Tool description ==
+include::gsisftp.txt[]
 
-Use the **gsissh** command to securely login to a remote machine.
-
-
-== Command syntax ==
-
-**gsissh** [-l login_name] hostname | user@hostname [command] 
-
-[[gsiscp]]
-= GSISCP(1) =
-:doctype: manpage
-:man source: 
-
-== NAME ==
-gsiscp - Secure remote file copy
-
-== SYNOPSIS ==
-**++gsiscp++** 
-
-== Tool description ==
-
-Use the **gsiscp** command to securely copy files to or from a remote
-machine.
-
-
-== Command syntax ==
-
-**gsiscp** [-P port] [[user@]host1:]file1 [...] [[user@]host2:]destfile 
-
-[[gsisftp]]
-= GSISFTP(1) =
-:doctype: manpage
-:man source: 
-
-== NAME ==
-gsisftp - Secure file transfer
-
-== SYNOPSIS ==
-**++gsisftp++** 
-
-== Tool description ==
-
-The **gsisftp** command provides an interactive interface for
-transferring files to and from remote machines.
-
-
-== Command syntax ==
-
-**gsisftp** [[user@]host[:dir[/]]] 
-
+:leveloffset: 0

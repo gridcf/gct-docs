@@ -51,5 +51,3 @@ Untrusted self-signed certificate in chain with hash d1b603c3 ++
   can be run in a crontab to keep the CRLs up to date.
   
 |=======================================================================
-
-//////  

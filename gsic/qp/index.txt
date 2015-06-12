@@ -26,7 +26,7 @@
 
 
 
-* A test coverage report is available at http://www.mcs.anl.gov/~bester/gsi/coverage/{$version}.
+* A test coverage report is available at http://www.mcs.anl.gov/~bester/gsi/coverage/6.0.
 
 
 

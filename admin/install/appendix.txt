@@ -1,6 +1,9 @@
-
 [[gtadminappendix]]
 :doctype: book
++++++++
+<?dbhtml filename="appendix.html" ?>
++++++++
+
 = GT 6.0 Installation Appendix =
 
  
@@ -16,9 +19,11 @@ include::env_vars.txt[]
 [[gtadmin-simpleca]]
 == Installing SimpleCA ==
 
+:leveloffset: 1
 
-include::../../simpleca/admin/index.txt[]
+include::../../simpleca/admin/guide.txt[]
 
+:leveloffset: 0
  
 include::troubleshooting.txt[]
 

@@ -1,6 +1,5 @@
-
 [[gram5-error-codes]]
-=== Errors ===
+== Errors ==
 
 
 

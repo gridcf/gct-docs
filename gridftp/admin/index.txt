@@ -421,7 +421,9 @@ link:#gridftp-admin-gfork-master[here].
 === Accessing data from other data interfaces ===
 
 
+:leveloffset: 1
 include::../GridFTP_DSI_General_Frag.txt[]
+:leveloffset: 0
 
 
 [[gridftp-admin-dsis]]
@@ -563,8 +565,9 @@ include::../GridFTP_Usage_Statistics_Frag.txt[]
 [[gridftp-admin-command]]
 == GridFTP Admin Tool ==
 
-
+:leveloffset: 2
 include::../GridFTP_Interface_Commandline_Admin_Frag.txt[]
+:leveloffset: 0
 
  
 include::GridFTP_SRB.txt[]

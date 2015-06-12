@@ -1,39 +1,96 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<book id="ccommonlibPI">
-  <title>GT <replaceable role="entity">version</replaceable> Component Guide to Public Interfaces: C
-    Common Libraries</title>
-  <titleabbrev>Public Interface Guide</titleabbrev>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../C_Common_Libraries_Interface_API_Frag.xml"/>
-
-  <!-- 
-
-
-<chapter id="ccommonlib-pi-cmd"><title>Command-line tools</title>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../C_Common_Libraries_Interface_Commandline_Frag.xml"/>
-
+<book lang="en">
+<bookinfo>
+    <title>GT 6.0 Component Guide to Public Interfaces: C Common Libraries</title>
+</bookinfo>
+<chapter id="ccommonlib-apis" xreflabel="Public Interface Guide">
+<title>APIs</title>
+<section id="_component_api">
+<title>Component API</title>
+<simpara>See the <ulink url="http://www.globus.org/api/c-globus-{$version}/">C API pages</ulink> for
+other API documentation on globus_common.</simpara>
+</section>
 </chapter>
-
-<chapter id="ccommonlib-pi-config"><title>Configuration interface</title>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../C_Common_Libraries_Interface_Config_Frag.xml"/>
-
+<chapter id="ccommonlib-pi-env">
+<title>Environment variable interface</title>
+<section id="ccommonlib-env-var">
+<title>Environment variables for C Common Libraries</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_HOSTNAME</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set this variable to the fully qualified name of the local machine&#8217;s hostname.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_DOMAIN_NAME</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set this variable to the domain name to be used to qualify the local machine&#8217;s hostname.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_ERROR_OUTPUT</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set this variable to 1 to cause Globus libraries to display error information to stderr.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_ERROR_VERBOSE</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set this variable to 1 to enable verbose error messages.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_I18N</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set this variable to 1 to attempt to use localized messages. (Currently not working)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_LOCATION</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set this variable to the path where the Globus Toolkit is installed, so that Globus tools can find libraries and data files. This is only needed if the Globus Toolkit was built with the source installer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">GLOBUS_THREAD_MODEL</emphasis>
+</term>
+<listitem>
+<simpara>
+     Set to the name of a thread model to control the operation of the Globus event driver. Valid values are (depending on the platform) <literal>none</literal> for non-threaded operation (the default), <literal>pthread</literal> for POSIX threads, or <literal>windows</literal> for Windows threads.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
 </chapter>
-  -->
-  <chapter id="ccommonlib-pi-env">
-    <title>Environment variable interface</title>
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-      href="../C_Common_Libraries_Interface_Env_Frag.xml"/>
-  </chapter>
-
 </book>

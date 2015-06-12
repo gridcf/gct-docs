@@ -1,48 +1,246 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="ccommonlibRN">
-<title> GT <replaceable role="entity">version</replaceable> Release Notes: C Common Libraries</title>
-<titleabbrev>Release Notes</titleabbrev>
-
-
-<section id="ccommonlib-rn-overview"><title>Component Overview</title>
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Overview_Brief_Frag.xml"/>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 Release Notes: C Common Libraries</title>
+</articleinfo>
+<section id="ccommonlib-rn-overview" xreflabel="Release Notes">
+<title>Component Overview</title>
+<simpara>The C Common Libraries provide an abstraction layer for data types, libc
+system calls, and data structures used throughout the Globus Toolkit and
+useful for applications that use the Globus Toolkit.</simpara>
+<section id="ccommonlib-feature-summary">
+<title>Feature summary</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Globus Callback - Portable event handling layer for signal handling and periodic and one-shot events in a single- more multi-threaded environment.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Globus Error - An abstraction for providing context-specific information in error response in C.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Portable Threading API for POSIX and Windows
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+URL String Parser
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Configuration handlers for command-line, environment-variable, and configuration file based application configuration.
+</simpara>
+</listitem>
+</itemizedlist>
 </section>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Feature_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Change_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Fixed_Bugs_Frag.xml"/>
-
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Known_Problems_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Dependencies_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Platform_Summary_Frag.xml"/>
-
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Compatibility_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Associated_Standards_Frag.xml"/>
-
-<section id="ccommonlib-rn-formoreinfo"><title>For More Information </title>
-    <para>See the <ulink url="http://www.globus.org/api/c-globus-{$version}/">C API pages</ulink> for more information about this component. </para>
+<section id="ccommonlib-changes-summary">
+<title>Summary of Changes in C Common Libraries</title>
+<section id="_new_features_c_common_libraries">
+<title>New Features: C Common Libraries</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Highlights
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+None.
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>
+Other New Features
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+None.
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</section>
+<section id="_improvements_c_common_libraries">
+<title>Improvements: C Common Libraries</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Update of build system to enable parallel builds, cross-compiling, and easier testing
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Port of build system to Mac OS X and Windows
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="ccommonlib-fixed-bugs">
+<title>Fixed Bugs for C Common Libraries</title>
+<itemizedlist>
+<listitem>
+<simpara>
+[]
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="ccommonlib-outstanding">
+<title>Known Problems in C Common Libraries</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-108">GT-108</ulink>: --libdir is being ignored
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-114">GT-114</ulink>: i18n rules in installer don&#8217;t work
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-360">GT-360</ulink>: signals ignored by subprocesses
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-452">GT-452</ulink>: autoconf macros for globus-core can&#8217;t handle absolute path in CC variable (e.g. CC=/usr/bin/gcc)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-470">GT-470</ulink>: Globus IO reports timeout error as cancellation
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="ccommonlib-tech-dependencies">
+<title>Technology dependencies</title>
+<simpara>C Common Libraries only depend on the globus_core module.</simpara>
+</section>
+<section id="ccommonlib-platform-summary">
+<title>Tested platforms</title>
+<simpara>The C common libraries have been tested on the following platforms</simpara>
+<table id="tested-platforms"
+frame="all"
+rowsep="1" colsep="1"
+>
+<title>Tested Platforms</title>
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="25*"/>
+<colspec colname="col_3" colwidth="25*"/>
+<colspec colname="col_4" colwidth="25*"/>
+<thead>
+<row>
+<entry align="left" valign="top"> Operating System </entry>
+<entry align="left" valign="top"> Distribution </entry>
+<entry align="left" valign="top"> Version(s) </entry>
+<entry align="left" valign="top"> Architecture(s)</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top" morerows="9"><simpara>Linux</simpara></entry>
+<entry align="left" valign="top" morerows="1"><simpara>CentOS</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Fedora</simpara></entry>
+<entry align="left" valign="top"><simpara>20, 21, 22</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Red Hat Enterprise Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Scientific Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>SUSE Linux Enterprise Server</simpara></entry>
+<entry align="left" valign="top"><simpara>11SP3</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Debian</simpara></entry>
+<entry align="left" valign="top"><simpara>6, 7, 8</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Ubuntu</simpara></entry>
+<entry align="left" valign="top"><simpara>12.04LTS, 14.04LTS, 14.10, 15.04</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_1" nameend="col_2"><simpara>Mac OS X</simpara></entry>
+<entry align="left" valign="top"><simpara>10.6-10.10</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Solaris</simpara></entry>
+<entry align="left" valign="top"><simpara>OmniOS</simpara></entry>
+<entry align="left" valign="top"><simpara>r151006</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Windows 7</simpara></entry>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>Cygwin</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>MingW64</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="ccommonlib-compatibility-summary">
+<title>Backward compatibility summary</title>
+<simpara>API changes since GT version 5.2</simpara>
+<simpara>None.</simpara>
+<simpara>All of the GT 3.2 API is still functional in GT 6.0.</simpara>
+</section>
+<section id="ccommonlib-rn-associatedstandards">
+<title>Associated Standards</title>
+<simpara>There are no standards implemented by the C common libraries.</simpara>
+</section>
+</section>
+<section id="ccommonlib-rn-formoreinfo">
+<title>For More Information</title>
+<simpara>See the <ulink url="http://www.globus.org/api/c-globus-{$version}/">C API pages</ulink> for
+more information about this component.</simpara>
 </section>
 </article>

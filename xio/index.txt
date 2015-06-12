@@ -15,7 +15,7 @@ link:admin/index.html[Admin Guide]::
     link:../admin/index.html[Installation Guide] and 
     link:../admin/quickstart/index.html[Quickstart]
     [link:admin/xioAdminGuide.pdf[pdf]]
-link:developer/index.html[Developer's Guide::
+link:developer/index.html[Developer's Guide]::
     Reference and usage scenarios for developers.
     [link:developer/xioDeveloperGuide.pdf[pdf]]
 

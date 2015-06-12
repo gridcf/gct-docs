@@ -1,10 +1,4 @@
-
 [[gridftp-protocols]]
-== Semantics and syntax of non-WSDL protocols ==
+== Semantics and syntax of protocols ==
 
-
---
-[describe non-WSDL protocols. if none, state so.]
-
-
---
+http://toolkit.globus.org/alliance/publications/papers/GFD-R.0201.pdf[GridFTP: Protocol Extensions to FTP for the Grid]

@@ -2,29 +2,18 @@
 :doctype: article
 = GT 6 Quickstart =
 
- 
---
-
-.Introduction
---
+== Introduction ==
 This is a quickstart that shows a full installation of the Toolkit on
 two Fedora Linux machines, named **++elephant++** and **++donkey++**. It
 shows the installation of prereqs, installation of the toolkit, creation
 of certificates, and configuration of services. It is designed to
-supplement the main admin guide, link:../../admin/install/index.html[]. 
+supplement the link:../../admin/install/index.html[main admin guide], 
 Scenarios are shown for running GridFTP and GRAM5 services, and using
 GridFTP and GRAM clients. 
-
---
-
-
---
  
 include::typography.txt[]
-
  
 include::prereq.txt[]
-
  
 [[q-first]]
 == Setting up the first machine (GridFTP, GRAM, and MyProxy services) ==
@@ -43,7 +32,9 @@ root# yum install globus-gridftp globus-gram5 globus-gsi myproxy \
 
 This will install the GridFTP, GRAM, and MyProxy services, as well as
 set up a basic SimpleCA so that you can issue security credentials for
-users to run the Globus services. [NOTE]
+users to run the Globus services.
+
+[NOTE]
 --
 For Debian and Ubuntu systems, use **++apt-get++** or **++aptitude++** or another package manager to install the same packages as in the **++yum++** command above. 
 --
@@ -338,7 +329,7 @@ on another machine and add it to this little test grid.
 [[q-prereq2]]
 === Setting up your second machine: Prereqs ===
 
-See <<q-prereq>>[Prereqs].
+See link:#q-prereq[Prereqs].
 
 
 [[q-toolkit2]]
@@ -521,12 +512,12 @@ scenarios].
 [[q-conclusion]]
 == Conclusion ==
 
-Hopefully this guide has been helpful in familiarizing you with some of
-the administration tasks and tools to use the Globus Toolkit. If you've
-reached this point successfully, you should have enough knowledge to
-enable additional hosts to use your grid by repeating the tasks in
-link:#q-second[]. Also, by repeating the tasks in
-link:#q-user-credential[] and link:#q-gridmap[] you can enable
+Hopefully this guide has been helpful in familiarizing you with some of the
+administration tasks and tools to use the Globus Toolkit. If you've reached
+this point successfully, you should have enough knowledge to enable additional
+hosts to use your grid by repeating the tasks in link:#q-second[Setting up your
+second machine]. Also, by repeating the tasks in link:#q-user-credential[User
+Credentials ] and link:#q-gridmap[User Authorization ] you can enable
 additional users to access your compute and data resources. 
 
   

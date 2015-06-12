@@ -1,15 +1,2388 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../xinclude.mod" >
-%xinclude;
-
-]>
-
-<reference id="gridftp-commandline"><title>GridFTP Commands</title>
- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
- href="GridFTP_Interface_Commandline_Client_Frag.xml" xpointer="globus-url-copy"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
- href="GridFTP_Interface_Commandline_Admin_Frag.xml"/>
-</reference>
+<article lang="en">
+<articleinfo>
+    <date>2015-06-11</date>
+</articleinfo>
+<section id="gridftp-commandline">
+<title>GridFTP Commands</title>
+<section id="gridftp-command-client">
+<title>GridFTP Client Commands</title>
+<section id="globus-url-copy">
+<title>GLOBUS-URL-COPY(1)</title>
+<simpara>globus-url-copy - globus-url-copy</simpara>
+<simpara><emphasis role="strong">globus-url-copy</emphasis> [options] SOURCE-URL DESTINATION-URL</simpara>
+<simpara>The <emphasis role="strong">globus-url-copy</emphasis> program is a command line
+tool for multi-protocol data movement. It supports gsiftp:// (GridFTP),
+ftp://, http://, https://, sshftp:// and <ulink url="file:///">file:///</ulink> protocol specifiers
+in the URL.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">-help, -usage</emphasis>
+</term>
+<listitem>
+<simpara>
+    Print help.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-versions</emphasis>
+</term>
+<listitem>
+<simpara>
+    Print the versions of all modules that this program uses
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-c, -continue-on-error</emphasis>
+</term>
+<listitem>
+<simpara>
+    Do not die after any errors.  By default, program will exit after most
+    errors.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-a, -ascii</emphasis>
+</term>
+<listitem>
+<simpara>
+    Convert the file to/from ASCII format to/from local file format
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-b, -binary</emphasis>
+</term>
+<listitem>
+<simpara>
+    Do not apply any conversion to the files. <emphasis role="strong">default</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-f FILENAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    Read a list of URL pairs from filename.  Each line should contain
+    sourceURL destURL. Enclose URLs with spaces in double qoutes (").
+    Blank lines and lines beginning with # will be ignored.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-cd, -create-dest</emphasis>
+</term>
+<listitem>
+<simpara>
+    Create destination directory if needed.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-r</emphasis>
+</term>
+<listitem>
+<simpara>
+    Copy files in subdirectories
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-fast</emphasis>
+</term>
+<listitem>
+<simpara>
+    Recommended when using GridFTP servers. Use MODE E for all data transfers,
+    including reusing data channels between list and transfer
+    operations.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-t SECONDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Run the transfer for this number of seconds and then end. Useful for
+    performance testing or forced restart loops.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-q, -quiet</emphasis>
+</term>
+<listitem>
+<simpara>
+    Suppress all output for successful operation.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-v, -verbose</emphasis>
+</term>
+<listitem>
+<simpara>
+    Display URLs being transferred
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-vb, -verbose-perf</emphasis>
+</term>
+<listitem>
+<simpara>
+    During the transfer, display the number of bytes transferred and the
+    transfer rate per second. Show URLs being transferred
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dbg, -debugftp</emphasis>
+</term>
+<listitem>
+<simpara>
+    Debug ftp connections. Prints control channel communication to
+    stderr
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-rst, -restart</emphasis>
+</term>
+<listitem>
+<simpara>
+    Restart failed ftp operations.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-rst-retries RETRIES</emphasis>
+</term>
+<listitem>
+<simpara>
+    The maximum number of times to retry the operation before giving up on the
+    transfer. Use 0 for infinite. Default is 5.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-rst-interval SECONDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    The interval in seconds to wait after a failure before retrying the
+    transfer.  Use 0 for an exponential backoff. Default is 0.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-rst-timeout SECONDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Maximum time after a failure to keep retrying. Use 0 for no timeout.
+    Default is 0.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-stall-timeout SECONDS, -st SECONDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    How long before cancelling/restarting a transfer with no data movement. Set
+    to 0 to disable. Default is 600 seconds.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-df FILENAME, -dumpfile FILENAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    Path to a file where untransferred URLs will be saved for later restarting.
+    Resulting file is the same format as the -f input file. If file exists, it
+    will be read and all other URL input will be ignored.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-do FILENAME, -dump-only FILENAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    Perform no write operations on the destination.  Instead, all files
+    that would be transferred are enumerated and dumped to the specified file.
+    Resulting file is the same format as the -f input file. Note: if you intend
+    to use this file as input for a future transfer, the -create-dest option
+    will be required if any destination directories do not already
+    exist.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-rp, -relative-paths</emphasis>
+</term>
+<listitem>
+<simpara>
+    The path portion of ftp URLs will be interpreted as relative to the user&#8217;s
+    starting directory on the server. By default, all paths are
+    root-relative.  When this flag is set, the path portion of the ftp URL must
+    start with %2F if it designates a root-relative path.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-s SUBJECT, -subject SUBJECT</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use this subject to match with both the source and dest servers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-ss SUBJECT, -source-subject SUBJECT</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use this subject to match with the source server
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-ds SUBJECT, -dest-subject SUBJECT</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use this subject to match with the destination server.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-tcp-bs SIZE, -tcp-buffer-size SIZE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Specify the size (in bytes) of the buffer to be used by the underlying ftp
+    data channels.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-bs block SIZE, -block-size block SIZE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Specify the size (in bytes) of the buffer to be used by the underlying
+    transfer methods.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-p PARALLELISM, -parallel PARALLELISM</emphasis>
+</term>
+<listitem>
+<simpara>
+    Specify the number of parallel data connections should be used.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-notpt, -no-third-party-transfers</emphasis>
+</term>
+<listitem>
+<simpara>
+    Turn third-party transfers off (on by default).
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-nodcau, -no-data-channel-authentication</emphasis>
+</term>
+<listitem>
+<simpara>
+    Turn off data channel authentication for ftp transfers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dcsafe, -data-channel-safe</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set data channel protection mode to SAFE
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dcpriv, -data-channel-private</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set data channel protection mode to PRIVATE
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-off, -partial-offset</emphasis>
+</term>
+<listitem>
+<simpara>
+    Offset for partial ftp file transfers, defaults to 0.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-len, -partial-length</emphasis>
+</term>
+<listitem>
+<simpara>
+    Length for partial ftp file transfers, used only for the source url,
+    defaults the full file.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-list URL</emphasis>
+</term>
+<listitem>
+<simpara>
+    List the files located at URL.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-stripe</emphasis>
+</term>
+<listitem>
+<simpara>
+    Enable striped transfers on supported servers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-striped-block-size, -sbs</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set layout mode and block size for striped transfers. If not set, server
+    defaults will be used. If set to 0, Partitioned mode will be used. If set
+    to &gt; 0, Blocked mode will be used, with this as the block size.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-ipv6</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use ipv6 when available (EXPERIMENTAL)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-udt</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use UDT, a reliable udp based transport protocol, for data transfers
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-g2, -gridftp2</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use GridFTP v2 protocol enhancements when possible.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dp, -delayed-pasv</emphasis>
+</term>
+<listitem>
+<simpara>
+    Enable delayed passive.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-mn NAME, -module-name NAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the back-end storage module to use for both the source and destination
+    in a GridFTP transfer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-mp PARAMETERS, -module-parameters PARAMETERS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the back-end storage module arguments to use for both the source and
+    destination in a GridFTP transfer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-smn NAME, -src-module-name NAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the back-end storage module to use for the source in a GridFTP
+    transfer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-smp PARAMETERS, -src-module-parameters PARAMETERS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the back-end storage module arguments to use for the source in a
+    GridFTP transfer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dmn NAME, -dst-module-name NAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the back-end storage module to use for the destination in a GridFTP
+    transfer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dmp PARAMETERS, -dst-module-parameters PARAMETERS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the back-end storage module arguments to use for the destination in a
+    GridFTP transfer.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-aa FILE, -authz-assert FILE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use the assertions in FILE to authorize the access with both source
+    and destination servers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-saa FILE, -src-authz-assert FILE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use the assertions in this file to authorize the access with source
+    server.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-daa FILE, -dst-authz-assert FILE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use the assertions in this file to authorize the access with dest
+    server.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-cache-aa, -cache-authz-assert</emphasis>
+</term>
+<listitem>
+<simpara>
+    Cache the authz assertion for subsequent transfers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-cache-saa, -cache-src-authz-assert</emphasis>
+</term>
+<listitem>
+<simpara>
+    Cache the src authz assertion for subsequent transfers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-cache-daa, -cache-dst-authz-assert</emphasis>
+</term>
+<listitem>
+<simpara>
+    Cache the dst authz assertion for subsequent transfers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-pipeline, -pp</emphasis>
+</term>
+<listitem>
+<simpara>
+    Enable pipelining support for multi-file ftp transfers. Currently
+    third-party transfers benefit from this. <emphasis role="strong">EXPERIMENTAL</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-concurrency, -cc</emphasis>
+</term>
+<listitem>
+<simpara>
+    Number of concurrent ftp connections to use for multiple transfers.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-nl-bottleneck, -nlb</emphasis>
+</term>
+<listitem>
+<simpara>
+    Use NetLogger to estimate speeds of disk and network read/write system
+    calls, and attempt to determine the bottleneck component.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-sp COMMANDS, -src-pipe COMMANDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the source end of a remote transfer to use piped in input with the
+    given command line. Do not use with -fsstack.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-DP COMMANDS, -dst-pipe COMMANDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the destination end of a remote transfer to write data to then standard
+    input of the program run via the given command line.  Do not use with
+    -fsstack.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-pipe COMMANDS</emphasis>
+</term>
+<listitem>
+<simpara>
+    Sets both -src-pipe and -dst-pipe to the same thing.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dcstack STACK, -data-channel-stack STACK</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the XIO driver stack for the network on both the source and the
+    destination. Both must be GridFTP servers. The stack should contain all
+    network drivers to use, in the order specified from bottom to top (e.g.
+    -dcstack tcp,gsi). If the gsi driver is not included in the stack and data
+    channel authentication is enabled, it will be inserted above the
+    transport driver in the stack.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-fsstack STACK, -file-system-stack STACK</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the XIO driver stack for the disk on both the source and the
+    destination. Both must be GridFTP servers. The stack should contain all
+    file system drivers to use, in the order specified from bottom to top.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-src-dcstack STACK, -source-data-channel-stack STACK</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the XIO driver stack for the network on the source GridFTP
+    server. See -dcstack above for description of the STACK string.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-src-fsstack STACK, -source-file-system-stack STACK</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the XIO driver stack for the disk on the source GridFTP server. See
+    -fsstack above for description of the STACK string.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dst-dcstack STACK, -dest-data-channel-stack STACK</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the XIO driver stack for the network on the destination GridFTP
+    server. See -dcstack above for description of the STACK string.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dst-fsstack STACK, -dest-file-system-stack STACK</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the XIO driver stack for the disk on the destination GridFTP
+    server. See -fsstack above for description of the STACK string.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-cred PATH</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the credentials to use for both ftp connections.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-src-cred CRED-FILE, -sc CRED-FILE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the credentials to use for source ftp connections.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-dst-cred CRED-FILE, -dc CRED-FILE</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the credentials to use for destination ftp connections.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-af FILENAME, -alias-file FILENAME</emphasis>
+</term>
+<listitem>
+<simpara>
+    File with mapping of logical host aliases to lists of physical hosts. When
+    used with multiple concurrent connections, each connection uses the
+    next host in the list. Each line should either be an alias, noted with the
+    @ symbol, or a hostname[:port]. Currently, only the aliases @source and
+    @destination are valid, and they are used for every source or destination
+    URL.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-sync</emphasis>
+</term>
+<listitem>
+<simpara>
+    Only transfer files where the destination does not exist or differs from
+    the source. -sync-level controls how to determine if files differ.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">-sync-level number</emphasis>
+</term>
+<listitem>
+<simpara>
+    Criteria for determining if files differ when performing a sync transfer.
+    The default sync level is 2. The available levels are:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Level 0 will only transfer if the destination does not exist.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Level 1 will transfer if the size of the destination does not match the
+      size of the source.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Level 2 will transfer if the time stamp of the destination is older than
+      the time stamp of the source.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Level 3 will perform a checksum of the source and destination and
+      transfer if the checksums do not match.
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>Copyright &#169; 1999-2014 University of Chicago
+:leveloffset: 0</simpara>
+<simpara>The Globus Project does <emphasis role="strong">not</emphasis> provide an interactive client for
+GridFTP. Any normal FTP client will work with a GridFTP server, but it
+cannot take advantage of the advanced features of GridFTP. The
+interactive clients listed below take advantage of the advanced features
+of GridFTP.</simpara>
+<simpara>There is no endorsement implied by their presence here. We make no
+assertion as to the quality or appropriateness of these tools, we simply
+provide this for your convenience. We will <emphasis role="strong">not</emphasis> answer questions,
+accept bugs, or in any way shape or form be responsible for these tools,
+although they should have mechanisms of their own for such things.</simpara>
+<simpara>UberFTP was developed at the NCSA under the auspices of NMI and
+TeraGrid:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+NCSA Uberftp only download: <ulink url="http://dims.ncsa.uiuc.edu/set/uberftp/download.html">http://dims.ncsa.uiuc.edu/set/uberftp/download.html</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+UberFTP User&#8217;s Guide: <ulink url="http://dims.ncsa.uiuc.edu/set/uberftp/userdoc.html">http://dims.ncsa.uiuc.edu/set/uberftp/userdoc.html</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="globus-gridftp-server">
+<title>GLOBUS-GRIDFTP-SERVER(8)</title>
+<section id="_name_2">
+<title>NAME</title>
+<simpara>globus-gridftp-server - Configures the GridFTP Server</simpara>
+</section>
+<section id="_synopsis">
+<title>SYNOPSIS</title>
+<simpara><emphasis role="strong"><literal>globus-gridftp-server</literal></emphasis></simpara>
+</section>
+<section id="_tool_description">
+<title>Tool description</title>
+<simpara><emphasis role="strong"><literal>globus-gridftp-server</literal></emphasis> configures the GridFTP server using a
+config file and/or commandline options.</simpara>
+<note>
+<simpara>Command line options and configuration file options may both be used,
+but the command line <emphasis role="strong">overrides</emphasis> the config file.</simpara>
+</note>
+<simpara>The configuration file for the GridFTP server is read from the following
+locations, in the given order. Only the first file found will be loaded:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Path specified with the <literal>-c &lt;configfile&gt;</literal> command line option.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>$GLOBUS_LOCATION/etc/gridftp.conf</literal>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>/etc/grid-security/gridftp.conf</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Options are one per line, with the format:</simpara>
+<screen>&lt;option&gt; &lt;value&gt;</screen>
+<simpara>If the value contains spaces, they should be enclosed in double-quotes
+("). Flags or boolean options should only have a value of 0 or 1. Blank
+lines and lines beginning with # are ignored.</simpara>
+<simpara>For example:</simpara>
+<screen>  port 5000
+  allow_anonymous 1
+  anonymous_user bob
+  banner "Welcome!"</screen>
+<section id="_developer_notes">
+<title>Developer notes</title>
+<simpara>The Globus implementation of the GridFTP server draws on:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+three IETF RFCs:
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+RFC 959
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+RFC 2228
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+RFC 2389
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+an IETF Draft: MLST-16
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+the GridFTP protocol specification, which is Global Grid Forum (GGF) Standard GFD.020.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>The command line tools and the client library completely hide the
+details of the protocol from the user and the developer. Unless you
+choose to use the control library, it is not necessary to have a
+detailed knowledge of the protocol.</simpara>
+</section>
+</section>
+<section id="_command_syntax">
+<title>Command syntax</title>
+<simpara>The basic syntax for <emphasis role="strong"><literal>globus-gridftp-server</literal></emphasis> is:</simpara>
+<screen>globus-gridftp-server [optional command line switches]</screen>
+<simpara>To use <emphasis role="strong"><literal>globus-gridftp-server</literal></emphasis> with a config file, make sure to
+use the <emphasis>-c &lt;configfile&gt;</emphasis> option.</simpara>
+</section>
+<section id="commandlineoptions-server">
+<title>Command line options</title>
+<simpara>The table below lists config file options, associated command line
+options (if available) and descriptions.</simpara>
+<note>
+<simpara>Any boolean option can be negated on the command line by preceding the
+specified option with <emphasis>-no-</emphasis> or <emphasis>-n</emphasis>. example: -no-cas or -nf.</simpara>
+</note>
+<section id="gridftp-server-config_options-info">
+<title>Informational Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">help &lt;0|1&gt; , -h , -help </emphasis>
+</term>
+<listitem>
+<simpara>
+     Show usage information and exit.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">version &lt;0|1&gt; , -v , -version </emphasis>
+</term>
+<listitem>
+<simpara>
+     Show version information for the server and exit.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">versions &lt;0|1&gt; , -V , -versions </emphasis>
+</term>
+<listitem>
+<simpara>
+     Show version information for <emphasis role="strong">all</emphasis> loaded globus libraries and exit.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-modes">
+<title>Modes of Operation</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">inetd &lt;0|1&gt; , -i , -inetd </emphasis>
+</term>
+<listitem>
+<simpara>
+     Run under an inetd service.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">daemon &lt;0|1&gt; , -s , -daemon </emphasis>
+</term>
+<listitem>
+<simpara>
+     Run as a daemon. All connections will fork off a new process and setuid
+if allowed. See
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-daemon_mode">../..gridftp/admin/index.html#gridftp-admin-daemon_mode</ulink> for more
+information.
+</simpara>
+<simpara>Default value: TRUE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">detach &lt;0|1&gt; , -S , -detach </emphasis>
+</term>
+<listitem>
+<simpara>
+     Run as a background daemon detached from any controlling terminals. See
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-daemon_mode">../..gridftp/admin/index.html#gridftp-admin-daemon_mode</ulink> for more
+information.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ssh , -ssh </emphasis>
+</term>
+<listitem>
+<simpara>
+     Run over a connected ssh session.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">exec &lt;string&gt; , -exec &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     For statically compiled or non-GLOBUS_LOCATION standard binary
+locations, specify the full path of the server binary here. Only needed
+when run in
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-daemon_mode">daemon
+mode</ulink>.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">chdir &lt;0|1&gt; , -chdir </emphasis>
+</term>
+<listitem>
+<simpara>
+     Change directory when the server starts. This will change directory to
+the dir specified by the chdir_to option.
+</simpara>
+<simpara>Default value: TRUE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">chdir_to &lt;string&gt; , -chdir-to &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Directory to chdir to after starting. Will use <literal>/</literal> if not set.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">fork &lt;0|1&gt; , -f , -fork </emphasis>
+</term>
+<listitem>
+<simpara>
+     Server will fork for each new connection. Disabling this option is only
+recommended when debugging. Note that non-forked servers running as
+<emphasis>root</emphasis> will only accept a single connection and then exit.
+</simpara>
+<simpara>Default value: TRUE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">single &lt;0|1&gt; , -1 , -single </emphasis>
+</term>
+<listitem>
+<simpara>
+     Exit after a single connection.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">chroot_path &lt;string&gt; , -chroot-path &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Path to become the new root after authentication. This path must contain
+a valid certificate structure, <literal>/etc/passwd</literal>, and , and
+<literal>/etc/groups</literal>. The command globus-gridftp-server-setup-chroot can help
+create a suitable directory structure. . The command
+globus-gridftp-server-setup-chroot can help create a suitable directory
+structure.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-security">
+<title>Authentication, Authorization, and Security Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">auth_level &lt;number&gt; , -auth-level &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>
+0 = Disables all authorization checks.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+1 = Authorize identity only.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+2 = Authorize all file/resource accesses.
+</simpara>
+<simpara>If not set, the GridFTP Server uses level 2 for front ends and level 1
+for data nodes.</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_allow_from &lt;string&gt; , -ipc-allow-from &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Only allow IPC connections (applicable for backend servers in a striped
+configuration) from these source IP addresses. Specify a comma-separated
+list of IP address fragments. A match is any IP address that starts with
+the specified fragment. Example: <emphasis>192.168.1.</emphasis> will match and allow a
+connection from 192.168.1.45. Note that if this option is used, any
+address not specifically allowed will be denied.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_deny_from &lt;string&gt; , -ipc-deny-from &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Deny IPC connections (applicable for backend servers in a striped
+configuration) from these source IP addresses. Specify a comma-separated
+list of IP address fragments. A match is any IP address that starts with
+the specified fragment. Example: <emphasis>192.168.2.</emphasis> will match and deny a
+connection from 192.168.2.45.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">allow_from &lt;string&gt; , -allow-from &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Only allow connections from these source IP addresses. Specify a
+comma-separated list of IP address fragments. A match is any IP address
+that starts with the specified fragment. Example: <emphasis>192.168.1.</emphasis> will
+match and allow a connection from 192.168.1.45. Note that if this option
+is used, any address not specifically allowed will be denied.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">deny_from &lt;string&gt; , -deny-from &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Deny connections from these source IP addresses. Specify a
+comma-separated list of IP address fragments. A match is any IP address
+that starts with the specified fragment. Example: <emphasis>192.168.2.</emphasis> will
+match and deny a connection from 192.168.2.45.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">secure_ipc &lt;0|1&gt; , -si , -secure-ipc </emphasis>
+</term>
+<listitem>
+<simpara>
+     Use GSI security on the IPC channel.
+</simpara>
+<simpara>Default value: TRUE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_auth_mode &lt;string&gt; , -ia &lt;string&gt; , -ipc-auth-mode &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Set GSI authorization mode for the IPC connection. Options are one of
+the following:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+none
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+host
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+self
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+subject:[subject]
+</simpara>
+<simpara>Default value: host</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">allow_anonymous &lt;0|1&gt; , -aa , -allow-anonymous </emphasis>
+</term>
+<listitem>
+<simpara>
+     Allow cleartext anonymous access. If server is running as root,
+anonymous_user must also be set. Disables IPC security.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">anonymous_names_allowed &lt;string&gt; , -anonymous-names-allowed &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Comma-separated list of names to treat as anonymous users when allowing
+anonymous access. If not set, the default names of <emphasis>anonymous</emphasis> and <emphasis>ftp</emphasis>
+will be allowed. Use <emphasis>*</emphasis> to allow any username.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">anonymous_user &lt;string&gt; , -anonymous-user &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     User to setuid to for an anonymous connection. Only applies when running
+as root.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">anonymous_group &lt;string&gt; , -anonymous-group &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Group to setgid to for an anonymous connection. If not set, the default
+group of anonymous_user will be used.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">allow_root , -allow-root </emphasis>
+</term>
+<listitem>
+<simpara>
+     Allow clients to be mapped to the root account.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">pw_file &lt;string&gt; , -password-file &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Enable cleartext access and authenticate users against this
+<literal>/etc/passwd</literal> formatted file. formatted file.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">connections_max &lt;number&gt; , -connections-max &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Maximum concurrent connections allowed. Only applies when running in
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-daemon_mode">daemon
+mode</ulink>. Unlimited if not set.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">connections_disabled &lt;0|1&gt; , -connections-disabled </emphasis>
+</term>
+<listitem>
+<simpara>
+     Disable all new connections. Does not affect ongoing connections. This
+must be set in the configuration file and then a SIGHUP issued to the
+server in order to reload the configuration.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">offline_msg &lt;string&gt; , -offline-msg &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Custom message to be displayed to clients when the server is offline via
+the connections_disabled or connections_max = 0 options.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">disable_command_list &lt;string&gt; , -disable-command-list &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma seperated list of client commands that will be disabled.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">authz_callouts  , -authz-callouts  </emphasis>
+</term>
+<listitem>
+<simpara>
+     Enable the GSI authorization callout framework.
+</simpara>
+<simpara>Default value: TRUE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">restrict_paths  , -rp  , -restrict-paths  </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma separated list of full paths that clients may access. Each path
+may be prefixed by R and/or W, denoting read or write access, otherwise
+full access is granted. If a given path is a directory, all contents and
+subdirectories will be given the same access. Order of paths does not
+matter&#8201;&#8212;&#8201;the permissions on the longest matching path will apply. The
+special character <emphasis>~</emphasis> will be replaced by the authenticated user&#8217;s home
+directory. Note that if the authenticated user&#8217;s home directory is not
+accessible, the home directory and starting path will be set to <emphasis>/</emphasis>. By
+default all paths are allowed, and access control is handled by the OS.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">rp_follow_symlinks  , -rp-follow-symlinks  </emphasis>
+</term>
+<listitem>
+<simpara>
+     Allow following symlinks that lead to restricted paths.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">acl  , -em , -acl  </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma seperated list of ACL or event modules to load.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-logging">
+<title>Logging Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">log_level &lt;string&gt; , -d &lt;string&gt; , -log-level &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Log level. A comma-separated list of levels from the following:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+ERROR
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+WARN
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+INFO
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+DUMP
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+ALL
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>For example:</simpara>
+<simpara>+</simpara>
+<screen>globus-gridftp-server -d error,warn,info</screen>
+<simpara>You may also specify a numeric level of 1-255.</simpara>
+<simpara>+
+Default value: ERROR</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">log_module &lt;string&gt; , -log-module &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Indicates the <literal>globus_logging</literal> module that will be loaded. If not set,
+the default  module that will be loaded. If not set, the default
+<literal>stdio</literal> module will be used and the logfile options (see next option)
+will apply.
+</simpara>
+<simpara>Built-in modules are <literal>stdio</literal> and <literal>syslog</literal>. Log module options may be
+set by specifying <literal>module:opt1=val1:opt2=val2</literal>. Available options for
+the built-in modules are:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<emphasis>interval</emphasis> - Indicates buffer flush interval. Default is 5 seconds. A 0
+second flush interval will disable periodic flushing, and the buffer
+will only flush when it is full.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis>buffer</emphasis> - Indicates buffer size. Default is 64k. A value of 0k will
+disable buffering and all messages will be written immediately.
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>Example:</simpara>
+<simpara>+</simpara>
+<screen>-log-module stdio:buffer=4096:interval=10</screen>
+<simpara>+
+Default value: not set</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">log_single &lt;string&gt; , -l &lt;string&gt; , -logfile &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Indicates the path of a single file to which you want to log all
+activity. If neither this option nor <literal>log_unique</literal> is set, logs will be
+written to stderr, unless the execution mode is detached, or inetd, in
+which case logging will be disabled.
+</simpara>
+<note>
+<simpara>You have to provide full path</simpara>
+</note>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">log_unique &lt;string&gt; , -L &lt;string&gt; , -logdir &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Partial path to which <literal>gridftp.(pid).log</literal> will be appended to
+construct the log filename. Example:
+</simpara>
+<screen>-L /var/log/gridftp/</screen>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>will create a separate log (<literal>/var/log/gridftp/gridftp.xxxx.log</literal>) for
+each process (which is normally each new ) for each process (which is
+normally each new client session). If neither this option nor
+<literal>log_single</literal> is set, logs will be written to stderr, unless the
+execution mode is detached, or inetd, in which case logging will be
+disabled.</simpara>
+<simpara>+</simpara>
+<note>
+<simpara>You have to provide full path</simpara>
+</note>
+<simpara>+
+Default value: not set</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">log_transfer &lt;string&gt; , -Z &lt;string&gt; , -log-transfer &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Log NetLogger-style info for each transfer into this file.
+</simpara>
+<note>
+<simpara>You have to provide full path</simpara>
+</note>
+<simpara>Default value: not set</simpara>
+<simpara>Example: DATE=20050520163008.306532 HOST=localhost
+PROG=globus-gridftp-server NL.EVNT=FTP_INFO START=20050520163008.305913
+USER=ftp FILE=/etc/group BUFFER=0 BLOCK=262144 NBYTES=542 VOLUME=/
+STREAMS=1 STRIPES=1 DEST=[127.0.0.1] TYPE=RETR CODE=226</simpara>
+<simpara>Time format is YYYYMMDDHHMMSS.UUUUUU (microsecs).</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+DATE: time the transfer completed.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+START: time the transfer started.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+HOST: hostname of the server.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+USER: username on the host that transfered the file.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+BUFFER: tcp buffer size (if 0 system defaults were used).
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+BLOCK: the size of the data block read from the disk and posted to the network.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+NBYTES: the total number of bytes transfered.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+VOLUME: the disk partition where the transfer file is stored.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+STREAMS: the number of parallel TCP streams used in the transfer.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+STRIPES: the number of stripes used on this end of the transfer.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+DEST: the destination host.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+TYPE: the transfer type, RETR is a send and STOR is a receive (ftp 959 commands).
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+CODE: the FTP rfc959 completion code of the transfer. 226 indicates success, 5xx or 4xx are failure codes.
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">log_filemode &lt;string&gt; , -log-filemode &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     File access permissions of log files. Should be an octal number such as
+0644 (the leading 0 is required).
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">disable_usage_stats &lt;0|1&gt; , -disable-usage-stats </emphasis>
+</term>
+<listitem>
+<simpara>
+     Disable transmission of per-transfer usage statistics. See the
+<ulink url="../../../Usage_Stats.html">Usage Statistics</ulink> section in the online
+documentation for more information.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">usage_stats_target &lt;string&gt; , -usage-stats-target &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Comma-separated list of contact strings for usage statistics listeners.
+The format of &lt;string&gt; is <literal>host:port</literal>.
+</simpara>
+<simpara>Default value: <literal>usage-stats.globus.org:4810</literal></simpara>
+<simpara><emphasis role="strong">Example:</emphasis></simpara>
+<screen>-usage-stats-target usage-stats.globus.org:4810,usage-stats.uc.teragrid.org:5920</screen>
+<simpara>In this example, the usage statistics will be transmitted to the default
+Globus target (<literal>usage-stats.globus.org:4810</literal>) and another target
+(<literal>usage-stats.uc.teragrid.org:5920</literal>).</simpara>
+<simpara>The usage stats sent to a particular receiver may be customized by
+configuring it with a taglist (host:port!taglist) The taglist is a list
+of characters that each correspond to a usage stats tag. When this
+option is unset, stats are reported to usage-stats.globus.org:4810. If
+you set your own receiver, and wish to continue reporting to the Globus
+receiver, you will need to add it manually. The list of available tags
+follow. Tags marked * are reported by default.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+*(e) START - start time of transfer
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(E) END - end time of transfer
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(v) VER - version string of gridftp server
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(b) BUFFER - tcp buffer size used for transfer
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(B) BLOCK - disk blocksize used for transfer
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(N) NBYTES - number of bytes transferred
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(s) STREAMS - number of parallel streams used
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(S) STRIPES - number of stripes used
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(t) TYPE - transfer command: RETR, STOR, LIST, etc
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(c) CODE - ftp result code (226 = success, 5xx = fail)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(D) DSI - DSI module in use
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(A) EM - event modules in use
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(T) SCHEME - ftp, gsiftp, sshftp, etc. (client supplied)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(a) APP - guc, rft, generic library app, etc. (client supplied)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+*(V) APPVER - version string of above. (client supplied)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+(f) FILE - name of file/data transferred
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+(i) CLIENTIP - ip address of host running client (control channel)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+(I) DATAIP - ip address of source/dest host of data (data channel)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+(u) USER - local user name the transfer was performed as
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+(d) USERDN - DN that was mapped to user id
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+&#169; CONFID - ID defined by -usage-stats-id config option
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+(U) SESSID - unique id that can be used to match transfers in a session and transfers across source/dest of a third party transfer. (client supplied)
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">usage_stats_id &lt;string&gt; , -usage-stats-id &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Identifying tag to include in usage statistics data.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-remotedata">
+<title>Single and Striped Remote Data Node Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">remote_nodes &lt;string&gt; , -r &lt;string&gt; , -remote-nodes &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Comma-separated list of remote node contact strings. See
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-striped">Remote
+data-nodes and striped operations</ulink> and
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-separated">Separation of
+processes for higher security</ulink> for examples of using this option.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">data_node &lt;0|1&gt; , -dn , -data-node </emphasis>
+</term>
+<listitem>
+<simpara>
+     This server is a back end data node. See
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-separated">Separation of
+processes for higher security</ulink> for an example of using this option.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">stripe_blocksize &lt;number&gt; , -sbs &lt;number&gt; , -stripe-blocksize &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Size in bytes of sequential data that each stripe will transfer.
+</simpara>
+<simpara>Default value: 1048576</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">stripe_count &lt;number&gt; , -stripe-count &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Number of stripes to use per transfer when this server controls that
+number. If remote nodes are statically configured (via -r or
+remote_nodes), this will be set to that number of nodes, otherwise the
+default is 1.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">stripe_layout &lt;number&gt; , -sl &lt;number&gt; , -stripe-layout &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Stripe layout. 1 = Partitioned, 2 = Blocked.
+</simpara>
+<simpara>Default value: 2</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">stripe_blocksize_locked &lt;0|1&gt; , -stripe-blocksize-locked; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Do not allow client to override stripe blocksize with the <emphasis role="strong"><literal>OPTS
+RETR</literal></emphasis> command.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">stripe_layout_locked &lt;0|1&gt; , -stripe-layout-locked </emphasis>
+</term>
+<listitem>
+<simpara>
+     Do not allow client to override stripe layout with the <emphasis role="strong"><literal>OPTS RETR</literal></emphasis>
+command.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-disk">
+<title>Disk Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">blocksize &lt;number&gt; , -bs &lt;number&gt; , -blocksize &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Size in bytes of data blocks to read from disk before posting to the
+network.
+</simpara>
+<simpara>Default value: 262144</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">sync_writes &lt;0|1&gt; , -sync-writes </emphasis>
+</term>
+<listitem>
+<simpara>
+     Flush disk writes before sending a restart marker. This attempts to
+ensure that the range specified in the restart marker has actually been
+committed to disk. This option will probably impact performance and may
+result in different behavior on different storage systems. See the man
+page for <emphasis role="strong"><literal>sync()</literal></emphasis> for more information.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">use_home_dirs  , -use-home-dirs  </emphasis>
+</term>
+<listitem>
+<simpara>
+     Set the startup directory to the authenticated users home dir.
+</simpara>
+<simpara>Default value: TRUE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">perms &lt;string&gt; , -perms &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Set the default permissions for created files. Should be an octal number
+such as 0644. The default is 0644. Note: If umask is set it will affect
+this setting&#8201;&#8212;&#8201;i.e. if the umask is 0002 and this setting is 0666, the
+resulting files will be created with permissions of 0664.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">file_timeout &lt;number&gt; , -file-timeout &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Timeout in seconds for all disk accesses. A value of 0 disables the
+timeout.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-network">
+<title>Network Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">port &lt;number&gt; , -p &lt;number&gt; , -port &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Port on which a front end will listen for client control channel
+connections or on which a data node will listen for connections from a
+front end. If not set, a random port will be chosen and printed via the
+logging mechanism. See
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-striped">Remote
+data-nodes and striped operations</ulink> and
+<ulink url="../..gridftp/admin/index.html#gridftp-admin-separated">Separation of
+processes for higher security</ulink> for examples of using this option.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">control_interface &lt;string&gt; , -control-interface &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Hostname or IP address of the interface to listen for control
+connections on. If not set, will listen on all interfaces.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">data_interface &lt;string&gt; , -data-interface &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Hostname or IP address of the interface to use for data connections. If
+not set will use the current control interface.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_interface &lt;string&gt; , -ipc-interface &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Hostname or IP address of the interface to use for IPC connections. If
+not set, will listen on all interfaces.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">hostname &lt;string&gt; , -hostname &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Effectively sets the above <emphasis>control_interface</emphasis>, <emphasis>data_interface</emphasis> and
+<emphasis>ipc_interface</emphasis> options.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_port &lt;number&gt; , -ipc-port &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Port on which the front end will listen for data node connections.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">control_preauth_timeout &lt;number&gt; , -control-preauth-timeout &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Time in seconds to allow a client to remain connected to the control
+channel without activity before authenticating.
+</simpara>
+<simpara>Default value: 120</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">control_idle_timeout &lt;number&gt;; , -control-idle-timeout &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Time in seconds to allow a client to remain connected to the control
+channel without activity.
+</simpara>
+<simpara>Default value: 600</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_idle_timeout &lt;number&gt; , -ipc-idle-timeout &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Idle time in seconds before an unused IPC connection will close.
+</simpara>
+<simpara>Default value: 900</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">ipc_connect_timeout &lt;number&gt; , -ipc-connect-timeout &lt;number&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Time in seconds before cancelling an attempted IPC connection.
+</simpara>
+<simpara>Default value: 60</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">port_range &lt;string&gt; , -port-range &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Port range to use for incoming connections. The format is
+"startport,endport". This, along with -data-interface, can be used to
+enable operation behind a firewall and/or when NAT is involved. This is
+the same as setting the environment variable GLOBUS_TCP_PORT_RANGE.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-user-msg">
+<title>User Messages</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">banner &lt;string&gt; , -banner &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Message that is displayed to the client before authentication.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">banner_file &lt;string&gt; , -banner-file &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Read banner message from this file.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">banner_terse &lt;0|1&gt; , -banner-terse </emphasis>
+</term>
+<listitem>
+<simpara>
+     When this is set, the minimum allowed banner message will be displayed
+to unauthenticated clients.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">banner_append &lt;0|1&gt; , -banner-append </emphasis>
+</term>
+<listitem>
+<simpara>
+     When this is set, the message set in the <emphasis>banner</emphasis> or <emphasis>banner_file</emphasis>
+option will be appended to the default banner message rather than
+replacing it.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">login_msg &lt;string&gt; , -login-msg &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Message that is displayed to the client after authentication.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">login_msg_file &lt;string&gt; , -login-msg-file &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Read login message from this file.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-module">
+<title>Module Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">load_dsi_module &lt;string&gt; , -dsi &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Load this Data Storage Interface module. File and remote modules are
+defined by the server. If not set, the file module is loaded, unless the
+<emphasis>remote</emphasis> option is specified, in which case the remote module is loaded.
+An additional configuration string can be passed to the DSI using the
+format <literal>[module name]:[configuration string]</literal>. The format of the
+configuration string is defined by the DSI being loaded.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">allowed_modules &lt;string&gt; , -allowed-modules &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Comma-separated list of ERET/ESTO modules to allow and, optionally,
+specify an alias for. Example:
+</simpara>
+<screen>-allowed-modules module1,alias2:module2,module3</screen>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>(module2 will be loaded when a client asks for alias2).</simpara>
+<simpara>+
+Default value: not set</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">dc_whitelist &lt;string&gt; , -dc-whitelist &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma separated list of drivers allowed on the network stack.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">fs_whitelist &lt;string&gt; , -fs-whitelist &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma separated list of drivers allowed on the disk stack.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">popen_whitelist &lt;string&gt; , -popen-whitelist &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma seperated list of programs that the popen driver is allowed to
+execute, when used on the network or disk stack. An alias may also be
+specified, so that a client does not need to specify the full path.
+Format is [alias:]prog,[alias:]prog. example: /bin/gzip,tar:/bin/tar
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">dc_default &lt;string&gt; , -dc-default &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma separated list of XIO drivers and options representing the
+default network stack. Format is of each driver entry is
+driver1[:opt1=val1;opt2=val2;&#8230;]. The bottom of the stack, the
+transport driver, is always first.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">fs_default &lt;string&gt; , -fs-default &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     A comma separated list of XIO drivers and options representing the
+default disk stack. Format is of each driver entry is
+driver1[:opt1=val1;opt2=val2;&#8230;]. The bottom of the stack, the
+transport driver, is always first.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="gridftp-server-config_options-other">
+<title>Other Options</title>
+<variablelist>
+<varlistentry>
+<term>
+<emphasis role="strong">configfile &lt;string&gt; , -c &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Path to configuration file that should be loaded. Otherwise will attempt
+to load <literal>$GLOBUS_LOCATION/etc/gridftp.conf</literal> and  and
+<literal>/etc/grid-security/gridftp.conf</literal>..
+</simpara>
+<note>
+<simpara>You have to provide full path</simpara>
+</note>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">config_dir &lt;string&gt; , -C &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Path to directory holding configuration files that should be loaded.
+Files will be loaded in alphabetical order, and in the event of
+duplicate parameters the last loaded file will take precedence. Note
+that the main configuration file, if one exists, will always be loaded
+last.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">config_base_path &lt;string&gt; , -config-base-path &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Base path to use when config and log path options are not full paths. By
+default this is the current directory when the process is started.
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">debug &lt;0|1&gt; , -debug </emphasis>
+</term>
+<listitem>
+<simpara>
+     Set options that make the server easier to debug. Forces no-fork,
+no-chdir, and allows core dumps on bad signals instead of exiting
+cleanly. Not recommended for production servers. Note that non-forked
+servers running as root will only accept a single connection and then
+exit.
+</simpara>
+<simpara>Default value: FALSE</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">pidfile &lt;string&gt; , -pidfile &lt;string&gt; </emphasis>
+</term>
+<listitem>
+<simpara>
+     Write PID of the GridFTP server to this path. May contain variable
+</simpara>
+<simpara>Default value: not set</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<warning>
+<simpara>Any FLAG can be negated by prepending <emphasis>-no</emphasis> or <emphasis>-n</emphasis> to the command line
+option.</simpara>
+</warning>
+</section>
+</section>
+<section id="_limitations">
+<title>Limitations</title>
+<simpara>For transfers using parallel data transport streams and for transfers
+using multiple computers at each end, the direction of the connection on
+the data channels must go from the sending to the receiving side. For
+more information about this limitations see
+<ulink url="http://www.ogf.org/documents/GFD.20.pdf">http://www.ogf.org/documents/GFD.20.pdf</ulink>.</simpara>
+<simpara>Globus GridFTP server does not run on windows</simpara>
+</section>
+</section>
+</section>
+</article>

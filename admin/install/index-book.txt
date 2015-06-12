@@ -31,7 +31,12 @@ include::packaging.txt[]
 include::env_vars.txt[]
 
  
-include::simpleca.txt[]
+[[gtadminbook-simpleca]]
+== Installing SimpleCA ==
+
+:leveloffset: 1
+include::../../simpleca/admin/guide.txt[]
+:leveloffset: 0
 
  
 include::troubleshooting.txt[]

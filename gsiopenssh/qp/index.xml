@@ -1,32 +1,30 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="gsiopensshQP">
-    <title>GT <replaceable role="entity">version</replaceable> GSI-OpenSSH: Quality Profile</title>
-    <titleabbrev>Quality Profile</titleabbrev>
-    <section id="gsiopenssh-qp-test">
-        <title>Test coverage reports </title>
-        <para> Not yet available.</para>
-    </section>
-    <section id="gsiopenssh-qp-code">
-        <title>Code analysis reports </title>
-        <para> Not yet available.</para>
-    </section>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Known_Problems_Frag.xml" xpointer="gsiopenssh-outstanding"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Fixed_Bugs_Frag.xml"/>
-
-    <section id="gsiopenssh-qp-performance">
-        <title>Performance reports </title>
-        <para> None.</para>
-    </section>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 GSI-OpenSSH: Quality Profile</title>
+</articleinfo>
+<section id="gsiopenssh-qp-test" xreflabel="Quality Profile">
+<title>Test coverage reports</title>
+<simpara>Not yet available.</simpara>
+</section>
+<section id="gsiopenssh-qp-code">
+<title>Code analysis reports</title>
+<simpara>Not yet available.</simpara>
+<section id="gsiopenssh-outstanding">
+<title>Known Problems in GSI OpenSSH</title>
+<simpara>None.</simpara>
+</section>
+<section id="gsiopenssh-fixed-bugs">
+<title>Fixed Bugs for GSI OpenSSH</title>
+<simpara>None.</simpara>
+</section>
+</section>
+<section id="gsiopenssh-qp-performance">
+<title>Performance reports</title>
+<simpara>None.</simpara>
+</section>
 </article>

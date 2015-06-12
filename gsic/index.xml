@@ -1,138 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
-<!ENTITY % xinclude SYSTEM "../xinclude.mod">
-%xinclude;
-]>
-<article id="gsic">
-  <title>GT <replaceable role="entity">version</replaceable>: Grid Security Infrastructure in C (GSI C) </title>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-  <titleabbrev>GSI C</titleabbrev>
-
-  <xi:include href="GSIC_Overview_Brief_Frag.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
-
-  <informaltable frame="none">
-    <tgroup cols="2">
-      <colspec colname="c1" />
-
-      <colspec colname="c2" />
-
-      <tbody>
-        <row>
-          <entry nameend="c2" namest="c1">The following guides are available
-          for this component:</entry>
-        </row>
-
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-            targetdoc="gsicKey">Security Key Concepts</olink>
-          </emphasis></entry>
-
-          <entry>For important general concepts.  [<ulink url="key/securityKeyConcepts.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gsicAdmin">Admin Guide</olink> </emphasis></entry>
-
-          <entry>For system administrators and those installing, building and
-          deploying GT. You should already have read the <olink
-          targetdoc="gtadmin">Installation Guide</olink> and <olink
-          targetdoc="quickstart">Quickstart</olink>.  [<ulink url="admin/gsicAdminGuide.pdf">pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gsicUser">User's Guide</olink> </emphasis></entry>
-
-          <entry>Describes how end-users typically interact with this
-            component. [<ulink url="user/gsicUserGuide.pdf">pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gsicDeveloper">Developer's Guide</olink>
-          </emphasis></entry>
-
-          <entry>Reference and usage scenarios for developers.  [<ulink url="developer/gsicDeveloperGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry nameend="c2" namest="c1">Other information available for this
-          component are:</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gsicRN">Release
-          Notes</olink> </emphasis></entry>
-
-          <entry>What's new with the <replaceable
-          role="entity">version</replaceable> release for this
-          component.  [<ulink url="rn/gsicReleaseNotes.pdf">pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gsicPI">Public
-          Interface Guide</olink> </emphasis></entry>
-
-          <entry>Information for all public interfaces (including APIs,
-          commands, etc). Please note this is a subset of information in
-          the <olink targetdoc="gsicDeveloper">Developer's
-          Guide</olink>.  [<ulink url="pi/gsicPublicInterfacesGuide.pdf">pdf</ulink>]</entry>
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink targetdoc="gsicQP">Quality
-          Profile</olink> </emphasis></entry>
-
-          <entry>Information about test coverage reports, etc.  [<ulink url="qp/gsicQualityProfile.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><emphasis role="strong"> <olink
-          targetdoc="gsicMig">Migrating Guide</olink> </emphasis></entry>
-
-          <entry>Information for migrating to this version if you were using a
-          previous version of GT.  [<ulink url="mig/gsicMigratingGuide.pdf">pdf</ulink>]</entry>
-
-        </row>
-
-        <row>
-          <entry><ulink url="gsic.pdf"><emphasis role="strong">All GSI C Guides (PDF only)</emphasis></ulink>
-          </entry>
-
-          <entry>Includes all GSI C guides
-          except Public Interfaces (which is a subset of the Developer's
-          Guide)</entry>
-
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
-
-  <glossary id="glossary-gsic" role="auto">
-    <!-- 
-    <remark>some terms not in the docs but wanted in glossary: 
-    <glossterm>scheduler</glossterm>
-    </remark>
-    -->
-
-    <glossdiv>
-      <title>A</title>
-
-      <glossentry>
-        <glossterm>Dummy term</glossterm>
-
-        <glossdef>
-          <para>This is a dummy entry for the automatic glossary database. Do
-          not edit.</para>
-        </glossdef>
-      </glossentry>
-    </glossdiv>
-  </glossary>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0: Grid Security Infrastructure in C (GSI C)</title>
+</articleinfo>
+<simpara id="gsic" xreflabel="GSI C">The Globus Toolkit GSI C component provides APIs and tools for
+authentication, authorization and certificate management. The
+authentication API is built using Public Key Infrastructure (PKI)
+technologies, e.g. X.509 Certificates and TLS. In addition to
+authentication it features a delegation mechanism based upon X.509 Proxy
+Certificates. Authorization support takes the form of a couple of APIs.
+The first provides a generic authorization API that allows callouts to
+perform access control based on the client&#8217;s credentials (i.e. the X.509
+certificate chain). The second provides a simple access control list
+that maps authorized remote entities to local (system) user names. The
+second mechanism also provides callouts that allow third parties to
+override the default behavior and is currently used in the Gatekeeper
+and GridFTP servers. In addition to the above there are various lower
+level APIs and tools for managing, discovering and querying
+certificates.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<ulink url="key/index.html">Security Key Concepts</ulink>
+</term>
+<listitem>
+<simpara>
+    For important general concepts.  [<ulink url="key/securityKeyConcepts.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="admin/index.html">Admin Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    For system administrators and those installing, building and deploying GT.
+    You should already have read the
+    <ulink url="../admin/index.html">Installation Guide</ulink> and
+    <ulink url="../admin/quickstart/index.html">Quickstart</ulink>
+    [<ulink url="admin/gsicAdminGuide.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="user/index.html">User&#8217;s Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Describes how end-users typically interact with this component.
+    [<ulink url="user/gsicUserGuide.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="developer/index.html">Developer&#8217;s Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Reference and usage scenarios for developers.
+    [<ulink url="developer/gsicDeveloperGuide.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>Other information available for this component are:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<ulink url="rn/index.html">Release Notes</ulink>
+</term>
+<listitem>
+<simpara>
+    What&#8217;s new with the &lt;replaceable role=<emphasis>entity</emphasis>&gt;version&lt;/replaceable&gt;
+    release for this component.  [<ulink url="rn/gsicReleaseNotes.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="pi/index.html">Public Interface Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Information for all public interfaces (including APIs, commands, etc).
+    Please note this is a subset of information in the
+    <ulink url="developer/index.html">Developer&#8217;s Guide</ulink>.
+    [<ulink url="pi/gsicPublicInterfacesGuide.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="qp/index.html">Quality Profile</ulink>
+</term>
+<listitem>
+<simpara>
+    Information about test coverage reports, etc.
+    [<ulink url="qp/gsicQualityProfile.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="mig/index.html">Migrating Guide</ulink>
+</term>
+<listitem>
+<simpara>
+    Information for migrating to this version if you were using a previous
+    version of GT.  [<ulink url="mig/gsicMigratingGuide.pdf">pdf</ulink>]]
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="gsic.pdf">All GSI C Guides (PDF only)</ulink>
+</term>
+<listitem>
+<simpara>
+    Includes all GSI C guides except Public Interfaces (which is a subset of
+    the Developer&#8217;s Guide)
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
 </article>

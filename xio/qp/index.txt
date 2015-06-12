@@ -35,7 +35,7 @@ include::../XIO_Fixed_Bugs_Frag.txt[]
 
 
 
-* http://www-unix.mcs.anl.gov/~kettimut/xio/XIO%5fPerformance.pdf[http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf]
+* http://www-unix.mcs.anl.gov/%7ekettimut/xio/XIO%5fPerformance.pdf[http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf]
 
 
  

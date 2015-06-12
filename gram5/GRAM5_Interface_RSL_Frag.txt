@@ -1,4 +1,3 @@
-
 [[gram5-rsl]]
 == RSL Specification v1.1 ==
 
@@ -141,8 +140,8 @@ are escaped in regular quoted literals.
 
 
 RSL string comments use a notation similar to comments in the C
-programming language. Comments are introduced by the prefix ++(*++.
-Comments continue to the first terminating suffix ++*)++ and cannot be
+programming language. Comments are introduced by the prefix `(*`.
+Comments continue to the first terminating suffix `*)` and cannot be
 nested. Comments are stripped from the RSL string during processing and
 are syntactically equivalent to whitespace. 
 
@@ -224,7 +223,9 @@ Please see the individual component documentation for discussion of the
 attribute semantics.
 
 
+:leveloffset: 3
 include::rsl.txt[]
+:leveloffset: 0
 
 
 [[gram5-rsl-examples]]

@@ -1,9 +1,7 @@
 [[grid-ca-create]]
-
-:man source: University of Chicago
 = GRID-CA-CREATE(1) =
 :doctype: manpage
-:man source: 
+:man source: University of Chicago
 
 == NAME ==
 grid-ca-create - Create a CA to sign certificates for use on a grid

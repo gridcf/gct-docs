@@ -1,35 +1,62 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="ccommonlibQP">
-    <title>GT <replaceable role="entity">version</replaceable> C Common Libraries: Quality Profile</title>
-    <titleabbrev>Quality Profile</titleabbrev>
-
-    <section id="ccommonlib-qp-test">
-        <title>Test coverage reports </title>
-        <para>There are no reports on this component.</para>
-    </section>
-
-    <section id="ccommonlib-qp-code">
-        <title>Code analysis reports </title>
-        <para>There are no reports on this component.</para>
-    </section>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Known_Problems_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../C_Common_Libraries_Fixed_Bugs_Frag.xml"/>
-
-    <section id="ccommonlib-qp-performance">
-        <title>Performance reports </title>
-        <para>There are no reports on this component.</para>
-    </section>
-
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 C Common Libraries: Quality Profile</title>
+</articleinfo>
+<section id="ccommonlib-qp-test" xreflabel="Quality Profile">
+<title>Test coverage reports</title>
+<simpara>There are no reports on this component.</simpara>
+</section>
+<section id="ccommonlib-qp-code">
+<title>Code analysis reports</title>
+<simpara>There are no reports on this component.</simpara>
+<section id="ccommonlib-outstanding">
+<title>Known Problems in C Common Libraries</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-108">GT-108</ulink>: --libdir is being ignored
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-114">GT-114</ulink>: i18n rules in installer don&#8217;t work
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-360">GT-360</ulink>: signals ignored by subprocesses
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-452">GT-452</ulink>: autoconf macros for globus-core can&#8217;t handle absolute path in CC variable (e.g. CC=/usr/bin/gcc)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-470">GT-470</ulink>: Globus IO reports timeout error as cancellation
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="ccommonlib-fixed-bugs">
+<title>Fixed Bugs for C Common Libraries</title>
+<itemizedlist>
+<listitem>
+<simpara>
+[]
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="ccommonlib-qp-performance">
+<title>Performance reports</title>
+<simpara>There are no reports on this component.</simpara>
+</section>
 </article>

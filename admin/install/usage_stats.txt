@@ -13,12 +13,16 @@ link:../../Usage_Stats.html[Usage Statistics in GT]
 
 === Data Management Usage Statistics ===
 
+:leveloffset: 2
 
 include::../../gridftp/GridFTP_Usage_Statistics_Frag.txt[]
 
+:leveloffset: 0
 
 === Execution Management Usage Statistics ===
 
+:leveloffset: 2
 
 include::../../gram5/GRAM5_Usage_Statistics_Frag.txt[]
 
+:leveloffset: 0

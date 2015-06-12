@@ -1,9 +1,7 @@
-
 [[gtdeveloper]]
 :doctype: book
 = Globus Toolkit 6.0 Developer's Guide =
 
- 
 .Introduction
 --
 [NOTE]
@@ -19,44 +17,22 @@ Following are some docs you should be familiar with as well:
 
 * link:../../admin/quickstart/index.html[Quickstart]
 
-* All GT command line clients are listed link:[here].
-
-
+* All GT command line clients are listed link:../commands/index.html[here].
 
 --
 
-  
-= Asynchronous Event Handling with Examples =
-
+== Asynchronous Event Handling with Examples ==
 
 :leveloffset: 1
 
 include::globus-async.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 1
-
 include::globus-async-example1.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 1
 
 include::globus-async-example2.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 1
-
 include::globus-async-example3.txt[]
 
-
 :leveloffset: 0
- 
-include::../user/public_interfaces.txt[]
 
-  
+include::../user/public_interfaces.txt[]

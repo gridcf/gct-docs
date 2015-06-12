@@ -1,4 +1,3 @@
-
 [[myproxy-usage]]
 == Usage statistics collection ==
 
@@ -11,4 +10,3 @@ information to usage-stats.cilogon.org:4810 after serving each request.
 See the http://myproxy.ncsa.uiuc.edu/privacy[MyProxy Privacy Policy] for
 details. You can see the Globus Usage Statistics policy
 link:/toolkit/docs/latest-stable/Usage_Stats.html[here]. 
-

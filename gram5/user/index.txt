@@ -591,6 +591,8 @@ certificate does not match the information obtained from DNS and is often a DNS
 configuration problem.
                 
 --------
+=======================================================================
+
 [NOTE]
 --
 The DNS configuration problem was a common issue in GRAM2, but GRAM5
@@ -598,8 +600,6 @@ will not depend on DNS to resolve names for mutual authentication.
 
 --
 
-
-=======================================================================
 
 
 ==== Checking GRAM service version ====
@@ -618,6 +618,8 @@ Toolkit version: 4.3.0-HEAD
 Job Manager version: 10.5 (1256257907-0)
                 
 --------
+=======================================================================
+
 [NOTE]
 --
 This example shows the version number for an unreleased development
@@ -635,9 +637,6 @@ GRAM version check failed : an incoming HTTP message did not contain the expecte
 
 
 --
-
-
-=======================================================================
 
 
 ==== Basic Interactive job with globusrun ====
@@ -706,6 +705,8 @@ manager and a job.
 %  echo $?
 0
 --------
+=======================================================================
+
 [NOTE]
 --
 In GT 6.0, **++globusrun++** does not print any diagnostics when given
@@ -713,10 +714,6 @@ the '-refresh-proxy' command-line option. Therefore, check the exit code
 as above to ensure that the refresh is successful. 
 
 --
-
-
-=======================================================================
-
 
 ==== Dealing with credential expiration ====
 
@@ -1126,8 +1123,9 @@ include::../GRAM5_RSL_Attribute_List.txt[]
 [[gram5-user-errors]]
 == GRAM Error Message Reference ==
 
-
+:leveloffset: 1
 include::../GRAM5_Errors_Frag.txt[]
+:leveloffset: 0
 
  
 [[gram5-user-knownproblems]]

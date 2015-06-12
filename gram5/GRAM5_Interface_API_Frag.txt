@@ -1,31 +1,30 @@
-
 [[gram5-apis]]
 == APIs ==
 
 
-=== Programming Model Overview ===
-
-
-==== C API Documentation Links ====
+=== C API Documentation Links ===
 
 
 
-**http://toolkit.globus.org/api/c/group%5f%5fglobus%5f%5fgram%5f%5fprotocol.html[GRAM Protocol]**::
+**http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fprotocol.html[GRAM Protocol]**::
      Low-level functions for processing GRAM protocol messages. Symbolic constants for RSL attributes, signals, and job states.
 
-**http://www.globus.org/api/c/group%5f%5fglobus%5f%5fgram%5f%5fclient.html[GRAM Client]**::
+**http://www.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fclient.html[GRAM Client]**::
      Functions for submitting job requests, sending signals, and listening for job state updates.
 
-**http://www.globus.org/api/c/group%5f%5fglobus%5f%5frsl.html[RSL]**::
+**http://www.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5frsl.html[RSL]**::
      Functions for parsing and manipulating job specifications in the RSL language.
 
-**http://www.globus.org/api/c/group%5f%5fglobus%5f%5fscheduler%5f%5fevent%5f%5fgenerator.html[Scheduler Event Generator]**::
+**http://www.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fscheduler%5f%5fevent%5f%5fgenerator.html[Scheduler Event Generator]**::
      Functions for generating and parsing LRM-independent job state change events.
 
 
 
-==== GRAM5 Perl API Reference ====
+=== GRAM5 Perl API Reference ===
 
+GRAM5 also provides a Perl API for creating LRM interface implementations.
+
+:leveloffset: 3
 
 include::developer/Error.txt[]
 
@@ -41,3 +40,4 @@ include::developer/JobSignal.txt[]
 
 include::developer/JobState.txt[]
 
+:leveloffset: 0

@@ -1,157 +1,255 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<book id="gsiopensshUser">
-<title>GT <replaceable role="entity">version</replaceable> GSI-OpenSSH: User's Guide</title>
-<titleabbrev>User's Guide</titleabbrev>
-
-<bookinfo id="gsiopenssh-user-introduction"><abstract><title>Introduction</title>
-
-<para>
-This is a guide for using the GSI-enabled OpenSSH client. It assumes
-that you (or your system administrator) 
-have already
-installed the GSI OpenSSH
-and that you have also
-  acquired a <glossterm>user certificate</glossterm> from an appropriate <glossterm>Certificate Authority</glossterm>.
-</para>
-</abstract>
+<book lang="en">
+<bookinfo>
+    <title>GT 6.0 GSI-OpenSSH: User&#8217;s Guide</title>
 </bookinfo>
+<preface>
+<title></title>
+<simpara>This is a guide for using the GSI-enabled OpenSSH client. It assumes
+that you (or your system administrator) have already installed the GSI
+OpenSSH and that you have also acquired a user certificate from an
+appropriate Certificate Authority.</simpara>
+</preface>
 <chapter id="gsiopenssh-user-usagescenarios">
 <title>Using GSI-OpenSSH</title>
-  <section id="gsiopenssh-user-create-proxy">
-  <title>Creating a proxy</title>
-    <para>
-      First, set the GLOBUS_LOCATION environment variable to the location of your
-      GSI-enabled OpenSSH installation.
-      It may already be set for you by your system administrator.</para>
-    <para>
-      Then, create a <glossterm baseform="proxy credentials">proxy credential</glossterm> for GSI authentication by running the
-      <command>grid-proxy-init</command> program.
-      This is your single sign-on to the Grid.
-      By default, <command>grid-proxy-init</command> will create a proxy
-      credential good for 12 hours. </para>
-    <para>
-      To create a proxy credential with a different lifetime, use the
-      <command>-hours</command> option.</para>  
-    
-    <para>For example:
-      <screen>% grid-proxy-init -hours 8</screen>
-    </para>
-  </section>
-  <section id="gsiopenssh-user-delete-proxy">
-  <title>Deleting a proxy</title>
-    <para>To delete a proxy that was previously create with grid-proxy-init, run:</para>
-    
-    <screen>% grid-proxy-destroy</screen>
-  </section>
-  
+<section id="gsiopenssh-user-create-proxy">
+<title>Creating a proxy</title>
+<simpara>First, set the GLOBUS_LOCATION environment variable to the location of
+your GSI-enabled OpenSSH installation. It may already be set for you by
+your system administrator.</simpara>
+<simpara>Then, create a proxy credential for GSI authentication by running the
+<emphasis role="strong"><literal>grid-proxy-init</literal></emphasis> program. This is your single sign-on to the
+Grid. By default, <emphasis role="strong"><literal>grid-proxy-init</literal></emphasis> will create a proxy credential
+good for 12 hours.</simpara>
+<simpara>To create a proxy credential with a different lifetime, use the
+<emphasis role="strong"><literal>-hours</literal></emphasis> option.</simpara>
+<simpara>For example:</simpara>
+<screen>% grid-proxy-init -hours 8</screen>
+</section>
+<section id="gsiopenssh-user-delete-proxy">
+<title>Deleting a proxy</title>
+<simpara>To delete a proxy that was previously create with grid-proxy-init, run:</simpara>
+<screen>% grid-proxy-destroy</screen>
+</section>
 <section id="gsiopenssh-user-authorization">
-  <title>Getting authorized to connect to a site</title>
-<para>
-Before you can connect to a site, the site needs to know the identity
-in your certificate so that it can map that identity to your
-local account.  At a minimum, the site will need to know your subject
-name from your certificate.  You can get your subject name by running
-<command>grid-cert-info</command> with the <command>-subject</command> argument.
-For example: 
-</para>
-
-<screen>
-% grid-cert-info -subject
-</screen>
-
-<para>
-Email your subject name to the administrator of the system you wish to
+<title>Getting authorized to connect to a site</title>
+<simpara>Before you can connect to a site, the site needs to know the identity in
+your certificate so that it can map that identity to your local account.
+At a minimum, the site will need to know your subject name from your
+certificate. You can get your subject name by running
+<emphasis role="strong"><literal>grid-cert-info</literal></emphasis> with the <emphasis role="strong"><literal>-subject</literal></emphasis> argument. For example:</simpara>
+<screen>% grid-cert-info -subject</screen>
+<simpara>Email your subject name to the administrator of the system you wish to
 connect to so that they can add your entry to the appropriate
-authorization files.
-</para>
-
-<para>
-Once you have your proxy credential, all you should have to do is run
+authorization files.</simpara>
+<simpara>Once you have your proxy credential, all you should have to do is run
 gsissh, providing it with the hostname of the host you want to connect
-to.  For example:
-
-<screen>
-% gsissh myhost.somedomain.edu
-</screen>
-You should then find
-yourself automatically logged into your account on the remote system.
-If something goes wrong, please see <olink targetptr="gsiopenssh-user-troubleshooting"/> for assistance.
-</para>
+to. For example:</simpara>
+<screen>% gsissh myhost.somedomain.edu</screen>
+<simpara>You should then find yourself automatically logged into your account on
+the remote system. If something goes wrong, please see
+<ulink url="#gsiopenssh-user-troubleshooting">#gsiopenssh-user-troubleshooting</ulink> for assistance.</simpara>
 </section>
 </chapter>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../Util_OpenSSH_Interface_Commandline_Frag.xml"/>
-
-<!-- 
-<chapter id="gsiopenssh-user-gui"><title>Graphical user interfaces</title>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../Util_OpenSSH_Interface_GUI_Frag.xml"/>
-</chapter>
--->
-  
-   
-<chapter id="gsiopenssh-user-troubleshooting"><title>Troubleshooting</title>
-
-<para>
-Some common errors are listed below. If you need additional assistance,
-please run gsissh with the '-vvv' argument (specifying verbose output) and
-send the output to your system administrator for assistance.</para>
-  
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../Util_OpenSSH_Errors_Frag.xml"/>
-  
-<section id="gsiopenssh-user-passphrase"><title>The gsissh command
-      prompts you for a pass phrase when you run it</title>
-    <para>This could mean that you don't have a proxy certificate; try
-      running <command>grid-proxy-init</command> and then running gsissh again. It
-      could also mean that the GSI authentication is failing for some
-      reason and gsissh is falling back to a different authentication
-      mechanism. Reasons that it might fail include:</para>
-    <itemizedlist>
-      <listitem><simpara>The host you are connecting to does not have a GSI-enabled
-      OpenSSH server. </simpara></listitem>
-      <listitem><simpara>You are not authorized to use GSI authentication to the host. Contact the administrator. </simpara></listitem>
-    </itemizedlist>
+<chapter id="gsiopenssh-cmd">
+<title>GSI-OpenSSH Commands</title>
+<simpara>The <ulink url="#gsissh">gsissh</ulink>, <ulink url="#gsiscp">gsiscp</ulink>, and <ulink url="#gsisftp">gsiftp</ulink> commands provide
+the same interfaces as the standard OpenSSH <emphasis role="strong">ssh</emphasis>, <emphasis role="strong">scp</emphasis>, and
+<emphasis role="strong">sftp</emphasis> commands, respectively, with the added ability to perform X.509
+proxy credential authentication and delegation.</simpara>
+<section id="gsissh">
+<title>GSISSH(1)</title>
+<section id="_name">
+<title>NAME</title>
+<simpara>gsissh - Secure remote login</simpara>
 </section>
-
-     
+<section id="_synopsis">
+<title>SYNOPSIS</title>
+<simpara><emphasis role="strong"><literal>gsissh</literal></emphasis></simpara>
+</section>
+<section id="_tool_description">
+<title>Tool description</title>
+<simpara>Use the <emphasis role="strong">gsissh</emphasis> command to securely login to a remote machine.</simpara>
+</section>
+<section id="_command_syntax">
+<title>Command syntax</title>
+<simpara><emphasis role="strong">gsissh</emphasis> [-l login_name] hostname | <ulink url="mailto:user@hostname">user@hostname</ulink> [command]</simpara>
+</section>
+</section>
+<section id="gsiscp">
+<title>GSISCP(1)</title>
+<section id="_name_2">
+<title>NAME</title>
+<simpara>gsiscp - Secure remote file copy</simpara>
+</section>
+<section id="_synopsis_2">
+<title>SYNOPSIS</title>
+<simpara><emphasis role="strong"><literal>gsiscp</literal></emphasis></simpara>
+</section>
+<section id="_tool_description_2">
+<title>Tool description</title>
+<simpara>Use the <emphasis role="strong">gsiscp</emphasis> command to securely copy files to or from a remote
+machine.</simpara>
+</section>
+<section id="_command_syntax_2">
+<title>Command syntax</title>
+<simpara><emphasis role="strong">gsiscp</emphasis> [-P port] [[user@]host1:]file1 [&#8230;] [[user@]host2:]destfile</simpara>
+</section>
+</section>
+<section id="gsisftp">
+<title>GSISFTP(1)</title>
+<section id="_name_3">
+<title>NAME</title>
+<simpara>gsisftp - Secure file transfer</simpara>
+</section>
+<section id="_synopsis_3">
+<title>SYNOPSIS</title>
+<simpara><emphasis role="strong"><literal>gsisftp</literal></emphasis></simpara>
+</section>
+<section id="_tool_description_3">
+<title>Tool description</title>
+<simpara>The <emphasis role="strong">gsisftp</emphasis> command provides an interactive interface for
+transferring files to and from remote machines.</simpara>
+</section>
+<section id="_command_syntax_3">
+<title>Command syntax</title>
+<simpara><emphasis role="strong">gsisftp</emphasis> [[user@host[:dir[/]]] ]</simpara>
+</section>
+</section>
 </chapter>
-  
-  <chapter id="gsiopenssh-user-debugging">
-    <title>Debugging</title>
-    <para>For information about sys admin debugging, see <olink targetdoc="gsiopensshAdmin" targetptr="gsiopenssh-admin-debugging"/>.</para>
-    <section><title>Specifying verbose output</title>
-   <para> If you need additional assistance, please run gsissh with the '-vvv' argument (specifying verbose output) and 
-   send the output to your system administrator for assistance.</para>
-    </section>
-
-  </chapter>
-  
-  <xi:include href="../Util_OpenSSH_Usage_Statistics_Frag.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  
-  <glossary role="auto" id="glossary-opensshUser">
-    <!-- 
-    <remark>some terms not in the docs but wanted in glossary: 
-    <glossterm>scheduler</glossterm>
-    </remark>
-    -->
-    <glossdiv><title>A</title>
-      <glossentry>
-        <glossterm>Dummy term</glossterm>
-        <glossdef>
-          <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
-        </glossdef>
-      </glossentry>
-    </glossdiv>
-  </glossary>
+<chapter id="gsiopenssh-user-troubleshooting">
+<title>Troubleshooting</title>
+<simpara>Some common errors are listed below. If you need additional assistance,
+please run gsissh with the <emphasis>-vvv</emphasis> argument (specifying verbose output)
+and send the output to your system administrator for assistance.</simpara>
+<section id="gsiopenssh-error-codes">
+<title>Errors</title>
+<table id="gsiopenssh-errors-table"
+frame="all"
+rowsep="1" colsep="1"
+>
+<title>GSI-OpenSSH Errors</title>
+<tgroup cols="3">
+<colspec colname="col_1" colwidth="33*"/>
+<colspec colname="col_2" colwidth="33*"/>
+<colspec colname="col_3" colwidth="33*"/>
+<thead>
+<row>
+<entry align="left" valign="top"> Error Code </entry>
+<entry align="left" valign="top"> Definition </entry>
+<entry align="left" valign="top"> Possible Solutions</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara><literal>GSS-API error Failure acquiring GSSAPI credentials: GSS_S_CREDENTIALS_EXPIRED</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>This means that your proxy certificate has expired.</simpara></entry>
+<entry align="left" valign="top"><simpara>Run <ulink url="../../gsic/pi/index.html#grid-proxy-init"><emphasis role="strong"><literal>grid-proxy-init</literal></emphasis></ulink> to
+  acquire a new proxy certificate, then run <literal>gsissh</literal> again.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&#8230;no proxy credentials&#8230;</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>Failing to run grid-proxy-init to create a user proxy with which to connect
+  will result in the client notifying you that no local credentials exist. Any
+  attempt to authenticate using GSI will fail in this case.</simpara></entry>
+<entry align="left" valign="top"><simpara>Verify that your GSI proxy has been properly initialized via
+  <ulink url="../../gsic/pi/index.html#grid-proxy-info"><emphasis role="strong"><literal>grid-proxy-info</literal></emphasis></ulink>.  If
+  you need to initialize the proxy, use the command
+  <ulink url="../../gsic/pi/index.html#grid-proxy-init"><emphasis role="strong"><literal>grid-proxy-init</literal></emphasis></ulink>.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&#8230;bad file system permissions on private key; key must only be readable by
+  the user&#8230;</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>The host key that the SSH server is using for GSI authentication must only be
+  readable by the user which owns it.  Any other permissions will cause this
+  error.</simpara></entry>
+<entry align="left" valign="top"><simpara>Make sure that the host key&#8217;s UNIX permissions are mode 400 (that is, it
+  should only have mode readable for the user that owns the file,
+  and no other mode bits should be set).</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&#8230;gssapi received empty username; failed to set username from gssapi
+  context; Failed external-keyx for &lt;user&gt; from &lt;host&gt; &lt;port&gt;&#8230;</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>If the server was passed an "implicit username" (i.e. requested to map the
+  incoming connection to a username based on some contextual clues such as the
+  certificate&#8217;s subject), and no entry exists in the grid-mapfile for the
+  incoming connection&#8217;s certificate subject, the server should output a clue
+  that states it is unable to set the username against which to authenticate.</simpara></entry>
+<entry align="left" valign="top"><simpara>Add an entry for the user to the
+  <ulink url="../../gsic/pi/index.html#gsic-env-gridmapfile">gridmap file</ulink>.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&#8230;INTERNAL ERROR: authenticated invalid user xxx&#8230;</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>If the subject name given in the system&#8217;s grid-mapfile points to a
+  non-existent user, the server will give an internal error which is best
+  caught when it is running in debugging mode.</simpara></entry>
+<entry align="left" valign="top"><simpara>Add a new account to the system matching the username pointed at by the
+  user&#8217;s subject in the grid-mapfile.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&#8230;gssapi received empty username; no suitable client data; failed to set username from gssapi context; Failed external-keyx for &lt;user&gt; from &lt;host&gt; &lt;port&gt;&#8230;</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>Should the user attempt to connect without first creating a proxy
+  certificate, or if the user is connecting via a SSH client that does not
+  support GSI authentication, the server will note that no GSSAPI data was sent
+  to it. Verify that the client is able to connect through another GSI service
+  (such as the gatekeeper) to make sure that the user&#8217;s proxy has been created
+  correctly.</simpara></entry>
+<entry align="left" valign="top"><simpara>Verify that you are using a GSI-enabled SSH client and that your GSI proxy
+  has been properly initialized via
+  <ulink url="../../gsic/pi/index.html#grid-proxy-info"><emphasis role="strong"><literal>grid-proxy-info</literal></emphasis></ulink>. If
+  you need to initialize this proxy, use the command
+  <ulink url="../../gsic/pi/index.html#grid-proxy-init"><emphasis role="strong"><literal>grid-proxy-init</literal></emphasis></ulink>.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="gsiopenssh-user-passphrase">
+<title>The gsissh command prompts you for a pass phrase when you run it</title>
+<simpara>This could mean that you don&#8217;t have a proxy certificate; try running
+<emphasis role="strong"><literal>grid-proxy-init</literal></emphasis> and then running gsissh again. It could also
+mean that the GSI authentication is failing for some reason and gsissh
+is falling back to a different authentication mechanism. Reasons that it
+might fail include:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+The host you are connecting to does not have a GSI-enabled OpenSSH server.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+You are not authorized to use GSI authentication to the host. Contact the administrator.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</chapter>
+<chapter id="gsiopenssh-user-debugging">
+<title>Debugging</title>
+<simpara>For information about sys admin debugging, see
+<ulink url="../..gsiopenssh/admin/index.html#gsiopenssh-admin-debugging">../..gsiopenssh/admin/index.html#gsiopenssh-admin-debugging</ulink>.</simpara>
+<section id="_specifying_verbose_output">
+<title>Specifying verbose output</title>
+<simpara>If you need additional assistance, please run gsissh with the <emphasis>-vvv</emphasis>
+argument (specifying verbose output) and send the output to your system
+administrator for assistance.</simpara>
+</section>
+</chapter>
+<chapter id="gsiopenssh-usage">
+<title>Usage statistics collection</title>
+<section id="gsiopenssh-usage-stats">
+<title>GSI-OpenSSH usage statistics collection</title>
+<simpara>By default, the GSI-OpenSSH server (sshd) will send a UDP packet
+containing usage information to usage-stats.cilogon.org:4810 after
+serving each request. See the
+<ulink url="http://grid.ncsa.illinois.edu/ssh/privacy.html">Privacy Policy</ulink> for
+details. You can see the Globus Usage Statistics policy
+<ulink url="/toolkit/docs/latest-stable/Usage_Stats.html">here</ulink>.</simpara>
+</section>
+</chapter>
 </book>

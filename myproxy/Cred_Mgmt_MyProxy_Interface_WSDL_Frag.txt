@@ -1,3 +1,0 @@
-
-MyProxy does not have a WSDL interface.
-

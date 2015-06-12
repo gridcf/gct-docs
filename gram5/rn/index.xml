@@ -1,60 +1,292 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="gram5RN">
-    <title>GT <replaceable role="entity">version</replaceable> Release Notes: GRAM5</title>
-    <titleabbrev>Release Notes</titleabbrev>
-    <section id="gram5-rn-overview">
-        <title>Component Overview</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../GRAM5_Overview_Brief_Frag.xml"/>
-    </section>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Feature_Summary_Frag.xml"/>
-
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Change_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Fixed_Bugs_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Known_Problems_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../GRAM5_Dependencies_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../GRAM5_Platform_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../GRAM5_Compatibility_Summary_Frag.xml"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-        href="../GRAM5_Associated_Standards_Frag.xml"/>
-
-    <section id="gram5-rn-formoreinfo">
-        <title>For More Information </title>
-        <para>See <olink targetdoc="gram5"/> for more information about this component. </para>
-    </section>
-    <glossary role="auto" id="glossary-gram5RN">
-        <!-- 
-        <remark>some terms not in the docs but wanted in glossary: 
-        <glossterm>scheduler</glossterm>
-        </remark>
-        -->
-        <glossdiv>
-            <title>A</title>
-            <glossentry>
-                <glossterm>Dummy term</glossterm>
-                <glossdef>
-                    <para>This is a dummy entry for the automatic glossary database. Do not
-                    edit.</para>
-                </glossdef>
-            </glossentry>
-        </glossdiv>
-    </glossary>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 Release Notes: GRAM5</title>
+</articleinfo>
+<section id="gram5-rn-overview" xreflabel="Release Notes">
+<title>Component Overview</title>
+<simpara>The Grid Resource Allocation and Management (GRAM5) component is used to
+locate, submit, monitor, and cancel jobs on Grid computing resources.
+GRAM5 is not a Local Resource Manager, but rather a set of services and
+clients for communicating with a range of different batch/cluster job
+schedulers using a common protocol. GRAM5 is meant to address a range of
+jobs where reliable operation, stateful monitoring, credential
+management, and file staging are important.</simpara>
+<section id="gram5-features">
+<title>Feature summary</title>
+<simpara>New Features new since 5.2:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Bug fixes and improved testing
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Other Standard Supported Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Remote job execution and management
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Uniform and flexible interface to local resource managers, including Condor, LSF, and SLURM, and GridEngine
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+File staging before and after job execution
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+File and directory clean up after job termination
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Service auditing for each submitted
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Removed Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+None.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gram5-changes-summary">
+<title>Summary of Changes in GRAM5</title>
+<section id="_new_features_gram5">
+<title>New Features: GRAM5</title>
+<simpara>*</simpara>
+</section>
+<section id="_improvements_gram5">
+<title>Improvements: GRAM5</title>
+<simpara>None.</simpara>
+</section>
+</section>
+<section id="gram5-fixed-bugs">
+<title>Fixed Bugs for GRAM5</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Fix crash when USER environment variable is not set
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Incorrect argument order in <literal>globus_cond_wait()</literal> in <literal>globus-scheduler-event-generator</literal> package
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gram5-outstanding">
+<title>Known Problems in GRAM5</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-45">GT-45</ulink>: Manager lock double-locked
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-47">GT-47</ulink>: globus-job-manager null pointer dereference for some call paths
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-52">GT-52</ulink>: SEG may deadlock with threads
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-56">GT-56</ulink>: Tear-down of object requires multiple threads
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-103">GT-103</ulink>: GRAM refresh credentials test sometimes fails because job terminates
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-292">GT-292</ulink>: Service tags may not isolate services completely
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-324">GT-324</ulink>: Behaviour of globus-job-status
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-369">GT-369</ulink>: GRAM5 skips some SEG events for PBS batch system
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-389">GT-389</ulink>: globusrun and globus-job-run don&#8217;t report job failures to user
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://globus.atlassian.net/browse/GT-418">GT-418</ulink>: globus-gatekeeper leaves stale processes behind if port 2119 is probed
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gram5-dependencies">
+<title>Technology dependencies</title>
+<simpara>GRAM depends on the following GT components:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Globus Common
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GSI C
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GridFTP server
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gram5-platforms">
+<title>Tested platforms</title>
+<simpara>GRAM5 has been tested extensively on the following platforms:</simpara>
+<table id="tested-platforms"
+frame="all"
+rowsep="1" colsep="1"
+>
+<title>Tested Platforms</title>
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="25*"/>
+<colspec colname="col_3" colwidth="25*"/>
+<colspec colname="col_4" colwidth="25*"/>
+<thead>
+<row>
+<entry align="left" valign="top"> Operating System </entry>
+<entry align="left" valign="top"> Distribution </entry>
+<entry align="left" valign="top"> Version(s) </entry>
+<entry align="left" valign="top"> Architecture(s)</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top" morerows="9"><simpara>Linux</simpara></entry>
+<entry align="left" valign="top" morerows="1"><simpara>CentOS</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Fedora</simpara></entry>
+<entry align="left" valign="top"><simpara>20, 21, 22</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Red Hat Enterprise Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Scientific Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>SUSE Linux Enterprise Server</simpara></entry>
+<entry align="left" valign="top"><simpara>11SP3</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Debian</simpara></entry>
+<entry align="left" valign="top"><simpara>6, 7, 8</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Ubuntu</simpara></entry>
+<entry align="left" valign="top"><simpara>12.04LTS, 14.04LTS, 14.10, 15.04</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_1" nameend="col_2"><simpara>Mac OS X</simpara></entry>
+<entry align="left" valign="top"><simpara>10.6-10.10</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Solaris</simpara></entry>
+<entry align="left" valign="top"><simpara>OmniOS</simpara></entry>
+<entry align="left" valign="top"><simpara>r151006</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Windows 7</simpara></entry>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>Cygwin</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>MingW64</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="gram5-compatibility">
+<title>Backward compatibility summary</title>
+<simpara>Protocol changes in GRAM since GT4 series:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+The GRAM5 service uses a superset of the GRAM2 protocol for communciation between the client and service. The extensions supported in GRAM5 are implemented in such a way that they are ignored by GRAM2 services or clients. These extensions provide improved error messages and version detection.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GRAM5 does not support task coallocation using DUROC and its related protocols. Jobs submitted using DUROC directives will fail.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GRAM5 does not support file streaming. The standard output and standard error streams are sent after the job completes instead of during execution. As a special case, support for the Condor grid monitor program implements a small subset of the streaming capabilities of GRAM2 in GT 4.2.x.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gram5-associatedstandards">
+<title>Associated Standards</title>
+<simpara>None</simpara>
+</section>
+</section>
+<section id="gram5-rn-formoreinfo">
+<title>For More Information</title>
+<simpara>See <ulink url=""></ulink> for more information about this component.</simpara>
+</section>
 </article>

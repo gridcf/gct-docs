@@ -1,63 +1,158 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
 
-<!ENTITY % xinclude SYSTEM "../../xinclude.mod" >
-%xinclude;
-
-]>
-<article id="gsiopensshRN">
-    <title>GT <replaceable role="entity">version</replaceable> Release Notes: GSI-OpenSSH</title>
-    <titleabbrev>Release Notes</titleabbrev>
-    <section id="gsiopenssh-rn-overview">
-        <title>Component Overview</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Overview_Brief_Frag.xml"/>
-    </section>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Feature_Summary_Frag.xml"/>
-
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Change_Summary_Frag.xml"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Fixed_Bugs_Frag.xml"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Known_Problems_Frag.xml"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Dependencies_Summary_Frag.xml"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Platform_Summary_Frag.xml"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Compatibility_Summary_Frag.xml"/>
-
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-            href="../Util_OpenSSH_Associated_Standards_Frag.xml"/>
-
-    <section id="gsiopenssh-rn-formoreinfo">
-        <title>For More Information </title>
-        <para>See <olink targetdoc="gsiopenssh"/> more information about this component. </para>
-    </section>
-    <glossary role="auto" id="glossary-opensshRN">
-        <!-- 
-        <remark>some terms not in the docs but wanted in glossary: 
-        <glossterm>scheduler</glossterm>
-        </remark>
-        -->
-        <glossdiv><title>A</title>
-            <glossentry>
-                <glossterm>Dummy term</glossterm>
-                <glossdef>
-                    <para>This is a dummy entry for the automatic glossary database. Do not edit.</para>
-                </glossdef>
-            </glossentry>
-        </glossdiv>
-    </glossary>
+<article lang="en">
+<articleinfo>
+    <title>GT 6.0 Release Notes: GSI-OpenSSH</title>
+</articleinfo>
+<section id="gsiopenssh-rn-overview" xreflabel="Release Notes">
+<title>Component Overview</title>
+<simpara>GSI-OpenSSH is a modified version of OpenSSH that adds support for X.509
+proxy certificate authentication and delegation, providing a single
+sign-on remote login and file transfer service. GSI-OpenSSH can be used
+to login to remote systems and transfer files between systems without
+entering a password, relying instead on a valid proxy credential for
+authentication. GSI-OpenSSH forwards proxy credentials to the remote
+system on login, so commands requiring proxy credentials (including
+GSI-OpenSSH commands) can be used on the remote system without the need
+to manually create a new proxy credential on that system. For more
+information about GSI-OpenSSH, see the
+<ulink url="http://grid.ncsa.illinois.edu/ssh/">GSI-OpenSSH Home Page</ulink>.</simpara>
+<section id="gsiopenssh-features">
+<title>Feature summary</title>
+<sidebar>
+<simpara>Supported Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+The <emphasis role="strong"><literal>gsissh</literal></emphasis> command provides a secure remote login service with forwarding of X.509 proxy credentials.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+The <emphasis role="strong"><literal>gsiscp</literal></emphasis> and <emphasis role="strong"><literal>gsisftp</literal></emphasis> commands provide a secure file transfer service authenticated with X.509 proxy credentials, mimicking the <emphasis role="strong"><literal>rcp/scp</literal></emphasis> and <emphasis role="strong"><literal>ftp/sftp</literal></emphasis> commands.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+All standard OpenSSH features are supported, excluding Kerberos authentication. Kerberos authentication is <emphasis role="strong">not</emphasis> compatible with GSI-enabled OpenSSH.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+The GSI-OpenSSH server can replace the standard system SSH server in typical environments.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+If no username is given on the command-line, GSI-OpenSSH automatically determines the username that corresponds to the X.509 proxy certificate subject in the server&#8217;s <literal>grid-mapfile</literal>.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Deprecated Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+None
+</simpara>
+</listitem>
+</itemizedlist>
+</sidebar>
+</section>
+<section id="gsiopenssh-changes-summary">
+<title>Summary of Changes in GSI OpenSSH</title>
+<section id="_new_features_gsi_openssh">
+<title>New Features: GSI OpenSSH</title>
+<simpara>None.</simpara>
+</section>
+<section id="_improvements_gsi_openssh">
+<title>Improvements: GSI OpenSSH</title>
+<simpara>None.</simpara>
+</section>
+</section>
+<section id="gsiopenssh-fixed-bugs">
+<title>Fixed Bugs for GSI OpenSSH</title>
+<simpara>None.</simpara>
+</section>
+<section id="gsiopenssh-outstanding">
+<title>Known Problems in GSI OpenSSH</title>
+<simpara>None.</simpara>
+</section>
+<section id="gsiopenssh-dependencies">
+<title>Technology dependencies</title>
+<simpara>GSI-OpenSSH depends on the following GT components:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url=""></ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>GSI-OpenSSH depends on the following 3rd party software:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="http://www.openssh.org/">OpenSSH</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gsiopenssh-platforms">
+<title>Tested platforms</title>
+<simpara>Tested Platforms for GSI-OpenSSH</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Mac OS X 10.5
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+x86/x86_64 GNU/Linux
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+PPC AIX 5.3
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Sun4u Solaris 5.10
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="gsiopenssh-compatibility">
+<title>Backward compatibility summary</title>
+<simpara>GSI-OpenSSH is backward compatible.</simpara>
+</section>
+<section id="gsiopenssh-associatedstandards">
+<title>Associated Standards</title>
+<simpara>Associated standards for GSI-OpenSSH:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="http://www.ietf.org/rfc/rfc2743.txt">RFC 2743</ulink> GSSAPI
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="http://www.ietf.org/rfc/rfc2744.txt">RFC 2744</ulink> GSSAPI: C-bindings
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="http://www.ietf.org/rfc/rfc4462.txt">RFC 4462</ulink> GSSAPI Authentication and Key Exchange for the SSH Protocol
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="gsiopenssh-rn-formoreinfo">
+<title>For More Information</title>
+<simpara>See <ulink url=""></ulink> more information about this component.</simpara>
+</section>
 </article>

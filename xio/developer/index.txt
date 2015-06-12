@@ -120,7 +120,7 @@ each run. Otherwise, the output will be appended to the existing file.
 
 --
  
-include::../admin/index.txt[]
+include::../XIO_Troubleshooting_Admin_Frag.txt[]
 
  
 [[xio-developer-relateddocs]]
@@ -130,9 +130,6 @@ include::../admin/index.txt[]
 --
 
 * http://www-unix.mcs.anl.gov/~kettimut/xio/XIO%5fPerformance.pdf[Performance]
-
-* http://www-unix.mcs.anl.gov/~bresnaha/xio[Previous HTML doc]
-
 
 
 --

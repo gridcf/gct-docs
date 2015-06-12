@@ -1,4 +1,3 @@
-
 [[gridftpUser,User's Guide ]]
 :doctype: book
 = GT 6.0 GridFTP: User's Guide =
@@ -53,13 +52,7 @@ libraries for building custom GridFTP clients.
 ==== If client is behind a firewall ====
 
 
-include::../GridFTP_Interface_Config_Frag.txt[]
-
-
-include::../GridFTP_Interface_Config_Frag.txt[]
-
-
-include::../GridFTP_Interface_Config_Frag.txt[]
+include::../GridFTP_Interface_Config_Client_Firewall_Frag.txt[]
 
 
 [[gridftp-user-quickstart-config-security]]
@@ -410,112 +403,11 @@ striped data movement].
 === Experimental Features ===
 
 
-[[gridftp-user-experimental-multicasting]]
-==== Multicasting ====
+:leveloffset: 1
 
-To transfer a single file to many destinations in a multicast/broadcast,
-use the new '-mc' option.
+include::GridFTP_User_Multicasting.txt[]
 
-[NOTE]
---
-To use this option, the admin must enable multicasting. Click
-link:../..gridftp/admin/index.html#gridftp-config-multi[here] for more
-information.
-
---
-[WARNING]
---
-This option is EXPERIMENTAL 
-
---
-
-
---------
-globus-url-copy -vb -p 4 -mc filename source_url
---------
-
-The 'filename' must contain a line-separated list of destination urls.
-For example: 
-
---------
-gsiftp://localhost:5000/home/user/tst1
-       gsiftp://localhost:5000/home/user/tst3
-       gsiftp://localhost:5000/home/user/tst4
-      
---------
-For more flexibility, you can also specify a single destination url on
-the command line in addition to the urls in the file. Examples are: 
-
---------
-globus-url-copy -MC multicast.file gsiftp://localhost/home/user/src_file
---------
-or 
-
---------
-globus-url-copy -MC multicast.file gsiftp://localhost/home/user/src_file gsiftp://localhost/home/user/dest_file1
---------
-
-
-
-[[gridftp-user-multicasting-advanced]]
-===== Advanced multicasting options =====
-
-Along with specifying the list of destination urls in a file, a set of
-options for each url can be specified. This is done by appending a ++?++
-to the resource string in the url followed by semicolon-separated key
-value pairs. For example:
-
-
-
---------
-gsiftp://dst1.domain.com:5000/home/user/tst1?cc=1;tcpbs=10M;P=4
---------
-
-This indicates that the receiving host ++dst1.domain.com++ will use 4
-parallel stream, a tcp buffer size of 10 MB, and will select 1 host when
-forwarding on data blocks. This url is specified in the  will use 4
-parallel stream, a tcp buffer size of 10 MB, and will select 1 host when
-forwarding on data blocks. This url is specified in the '-mc' file as
-described above.
-
-The following is a list of key=value options and their meanings:
-
-
-
-**P='integer'**::
-     The number of parallel streams this node will use when forwarding.
-
-**cc='integer'**::
-     The number of urls to which this node will forward data.
-
-**tcpbs='formatted integer'**::
-     The TCP buffer size this node will use when forwarding.
-
-**urls='string list'**::
-     The list of urls that must be children of this node when the spanning tree is complete.
-
-**local_write='boolean: y|n'**::
-     Determines if this data will be written to a local disk, or just forwarded on to the next hop. This is explained more in the link:#gridftp-multicast-networkoverlay[Network Overlay] section.
-
-**subject='string'**::
-     The DN name to expect from the servers this node is connecting to.
-
-
-
-[[gridftp-multicast-networkoverlay]]
-===== Network Overlay =====
-
-In addition to allowing multicast, this function also allows for
-creating user-defined network routes. 
-
-If the 'local_write' option is set to ++n++, then no data will be
-written to the local disk, the data will only be forwarded on. 
-
-If the 'local_write' option is set to ++n++ and is used with the 'cc=1'
-option, the data will be forwarded on to exactly one location. 
-
-This allows the user to create a network overlay of data hops using each
-GridFTP server as a router to the ultimate destination.
+:leveloffset: 0
 
 
 [[gridftp-user-advanced-bottleneck]]
@@ -557,10 +449,11 @@ This will output something like the following:
 
  
 [[gridftp-user-command]]
-== GridFTP Client Tool ==
+== GridFTP Client Tools ==
 
-
+:leveloffset: 1
 include::../GridFTP_Interface_Commandline_Client_Frag.txt[]
+:leveloffset: 0
 
  
 include::../GridFTP_Interface_GUI_Frag.txt[]

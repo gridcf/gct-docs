@@ -1,17 +1,6 @@
 [[gridftp-commandline]]
-= GridFTP Commands =
-
-
-:leveloffset: 2
+== GridFTP Commands ==
 
 include::GridFTP_Interface_Commandline_Client_Frag.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::GridFTP_Interface_Commandline_Admin_Frag.txt[]
-
-
-:leveloffset: 0

@@ -5,7 +5,10 @@
 
 ==== New Features: C Common Libraries ====
 
-None.
+* Highlights
+include::C_Common_Libraries_Change_Summary_Highlights_Frag.txt[]
+* Other New Features
+include::C_Common_Libraries_Change_Summary_Minor_Frag.txt[]
 
 
 ==== Improvements: C Common Libraries ====

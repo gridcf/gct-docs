@@ -38,10 +38,12 @@ in the link:../../gram5/user/index.html[GRAM5 Users's guide].
 include::../GRAM5_Interface_Protocol_Frag.txt[]
 
  
-[[gram5-error-codes]]
+[[gram5-pi-error-codes]]
 == Errors ==
 
 
+:leveloffset: 1
 include::../GRAM5_Errors_Frag.txt[]
+:leveloffset: 0
 
   

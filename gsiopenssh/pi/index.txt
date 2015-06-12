@@ -17,7 +17,7 @@ include::../Util_OpenSSH_Interface_Config_Frag.txt[]
 include::../Util_OpenSSH_Interface_Env_Frag.txt[]
 
  
-[[gsiopenssh-error-codes]]
+[[gsiopenssh-pi-error-codes]]
 == Errors ==
 
 
