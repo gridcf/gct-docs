@@ -114,6 +114,7 @@ endif
 all: dependencies olink html yaml $(PDF_TARGET)
 
 include dependencies
+MAKE_PASS_VARS = XEP="$(XEP)" FOP="$(FOP)" A2X="$(A2X)" PDFTK="$(PDFTK)" GS="$(GS)"
 
 olink: olink-recursive olink-local
 olink-local: $(DB_FILES)
@@ -132,7 +133,7 @@ distclean-local:
 
 olink-recursive html-recursive yaml-recursive pdf-recursive clean-recursive distclean-recursive:
 	@if [ "$(SUBDIRS)" != "" ]; then \
-            for dir in $(SUBDIRS); do echo "Entering $(parentdir)/$$dir [$(subst -recursive,,$@])" ; $(MAKE) -C $$dir parentdir=$(parentdir)/$$dir $(subst -recursive,,$@) || exit 1; done \
+            for dir in $(SUBDIRS); do echo "Entering $(parentdir)/$$dir [$(subst -recursive,,$@])" ; $(MAKE) $(MAKE_PASS_VARS) -C $$dir parentdir=$(parentdir)/$$dir $(subst -recursive,,$@) || exit 1; done \
         fi
 
 
@@ -149,7 +150,7 @@ olink-recursive html-recursive yaml-recursive pdf-recursive clean-recursive dist
 
 dependencies-recursive: dependencies
 	@if [ "$(SUBDIRS)" != "" ]; then \
-            for dir in $(SUBDIRS); do echo "Entering $$dir [$@]" ; $(MAKE) -C $$dir $@ || exit 1; done \
+            for dir in $(SUBDIRS); do echo "Entering $$dir [$@]" ; $(MAKE) $(MAKE_PASS_VARS) -C $$dir $@ || exit 1; done \
         fi
 
 dependencies:
@@ -200,7 +201,7 @@ dependencies:
 	$(A2X) -f docbook $<
 
 $(SUBDIRS):
-	@make XEP="$(XEP)" FOP="$(FOP)" A2X="$(A2X)" PDFTK="$(PDFTK)" GS="$(GS)) -C $@
+	@make $(MAKE_PASS_VARS) -C $@
 
 .SUFFIXES: .db .xml .pdf .fo .txt
 .PHONY: all olink-recursive olink clean-recursive clean distclean-recursive dependencies-recursive distclean pdf $(SUBDIRS) olink-local html-local yaml-local pdf-local
