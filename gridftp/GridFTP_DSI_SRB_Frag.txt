@@ -1,5 +1,5 @@
-
 === Latest information about SRB ===
+indexterm:[acessing data,SRB]
 
 Last Update: August 2005
 

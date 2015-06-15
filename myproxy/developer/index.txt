@@ -71,7 +71,16 @@ two publications:
 
 --
  
-include::../user/index.txt[]
+== Troubleshooting ==
+
+include::../Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+
+[[myproxy-errors]]
+=== Additional MyProxy Troubleshooting ===
+
+For additional information, see the
+http://myproxy.ncsa.uiuc.edu/troubleshooting.html[MyProxy
+Troubleshooting Page] at NCSA. 
 
  
 [[myproxy-developer-relateddocs]]

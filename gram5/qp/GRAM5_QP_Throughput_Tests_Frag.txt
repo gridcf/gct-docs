@@ -1,7 +1,6 @@
-
 [[gram5-reports-throughput]]
 === GRAM5 Throughput Tests ===
-
+indexterm:[GRAM5 Throughput Test Results]
 
 
 

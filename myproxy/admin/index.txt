@@ -10,7 +10,7 @@ information on procedures typically performed by system administrators,
 including installation, configuring, deploying, and testing the
 installation.
 [IMPORTANT]
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in link:../../admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide before continuing!
 
 A typical MyProxy configuration has one dedicated myproxy-server for the
 site, with MyProxy clients installed on all systems where other Globus
@@ -21,17 +21,19 @@ Toolkit client software is installed.
 --
 MyProxy is built and installed as part of a default GT 6.0 installation.
 For basic installation instructions, see
-link:../../admin/install/index.html[]. No extra installation steps are
+link:../../admin/install/index.html[Installing GT 6.0]. No extra installation
+steps are
 required for this component.
 
 If you wish to install MyProxy without installing the rest of the Globus
 Toolkit, follow the instructions in
-link:../../admin/install/index.html[] with the following changes. First,
+link:../../admin/install/index.html[Installing GT 6.0] with the following
+changes. First,
 you do not need Ant, a JDK, or a JDBC database to build only MyProxy.
 Second, instead of running "make", run:
 
 --------
-globus$ make gsi-myproxy
+globus$ make myproxy
 --------
 
 This will install the MyProxy client and server programs. For

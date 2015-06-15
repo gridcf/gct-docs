@@ -19,8 +19,6 @@ include::../GridFTP_Interface_Env_Frag.txt[]
  
 [[gridftp-pi-error-codes]]
 == Errors ==
-
+indexterm:[errors]
 
 include::../GridFTP_Errors_Frag.txt[]
-
-  

@@ -103,7 +103,7 @@ Hannover, Germany at a sustained rate of 80 MB/s.
  
 [[gridftp-developer-tutorials]]
 == Tutorials ==
-
+indexterm:[tutorial]
 
 --
 There is an online tutorial available at:
@@ -114,6 +114,7 @@ http://gridftp.globus.org/tutorials/[http://gridftp.globus.org/tutorials/].
  
 [[gridftp-developer-Spec]]
 == Command Specifications ==
+indexterm:[specification]
 
 --
 Globus implemention of GridFTP is based on the following standards: RFC
@@ -125,7 +126,7 @@ The specification for one such command Data Channel Security Context
  
 [[gridftp-developer-archdes]]
 == Architecture and design overview ==
-
+indexterm:[architecture (GridFTP)]
 
 --
 GridFTP represents a service that a host is providing. Therefore, the
@@ -201,7 +202,7 @@ include::../GridFTP_Interface_Env_Frag.txt[]
  
 [[gridftp-developer-debugging]]
 == Debugging ==
-
+indexterm:[logging]
 
 --
 You can find information on sys admin logs in
@@ -233,4 +234,6 @@ include::GridFTP_DSI_Dev.txt[]
  
 include::GridFTP_Multicast.txt[]
 
-   
+[index]
+[[gridftp-developer-index]]
+= Index =

@@ -500,7 +500,7 @@ def para(el, fold=True, formal=False, inlist=False):
         elif child.tag == 'blockquote':
             unfolded += blockquote(child)
         elif child.tag == 'indexterm':
-            pass
+            unfolded += indexterm(child)
         else:
             raise Exception(child.tag + " in para")
         if child.tail is not None:
@@ -546,6 +546,20 @@ def tip(el):
 def warning(el):
     return admonpar(el, "WARNING")
 
+def indexterm(el):
+    terms = []
+    prim = el.find("primary")
+    if prim is not None and prim.text is not None:
+        terms.append(prim.text)
+    sec = el.find("secondary")
+    if sec is not None and sec.text is not None:
+        terms.append(sec.text)
+    tert = el.find("tertiary")
+    if tert is not None and tert.text is not None:
+        terms.append(tert.text)
+
+    return "indexterm:[" + ",".join(terms) + "]\n"
+
 def section(el, level=3):
     s = "\n"
     elid = el.attrib.get('id')
@@ -571,8 +585,6 @@ def section(el, level=3):
             s += "\n\n" + itemizedlist(child, 1) + "\n"
         elif child.tag == 'orderedlist':
             s += "\n\n" + orderedlist(child, 1) + "\n"
-        elif child.tag == 'indexterm':
-            pass
         elif child.tag == 'example':
             s += "\n\n" + example(child) + "\n"
         elif child.tag in [ 'screen', 'programlisting']:
@@ -600,7 +612,9 @@ def section(el, level=3):
         elif child.tag == 'mediaobject':
             s += mediaobject(child)
         elif child.tag == 'formalpara':
-            s+= para(child, formal=True)
+            s += para(child, formal=True)
+        elif child.tag == 'indexterm':
+            s += indexterm(child)
         else:
             raise Exception(child.tag + " in section")
         if child.tail is not None and child.tail.strip() != "":

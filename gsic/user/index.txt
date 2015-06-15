@@ -31,14 +31,11 @@ It is important to keep in mind when your cert will expire - after your user cer
 * Use the end-user certificate to create a proxy certificate using link:../../gsic/user/index.html#grid-proxy-init[grid-proxy-init]. This will be used to authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user certificates (usually 12 hours). Once your proxy certificate expires, simply rerun **++grid-proxy-init++**.
 
 
-
- 
 include::../GSIC_Interface_Commandline_Frag.txt[]
 
  
 [[gsic-user-troubleshooting]]
 == Troubleshooting ==
-
 
 --
 The following includes common errors for credentials and gridmap files.
@@ -54,4 +51,3 @@ include::../../Credential_Troubleshooting_Frag.txt[]
 
 include::../../Gridmap_Troubleshooting_Frag.txt[]
 
-  

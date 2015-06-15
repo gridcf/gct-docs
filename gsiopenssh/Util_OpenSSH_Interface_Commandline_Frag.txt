@@ -1,15 +1,15 @@
 [[gsiopenssh-cmd]]
-== GSI-OpenSSH Commands ==
+= GSI-OpenSSH Commands =
+:doctype: book
 
---
+== Introduction ==
+
 The link:#gsissh[gsissh], link:#gsiscp[gsiscp], and link:#gsisftp[gsiftp] commands provide
 the same interfaces as the standard OpenSSH **ssh**, **scp**, and
 **sftp** commands, respectively, with the added ability to perform X.509
 proxy credential authentication and delegation.
 
---
-
-:leveloffset: 2
+:leveloffset: 1
 
 include::gsissh.txt[]
 

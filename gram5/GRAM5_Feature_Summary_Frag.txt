@@ -2,20 +2,18 @@
 [[gram5-features]]
 === Feature summary ===
 
+indexterm:[features]
 New Features new since 5.2: 
 
 * Bug fixes and improved testing
 
 
-
 Other Standard Supported Features
-
-
-
 
 * Remote job execution and management
 
-* Uniform and flexible interface to local resource managers, including Condor, LSF, and SLURM, and GridEngine
+* Uniform and flexible interface to local resource managers, including Condor,
+  LSF, and SLURM, and GridEngine
 
 * File staging before and after job execution
 
@@ -26,9 +24,4 @@ Other Standard Supported Features
 
 Removed Features
 
-
-
-
 * None.
-
-

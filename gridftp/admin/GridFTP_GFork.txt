@@ -1,6 +1,6 @@
-
+[appendix]
 [[gridftp-admin-gfork-master]]
-== Running the Globus GridFTP Server With GFork ==
+= Running the Globus GridFTP Server With GFork =
 
 
 [[gridftp-gfork-master-intro]]

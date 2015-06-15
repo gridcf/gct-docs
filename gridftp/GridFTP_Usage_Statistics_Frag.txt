@@ -1,6 +1,6 @@
-
 [[gridftp-usage]]
 == Usage statistics collection by the Globus Alliance ==
+indexterm:[usage statistics for GridFTP]
 
 
 [[gridftp-usage-stats]]

@@ -2,15 +2,8 @@
 [[gram5-dependencies]]
 === Technology dependencies ===
 
+indexterm:[dependencies]
 GRAM depends on the following GT components:
-
-
-
-
 * Globus Common
-
 * GSI C
-
 * GridFTP server
-
-

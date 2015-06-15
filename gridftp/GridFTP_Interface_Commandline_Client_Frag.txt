@@ -1,13 +1,14 @@
 [[gridftp-command-client]]
+:doctype: book
 
-:leveloffset: 2
+:leveloffset: 1
 
 include::globus-url-copy.txt[]
 
 :leveloffset: 0
 
 [[globus-url-copy-interactiveclients]]
-=== Interactive clients for GridFTP ===
+== Interactive clients for GridFTP ==
 
 The Globus Project does **not** provide an interactive client for
 GridFTP. Any normal FTP client will work with a GridFTP server, but it
@@ -24,5 +25,5 @@ although they should have mechanisms of their own for such things.
 UberFTP was developed at the NCSA under the auspices of NMI and
 TeraGrid:
 
-* NCSA Uberftp only download: http://dims.ncsa.uiuc.edu/set/uberftp/download.html[http://dims.ncsa.uiuc.edu/set/uberftp/download.html]
-* UberFTP User's Guide: http://dims.ncsa.uiuc.edu/set/uberftp/userdoc.html[http://dims.ncsa.uiuc.edu/set/uberftp/userdoc.html]
+* http://dims.ncsa.uiuc.edu/set/uberftp/download.html[NCSA UberFTP download]
+* http://dims.ncsa.uiuc.edu/set/uberftp/userdoc.html[UberFTP User's Guide]

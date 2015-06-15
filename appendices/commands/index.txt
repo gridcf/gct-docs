@@ -7,11 +7,19 @@ You can also download a link:gtCommands.pdf[PDF version here].
 --
  
 include::../../gsic/GSIC_Interface_Commandline_Frag.txt[]
- 
+
+:doctype: book
+
 include::../../gridftp/GridFTP_Interface_Commandline_Frag.txt[]
- 
+
+:doctype: book
+
 include::../../gram5/GRAM5_Interface_Commandline_Frag.txt[]
  
+:doctype: book
+
 include::../../gsiopenssh/Util_OpenSSH_Interface_Commandline_Frag.txt[]
- 
+
+:doctype: book
+
 include::../../simpleca/Cred_Mgmt_SimpleCA_Interface_Commandline_Frag.txt[]

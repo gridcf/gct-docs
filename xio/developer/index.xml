@@ -1,0 +1,1248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<book lang="en">
+<bookinfo>
+    <title>GT 6.0 XIO : Developer&#8217;s Guide</title>
+</bookinfo>
+<preface>
+<title></title>
+<simpara>This guide contains information of interest to developers working with
+XIO. It provides reference information for application developers,
+including APIs, architecture, procedures for using the APIs and code
+samples.</simpara>
+</preface>
+<chapter id="xio-developer-beforeyoubegin">
+<title>Before you begin</title>
+<section id="xio-features">
+<title>Feature summary</title>
+<simpara>Supported Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Driver specific string attributes. Set values like <emphasis role="strong">tcp buffer size</emphasis> via string at runtime.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+UDT driver.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Mode E Driver
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Telnet Driver
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Queuing Driver
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Ordering Driver
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Dynamically loadable drivers.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Single API to swappable IO implementations.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Asynchronous IO support.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Native timeout support.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Data descriptors for providing driver specific hints.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Modular driver stacks to maximize code reuse.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+TCP, UDP, file, HTTP, telnet, mode E, GSI drivers.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Deprecated Features</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+GSSAPI_FTP driver now distributed with the GridFTP Server
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-platforms">
+<title>Tested platforms</title>
+<simpara>Tested Platforms for XIO:</simpara>
+<table id="tested-platforms"
+frame="all"
+rowsep="1" colsep="1"
+>
+<title>Tested Platforms</title>
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="25*"/>
+<colspec colname="col_3" colwidth="25*"/>
+<colspec colname="col_4" colwidth="25*"/>
+<thead>
+<row>
+<entry align="left" valign="top"> Operating System </entry>
+<entry align="left" valign="top"> Distribution </entry>
+<entry align="left" valign="top"> Version(s) </entry>
+<entry align="left" valign="top"> Architecture(s)</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top" morerows="9"><simpara>Linux</simpara></entry>
+<entry align="left" valign="top" morerows="1"><simpara>CentOS</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Fedora</simpara></entry>
+<entry align="left" valign="top"><simpara>20, 21, 22</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Red Hat Enterprise Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Scientific Linux</simpara></entry>
+<entry align="left" valign="top"><simpara>5, 6</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>7</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>SUSE Linux Enterprise Server</simpara></entry>
+<entry align="left" valign="top"><simpara>11SP3</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Debian</simpara></entry>
+<entry align="left" valign="top"><simpara>6, 7, 8</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Ubuntu</simpara></entry>
+<entry align="left" valign="top"><simpara>12.04LTS, 14.04LTS, 14.10, 15.04</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, amd64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_1" nameend="col_2"><simpara>Mac OS X</simpara></entry>
+<entry align="left" valign="top"><simpara>10.6-10.10</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Solaris</simpara></entry>
+<entry align="left" valign="top"><simpara>OmniOS</simpara></entry>
+<entry align="left" valign="top"><simpara>r151006</simpara></entry>
+<entry align="left" valign="top"><simpara>x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" morerows="1"><simpara>Windows 7</simpara></entry>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>Cygwin</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top" namest="col_2" nameend="col_3"><simpara>MingW64</simpara></entry>
+<entry align="left" valign="top"><simpara>i386, x86_64</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="xio-compatibility">
+<title>Backward compatibility summary</title>
+<simpara>Protocol changes since GT version 5.2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+None.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>API changes since GT version 5.2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>globus_xio_stack_copy</literal> added to the API. This allows a user to duplicated a configured stack.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>globus_xio_driver_set_eof_received</literal> added to the driver API. This function allows drivers to have multiple outstanding reads at one time.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>globus_xio_driver_eof_received</literal> added to the driver API. Working in conjunction with <literal>globus_xio_driver_set_eof_received</literal> to allow drivers to have multiple outstanding reads.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Users can now pass in a NULL callback for timeouts and it is assumed that when time expires the user wants the operation to timeout. Previously a user callback was required where the user would decide if they wanted the timeout.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-dependencies">
+<title>Technology dependencies</title>
+<simpara>XIO depends on the following GT components:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Globus Core
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Globus Common
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Globus GSSAPI
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-security-considerations">
+<title>Security considerations for XIO</title>
+<simpara>Globus XIO is a framework for creating network protocols. Several
+existing protocols, such as TCP, come built into the framework. XIO
+itself introduces no known security risks. However, all network
+applications expose systems to the risks inherent when outsiders can
+connect to them. Also included in the XIO distribution is the GSI
+driver, which provides a driver that allows for secure connections.</simpara>
+</section>
+</chapter>
+<chapter id="x-xio-user-quick-start">
+<title>Using the Globus XIO API for IO operations within C programs</title>
+<section id="x-xio-user-quick-start-Introduction-quick">
+<title>Introduction</title>
+<simpara>This Guide explains how to use the Globus XIO API for IO operations
+within C programs. Since Globus XIO is a simple API it is pretty
+straight forward. The best way to become familiar with it is by looking
+at an example. See <ulink url="../globus_xio_example.c">globus_xio_example.c</ulink>.</simpara>
+</section>
+<section id="x-xio-user-quick-start-ActivateGlobus">
+<title>Activate Globus</title>
+<simpara>Let&#8217;s examine the case where a user wishes to use Globus XIO for reading
+data from a file. As in all globus programs the first thing that must be
+done is to activate the globus module. Until activated no globus_xio
+function calls can be successfully executed. It is activated with the
+following line:</simpara>
+<screen>    globus_module_activate(GLOBUS_XIO_MODULE);</screen>
+</section>
+<section id="x-xio-user-quick-start-LoadDriver">
+<title>Load Driver</title>
+<simpara>Let&#8217;s examine the case where a user wishes to use Globus XIO for reading
+data. The next step is to load all the drivers needed to complete the IO
+operations in which you are interested. The function
+globus_xio_load_driver() is used to load a driver. In order to
+successfully call this function you must know the name of all the
+drivers you wish to load. For this example we only want to load the file
+IO driver. The prepackaged file IO driver&#8217;s name is: "file". This driver
+would be loaded with the following code:</simpara>
+<screen>    globus_result_t                     res;
+    globus_xio_driver_t                 driver;
+
+    res = globus_xio_driver_load(&amp;driver, "file");</screen>
+<simpara>If upon completion of the above function call <literal>res</literal> returns
+GLOBUS_SUCCESS then the driver was successfully loaded and can be
+referenced with the variable "driver".</simpara>
+</section>
+<section id="x-xio-user-quick-start-CreateStack">
+<title>Create Stack</title>
+<simpara>Now that globus_xio is activated and we have a driver loaded we need to
+build a driver stack. In our example the stack is very simple as it
+consists of only one driver, the file driver. The stack is established
+with the following code (building off of the above code snippets):</simpara>
+<screen>    globus_xio_stack_t              stack;
+
+    globus_xio_stack_init(&amp;stack);
+    globus_xio_stack_push_driver(stack, driver);</screen>
+</section>
+<section id="x-xio-user-quick-start-OpeningHandle">
+<title>Opening Handle</title>
+<simpara>Now that the stack is created we can open a handle to the file. There
+are two ways that a handle can be opened. The first is a passive open.
+An example of this is a TCP listener. The open is performed passively by
+waiting for some other entity to act upon it. The second is an active
+open. An active open is the opposite of a passive open. The TCP counter
+example for this is a connect. The users initiates the open. In our
+example we shall be performing an active open.</simpara>
+<simpara>Before opening a handle it must be initialized. The following
+illustrates initialization for client side handles:</simpara>
+<screen>    globus_xio_handle_t             handle;
+
+    res = globus_xio_handle_create(&amp;handle, stack);</screen>
+<simpara>Server side handles are a bit more complicated. First we must introduce
+the data structure <literal>globus_xio_server_t</literal>. This structure shares many
+concepts with a TCP listener, mainly that it spawns handles
+("connections") as passive open requests are made. If the user wishes to
+accept a new connection a call to globus_xio_accept() or
+globus_xio_register_accept() will initialize a new handle:</simpara>
+<screen>    globus_xio_server_t         server;
+    globus_xio_handle_t         handle;
+    globus_result_t             res;
+
+    res = globus_xio_server_create(&amp;server_handle, NULL, stack);
+    res = globus_xio_server_accept(&amp;handle, server);</screen>
+<simpara>Once the handle is initialized it should be opened in order to perform
+read and write operations upon it. It the handle is a client then a
+"contact string" is required. This string represents the target that the
+user wishes to open:</simpara>
+<screen>    globus_xio_attr_t           attr;
+    char *                      contact_string = "file:/etc/groups";
+
+    globus_xio_attr_init(&amp;attr);
+    globus_xio_open(xio_handle, contact_string, attr);
+    globus_xio_attr_destroy(attr);</screen>
+<simpara>note: attrs can be used to color the behaviors of a handle. For a
+conceptual understanding, they are not important and a user is free to
+simple pass NULL wherever an attr is required.</simpara>
+<simpara>Now that we have an open handle to a file we can read or write data to
+it with either globus_xio_read() or globus_xio_write(). Once we are
+finished performing IO operations on the handle globus_xio_close(handle)
+should be called.</simpara>
+</section>
+<section id="x-xio-user-quick-start-PayOff">
+<title>Pay Off</title>
+<simpara>This may seem like quite a bit of effort for simple reading a file, and
+it is. However the advantages become clear when exploring the swapping
+of other drivers. In the above example it would be trivial to change the
+IO operations from file IO to TCP, or HTTP, or ftp. All the the user
+would need to do is change the driver name string passed to
+globus_xio_load_driver() and the contact string passed to
+globus_xio_target_init(). This can easily be done at runtime, as the
+program <ulink url="../globus_xio_example.c">globus_xio_example.c</ulink> demonstrates.</simpara>
+<simpara>So the little program <ulink url="../globus_xio_example.c">globus_xio_example.c</ulink>
+has the ability to be any reading client or server (HTTP, ftp, TCP,
+file, etc) as long as the proper drivers are in the LD_LIBRARY_PATH.</simpara>
+</section>
+</chapter>
+<chapter id="x-xio-driver-quick-start">
+<title>Driver Quick Start</title>
+<section id="x-xio-driver-quick-start-Introduction-quick">
+<title>Introduction</title>
+<simpara>This Guide explains how to create a transport driver for Globus XIO. For
+the purpose of exploring both what a transform driver is and how to
+write one this guide will walk through an example driver. The full
+source code for the driver can be found at
+<ulink url="../globus_xio_driver_example.c">Driver Example</ulink>. This example
+implements a file driver for globus_xio. If a user of globus_xio were to
+put this file at the bottom of the stack, they could access files on the
+local file system.</simpara>
+</section>
+<section id="x-xio-driver-quick-start-dataStructure">
+<title>Data Structures</title>
+<simpara>There are three data structures that will be explored in this example:
+attribute, target, and handle. The driver defines the memory layout of
+these data structures but the globus_xio framework imposes certain
+semantics upon them. It is up to the driver how to use them, but
+globus_xio will be expecting certain behaviors.</simpara>
+</section>
+<section id="x-xio-driver-quick-start-attributes">
+<title>Attributes</title>
+<simpara>Each driver may have its own attribute structure. The attribute gives
+the globus_xio user API an opportunity to tweak parameters inside the
+driver. The single attribute structure is used for all possible driver
+specific attributes:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+Target attributes
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Handle attributes
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Server attributes
+</simpara>
+</listitem>
+</orderedlist>
+<simpara>How each of these can use the attribute structure will be unveiled as
+the tutorial continues. For now it is simply important to remember there
+is attribute structure used to initiate of the driver ADTs.</simpara>
+<simpara>A driver is not required to have an attribute support at all. However if
+the driver author chooses to support attributes the following functions
+must be implemented:</simpara>
+<screen>typedef globus_result_t
+(*globus_xio_driver_attr_init_t)(
+       void **                          out_attr);
+
+typedef globus_result_t
+(*globus_xio_driver_attr_cntl_t)(
+       void *                           attr,
+       int                              cmd,
+       va_list                          ap);
+
+typedef globus_result_t
+(*globus_xio_driver_attr_copy_t)(
+       void **                          dst,
+       void *                           src);
+
+typedef globus_result_t
+(*globus_xio_driver_attr_destroy_t)(
+       void *                           attr);</screen>
+<simpara>See
+<ulink url="http://www.globus.org/api/c-globus-{$version}/globus%5fxio%5fgridftp%5fdriver/html/index.html">driver
+API doc</ulink> for more information.</simpara>
+<simpara>We shall now take our first look at the file
+<ulink url="../globus_xio_driver_example.c">Driver Example</ulink>. The file driver
+needs a way to provide the user level programmer with a means of setting
+the mode and flags when a file is open (akin to the POSIX function
+<literal>open()</literal>).</simpara>
+<simpara>The first step in creating this ability is to a) define the attribute
+structure and b) implement the<literal> globus_xio_driver_attr_init_t</literal>
+function which will initialize it:</simpara>
+<screen>/*
+ *  attribute structure
+ */
+struct globus_l_xio_file_attr_s
+{
+    int                                 mode;
+    int                                 flags;
+}
+
+globus_result_t
+globus_xio_driver_file_attr_init(
+    void **                             out_attr)
+{
+    struct globus_l_xio_file_attr_s *   file_attr;
+
+    /*
+     *  create a file attr structure and initialize its values
+     */
+    file_attr = malloc(sizeof(struct globus_l_xio_file_attr_s));
+
+    file_attr-&gt;flags = O_CREAT;
+    file_attr-&gt;mode = S_IRWXU;
+
+    /* set the out parameter to the driver attr */
+    *out_attr = file_attr;
+
+    return GLOBUS_SUCCESS;
+}</screen>
+<simpara>The above simply defines a structure that can hold two integers, mode
+and flags, then defines a function the will allocate and initialize this
+structure. <literal>globus_xio</literal> hides much of the memory management of these
+attribute structures from the driver. However, it does need the driver
+to provide a means of copying them, and free all resources associated
+with them. In the case of the file driver example, these are both
+simple:</simpara>
+<screen>globus_result_t
+globus_xio_driver_file_attr_copy(
+        void **                         dst,
+        void *                          src)
+{
+        struct globus_l_xio_file_attr_s *file_attr;
+
+        file_attr = malloc(sizeof(struct globus_l_xio_file_attr_s));
+
+        memcpy(file_attr, src, sizeof(struct globus_l_xio_file_attr_s));
+
+        *dst = file_attr;
+
+        return GLOBUS_SUCCESS;
+}
+
+globus_result_t
+globus_xio_driver_file_attr_destroy(
+        void *                          attr)
+{
+        free(attr);
+
+        return GLOBUS_SUCCESS;
+}</screen>
+<simpara>The above code should be fairly clear. Obviously we need a method with
+which the user can set flags and mode. This is accomplished with the
+following interface function:</simpara>
+<screen>globus_result_t
+globus_xio_driver_file_attr_cntl(
+        void *                          attr,
+        int                             cmd,
+        va_list                         ap)
+{
+        struct globus_l_xio_file_attr_s *file_attr;
+        int *                           out_i;
+
+        file_attr = attr;
+        switch(cmd)
+        {
+                case GLOBUS_XIO_FILE_SET_MODE:
+                        file_attr-&gt;mode = va_arg(ap, int);
+                        break;
+
+                case GLOBUS_XIO_FILE_GET_MODE:
+                        out_i = va_arg(ap, int *);
+                        *out_i = file_attr-&gt;mode;
+                        break;
+
+                case GLOBUS_XIO_FILE_SET_FLAGS:
+                        file_attr-&gt;flags = va_arg(ap, int);
+                        break;
+
+                case GLOBUS_XIO_FILE_GET_FLAGS:
+                        out_i = va_arg(ap, int *);
+                        *out_i = file_attr-&gt;flags;
+                        break;
+
+                default:
+                        return FILE_DRIVER_ERROR_COMMAND_NOT_FOUND;
+                        break;
+        }
+
+        return GLOBUS_SUCCESS;
+}</screen>
+<simpara>This function is called passing the driver an <literal>initialized file_attr</literal>
+structure, a command, and a variable argument list.</simpara>
+<simpara>Based on the value of <literal>cmd</literal>, the driver decides to do one of the
+following:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+set flags or mode from the <literal>va_args</literal>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+return flags or mode to the user via a pointer in <literal>va_args</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="x-xio-driver-quick-start-target">
+<title>Target</title>
+<simpara>A target structure represents what a driver will open. It is initialized
+from a contact string and an attribute. In the case of a file driver,
+the target simply holds onto the contact string as a path to the file.</simpara>
+<simpara>The file driver implements the following target functions:</simpara>
+<screen>globus_result_t
+globus_xio_driver_file_target_init(
+        void **                         out_target,
+        void *                          target_attr,
+        const char *                    contact_string,
+        globus_xio_driver_stack_t       stack)
+{
+        struct globus_l_xio_file_target_s *target;
+
+        /* create the target structure and copy the contact string into it */
+        target = malloc(sizeof(struct globus_l_xio_file_target_s));
+        strncpy(target-&gt;pathname, contact_string, sizeof(target-&gt;pathname) - 1);
+        target-&gt;pathname[sizeof(target-&gt;pathname) - 1] = '\0';
+
+        return GLOBUS_SUCCESS;
+}
+
+/*
+ *  destroy the target structure
+ */
+globus_result_t
+globus_xio_driver_file_target_destroy(
+        void *                          target)
+{
+        free(target);
+
+        return GLOBUS_SUCCESS;
+}</screen>
+<simpara>The above function handles the creation and destruction of the file
+driver&#8217;s target structure.</simpara>
+<note>
+<simpara>When the target is created, the contact string is copied into it. It is invalid to just copy the pointer to the contact string. As soon as this interface function returns, that pointer is no longer valid.</simpara>
+</note>
+</section>
+<section id="x-xio-driver-quick-start-handle">
+<title>Handle</title>
+<simpara>The most interesting of the three data types discussed here is the
+handle. All typical IO operations (open, close, read, write) are
+performed on the handle. The handle is the initialized form of the
+target and an attr. The driver developer should use this ADT to keep
+track of any state information they will need in order to perform reads
+and writes.</simpara>
+<simpara>In the example case, the driver handle is fairly simple as the driver is
+merely a wrapper around POSIX calls:</simpara>
+<screen>struct globus_l_xio_file_handle_s
+{
+    int                                 fd;
+};</screen>
+<simpara>The reader should review the following functions in
+<ulink url="../globus_xio_driver_example.c">Driver Example</ulink> in order to see how
+the handle structure is used:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>globus_xio_driver_file_open()</literal>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>globus_xio_driver_file_write()</literal>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>globus_xio_driver_file_read()</literal>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>globus_xio_driver_file_close()</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="x-xio-driver-quick-start-IO-Operations">
+<title>IO Operations</title>
+<simpara>The read and write interface functions are called in response to a user
+read or write request. Both functions are provided with a vector that
+has at least the same members as the <literal>struct iovec</literal> and a vector
+length. As of now, the iovec elements may contain extra members, so if
+you wish to use <literal>readv()</literal> or <literal>writev()</literal>, you will have to transfer
+the <literal>iov_base</literal> and <literal>iov_len</literal> members to the POSIX iovec.</simpara>
+<simpara>As with the open and close interface functions, if an error occurs
+before any real processing has occurred, the interface function may
+simply return the error (in a <literal>result_t</literal>), effectively canceling the
+operation. However, once bytes have been read or written, you must not
+return the error. You must report the number of bytes read/written along
+with the result.</simpara>
+<simpara>When an operation is done, either by error or successful completion, the
+operation must be <emphasis>finished</emphasis>. To do this, a call must be made to:</simpara>
+<screen>globus_result_t
+globus_xio_driver_finished_read/write(
+    globus_xio_driver_operation_t       op,
+    globus_result_t                     res,
+    globus_ssize_t                      nbytes);</screen>
+<section id="x-xio-driver-quick-start-calls">
+<title>Blocking vs Non-blocking Calls</title>
+<simpara>In general, the driver developer does not need to concern himself with
+how the user made the call. Whether it was a blocking or an asynchronous
+call, XIO will handle things correctly.</simpara>
+<simpara>However the call was made, the driver developer can call
+globus_xio_driver_finished_{open, read, write, close} either while in
+the original interface call, in a separate thread, or in a separate
+callback kick out via the globus_callback API.</simpara>
+</section>
+</section>
+<section id="x-xio-driver-quick-start-glue">
+<title>The Glue</title>
+<simpara>Through a process not finalized yet, XIO will request the
+<literal>globus_xio_driver_t</literal> structure from the driver. This structure
+defines all of the interface functions that the driver supports. In
+detail:</simpara>
+<screen>/*
+ *  main io interface functions
+ */
+globus_xio_driver_open_t                open_func;
+globus_xio_driver_close_t               close_func;
+globus_xio_driver_read_t                read_func;
+globus_xio_driver_write_t               write_func;
+globus_xio_driver_handle_cntl_t         handle_cntl_func;
+
+globus_xio_driver_target_init_t         target_init_func;
+globus_xio_driver_target_destroy_t      target_destroy_finc;
+
+/*
+ * target init functions.  Must have client or server
+ */
+globus_xio_driver_server_init_t         server_init_func;
+globus_xio_driver_server_accept_t       server_accept_func;
+globus_xio_driver_server_destroy_t      server_destroy_func;
+globus_xio_driver_server_cntl_t         server_cntl_func;
+
+/*
+ *  driver attr functions.  All or none may be NULL
+ */
+globus_xio_driver_attr_init_t           attr_init_func;
+globus_xio_driver_attr_copy_t           attr_copy_func;
+globus_xio_driver_attr_cntl_t           attr_cntl_func;
+globus_xio_driver_attr_destroy_t        attr_destroy_func;
+
+/*
+ *  data descriptor functions.  All or none
+ */
+globus_xio_driver_data_descriptor_init_t            dd_init;
+globus_xio_driver_driver_data_descriptor_copy_t     dd_copy;
+globus_xio_driver_driver_data_descriptor_destroy_t  dd_destroy;
+globus_xio_driver_driver_data_descriptor_cntl_t     dd_cntl;</screen>
+</section>
+</chapter>
+<chapter id="xio-developer-tutorials">
+<title>Tutorials</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="../xio.ppt">PowerPoint Tutorial</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+<chapter id="xio-developer-archdes">
+<title>Architecture and design overview</title>
+<section id="x-xio-driver-quick-start-Introduction-arch">
+<title>Introduction</title>
+<simpara>This document shall explain the external view of the Globus XIO
+architecture. Globus XIO is broken down into two main components,
+framework and drivers. The following picture illustrates the
+architecture:</simpara>
+<informalfigure>
+<mediaobject>
+  <imageobject>
+  <imagedata fileref="xio_arch.jpg" align="center"/>
+  </imageobject>
+  <textobject><phrase>xio_arch.jpg</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</section>
+<section id="x-xio-driver-quick-start-Framework">
+<title>Framework</title>
+<simpara>The Globus XIO framework manages IO operation requests that an
+application makes via the user API. The framework does no work to
+deliver the data in an IO operation nor does it manipulate the data. All
+of that work is done by the drivers. The framework&#8217;s job is to manage
+requests and map them to the drivers interface. It is the drivers
+themselves that are responsible for manipulating and transporting the
+data.</simpara>
+</section>
+<section id="x-xio-driver-quick-start-Drivers">
+<title>Drivers</title>
+<simpara>A driver is the component of Globus XIO that is responsible for
+manipulating and transporting the users data. There are two types of
+drivers, transform and transport. Transform drivers are those that
+manipulate the data buffers passed to it via the user API and the XIO
+framework. Transport drivers are those that are capable of sending the
+data over a wire.</simpara>
+<simpara>Drivers are grouped into stacks, that is, one driver on top of another.
+When an IO operation is requested the Globus XIO framework passes the
+operation request to every driver in the order they are in the stack.
+When the bottom level driver (the transport driver) finishes shipping
+the data, it passes the data request back to the XIO framework. Globus
+XIO will then deliver the request back up the stack in this manner until
+it reaches the top, at which point the application will be notified that
+there request is completed.</simpara>
+<simpara>In a driver stack there can only be one transport driver. The reason for
+this is that the transport driver is the one responsible for sending or
+receiving the data. Once this type of operation is performed it makes no
+sense to pass the request down the stack, as the data has just been
+transfered. It is now time to pass the operation back up the stack.</simpara>
+<simpara>There can be many transform drivers in any given driver stack. A
+transform driver is one that can manipulate the requested operations as
+they pass. Some good examples of transform drivers are security wrappers
+and compression. However, a transport driver can also be one that adds
+additional protocol. For example a stack could consist of a TCP
+transport driver and an HTTP transform driver. The HTTP driver would be
+responsible for marshaling the HTTP protocol and the TCP driver would be
+responsible for shipping that protocol over the wire.</simpara>
+</section>
+<section id="x-xio-driver-quick-start-Example">
+<title>Example</title>
+<simpara>In the following picture we illustrate a user application using Globus
+XIO to speak the GridFTP protocol across a TCP connection:</simpara>
+<informalfigure>
+<mediaobject>
+  <imageobject>
+  <imagedata fileref="xio_app.jpg" align="center"/>
+  </imageobject>
+  <textobject><phrase>xio_app.jpg</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara>The user has built a stack consisting of one transform driver and one
+transport driver. TCP is the transport driver in this stack, and as all
+transport modules must be, it is at the bottom of the stack. Above TCP
+is the GSI transform driver which performs necessary messaging to
+authenticate a user and the integrity of the data.</simpara>
+<simpara>The first thing the user application will do after building the stack is
+call the XIO user API function globus_xio_open(). The Globus XIO
+framework will create internal data structures for tracking this
+operation and then pass the operation request to the GSI driver. The GSI
+driver has nothing to do before the underlying stack has opened a handle
+so it simply passes the request down the stack. The request is thereby
+passed to the TCP driver. The TCP driver will then execute the socket
+level transport code contained within it to establish a connection to
+the given contact string.</simpara>
+<simpara>Once the TCP connection has been established the TCP driver will notify
+the XIO framework that it has completed its request and thereby the GSI
+driver will be notified that the open operation it had previously passed
+down the stack has now completed. At this point the GSI driver will
+start the authentication processes (note that at this point the user
+does not yet have an open handle). The GSI driver has an open handle and
+upon it several sends and receives are performed to authenticate the
+connection. If the GSI driver is not satisfied with the authentication
+process it closes the handle it has to the stack below it and tells the
+XIO framework that it has completed the open request with an error. If
+it is satisfied it simply tells the XIO framework that it has completed
+the open operation. The user is now notified that the open operation
+completed, and if it was successful they now have an open handle.</simpara>
+<simpara>Other operations work in much the same way. When a user posts a read the
+read request is first delivered to the GSI driver. The GSI driver will
+wrap the buffer and pass the modified buffer down the stack. The
+framework will then deliver the write request with the newly modified
+buffer to the TCP driver. The TCP driver will write the data across the
+socket mapped to this handle. When it finishes it notifies the
+framework, which notifies the GSI driver. The GSI driver has nothing
+more to do so it notifies the framework that it is complete and the
+framework then notifies the user.</simpara>
+</section>
+<section id="x-xio-driver-quick-start-Driver-Interface">
+<title>Driver Interface</title>
+<simpara>There is a well defined interface to a driver. Drivers are modular
+components with specific tasks. The purpose of drivers in the Globus XIO
+library is extensibility. As more and more protocols are developed, more
+and more drivers can be written to implement these protocols. As new
+drivers are written they can be added to Globus XIO as either statically
+linked libraries or dynamically loaded libraries. In the case of dynamic
+loading it is not even necessary to recompile existing source code. Each
+driver has a unique name according to the Globus XIO driver naming
+convention. A program simply needs to be aware of this name (this can be
+passed in via the command line) and the Globus XIO framework will be
+responsible for loading the driver.</simpara>
+<note>
+<simpara>The above example is simplified for the purposes of understanding. There
+are optimizations built into Globus XIO which alter the course of events
+outlined above. However, conceptually the above is accurate.</simpara>
+</note>
+</section>
+</chapter>
+<chapter id="xio-apis">
+<title>XIO APIs</title>
+<section id="_programming_model_overview">
+<title>Programming Model Overview</title>
+<simpara>Globus XIO is based on an event based asynchronous programming model.
+This model is described in great detail at:
+<ulink url="#globus-async">Asynchronous Event Handling</ulink>. In short, with Globus
+XIO, connections are opened and closed. While open, read and write
+requests are posted with a callback function pointer given by the user.
+When the event completes, the given callback is called.</simpara>
+</section>
+<section id="_component_api">
+<title>Component API</title>
+<simpara>You can find documentation of the XIO library at:</simpara>
+<simpara><ulink url="http://www.globus.org/api/c/globus%5fxio/html/index.html">http://www.globus.org/api/c/globus_xio/html/index.html</ulink></simpara>
+<simpara>For information on the internationalization API, see
+<ulink url="../../ccommonlib/pi/index.html#ccommonlib-apis">../../ccommonlib/pi/index.html#ccommonlib-apis</ulink>.</simpara>
+</section>
+</chapter>
+<chapter id="xio-developer-env">
+<title>Environment Variable Interface</title>
+<section id="xio-env-var">
+<title>Environmental variables for XIO</title>
+<simpara>The vast majority of the environment variables that affect the Globus
+XIO framework are defined by the driver in use. The following are links
+to descriptions of the more common driver environment variables:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5ftcp%5f%5fdriver%5f%5fenvs.html">TCP Driver Environment Variables</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5ffile%5f%5fdriver%5f%5fenvs.html">File Driver Environment Variables</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5fgsi%5f%5fdriver%5f%5fenvs.html">GSI Driver Environment Variables</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5fudp%5f%5fdriver%5f%5fenvs.html">UDP Driver Environment Variables</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</chapter>
+<chapter id="xio-developer-debugging">
+<title>Debugging</title>
+<simpara>All standard C debugging techniques apply to debugging XIO applications.
+Also, Globus XIO provides users with some additional debugging
+information. If the environment variable GLOBUS_XIO_DEBUG is set
+debugging information will be written to a file or stdout. The
+information generated is particularly useful to identify a suspect bug
+in Globus XIO. GLOBUS_XIO_DEBUG is set in the following way:</simpara>
+<screen>GLOBUS_XIO_DEBUG="&lt;level&gt;  [,[[#]&lt;file name&gt;][,&lt;flag&gt;[,&lt;timestamp_levels&gt;]]"</screen>
+<simpara>The value of <literal>&lt;level&gt;</literal> can take on the logical OR of any of the
+following:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_ERROR = 1
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_WARNING = 2
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_TRACE = 4
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_INTERNAL_TRACE = 8
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_INFO = 16
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_STATE = 32
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_DEBUG_INFO_VERBOSE = 64
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara><literal>&lt;file name&gt;</literal> is a debug output file, if empty stderr will be used by
+default. If a <emphasis>#</emphasis> precedes the filename, the file will be overwritten on
+each run. Otherwise, the output will be appended to the existing file.</simpara>
+<simpara><literal>&lt;flags&gt;</literal></simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+0 = default
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+1 = show thread ids
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+2 = append the pid to debug filename
+</simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+<chapter id="xio-admin-troubleshooting">
+<title>Troubleshooting</title>
+<section id="_set_globus_location_correctly">
+<title>Set GLOBUS_LOCATION correctly</title>
+<itemizedlist>
+<listitem>
+<simpara>
+The environment variable <literal>GLOBUS_LOCATION</literal> must be set to a valid Globus 6.0 installation.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: <literal>source $GLOBUS_LOCATION/etc/globus-user-env.sh</literal> or <literal>source $GLOBUS_LOCATION/etc/globus-user-env.csh</literal> depending on the shell you are using.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-error-codes">
+<title>Errors</title>
+<table
+frame="all"
+rowsep="1" colsep="1"
+>
+<title>XIO Errors</title>
+<tgroup cols="3">
+<colspec colname="col_1" colwidth="33*"/>
+<colspec colname="col_2" colwidth="33*"/>
+<colspec colname="col_3" colwidth="33*"/>
+<thead>
+<row>
+<entry align="left" valign="top"> Error Code </entry>
+<entry align="left" valign="top"> Definition </entry>
+<entry align="left" valign="top"> Possible Solutions</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara><literal>Operation was canceled</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>An I/O operation has been canceled by a close or a cancel</simpara></entry>
+<entry align="left" valign="top"><simpara>In most cases this will be intentionally performed by the
+  application developer.  In unexpected cases the applciation
+  developer should verify that there is not a race condition
+  relating to closing a handle.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Operation timed out</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>Occurs when the application developer associates a timeout with
+  a handle&#8217;s I/O operations.  If no I/O is performed before the
+  timeout expires this error will be triggered.</simpara></entry>
+<entry align="left" valign="top"><simpara>The remote side of connection might be hung and busy.  The network
+   could have higher latencies than expected.  The filesystem might
+   be over worked.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>An end of file occurred</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>This occurs when and EOF is detected on the file descriptor</simpara></entry>
+<entry align="left" valign="top"><simpara>When doing file I/O this like means you read to the end of the file
+  and thus you are finished and should now close it.  On network
+  connections however it means the socket was closed on the remote
+  end.  This can happen it the remote side suddenly dies (seg-fault
+  is common here) or if the remote side chooses to close the connection.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Contact string invalid</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>A poorly formed contact string was passed in to open</simpara></entry>
+<entry align="left" valign="top"><simpara>Verify the format of the contact string with the documentation of
+  the drivers in use.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Memory allocation failed on XXXX</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>malloc failed.  The system is likely quite overloaded</simpara></entry>
+<entry align="left" valign="top"><simpara>Free up memory in your application</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal> System error in XXXX</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>A low level system error occurred.  The errno and errstring should
+    indicate more information.</simpara></entry>
+<entry align="left" valign="top"><simpara></simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Invalid stack</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>The requested stack does not meet XIO standards</simpara></entry>
+<entry align="left" valign="top"><simpara>Most likely a transport driver is not on the bottom of the stack,
+  or 2 transport drivers are in the stack.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Operation already registered</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>With certain common drivers like TCP and FILE, only one specific
+  operations can be registered at a time (1 read, 1 write).  If
+  another operation of the same type is posted to the handle before
+  receiving the previous operations callback, this error can occur.</simpara></entry>
+<entry align="left" valign="top"><simpara>Restructure the application code so that it waits for the callback
+  before registering the next IO operation.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Unexpected state</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>The internal logic of XIO came across a logical path that should
+  not be possible.  Often times this is due to application memory
+  corruption or trying to perform an IO operation on a closed or
+  otherwise invalid handle.</simpara></entry>
+<entry align="left" valign="top"><simpara>Use valgrind or some sort of memory managment tool to verify there
+  is no memory corruption.  Try to recreate the problem in a small
+  program.  Submit the program and the memory trace to the
+  <ulink url="https://globus.atlassian.net">Globus bug tracker</ulink>.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Driver in handle has been unloaded</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>A driver associated with the offending operation has already been
+  unloaded by the application code.</simpara></entry>
+<entry align="left" valign="top"><simpara>Verify that you are not unloading drivers until they are no longer
+  in use.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>Module not activated</literal></simpara></entry>
+<entry align="left" valign="top"><simpara>globus_module_activate(GLOBUS_XIO_MODULE); has not been called.</simpara></entry>
+<entry align="left" valign="top"><simpara>Call this before making any other XIO API calls.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</chapter>
+<chapter id="xio-developer-relateddocs">
+<title>Related Documentation</title>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="http://www-unix.mcs.anl.gov/~kettimut/xio/XIO%5fPerformance.pdf">Performance</ulink>
+</simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+<appendix id="xio-driver-addons" xreflabel="Add-on">
+<title>Add on</title>
+<section id="xio-drivers-addon-intro">
+<title>Introduction</title>
+<simpara>Here we describe a GPT bundle of some useful GlobusXIO drivers. The
+drivers are not packaged with the standard globus release because they
+require external dependencies, or are otherwise best distributed in a
+separate release. Here you can get each driver individually, or a bundle
+of all the drivers.</simpara>
+</section>
+<section id="xio-driver-udt_ref">
+<title>UDT Reference Implementation Driver</title>
+<simpara>This driver uses the reference implementation of UDT provided at LINK
+and the Globus XIO wrapblock feature to create a Globus XIO UDT driver.</simpara>
+</section>
+<section id="xio-driver-token_bucket">
+<title>Bandwidth Limiting Driver</title>
+<simpara>This is a bandwidth limiting driver. It allows the user to specify a
+bandwidth cap for a given connection.</simpara>
+<simpara>Features</simpara>
+<simpara>*</simpara>
+<simpara>String Options</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+rate=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+read_rate=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+write_rate=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+period=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+read_period=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+write_period=
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-popen">
+<title>Pipe Open Driver</title>
+<simpara>This driver will run an executable program with pipes connecting STDIN
+and STDOUT of the program to this Globus XIO driver. In this way buffers
+are routed from Globus XIO to the executable. This driver is most
+notably used with ssh for running remote programs over a secure link.</simpara>
+<simpara>String Options</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+blocking=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+pass_env=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+argv=
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-bidi">
+<title>Bidirectional Driver</title>
+<simpara>The BIDI driver, bi-directional driver allows a user to turn a
+unidirectional pipe, into a bidirectional stream. It does this simply by
+opening up 1 uni-directional pipe in each direction. By default it
+assumes the use of the ModeE driver, but it can be configured to use any
+driver.</simpara>
+<simpara>Important attribute controls are listed here. For a complete list see:
+<ulink url="http://www.globus.org/api/c-globus-6.0/globus%5fxio%5fbidi%5fdriver/html/index.html">BIDI
+API</ulink></simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_READ_STACK
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_WRITE_STACK
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_READ_ATTR
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+GLOBUS_XIO_BIDI_SET_WRITE_ATTR
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-netlog">
+<title>Netlogger Driver</title>
+<simpara>This driver observes IO events on a driver stack and uses netlogger to
+log these events.</simpara>
+<simpara>String Options</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+filename=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+mask=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+type=
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+id=
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="xio-driver-skeleton">
+<title>Skeleton Driver</title>
+<simpara>This is a very simple driver to serve as an example and base for writing
+additional drivers. It does nothing but pass operations along the stack</simpara>
+</section>
+</appendix>
+</book>

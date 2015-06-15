@@ -2,7 +2,9 @@
 :doctype: article
 = GT 6 Quickstart =
 
-== Introduction ==
+[abstract]
+--
+.Introduction
 This is a quickstart that shows a full installation of the Toolkit on
 two Fedora Linux machines, named **++elephant++** and **++donkey++**. It
 shows the installation of prereqs, installation of the toolkit, creation
@@ -10,6 +12,7 @@ of certificates, and configuration of services. It is designed to
 supplement the link:../../admin/install/index.html[main admin guide], 
 Scenarios are shown for running GridFTP and GRAM5 services, and using
 GridFTP and GRAM clients. 
+--
  
 include::typography.txt[]
  

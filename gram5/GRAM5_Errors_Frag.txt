@@ -1,7 +1,7 @@
 [[gram5-error-codes]]
-== Errors ==
+=== Errors ===
 
-
+indexterm:[errors]
 
 [[gram5-errors-table]]
 [options='header']

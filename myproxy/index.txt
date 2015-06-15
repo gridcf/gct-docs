@@ -5,43 +5,47 @@
   
 include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.txt[]
 
-The following guides are available for this component:
+[cols="2",frame="none"]
+|=======================================================================
+2+| The following guides are available for this component:
 
+| link:../gsic/key/index.html[Security Key Concepts]
+| For important general concepts.
+  [link:../gsic/key/gsicKeyConcepts.pdf[pdf]].
         
-link:key/index.html[Security Key Concepts]::
-    For important general concepts.
-    [link:../gsic/key/gsicKeyConcepts.pdf[pdf]].
-        
-link:admin/index.html[Admin Guide]::
-    For system administrators and those installing, building and
-    deploying GT.
-    You should already have read the 
-    link:../admin/index.html[Installation Guide] and 
-    link:../admin/quickstart/index.html[Quickstart]
-    [link:admin/myproxyAdminGuide.pdf[pdf]]
-link:user/index.html[User's Guide]::
-    Describes how end-users typically interact with this component.
-    [link:user/myproxyUserGuide.pdf[pdf]]
-link:developer/index.html[Developer's Guide]::
-    Reference and usage scenarios for developers.
-    [link:developer/myproxyDeveloperGuide.pdf[pdf]]
+| link:admin/index.html[Admin Guide]
+| For system administrators and those installing, building and
+  deploying GT.
+  You should already have read the 
+  link:../admin/index.html[Installation Guide] and 
+  link:../admin/quickstart/index.html[Quickstart]
+  [link:admin/myproxyAdminGuide.pdf[pdf]]
 
-Other information available for this component are:
+| link:user/index.html[User's Guide]
+| Describes how end-users typically interact with this component.
+  [link:user/myproxyUserGuide.pdf[pdf]]
+
+| link:developer/index.html[Developer's Guide]
+| Reference and usage scenarios for developers.
+  [link:developer/myproxyDeveloperGuide.pdf[pdf]]
+
+2+| Other information available for this component are:
         
-link:rn/index.html[Release Notes]::
-    What's new with the 6.0 release for this component.
-    [link:rn/myproxyReleaseNotes.pdf[pdf]]
-link:pi/index.html[Public Interface Guide]::
-    Information for all public interfaces (including APIs,
-    commands, etc). Please note this is a subset of information in
-    the link:developer/index.html[Developer's Guide].
-    [link:pi/myproxyPublicInterfacesGuide.pdf[pdf]]
-link:qp/index.html[Quality Profile]::
-    Information about test coverage reports, etc.
-    [link:qp/myproxyQualityProfile.pdf[pdf]]
-link:mig/index.html[Migrating Guide]::
-    Information for migrating to this version if you were using a previous
-    version of GT.  [link:mig/myproxyMigratingGuide.pdf[pdf]]
-link:myproxy.pdf[All GT MyProxy Guides (PDF only)]::
-    Includes all GT MyProxy guides except Public Interfaces
-    (which is a subset of the Developer's Guide)
+| link:rn/index.html[Release Notes]
+| What's new with the 6.0 release for this component.
+  [link:rn/myproxyReleaseNotes.pdf[pdf]]
+| link:pi/index.html[Public Interface Guide]
+| Information for all public interfaces (including APIs,
+  commands, etc). Please note this is a subset of information in
+  the link:developer/index.html[Developer's Guide].
+  [link:pi/myproxyPublicInterfacesGuide.pdf[pdf]]
+| link:qp/index.html[Quality Profile]
+| Information about test coverage reports, etc.
+  [link:qp/myproxyQualityProfile.pdf[pdf]]
+| link:mig/index.html[Migrating Guide]
+| Information for migrating to this version if you were using a previous
+  version of GT.  [link:mig/myproxyMigratingGuide.pdf[pdf]]
+| link:myproxy.pdf[All GT MyProxy Guides (PDF only)]
+| Includes all GT MyProxy guides except Public Interfaces
+  (which is a subset of the Developer's Guide)
+|=======================================================================

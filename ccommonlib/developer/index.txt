@@ -1,9 +1,8 @@
-
 [[ccommonlibDeveloper,Developer's Guide]]
 :doctype: book
 = GT 6.0 C Common Libraries: Developer's Guide =
 
-  
+[abstract]  
 .Introduction
 --
 The C Common Libraries provide an abstraction layer for data types, libc
@@ -11,26 +10,19 @@ system calls, and data structures used throughout the Globus Toolkit and
 useful for applications that use the Globus Toolkit. 
 
 --
-
  
 [[ccommonlib-developer-beforeyoubegin]]
 == Before you begin ==
 
-
 include::../C_Common_Libraries_Feature_Summary_Frag.txt[]
-
 
 include::../C_Common_Libraries_Platform_Summary_Frag.txt[]
 
-
 include::../C_Common_Libraries_Compatibility_Summary_Frag.txt[]
-
 
 include::../C_Common_Libraries_Dependencies_Summary_Frag.txt[]
 
-
 include::../C_Common_Libraries_Security_Considerations_Frag.txt[]
-
  
 [[ccommonlib-developer-scenarios]]
 == Usage scenarios ==
@@ -90,10 +82,6 @@ libraries.
 == Related Documentation ==
 
 
---
-See the http://www.globus.org/api/c-globus-{$version}/[C API pages] for
-more information about this component. 
-
-
---
- 
+See the
+http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fcommon.html[C
+API Pages] for more information about this component. 

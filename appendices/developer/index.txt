@@ -21,9 +21,7 @@ Following are some docs you should be familiar with as well:
 
 --
 
-== Asynchronous Event Handling with Examples ==
-
-:leveloffset: 1
+= Asynchronous Event Handling with Examples =
 
 include::globus-async.txt[]
 
@@ -32,7 +30,5 @@ include::globus-async-example1.txt[]
 include::globus-async-example2.txt[]
 
 include::globus-async-example3.txt[]
-
-:leveloffset: 0
 
 include::../user/public_interfaces.txt[]

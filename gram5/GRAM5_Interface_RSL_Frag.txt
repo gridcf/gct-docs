@@ -227,6 +227,8 @@ attribute semantics.
 include::rsl.txt[]
 :leveloffset: 0
 
+:doctype: book
+
 
 [[gram5-rsl-examples]]
 === Simple RSL Examples ===

@@ -33,3 +33,6 @@ include::../../Credential_Troubleshooting_Frag.txt[]
 include::../../Gridmap_Troubleshooting_Frag.txt[]
 
   
+[index]
+[[gsic-pi-index]]
+= Index =

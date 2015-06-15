@@ -1,6 +1,6 @@
-
 [[gridftp-api-summary]]
 == API Summary ==
+indexterm:[API information for GridFTP]
 
 
 === Programming Model Overview ===

@@ -1,6 +1,6 @@
-
 [[gridftp-admin-installing]]
 == Building and Installing ==
+indexterm:[building and installing,general instructions]
 
 
 [[gridftp-building-installing]]
@@ -19,6 +19,7 @@ make target 'gridftp' (make gridftp) with source installer.
 
 [[gridftp-admin-installing-static-gridftp]]
 === Building and Installing a static GridFTP server ===
+indexterm:[building and installing GridFTP][only a static GridFTP server]
 
 If you wish to build and install a statically linked set of GridFTP
 binaries from the source installer, follow the instructions on GT

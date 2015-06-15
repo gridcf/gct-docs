@@ -1,4 +1,3 @@
-
 [[globus-async]]
 == GT 6.0: Asynchronous Event Handling ==
 

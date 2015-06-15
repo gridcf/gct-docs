@@ -1,9 +1,10 @@
 [[gridftp-configuring]]
 == Configuring GridFTP ==
-
+indexterm:[configuration interface for GridFTP]
 
 [[gridftp-config-overview]]
 === GridFTP server configuration overview ===
+indexterm:[configuring GridFTP][overview]
 
 The configuration interface for GridFTP is the admin tool, , which can
 be used with a configuration file and/or run-time options.
@@ -56,6 +57,7 @@ link:../../gridftp/admin/index.html#gridftp-admin-advanced[here].
 
 [[gridftp-config-types]]
 === Typical configuration ===
+indexterm:[configuring GridFTP,typical]
 
 The following describes a typical GridFTP configuration of the front end
 (control channel) and back end (data channels). For other alternatives
@@ -128,6 +130,7 @@ higher security via GSI .
 
 [[gridftp-admin-config-security-anonymous]]
 ==== Anonymous mode ====
+indexterm:[configuring GridFTP,security,anonymous]
 
 Anonymous mode (using the '-aa' option) allows any user with an FTP
 client to read and write (and delete) files that the server process can
@@ -161,6 +164,7 @@ will be disabled. Default: not set.
 
 [[gridftp-admin-config-security-userpw]]
 ==== Username/password ====
+indexterm:[configuring GridFTP,security,username/password]
 
 If you trust your network and want a minimal amount of security, you can
 run the globus-gridftp-server with clear text passwords. This security
@@ -221,6 +225,7 @@ globus% globus-url-copy file:///etc/group ftp://
 
 [[gridftp-admin-config-security-sshftp]]
 ==== SSHFTP (GridFTP-over-SSH) ====
+indexterm:[configuring GridFTP,security,over SSH]
 
 This type of security introduces the sshftp control channel (frontend)
 protocol. This is a very simple means of obtaining strong security on
@@ -279,6 +284,7 @@ globus% globus-url-copy -list sshftp://127.0.0.1/tmp/
 
 [[gridftp-admin-gsiftp]]
 ==== GSIFTP ====
+indexterm:[configuring GridFTP,security,gsiftp]
 
 This security option can be the most involved to set up, but provides
 the most security. It requires setting up GSI security as described in
@@ -317,6 +323,7 @@ The subject option is only needed if the server was not started as root.
 
 [[gridftp-admin-daemon_mode]]
 ===== Running in daemon mode =====
+indexterm:[admin scenarios,running in daemon mode]
 
 The server should generally be run as root in daemon mode, although it
 is possible to run it as a user (see below). When run as root you will
@@ -356,6 +363,7 @@ link:../../admin/install/index.html#gtadmin-basic-security[]):
 
 [[gridftp-admin-inetd]]
 ===== Running under inetd or xinetd =====
+indexterm:[deploying,running under inetd or xinetd]
 
 [NOTE]
 --

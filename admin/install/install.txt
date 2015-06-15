@@ -4,10 +4,13 @@
 
 
 [[install-bininst]]
+=== Installing Binary Packages ===
 
+:leveloffset: 1
 
 include::../quickstart/prereq.txt[]
 
+:leveloffset: 0
 
 [[install-toolkit]]
 ==== Installing the Toolkit on Linux ====
@@ -161,8 +164,11 @@ specific installation information related to your platform.
 
 --
 
+:leveloffset: 2
+
 include::prereq.txt[]
 
+:leveloffset: 0
 
 ==== Installing from Source Installer ====
 

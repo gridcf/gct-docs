@@ -1,7 +1,7 @@
 
 [[gridftp-server]]
 == GridFTP Server ==
-
+indexterm:[GridFTP Server]
 
 === Interface introduction ===
 

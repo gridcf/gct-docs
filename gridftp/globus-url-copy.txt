@@ -7,6 +7,7 @@ GLOBUS-URL-COPY(1)
 
 
 == NAME ==
+indexterm:[commandline tool,globus-url-copy]
 globus-url-copy - globus-url-copy
 
 [[globus-url-copy-SYNOPSIS]]

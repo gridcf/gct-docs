@@ -1,8 +1,5 @@
-
 [[ccommonlib-outstanding]]
-=== Known Problems in C Common Libraries ===
-
-
+== Known Problems in C Common Libraries ==
 
 * https://globus.atlassian.net/browse/GT-108[GT-108]: --libdir is being ignored
 

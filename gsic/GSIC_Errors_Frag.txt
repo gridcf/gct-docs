@@ -2,6 +2,7 @@
 [[gsic-error-codes]]
 === Errors ===
 
+indexterm:[errors]
 [[gsic-errors-table]]
 [options='header']
 .Credential and Gridmap Errors

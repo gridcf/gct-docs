@@ -1,34 +1,23 @@
 
 [[gridftp-guis]]
 == Graphical User Interface ==
+indexterm:[GUI information for GridFTP]
 
 
 === Globus Online ===
 
 Globus Toolkit does not provide a client with Graphical User Interface
-(GUI) but http://www.globusonline.org[Globus Online] provides a web GUI
+(GUI) but http://www.globus.org[Globus Service] provides a web GUI
 for GridFTP data movement. It has the following features: 
-
 * With a one-click https://www.globus.org/globus%5fconnect/[Globus
-Connect] (modified GridFTP server binary) installed on your local
+Connect Personal] installed on your local
 system, you can browse the local file system and transfer files and
 directories between the local system and remote GridFTP servers and
 between two remote GridFTP servers (third-party transfers).
-
 * Supports file system operations such as creating, deleting and renaming
 files and directories.
 
-
-
 Supported Platforms: 
-
-
-
-
 * Windows
-
 * Linux
-
 * Mac
-
-

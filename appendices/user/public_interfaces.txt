@@ -1,12 +1,9 @@
-
 [[public-interfaces]]
-== Globus Toolkit 6.0 Public Interface Guides ==
+[appendix]
+= Globus Toolkit 6.0 Public Interface Guides =
 
-
---
 This page contains links to each GT 6.0 component's Public Interfaces
 Guide.
-
 
 * link:../../gridftp/pi/index.html[GridFTP]
 
@@ -28,8 +25,3 @@ Guide.
 ** link:../../xio/pi/index.html[XIO]
 
 ** link:../../ccommonlib/pi/index.html[C Common Libraries]
-
-
-
-
---

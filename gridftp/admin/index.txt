@@ -1,4 +1,3 @@
-
 [[gridftpAdmin,System Administrator's Guide]]
 :doctype: book
 = GT 6.0 GridFTP : System Administrator's Guide =
@@ -29,7 +28,9 @@ include::../GridFTP_Interface_Config_Frag.txt[]
  
 [[gridftp-admin-tuning]]
 == Key Admin Settings and Tuning Recommendations ==
-
+indexterm:[tuning]
+indexterm:[recommended administrative settings]
+indexterm:[performance]
 
 --
 The **++globus-gridftp-server++** is a flexible and tunable piece of
@@ -208,6 +209,7 @@ link:../../gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-ser
 
 [[gridftp-config-udt]]
 === Configuring GridFTP to use UDT instead of TCP ===
+indexterm:[configuring GridFTP,run with UDT for third party transfers]
 
 UDT is bundled with Globus starting with Globus v4.2, so downloading UDT
 separately is no longer needed. 
@@ -279,6 +281,7 @@ $GLOBUS_LOCATION/sbin/globus-gridftp-server -dc-whitelist udt,gsi,tcp
 
 [[gridftp-admin-separated]]
 === Separation of Processes (Split Process) ===
+indexterm:[configuring GridFTP,separation of processes]
 
 The GridFTP server can be separated into front end and data node
 processes. This is the architecture used to achieve a striped server,
@@ -328,6 +331,7 @@ globus-gridftp-server -p 7001 -dn -allow-from 127.0.0.1
 
 [[gridftp-admin-striped]]
 === Configuring GridFTP for Cluster-to-Cluster (or Striped) data movement ===
+indexterm:[configuring GridFTP,striped servers]
 
 The GridFTP server supports separate front end (client control
 connection) and back end (data node) processes. In addition, a single
@@ -407,6 +411,7 @@ $GLOBUS_LOCATION/sbin, can help create a suitable directory structure.
 
 [[gridftp-admin-server-gfork]]
 === Running with GFork Master Plugin ===
+indexterm:[configuring GridFTP,run with GFork]
 
 GFork is a service like inetd that listens on a TCP port and runs a
 configurable executable in a child process whenever a connection is
@@ -428,6 +433,7 @@ include::../GridFTP_DSI_General_Frag.txt[]
 
 [[gridftp-admin-dsis]]
 ==== Plugging in a Data Storage Interface (DSI) ====
+indexterm:[configuring GridFTP,with DSI]
 
 GridFTP can be used as a network interface to existing Data Storage
 Interfaces (DSIs) using the '-dsi' option. With this option the DSI
@@ -450,6 +456,7 @@ running the GridFTP server with these DSIs.
 
 [[gridftp-howto-access-posix]]
 ==== Accessing data in a non-POSIX file data source that has a POSIX interface ====
+indexterm:[accessing data,non-POSIX file data source that has a POSIX interface]
 
 If you want to access data in a non-POSIX file data source that has a
 POSIX interface, the standard server will do just fine. Just make sure
@@ -471,6 +478,7 @@ on the CEDPS website.
 
 [[gridftp-config-multi]]
 === Configuring multicasting/broadcasting ===
+indexterm:[configuring Gridftp,multicasting]
 
 To enable
 link:../../gridftp/user/index.html#gridftp-user-experimental-multicasting[multicasting],
@@ -503,6 +511,7 @@ link:../../gridftp/user/index.html#gridftp-user-experimental-multicasting[here].
 
 [[gridftp-admin-gwtftp]]
 === GridFTP Where There Is FTP (GWTFTP) ===
+indexterm:[moving files,existing FTP]
 
 GridFTP Where There Is FTP (GWTFTP) is an intermediate program that acts
 as a proxy between existing FTP clients and GridFTP servers. Users can
@@ -538,7 +547,7 @@ Requires link:../../gsic/index.html[GSI C security].
  
 [[gridftp-admin-testing]]
 == Testing ==
-
+indexterm:[testing]
 
 --
 If the globus-ftp-client-test package has been installed, our standard
@@ -552,6 +561,7 @@ set up the globus environment, chdir to
  
 [[gridftp-admin-debugging]]
 == Debugging ==
+indexterm:[logging]
 
 
 include::../GridFTP_Logging_Frag.txt[]
@@ -563,17 +573,24 @@ include::../GridFTP_Troubleshooting_Frag.txt[]
 include::../GridFTP_Usage_Statistics_Frag.txt[]
 
  
+[appendix]
 [[gridftp-admin-command]]
-== GridFTP Admin Tool ==
+= GridFTP Admin Tool =
+
+indexterm:[commandline tool,globus-gridftp-server]
 
 :leveloffset: 2
-include::../GridFTP_Interface_Commandline_Admin_Frag.txt[]
+
+include::../globus-gridftp-server.txt[]
+
+:doctype: book
+ 
 :leveloffset: 0
 
- 
 include::GridFTP_SRB.txt[]
 
- 
 include::GridFTP_GFork.txt[]
 
-   
+[index]
+[[gridftp-admin-index]]
+= Index =

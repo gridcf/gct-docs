@@ -1,5 +1,6 @@
 
 === Latest information about HPSS ===
+indexterm:[accessing data,HPSS]
 
 Last Update: August 2005
 

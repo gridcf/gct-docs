@@ -16,7 +16,7 @@ architecture:
 
 .XIO Architecture
 --
-image::xio_arch.jpg[scaledwidth="75%",align="center"]
+image::xio_arch.jpg[align="center"]
 --
 
 [[x-xio-driver-quick-start-Framework]]
@@ -77,7 +77,7 @@ XIO to speak the GridFTP protocol across a TCP connection:
 
 .XIO Application
 --
-image::xio_app.jpg[scaledwidth="75%",align="center"]
+image::xio_app.jpg[align="center"]
 --
 The user has built a stack consisting of one transform driver and one
 transport driver. TCP is the transport driver in this stack, and as all

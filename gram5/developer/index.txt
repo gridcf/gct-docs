@@ -1,4 +1,3 @@
-
 [[gram5Developer,Developer's Guide]]
 :doctype: book
 = GT 6.0 GRAM5: Developer's Guide =
@@ -455,3 +454,7 @@ link:internal-components.html[Internal Components]
 
 --
    
+[index]
+[[gram5-developer-index]]
+= Index =
+

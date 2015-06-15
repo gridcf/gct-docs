@@ -15,9 +15,6 @@ minutes.
 
 Highlights of this release include:
 
-
-
-
 * Overall
 ** Migrate from CVS to https://github.com/globus/globus-toolkit
 ** Simplified package by eliminating GPT and library flavors
@@ -44,7 +41,9 @@ For information on installing this release, go to the
 link:../admin/install/index.html[6.0 Installation Guide].
 
 
+:leveloffset: 1
 include::../Java_API_Download.txt[]
+:leveloffset: 0
 
  
 [[rn-platform]]

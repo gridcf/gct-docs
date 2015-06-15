@@ -12,7 +12,7 @@ link:../../admin/install/index.html#gtadmin-install[GT6.0 installation
 instructions].
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[GT Admin Guide]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide before continuing!
 --
 
 
@@ -25,7 +25,7 @@ This information is in addition to the basic Globus Toolkit prerequisite, overvi
 
 --
 XIO is built and installed with a default GT 6.0 installation, see the
-link:../../admin/install/index.html#gtadmin-install[GT Admin Guide].
+link:../../admin/install/index.html#gtadmin-install[Installing GT 6.0].
 
 
 --

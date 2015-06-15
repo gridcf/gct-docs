@@ -1,6 +1,6 @@
-
 [[gridftp-security-considerations]]
 === Security Considerations ===
+indexterm:[security considerations for GridFTP]
 
 
 [[gridftp-security-config]]

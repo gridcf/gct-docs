@@ -1,7 +1,8 @@
 [[gram5-cmd]]
-== GRAM5 Commands ==
+= GRAM5 Commands =
+:doctype: book
 
-:leveloffset: 2
+:leveloffset: 1
 
 include::globus-fork-starter-manual.txt[]
 
@@ -37,4 +38,6 @@ include::globus-scheduler-event-generator-manual.txt[]
 
 include::globusrun-manual.txt[]
 
+
 :leveloffset: 0
+:doctype: book

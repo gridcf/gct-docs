@@ -12,6 +12,7 @@ and performance of GRAM5 in a Grid.
 
 === Server-side Recommendations ===
 
+indexterm:[performance guide,server-side]
 
 ==== Filesystem related settings ====
 

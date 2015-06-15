@@ -1,9 +1,7 @@
-
 [[ccommonlib-changes-summary]]
-=== Summary of Changes in C Common Libraries ===
+== Summary of Changes in C Common Libraries ==
 
-
-==== New Features: C Common Libraries ====
+=== New Features: C Common Libraries ===
 
 * Highlights
 include::C_Common_Libraries_Change_Summary_Highlights_Frag.txt[]
@@ -11,13 +9,9 @@ include::C_Common_Libraries_Change_Summary_Highlights_Frag.txt[]
 include::C_Common_Libraries_Change_Summary_Minor_Frag.txt[]
 
 
-==== Improvements: C Common Libraries ====
-
-
-
-
-* Update of build system to enable parallel builds, cross-compiling, and easier testing
-
+=== Improvements: C Common Libraries ===
+* Update of build system to enable parallel builds, cross-compiling, and easier
+  testing
 * Port of build system to Mac OS X and Windows
 
 

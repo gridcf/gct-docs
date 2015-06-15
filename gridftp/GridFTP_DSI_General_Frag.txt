@@ -1,5 +1,6 @@
 
 === GridFTP and DSIs ===
+indexterm:[accessing data,non-POSIX data source]
 
 The following information is helpful if you want to use GridFTP to
 access data in DSIs (such as HPSS and SRB), and non-POSIX data sources.

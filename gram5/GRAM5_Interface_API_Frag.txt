@@ -5,7 +5,7 @@
 === C API Documentation Links ===
 
 
-
+indexterm:[apis,overview]
 **http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fprotocol.html[GRAM Protocol]**::
      Low-level functions for processing GRAM protocol messages. Symbolic constants for RSL attributes, signals, and job states.
 
@@ -24,7 +24,7 @@
 
 GRAM5 also provides a Perl API for creating LRM interface implementations.
 
-:leveloffset: 3
+:leveloffset: 2
 
 include::developer/Error.txt[]
 
@@ -41,3 +41,4 @@ include::developer/JobSignal.txt[]
 include::developer/JobState.txt[]
 
 :leveloffset: 0
+:doctype: book

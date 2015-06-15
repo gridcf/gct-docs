@@ -2,32 +2,20 @@
 :doctype: article
 = GT 6.0 MyProxy: Quality Profile =
 
-  
 [[myproxy-qp-test]]
-== Test coverage reports ==
+=== Test coverage reports ===
 
 Not yet available. 
 
- 
 [[myproxy-qp-code]]
-== Code analysis reports ==
+=== Code analysis reports ===
 
 Not yet available. 
 
- 
 include::../Cred_Mgmt_MyProxy_Known_Problems_Frag.txt[]
 
- 
 include::../Cred_Mgmt_MyProxy_Fixed_Bugs_Frag.txt[]
 
- 
 [[myproxy-qp-performance]]
-== Performance reports ==
-
-
-
-
+=== Performance reports ===
 * http://myproxy.ncsa.uiuc.edu/scalability.html[MyProxy Scalability Information]
-
-
- 

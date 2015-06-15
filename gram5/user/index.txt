@@ -1044,50 +1044,21 @@ subpackages for the globus-gram-client-tools package.
 
 include::../globusrun-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::../globus-job-cancel-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::../globus-job-clean-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::../globus-job-get-output-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::../globus-job-run-manual.txt[]
 
-
-:leveloffset: 0
-
-:leveloffset: 2
-
 include::../globus-job-status-manual.txt[]
-
-
-:leveloffset: 0
-
-:leveloffset: 2
 
 include::../globus-job-submit-manual.txt[]
 
 
 :leveloffset: 0
+:doctype: book
  
 [[gram5-user-rsl]]
 == GRAM RSL Quick Reference ==
@@ -1124,10 +1095,7 @@ include::../GRAM5_RSL_Attribute_List.txt[]
 [[gram5-user-errors]]
 == GRAM Error Message Reference ==
 
-:leveloffset: 1
 include::../GRAM5_Errors_Frag.txt[]
-:leveloffset: 0
-
  
 [[gram5-user-knownproblems]]
 == Known Problems in GRAM5 ==
@@ -1138,4 +1106,6 @@ include::../GRAM5_Known_Problems_Frag.txt[]
  
 include::../GRAM5_Usage_Statistics_Frag.txt[]
 
-   
+[index]
+[[gram5-user-index]]
+= Index =

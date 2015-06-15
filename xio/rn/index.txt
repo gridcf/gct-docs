@@ -3,7 +3,7 @@
 = GT 6.0 Release Notes: XIO =
   
 [[xio-rn-overview]]
-== Component Overview ==
+=== Component Overview ===
 
 include::../XIO_Overview_Brief_Frag.txt[]
  
@@ -24,8 +24,6 @@ include::../XIO_Compatibility_Summary_Frag.txt[]
 include::../XIO_Associated_Standards_Frag.txt[]
  
 [[xio-rn-formoreinfo]]
-== For More Information ==
+=== For More Information ===
 
 See link:../../xio/index.html[XIO] for more information about this component. 
-
- 

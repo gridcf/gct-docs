@@ -5,36 +5,44 @@
   
 include::XIO_Overview_Brief_Frag.txt[]
 
- 
-The following guides are available for this component:
+[cols="2",frame="none"]
+|=======================================================================
+2+| The following guides are available for this component:
 
-link:admin/index.html[Admin Guide]::
-    For system administrators and those installing, building and deploying GT.
-    Contains information specific to the XIO.
-    You should already have read the 
-    link:../admin/index.html[Installation Guide] and 
-    link:../admin/quickstart/index.html[Quickstart]
-    [link:admin/xioAdminGuide.pdf[pdf]]
-link:developer/index.html[Developer's Guide]::
-    Reference and usage scenarios for developers.
-    [link:developer/xioDeveloperGuide.pdf[pdf]]
 
-Other information available for this component are:
+| link:admin/index.html[Admin Guide]
+| For system administrators and those installing, building and deploying GT.
+  Contains information specific to the XIO.
+  You should already have read the 
+  link:../admin/index.html[Installation Guide] and 
+  link:../admin/quickstart/index.html[Quickstart]
+  [link:admin/xioAdminGuide.pdf[pdf]]
 
-link:rn/index.html[Release Notes]::
-    What's new with the 6.0 release for this component.
-    [link:developer/xioDeveloperGuide.pdf[pdf]]
-link:pi/index.html[Public Interface Guide]::
-    Information for all public interfaces (including APIs, commands, etc).
-    Please note this is a subset of information in the 
-    link:developer/index.html[Developer's Guide]
-    [link:pi/xioPublicInterfacesGuide.pdf[pdf]].
-link:qp/index.html[Quality Profile]::
-    Information about test coverage reports, etc.
-    [link:qp/xioQualityProfile.pdf[pdf]]
-link:mig/index.html[Migrating Guide]::
-    Information for migrating to this version if you were using a
-    previous version of GT.  [link:mig/xioMigratingGuide.pdf[pdf]]
-link:xio.pdf[All XIO Guides (PDF only)]::
-    Includes all XIO guides except Public Interfaces (which is a
-    subset of the Developer's Guide)
+| link:developer/index.html[Developer's Guide]
+| Reference and usage scenarios for developers.
+  [link:developer/xioDeveloperGuide.pdf[pdf]]
+
+2+| Other information available for this component are:
+
+| link:rn/index.html[Release Notes]
+| What's new with the 6.0 release for this component.
+  [link:developer/xioDeveloperGuide.pdf[pdf]]
+
+| link:pi/index.html[Public Interface Guide]
+| Information for all public interfaces (including APIs, commands, etc).
+  Please note this is a subset of information in the 
+  link:developer/index.html[Developer's Guide]
+  [link:pi/xioPublicInterfacesGuide.pdf[pdf]].
+
+| link:qp/index.html[Quality Profile]
+| Information about test coverage reports, etc.
+  [link:qp/xioQualityProfile.pdf[pdf]]
+
+| link:mig/index.html[Migrating Guide]
+| Information for migrating to this version if you were using a
+  previous version of GT.  [link:mig/xioMigratingGuide.pdf[pdf]]
+
+| link:xio.pdf[All XIO Guides (PDF only)]
+| Includes all XIO guides except Public Interfaces (which is a
+  subset of the Developer's Guide)
+|=======================================================================

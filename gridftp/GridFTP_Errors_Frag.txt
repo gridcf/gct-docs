@@ -1,6 +1,7 @@
 
 [[gridftp-error-codes]]
 === Error Codes in GridFTP ===
+indexterm:[errors]
 
 [options='header']
 .GridFTP Errors

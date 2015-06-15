@@ -1,8 +1,8 @@
 [[gsic-cmd]]
-== GSI Commands ==
+= GSI Commands =
 
-
-:leveloffset: 2
+:doctype: book
+:leveloffset: 1
 
 include::globus-update-certificate-dir-manual.txt[]
 
@@ -29,3 +29,5 @@ include::grid-mapfile-check-consistency-manual.txt[]
 include::grid-mapfile-delete-entry-manual.txt[]
 
 :leveloffset: 0
+:doctype: book
+

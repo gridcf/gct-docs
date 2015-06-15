@@ -1,6 +1,6 @@
-
+[appendix]
 [[xio-driver-addons,Add-on]]
-== GT 6.0 XIO : Driver Add-ons ==
+== Add on ==
 
 
 [[xio-drivers-addon-intro]]

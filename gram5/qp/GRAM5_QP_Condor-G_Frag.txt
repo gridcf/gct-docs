@@ -1,9 +1,7 @@
 
 [[gram5-reports-condorg]]
 === GRAM5 Condor-G Tests ===
-
-
-
+indexterm:[GRAM5 Condor-G Test Results]
 
 [[gram5-reports-condorg-configuration]]
 ==== Experiment Hardware and Software Configuration ====

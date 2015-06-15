@@ -1,6 +1,5 @@
-
 [[ccommonlib-fixed-bugs]]
-=== Fixed Bugs for C Common Libraries ===
+== Fixed Bugs for C Common Libraries ==
 
-* []
+* None
 

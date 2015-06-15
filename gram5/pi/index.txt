@@ -1,4 +1,3 @@
-
 [[gram5PI, Guide to Public Interfaces]]
 :doctype: book
 = GT 6.0 Component Guide to Public Interfaces: GRAM5 =
@@ -41,9 +40,10 @@ include::../GRAM5_Interface_Protocol_Frag.txt[]
 [[gram5-pi-error-codes]]
 == Errors ==
 
+indexterm:[errors]
 
-:leveloffset: 1
 include::../GRAM5_Errors_Frag.txt[]
-:leveloffset: 0
 
-  
+[index]
+[[gram5-pi-index]]
+= Index =

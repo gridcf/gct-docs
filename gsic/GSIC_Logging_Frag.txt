@@ -1,6 +1,5 @@
-
 [[gsic-logging]]
 === Logging ===
 
+indexterm:[logging]
 N/A
-

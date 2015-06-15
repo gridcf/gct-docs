@@ -1,6 +1,7 @@
 
 [[gridftp-env-var]]
 === Environment variables for GridFTP ===
+indexterm:[environment variable interface for GridFTP]
 
 The GridFTP server or client libraries do not read any environment
 variable directly, but the security and networking related variables

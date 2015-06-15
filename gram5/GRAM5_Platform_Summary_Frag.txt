@@ -1,12 +1,9 @@
-
 [[gram5-platforms]]
 === Tested platforms ===
+indexterm:[platforms, tested]
+
 
 GRAM5 has been tested extensively on the following platforms:
 
 
 include::../platforms.txt[]
-
-
- 
-

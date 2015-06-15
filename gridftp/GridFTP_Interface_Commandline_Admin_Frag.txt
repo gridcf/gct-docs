@@ -1,7 +1,10 @@
 [[gridftp-command-server]]
+:doctype: book
 
-:leveloffset: 2
+:leveloffset: 1
 
 include::globus-gridftp-server.txt[]
 
 :leveloffset: 0
+
+:doctype: book

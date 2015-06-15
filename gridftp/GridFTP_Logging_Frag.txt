@@ -1,6 +1,7 @@
 
 [[gridftp-logging]]
 === Logging ===
+indexterm:[logging]
 
 As of Globus 4.2.0, GridFTP server provides system administration logs
 in 2 different formats. The CEDPS best practices compliant format is a

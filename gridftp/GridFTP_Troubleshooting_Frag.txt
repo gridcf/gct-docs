@@ -1,6 +1,6 @@
-
 [[gridftp-troubleshooting]]
 == Troubleshooting ==
+indexterm:[troubleshooting for GridFTP]
 
 
 --

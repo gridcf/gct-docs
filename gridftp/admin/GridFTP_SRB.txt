@@ -1,6 +1,6 @@
-
+[appendix]
 [[gridftp-SRB,Setting up SRB for use with GridFTP]]
-== GT 6.0 GridFTP: Setting up Storage Resource Broker (SRB) ==
+= GT 6.0 GridFTP: Setting up Storage Resource Broker (SRB) =
 
 
 [[gridftp-SRB-intro]]

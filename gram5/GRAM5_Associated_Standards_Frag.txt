@@ -1,6 +1,5 @@
-
 [[gram5-associatedstandards]]
 === Associated Standards ===
 
+indexterm:[standards]
 None 
-

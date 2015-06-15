@@ -1,5 +1,6 @@
 [[gridftp-user-experimental-multicasting]]
 === Multicasting ===
+indexterm:[moving files,single file to many destinations]
 
 To transfer a single file to many destinations in a multicast/broadcast,
 use the new '-mc' option.
@@ -48,6 +49,7 @@ globus-url-copy -MC multicast.file gsiftp://localhost/home/user/src_file gsiftp:
 [[gridftp-user-multicasting-advanced]]
 ==== Advanced multicasting options ====
 
+indexterm:[moving files,single file to many destinations,advanced options]
 Along with specifying the list of destination urls in a file, a set of
 options for each url can be specified. This is done by appending a ++?++
 to the resource string in the url followed by semicolon-separated key
@@ -93,7 +95,8 @@ The following is a list of key=value options and their meanings:
 [[gridftp-multicast-networkoverlay]]
 ==== Network Overlay ====
 
-In addition to allowing multicast, this function also allows for
+indexterm:[moving files,single file to many destinations,user-defined network routes]
+In addition to allowing multicast,  function also allows for
 creating user-defined network routes. 
 
 If the 'local_write' option is set to ++n++, then no data will be

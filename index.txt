@@ -8,7 +8,7 @@ The following documents are good places to start with Globus Toolkit
 * For everyone: 
 ** link:./rn/index.html[GT6.0 Release Notes]
 ** link:./appendices/commands/index.html[GT Commands]
-** For system administrators and those installing GT: 
+* For system administrators and those installing GT: 
 ** link:./admin/install/index.html[Installation Guide]
 ** link:./admin/quickstart/index.html[Quickstart]
 * For End Users: 

@@ -23,13 +23,7 @@ include::../GridFTP_Fixed_Bugs_Frag.txt[]
  
 [[gridftp-qp-performance]]
 == Performance reports ==
-
-
-
-
-* link:../gridftp_performance.doc[Performance of Globus Striped GridFTP Server on TeraGrid]
-
+indexterm:performance reports (GridFTP)
+* link:../gridftp_performance.doc[Performance of Globus Striped GridFTP Server
+  on TeraGrid]
 * link:../gridftp_scalability.doc[GridFTP Scalability and Performance Results]
-
-
- 
