@@ -1,37 +1,36 @@
-
 [[simplecaAdmin,Admin Guide]]
 :doctype: book
 = GT 6.0 SimpleCA: Admin Guide =
 
   
 [[simpleca-admin-introduction]]
-
-.Introduction
---
+:numbered!:
+[preface]
+Introduction
+------------
 This guide contains advanced configuration information for system
 administrators working with SimpleCA. It provides references to
 information on procedures typically performed by system administrators,
 including installation, configuring, deploying, and testing the
 installation.
+
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../..//admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../..//admin/install/index.html[Installing GT 6.0]. Read through this guide before continuing!
 --
-
 The following are instructions for how to use SimpleCA to request and
 sign a certificate for a GT 6.0 installation. 
 SimpleCA provides an easy way to create and package a Certificate
 Authority
-    (CA), as well as tools for requesting and signing user and
+(CA), as well as tools for requesting and signing user and
 host certificates. It is similar to OpenSSL's **++CA.sh++** command but
 includes support for packaging the CA certificate, creating a signing
 policy file, and generating information needed by clients to request
 certificates. You can find other CA options in
-link:../..//admin/install/index.html#gtadmin-basic-host[]. 
+link:../..//admin/install/index.html#gtadmin-basic-host[Obtain host
+credentials]. 
 
---
-
-  
+:numbered:
 
 [[simpleca-admin-guide]]
 = Simple CA Administration Guide =
@@ -39,8 +38,6 @@ link:../..//admin/install/index.html#gtadmin-basic-host[].
 include::guide.txt[]
 
 [[simpleca-admin-reference]]
-= Simple CA Command Reference =
 
 include::../Cred_Mgmt_SimpleCA_Interface_Commandline_Frag.txt[]
 
-  
