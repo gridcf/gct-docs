@@ -12,8 +12,9 @@ logging is disabled by default.
 
 The command line options -d , -log-level, -L and -logdir can affect
 where logs will be written, as can the configuration file options
-log_single and log_unique. See the
-link:../../gridftp/pi/index.html#globus-gridftp-server[] for more
+log_single and log_unique. See 
+link:../../gridftp/pi/index.html#globus-gridftp-server[globus-gridftp-server]
+for more
 information on these and other configuration options.
 
 

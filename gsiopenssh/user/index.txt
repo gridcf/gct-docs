@@ -87,7 +87,7 @@ to. For example:
 --------
 You should then find yourself automatically logged into your account on
 the remote system. If something goes wrong, please see
-link:#gsiopenssh-user-troubleshooting[] for assistance. 
+link:#gsiopenssh-user-troubleshooting[Troubleshooting] for assistance. 
 
  
 include::../Util_OpenSSH_Interface_Commandline_Frag.txt[]
@@ -132,7 +132,7 @@ might fail include:
 
 --
 For information about sys admin debugging, see
-link:../../gsiopenssh/admin/index.html#gsiopenssh-admin-debugging[].
+link:../../gsiopenssh/admin/index.html#gsiopenssh-admin-debugging[Debugging].
 
 
 --

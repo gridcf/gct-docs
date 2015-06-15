@@ -13,7 +13,10 @@ installation. This guide should help you configure and run the GridFTP
 server in some standard configurations.
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite,
+overview, installation, security configuration instructions in the
+link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide
+before continuing!
 --
 
 
@@ -200,8 +203,9 @@ available. This can be done in the GridFTP server by using the option:
 
 --
 It is assumed that the toolkit installation was successful. For more
-information, see the link:../../admin/install/index.html[]. Also be sure
-to reference link:#gridftp-configuring[] and
+information, see the link:../../admin/install/index.html[Installing GT 6.0].
+Also be sure
+to reference link:#gridftp-configuring[Configuring GridFTP] and
 link:../../gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-server++**].
 
 
@@ -221,13 +225,15 @@ separately is no longer needed.
 
 . Threaded Globus GridFTP server. In GT6, the server is non-threaded by
 default. Refer to
-link:../../gridftp/admin/index.html#gridftp-admin-installing-threaded[]
+link:../../gridftp/admin/index.html#gridftp-admin-installing-threaded[Enabling
+Threading in GridFTP]
 for information on how to enable threading in GridFTP server.
 
 . For client-server transfers, threaded globus-url-copy. For third-party
 (server-server) transfers, threaded globus-url-copy is not needed. Refer
 to
-link:../../gridftp/admin/index.html#gridftp-admin-installing-threaded[]
+link:../../gridftp/admin/index.html#gridftp-admin-installing-threaded[Enabling
+Threading in GridFTP]
 for information on how to enable threading in globus-url-copy.
 
 

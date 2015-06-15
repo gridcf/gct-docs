@@ -177,7 +177,8 @@ Once you have a configuration file, run GFork with:
 [[gridftp-gfork-striped]]
 === GFork and Striped Servers ===
 
-As mentioned in link:#gridftp-admin-striped[], GridFTP offers a powerful
+As mentioned in link:#gridftp-admin-striped[Configuring GridFTP for
+Cluster-to-Cluster (or Striped) data movement], GridFTP offers a powerful
 enhancement called striped servers. In this mode a GridFTP server is set
 up with a single frontend and one or more backends. All of the backends
 work in concert to transfer a single file and thereby achieve high

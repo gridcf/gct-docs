@@ -289,7 +289,8 @@ indexterm:[configuring GridFTP,security,gsiftp]
 This security option can be the most involved to set up, but provides
 the most security. It requires setting up GSI security as described in
 the GT Installation Guide here:
-link:../../admin/install/index.html#gtadmin-basic-security[]. 
+link:../../admin/install/index.html#gtadmin-basic-security[Basic Security
+Configuration]. 
 
 Once GSI has been set up (host and user credentials are valid, the
 gridmap file is updated and you've run grid-proxy-init to create a proxy
@@ -352,7 +353,8 @@ where:
 
 The following additional steps may be required when running as a user
 other than root (for more details, review
-link:../../admin/install/index.html#gtadmin-basic-security[]): 
+link:../../admin/install/index.html#gtadmin-basic-security[Basic Security
+Configuration]): 
 
 * Create a ++~/.gridmap++ file, containing the DNs of any clients you wish to allow, mapped to the current username. file, containing the DNs of any clients you wish to allow, mapped to the current username.
 
@@ -423,8 +425,8 @@ in the above examples.
 [NOTE]
 --
 You should NOT include USERID in the log lines. See
-link:../../gridftp/admin/index.html#gridftp-troubleshooting-latency[] for
-more information.
+link:../../gridftp/admin/index.html#gridftp-troubleshooting-latency[High
+latency for GridFTP server connections] for more information.
 
 --
 
@@ -598,7 +600,8 @@ Ctrl-c - Kill the server.
 There are many possible options and configurations with
 **++globus-gridftp-server++**. For some guidelines on setting it up for
 your situation, see
-link:../../gridftp/admin/index.html#gridftp-admin-tuning[].
+link:../../gridftp/admin/index.html#gridftp-admin-tuning[Key Admin Settings and
+Tuning Recommendations].
 
 --
 

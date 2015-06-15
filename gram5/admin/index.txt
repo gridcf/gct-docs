@@ -36,9 +36,11 @@ link:../../gridftp/index.html[GridFTP] services to stage files to compute resour
 their respective Administrator's guides for information about
 installing, configuring, and managing those systems. In particular, you
 must understand the tasks in
-link:../../admin/install/index.html#gtadmin-install[] and install the
+link:../../admin/install/index.html#gtadmin-install[Installing GT 6.0] and
+install the
 basic GRAM5 packages, and complete the tasks in
-link:../../admin/install/index.html#gtadmin-basic-security[]. 
+link:../../admin/install/index.html#gtadmin-basic-security[Basic Security
+Configuration]. 
 
 
 === Planning your GRAM5 installation ===
@@ -112,7 +114,7 @@ adapter and configuration file needed for job status via polling or the
 
 There are three ways to get LRM adapters: as RPM packages, as Debian
 packages, and from the source installer. These installation methods are
-described in link:../../admin/install/index.html[]. 
+described in link:../../admin/install/index.html[Installing GT 6.0]. 
 
 LRM adapter packages included in the GT 6.0 release are: 
 
@@ -164,8 +166,10 @@ she must be authorized to use the service. In order to be authorized, a
 GRAM5 administrator must add the user's credential name and local
 account mapping to the ++/etc/grid-mapfile++. This can be done using the
 . This can be done using the
-link:../../gsic/pi/index.html#grid-mapfile-add-entry[] and
-link:../../gsic/pi/index.html#grid-mapfile-delete-entry[] tools. For more
+link:../../gsic/pi/index.html#grid-mapfile-add-entry[**++grid-mapfile-add-entry++**]
+and
+link:../../gsic/pi/index.html#grid-mapfile-delete-entry[**++grid-mapfile-delete-entry++**]
+tools. For more
 information, see the link:../../gsic/index.html[GSI C] manual. 
 
 
@@ -217,12 +221,13 @@ the init scripts with the service name and action and optional
 === Enabling and Disabling GRAM5 Services ===
 
 The GRAM5 packages described in
-link:#gram5-admin-installing-lrm-packages[] will automatically register
+link:#gram5-admin-installing-lrm-packages[Installing LRM Adapter Packages] will
+automatically register
 themselves with the **++globus-gatekeeper++** and
 **++globus-scheduler-event-generator++** services. The first LRM adapter
 installed will be configured as the default Job Manager service. To list
 the installed services, change the default, or disable a service, use
-the link:#globus-gatekeeper-admin[] tool. 
+the link:#globus-gatekeeper-admin[**++globus-gatekeeper-admin++**] tool. 
 
 
 
@@ -250,11 +255,12 @@ jobmanager-fork [ALIAS to jobmanager-fork-poll]
 === Enabling and Disabling SEG Modules ===
 
 The ++-setup-seg++ packages described in
-link:#gram5-admin-installing-lrm-packages[] will automatically register
+link:#gram5-admin-installing-lrm-packages[Installing LRM Adapter Packages] will
+automatically register
 themselves with the **++globus-scheduler-event-generator++** service. To
 disable a module from running when the
 **++globus-scheduler-event-generator++** service is started, use the
-link:#globus-scheduler-event-generator-admin[] tool. 
+link:#globus-scheduler-event-generator-admin[**++globus-scheduler-event-generator-admin++**] tool. 
 .Using globus-scheduler-event-generator-admin to disable a SEG module
 =======================================================================
 This example shows how to stop the ++pbs++

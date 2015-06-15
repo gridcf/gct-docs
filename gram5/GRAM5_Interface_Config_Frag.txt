@@ -8,7 +8,8 @@ GRAM5 is designed to be usable by default without any manual
 configuration. However, there are many ways to customize a GRAM5
 installation to better interact with site policies, filesystem layouts,
 LRM interactions, logging, and auditing. In addition to GRAM5-specific
-configuration, see link:../../gsic/admin/index.html#gsic-configuring[]
+configuration, see
+link:../../gsic/admin/index.html#gsic-configuring[Configuring GSI]
 for information about configuring GSI security. 
 
 
@@ -73,7 +74,8 @@ The following configuration variables are available in the
 
 After modifying the configuration file, restart the
 **++globus-gatekeeper++** using the methods described in
-link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
+link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[Starting
+and Stopping GRAM5 services]. 
 
 
 [[gram5-configuring-seg]]
@@ -107,7 +109,8 @@ The following configuration variables are available in the
 
 After modifying the configuration file, restart the
 **++globus-scheduler-event-generator++** using the methods described in
-link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[]. 
+link:../../gram5/admin/index.html#gram5-admin-starting-and-stopping[Starting
+and Stopping GRAM5 services].
 
 
 [[gram5-configuring-jobmanager]]
@@ -129,7 +132,8 @@ Source Installer::
 
 This configuration file is used to construct the command-line options
 for the **++globus-job-manager++** program. Thus, all of the options
-described in link:#gram5-cmd-globus-job-manager[] may be used. 
+described in link:#gram5-cmd-globus-job-manager[globus-job-manager] may be
+used. 
 
 
 ==== Job Manager Logging ====
@@ -205,7 +209,7 @@ will use and 'MAX-PORT' is the maximum TCP outgoing port number the Job
 Manager will use. 
 
 For more information about Globus and firewalls, see
-link:../..//admin/install/index.html#gt-admin-firewall[]. 
+link:../../admin/install/index.html#gt-admin-firewall[Firewall configuration].
 
 
 [[gram5-configuring-lrm]]

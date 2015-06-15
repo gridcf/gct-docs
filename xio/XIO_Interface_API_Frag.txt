@@ -21,5 +21,5 @@ http://www.globus.org/api/c/globus%5fxio/html/index.html[http://www.globus.org/a
 
 
 For information on the internationalization API, see
-link:../../ccommonlib/pi/index.html#ccommonlib-apis[]. 
+link:../../ccommonlib/pi/index.html#ccommonlib-apis[C Common Library APIs]. 
 

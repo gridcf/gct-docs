@@ -160,7 +160,8 @@ requesting a certificate from a site-specific CA, or by using a portal
 to obtain a temporary credential. In typical use, GRAM uses a
 http://www.ietf.org/rfc/rfc3820.txt[proxy certificate] which is a
 short-term credential digitally signed by a private key. Please read the
-link:../../gsic/user/index.html#gsic-user-basic-procedure[] to learn more
+link:../../gsic/user/index.html#gsic-user-basic-procedure[Basic procedure for
+using GSI C] to learn more
 about how to obtain and use a GSI credential before continuing this
 guide. 
 

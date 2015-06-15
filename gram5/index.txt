@@ -11,39 +11,39 @@ The following guides are available for this component:
 
 [cols="2",frame="none"]
 |=======================================================================
-| link:key/index.html[Key Concepts]
+| link:key/index.html[**Key Concepts**]
 | For important general concepts about job management in Globus. Includes
     link:key/index.html#gram5-approach[GRAM5 Approach].
     [link:key/gram5KeyConcepts.pdf[pdf]]
-| link:admin/index.html[Admin Guide]
+| link:admin/index.html[**Admin Guide**]
 | For system administrators and those installing, building and deploying GT.
     You should already have read the 
     link:../admin/index.html[Installation Guide] and 
     link:../admin/quickstart/index.html[Quickstart]
     [link:admin/gram5AdminGuide.pdf[pdf]]
-| link:user/index.html[User's Guide]
+| link:user/index.html[**User's Guide**]
 | Describes how end-users typically interact with this component
     [link:user/gram5UserGuide.pdf[pdf]].
-| link:developer/index.html[Developer's Guide]
+| link:developer/index.html[**Developer's Guide**]
 | Reference and usage scenarios for developers.
     [link:developer/gram5DeveloperGuide.pdf[pdf]]
 2+| Other information available for this component are:
-| link:rn/index.html[Release Notes]
+| link:rn/index.html[**Release Notes**]
 | What's new with the 6.0
     release for this component [link:rn/gram5ReleaseNotes.pdf[pdf]]
-| link:pi/index.html[Public Interfaces]
+| link:pi/index.html[**Public Interfaces**]
 | Information for all public interfaces (including APIs,
     commands, protocols, etc). Please note this is a subset of
     information in
-    the | link:developer/index.html[Developer's Guide]
+    the link:developer/index.html[Developer's Guide]
     [link:pi/gram5PublicInterfacesGuide.pdf[pdf]]
-| link:qp/index.html[Quality Profile]
+| link:qp/index.html[**Quality Profile**]
 | Information about test coverage reports, etc.
     [link:qp/gram5QualityProfile.pdf[pdf]].
-| link:mig/index.html[Migrating Guide]
+| link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
     version of GT. [link:mig/gram5MigratingGuide.pdf[pdf]]
-| link:gram5.pdf[All GRAM5 Guides (PDF only)]
+| link:gram5.pdf[**All GRAM5 Guides (PDF only)**]
 | Includes all GRAM5 guides except Public Interfaces (which is a subset of
     the Developer's Guide)
 |=======================================================================

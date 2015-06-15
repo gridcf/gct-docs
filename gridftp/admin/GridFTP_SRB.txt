@@ -160,7 +160,8 @@ Once you have the configuration files in place, you can run the server.
 All options of the server apply, but the parameter ++-dsi srb -auth-level 4++**must** also be used.
 --
 For more information on setting these values and running the GridFTP
-server see link:../../gridftp/admin/index.html#gridftp-configuring[]. 
+server see link:../../gridftp/admin/index.html#gridftp-configuring[Configuring
+GridFTP]. 
 
 Most users can run with:
 

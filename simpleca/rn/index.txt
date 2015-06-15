@@ -37,5 +37,5 @@ include::../Cred_Mgmt_SimpleCA_Associated_Standards_Frag.txt[]
 [[simpleca-rn-formoreinfo]]
 === For More Information ===
 
-See link:../../admin/install/appendix.html#gtadmin-simpleca[] for more
-information about this component. 
+See link:../../admin/install/appendix.html#gtadmin-simpleca[Installing
+SimpleCA] for more information about this component. 

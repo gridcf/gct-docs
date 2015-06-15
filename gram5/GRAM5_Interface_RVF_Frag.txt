@@ -99,21 +99,43 @@ The GRAM5 RVF parser supports the following set of attributes in record
 definitions. 
 
 *Attribute*::
-     The only **required** aspect in a record, the ++Attribute++ aspect defines the name of the RSL attribute which the record refers to. The name is canonicalized to lowercase, with underscore characters removed.
+     The only **required** aspect in a record, the ++Attribute++ aspect defines
+     the name of the RSL attribute which the record refers to. The name is
+     canonicalized to lowercase, with underscore characters removed.
 *Description*::
-     A description of the RSL attribute. This can be used to generate RSL documentation (see rsl.5), but is not otherwised used by GRAM5.
+     A description of the RSL attribute. This can be used to generate RSL
+     documentation (see rsl.5), but is not otherwised used by GRAM5.
 *RequiredWhen*::
-     A list indicating when the attribute is **required** to be included in the RSL document. If it is not present, and the RVF does not include a default value for it, the RSL will be rejected. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
+     A list indicating when the attribute is **required** to be included in the
+     RSL document. If it is not present, and the RVF does not include a default
+     value for it, the RSL will be rejected. See link:#gram5-rvf-when[RVF When
+     Values] for a list of valid values for this aspect.
 *DefaultWhen*::
-     A list indicating when the attribute's default value will be provided when not in the RSL. The default value is defined by the ++Default++ aspect described below. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
+     A list indicating when the attribute's default value will be provided when
+     not in the RSL. The default value is defined by the ++Default++ aspect
+     described below. See link:#gram5-rvf-when[RVF When Values] for a list of
+     valid values for this aspect.
 *ValidWhen*::
-     A list indicating when the attribute is valid in an RSL document. If the RSL attribute is included in a document which is not being used for the purpose described by this aspect's value, it will be rejected. See link:#gram5-rvf-when[] for a list of valid values for this aspect.
+     A list indicating when the attribute is valid in an RSL document. If the
+     RSL attribute is included in a document which is not being used for the
+     purpose described by this aspect's value, it will be rejected. See
+     link:#gram5-rvf-when[RVF When Values] for a list of valid values for this
+     aspect.
 *Default*::
-     A default value for the RSL attribute if it's used in a context which matches the ++DefaultWhen++ aspect for this attribute's record. The value of this attribute must parsable into be a valid RSL link:../../gram5/pi/index.html#gram5-rsl.value-sequence[value-sequence].
+     A default value for the RSL attribute if it's used in a context which
+     matches the ++DefaultWhen++ aspect for this attribute's record. The value
+     of this attribute must parsable into be a valid RSL
+     link:../../gram5/pi/index.html#gram5-rsl.value-sequence[value-sequence].
 *Values*::
-     An enumeration of values for the RSL attribute. The value must be simple single-word strings (such as ++yes no++. RSL documents which include the attribute this record is for and do not match one of the single-word values will be rejected by the RSL validator.
+     An enumeration of values for the RSL attribute. The value must be simple
+     single-word strings (such as ++yes no++. RSL documents which include the
+     attribute this record is for and do not match one of the single-word
+     values will be rejected by the RSL validator.
 *Publish*::
-     A flag, which if it equals ++true++, will cause the RSL attribute to be included in the documentation produced by the **++create_rsl_documentation.pl++** program. This is generally only useful for core RSL attributes included in GRAM5
+     A flag, which if it equals ++true++, will cause the RSL attribute to be
+     included in the documentation produced by the
+     **++create_rsl_documentation.pl++** program. This is generally only useful
+     for core RSL attributes included in GRAM5
 
 
 

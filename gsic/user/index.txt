@@ -40,7 +40,7 @@ include::../GSIC_Interface_Commandline_Frag.txt[]
 --
 The following includes common errors for credentials and gridmap files.
 For information about system administrator logs, see
-link:../../gsic/admin/index.html#gsic-admin-debugging[] in the GSI C
+link:../../gsic/admin/index.html#gsic-admin-debugging[Debugging] in the GSI C
 Admin Guide.
 
 

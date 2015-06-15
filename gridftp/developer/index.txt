@@ -206,7 +206,7 @@ indexterm:[logging]
 
 --
 You can find information on sys admin logs in
-link:../../gridftp/admin/index.html#gridftp-admin-debugging[].
+link:../../gridftp/admin/index.html#gridftp-admin-debugging[Debugging].
 
 
 --

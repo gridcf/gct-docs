@@ -65,7 +65,7 @@ SimpleCA provides a wrapper around the OpenSSL CA functionality and is
 sufficient for simple Grid services. Alternatively, you can use
 OpenSSL's **++CA.sh++** command on its own. Instructions on how to use
 the SimpleCA can be found in
-link:../../admin/install/appendix.html#gtadmin-simpleca[]. 
+link:../../admin/install/appendix.html#gtadmin-simpleca[Installing SimpleCA].
 
 SimpleCA is suitable for testing or when a certificate authority is not
 available.
@@ -223,7 +223,8 @@ sites.
 ===== Allowed Incoming Ports =====
 
 As described in
-link:../../gram5/developer/index.html#gram5-developer-jobstatecallbacks[],
+link:../../gram5/developer/index.html#gram5-developer-jobstatecallbacks[Job
+State Callbacks and Polling],
 the Globus Toolkit GRAM service uses callbacks to communicate state
 changes to clients and, optionally, to stage files to/from the client.
 If connections are not allowed back to the Globus Toolkit clients, the
@@ -252,7 +253,8 @@ the users to reflect the site’s chosen range.
 ===== Network Address Translation (NAT) =====
 
 Clients behind NATs will be restricted as described in
-link:#gtadmin-client-incomingports[] unless the firewall and site hosts
+link:#gtadmin-client-incomingports[Allowed Incoming Ports] unless the firewall
+and site hosts
 are configured to allow incoming connections.
 
 This configuration involves: 
@@ -261,7 +263,7 @@ This configuration involves:
 
 * Configure the NAT to direct incoming connections in the port range for each host back to the appropriate host (e.g., configure 45000-45099 on the NAT to forward to 45000-45099 on host A).
 
-* Configure the Globus Toolkit clients on each site host to use the selected port range for the host using the techniques described in link:../../gridftp/user/index.html#gridftp-user-config-client-firewall[].
+* Configure the Globus Toolkit clients on each site host to use the selected port range for the host using the techniques described in link:../../gridftp/user/index.html#gridftp-user-config-client-firewall[If client is behind a firewall].
 
 * Configure Globus Toolkit clients to advertise the firewall as the hostname to use for callbacks from the server host. This is done using the GLOBUS_HOSTNAME environment variable. The client must also have the GLOBUS_HOSTNAME environment variable set to the hostname of the external side of the NAT firewall. This will cause the client software to advertise the firewall's hostname as the hostname to be used for callbacks causing connections from the server intended for it to go to the firewall (which redirects them to the client).
 

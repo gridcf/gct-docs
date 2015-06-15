@@ -201,7 +201,8 @@ access to.
 
 --
 
-. Download the required software noted in link:#gtadmin-prereq[].
+. Download the required software noted in link:#gtadmin-prereq[Software
+Prerequisites].
 
 . The Globus Toolkit Source Installer sets the installation directory by
 default to ++/usr/local/globus-6++, but you may replace , but you may

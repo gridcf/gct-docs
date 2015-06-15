@@ -439,8 +439,8 @@ services on donkey.
 === Setting up your second machine: GridFTP ===
 
 GridFTP set up on the second machine is identical to the first. I'll
-just list the commands here; see link:#q-gridftp[] for additional
-information. 
+just list the commands here; see link:#q-gridftp[Setting up GridFTP] for
+additional information. 
 
 --------
 root@donkey# service globus-gridftp-server start

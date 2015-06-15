@@ -8,7 +8,8 @@ indexterm:[building and installing,general instructions]
 
 GridFTP is built and installed as part of a default GT 6.0 installation.
 For basic installation instructions, see
-link:../../admin/install/index.html[]. No extra installation steps are
+link:../../admin/install/index.html[Installing GT 6.0]. No extra installation
+steps are
 required for this component.
 
 If you wish to install GridFTP without installing the rest of the Globus

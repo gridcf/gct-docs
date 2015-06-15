@@ -8,30 +8,36 @@
 
 So far, you have a single machine configured with SimpleCA certificates.
 Recall that in
-link:../../simpleca/admin/index.html#simpleca-confirmcert[] a CA setup
+link:../../simpleca/admin/index.html#simpleca-packageoutput[SimpleCA
+Distribution Files] a CA setup
 package was created in
 ++.globus/simpleCA/globus_simple_ca_HASH_setup-0.17.tar.gz++. If you
 want to use your certificates on another machine, you must install that
-CA setup package on that machine. . If you want to use your certificates
+CA setup package on that machine. If you want to use your certificates
 on another machine, you must install that CA setup package on that
 machine. 
 
-To install it, copy that package to the second machine and run: 
+If you created binary packages compatible with the other machine, you can
+use the native package installation tools (such as **++apt-get++** or
+**++yum++**) to install. Otherwise, untar it and copy the files into
+++/etc/grid-security++.
 
 --------
-$GLOBUS_LOCATION/sbin/gpt-build globus_simple_ca_HASH_setup-0.17.tar.gz gcc32dbg
-$GLOBUS_LOCATION/sbin/gpt-postinstall
+donkey# cp globus-simple-ca-HASH/HASH.0 \
+             globus-simple-ca-HASH/HASH.signing_policy \
+             /etc/grid-security-certificates
+donkey# cp globus-simple-ca-HASH/globus-*conf* /etc/grid-security
 --------
 
-
-Then you will have to perform **++setup-gsi -default++** from
-link:../../simpleca/admin/index.html#simpleca-finalizing[]. 
+Then you will have to perform **++grid-default-ca -ca HASH++** to
+make this the default CA.
 
 If you are going to run services on the second host, it will need its
 own host certificate
-(link:../../simpleca/admin/index.html#simpleca-hostcert[]) and
+(link:../../admin/install/index.html#gtadmin-basic-host[Obtain host
+credentials]) and
 grid-mapfile (as described in the basic configuration instructions in
-link:../../admin/install/index.html#gtadmin-basic-gridmap[]). 
+link:../../admin/install/index.html#gtadmin-basic-gridmap[Add authorization]). 
 
 You may re-use your user certificates on the new host. You will need to
 copy the requests to the host where the SimpleCA was first installed in

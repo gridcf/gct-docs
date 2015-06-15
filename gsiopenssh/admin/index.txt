@@ -15,7 +15,10 @@ including installation, configuring, deploying, and testing the
 installation.
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in link:../..//admin/install/index.html[]. Read through this guide before continuing!
+This information is in addition to the basic Globus Toolkit prerequisite,
+overview, installation, security configuration instructions in
+link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide
+before continuing!
 --
 
 This guide is meant solely to cover the GSI aspects of GSI-OpenSSH, and
@@ -33,8 +36,8 @@ OpenSSH.
 --
 GSI-OpenSSH is built and installed as part of a default GT 6.0
 installation. For basic installation instructions, see
-link:../..//admin/install/index.html[]. No extra installation steps are
-required for this component. 
+link:../../admin/install/index.html[Installing GT 6.0]. No extra installation
+steps are required for this component. 
 
 
 --
@@ -104,7 +107,8 @@ functionality is turned on by default.
 
 If you wish to install GSI-OpenSSH without installing the rest of the
 Globus Toolkit, follow the instructions in
-link:../..//admin/install/index.html[] with the following changes.
+link:../../admin/install/index.html[Installing GT 6.0] with the following
+changes.
 First, you do not need Ant, a JDK, or a JDBC database to build only
 GSI-OpenSSH. Second, instead of running "make", run: 
 

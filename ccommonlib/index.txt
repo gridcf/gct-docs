@@ -10,26 +10,26 @@ The following guides are available for this component:
 
 [cols="2",frame="none"]
 |=======================================================================
-| link:developer/index.html[Developer's Guide]
+| link:developer/index.html[**Developer's Guide**]
 | Reference for developers who want to access the C libraries.
   [link:developer/ccommonlibDevelopersGuide.pdf[pdf]]
 2+| Other information available for this component are:
-| link:rn/index.html[Release Notes]
+| link:rn/index.html[**Release Notes**]
 | What's new with the 6.0 release for this component
     [link:rn/ccommonlibReleaseNotes.pdf[pdf]].
-| link:pi/index.html[Public Interface Guide]
+| link:pi/index.html[**Public Interface Guide**]
 | Information for all public interfaces (including APIs, commands, etc).
     Please note this is a subset of information in the 
     link:developer/index.html[Developer's Guide].
     [link:pi/ccommonlibPublicInterfacesGuide.pdf[pdf]].
-| link:qp/index.html[Quality Profile]
+| link:qp/index.html[**Quality Profile**]
 | Information about test coverage reports, etc.
     [link:qp/ccommonlibQualityProfile.pdf[pdf]].
-| link:mig/index.html[Migrating Guide]
+| link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
     version of GT
     [link:mig/ccommonlibMigratingGuide.pdf[pdf]].
-| link:ccommonlib.pdf[All C Common Libraries Guides (PDF only)]
+| link:ccommonlib.pdf[**All C Common Libraries Guides (PDF only)**]
 | Includes all C Common Libraries guides except Public Interfaces (which is a
     subset of the Developer's Guide).
 |=======================================================================

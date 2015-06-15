@@ -218,7 +218,8 @@ globus-url-copy -vb -p 4 gsiftp://other.machine.my.edu/tmp/foo gsiftp://remote.m
 
 If you want more information and details on URLs and the
 link:../../gridftp/user/index.html#globus-url-copy-commandlineoptions[command
-line options], the link:../../gridftp/key/index.html[] gives basic
+line options], the link:../../gridftp/key/index.html[GT 6.0 GridFTP Key
+Concepts] gives basic
 definitions and an overview of the GridFTP protocol as well as our
 implementation of it.
 
@@ -242,7 +243,8 @@ or username/password based authentication
 * Your local system administrator has installed "GridFTP Where There is
 FTP (GWTFTP)", which acts as a proxy between standard FTP clients and
 GridFTP servers. More information on GWTFTP is available at
-link:../../gridftp/admin/index.html#gridftp-admin-gwtftp[].
+link:../../gridftp/admin/index.html#gridftp-admin-gwtftp[GridFTP Where There Is
+FTP (GWTFTP)].
 
 
 

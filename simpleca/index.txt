@@ -10,10 +10,10 @@ include::Cred_Mgmt_SimpleCA_Overview_Brief_Frag.txt[]
 |=======================================================================
 2+| The following guides are available for this component:
 
-| link:../gsic/key/index.html[Security Key Concepts]
+| link:../gsic/key/index.html[**Security Key Concepts**]
 | For important general concepts.  [link:../gsic/key/gsicKeyConcepts.pdf[pdf]]
 
-| link:admin/index.html[Admin Guide]
+| link:admin/index.html[**Admin Guide**]
 | For system administrators and those installing, building and deploying GT.
   You should already have read the 
   link:../admin/index.html[Installation Guide] and 
@@ -21,10 +21,10 @@ include::Cred_Mgmt_SimpleCA_Overview_Brief_Frag.txt[]
   of using SimpleCA.
   [link:admin/simplecaAdminGuide.pdf[pdf]]
 
-| link:rn/index.html[Release Notes]
+| link:rn/index.html[**Release Notes**]
 | What's new with the 6.0 
   release for this component.  [link:rn/simplecaReleaseNotes.pdf[pdf]] 
 
-| link:simpleca.pdf[All SimpleCA Guides (PDF only)]
+| link:simpleca.pdf[**All SimpleCA Guides (PDF only)**]
 |  Includes all SimpleCA guides
 |=======================================================================

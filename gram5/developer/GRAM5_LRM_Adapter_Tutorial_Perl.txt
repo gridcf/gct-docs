@@ -7,7 +7,8 @@ interface between GRAM5 and the underlying scheduler. Very little has
 been added to this part of the scheduler interface since Globus Toolkit
 2---if you have a version for an older Globus Toolkit release, you can
 ignore most of this tutorial and jump to the
-link:#gram5-lrma-tutorial-perl-changes[] section of this tutorial. The
+link:#gram5-lrma-tutorial-perl-changes[Changes from Previous Versions] section
+of this tutorial. The
 module annotated below is available from link:fake.pm. 
 
 
