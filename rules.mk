@@ -74,11 +74,18 @@ ifneq (,$(XEP))
     PDF_TARGET=pdf
 else
     ifneq (,$(FOP))
-    FO_PARAMS=--param xep.extensions 0 --param fop1.extensions 1
-    FO_TO_PDF=$(FOP) -q $(firstword $(patsubst %.xml,%.fo,$+ $(SOURCE))) $@
-    PDF_TARGET=pdf
+        FOP_VERSION := $(shell $(FOP) -version)
+
+        ifeq ($(FOP_VERSION),FOP Version 1.1)
+            FO_PARAMS=--param xep.extensions 0 --param fop1.extensions 1
+        endif
+        ifeq ($(FOP_VERSION),FOP Version 2.0)
+            FO_PARAMS=--param xep.extensions 0 --param fop1.extensions 0
+        endif
+        FO_TO_PDF=$(FOP) -q $(firstword $(patsubst %.xml,%.fo,$+ $(SOURCE))) $@
+        PDF_TARGET=pdf
     else
-    FO_TO_PDF=:
+        FO_TO_PDF=:
     endif
 endif
 
