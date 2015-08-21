@@ -373,71 +373,66 @@ We also feature a user-configurable, super-server daemon plugin called
 GFork. Click
 link:../../gridftp/admin/index.html#gridftp-admin-gfork-master[here] for
 more information.
-
 --
 
-====== Set up xinetd/inetd config file ======
-
+. Set up xinetd/inetd config file
++
 [NOTE]
 --
 The service name used (gsiftp in this case) should be defined in
 ++/etc/services++ with the desired port.
-
 --
++
 Here is a sample GridFTP server xinetd config entry in
 ++/etc/xinetd.conf++: : 
-
++
 --------
 service gsiftp
-              {
-              instances               = 100
-              socket_type             = stream
-              wait                    = no
-              user                    = root
-              env                     += GLOBUS_LOCATION=(globus_location)
-              env                     += LD_LIBRARY_PATH=(globus_location)/lib
-              server                  = (globus_location)/sbin/globus-gridftp-server
-              server_args             = -i
-              log_on_success          += DURATION
-              nice                    = 10
-              disable                 = no
-              }
+{
+    instances               = 100
+    socket_type             = stream
+    wait                    = no
+    user                    = root
+    env                     += GLOBUS_LOCATION=(globus_location)
+    env                     += LD_LIBRARY_PATH=(globus_location)/lib
+    server                  = (globus_location)/sbin/globus-gridftp-server
+    server_args             = -i
+    log_on_success          += DURATION
+    nice                    = 10
+    disable                 = no
+}
 --------
++
 Here is a sample gridftp server inetd config entry in
-++/etc/inetd.conf++ (read as a single line):  (read as a single line): 
-
+++/etc/inetd.conf++ (read as a single line)
++
 --------
-
-              gsiftp   stream   tcp   nowait   root   /usr/bin/env env   \
-              GLOBUS_LOCATION=(globus_location)                      \
-              LD_LIBRARY_PATH=(globus_location)/lib                  \ 
-              (globus_location)/sbin/globus-gridftp-server -i
-            
+gsiftp   stream   tcp   nowait   root   /usr/bin/env env    \
+GLOBUS_LOCATION=(globus_location)                           \
+LD_LIBRARY_PATH=(globus_location)/lib                       \ 
+(globus_location)/sbin/globus-gridftp-server -i
 --------
-
-
++
 [NOTE]
 --
 On Mac OS X, you must set DYLD_LIBRARY_PATH instead of LD_LIBRARY_PATH
 in the above examples. 
-
 --
++
 [NOTE]
 --
 You should NOT include USERID in the log lines. See
 link:../../gridftp/admin/index.html#gridftp-troubleshooting-latency[High
 latency for GridFTP server connections] for more information.
-
 --
-
-====== globus-gridftp-server -i ======
-
++
+. globus-gridftp-server -i
++
 Use the '-i' commandline option with **++globus-gridftp-server++**: 
-
++
 --------
 globus-gridftp-server -i
 --------
-
 
 
 [[gridftp-admin-launchd]]

@@ -5,6 +5,8 @@
 
 include::globus-gridftp-server.txt[]
 
+include::globus-gridftp-server-setup-chroot.txt[]
+
 :leveloffset: 0
 
 :doctype: book

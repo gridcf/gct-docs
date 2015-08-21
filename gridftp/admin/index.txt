@@ -240,28 +240,26 @@ for information on how to enable threading in globus-url-copy.
 
 ==== Steps ====
 
-
+The steps to use UDT with globus-gridftp-server are:
 
 . Build and install UDT
-+
 +
 --------
 globus$ make udt
 --------
++
 or 
 +
 --------
 globus$ make gridftp udt
 --------
-if gridftp is not built and installed already)
 +
+if gridftp is not built and installed already)
 +
 --------
 globus$ make install
 --------
-
 . Configure GridFTP server
-+
 If you run the GridFTP server from xinetd, add ++-dc-whitelist
 udt,gsi,tcp++ to ++server_args++ in ++/etc/xinetd.d/gsiftp++
 +
@@ -273,17 +271,13 @@ file:
 --------
 dc_whitelist udt,gsi,tcp
 --------
-.
 +
 If you run the server from the command line: 
 +
 --------
 $GLOBUS_LOCATION/sbin/globus-gridftp-server -dc-whitelist udt,gsi,tcp
 --------
-
 . Run globus-url-copy with new command line option "-udt"
-
-
 
 [[gridftp-admin-separated]]
 === Separation of Processes (Split Process) ===
@@ -411,8 +405,9 @@ TODO: any other details here?
 GridFTP server can be configured to restrict access to specific path
 using the command-line option '-chroot-path <path>' This path must
 contain a valid certificate structure, /etc/passwd, and /etc/groups. A
-helper script 'globus-gridftp-server-setup-chroot' available in
-$GLOBUS_LOCATION/sbin, can help create a suitable directory structure. 
+helper script
+link:#globus-gridftp-server-setup-chroot['globus-gridftp-server-setup-chroot']
+can help create a suitable directory structure. 
 
 
 [[gridftp-admin-server-gfork]]
@@ -588,6 +583,8 @@ indexterm:[commandline tool,globus-gridftp-server]
 :leveloffset: 2
 
 include::../globus-gridftp-server.txt[]
+
+include::../globus-gridftp-server-setup-chroot.txt[]
 
 :doctype: book
  
