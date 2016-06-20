@@ -4,7 +4,7 @@
 
 
 
-* https://globus.atlassian.net/browse/GT-546[GT-546]: HTTP transfers larger than 4GB fail
+* http://jira.globus.org/browse/GT-546[GT-546]: HTTP transfers larger than 4GB fail
 
 
 

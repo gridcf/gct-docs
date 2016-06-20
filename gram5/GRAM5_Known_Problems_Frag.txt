@@ -4,25 +4,25 @@
 
 
 
-* https://globus.atlassian.net/browse/GT-45[GT-45]: Manager lock double-locked
+* http://jira.globus.org/browse/GT-45[GT-45]: Manager lock double-locked
 
-* https://globus.atlassian.net/browse/GT-47[GT-47]: globus-job-manager null pointer dereference for some call paths
+* http://jira.globus.org/browse/GT-47[GT-47]: globus-job-manager null pointer dereference for some call paths
 
-* https://globus.atlassian.net/browse/GT-52[GT-52]: SEG may deadlock with threads
+* http://jira.globus.org/browse/GT-52[GT-52]: SEG may deadlock with threads
 
-* https://globus.atlassian.net/browse/GT-56[GT-56]: Tear-down of object requires multiple threads
+* http://jira.globus.org/browse/GT-56[GT-56]: Tear-down of object requires multiple threads
 
-* https://globus.atlassian.net/browse/GT-103[GT-103]: GRAM refresh credentials test sometimes fails because job terminates
+* http://jira.globus.org/browse/GT-103[GT-103]: GRAM refresh credentials test sometimes fails because job terminates
 
-* https://globus.atlassian.net/browse/GT-292[GT-292]: Service tags may not isolate services completely
+* http://jira.globus.org/browse/GT-292[GT-292]: Service tags may not isolate services completely
 
-* https://globus.atlassian.net/browse/GT-324[GT-324]: Behaviour of globus-job-status
+* http://jira.globus.org/browse/GT-324[GT-324]: Behaviour of globus-job-status
 
-* https://globus.atlassian.net/browse/GT-369[GT-369]: GRAM5 skips some SEG events for PBS batch system
+* http://jira.globus.org/browse/GT-369[GT-369]: GRAM5 skips some SEG events for PBS batch system
 
-* https://globus.atlassian.net/browse/GT-389[GT-389]: globusrun and globus-job-run don't report job failures to user
+* http://jira.globus.org/browse/GT-389[GT-389]: globusrun and globus-job-run don't report job failures to user
 
-* https://globus.atlassian.net/browse/GT-418[GT-418]: globus-gatekeeper leaves stale processes behind if port 2119 is probed
+* http://jira.globus.org/browse/GT-418[GT-418]: globus-gatekeeper leaves stale processes behind if port 2119 is probed
 
 
 

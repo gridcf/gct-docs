@@ -4,9 +4,9 @@
 
 
 
-* https://globus.atlassian.net/browse/GT-362[GT-362]: simple ca loses spaces in dn in signing policy
+* http://jira.globus.org/browse/GT-362[GT-362]: simple ca loses spaces in dn in signing policy
 
-* https://globus.atlassian.net/browse/GT-405[GT-405]: Non-portable use of echo in shell script
+* http://jira.globus.org/browse/GT-405[GT-405]: Non-portable use of echo in shell script
 
 
 

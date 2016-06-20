@@ -63,7 +63,7 @@
 | Use valgrind or some sort of memory managment tool to verify there
   is no memory corruption.  Try to recreate the problem in a small 
   program.  Submit the program and the memory trace to the
-  https://globus.atlassian.net[Globus bug tracker].
+  http://jira.globus.org[Globus bug tracker].
 
 | ++Driver in handle has been unloaded++
 | A driver associated with the offending operation has already been

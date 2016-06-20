@@ -4,45 +4,45 @@
 
 
 
-* https://globus.atlassian.net/browse/GRIDFTP-178[GRIDFTP-178]: Hanging server processes with GT5.0.4 striped GridFTP servers
+* http://jira.globus.org/browse/GRIDFTP-178[GRIDFTP-178]: Hanging server processes with GT5.0.4 striped GridFTP servers
 
-* https://globus.atlassian.net/browse/GT-2[GT-2]: GUC will treat directory as if its a file for the purpose of sync comparison
+* http://jira.globus.org/browse/GT-2[GT-2]: GUC will treat directory as if its a file for the purpose of sync comparison
 
-* https://globus.atlassian.net/browse/GT-4[GT-4]: Can't build gridftp server with alternate CC, needed by LTA
+* http://jira.globus.org/browse/GT-4[GT-4]: Can't build gridftp server with alternate CC, needed by LTA
 
-* https://globus.atlassian.net/browse/GT-5[GT-5]: globus-url-copy doesn't pipeline url input from a file
+* http://jira.globus.org/browse/GT-5[GT-5]: globus-url-copy doesn't pipeline url input from a file
 
-* https://globus.atlassian.net/browse/GT-6[GT-6]: GridFTP installation on OpenBSD 4.9
+* http://jira.globus.org/browse/GT-6[GT-6]: GridFTP installation on OpenBSD 4.9
 
-* https://globus.atlassian.net/browse/GT-7[GT-7]: Issues with netlogger style logs
+* http://jira.globus.org/browse/GT-7[GT-7]: Issues with netlogger style logs
 
-* https://globus.atlassian.net/browse/GT-8[GT-8]: globus-url-copy -rst ... -st ... segfault if the options are not correctly synchronized
+* http://jira.globus.org/browse/GT-8[GT-8]: globus-url-copy -rst ... -st ... segfault if the options are not correctly synchronized
 
-* https://globus.atlassian.net/browse/GT-10[GT-10]: Problem checking directory permissions with MLST
+* http://jira.globus.org/browse/GT-10[GT-10]: Problem checking directory permissions with MLST
 
-* https://globus.atlassian.net/browse/GT-11[GT-11]: globus-url-copy -rst segfault if the network is not working
+* http://jira.globus.org/browse/GT-11[GT-11]: globus-url-copy -rst segfault if the network is not working
 
-* https://globus.atlassian.net/browse/GT-12[GT-12]: GUC exits with zero when it hits a stall-timeout
+* http://jira.globus.org/browse/GT-12[GT-12]: GUC exits with zero when it hits a stall-timeout
 
-* https://globus.atlassian.net/browse/GT-273[GT-273]: can discover user names even with restrict path
+* http://jira.globus.org/browse/GT-273[GT-273]: can discover user names even with restrict path
 
-* https://globus.atlassian.net/browse/GT-284[GT-284]: GridFTP pipelining and reliability issues
+* http://jira.globus.org/browse/GT-284[GT-284]: GridFTP pipelining and reliability issues
 
-* https://globus.atlassian.net/browse/GT-318[GT-318]: globus-url-copy (guc) and "-do" option inconsistency
+* http://jira.globus.org/browse/GT-318[GT-318]: globus-url-copy (guc) and "-do" option inconsistency
 
-* https://globus.atlassian.net/browse/GT-374[GT-374]: Can't share files in a path structure with symlinks: 'path not allowed' error
+* http://jira.globus.org/browse/GT-374[GT-374]: Can't share files in a path structure with symlinks: 'path not allowed' error
 
-* https://globus.atlassian.net/browse/GT-397[GT-397]: gridftp doesn't error if file with unrepresentable name is used (MLSC)
+* http://jira.globus.org/browse/GT-397[GT-397]: gridftp doesn't error if file with unrepresentable name is used (MLSC)
 
-* https://globus.atlassian.net/browse/GT-413[GT-413]: Clarify errors whenever sharing file operations fail
+* http://jira.globus.org/browse/GT-413[GT-413]: Clarify errors whenever sharing file operations fail
 
-* https://globus.atlassian.net/browse/GT-414[GT-414]: globus-gridftp-server closing connection before returning cksm value
+* http://jira.globus.org/browse/GT-414[GT-414]: globus-gridftp-server closing connection before returning cksm value
 
-* https://globus.atlassian.net/browse/GT-428[GT-428]: Improve handling of hanging GridFTP server processes
+* http://jira.globus.org/browse/GT-428[GT-428]: Improve handling of hanging GridFTP server processes
 
-* https://globus.atlassian.net/browse/GT-450[GT-450]: extra newline in PASV error message
+* http://jira.globus.org/browse/GT-450[GT-450]: extra newline in PASV error message
 
-* https://globus.atlassian.net/browse/GT-472[GT-472]: GridFTP server fails to detect client disconnection with piplining
+* http://jira.globus.org/browse/GT-472[GT-472]: GridFTP server fails to detect client disconnection with piplining
 
 
 

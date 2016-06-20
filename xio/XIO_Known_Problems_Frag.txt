@@ -4,7 +4,7 @@
 
 
 
-* https://globus.atlassian.net/browse/GT-54[GT-54]: Globus XIO close call can deadlock
+* http://jira.globus.org/browse/GT-54[GT-54]: Globus XIO close call can deadlock
 
 
 

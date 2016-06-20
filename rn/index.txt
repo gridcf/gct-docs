@@ -59,7 +59,7 @@ link:../admin/install/index.html#gtadmin-platform[here].
 Use the documentation which starts link:../index.html[here].
 
 Feel free to offer any suggestions or feedback using
-https://globus.atlassian.net[JIRA] (the "Documentation" project). 
+http://jira.globus.org[JIRA] (the "Documentation" project). 
 
  
 [[rn-support]]

@@ -179,6 +179,6 @@ http://dev.globus.org/wiki/Mailing%5fLists[here] for general e-mail
 lists and information on how to subscribe to a list and
 http://dev.globus.org/wiki/GRAM#Mailing%5fLists[here] for GRAM-specific
 lists. Depending on the problem, you may be requested to file a bug
-report to the Globus project's https://globus.atlassian.net[Issue
+report to the Globus project's http://jira.globus.org[Issue
 Tracker]. 
 
