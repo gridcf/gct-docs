@@ -609,8 +609,7 @@ your trusted certificates directory (/etc/grid-security/certificates)
 and use '-sharing-dn' option in the server as follows: 
 
 --------
-globus% globus-gridftp-server -sharing-dn
-"/C=US/O=Globus Consortium/OU=Globus Connect User/CN=__transfer__"
+globus% globus-gridftp-server -sharing-dn "/C=US/O=Globus Consortium/OU=Globus Online/OU=Transfer User/CN=__transfer__"
 
 --------
 and use '-sharing-rp' option to restrict the file paths allowed for
