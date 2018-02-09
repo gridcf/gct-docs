@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>GT 6.0 Installation Appendix</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
+p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7;font-weight:bold}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
+.clearfix:after,.float-group:after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
+b.button:before{content:"[";padding:0 3px 0 2px}
+b.button:after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}
+#header:after,#content:after,#footnotes:after,#footer:after{clear:both}
+#content{margin-top:1.25em}
+#content:before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span:before{content:"\00a0\2013\00a0"}
+#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark:before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber:after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media only screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+.sect1{padding-bottom:.625em}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:initial}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]:before{display:block}
+.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote:before{display:none}
+.verseblock{margin:0 1em 1.25em 1em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 0 1.25em 0;display:block}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
+.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot{border-width:1px 0}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
+ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
+ul.inline>li>*{display:block}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
+.colist>table tr>td:last-of-type{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]:after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@media print{@page{margin:1.25cm .75cm}
+*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]:after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+.sect1{padding-bottom:0!important}
+.sect1+.sect1{border:0!important}
+#header>h1:first-child{margin-top:1.25rem}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span:before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]:before{display:block}
+#footer{background:none!important;padding:0 .9375em}
+#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+</style>
+</head>
+<body class="book">
+<div id="header">
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<?dbhtml filename="appendix.html" ?>
+</div>
+</div>
+<h1 id="_gt_6_0_installation_appendix" class="sect0">GT 6.0 Installation Appendix</h1>
+<div class="sect1">
+<h2 id="gtadmin-advanced-build">Advanced Installation for GT 6.0</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This section introduces building from Git, and references the advanced
+installation sections of component documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gtadmin-install-nondefault">Advanced Installation</h3>
+<div class="sect3">
+<h4 id="gtadmin-install-build-git">Building from Git</h4>
+<div class="paragraph">
+<p>The Globus Toolkit is available for download from github. See
+<a href="https://github.com/globus/globus-toolkit/tree/globus%5f6%5fbranch">https://github.com/globus/globus-toolkit/tree/globus_6_branch</a>
+to branch or checkout the toolkit source code.</p>
+</div>
+<div class="paragraph">
+<p>After checking out the toolkit, run <strong>autoreconf -i</strong> in the
+checkout root to generate configure scripts for building the toolkit
+components.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gtadmin-install-build-source">Building a specific package from source</h4>
+<div class="paragraph">
+<p>If you need to build a specific package from the source installer, you
+can use the per-package make targets that exist in the source
+installer&#8217;s Makefile. Instead of simply running "make" in the steps
+above, you can, for example, run "make globus_common" which will build
+the globus_common package and its dependencies, or "make
+globus_common-only" which will build exactly and only the globus_common
+package. Similar targets exist for each package.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gtadmin-install-components">Detailed installation instructions for these components</h4>
+<div class="paragraph">
+<p>The following is a list of links to more detailed installation
+information available for the following components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gram5/admin/index.html#gram5-admin-install">GRAM5 Installation</a></p>
+</li>
+<li>
+<p><a href="../../gridftp/admin/index.html#gridftp-admin-installing">GridFTP
+Installation</a></p>
+</li>
+<li>
+<p><a href="../../myproxy/admin/index.html#myproxy-admin-installing">Myproxy
+Installation</a></p>
+</li>
+<li>
+<p><a href="../../gsiopenssh/admin/index.html#gsiopenssh-admin-installing-configure-options">GSI OpenSSH Installation</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gtadmin-install-build-update">Building an update package without an installer</h4>
+<div class="paragraph">
+<p>If you need to build an updated package that has been released without a
+source installer (for example, a security update to a package, or a new
+version of MyProxy,) you can use the familiar <strong>configure; make; make
+install</strong> sequence to rebuild that package.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-packaging">Packaging details</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="gtadmin-makefile">The makefile</h3>
+<div class="paragraph">
+<p>You do not have to build every subcomponent of this release. The
+makefile specifies subtargets for different functional subpieces.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>gram: GRAM5</p>
+</li>
+<li>
+<p>gridftp: GridFTP</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that all of these targets require the "install" target also. So,
+for instance, to build GridFTP alone, you would run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./configure --prefix=/path/to/install
+$ make gridftp install</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_linking_with_globus_toolkit_libraries">Linking with Globus Toolkit Libraries</h3>
+<div class="paragraph">
+<p>Since GT 2.0, the toolkit has included a script called
+globus-makefile-header that can be used to assemble the cflags and link
+line information when linking a program with libraries included in the
+toolkit. This script would walk the package metadata dependency tree to
+ensure that all needed flags were included, without duplicates. This
+method worked, and continues to work in GT 6.0, but we consider it to be
+obsolete, as we have added support for using link:
+<a href="http://www.freedesktop.org/wiki/Software/pkg-config">pkg-config</a></p>
+</div>
+<div class="paragraph">
+<p>Pkg-config is very similar in concept to globus-makefile-header, but it
+has gained widespread adoption across a range of unix platforms.</p>
+</div>
+<div class="paragraph">
+<p>To get the cflags and link line information to link to the
+globus-ftp-client library, for example, you could</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pkg-config --cflags --libs globus-ftp-client</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each Globus Toolkit library has a pkg-config metadata file that is
+installed as part of its devel package.</p>
+</div>
+<div class="paragraph">
+<p>For more information about pkg-config, please see
+<a href="http://www.freedesktop.org/wiki/Software/pkg-config">the pkg-config
+homepage.</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-env-var">Environment Variables in GT 6.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_common_runtime_environmental_variables">Common Runtime Environmental Variables</h3>
+<div class="sect3">
+<h4 id="xio-env-var">Environmental variables for XIO</h4>
+<div class="paragraph">
+<p>The vast majority of the environment variables that affect the Globus
+XIO framework are defined by the driver in use. The following are links
+to descriptions of the more common driver environment variables:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5ftcp%5f%5fdriver%5f%5fenvs.html">TCP Driver Environment Variables</a></p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5ffile%5f%5fdriver%5f%5fenvs.html">File Driver Environment Variables</a></p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5fgsi%5f%5fdriver%5f%5fenvs.html">GSI Driver Environment Variables</a></p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0/globus%5fxio/html/group%5f%5fudp%5f%5fdriver%5f%5fenvs.html">UDP Driver Environment Variables</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ccommonlib-env-var">Environment variables for C Common Libraries</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>GLOBUS_HOSTNAME</strong></dt>
+<dd>
+<p>Set this variable to the fully qualified name of the local machine&#8217;s hostname.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_DOMAIN_NAME</strong></dt>
+<dd>
+<p>Set this variable to the domain name to be used to qualify the local machine&#8217;s hostname.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_ERROR_OUTPUT</strong></dt>
+<dd>
+<p>Set this variable to 1 to cause Globus libraries to display error information to stderr.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_ERROR_VERBOSE</strong></dt>
+<dd>
+<p>Set this variable to 1 to enable verbose error messages.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_I18N</strong></dt>
+<dd>
+<p>Set this variable to 1 to attempt to use localized messages. (Currently not working)</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dd>
+<p>Set this variable to the path where the Globus Toolkit is installed, so that Globus tools can find libraries and data files. This is only needed if the Globus Toolkit was built with the source installer.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_THREAD_MODEL</strong></dt>
+<dd>
+<p>Set to the name of a thread model to control the operation of the Globus event driver. Valid values are (depending on the platform) none for non-threaded operation (the default), pthread for POSIX threads, or windows for Windows threads.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_security_environmental_variables">Security Environmental Variables</h3>
+<div class="sect3">
+<h4 id="gsic-env-var">Environmental Variables for GSI C</h4>
+<div class="sect4">
+<h5 id="gsic-env-credentials">Credentials</h5>
+<div class="paragraph">
+<p>Credentials are looked for in the following order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>service credential</p>
+</li>
+<li>
+<p>host credential</p>
+</li>
+<li>
+<p>proxy credential</p>
+</li>
+<li>
+<p>user credential</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>X509_USER_PROXY specifies the path to the proxy credential. If
+X509_USER_PROXY is not set, the proxy credential is created (by
+<strong>grid-proxy-init</strong>) and searched for (by client programs) in an
+operating-system-dependent local temporary file.</p>
+</div>
+<div class="paragraph">
+<p>X509_USER_CERT and X509_USER_KEY specify the path to the end
+entity (user, service, or host) certificate and corresponding private
+key. The paths to the certificate and key files are determined as
+follows:</p>
+</div>
+<div class="paragraph">
+<p>For service credentials:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If X509_USER_CERT and X509_USER_KEY exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files /etc/grid-security/service/servicecert.pem and  and /etc/grid-security/service/servicekey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files $GLOBUS_LOCATION/etc/grid-security/service/servicecert.pem and  and $GLOBUS_LOCATION/etc/grid-security/service/servicekey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files service/servicecert.pem and  and service/servicekey.pem in the user&#8217;s  in the user&#8217;s .globus directory exist and contain a valid certificate and key, those files are used. directory exist and contain a valid certificate and key, those files are used.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For host credentials:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If X509_USER_CERT and X509_USER_KEY exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files /etc/grid-security/hostcert.pem and  and /etc/grid-security/hostkey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files $GLOBUS_LOCATION/etc/hostcert.pem and  and $GLOBUS_LOCATION/etc/hostkey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files hostcert.pem and  and hostkey.pem in the user&#8217;s  in the user&#8217;s .globus directory, exist and contain a valid certificate and key, those files are used. directory, exist and contain a valid certificate and key, those files are used.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For user credentials:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If X509_USER_CERT and X509_USER_KEY exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files usercert.pem and  and userkey.pem exist in the user&#8217;s  exist in the user&#8217;s .globus directory, those files are used. directory, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if a PKCS-12 file called usercred.p12 exists in the user&#8217;s  exists in the user&#8217;s .globus directory, the certificate and key are read from that file. directory, the certificate and key are read from that file.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-gridmapfile">Gridmap file</h5>
+<div class="paragraph">
+<p>GRIDMAP specifies the path to the grid map file, which is used to
+map distinguished names (found in certificates) to local names (such as
+login accounts). The location of the grid map file is determined as
+follows:
+. If the GRIDMAP environment variable is set, the grid map file location is the value of that environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the user is root (uid 0), then the grid map file is /etc/grid-security/grid-mapfile..</p>
+</li>
+<li>
+<p>Otherwise, the grid map file is $HOME/.gridmap..</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-trustedca">Trusted CAs directory</h5>
+<div class="paragraph">
+<p>X509_CERT_DIR is used to specify the path to the trusted
+certificates directory. This directory contains information about which
+CAs are trusted (including the CA certificates themselves) and, in some
+cases, configuration information used by <strong>grid-cert-request</strong> to
+formulate certificate requests. The location of the trusted certificates
+directory is determined as follows:
+. If the X509_CERT_DIR environment variable is set, the trusted certificates directory is the value of that environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise, if $HOME/.globus/certificates exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
+</li>
+<li>
+<p>Otherwise, if /etc/grid-security/certificates exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
+</li>
+<li>
+<p>Finally, if $GLOBUS_LOCATION/share/certificates exists, then it is the trusted certificates directory. exists, then it is the trusted certificates directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-gsiauthz">GSI authorization callout configuration file</h5>
+<div class="paragraph">
+<p>GSI_AUTHZ_CONF is used to specify the path to the GSI authorization
+callout configuration file. This file is used to configure authorization
+callouts used by both the gridmap and the authorization API. The
+location of the GSI authorization callout configuration file is
+determined as follows:
+. If the GSI_AUTHZ_CONF environment variable is set, the authorization callout configuration file location is the value of this environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise, if /etc/grid-security/gsi-authz.conf exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Otherwise, if $GLOBUS_LOCATION/etc/gsi-authz.conf exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Finally, if $HOME/.gsi-authz.conf exists, then this file is used. exists, then this file is used.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-gaaauthz">GAA (Generic Authorization and Access control) configuration file</h5>
+<div class="paragraph">
+<p>GSI_GAA_CONF is used to specify the path to the GSI GAA (Generic
+Authorization and Access control)
+        configuration file. This file
+is used to configure policy language specific plugins to the GAA-API.
+The location of the GSI GAA configuration file is determined as follows:
+. If the GSI_GAA_CONF environment variable is set, the GAA configuration file location is the value of this environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise, if /etc/grid-security/gsi-gaa.conf exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Otherwise, if $GLOBUS_LOCATION/etc/gsi-gaa.conf exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Finally, if $HOME/.gsi-gaa.conf exists, then this file is used. exists, then this file is used.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-gridsecurity">Grid security directory</h5>
+<div class="paragraph">
+<p>GRID_SECURITY_DIR specifies a path to a directory containing
+configuration files that specify default values to be placed in
+certificate requests. This environment variable is used only by the
+<strong>grid-cert-request</strong> and <strong>grid-default-ca</strong> commands.</p>
+</div>
+<div class="paragraph">
+<p>The location of the grid security directory is determined as follows:
+. If the GRID_SECURITY_DIR environment variable is set, the grid security directory is the value of that environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If the configuration files exist in /etc/grid-security, the grid security directory is that directory., the grid security directory is that directory.</p>
+</li>
+<li>
+<p>if the configuration files exist in $GLOBUS_LOCATION/etc, the grid security directory is that directory., the grid security directory is that directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-tls">Using TLS</h5>
+<div class="paragraph">
+<p>GLOBUS_GSSAPI_FORCE_TLS specifies whether to use TLS by default when
+establishing a security context. The default behavior if this is not set
+is to use SSLv3.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gsic-env-name">Name Comparisons</h5>
+<div class="paragraph">
+<p>GLOBUS_GSSAPI_NAME_COMPATIBILITY specifies what name matching
+algorithms are supported by GSSAPI for mutual authentication and
+<strong>gss_compare_name</strong>. This variable may be set to any of the
+following values:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">STRICT_GT2</dt>
+<dd>
+<p>Strictly backward-compatible with GT 2.0 name matching. X.509
+subjectAltName values are ignored. Names with hyphens are treated as
+wildcarded as described in the
+<a href="../../gsic/admin/index.html#gsic-security-considerations">security
+considerations</a> documentation. Name matching will rely on canonical host
+name associated with connection IP addresses.</p>
+</dd>
+<dt class="hdlist1">STRICT_RFC2818</dt>
+<dd>
+<p>    Support <a href="http://www.ietf.org/rfc/rfc2818.txt">RFC 2818</a> server identity
+    processing. Hyphen characters are treated as normal part of a host name.
+    DNSName and IPAddress subjectAltName extensions are matched against the
+    host and port passed to GSSAPI. If subjectAltName is present, X.509
+    SubjectName is ignored.
+HYBRID:
+    Support a hybrid of the two previous name matching algorithms, liberally
+    matching both hyphen wildcards, canonical names associated with IP
+    addresses, and subjectAltName extensions.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>If this variable is not set, the HYBRID behavior is used.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="myproxy-env-var">Environmental variables for MyProxy</h4>
+<div class="paragraph">
+<p>Please refer to the <a href="http://myproxy.ncsa.uiuc.edu/man/">MyProxy Reference
+Manual</a> for documentation of MyProxy environment variable interfaces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsiopenssh-env-var">Environmental variables for GSI-OpenSSH</h4>
+<div class="paragraph">
+<p>The GSI-enabled OpenSSHD needs to be able to find certain files and
+directories in order to properly function.</p>
+</div>
+<div class="paragraph">
+<p>The items that OpenSSHD needs to be able to locate, their default
+location and the environment variable to override the default location
+are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Host key</strong></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Default
+location: /etc/grid-security/hostkey.pemOverride with X509_USER_KEY
+environment variable</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Host certificate</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Default
+location: /etc/grid-security/hostcert.pemOverride with X509_USER_CERT
+environment
+variable</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grid map file</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Default
+location: /etc/grid-security/grid-mapfileOverride with GRIDMAP
+environment
+variable</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Certificate directory</strong></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Default
+location: /etc/grid-security/certificatesOverride with X509_CERT_DIR
+environment variable</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_management_environmental_variables">Data Management Environmental Variables</h3>
+<div class="sect3">
+<h4 id="gridftp-env-var">Environment variables for GridFTP</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The GridFTP server or client libraries do not read any environment
+variable directly, but the security and networking related variables
+described below may be useful.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gsic/pi/index.html#gsic-env-var">Non-WS (General) Authentication &amp; Authorization Environment Variables</a>.</p>
+</li>
+<li>
+<p><a href="../../xio/pi/index.html#xio-env-var">XIO Network Driver Environment Variables</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-simpleca">Installing SimpleCA</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="simpleca-admin-installing">Building and Installing</h3>
+<div class="sect3">
+<h4 id="simpleca-users">Create users</h4>
+<div class="paragraph">
+<p>Make sure you have the following users on your machine:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your <strong>user</strong> account, which will be used to run the client programs.</p>
+</li>
+<li>
+<p>A <strong>simpleca</strong> account, which will be used to administer the Simple CA. This is created automatically if you install SimpleCA from RPM or Debian packages.</p>
+</li>
+<li>
+<p>A generic <strong>globus</strong> account, if you will be building from the source installer.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-install">Install SimpleCA</h4>
+<div class="paragraph">
+<p>SimpleCA can be installed in three ways, from a debian package, from an
+RPM package, and from the source installer. These installation methods
+are described in <a href="../../admin/install/index.html">Installing GT 6.0</a>.</p>
+</div>
+<div class="paragraph">
+<p>To install SimpleCA from binary packages, install the packages
+<strong>globus-simple-ca</strong> and <strong>globus-gsi-cert-utils-progs</strong> and
+their dependencies. On Debian based systems, use the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root# apt-get install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On RPM-based systems, use the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root# yum install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To install SimpleCA from the source installer, build the
+globus_simple_ca and globus_gsi_cert_utils installer targets
+with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>globus% make</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Afterward, run the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>globus% make install</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simpleca-create-ca">Creating a SimpleCA</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you install the globus-simpleca Debian or RPM package, it will
+automatically create a <strong>simpleca</strong> user and a Simple CA in
+/var/lib/globus/simple_ca. If want to create a custom CA, or are
+using the source installer, you&#8217;ll need to do the following. Otherwise,
+you can skip to the . If want to create a custom CA, or are using the
+source installer, you&#8217;ll need to do the following. Otherwise, you can
+skip to the <a href="#simplecaAdmin-using">Using a SimpleCA</a>
+chapter of the SimpleCA documentation, as these steps have already been
+done.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_simpleca_administrator_account">Create SimpleCA Administrator Account</h4>
+<div class="paragraph">
+<p>Create a user to adminster the SimpleCA. You can use the the
+<strong>globus</strong> user you used to build Globus, or another user that you
+create. For the purposes of this document, we&#8217;ll assume a user named
+<strong>simpleca</strong>. Log in to that user, and run the
+<strong>grid-ca-create</strong> command. This will prompt for information needed
+to name the certificate, how to contact the CA administrator, lifetime
+of the CA certificate, and passphrase, and will then generate the new CA
+certificate and private key. Command-line options described in
+<a href="../../simpleca/admin/index.html#grid-ca-create"><strong>grid-ca-create</strong></a> can
+be used to avoid some of these prompts.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_invoking_strong_grid_ca_create_strong">Invoking <strong>grid-ca-create</strong></h4>
+<div class="paragraph">
+<p>If you are creating a SimpleCA for testing purposes, you can use the
+'-noint' command-line option to <strong>grid-ca-create</strong> to use the
+default values for all prompts like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% grid-ca-create -noint</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will create a SimpleCA in the <strong>simpleca</strong>'s home directory
+with the passphrase globus. You can then move on to the
+<a href="#simplecaAdmin-using">Using a SimpleCA</a> chapter of
+this document. For step-by-step details to create a customized SimpleCA,
+continue reading this chapter.</p>
+</div>
+<div class="paragraph">
+<p>As the <strong>simpleca</strong> user, run the command <strong>grid-ca-create</strong>,
+and you&#8217;ll see output like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% grid-ca-create
+    C e r t i f i c a t e    A u t h o r i t y    S e t u p
+
+This script will setup a Certificate Authority for signing Globus
+users certificates.  It will also generate a simple CA package
+that can be distributed to the users of the CA.
+
+The CA information about the certificates it distributes will
+be kept in:
+
+/home/simpleca/.globus/simpleCA</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This intro screen shows the path that the CA will be created into (in
+this example, /home/simpleca/.globus/simpleCA). The other commands
+needed by SimpleCA will automatically look in that path by default when
+invoked by the ). The other commands needed by SimpleCA will
+automatically look in that path by default when invoked by the
+<strong>simpleca</strong> user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-subjectname">Configure the subject name</h4>
+<div class="paragraph">
+<p>The <strong>grid-ca-create</strong> program next prompts you for information
+about the name of CA you wish to create:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>The unique subject name for this CA is:
+cn=Globus Simple CA, ou=simpleCA-elephant.globus.org, ou=GlobusTest, o=Grid
+
+Do you want to keep this as the CA subject (y/n) [y]:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To accept the default name, enter y. To choose a different name,
+type n, after which you will be prompted by</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Enter a unique subject name for this CA:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The subject name is an X.509 distinguished name. Typical name component
+type abbreviations used in Grids are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>cn</strong></dt>
+<dd>
+<p>Represents "common name". It identifies this particular certificate as the CA
+               Certificate within the "GlobusTest/simpleCA-elephant.globus.org" domain, which in this case is Globus Simple CA.</p>
+</dd>
+<dt class="hdlist1"><strong>ou</strong></dt>
+<dd>
+<p>Represents "organizational unit". It identifies this CA from other CAs created by SimpleCA by other people. The second "ou" is specific to your hostname (in this case GlobusTest).</p>
+</dd>
+<dt class="hdlist1"><strong>o</strong></dt>
+<dd>
+<p>Represents "organization". It identifies the Grid.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-email">Configure the CA&#8217;s email</h4>
+<div class="paragraph">
+<p>The next prompt looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Enter the email of the CA (this is the email where certificate
+requests will be sent to be signed by the CA) [simpleca@elephant.globus.org]:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Enter the email address where you intend to receive certificate
+requests. It should be your real email address that you check, not the
+address of the globus user. When users request certificates with
+<strong>grid-cert-request</strong>, they will be instructed to send the request
+to this address.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-expiration">Configure the expiration date</h4>
+<div class="paragraph">
+<p>Then you&#8217;ll see:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>The CA certificate has an expiration date. Keep in mind that
+once the CA certificate has expired, all the certificates
+signed by that CA become invalid.  A CA should regenerate
+the CA certificate and start re-issuing ca-setup packages
+before the actual CA certificate expires.  This can be done
+by re-running this setup script.  Enter the number of DAYS
+the CA certificate should last before it expires.
+[default: 5 years 1825 days]:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the number of days for which the CA certificate is valid. Once
+this time expires, the CA certificate will have to be recreated.</p>
+</div>
+<div class="paragraph">
+<p>To accept the default, hit <strong>enter</strong>, or otherwise, enter a value in
+days.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-passphrase">Create a Passphrase to Encrypt the CA&#8217;s Private Key</h4>
+<div class="paragraph">
+<p>The next prompt will be for the passphrase for the CA&#8217;s private key. It
+will be used to decrypt the CA&#8217;s private key when signing certificates.
+It should be hard to guess, as its compromise might compromise all the
+certificates signed by the CA. You will be prompted twice for the
+passphrase, to verify that you typed it correctly. Enter the passphrase
+at these prompts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-packageoutput">SimpleCA Distribution Files</h4>
+<div class="paragraph">
+<p>Finally <strong>grid-ca-create</strong> will create a tarball containing the
+public information about the CA, including its public certificate,
+signing policy, and supported X.509v3 extensions. This information is
+needed on machines that will be trusting the CA, and also on machines
+which will be used to request certificates from this CA.</p>
+</div>
+<div class="paragraph">
+<p>Since we didn&#8217;t run in this example as root, <strong>grid-ca-create</strong> will
+not be able to write the CA files to system paths, so it displays a
+warning message indicating that. We can use the tarball output here, or
+packages described below to install the CA support files on this and
+other machines.</p>
+</div>
+<div class="paragraph">
+<p>The package output summary looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Insufficient permissions to install CA into the trusted certifiicate
+directory (tried ${sysconfdir}/grid-security/certificates and
+${datadir}/certificates)
+Creating RPM source tarball... done
+	globus_simple_ca_68ea3306</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This information will be important for setting up other machines in your
+grid. The number '68ea3306' in the last line is known as your <strong>CA
+hash</strong>. It is an 8 digit hexadecimal string which is a hash of the
+subject name of the CA certificate.</p>
+</div>
+<div class="paragraph">
+<p>The tarball contains Debian and RPM package metadata, so that it can be
+compiled to a binary package which can be easily installed on this and
+other systems on your Grid. It can also be packaged as a GPT setup
+package for compatibility with older versions of the Globus Toolkit.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="simpleca-binarypkgs">Generating Binary CA Packages</h4>
+<div class="paragraph">
+<p>The
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>
+command can be used to generate RPM, debian, or legacy GPT packages for a
+SimpleCA, or for any other CA which is installed on a host. These packages can
+make it easy to distribute the CA certificate and policy to other hosts
+with which you want to establish Grid trust relationships.</p>
+</div>
+<div class="sect4">
+<h5 id="_generating_rpm_packages">Generating RPM Packages</h5>
+<div class="paragraph">
+<p>To generate an RPM package for the CA which we created, use the
+following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% grid-ca-package -r -cadir ~/.globus/simpleCA
+Creating RPM source tarball... done
+        globus_simple_ca_68ea3306.tar.gz
+Creating RPM binary.../home/simpleca/globus-simple-ca-68ea3306</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The resulting rpm package will be placed in the current directory. As
+root, you can install this via the <strong>yum</strong> or <strong>rpm</strong> tools.
+This package can then be installed on any RPM-based system.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_generating_debian_packages">Generating Debian Packages</h5>
+<div class="paragraph">
+<p>To generate an Debian package for the CA which we created, use the
+following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% grid-ca-package -d -cadir ~/.globus/simpleCA
+    Creating RPM source tarball... done
+        globus_simple_ca_68ea3306.tar.gz
+Creating debian binary...dpkg-buildpackage: export CFLAGS from dpkg-buildflags (origin: vendor): -g -O2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The resulting debian package will be placed in the current directory. As
+root, you can install this via the <strong>dpkg</strong> tool.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_generating_gpt_packages">Generating GPT Packages</h5>
+<div class="paragraph">
+<p>The <strong>grid-ca-package</strong> command can also generate GPT packages in
+the form similar to previous versions of the Globus Toolkit. This is
+done with the '-g' and '-b' command-line options. See
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>
+for more details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simplecaAdmin-using">Using a SimpleCA</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>As a CA, your main task will be to sign certificates. To sign a
+certificate request, use the tool <strong>grid-ca-sign</strong>. This tool reads
+a certificate request (such as those created by
+<a href="../../gsic/user/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>) and creates a
+certificate signed by the CA certificate with the public key from in the
+certificate request. This indicates that you confirm that the identity
+of the certificate matches its name. You can use the <strong>openssl</strong>
+command to view the contents of the certificate request.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_examining_a_certificate_request">Examining a Certificate Request</h4>
+<div class="paragraph">
+<p>To examine a certificate request, use the command <strong>openssl req -text
+-in </strong>, as shown in the following example.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Examine a Certificate Request</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% openssl req -noout -text -in certreq.pem
+Certificate Request:
+    Data:
+        Version: 0 (0x0)
+        Subject: o=Grid, OU=GlobusTest, OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    79:bd:a7:29:16:77:4c:e9:82:d3:73:a0:25:34:c7:
+                    25:07:67:b3:2d:11:c1:e2:c9:b1:ec:41:20:a7:9a:
+                    b7:2f:ee:d4:88:78:14:ff:d4:f2:f9:1b:d3:56:bc:
+                    37:6f:f0:06:ea:b0:6f:70:12:a8:34:ac:8e:be:98:
+                    00:b9:b8:ec:39:b5:6b:23:ad:1b:00:62:4b:cc:79:
+                    97:cc:56:fb:54:7b:03:6d:a7:76:27:4e:ce:bd:94:
+                    d0:eb:59:6b:25:c5:30:b0:47:15:bc:11:d5:7e:ff:
+                    04:13:70:de:3b:8f:80:65:ae:63:82:61:38:f9:c6:
+                    03:4a:92:b0:de:6f:bb:0a:bd
+                Exponent: 65537 (0x10001)
+        Attributes:
+        Requested Extensions:
+            Netscape Cert Type:
+                SSL CA, S/MIME CA, Object Signing CA
+    Signature Algorithm: sha1WithRSAEncryption
+        85:70:a6:5d:de:be:61:45:83:48:43:8d:4b:4b:4a:79:79:98:
+        0d:6c:d4:a9:96:26:41:a4:c2:94:10:92:ad:eb:ad:c5:3c:bf:
+        d6:4e:84:0a:db:46:96:a9:52:5b:90:cc:6a:d1:57:73:27:98:
+        9e:e2:8c:9a:7f:b4:ab:a8:28:2b:02:98:a2:d8:69:73:5e:12:
+        ad:5b:de:0c:6e:60:e0:0f:2c:ad:8d:b9:59:3b:d3:49:19:52:
+        e0:e1:8a:57:f2:c3:a6:4d:b9:2c:5c:58:ef:0e:59:84:55:8e:
+        16:fc:f4:39:82:13:6f:28:a9:59:e3:c8:f1:4e:87:75:33:4f:
+        ae:be</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, you see a certificate request with the subject
+distinguished name o=Grid, OU=GlobusTest,
+OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_signing_a_certificate_request">Signing a Certificate Request</h4>
+<div class="paragraph">
+<p>If you are satisfied with the certificate request and are willing to
+sign it, use the <strong>grid-ca-sign</strong> command to do so. The command will
+store a copy of the newly signed certificate in the SimpleCA directory,
+so that you can keep track of what you&#8217;ve signed, and will also write it
+to the value of the '-out' parameter. Transmit this result file back to
+the user which requested the certificate.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Sign with <strong>grid-ca-sign</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% grid-ca-sign -in certreq.pem -out cert.pem
+
+
+To sign the request
+please enter the password for the CA key:
+
+The new signed certificate is at: /home/simpleca/.globus/simpleCA/newcerts/01.pem</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve signed the certificate, if it is a user certificate, you
+must communicate it back to the user, perhaps via email.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revoking_a_certificate">Revoking a Certificate</h4>
+<div class="paragraph">
+<p>SimpleCA does not yet provide a convenient interface to revoke a signed
+certificate, but it can be done with the <strong>openssl</strong> command.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Revoke a certificate</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -revoke ~/.globus/simpleCA/newcerts/01.pem
+Using configuration from /home/simpleca/.globus/simpleCA/grid-ca-ssl.conf
+Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:
+Revoking Certificate 01.
+Data Base Updated</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Once a certificate is revoked, you can generate a Certificate Revocation
+List (CRL) for your CA, which will be a signed list of certificates
+which have been revoked. Sites which use your CA will need to keep the
+CRL up to date to be able to reject revoked certificates. This CRL can
+be generated with an <strong>openssl</strong> command. See ca(1) for details
+about how to control the CRL lifetime and other options.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Create CRL</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -gencrl &gt;
+Using configuration from /home/simpleca/.globus/simpleCA/grid-ca-ssl.conf
+Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The output file CAHASH.crl (based on the hash of your CA subject
+name) should be distributed to sites which trust your CA, so that they
+can install it into the trusted certificate directory.  (based on the
+hash of your CA subject name) should be distributed to sites which trust
+your CA, so that they can install it into the trusted certificate
+directory.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_renewing_a_ca">Renewing a CA</h4>
+<div class="paragraph">
+<p>The <strong>openssl</strong> command can be used to renew a CA certificate. This
+will generate a new CA certificate with the same subject name and
+private key as before, but valid for a different time interval. This new
+certificate packaged and distributed as before using
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Renew CA Certificate</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>simpleca% openssl req -key ~/.globus/simpleCA/private/cakey.pem -new -x509 -days 1825 -out newca.pem -config ~/.globus/simpleCA/grid-ca-ssl.conf
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+ -----
+Level 0 Organization [Grid]:
+Level 0 Organizational Unit [GlobusTest]:
+Level 1 Organizational Unit [simpleCA-elephant.globus.org]:
+Name (E.g., John M. Smith) []:Globus Simple CA</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Subject Name of the new certificate must match <strong>exactly</strong> the
+previous certificate name, or clients will not recognize it as the
+correct certificate.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simpleca-admin-security_considerations">Security Considerations</h3>
+<div class="sect3">
+<h4 id="simpleca-security_considerations">Security considerations for SimpleCA</h4>
+<div class="paragraph">
+<p>The operator of a CA must protect the private key of the CA. It should
+not be stored unencrypted or on a network filesystem.</p>
+</div>
+<div class="paragraph">
+<p>Simple CA enforces the subject name policies in the simple CA&#8217;s
+configuration files. If modified, the signing_policy file distributed to
+clients of the CA must also be modified.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-troubleshooting">Troubleshooting your installation</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The following is a list of links that take you to information about
+troubleshooting your installation by component</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Common Runtime components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../xio/admin/index.html#xio-admin-troubleshooting">XIO</a></p>
+</li>
+<li>
+<p><a href="../../ccommonlib/developer/index.html#ccommonlib-developer-troubleshooting">C Common Libraries</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Security components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gsic/admin/index.html#gsic-admin-troubleshooting">GSI C</a></p>
+</li>
+<li>
+<p><a href="../../myproxy/admin/index.html#myproxy-user-troubleshooting">MyProxy</a></p>
+</li>
+<li>
+<p><a href="../../gsiopenssh/admin/index.html#gsiopenssh-admin-troubleshooting">GSI-OpenSSH</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Data Management components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gridftp/admin/index.html#gridftp-troubleshooting">GridFTP</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Execution Management components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gram5/admin/index.html#gram5-admin-troubleshooting">GRAM5</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-config-details">Detailed Configuration by Component</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The following is a list of links that take you to information about
+detailed configuration for each component.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Common Runtime components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../xio/admin/index.html#xio-configuring">XIO</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Security components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gsic/admin/index.html#gsic-configuring">GSI C</a></p>
+</li>
+<li>
+<p><a href="../../myproxy/admin/index.html#myproxy-configuring">MyProxy</a></p>
+</li>
+<li>
+<p><a href="../../gsiopenssh/admin/index.html#gsiopenssh-configuring">GSI-OpenSSH</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Data Management components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gridftp/admin/index.html#gridftp-configuring">GridFTP</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Execution Management components</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../gram5/admin/index.html#gram5-configuring">GRAM5</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-sec-considerations">Security Considerations in GT 6.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="gtadmin-sec-consid-common-runtime">Common Runtime</h3>
+<div class="sect3">
+<h4 id="xio-security-considerations">Security considerations for XIO</h4>
+<div class="paragraph">
+<p>Globus XIO is a framework for creating network protocols. Several
+existing protocols, such as TCP, come built into the framework. XIO
+itself introduces no known security risks. However, all network
+applications expose systems to the risks inherent when outsiders can
+connect to them. Also included in the XIO distribution is the GSI
+driver, which provides a driver that allows for secure connections.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gtadmin-sec-consid-security">Security</h3>
+<div class="sect3">
+<h4 id="gsic-security-considerations">Security considerations for GSI C</h4>
+<div class="paragraph">
+<p>During host authorization, the toolkit treats host names of the form
+<code>hostname-&#8217;ANYTHING'</code>.edu` as equivalent to <code>hostname.edu</code>. This means that if
+a service was set up to do host authorization and hence accept the certificate
+<code>hostname.edu</code>, it would also accept certificates with DNs
+<code>hostname-&#8217;ANYTHING'</code>.edu`.</p>
+</div>
+<div class="paragraph">
+<p>The feature is in place to allow a multi-homed host following a
+"hostname-interface" naming convention, to have a single host certificate. For
+example, host <code>grid.test.edu</code> would also accept the likes of <code>grid-1.test.edu</code>
+or <code>grid-foo.test.edu</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The string 'ANYTHING' matches only the name of the host and not domain
+components. This means that <code>hostname.edu</code> will not match
+<code>hostname-foo.sub.edu</code>, but will match <code>host-foo.edu</code>.</p>
+</div>
+<div class="paragraph">
+<p>If a host was set up to accept <code>hostname-1.edu</code>, it will not accept
+<code>hostname-&#8217;ANYTHING'</code>.edu` but will accept <code>hostname.edu</code>. That is, only one
+of the names being compared may contain the hyphen character in the host name.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In GT 6.0, it is possible to disable this behavior, by setting the enviornment variable GLOBUS_GSSAPI_NAME_COMPATIBILITY to STRICT_RFC2818.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="myproxy-security-considerations">MyProxy Security Considerations</h4>
+<div class="paragraph">
+<p>You should choose a well-protected host to run the myproxy-server on.
+Consult with security-aware personnel at your site. You want a host that
+is secured to the level of a Kerberos KDC, that has limited user access,
+runs limited services, and is well monitored and maintained in terms of
+security patches.</p>
+</div>
+<div class="paragraph">
+<p>For a typical myproxy-server installation, the host on which the
+myproxy-server is running must have /etc/grid-security created and a
+host certificate installed. In this case, the myproxy-server will run as
+root so it can access the host certificate and key.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsi-openssh-security-considerations">GSI-OpenSSH Security Considerations</h4>
+<div class="paragraph">
+<p>GSI-OpenSSH is a modified version of <a href="http://www.openssh.org/">OpenSSH</a>
+and includes full OpenSSH functionality. For more information on OpenSSH
+security, see the <a href="http://www.openssh.org/security.html">OpenSSH Security</a>
+page.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gtadmin-sec-consid-data">Data Management</h3>
+<div class="sect3">
+<h4 id="gridftp-security-considerations">Security Considerations</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="sect4">
+<h5 id="gridftp-security-config">Ways to configure your server</h5>
+<div class="paragraph">
+<p>There are various ways to configure your GridFTP server that provide
+varying levels of security. For more information, see
+<a href="../../gridftp/admin/index.html">Installing GT 6.0</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gridftp-security-firewalls">Firewall requirements</h5>
+<div class="paragraph">
+<p>If the GridFTP <strong>server</strong> is behind a firewall:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Contact your network administrator to open up port 2811 (for GridFTP
+control channel connection) and a range of ports (for GridFTP data
+channel connections) for the incoming connections. If the firewall
+blocks the outgoing connections, open up a range of ports for outgoing
+connections as well.</p>
+</li>
+<li>
+<p>Set the environment variable GLOBUS_TCP_PORT_RANGE:</p>
+<div class="listingblock">
+<div class="content">
+<pre>export GLOBUS_TCP_PORT_RANGE=min,max</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where 'min','max' specify the port range that you have opened for the
+incoming connections on the firewall. This restricts the listening ports
+of the GridFTP server to this range. Recommended range is 1000 (e.g.,
+50000-51000) but it really depends on how much use you expect.</p>
+</div>
+</li>
+<li>
+<p>If you have a firewall blocking the outgoing connections and you have
+opened a range of (local) ports, set the environment variable
+GLOBUS_TCP_SOURCE_RANGE:</p>
+<div class="listingblock">
+<div class="content">
+<pre>export GLOBUS_TCP_SOURCE_RANGE=min,max</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where 'min','max' specify the port range that you have opened for the
+outgoing connections on the firewall. This restricts the GridFTP server
+to bind to a local port in this range for outbound connections.
+Recommended range is twice the range used for GLOBUS_TCP_PORT_RANGE,
+because if parallel TCP streams are used for transfers, the listening
+port would remain the same for each connection but the connecting port
+would be different for each connection.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the server is behind NAT, the --data-interface &lt;real ip/hostname&gt;
+option needs to be used on the server.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the GridFTP <strong>client</strong> is behind a firewall:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Contact your network administrator to open up a range of ports (for
+GridFTP data channel connections) for the incoming connections. If the
+firewall blocks the outgoing connections, open up a range of ports for
+outgoing connections as well.</p>
+</li>
+<li>
+<p>Set the environment variable GLOBUS_TCP_PORT_RANGE</p>
+<div class="listingblock">
+<div class="content">
+<pre>export GLOBUS_TCP_PORT_RANGE=min,max</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where min,max specify the port range that you have opened for the
+incoming connections on the firewall. This restricts the listening ports
+of the GridFTP client to this range. Recommended range is 1000 (e.g.,
+50000-51000) but it really depends on how much use you expect.</p>
+</div>
+</li>
+<li>
+<p>If you have a firewall blocking the outgoing connections and you have
+opened a range of ports, set the environment variable
+GLOBUS_TCP_SOURCE_RANGE:</p>
+<div class="listingblock">
+<div class="content">
+<pre>export GLOBUS_TCP_PORT_RANGE=min,max</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where min,max specify the port range that you have opened for the
+outgoing connections on the firewall. This restricts the GridFTP client
+to bind to a local port in this range for outbound connections.
+Recommended range is twice the range used for GLOBUS_TCP_PORT_RANGE,
+because if parallel TCP streams are used for transfers, the listening
+port would remain the same for each connection but the connecting port
+would be different for each connection.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Additional information on Globus Toolkit Firewall Requirements is
+available <a href="http://www.globus.org/toolkit/security/firewalls/">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_execution_management">Execution Management</h3>
+<div class="sect3">
+<h4 id="gram5-security-considerations">Security Considerations</h4>
+<div class="sect4">
+<h5 id="_gatekeeper_security_considerations">Gatekeeper Security Considerations</h5>
+<div class="paragraph">
+<p>GRAM5 runs different parts of itself under different privilege levels.
+The <strong>globus-gatekeeper</strong> runs as root, and uses its root privilege
+to access the host&#8217;s private key. It uses the grid map file to map Grid
+Certificates to local user ids and then uses the <strong>setuid()</strong>
+function to change to that user and execute the
+<strong>globus-job-manager</strong> program</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_job_manager_security_considerations">Job Manager Security Considerations</h5>
+<div class="paragraph">
+<p>The <strong>globus-job-manager</strong> program runs as a local non-root account.
+It receives a delegated limited proxy certificate from the GRAM5 client
+which it uses to access Grid storage resources via GridFTP and to
+authenticate job signals (such as client cancel requests), and send job
+state callbacks to registered clients. This proxy is generally
+short-lived, and is automatically removed by the job manager when the
+job completes.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>globus-job-manager</strong> program uses a publicly-writable
+directory for job state files. This directory has the <strong>sticky</strong> bit
+set, so users may not remove other users files. Each file is named by a
+UUID, so it should be unique.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_fork_seg_module_security_considerations">Fork SEG Module Security Considerations</h5>
+<div class="paragraph">
+<p>The Fork Scheduler Event Generator module uses a globally writable file
+for job state change events. This is not recommended for production use.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gtadmin-config-usage-stats">Usage Statistics</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The following components collect usage statistics as outlined here
+(along with information about how to opt-out):
+<a href="../../Usage_Stats.html">Usage Statistics in GT</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_management_usage_statistics">Data Management Usage Statistics</h3>
+<div class="sect3">
+<h4 id="gridftp-usage">Usage statistics collection by the Globus Alliance</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="sect4">
+<h5 id="gridftp-usage-stats">GridFTP-specific usage statistics</h5>
+<div class="paragraph">
+<p>The following GridFTP-specific usage statistics are sent in a UDP packet
+at the end of each transfer, in addition to the standard header
+information described in the
+<a href="/toolkit/docs/{$shortversion}/{$version}/Usage_Stats.html">Usage
+Stats</a> section.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Start time of the transfer</p>
+</li>
+<li>
+<p>End time of the transfer</p>
+</li>
+<li>
+<p>Version string of the server</p>
+</li>
+<li>
+<p>TCP buffer size used for the transfer</p>
+</li>
+<li>
+<p>Block size used for the transfer</p>
+</li>
+<li>
+<p>Total number of bytes transferred</p>
+</li>
+<li>
+<p>Number of parallel streams used for the transfer</p>
+</li>
+<li>
+<p>Number of stripes used for the transfer</p>
+</li>
+<li>
+<p>Type of transfer (STOR, RETR, LIST)</p>
+</li>
+<li>
+<p>FTP response code&#8201;&#8212;&#8201;Success or failure of the transfer</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The client (globus-url-copy) does NOT send any data. It is the <strong>servers</strong> that send the usage statistics.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We have made a concerted effort to collect only data that is not too
+intrusive or private and yet still provides us with information that
+will help improve and gauge the usage of the GridFTP server.
+Nevertheless, if you wish to disable this feature for GridFTP only, use
+the '-disable-usage-stats' option of
+<a href="../../gridftp/admin/index.html#globus-gridftp-server">globus-gridftp-server</a>.
+Note that you can disable transmission of usage statistics globally for
+all C components by setting "GLOBUS_USAGE_OPTOUT=1" in your environment.</p>
+</div>
+<div class="paragraph">
+<p>Also, please see our
+<a href="/toolkit/docs/latest-stable/Usage_Stats.html">policy statement</a> on
+the collection of usage statistics.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_execution_management_usage_statistics">Execution Management Usage Statistics</h3>
+<div class="sect3">
+<h4 id="gram5-usage">Usage statistics collection by the Globus Alliance</h4>
+<div class="sect4">
+<h5 id="gram5-usage-stats">GRAM5-specific usage statistics</h5>
+<div class="paragraph">
+<p>The following usage statistics are sent by default in a UDP packet (in
+addition to the GRAM component code, packet version, timestamp, and
+source IP address) at the end of each job.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Job Manager Session ID</p>
+</li>
+<li>
+<p>dryrun used</p>
+</li>
+<li>
+<p>RSL Host Count</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_UNSUBMITTED</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_FILE_STAGE_IN</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_PENDING</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_ACTIVE</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_FAILED</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_FILE_STAGE_OUT</p>
+</li>
+<li>
+<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE</p>
+</li>
+<li>
+<p>Job Failure Code</p>
+</li>
+<li>
+<p>Number of times status is called</p>
+</li>
+<li>
+<p>Number of times register is called</p>
+</li>
+<li>
+<p>Number of times signal is called</p>
+</li>
+<li>
+<p>Number of times refresh is called</p>
+</li>
+<li>
+<p>Number of files named in file_clean_up RSL</p>
+</li>
+<li>
+<p>Number of files being staged in (including executable, stdin) from http servers</p>
+</li>
+<li>
+<p>Number of files being staged in (including executable, stdin) from https servers</p>
+</li>
+<li>
+<p>Number of files being staged in (including executable, stdin) from ftp servers</p>
+</li>
+<li>
+<p>Number of files being staged in (including executable, stdin) from gsiftp servers</p>
+</li>
+<li>
+<p>Number of files being staged into the GASS cache from http servers</p>
+</li>
+<li>
+<p>Number of files being staged into the GASS cache from https servers</p>
+</li>
+<li>
+<p>Number of files being staged into the GASS cache from ftp servers</p>
+</li>
+<li>
+<p>Number of files being staged into the GASS cache from gsiftp servers</p>
+</li>
+<li>
+<p>Number of files being staged out (including stdout and stderr) to http servers</p>
+</li>
+<li>
+<p>Number of files being staged out (including stdout and stderr) to https servers</p>
+</li>
+<li>
+<p>Number of files being staged out (including stdout and stderr) to ftp servers</p>
+</li>
+<li>
+<p>Number of files being staged out (including stdout and stderr) to gsiftp servers</p>
+</li>
+<li>
+<p>Bitmask of used RSL attributes (values are 2^id from the gram5_rsl_attributes table)</p>
+</li>
+<li>
+<p>Number of times unregister is called</p>
+</li>
+<li>
+<p>Value of the count RSL attribute</p>
+</li>
+<li>
+<p>Comma-separated list of string names of other RSL attributes not in the set defined in globus-gram-job-manager.rvf</p>
+</li>
+<li>
+<p>Job type string</p>
+</li>
+<li>
+<p>Number of times the job was restarted</p>
+</li>
+<li>
+<p>Total number of state callbacks sent to all clients for this job</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following information can be sent as well in a job status packet but
+it is not sent unless explicitly enabled by the system administrator:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Value of the executable RSL attribute</p>
+</li>
+<li>
+<p>Value of the arguments RSL attribute</p>
+</li>
+<li>
+<p>IP adddress and port of the client that submitted the job</p>
+</li>
+<li>
+<p>User DN of the client that submitted the job</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to job-related status, the job manager sends information
+periodically about its execution status. The following information is
+sent by default in a UDP packet (in addition to the GRAM component code,
+packet version, timestamp, and source IP address) at job manager start
+and every 1 hour during the job manager lifetime:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Job Manager Start Time</p>
+</li>
+<li>
+<p>Job Manager Session ID</p>
+</li>
+<li>
+<p>Job Manager Status Time</p>
+</li>
+<li>
+<p>Job Manager Version</p>
+</li>
+<li>
+<p>LRM</p>
+</li>
+<li>
+<p>Poll used</p>
+</li>
+<li>
+<p>Audit used</p>
+</li>
+<li>
+<p>Number of restarted jobs</p>
+</li>
+<li>
+<p>Total number of jobs</p>
+</li>
+<li>
+<p>Total number of failed jobs</p>
+</li>
+<li>
+<p>Total number of canceled jobs</p>
+</li>
+<li>
+<p>Total number of completed jobs</p>
+</li>
+<li>
+<p>Total number of dry-run jobs</p>
+</li>
+<li>
+<p>Peak number of concurrently managed jobs</p>
+</li>
+<li>
+<p>Number of jobs currently being managed</p>
+</li>
+<li>
+<p>Number of jobs currently in the UNSUBMITTED state</p>
+</li>
+<li>
+<p>Number of jobs currently in the STAGE_IN state</p>
+</li>
+<li>
+<p>Number of jobs currently in the PENDING state</p>
+</li>
+<li>
+<p>Number of jobs currently in the ACTIVE state</p>
+</li>
+<li>
+<p>Number of jobs currently in the STAGE_OUT state</p>
+</li>
+<li>
+<p>Number of jobs currently in the FAILED state</p>
+</li>
+<li>
+<p>Number of jobs currently in the DONE state</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also, please see our
+<a href="/toolkit/docs/latest-stable/Usage_Stats.html">policy statement</a> on
+the collection of usage statistics.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-02-09 14:17:03 CST
+</div>
+</div>
+</body>
+</html>
