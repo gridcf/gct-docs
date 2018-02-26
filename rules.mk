@@ -36,7 +36,7 @@ html-recursive pdf-recursive clean-recursive:
 	$(TXT_TO_HTML)
 
 %.pdf:
-	@if expr $< : '.*.txt' > /dev/null; then \
+	@if expr X$< : '.*.txt' > /dev/null; then \
 		$(TXT_TO_PDF); \
 	else \
 		$(CONCAT_PDFS); \
