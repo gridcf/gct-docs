@@ -16,7 +16,7 @@ were a filesystem.
 [[gridftp-SRB-architecture]]
 === Architecture ===
 
-image:srb-dsi.gif[align="center"]
+image:srb-dsi.png[align="center"]
 
 The above image shows the architecture of the system. There are 4 major
 components:
