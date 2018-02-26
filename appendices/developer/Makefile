@@ -1,6 +1,7 @@
 default: all
 
-gtDeveloperGuide.pdf: index.fo
+gtDeveloperGuide.pdf: index.txt
+	$(TXT_TO_PDF)
 PDF_FILES = gtDeveloperGuide.pdf
 
 TOPDIR=../..

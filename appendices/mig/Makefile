@@ -1,6 +1,7 @@
 default: all
 
-gtMigratingGuide.pdf: index.fo
+gtMigratingGuide.pdf: index.txt
+	$(TXT_TO_PDF)
 PDF_FILES = gtMigratingGuide.pdf
 
 TOPDIR=../..

@@ -1,6 +1,6 @@
 default: all
 
-gsiopensshAdminGuide.pdf: index.fo
+gsiopensshAdminGuide.pdf: index.txt
 PDF_FILES = gsiopensshAdminGuide.pdf
 
 TOPDIR=../..

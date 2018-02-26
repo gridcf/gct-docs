@@ -1,6 +1,8 @@
 default: all
 
-gtCommands.pdf: index.fo
+gtCommands.pdf: index.txt
+	$(TXT_TO_PDF)
+
 PDF_FILES = gtCommands.pdf
 
 TOPDIR=../..
