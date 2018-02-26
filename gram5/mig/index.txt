@@ -11,9 +11,6 @@ previous versions of the Globus Toolkit.
 --
 
  
-include::../GRAM5_Migrating_GT50_Frag.txt[]
-
- 
 include::../GRAM5_Migrating_GT42_Frag.txt[]
 
  
