@@ -1,6 +1,6 @@
 default: all
 
-myproxyReleaseNotes.pdf: index.fo
+myproxyReleaseNotes.pdf: index.txt
 PDF_FILES = myproxyReleaseNotes.pdf
 
 TOPDIR=../..

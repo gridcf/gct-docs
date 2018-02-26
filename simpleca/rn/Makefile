@@ -1,6 +1,6 @@
 default: all
 
-simplecaReleaseNotes.pdf: index.fo
+simplecaReleaseNotes.pdf: index.txt
 PDF_FILES = simplecaReleaseNotes.pdf
 
 TOPDIR=../..

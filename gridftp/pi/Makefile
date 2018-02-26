@@ -1,6 +1,6 @@
 default: all
 
-gridftpPublicInterfacesGuide.pdf: index.fo
+gridftpPublicInterfacesGuide.pdf: index.txt
 
 PDF_FILES   = gridftpPublicInterfacesGuide.pdf
 TOPDIR      = ../..

@@ -1,6 +1,6 @@
 default: all
 
-gtReleaseNotes.pdf: index.fo
+gtReleaseNotes.pdf: index.txt
 PDF_FILES = gtReleaseNotes.pdf
 
 TOPDIR=..

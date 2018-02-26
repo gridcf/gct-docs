@@ -1,6 +1,6 @@
 default: all
 
-xioAdminGuide.pdf: index.fo
+xioAdminGuide.pdf: index.txt
 PDF_FILES = xioAdminGuide.pdf
 
 TOPDIR=../..

@@ -1,6 +1,6 @@
 default: all
 
-myproxyQualityProfile.pdf: index.fo
+myproxyQualityProfile.pdf: index.txt
 PDF_FILES = myproxyQualityProfile.pdf
 
 TOPDIR=../..

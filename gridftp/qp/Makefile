@@ -1,6 +1,6 @@
 default: all
 
-gridftpQualityProfile.pdf: index.fo
+gridftpQualityProfile.pdf: index.txt
 
 PDF_FILES   = gridftpQualityProfile.pdf
 TOPDIR      = ../..

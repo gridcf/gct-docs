@@ -1,6 +1,6 @@
 default: all
 
-gsiopensshMigratingGuide.pdf: index.fo
+gsiopensshMigratingGuide.pdf: index.txt
 PDF_FILES = gsiopensshMigratingGuide.pdf
 
 TOPDIR=../..

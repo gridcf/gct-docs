@@ -1,6 +1,6 @@
 default: all
 
-gsicPublicInterfacesGuide.pdf: index.fo
+gsicPublicInterfacesGuide.pdf: index.txt
 PDF_FILES = gsicPublicInterfacesGuide.pdf
 
 TOPDIR=../..

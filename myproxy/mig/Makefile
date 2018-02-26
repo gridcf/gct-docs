@@ -1,6 +1,6 @@
 default: all
 
-myproxyMigratingGuide.pdf: index.fo
+myproxyMigratingGuide.pdf: index.txt
 PDF_FILES = myproxyMigratingGuide.pdf
 
 TOPDIR=../..

@@ -1,6 +1,6 @@
 default: all
 
-gsicQualityProfile.pdf: index.fo
+gsicQualityProfile.pdf: index.txt
 PDF_FILES = gsicQualityProfile.pdf
 
 %-test.html: %-test.xml

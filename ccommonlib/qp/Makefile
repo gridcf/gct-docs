@@ -1,6 +1,6 @@
 default: all
 
-ccommonlibQualityProfile.pdf: index.fo
+ccommonlibQualityProfile.pdf: index.txt
 PDF_FILES = ccommonlibQualityProfile.pdf
 
 TOPDIR=../..

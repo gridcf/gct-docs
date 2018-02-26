@@ -1,6 +1,6 @@
 default: all
 
-gsiopensshQualityProfile.pdf: index.fo
+gsiopensshQualityProfile.pdf: index.txt
 PDF_FILES = gsiopensshQualityProfile.pdf
 
 TOPDIR=../..

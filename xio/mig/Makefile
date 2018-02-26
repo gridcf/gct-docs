@@ -1,6 +1,6 @@
 default: all
 
-xioMigratingGuide.pdf: index.fo
+xioMigratingGuide.pdf: index.txt
 PDF_FILES = xioMigratingGuide.pdf
 
 TOPDIR=../..

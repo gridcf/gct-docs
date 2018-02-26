@@ -1,6 +1,6 @@
 default: all
 
-myproxyAdminGuide.pdf: index.fo
+myproxyAdminGuide.pdf: index.txt
 PDF_FILES = myproxyAdminGuide.pdf
 
 TOPDIR=../..

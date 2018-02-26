@@ -1,6 +1,6 @@
 default: all
 
-gsicUserGuide.pdf: index.fo
+gsicUserGuide.pdf: index.txt
 PDF_FILES = gsicUserGuide.pdf
 
 TOPDIR=../..
