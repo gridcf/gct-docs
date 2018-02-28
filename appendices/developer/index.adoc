@@ -23,12 +23,12 @@ Following are some docs you should be familiar with as well:
 
 = Asynchronous Event Handling with Examples =
 
-include::globus-async.txt[]
+include::globus-async.adoc[]
 
-include::globus-async-example1.txt[]
+include::globus-async-example1.adoc[]
 
-include::globus-async-example2.txt[]
+include::globus-async-example2.adoc[]
 
-include::globus-async-example3.txt[]
+include::globus-async-example3.adoc[]
 
-include::../user/public_interfaces.txt[]
+include::../user/public_interfaces.adoc[]

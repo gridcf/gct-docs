@@ -8,7 +8,7 @@
 
 :leveloffset: 1
 
-include::../quickstart/prereq.txt[]
+include::../quickstart/prereq.adoc[]
 
 :leveloffset: 0
 
@@ -166,7 +166,7 @@ specific installation information related to your platform.
 
 :leveloffset: 2
 
-include::prereq.txt[]
+include::prereq.adoc[]
 
 :leveloffset: 0
 

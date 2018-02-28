@@ -3,7 +3,7 @@
 === Tested platforms ===
 
 
-include::../platforms.txt[]
+include::../platforms.adoc[]
 
 While the above list includes platforms on which we have tested GridFTP,
 it does not imply support for a specific platform. However, we are

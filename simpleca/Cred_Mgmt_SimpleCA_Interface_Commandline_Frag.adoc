@@ -4,10 +4,10 @@
 
 :leveloffset: 1
 
-include::grid-ca-create-manual.txt[]
+include::grid-ca-create-manual.adoc[]
 
-include::grid-ca-package-manual.txt[]
+include::grid-ca-package-manual.adoc[]
 
-include::grid-ca-sign-manual.txt[]
+include::grid-ca-sign-manual.adoc[]
 
 :leveloffset: 0

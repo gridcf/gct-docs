@@ -5,7 +5,7 @@
 SimpleCA is tested on the following platforms:
 
 
-include::../platforms.txt[]
+include::../platforms.adoc[]
 
 
  

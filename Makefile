@@ -8,7 +8,7 @@ appendices  gridftp  myproxy     xio \
 ccommonlib  gsic     rn
 
 index.pdf: index.adoc
-	$(TXT_TO_PDF)
+	$(ADOC_TO_PDF)
 
 
 TOPDIR=.

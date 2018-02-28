@@ -409,7 +409,7 @@ include::gram_rsl_example.c[]
 = GRAM Server Developer's Guide =
 
 
-include::GRAM5_LRM_Adapter_Tutorial.txt[]
+include::GRAM5_LRM_Adapter_Tutorial.adoc[]
 
  
 = GRAM5 Developer's Reference =

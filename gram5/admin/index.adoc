@@ -282,7 +282,7 @@ pbs [DISABLED]
 include::../GRAM5_Interface_Config_Frag.adoc[]
 
  
-include::../GRAM5_Audit_Logging.txt[]
+include::../GRAM5_Audit_Logging.adoc[]
 
  
 [[gram5-admin-security_considerations]]
@@ -305,56 +305,56 @@ include::../GRAM5_Troubleshooting_Admin_Frag.adoc[]
 
 :leveloffset: 2
 
-include::../globus-gatekeeper-manual.txt[]
+include::../globus-gatekeeper-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-gatekeeper-admin-manual.txt[]
+include::../globus-gatekeeper-admin-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-gram-audit-manual.txt[]
+include::../globus-gram-audit-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-job-manager-manual.txt[]
+include::../globus-job-manager-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-rvf-check-manual.txt[]
+include::../globus-rvf-check-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-rvf-edit-manual.txt[]
+include::../globus-rvf-edit-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-scheduler-event-generator-manual.txt[]
+include::../globus-scheduler-event-generator-manual.adoc[]
 
 
 :leveloffset: 0
 
 :leveloffset: 2
 
-include::../globus-scheduler-event-generator-admin-manual.txt[]
+include::../globus-scheduler-event-generator-admin-manual.adoc[]
 
 
 :leveloffset: 0

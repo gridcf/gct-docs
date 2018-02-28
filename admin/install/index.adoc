@@ -4,24 +4,24 @@
 = Installing GT 6.0 =
 
  
-include::intro.txt[]
+include::intro.adoc[]
 
  
-include::before.txt[]
+include::before.adoc[]
 
  
-include::install.txt[]
+include::install.adoc[]
 
  
-include::basic_security.txt[]
+include::basic_security.adoc[]
 
  
-include::basic_setup.txt[]
+include::basic_setup.adoc[]
 
  
-include::platform.txt[]
+include::platform.adoc[]
 
  
-include::appendixptr.txt[]
+include::appendixptr.adoc[]
 
   

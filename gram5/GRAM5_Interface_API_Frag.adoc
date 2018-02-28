@@ -26,19 +26,19 @@ GRAM5 also provides a Perl API for creating LRM interface implementations.
 
 :leveloffset: 2
 
-include::developer/Error.txt[]
+include::developer/Error.adoc[]
 
 
-include::developer/JobDescription.txt[]
+include::developer/JobDescription.adoc[]
 
 
-include::developer/JobManager.txt[]
+include::developer/JobManager.adoc[]
 
 
-include::developer/JobSignal.txt[]
+include::developer/JobSignal.adoc[]
 
 
-include::developer/JobState.txt[]
+include::developer/JobState.adoc[]
 
 :leveloffset: 0
 :doctype: book

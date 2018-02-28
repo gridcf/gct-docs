@@ -226,13 +226,13 @@ include::../GridFTP_Troubleshooting_Frag.adoc[]
 
 --
  
-include::DCSC_Spec.txt[]
+include::DCSC_Spec.adoc[]
 
  
-include::GridFTP_DSI_Dev.txt[]
+include::GridFTP_DSI_Dev.adoc[]
 
  
-include::GridFTP_Multicast.txt[]
+include::GridFTP_Multicast.adoc[]
 
 [index]
 [[gridftp-developer-index]]

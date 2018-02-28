@@ -35,7 +35,7 @@ credentials].
 [[simpleca-admin-guide]]
 = Simple CA Administration Guide =
 
-include::guide.txt[]
+include::guide.adoc[]
 
 [[simpleca-admin-reference]]
 

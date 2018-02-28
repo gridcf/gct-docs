@@ -23,4 +23,4 @@ the simplest platforms on which to install GT services.
 For the purposes of this documentation, Globus is being installed on a
 machine called **++elephant++**. 
 
-include::../quickstart/typography.txt[]
+include::../quickstart/typography.adoc[]

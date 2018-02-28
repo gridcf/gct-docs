@@ -4,39 +4,39 @@
 
 :leveloffset: 1
 
-include::globus-fork-starter-manual.txt[]
+include::globus-fork-starter-manual.adoc[]
 
-include::globus-gatekeeper-admin-manual.txt[]
+include::globus-gatekeeper-admin-manual.adoc[]
 
-include::globus-gatekeeper-manual.txt[]
+include::globus-gatekeeper-manual.adoc[]
 
-include::globus-gram-audit-manual.txt[]
+include::globus-gram-audit-manual.adoc[]
 
-include::globus-job-cancel-manual.txt[]
+include::globus-job-cancel-manual.adoc[]
 
-include::globus-job-clean-manual.txt[]
+include::globus-job-clean-manual.adoc[]
 
-include::globus-job-get-output-manual.txt[]
+include::globus-job-get-output-manual.adoc[]
 
-include::globus-job-manager-manual.txt[]
+include::globus-job-manager-manual.adoc[]
 
-include::globus-job-run-manual.txt[]
+include::globus-job-run-manual.adoc[]
 
-include::globus-job-status-manual.txt[]
+include::globus-job-status-manual.adoc[]
 
-include::globus-job-submit-manual.txt[]
+include::globus-job-submit-manual.adoc[]
 
-include::globus-personal-gatekeeper-manual.txt[]
+include::globus-personal-gatekeeper-manual.adoc[]
 
-include::globus-rvf-check-manual.txt[]
+include::globus-rvf-check-manual.adoc[]
 
-include::globus-rvf-edit-manual.txt[]
+include::globus-rvf-edit-manual.adoc[]
 
-include::globus-scheduler-event-generator-admin-manual.txt[]
+include::globus-scheduler-event-generator-admin-manual.adoc[]
 
-include::globus-scheduler-event-generator-manual.txt[]
+include::globus-scheduler-event-generator-manual.adoc[]
 
-include::globusrun-manual.txt[]
+include::globusrun-manual.adoc[]
 
 
 :leveloffset: 0

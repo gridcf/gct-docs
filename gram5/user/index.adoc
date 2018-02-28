@@ -1043,19 +1043,19 @@ subpackages for the globus-gram-client-tools package.
 
 :leveloffset: 2
 
-include::../globusrun-manual.txt[]
+include::../globusrun-manual.adoc[]
 
-include::../globus-job-cancel-manual.txt[]
+include::../globus-job-cancel-manual.adoc[]
 
-include::../globus-job-clean-manual.txt[]
+include::../globus-job-clean-manual.adoc[]
 
-include::../globus-job-get-output-manual.txt[]
+include::../globus-job-get-output-manual.adoc[]
 
-include::../globus-job-run-manual.txt[]
+include::../globus-job-run-manual.adoc[]
 
-include::../globus-job-status-manual.txt[]
+include::../globus-job-status-manual.adoc[]
 
-include::../globus-job-submit-manual.txt[]
+include::../globus-job-submit-manual.adoc[]
 
 
 :leveloffset: 0
@@ -1085,7 +1085,7 @@ the core job manager. Other LRM-specific RSL attributes may also be
 available in some situations.
 
 
-include::../GRAM5_RSL_Attribute_List.txt[]
+include::../GRAM5_RSL_Attribute_List.adoc[]
 
 
  

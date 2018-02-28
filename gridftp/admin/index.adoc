@@ -23,7 +23,7 @@ before continuing!
 --
 
   
-include::../GridFTP_Building.txt[]
+include::../GridFTP_Building.adoc[]
 
  
 include::../GridFTP_Interface_Config_Frag.adoc[]
@@ -582,17 +582,17 @@ indexterm:[commandline tool,globus-gridftp-server]
 
 :leveloffset: 2
 
-include::../globus-gridftp-server.txt[]
+include::../globus-gridftp-server.adoc[]
 
-include::../globus-gridftp-server-setup-chroot.txt[]
+include::../globus-gridftp-server-setup-chroot.adoc[]
 
 :doctype: book
  
 :leveloffset: 0
 
-include::GridFTP_SRB.txt[]
+include::GridFTP_SRB.adoc[]
 
-include::GridFTP_GFork.txt[]
+include::GridFTP_GFork.adoc[]
 
 [index]
 [[gridftp-admin-index]]

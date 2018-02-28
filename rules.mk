@@ -12,8 +12,8 @@ endif
 
 CLEANFILES = $(HTML_FILES) $(PDF_FILES)
 
-TXT_TO_PDF = asciidoctor-pdf -d book -o $@ $<
-TXT_TO_HTML = asciidoctor -d book -o $@ $<
+ADOC_TO_PDF = asciidoctor-pdf -d book -o $@ $<
+ADOC_TO_HTML = asciidoctor -d book -o $@ $<
 CONCAT_PDFS = gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=$@ $(filter %.pdf,$^)
 
 # default rule
@@ -32,16 +32,16 @@ html-recursive pdf-recursive clean-recursive:
             for dir in $(SUBDIRS); do echo "Entering $(parentdir)/$$dir [$(subst -recursive,,$@])" ; $(MAKE) -C $$dir parentdir=$(parentdir)/$$dir $(subst -recursive,,$@) || exit 1; done \
         fi
 
-%.html: %.txt
+%.html: %.adoc
 	@if expr X$< : '.*_Frag.adoc' > /dev/null; then \
 		true; \
 	else \
-		$(TXT_TO_HTML); \
+		$(ADOC_TO_HTML); \
 	fi
 
 %.pdf:
-	@if expr X$< : '.*.txt' > /dev/null; then \
-		$(TXT_TO_PDF); \
+	@if expr X$< : '.*.adoc' > /dev/null; then \
+		$(ADOC_TO_PDF); \
 	else \
 		$(CONCAT_PDFS); \
 	fi
@@ -49,5 +49,5 @@ html-recursive pdf-recursive clean-recursive:
 $(SUBDIRS):
 	@make -C $@
 
-.SUFFIXES: .pdf .txt
+.SUFFIXES: .pdf .adoc
 .PHONY: all clean-recursive clean pdf $(SUBDIRS) html-local pdf-local

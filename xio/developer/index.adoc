@@ -35,10 +35,10 @@ include::../XIO_Dependencies_Summary_Frag.adoc[]
 include::../XIO_Security_Considerations_Frag.adoc[]
 
  
-include::UserQuickStart.txt[]
+include::UserQuickStart.adoc[]
 
  
-include::DriverQuickStart.txt[]
+include::DriverQuickStart.adoc[]
 
  
 [[xio-developer-tutorials]]
@@ -53,7 +53,7 @@ include::DriverQuickStart.txt[]
 
 --
  
-include::xio_arch.txt[]
+include::xio_arch.adoc[]
 
  
 include::../XIO_Interface_API_Frag.adoc[]

@@ -3,7 +3,7 @@
 
 :leveloffset: 1
 
-include::globus-url-copy.txt[]
+include::globus-url-copy.adoc[]
 
 :leveloffset: 0
 
