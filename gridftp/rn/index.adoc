@@ -1,6 +1,6 @@
 [[gridftpRN,Release Notes]]
 :doctype: article
-= GCT 6.0 Release Notes: GridFTP =
+= GT 6.0 Release Notes: GridFTP =
 indexterm:[release notes (GridFTP)]
    
 [[gridftp-rn-overview]]

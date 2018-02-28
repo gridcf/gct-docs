@@ -10,7 +10,7 @@ The GCT was created in response to the link:https://github.com/globus/globus-too
 The following documents are good places to start with GCT 6.0:
 
 * For everyone: 
-** link:./rn/index.html[GCT6.0 Release Notes]
+** link:./rn/index.html[GT 6.0 Release Notes] (also applicable to GCT 6.0)
 ** link:./appendices/commands/index.html[GCT Commands]
 * For system administrators and those installing GCT: 
 ** link:./admin/install/index.html[Installation Guide]

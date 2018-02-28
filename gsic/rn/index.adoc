@@ -1,6 +1,6 @@
 [[gsicRN,Release Notes]]
 :doctype: article
-= GCT 6.0 GSI C Release Notes =
+= GT 6.0 GSI C Release Notes =
 
   
 [[gsic-rn-overview]]
