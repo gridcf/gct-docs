@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>GT 6.0 SimpleCA: Admin Guide</title>
+<title>GCT 6.0 SimpleCA: Admin Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,7 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="simplecaAdmin" class="book toc2 toc-left">
 <div id="header">
-<h1>GT 6.0 SimpleCA: Admin Guide</h1>
+<h1>GCT 6.0 SimpleCA: Admin Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -523,7 +523,7 @@ installation.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the <a href="../..//admin/install/index.html">Installing GT 6.0</a>. Read through this guide before continuing!</p>
+<p>This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in the <a href="../..//admin/install/index.html">Installing GCT 6.0</a>. Read through this guide before continuing!</p>
 </div>
 </td>
 </tr>
@@ -531,7 +531,7 @@ installation.</p>
 </div>
 <div class="paragraph">
 <p>The following are instructions for how to use SimpleCA to request and
-sign a certificate for a GT 6.0 installation.
+sign a certificate for a GCT 6.0 installation.
 SimpleCA provides an easy way to create and package a Certificate
 Authority
 (CA), as well as tools for requesting and signing user and
@@ -572,7 +572,7 @@ credentials</a>.</p>
 <div class="paragraph">
 <p>SimpleCA can be installed in three ways, from a debian package, from an
 RPM package, and from the source installer. These installation methods
-are described in <a href="../../admin/install/index.html">Installing GT 6.0</a>.</p>
+are described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>.</p>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from binary packages, install the packages
@@ -635,7 +635,7 @@ done.</p>
 <h3 id="_create_simpleca_administrator_account">2.1. Create SimpleCA Administrator Account</h3>
 <div class="paragraph">
 <p>Create a user to adminster the SimpleCA. You can use the the
-<strong>globus</strong> user you used to build Globus, or another user that you
+<strong>globus</strong> user you used to build GCT, or another user that you
 create. For the purposes of this document, we&#8217;ll assume a user named
 <strong>simpleca</strong>. Log in to that user, and run the
 <strong>grid-ca-create</strong> command. This will prompt for information needed
@@ -1139,7 +1139,7 @@ clients of the CA must also be modified.</p>
 <h3 id="_description">5.3. Description</h3>
 <div class="paragraph">
 <p>The <strong>grid-ca-create</strong> program creates a self-signed CA certificate
-and related files needed to use the CA with other Globus tools. The
+and related files needed to use the CA with other GCT tools. The
 <strong>grid-ca-create</strong> program prompts for information to use to
 generate the CA certificate, but the prompts may be avoided by using the
 command line options.</p>
@@ -1262,7 +1262,7 @@ In addition to these, unknown options will be passed to the
 <dl>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Non-standard installation path of the Globus toolkit.</p>
+<p>Non-standard installation path of the Grid Community Toolkit.</p>
 </dd>
 </dl>
 </div>
@@ -1382,7 +1382,7 @@ Creating RPM source tarball... done
 <dl>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Non-standard installation path of the Globus toolkit.</p>
+<p>Non-standard installation path of the Grid Community Toolkit.</p>
 </dd>
 </dl>
 </div>
@@ -1495,7 +1495,7 @@ The new signed certificate is at: /home/juser/.globus/simpleCA/newcerts/01.pem</
 <dl>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Non-standard installation path of the Globus toolkit.</p>
+<p>Non-standard installation path of the Grid Community Toolkit.</p>
 </dd>
 </dl>
 </div>
@@ -1512,7 +1512,7 @@ grid-ca-package(1)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 14:48:47 CST
+Last updated 2018-02-28 17:03:27 CST
 </div>
 </div>
 </body>

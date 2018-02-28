@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>GT 6.0 GRAM5: System Administrator&#8217;s Guide</title>
+<title>GCT 6.0 GRAM5: System Administrator&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,7 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gram5Admin" class="book toc2 toc-left">
 <div id="header">
-<h1>GT 6.0 GRAM5: System Administrator&#8217;s Guide</h1>
+<h1>GCT 6.0 GRAM5: System Administrator&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -520,7 +520,7 @@ motivation for and interaction between the various deployed components.</p>
 <div class="sect2">
 <h3 id="_introduction">Introduction</h3>
 <div class="paragraph">
-<p>The Globus Toolkit provides GRAM5: a service to submit, monitor, and
+<p>The Grid Community Toolkit provides GRAM5: a service to submit, monitor, and
 cancel jobs on Grid computing resources. In GRAM5, a job consists of a
 computation and, optionally, file transfer and management operations
 related to the computation. Some users, particularly interactive ones,
@@ -535,7 +535,7 @@ interacts with
 their respective Administrator&#8217;s guides for information about
 installing, configuring, and managing those systems. In particular, you
 must understand the tasks in
-<a href="../../admin/install/index.html#gtadmin-install">Installing GT 6.0</a> and
+<a href="../../admin/install/index.html#gtadmin-install">Installing GCT 6.0</a> and
 install the
 basic GRAM5 packages, and complete the tasks in
 <a href="../../admin/install/index.html#gtadmin-basic-security">Basic Security
@@ -564,7 +564,7 @@ start via an internet superserver such as <strong>inetd</strong> or
 <div class="sect3">
 <h4 id="_choosing_an_lrm_adapter">Choosing an LRM Adapter</h4>
 <div class="paragraph">
-<p>GRAM5 in GT 6.0 supports the following LRM adapters: Condor, PBS,
+<p>GRAM5 in GCT 6.0 supports the following LRM adapters: Condor, PBS,
 GridEngine, and Fork. These LRM adapters translate GRAM5 job
 specifications into LRM-specific job descriptions and scripts to run
 them, as well as interfaces to the LRM to determine job termination
@@ -615,7 +615,7 @@ process LRM state changes. [NOTE]</p>
 <div class="sect2">
 <h3 id="gram5-admin-installing-lrm-packages">Installing LRM Adapter Packages</h3>
 <div class="paragraph">
-<p>There are several LRM adapters included in the GT 6.0. For some, there
+<p>There are several LRM adapters included in the GCT 6.0. For some, there
 is a -setup-poll and -setup-seg package which installs the
 adapter and configuration file needed for job status via polling or the
 <strong>globus-scheduler-event-generator</strong> program.</p>
@@ -623,10 +623,10 @@ adapter and configuration file needed for job status via polling or the
 <div class="paragraph">
 <p>There are three ways to get LRM adapters: as RPM packages, as Debian
 packages, and from the source installer. These installation methods are
-described in <a href="../../admin/install/index.html">Installing GT 6.0</a>.</p>
+described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>.</p>
 </div>
 <div class="paragraph">
-<p>LRM adapter packages included in the GT 6.0 release are:</p>
+<p>LRM adapter packages included in the GCT 6.0 release are:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. GRAM5 LRM Adapters</caption>
@@ -680,7 +680,7 @@ described in <a href="../../admin/install/index.html">Installing GT 6.0</a>.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>There are several tools provided with GT 6.0 to manage GRAM5, as well as
+<p>There are several tools provided with GCT 6.0 to manage GRAM5, as well as
 OS-specific tools to start and stop some of the services. There are
 tools to manage user authorization, which services are enabled, which
 scheduler event generator modules are enabled, and to test the
@@ -1107,7 +1107,7 @@ will use and 'MAX-PORT' is the maximum TCP outgoing port number the Job
 Manager will use.</p>
 </div>
 <div class="paragraph">
-<p>For more information about Globus and firewalls, see
+<p>For more information about GCT and firewalls, see
 <a href="../../admin/install/index.html#gt-admin-firewall">Firewall configuration</a>.</p>
 </div>
 </div>
@@ -1577,7 +1577,7 @@ assumptions in this chapter:</p>
 <p><strong>clean_up_grid_id</strong>: String representation of the cleanUp-EPR (RFT)</p>
 </li>
 <li>
-<p><strong>globus_toolkit_version</strong>: Version of the server-side GT</p>
+<p><strong>globus_toolkit_version</strong>: Version of the server-side GCT</p>
 </li>
 <li>
 <p><strong>resource_manager_type</strong>: Type of the resource manager (Fork, Condor,
@@ -2381,11 +2381,11 @@ consists of:</p>
 </dd>
 <dt class="hdlist1"><strong>-home 'GLOBUS_LOCATION'</strong></dt>
 <dd>
-<p>Indicate the path where the Globus Toolkit(r) is installed on the service node. This is used by the job manager to locate its support and configuration files.</p>
+<p>Indicate the path where the Grid Community Toolkit is installed on the service node. This is used by the job manager to locate its support and configuration files.</p>
 </dd>
 <dt class="hdlist1"><strong>-target-globus-location 'TARGET_GLOBUS_LOCATION'</strong></dt>
 <dd>
-<p>Indicate the path where the Globus Toolkit(r) is installed on the execution host. If this is omitted, the value specified as a parameter to '-home' is used. This parameter sets the value of the $(GLOBUS_LOCATION) RSL substitution to 'TARGET_GLOBUS_LOCATION'</p>
+<p>Indicate the path where the Grid Community Toolkit is installed on the execution host. If this is omitted, the value specified as a parameter to '-home' is used. This parameter sets the value of the $(GLOBUS_LOCATION) RSL substitution to 'TARGET_GLOBUS_LOCATION'</p>
 </dd>
 <dt class="hdlist1"><strong>-history 'HISTORY_DIRECTORY'</strong></dt>
 <dd>
@@ -3112,7 +3112,7 @@ the collection of usage statistics.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:36:35 CST
 </div>
 </div>
 </body>

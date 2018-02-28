@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>GT 6.0 GSI C Public Interfaces</title>
+<title>GCT 6.0 GSI C Public Interfaces</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,7 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gsicPI" class="book toc2 toc-left">
 <div id="header">
-<h1>GT 6.0 GSI C Public Interfaces</h1>
+<h1>GCT 6.0 GSI C Public Interfaces</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -560,8 +560,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#gsic-configuring">Configuring GSI</a>
 <ul class="sectlevel2">
 <li><a href="#gsic-configuring-global-security-parameters">Configuring Global Security Parameters</a></li>
-<li><a href="#gsic-configuring-trustCA">Configuring Globus to Trust a Particular Certificate Authority</a></li>
-<li><a href="#_configuring_globus_to_create_appropriate_certificate_requests">Configuring Globus to Create Appropriate Certificate Requests</a></li>
+<li><a href="#gsic-configuring-trustCA">Configuring GCT to Trust a Particular Certificate Authority</a></li>
+<li><a href="#_configuring_gct_to_create_appropriate_certificate_requests">Configuring GCT to Create Appropriate Certificate Requests</a></li>
 <li><a href="#_requesting_service_certificates">Requesting Service Certificates</a></li>
 <li><a href="#setting-up-gridmap">Configuring Credential Mappings</a></li>
 <li><a href="#gsic-config-permissions">GSI File Permissions Requirements</a></li>
@@ -1209,7 +1209,7 @@ ca@grid.example.org</pre>
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Path to the directory containing the Globus Toolkit. This is searched if neither the X509_CERT_DIR nor the GRID_SECURITY_DIR environment variables are set.</p>
+<p>Path to the directory containing the Grid Community Toolkit. This is searched if neither the X509_CERT_DIR nor the GRID_SECURITY_DIR environment variables are set.</p>
 </dd>
 </dl>
 </div>
@@ -1380,7 +1380,7 @@ linking /etc/grid-security/certificates/grid-user-ssl.conf.cd1186ff  to
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Path to the Globus Toolkit installation directory.</p>
+<p>Path to the Grid Community Toolkit installation directory.</p>
 </dd>
 </dl>
 </div>
@@ -2364,7 +2364,7 @@ Current entry: "/DC=org/DC=example/DC=grid/CN=Joe User" juser
 </ul>
 </div>
 <div class="paragraph">
-<p>In general, Globus tools will look for a configuration file in a
+<p>In general, GCT tools will look for a configuration file in a
 user-specific location first, and in a system-wide location if no
 user-specific file was found. The configuration commands described here
 may be run by administrators to create system-wide defaults and by
@@ -2443,11 +2443,11 @@ particular process.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="gsic-configuring-trustCA">Configuring Globus to Trust a Particular Certificate Authority</h3>
+<h3 id="gsic-configuring-trustCA">Configuring GCT to Trust a Particular Certificate Authority</h3>
 <div class="sect3">
 <h4 id="_trusted_certificates_directory">Trusted certificates directory</h4>
 <div class="paragraph">
-<p>The Globus tools will trust certificates issued by a CA if (and only if)
+<p>The GCT tools will trust certificates issued by a CA if (and only if)
 it can find information about the CA in the trusted certificates
 directory.</p>
 </div>
@@ -2498,7 +2498,7 @@ signed by the CA.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>Globus components will honor a certificate only if:</p>
+<p>GCT components will honor a certificate only if:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2562,7 +2562,7 @@ research settings can be found <a href="https://www.tacar.org/certs.html">here</
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuring_globus_to_create_appropriate_certificate_requests">Configuring Globus to Create Appropriate Certificate Requests</h3>
+<h3 id="_configuring_gct_to_create_appropriate_certificate_requests">Configuring GCT to Create Appropriate Certificate Requests</h3>
 <div class="paragraph">
 <p>The
 <a href="../../gsic/pi/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>
@@ -2747,17 +2747,17 @@ with:</p>
 <div class="sect2">
 <h3 id="setting-up-gridmap">Configuring Credential Mappings</h3>
 <div class="paragraph">
-<p>Several Globus services map certificates to local unix usernames to be
+<p>Several GCT services map certificates to local unix usernames to be
 used with unix services. The default implementation uses a gridmap file
 to map the distinguished name of the identity of the client&#8217;s
 certificate to a local login name. Administrators can modify the
 contents of the gridmap file to control what certificate identities are
-allowed to access Globus services, as well as configure, via an
+allowed to access GCT services, as well as configure, via an
 environment variable, what gridmap file a particular service uses.</p>
 </div>
 <div class="paragraph">
 <p>In addition to the identity-based mapping done via the gridmap file,
-administrators can configure Globus services to to use arbitrary mapping
+administrators can configure GCT services to to use arbitrary mapping
 functions. These may use other criteria, such as SAML assertions, to map
 a certificate to a local account, or may map certificates to temporary
 accounts. Administrators can install different mapping implementations
@@ -3348,7 +3348,7 @@ procedures to get a new one.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The permissions may be wrong on your proxy
 file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your proxy file are too lax (for
-example, if others can read your proxy file), Globus Toolkit
+example, if others can read your proxy file), Grid Community Toolkit
 clients will not use that file to authenticate.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You can "fix" this problem by changing the permissions on
 the file or by destroying it (with <a href="gsic/pi/index.html#grid-proxy-destroy">grid-proxy-destroy</a>) and creating a new one (with <a href="gsic/pi/index.html#grid-proxy-init">grid-proxy-init</a>).</p>
@@ -3536,7 +3536,7 @@ to report that user are not authorized:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:57:29 CST
 </div>
 </div>
 </body>

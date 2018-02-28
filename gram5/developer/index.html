@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>GT 6.0 GRAM5: Developer&#8217;s Guide</title>
+<title>GCT 6.0 GRAM5: Developer&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,7 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gram5Developer" class="book toc2 toc-left">
 <div id="header">
-<h1>GT 6.0 GRAM5: Developer&#8217;s Guide</h1>
+<h1>GCT 6.0 GRAM5: Developer&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
@@ -735,7 +735,7 @@ subset of the streaming capabilities of GRAM2 in GT 4.2.x.</p>
 <h3 id="gram5-dependencies">Technology dependencies</h3>
 <div class="paragraph">
 <p>
-GRAM depends on the following GT components:
+GRAM depends on the following GCT components:
 * Globus Common
 * GSI C
 * GridFTP server</p>
@@ -797,7 +797,7 @@ useful in different programming situations.</p>
 <strong>globus_gram_client_job_request</strong> function require less application
 code, but will prevent subsequent instructions from executing until the
 request has been sent and the reply parsed. In a non-threaded
-environment, other callback functions registered with the Globus event
+environment, other callback functions registered with the GCT event
 driver may be invoked while the blocking function is running. In a
 threaded environment, other events may occur in other threads while the
 function is blocking, but the current thread will be blocked until the
@@ -806,7 +806,7 @@ response is parsed.</p>
 <div class="paragraph">
 <p>The nonblocking variants, such as
 <strong>globus_gram_client_register_job_request</strong> require the application
-to include a callback function which will be called by the Globus event
+to include a callback function which will be called by the GCT event
 driver when the reply has been parsed. In a non-threaded environment,
 applications must poll the event driver using functions from the
 <strong>globus_poll</strong> or <strong>globus_cond_wait</strong> families of functions.
@@ -821,7 +821,7 @@ functions.</p>
 <p>An application writer should use the non-blocking variants if the
 application will be submitting many jobs concurrently or requires custom
 network or security attributes. Using the non-blocking variants allows
-the Globus event driver to better schedule network I/O in these cases.</p>
+the GCT event driver to better schedule network I/O in these cases.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5460,7 +5460,7 @@ JobState constants in the GRAM Protocol.</p>
 <div class="content">
 <div class="paragraph">
 <p>This is a document to specify the existing RSL v1.0 implementation and
-interfaces, as they are provided in the GT 6.0 release. This document
+interfaces, as they are provided in the GCT 6.0 release. This document
 serves as a reference, and more introductory text.</p>
 </div>
 <div class="paragraph">
@@ -5708,7 +5708,7 @@ different resource management functions.</p>
 </div>
 <div class="paragraph">
 <p>The following listing summarizes the attribute names utilized by
-existing resource management components in the standard Globus release.
+existing resource management components in the standard GCT release.
 Please see the individual component documentation for discussion of the
 attribute semantics.</p>
 </div>
@@ -8387,7 +8387,7 @@ transitions. These states and their meanings follow:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:40:05 CST
 </div>
 </div>
 </body>

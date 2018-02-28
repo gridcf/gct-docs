@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Globus Toolkit 6.0 Developer&#8217;s Guide</title>
+<title>Grid Community Toolkit 6.0 Developer&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,13 +427,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gtdeveloper" class="book toc2 toc-left">
 <div id="header">
-<h1>Globus Toolkit 6.0 Developer&#8217;s Guide</h1>
+<h1>Grid Community Toolkit 6.0 Developer&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
 <li><a href="#_asynchronous_event_handling_with_examples">Asynchronous Event Handling with Examples</a>
 <ul class="sectlevel1">
-<li><a href="#globus-async">GT 6.0: Asynchronous Event Handling</a>
+<li><a href="#globus-async">GCT 6.0: Asynchronous Event Handling</a>
 <ul class="sectlevel2">
 <li><a href="#examples">Examples</a></li>
 <li><a href="#EventModels">Event Models</a></li>
@@ -444,12 +444,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_further_reading">Further Reading</a></li>
 </ul>
 </li>
-<li><a href="#globus-async-example1">GT 6.0: Asynchronous Event Handling: Example 1</a></li>
-<li><a href="#globus-async-example2">GT 6.0: Asynchronous Event Handling: Example 2</a></li>
-<li><a href="#globus-async-example3">GT 6.0: Asynchronous Event Handling: Example 3</a></li>
+<li><a href="#globus-async-example1">GCT 6.0: Asynchronous Event Handling: Example 1</a></li>
+<li><a href="#globus-async-example2">GCT 6.0: Asynchronous Event Handling: Example 2</a></li>
+<li><a href="#globus-async-example3">GCT 6.0: Asynchronous Event Handling: Example 3</a></li>
 </ul>
 </li>
-<li><a href="#public-interfaces">Appendix A: Globus Toolkit 6.0 Public Interface Guides</a></li>
+<li><a href="#public-interfaces">Appendix A: Grid Community Toolkit 6.0 Public Interface Guides</a></li>
 </ul>
 </div>
 </div>
@@ -463,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Please note that the Best Practices need to be updated for GT6 and are not being published at this time.</p>
+<p>Please note that the Best Practices need to be updated for GCT 6 and are not being published at this time.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -480,7 +480,7 @@ Following are some docs you should be familiar with as well:</p>
 <p><a href="../../admin/quickstart/index.html">Quickstart</a></p>
 </li>
 <li>
-<p>All GT command line clients are listed <a href="../commands/index.html">here</a>.</p>
+<p>All GCT command line clients are listed <a href="../commands/index.html">here</a>.</p>
 </li>
 </ul>
 </div>
@@ -490,12 +490,12 @@ Following are some docs you should be familiar with as well:</p>
 </div>
 <h1 id="_asynchronous_event_handling_with_examples" class="sect0">Asynchronous Event Handling with Examples</h1>
 <div class="sect1">
-<h2 id="globus-async">GT 6.0: Asynchronous Event Handling</h2>
+<h2 id="globus-async">GCT 6.0: Asynchronous Event Handling</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>The Globus Toolkit contains several APIs written in C for creating grid
+<p>The Grid Community Toolkit contains several APIs written in C for creating grid
 applications. Each of these components is built on a coherent
 asynchronous event model. This text will introduce and explain the
 philosophy behind the model and its basic concepts.</p>
@@ -524,7 +524,7 @@ demonstrates a more complex use of the asynchronous event model</p>
 <div class="sect2">
 <h3 id="EventModels">Event Models</h3>
 <div class="paragraph">
-<p>The Globus Toolkit uses an <strong>asynchronous event model</strong>. Details of this
+<p>The Grid Community Toolkit uses an <strong>asynchronous event model</strong>. Details of this
 model are contained in the remainder of this text but it will be helpful
 to take a few examples of other popular models.</p>
 </div>
@@ -534,7 +534,7 @@ user interfaces (GUIs), IO, or inter-process signaling, must implement
 some event model. Events are characterized by changes in the environment
 at an undetermined time. There are several different popular models used
 to handle such events. We provide examples of them here, and then
-describe in detail the asynchronous event model used by the Globus
+describe in detail the asynchronous event model used by the Grid Community
 Toolkit.</p>
 </div>
 <div class="sect3">
@@ -639,14 +639,14 @@ processing. In this model, programs are designed as a series of events
 rather than a serial execution of instructions. A programmer registers
 events and when they occur the necessary processing is done. Additional
 events may then be registered and the program goes back to waiting for
-events. This is the approach taken by the Globus Toolkit.</p>
+events. This is the approach taken by the Grid Community Toolkit.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="CallbackLibrary">Callback Library</h3>
 <div class="paragraph">
-<p>The heart of the Globus event model is the callback library. This API
+<p>The heart of the GCT event model is the callback library. This API
 provides a user with functionality for asynchronous time events. In
 order to use the API for events, the user must implement a function (the
 callback) that is called when the event has occurred and processes it.</p>
@@ -674,12 +674,12 @@ specified by delay_time has expired.</p>
 </div>
 <div class="paragraph">
 <p>The more interesting of the two is globus_poll(). Semantically this
-function is used to briefly turn control over to the Globus event system
+function is used to briefly turn control over to the GCT event system
 for processing. What this means is that globus_poll() must be called
-often enough for the Globus event system to function. This is recognized
+often enough for the GCT event system to function. This is recognized
 as a rather ambiguous statement. Therefore, a look at what happens with
 globus_poll() should assist in explanation. In threaded builds of
-Globus this globus_poll() simply results in a call to
+GCT this globus_poll() simply results in a call to
 thread_yield() where control can be switched to a background thread
 dedicated to event processing. In non-threaded builds, a list of events
 is maintained by the system. A call to globus_poll() finds ready
@@ -693,7 +693,7 @@ after 1 second has elapsed.</p>
 </div>
 <div class="paragraph">
 <p>In a non-threaded build, there is a single thread of execution. In the
-main loop, the call to globus_poll() invokes the Globus event
+main loop, the call to globus_poll() invokes the GCT event
 process code. The code checks internal data structures for any ready
 events. If found, the user callbacks associated with the events will be
 called in the same call stack.</p>
@@ -701,11 +701,11 @@ called in the same call stack.</p>
 <div class="paragraph">
 <p>In a threaded build a user would see two threads (possibly more, but for
 the sake of clarity two will be used): the main thread that is executing
-the loop in main() and an internal Globus thread that is handling
-polling of events. The Globus thread is created when the user calls
+the loop in main() and an internal GCT thread that is handling
+polling of events. The GCT thread is created when the user calls
 globus_module_activate(GLOBUS_COMMON_MODULE). This function must be
 called before any API function in the the globus_common package can
-be used. This is another common theme in Globus: all modules must be
+be used. This is another common theme in GCT: all modules must be
 activated before use and deactivated when finished. The event thread
 polls all events and as they become ready the functions associated with
 them are dispatched.</p>
@@ -727,8 +727,8 @@ more complicated example of this see <a href="#globus-async-example2">Example
 <div class="sect2">
 <h3 id="ThreadAbstraction">Thread Abstraction</h3>
 <div class="paragraph">
-<p>The first thing to look at in understanding the Globus event model is
-the thread abstraction layer. Globus can be built in a variety of ways
+<p>The first thing to look at in understanding the GCT event model is
+the thread abstraction layer. GCT can be built in a variety of ways
 with regard to the underlying thread system. It can be built with
 pthreads, win32 threads, or non threaded depending on the user&#8217;s
 preferences and the available packages on the system. All builds present
@@ -793,15 +793,15 @@ calls signal().</p>
 to the underlying thread package.</p>
 </div>
 <div class="paragraph">
-<p>The notable exception is the non-threaded build. The Globus Toolkit has
+<p>The notable exception is the non-threaded build. The Grid Community Toolkit has
 created a non-threaded, semantically equivalent implementation of all
 the functions described above (and of most in the pthreads API) with the
 exception of globus_thread_create(). In the non-threaded case this
 is a no-op. However the model of asynchronous programming used in the
-Globus Toolkit, globus_thread_create() is rarely needed or used.</p>
+Grid Community Toolkit, globus_thread_create() is rarely needed or used.</p>
 </div>
 <div class="paragraph">
-<p>In the Globus model, the callback code and the thread abstraction are
+<p>In the GCT model, the callback code and the thread abstraction are
 coupled. <a href="#globus-async-example2">Example 2</a> shows how this coupling
 works:</p>
 </div>
@@ -928,7 +928,7 @@ for the program to end.</p>
 question is: <strong>They never should</strong>. This answer is of course a bit
 naive. There will be times when blocking in a callback is the only
 solution, and there will be even more times when it is the chosen
-solution, albeit the wrong one. Therefore, the Globus Toolkit does have
+solution, albeit the wrong one. Therefore, the Grid Community Toolkit does have
 mechanisms to allow this. That said, a user should make every effort to
 find alternative solutions to blocking in event callbacks. If the only
 solution is to block in a callback it could be an indication that the
@@ -940,7 +940,7 @@ function: void globus_thread_blocking_will_block(); If
 globus_cond_wait() is called, this function is implied.</p>
 </div>
 <div class="paragraph">
-<p>In the threaded build of Globus there is a background thread that
+<p>In the threaded build of GCT there is a background thread that
 handles the polling of events and dispatching of the handler functions.
 When a handler function blocks, it prevents this process.
 globus_thread_blocking_will_block() starts a new thread to handle
@@ -969,9 +969,9 @@ run through of any ready events.</p>
 <div class="sect2">
 <h3 id="Conclusion">Conclusion</h3>
 <div class="paragraph">
-<p>The Globus Toolkit is middleware for the grid. Because grid
+<p>The Grid Community Toolkit is middleware for the grid. Because grid
 infrastructure often depends heavily on both push and pull notifications
-(remote events), the callback style event handling model the Globus
+(remote events), the callback style event handling model the Grid Community
 Toolkit provides is essential. It allows entire APIs within the toolkit
 to be designed with asynchronous functions that use the event handling
 model. Once an API provides that asynchronous functionality (such as
@@ -982,13 +982,13 @@ events efficiently, instead of stopping execution until one is received,
 or managing multiple threads.</p>
 </div>
 <div class="paragraph">
-<p>In the Globus Toolkit, because of the thread abstraction it provides,
+<p>In the Grid Community Toolkit, because of the thread abstraction it provides,
 threads are managed by the underlying code base, so that the developer
 can be ignorant of using threads but still be able to get their
 benefits, simply by specifying a compile time switch. Overall, this
 flexibility is quite powerful, which is why we encourage the use of this
 model when designing and developing your own software components using
-the Globus Toolkit.</p>
+the Grid Community Toolkit.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1015,7 +1015,7 @@ Programming with Events</a></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="globus-async-example1">GT 6.0: Asynchronous Event Handling: Example 1</h2>
+<h2 id="globus-async-example1">GCT 6.0: Asynchronous Event Handling: Example 1</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">
@@ -1070,7 +1070,7 @@ main(
 </div>
 </div>
 <div class="sect1">
-<h2 id="globus-async-example2">GT 6.0: Asynchronous Event Handling: Example 2</h2>
+<h2 id="globus-async-example2">GCT 6.0: Asynchronous Event Handling: Example 2</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">
@@ -1146,7 +1146,7 @@ main(
 </div>
 </div>
 <div class="sect1">
-<h2 id="globus-async-example3">GT 6.0: Asynchronous Event Handling: Example 3</h2>
+<h2 id="globus-async-example3">GCT 6.0: Asynchronous Event Handling: Example 3</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">
@@ -1292,10 +1292,10 @@ main(
 </div>
 </div>
 <div class="sect1">
-<h2 id="public-interfaces">Appendix A: Globus Toolkit 6.0 Public Interface Guides</h2>
+<h2 id="public-interfaces">Appendix A: Grid Community Toolkit 6.0 Public Interface Guides</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This page contains links to each GT 6.0 component&#8217;s Public Interfaces
+<p>This page contains links to each GCT 6.0 component&#8217;s Public Interfaces
 Guide.</p>
 </div>
 <div class="ulist">
@@ -1342,7 +1342,7 @@ Guide.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:28:33 CST
 </div>
 </div>
 </body>

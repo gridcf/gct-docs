@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Globus Toolkit 6.0 Key Concepts</title>
+<title>Grid Community Toolkit 6.0 Key Concepts</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,24 +427,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Globus Toolkit 6.0 Key Concepts</h1>
+<h1>Grid Community Toolkit 6.0 Key Concepts</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#gridftpKey">GT 6.0 GridFTP Key Concepts</a>
+<li><a href="#gridftpKey">GCT 6.0 GridFTP Key Concepts</a>
 <ul class="sectlevel2">
 <li><a href="#gridftp-key-advantages">GridFTP Protocol</a></li>
 <li><a href="#globus-gridftp">Globus Implementation of GridFTP</a></li>
 <li><a href="#gridftp-clients">GridFTP Clients</a></li>
 </ul>
 </li>
-<li><a href="#gram5Key">GT 6.0 GRAM5 Key Concepts</a>
+<li><a href="#gram5Key">GCT 6.0 GRAM5 Key Concepts</a>
 <ul class="sectlevel2">
 <li><a href="#gram5-key-concepts">Conceptual details</a></li>
-<li><a href="#gram5-approach">GT 6.0 GRAM5 Approach</a></li>
+<li><a href="#gram5-approach">GCT 6.0 GRAM5 Approach</a></li>
 </ul>
 </li>
-<li><a href="#gsicKey">GT 6.0 GSI C Security: Key Concepts</a>
+<li><a href="#gsicKey">GCT 6.0 GSI C Security: Key Concepts</a>
 <ul class="sectlevel2">
 <li><a href="#gsic-key-concepts">Conceptual Details</a></li>
 <li><a href="#gsic-key-relateddocs">Related Documents</a></li>
@@ -455,7 +455,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="gridftpKey">GT 6.0 GridFTP Key Concepts</h2>
+<h2 id="gridftpKey">GCT 6.0 GridFTP Key Concepts</h2>
 <div class="sectionbody">
 <div id="gridftp-key-overview" class="openblock">
 <div class="title">Overview</div>
@@ -504,12 +504,12 @@ working group. Key features include:</p>
 <div class="content">
 <div class="paragraph">
 <p>The GridFTP protocol provides for the secure, robust, fast and efficient
-transfer of (especially bulk) data. The Globus Toolkit provides the most
+transfer of (especially bulk) data. The Grid Community Toolkit provides the most
 commonly used implementation of that protocol, though others do exist
 (primarily tied to proprietary internal systems).</p>
 </div>
 <div class="paragraph">
-<p>The Globus Toolkit provides:</p>
+<p>The Grid Community Toolkit provides:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -525,7 +525,7 @@ commonly used implementation of that protocol, though others do exist
 </ul>
 </div>
 <div class="paragraph">
-<p>While the Globus Toolkit does not provide a client with Graphical User
+<p>While the Grid Community Toolkit does not provide a client with Graphical User
 Interface (GUI), <a href="http://www.globusonline.org">Globus Online</a> provides a
 web GUI for GridFTP data movement.</p>
 </div>
@@ -557,7 +557,7 @@ provides automatic fault recovery and automatic tuning of optimization
 parameters to achieve high performance.</p>
 </div>
 <div class="paragraph">
-<p>The Globus Toolkit provides a GridFTP client called globus-url-copy,
+<p>The Grid Community Toolkit provides a GridFTP client called globus-url-copy,
 a command line interface, suitable for scripting. For example, the
 following command:</p>
 </div>
@@ -595,13 +595,13 @@ Globus Striped GridFTP Framework and Server</a></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gram5Key">GT 6.0 GRAM5 Key Concepts</h2>
+<h2 id="gram5Key">GCT 6.0 GRAM5 Key Concepts</h2>
 <div class="sectionbody">
 <div id="gram5-key-overview" class="openblock">
 <div class="title">Overview</div>
 <div class="content">
 <div class="paragraph">
-<p>The Globus Toolkit provides GRAM5: a service to submit, monitor, and
+<p>The Grid Community Toolkit provides GRAM5: a service to submit, monitor, and
 cancel jobs on Grid computing resources. In GRAM, a job consists of a
 computation and, optionally, file transfer and management operations
 related to the computation. Some users, particularly interactive ones,
@@ -707,7 +707,7 @@ from abuse or malfunction.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="gram5-approach">GT 6.0 GRAM5 Approach</h3>
+<h3 id="gram5-approach">GCT 6.0 GRAM5 Approach</h3>
 <div class="sect3">
 <h4 id="gram5-approach-intro">Introduction</h4>
 <div class="paragraph">
@@ -720,7 +720,7 @@ following the POSIX programming and security model.</p>
 <h4 id="gram5-approach-approach">Component architecture approach</h4>
 <div class="paragraph">
 <p>GRAM5&#8217;s job management services interact with local resource managers
-(LRMs) and other service components of GT 6.0 in order to support job
+(LRMs) and other service components of GCT 6.0 in order to support job
 execution with coordinated file staging.</p>
 </div>
 <div class="sect4">
@@ -782,7 +782,7 @@ without an LRM.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gsicKey">GT 6.0 GSI C Security: Key Concepts</h2>
+<h2 id="gsicKey">GCT 6.0 GSI C Security: Key Concepts</h2>
 <div class="sectionbody">
 <div id="gsic-key-overview" class="openblock">
 <div class="title">Overview</div>
@@ -1014,7 +1014,7 @@ communication, but not as large an overhead as encryption.</p>
 <div class="sect3">
 <h4 id="gsic-key-securingprivatekeys">Securing Private Keys</h4>
 <div class="paragraph">
-<p>The core GSI software provided by the Globus Toolkit expects the user&#8217;s
+<p>The core GSI software provided by the Grid Community Toolkit expects the user&#8217;s
 private key to be stored in a file in the local computer&#8217;s storage. To
 prevent other users of the computer from stealing the private key, the
 file that contains the key is encrypted via a password (also known as a
@@ -1118,7 +1118,7 @@ through the owner.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:29:13 CST
 </div>
 </div>
 </body>

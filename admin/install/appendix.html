@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>GT 6.0 Installation Appendix</title>
+<title>GCT 6.0 Installation Appendix</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,9 +430,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#_gt_6_0_installation_appendix">GT 6.0 Installation Appendix</a>
+<li><a href="#_gct_6_0_installation_appendix">GCT 6.0 Installation Appendix</a>
 <ul class="sectlevel1">
-<li><a href="#gtadmin-advanced-build">Advanced Installation for GT 6.0</a>
+<li><a href="#gtadmin-advanced-build">Advanced Installation for GCT 6.0</a>
 <ul class="sectlevel2">
 <li><a href="#gtadmin-install-nondefault">Advanced Installation</a></li>
 </ul>
@@ -440,10 +440,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#gtadmin-packaging">Packaging details</a>
 <ul class="sectlevel2">
 <li><a href="#gtadmin-makefile">The makefile</a></li>
-<li><a href="#_linking_with_globus_toolkit_libraries">Linking with Globus Toolkit Libraries</a></li>
+<li><a href="#_linking_with_grid_community_toolkit_libraries">Linking with Grid Community Toolkit Libraries</a></li>
 </ul>
 </li>
-<li><a href="#gtadmin-env-var">Environment Variables in GT 6.0</a>
+<li><a href="#gtadmin-env-var">Environment Variables in GCT 6.0</a>
 <ul class="sectlevel2">
 <li><a href="#_common_runtime_environmental_variables">Common Runtime Environmental Variables</a></li>
 <li><a href="#_security_environmental_variables">Security Environmental Variables</a></li>
@@ -460,7 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#gtadmin-troubleshooting">Troubleshooting your installation</a></li>
 <li><a href="#gtadmin-config-details">Detailed Configuration by Component</a></li>
-<li><a href="#gtadmin-sec-considerations">Security Considerations in GT 6.0</a>
+<li><a href="#gtadmin-sec-considerations">Security Considerations in GCT 6.0</a>
 <ul class="sectlevel2">
 <li><a href="#gtadmin-sec-consid-common-runtime">Common Runtime</a></li>
 <li><a href="#gtadmin-sec-consid-security">Security</a></li>
@@ -485,9 +485,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <?dbhtml filename="appendix.html" ?>
 </div>
 </div>
-<h1 id="_gt_6_0_installation_appendix" class="sect0">GT 6.0 Installation Appendix</h1>
+<h1 id="_gct_6_0_installation_appendix" class="sect0">GCT 6.0 Installation Appendix</h1>
 <div class="sect1">
-<h2 id="gtadmin-advanced-build">Advanced Installation for GT 6.0</h2>
+<h2 id="gtadmin-advanced-build">Advanced Installation for GCT 6.0</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">
@@ -502,8 +502,8 @@ installation sections of component documentation.</p>
 <div class="sect3">
 <h4 id="gtadmin-install-build-git">Building from Git</h4>
 <div class="paragraph">
-<p>The Globus Toolkit is available for download from github. See
-<a href="https://github.com/globus/globus-toolkit/tree/globus%5f6%5fbranch">https://github.com/globus/globus-toolkit/tree/globus_6_branch</a>
+<p>The Grid Community Toolkit is available for download from github. See
+<a href="https://github.com/gridcf">https://github.com/gridcf</a>
 to branch or checkout the toolkit source code.</p>
 </div>
 <div class="paragraph">
@@ -592,14 +592,14 @@ $ make gridftp install</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_linking_with_globus_toolkit_libraries">Linking with Globus Toolkit Libraries</h3>
+<h3 id="_linking_with_grid_community_toolkit_libraries">Linking with Grid Community Toolkit Libraries</h3>
 <div class="paragraph">
 <p>Since GT 2.0, the toolkit has included a script called
 globus-makefile-header that can be used to assemble the cflags and link
 line information when linking a program with libraries included in the
 toolkit. This script would walk the package metadata dependency tree to
 ensure that all needed flags were included, without duplicates. This
-method worked, and continues to work in GT 6.0, but we consider it to be
+method worked, and continues to work in GCT 6.0, but we consider it to be
 obsolete, as we have added support for using link:
 <a href="http://www.freedesktop.org/wiki/Software/pkg-config">pkg-config</a></p>
 </div>
@@ -617,7 +617,7 @@ globus-ftp-client library, for example, you could</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Each Globus Toolkit library has a pkg-config metadata file that is
+<p>Each Grid Community Toolkit library has a pkg-config metadata file that is
 installed as part of its devel package.</p>
 </div>
 <div class="paragraph">
@@ -629,7 +629,7 @@ homepage.</a></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-env-var">Environment Variables in GT 6.0</h2>
+<h2 id="gtadmin-env-var">Environment Variables in GCT 6.0</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_common_runtime_environmental_variables">Common Runtime Environmental Variables</h3>
@@ -683,11 +683,11 @@ to descriptions of the more common driver environment variables:</p>
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Set this variable to the path where the Globus Toolkit is installed, so that Globus tools can find libraries and data files. This is only needed if the Globus Toolkit was built with the source installer.</p>
+<p>Set this variable to the path where the Grid Community Toolkit is installed, so that GCT tools can find libraries and data files. This is only needed if the Grid Community Toolkit was built with the source installer.</p>
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_THREAD_MODEL</strong></dt>
 <dd>
-<p>Set to the name of a thread model to control the operation of the Globus event driver. Valid values are (depending on the platform) none for non-threaded operation (the default), pthread for POSIX threads, or windows for Windows threads.</p>
+<p>Set to the name of a thread model to control the operation of the GCT event driver. Valid values are (depending on the platform) none for non-threaded operation (the default), pthread for POSIX threads, or windows for Windows threads.</p>
 </dd>
 </dl>
 </div>
@@ -1095,7 +1095,7 @@ described below may be useful.</p>
 <div class="paragraph">
 <p>SimpleCA can be installed in three ways, from a debian package, from an
 RPM package, and from the source installer. These installation methods
-are described in <a href="../../admin/install/index.html">Installing GT 6.0</a>.</p>
+are described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>.</p>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from binary packages, install the packages
@@ -1156,7 +1156,7 @@ done.</p>
 <h4 id="_create_simpleca_administrator_account">Create SimpleCA Administrator Account</h4>
 <div class="paragraph">
 <p>Create a user to adminster the SimpleCA. You can use the the
-<strong>globus</strong> user you used to build Globus, or another user that you
+<strong>globus</strong> user you used to build GCT, or another user that you
 create. For the purposes of this document, we&#8217;ll assume a user named
 <strong>simpleca</strong>. Log in to that user, and run the
 <strong>grid-ca-create</strong> command. This will prompt for information needed
@@ -1767,7 +1767,7 @@ detailed configuration for each component.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-sec-considerations">Security Considerations in GT 6.0</h2>
+<h2 id="gtadmin-sec-considerations">Security Considerations in GCT 6.0</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="gtadmin-sec-consid-common-runtime">Common Runtime</h3>
@@ -1822,7 +1822,7 @@ of the names being compared may contain the hyphen character in the host name.</
 </table>
 </div>
 <div class="paragraph">
-<p>In GT 6.0, it is possible to disable this behavior, by setting the enviornment variable GLOBUS_GSSAPI_NAME_COMPATIBILITY to STRICT_RFC2818.</p>
+<p>In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable GLOBUS_GSSAPI_NAME_COMPATIBILITY to STRICT_RFC2818.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2351,7 +2351,7 @@ the collection of usage statistics.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:02:56 CST
 </div>
 </div>
 </body>

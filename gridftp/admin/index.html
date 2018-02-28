@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>GT 6.0 GridFTP : System Administrator&#8217;s Guide</title>
+<title>GCT 6.0 GridFTP : System Administrator&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,7 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gridftpAdmin" class="book toc2 toc-left">
 <div id="header">
-<h1>GT 6.0 GridFTP : System Administrator&#8217;s Guide</h1>
+<h1>GCT 6.0 GridFTP : System Administrator&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -500,7 +500,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#globus-gridftp-server-setup-chroot">GLOBUS-GRIDFTP-SERVER-SETUP-CHROOT(8)</a></li>
 </ul>
 </li>
-<li><a href="#gridftp-SRB">Appendix B: GT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</a>
+<li><a href="#gridftp-SRB">Appendix B: GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</a>
 <ul class="sectlevel2">
 <li><a href="#gridftp-SRB-intro">Introduction</a></li>
 <li><a href="#gridftp-SRB-architecture">Architecture</a></li>
@@ -541,9 +541,9 @@ server in some standard configurations.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This information is in addition to the basic Globus Toolkit prerequisite,
+<p>This information is in addition to the basic Grid Community Toolkit prerequisite,
 overview, installation, security configuration instructions in the
-<a href="../../admin/install/index.html">Installing GT 6.0</a>. Read through this guide
+<a href="../../admin/install/index.html">Installing GCT 6.0</a>. Read through this guide
 before continuing!</p>
 </div>
 <div class="openblock">
@@ -562,14 +562,14 @@ before continuing!</p>
 <div class="sect2">
 <h3 id="gridftp-building-installing">Building and Installing GridFTP</h3>
 <div class="paragraph">
-<p>GridFTP is built and installed as part of a default GT 6.0 installation.
+<p>GridFTP is built and installed as part of a default GCT 6.0 installation.
 For basic installation instructions, see
-<a href="../../admin/install/index.html">Installing GT 6.0</a>. No extra installation
+<a href="../../admin/install/index.html">Installing GCT 6.0</a>. No extra installation
 steps are
 required for this component.</p>
 </div>
 <div class="paragraph">
-<p>If you wish to install GridFTP without installing the rest of the Globus
+<p>If you wish to install GridFTP without installing the rest of the Grid Community
 Toolkit, follow the instructions in the above link but just use the
 group install target 'globus-gridftp' with Linux native packages and
 make target 'gridftp' (make gridftp) with source installer.</p>
@@ -582,7 +582,7 @@ make target 'gridftp' (make gridftp) with source installer.</p>
 </div>
 <div class="paragraph">
 <p>If you wish to build and install a statically linked set of GridFTP
-binaries from the source installer, follow the instructions on GT
+binaries from the source installer, follow the instructions on GCT
 installation from the source installer in the link above but use the
 following for configure and make:</p>
 </div>
@@ -600,7 +600,7 @@ following for configure and make:</p>
 <div class="sect2">
 <h3 id="gridftp-admin-installing-threaded">Enabling Threading in GridFTP</h3>
 <div class="paragraph">
-<p>In GT 6.0 the GridFTP server and the client 'globus-url-copy' are
+<p>In GCT 6.0 the GridFTP server and the client 'globus-url-copy' are
 non-threaded by default. To enable threading, set the environment
 variable 'GLOBUS_THREAD_MODEL=pthread'. On the server, threading can be
 enabled using command-line option '-threads 1' as well.</p>
@@ -1712,7 +1712,7 @@ available. This can be done in the GridFTP server by using the option:</p>
 <div class="content">
 <div class="paragraph">
 <p>It is assumed that the toolkit installation was successful. For more
-information, see the <a href="../../admin/install/index.html">Installing GT 6.0</a>.
+information, see the <a href="../../admin/install/index.html">Installing GCT 6.0</a>.
 Also be sure
 to reference <a href="#gridftp-configuring">Configuring GridFTP</a> and
 <a href="../../gridftp/admin/index.html#globus-gridftp-server"><strong>globus-gridftp-server</strong></a>.</p>
@@ -1725,7 +1725,7 @@ to reference <a href="#gridftp-configuring">Configuring GridFTP</a> and
 <p></p>
 </div>
 <div class="paragraph">
-<p>UDT is bundled with Globus starting with Globus v4.2, so downloading UDT
+<p>UDT is bundled with GCT starting with Globus v4.2, so downloading UDT
 separately is no longer needed.</p>
 </div>
 <div class="sect3">
@@ -2020,7 +2020,7 @@ modules:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In the GT 6.0 implementation, the data transform module and the DSI have
+<p>In the GCT 6.0 implementation, the data transform module and the DSI have
 been merged, although we plan to have separate, chainable, data
 transform modules in the future.</p>
 </div>
@@ -2101,10 +2101,10 @@ DSIs for GridFTP</a> for more information.</p>
 <p>GridFTP can be used as a network interface to existing Data Storage
 Interfaces (DSIs) using the '-dsi' option. With this option the DSI
 plugs into the backend (compatible with striping) and is transparent to
-the client or remote party. It can be used with either the GT standard
+the client or remote party. It can be used with either the GCT standard
 DSI plugins or with
 <a href="../../gridftp/developer/index.html#gridftp-developer-dsi">custom-built
-DSI plugins</a>. The standard DSI plugins available in a default GT
+DSI plugins</a>. The standard DSI plugins available in a default GCT
 installation are:</p>
 </div>
 <div class="ulist">
@@ -3680,7 +3680,7 @@ directory than the default [/etc/grid-security/certificates].</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gridftp-SRB">Appendix B: GT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</h2>
+<h2 id="gridftp-SRB">Appendix B: GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="gridftp-SRB-intro">Introduction</h3>
@@ -3726,7 +3726,7 @@ components:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Globus Toolkit</strong> - You need the GridFTP distributed with GT (compatible with 4.0.1 or later). You can find that <a href="http://www.globus.org/toolkit/downloads/{$version}/">here</a>.</p>
+<p><strong>Grid Community Toolkit</strong> - You need the GridFTP distributed with GT or GCT (compatible with 4.0.1 or later). You can find that <a href="http://www.globus.org/toolkit/downloads/{$version}/">here</a>.</p>
 </li>
 <li>
 <p><strong>SRB Client 3.4.0</strong> - You only need the client libraries to build the SRB-DSI, but you will need access to a running SRB server and resource. You can find the client libraries <a href="http://www.sdsc.edu/srb/tarfiles/main.html">here</a>.</p>
@@ -3740,14 +3740,14 @@ components:</p>
 <div class="sect2">
 <h3 id="gridftp-SRB-building">Building</h3>
 <div class="paragraph">
-<p>Instructions for building <a href="../../admin/install/index.html">Globus</a>
+<p>Instructions for building <a href="../../admin/install/index.html">GCT</a>
 and <a href="http://www.sdsc.edu/srb">SRB</a> are well documented in the above links.
 The following sections describe one way of building these two packages.
 However, if any questions or errors are discovered, the reader should
 look to the above links for solutions.</p>
 </div>
 <div class="sect3">
-<h4 id="gridftp-SRB-building-globus">Building Globus</h4>
+<h4 id="gridftp-SRB-building-globus">Building GCT</h4>
 <div class="paragraph">
 <p>Download the source installer, choose a path on your filesystem for your
 GLOBUS_LOCATION, and run the following:</p>
@@ -4255,7 +4255,7 @@ master_args = -M 512M
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 14:47:53 CST
+Last updated 2018-02-28 16:50:49 CST
 </div>
 </div>
 </body>

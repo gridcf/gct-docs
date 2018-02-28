@@ -574,9 +574,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Introduction</div>
 <div class="content">
 <div class="paragraph">
-<p>Authentication in the Globus Toolkit is based on X.509 certificates.
+<p>Authentication in the Grid Community Toolkit is based on X.509 certificates.
 This document describes how to acquire and use the certificates that you
-will need to authenticate yourself to Globus services.</p>
+will need to authenticate yourself to GCT services.</p>
 </div>
 </div>
 </div>
@@ -595,7 +595,7 @@ will need to authenticate yourself to Globus services.</p>
 <li>
 <p>Acquire a user certificate from a certification authority (CA) with <a href="../../gsic/user/index.html#grid-cert-request">grid-cert-request</a>. This certificate will typically be valid for a year or more and will be stored in a file in the individual&#8217;s home directory.</p>
 <div class="paragraph">
-<p>It is important to keep in mind when your cert will expire - after your user certificate expires, you may not be able to use secure services in GT!</p>
+<p>It is important to keep in mind when your cert will expire - after your user certificate expires, you may not be able to use secure services in GCT!</p>
 </div>
 </li>
 <li>
@@ -1144,7 +1144,7 @@ ca@grid.example.org</pre>
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Path to the directory containing the Globus Toolkit. This is searched if neither the X509_CERT_DIR nor the GRID_SECURITY_DIR environment variables are set.</p>
+<p>Path to the directory containing the Grid Community Toolkit. This is searched if neither the X509_CERT_DIR nor the GRID_SECURITY_DIR environment variables are set.</p>
 </dd>
 </dl>
 </div>
@@ -1315,7 +1315,7 @@ linking /etc/grid-security/certificates/grid-user-ssl.conf.cd1186ff  to
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
 <dd>
-<p>Path to the Globus Toolkit installation directory.</p>
+<p>Path to the Grid Community Toolkit installation directory.</p>
 </dd>
 </dl>
 </div>
@@ -2334,7 +2334,7 @@ procedures to get a new one.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The permissions may be wrong on your proxy
 file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your proxy file are too lax (for
-example, if others can read your proxy file), Globus Toolkit
+example, if others can read your proxy file), Grid Community Toolkit
 clients will not use that file to authenticate.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You can "fix" this problem by changing the permissions on
 the file or by destroying it (with <a href="gsic/pi/index.html#grid-proxy-destroy">grid-proxy-destroy</a>) and creating a new one (with <a href="gsic/pi/index.html#grid-proxy-init">grid-proxy-init</a>).</p>
@@ -2516,7 +2516,7 @@ to report that user are not authorized:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 13:28:12 CST
+Last updated 2018-02-28 16:57:52 CST
 </div>
 </div>
 </body>
