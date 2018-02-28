@@ -425,9 +425,119 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="gram5Developer" class="book">
+<body id="gram5Developer" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 GRAM5: Developer&#8217;s Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_introduction">Introduction</a>
+<ul class="sectlevel1">
+<li><a href="#gram5-developer-beforeyoubegin">Before you begin</a>
+<ul class="sectlevel2">
+<li><a href="#gram5-features">Feature summary</a></li>
+<li><a href="#gram5-platforms">Tested platforms</a></li>
+<li><a href="#gram5-compatibility">Backward compatibility summary</a></li>
+<li><a href="#gram5-dependencies">Technology dependencies</a></li>
+<li><a href="#gram5-security-considerations">Security Considerations</a></li>
+</ul>
+</li>
+<li><a href="#gram5-developer-concepts">GRAM5 Concepts for Developers</a>
+<ul class="sectlevel2">
+<li><a href="#gram5-developer-concepts-blocking">Blocking and Nonblocking Function Variants</a></li>
+<li><a href="#_service_contact_strings">Service Contact Strings</a></li>
+<li><a href="#gram5-developer-jobstatecallbacks">Job State Callbacks and Polling</a></li>
+<li><a href="#_credential_management">Credential Management</a></li>
+<li><a href="#_rsl">RSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_gram_client_developer_s_guide">GRAM Client Developer&#8217;s Guide</a>
+<ul class="sectlevel1">
+<li><a href="#gram5-developer-scenarios">Basic GRAM Client Scenarios</a>
+<ul class="sectlevel2">
+<li><a href="#_ping_a_job_manager">"Ping" a Job Manager</a></li>
+<li><a href="#_check_a_job_manager_version">Check a Job Manager Version</a></li>
+<li><a href="#_submitting_a_job">Submitting a Job</a></li>
+<li><a href="#_submitting_a_job_and_processing_job_state_callbacks">Submitting a Job and Processing Job State Callbacks</a></li>
+<li><a href="#_polling_job_status">Polling Job Status</a></li>
+<li><a href="#_canceling_a_job">Canceling a Job</a></li>
+<li><a href="#_refreshing_job_credential">Refreshing Job Credential</a></li>
+</ul>
+</li>
+<li><a href="#gram5-developer-scenarios-advanced">Advanced GRAM Client Scenarios</a>
+<ul class="sectlevel2">
+<li><a href="#_non_blocking_job_submission">Non-blocking Job Submission</a></li>
+<li><a href="#_custom_security_attributes">Custom Security Attributes</a></li>
+<li><a href="#_modifying_rsl">Modifying RSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_gram_server_developer_s_guide">GRAM Server Developer&#8217;s Guide</a>
+<ul class="sectlevel1">
+<li><a href="#gram5-developer-lrm-adapter-tutorial">LRM Adapter Tutorial</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction_2">Introduction</a></li>
+<li><a href="#_parts_of_a_gram5_lrm_adapter">Parts of a GRAM5 LRM Adapter</a></li>
+<li><a href="#gram5-lrma-tutorial-rvf">RSL Validation File</a></li>
+<li><a href="#_configuration_file">Configuration File</a></li>
+<li><a href="#gram5-lrma-tutorial-perl">LRM Adapter Perl Module</a></li>
+<li><a href="#gram5-developer-lrm-adapter-tutorial-seg">LRM SEG Module</a></li>
+<li><a href="#gram5-lrma-tutorial-perl-changes">Changes from Previous Versions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_gram5_developer_s_reference">GRAM5 Developer&#8217;s Reference</a>
+<ul class="sectlevel1">
+<li><a href="#gram5-apis">APIs</a>
+<ul class="sectlevel2">
+<li><a href="#_c_api_documentation_links">C API Documentation Links</a></li>
+<li><a href="#_gram5_perl_api_reference">GRAM5 Perl API Reference</a></li>
+<li><a href="#Globus::GRAM::Error">GLOBUS::GRAM::ERROR(3pm)</a></li>
+<li><a href="#Globus::GRAM::JobDescription">GLOBUS::GRAM::JOBDESCRIPTION(3pm)</a></li>
+<li><a href="#Globus::GRAM::JobManager">GLOBUS::GRAM::JOBMANAGER(3pm)</a></li>
+<li><a href="#Globus::GRAM::JobSignal">GLOBUS::GRAM::JOBSIGNAL(3pm)</a></li>
+<li><a href="#Globus::GRAM::JobState">GLOBUS::GRAM::JOBSTATE(3pm)</a></li>
+</ul>
+</li>
+<li><a href="#gram5-rsl">RSL Specification v1.1</a>
+<ul class="sectlevel2">
+<li><a href="#gram5-rsl-syntax-overview">RSL Syntax Overview</a></li>
+<li><a href="#gram5-rsl-tokenization-overview">RSL Tokenization Overview</a></li>
+<li><a href="#gram5-rsl-substitution-semantics">RSL Substitution Semantics</a></li>
+<li><a href="#gram5-rsl-attribute-summary">RSL Attribute Summary</a></li>
+<li><a href="#gram5-rsl-examples">Simple RSL Examples</a></li>
+<li><a href="#gram5-rsl-grammar-and-tokenization-rules">RSL grammar and tokenization rules</a></li>
+</ul>
+</li>
+<li><a href="#gram5-debugging">Debugging</a>
+<ul class="sectlevel2">
+<li><a href="#_basic_debugging_methods">Basic Debugging Methods</a></li>
+<li><a href="#_advanced_debugging_methods">Advanced Debugging Methods</a></li>
+</ul>
+</li>
+<li><a href="#gram5-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#gram5-troubleshooting-client">GRAM Client Troubleshooting</a></li>
+<li><a href="#gram5-troubleshooting-admin">Admin Troubleshooting</a></li>
+<li><a href="#gram5-error-codes">Errors</a></li>
+</ul>
+</li>
+<li><a href="#gram5-developer-protocols">Semantics and syntax of protocols</a>
+<ul class="sectlevel2">
+<li><a href="#gram5-interface-protocol">GRAM5 Protocol</a></li>
+</ul>
+</li>
+<li><a href="#gram5-developer-relateddocs">Related Documentation</a></li>
+<li><a href="#gram5-developer-internal-components">Internal Components</a></li>
+</ul>
+</li>
+<li><a href="#gram5-developer-index">Index</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -8277,7 +8387,7 @@ transitions. These states and their meanings follow:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 13:28:12 CST
 </div>
 </div>
 </body>

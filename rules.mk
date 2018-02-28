@@ -13,7 +13,7 @@ endif
 CLEANFILES = $(HTML_FILES) $(PDF_FILES)
 
 ADOC_TO_PDF = asciidoctor-pdf -d book -o $@ $<
-ADOC_TO_HTML = asciidoctor -d book -o $@ $<
+ADOC_TO_HTML = asciidoctor --attribute=toc=left@ -d book -o $@ $<
 CONCAT_PDFS = gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=$@ $(filter %.pdf,$^)
 
 # default rule

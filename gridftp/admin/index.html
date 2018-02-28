@@ -425,9 +425,104 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="gridftpAdmin" class="book">
+<body id="gridftpAdmin" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 GridFTP : System Administrator&#8217;s Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#gridftp-admin-installing">Building and Installing</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-building-installing">Building and Installing GridFTP</a></li>
+<li><a href="#gridftp-admin-installing-static-gridftp">Building and Installing a static GridFTP server</a></li>
+<li><a href="#gridftp-admin-installing-threaded">Enabling Threading in GridFTP</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-configuring">Configuring GridFTP</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-config-overview">GridFTP server configuration overview</a></li>
+<li><a href="#gridftp-config-types">Typical configuration</a></li>
+<li><a href="#gridftp-config-security-firewalls">Firewall requirements</a></li>
+<li><a href="#gridftp-admin-config-security">Configuring Security for GridFTP</a></li>
+<li><a href="#_strong_globus_gridftp_server_strong_quickstart"><strong>globus-gridftp-server</strong> quickstart</a></li>
+<li><a href="#_enabling_file_sharing_with_globus_sharing_service">Enabling File Sharing with Globus Sharing Service</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-tuning">Key Admin Settings and Tuning Recommendations</a>
+<ul class="sectlevel2">
+<li><a href="#_concurrent_instances">Concurrent Instances</a></li>
+<li><a href="#_disk_block_size">Disk Block Size</a></li>
+<li><a href="#_host_tuning">Host Tuning</a></li>
+<li><a href="#_data_interface">Data Interface</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-advanced">Advanced Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-config-udt">Configuring GridFTP to use UDT instead of TCP</a></li>
+<li><a href="#gridftp-admin-separated">Separation of Processes (Split Process)</a></li>
+<li><a href="#gridftp-admin-striped">Configuring GridFTP for Cluster-to-Cluster (or Striped) data movement</a></li>
+<li><a href="#combo-striped-split">Combining Split Process and Striped configuration</a></li>
+<li><a href="#chroot-gridftp">Configuring chrooted GridFTP server</a></li>
+<li><a href="#gridftp-admin-server-gfork">Running with GFork Master Plugin</a></li>
+<li><a href="#gridftp-user-access">Accessing data from other data interfaces</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-experimental">Experimental Features</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-config-netlogger">Configuring GridFTP to enable Netlogger&#8217;s bottleneck detection</a></li>
+<li><a href="#gridftp-config-multi">Configuring multicasting/broadcasting</a></li>
+<li><a href="#gridftp-admin-gwtftp">GridFTP Where There Is FTP (GWTFTP)</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-testing">Testing</a></li>
+<li><a href="#gridftp-admin-debugging">Debugging</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-logging">Logging</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-error-codes">Error Codes in GridFTP</a></li>
+<li><a href="#_establish_control_channel_connection">Establish control channel connection</a></li>
+<li><a href="#_try_running_globus_url_copy">Try running globus-url-copy</a></li>
+<li><a href="#_if_your_server_starts">If your server starts&#8230;&#8203;</a></li>
+<li><a href="#gridftp-troubleshooting-latency">High latency for GridFTP server connections</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-usage">Usage statistics collection by the Globus Alliance</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-usage-stats">GridFTP-specific usage statistics</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-command">Appendix A: GridFTP Admin Tool</a>
+<ul class="sectlevel2">
+<li><a href="#_globus_gridftp_server_8">GLOBUS-GRIDFTP-SERVER(8)</a></li>
+<li><a href="#globus-gridftp-server-setup-chroot">GLOBUS-GRIDFTP-SERVER-SETUP-CHROOT(8)</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-SRB">Appendix B: GT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-SRB-intro">Introduction</a></li>
+<li><a href="#gridftp-SRB-architecture">Architecture</a></li>
+<li><a href="#gridftp-SRB-software">Software</a></li>
+<li><a href="#gridftp-SRB-building">Building</a></li>
+<li><a href="#gridftp-SRB-administration">Administration</a></li>
+<li><a href="#gridftp-SRB-running">Running</a></li>
+<li><a href="#gridftp-SRB-seealso">See Also</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-gfork-master">Appendix C: Running the Globus GridFTP Server With GFork</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-gfork-master-intro">Introduction</a></li>
+<li><a href="#gridftp-gfork-master-use-case">Use Cases</a></li>
+<li><a href="#gridftp-gfork-config">Configuration</a></li>
+<li><a href="#gridftp-gfork-striped">GFork and Striped Servers</a></li>
+<li><a href="#gridftp-gfork-memory-mgt">GFork with Memory Management</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-admin-index">Index</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -4160,7 +4255,7 @@ master_args = -M 512M
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 14:47:53 CST
 </div>
 </div>
 </body>

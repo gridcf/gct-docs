@@ -425,9 +425,84 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="xioDeveloper" class="book">
+<body id="xioDeveloper" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 XIO : Developer&#8217;s Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#xio-developer-beforeyoubegin">Before you begin</a>
+<ul class="sectlevel2">
+<li><a href="#xio-features">Feature summary</a></li>
+<li><a href="#xio-platforms">Tested platforms</a></li>
+<li><a href="#xio-compatibility">Backward compatibility summary</a></li>
+<li><a href="#xio-dependencies">Technology dependencies</a></li>
+<li><a href="#xio-security-considerations">Security considerations for XIO</a></li>
+</ul>
+</li>
+<li><a href="#x-xio-user-quick-start">Using the Globus XIO API for IO operations within C programs</a>
+<ul class="sectlevel2">
+<li><a href="#x-xio-user-quick-start-Introduction-quick">Introduction</a></li>
+<li><a href="#x-xio-user-quick-start-ActivateGlobus">Activate Globus</a></li>
+<li><a href="#x-xio-user-quick-start-LoadDriver">Load Driver</a></li>
+<li><a href="#x-xio-user-quick-start-CreateStack">Create Stack</a></li>
+<li><a href="#x-xio-user-quick-start-OpeningHandle">Opening Handle</a></li>
+<li><a href="#x-xio-user-quick-start-PayOff">Pay Off</a></li>
+</ul>
+</li>
+<li><a href="#x-xio-driver-quick-start">Driver Quick Start</a>
+<ul class="sectlevel2">
+<li><a href="#x-xio-driver-quick-start-Introduction-quick">Introduction</a></li>
+<li><a href="#x-xio-driver-quick-start-dataStructure">Data Structures</a></li>
+<li><a href="#x-xio-driver-quick-start-attributes">Attributes</a></li>
+<li><a href="#x-xio-driver-quick-start-target">Target</a></li>
+<li><a href="#x-xio-driver-quick-start-handle">Handle</a></li>
+<li><a href="#x-xio-driver-quick-start-IO-Operations">IO Operations</a></li>
+<li><a href="#x-xio-driver-quick-start-glue">The Glue</a></li>
+</ul>
+</li>
+<li><a href="#xio-developer-tutorials">Tutorials</a></li>
+<li><a href="#xio-developer-archdes">Architecture and design overview</a>
+<ul class="sectlevel2">
+<li><a href="#x-xio-driver-quick-start-Introduction-arch">Introduction</a></li>
+<li><a href="#x-xio-driver-quick-start-Framework">Framework</a></li>
+<li><a href="#x-xio-driver-quick-start-Drivers">Drivers</a></li>
+<li><a href="#x-xio-driver-quick-start-Example">Example</a></li>
+<li><a href="#x-xio-driver-quick-start-Driver-Interface">Driver Interface</a></li>
+</ul>
+</li>
+<li><a href="#xio-apis">XIO APIs</a>
+<ul class="sectlevel2">
+<li><a href="#_programming_model_overview">Programming Model Overview</a></li>
+<li><a href="#_component_api">Component API</a></li>
+</ul>
+</li>
+<li><a href="#xio-developer-env">Environment Variable Interface</a>
+<ul class="sectlevel2">
+<li><a href="#xio-env-var">Environmental variables for XIO</a></li>
+</ul>
+</li>
+<li><a href="#xio-developer-debugging">Debugging</a></li>
+<li><a href="#xio-admin-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#_set_globus_location_correctly">Set GLOBUS_LOCATION correctly</a></li>
+<li><a href="#xio-error-codes">Errors</a></li>
+</ul>
+</li>
+<li><a href="#xio-developer-relateddocs">Related Documentation</a></li>
+<li><a href="#xio-driver-addons">Appendix A: Add on</a>
+<ul class="sectlevel2">
+<li><a href="#xio-drivers-addon-intro">Introduction</a></li>
+<li><a href="#xio-driver-udt_ref">UDT Reference Implementation Driver</a></li>
+<li><a href="#xio-driver-token_bucket">Bandwidth Limiting Driver</a></li>
+<li><a href="#xio-driver-popen">Pipe Open Driver</a></li>
+<li><a href="#xio-driver-bidi">Bidirectional Driver</a></li>
+<li><a href="#xio-driver-netlog">Netlogger Driver</a></li>
+<li><a href="#xio-driver-skeleton">Skeleton Driver</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -1853,7 +1928,7 @@ additional drivers. It does nothing but pass operations along the stack</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 13:28:12 CST
 </div>
 </div>
 </body>

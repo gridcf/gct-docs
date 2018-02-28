@@ -425,9 +425,84 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="simplecaAdmin" class="book">
+<body id="simplecaAdmin" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 SimpleCA: Admin Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#simpleca-admin-introduction">Introduction</a></li>
+<li><a href="#simpleca-admin-guide">Simple CA Administration Guide</a>
+<ul class="sectlevel1">
+<li><a href="#simpleca-admin-installing">1. Building and Installing</a>
+<ul class="sectlevel2">
+<li><a href="#simpleca-users">1.1. Create users</a></li>
+<li><a href="#simpleca-install">1.2. Install SimpleCA</a></li>
+</ul>
+</li>
+<li><a href="#simpleca-create-ca">2. Creating a SimpleCA</a>
+<ul class="sectlevel2">
+<li><a href="#_create_simpleca_administrator_account">2.1. Create SimpleCA Administrator Account</a></li>
+<li><a href="#_invoking_strong_grid_ca_create_strong">2.2. Invoking <strong>grid-ca-create</strong></a></li>
+<li><a href="#simpleca-subjectname">2.3. Configure the subject name</a></li>
+<li><a href="#simpleca-email">2.4. Configure the CA&#8217;s email</a></li>
+<li><a href="#simpleca-expiration">2.5. Configure the expiration date</a></li>
+<li><a href="#simpleca-passphrase">2.6. Create a Passphrase to Encrypt the CA&#8217;s Private Key</a></li>
+<li><a href="#simpleca-packageoutput">2.7. SimpleCA Distribution Files</a></li>
+<li><a href="#simpleca-binarypkgs">2.8. Generating Binary CA Packages</a></li>
+</ul>
+</li>
+<li><a href="#simplecaAdmin-using">3. Using a SimpleCA</a>
+<ul class="sectlevel2">
+<li><a href="#_examining_a_certificate_request">3.1. Examining a Certificate Request</a></li>
+<li><a href="#_signing_a_certificate_request">3.2. Signing a Certificate Request</a></li>
+<li><a href="#_revoking_a_certificate">3.3. Revoking a Certificate</a></li>
+<li><a href="#_renewing_a_ca">3.4. Renewing a CA</a></li>
+</ul>
+</li>
+<li><a href="#simpleca-admin-security_considerations">4. Security Considerations</a>
+<ul class="sectlevel2">
+<li><a href="#simpleca-security_considerations">4.1. Security considerations for SimpleCA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#simpleca-cmd">Simple CA Commands</a>
+<ul class="sectlevel1">
+<li><a href="#grid-ca-create">5. GRID-CA-CREATE(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name">5.1. NAME</a></li>
+<li><a href="#_synopsis">5.2. SYNOPSIS</a></li>
+<li><a href="#_description">5.3. Description</a></li>
+<li><a href="#_examples">5.4. Examples</a></li>
+<li><a href="#_environment_variables">5.5. Environment Variables</a></li>
+<li><a href="#_see_also">5.6. See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-ca-package">6. GRID-CA-PACKAGE(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_2">6.1. NAME</a></li>
+<li><a href="#_synopsis_2">6.2. SYNOPSIS</a></li>
+<li><a href="#_description_2">6.3. Description</a></li>
+<li><a href="#_examples_2">6.4. Examples</a></li>
+<li><a href="#_environment_variables_2">6.5. Environment Variables</a></li>
+<li><a href="#_see_also_2">6.6. See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-ca-sign">7. GRID-CA-SIGN(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_3">7.1. NAME</a></li>
+<li><a href="#_synopsis_3">7.2. SYNOPSIS</a></li>
+<li><a href="#_description_3">7.3. Description</a></li>
+<li><a href="#_examples_3">7.4. Examples</a></li>
+<li><a href="#_environment_variables_3">7.5. Environment Variables</a></li>
+<li><a href="#_see_also_3">7.6. See Also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
@@ -1437,7 +1512,7 @@ grid-ca-package(1)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 14:48:47 CST
 </div>
 </div>
 </body>

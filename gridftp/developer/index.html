@@ -425,9 +425,133 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="gridftpDeveloper" class="book">
+<body id="gridftpDeveloper" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 GridFTP : Developer&#8217;s Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#gridftp-developer-beforeyoubegin">Before you begin</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-featuresummary">Feature Summary</a></li>
+<li><a href="#gridftp-tested-platforms">Tested platforms</a></li>
+<li><a href="#gridftp-backward-compatibility">Backward compatibility summary</a></li>
+<li><a href="#gridftp-tech-dependencies">Technology dependencies</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-scenarios">Usage Scenarios</a></li>
+<li><a href="#gridftp-developer-tutorials">Tutorials</a></li>
+<li><a href="#gridftp-developer-Spec">Command Specifications</a></li>
+<li><a href="#gridftp-developer-archdes">Architecture and design overview</a>
+<ul class="sectlevel2">
+<li><a href="#_gridftp_listening">GridFTP Listening</a></li>
+<li><a href="#_gridftp_transfer">GridFTP Transfer</a></li>
+<li><a href="#_gridftp_server_and_dsis">GridFTP Server and DSIs</a></li>
+<li><a href="#_latest_information_about_hpss">Latest information about HPSS</a></li>
+<li><a href="#_latest_information_about_srb">Latest information about SRB</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-api-summary">API Summary</a>
+<ul class="sectlevel2">
+<li><a href="#_programming_model_overview">Programming Model Overview</a></li>
+<li><a href="#_component_api">Component API</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-commandline">GridFTP Commands</a>
+<ul class="sectlevel1">
+<li><a href="#globus-url-copy">GLOBUS-URL-COPY(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name">NAME</a></li>
+<li><a href="#globus-url-copy-SYNOPSIS">SYNOPSIS</a></li>
+<li><a href="#globus-url-copy-DESCRIPTION">DESCRIPTION</a></li>
+<li><a href="#globus-url-copy-OPTIONS">OPTIONS</a></li>
+<li><a href="#globus-url-copy-AUTHOR">AUTHOR</a></li>
+</ul>
+</li>
+<li><a href="#globus-url-copy-interactiveclients">Interactive clients for GridFTP</a></li>
+<li><a href="#gridftp-command-server">GLOBUS-GRIDFTP-SERVER(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_2">NAME</a></li>
+<li><a href="#_synopsis">SYNOPSIS</a></li>
+<li><a href="#_description">DESCRIPTION</a></li>
+<li><a href="#_options">OPTIONS</a></li>
+<li><a href="#_exit_status">EXIT STATUS</a></li>
+</ul>
+</li>
+<li><a href="#globus-gridftp-server-setup-chroot">GLOBUS-GRIDFTP-SERVER-SETUP-CHROOT(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_3">NAME</a></li>
+<li><a href="#_synopsis_2">SYNOPSIS</a></li>
+<li><a href="#_description_2">DESCRIPTION</a></li>
+<li><a href="#_options_2">OPTIONS</a></li>
+<li><a href="#_exit_status_2">EXIT STATUS</a></li>
+<li><a href="#_author">AUTHOR</a></li>
+<li><a href="#_see_also">SEE ALSO</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-guis">Graphical User Interface</a>
+<ul class="sectlevel2">
+<li><a href="#_globus_online">Globus Online</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-configuring">Configuring GridFTP</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-config-overview">GridFTP server configuration overview</a></li>
+<li><a href="#gridftp-config-types">Typical configuration</a></li>
+<li><a href="#gridftp-config-security-firewalls">Firewall requirements</a></li>
+<li><a href="#gridftp-admin-config-security">Configuring Security for GridFTP</a></li>
+<li><a href="#_strong_globus_gridftp_server_strong_quickstart"><strong>globus-gridftp-server</strong> quickstart</a></li>
+<li><a href="#_enabling_file_sharing_with_globus_sharing_service">Enabling File Sharing with Globus Sharing Service</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-env-var">Environment variable interface</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-env-var">Environment variables for GridFTP</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-debugging">Debugging</a></li>
+<li><a href="#gridftp-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-error-codes">Error Codes in GridFTP</a></li>
+<li><a href="#_establish_control_channel_connection">Establish control channel connection</a></li>
+<li><a href="#_try_running_globus_url_copy">Try running globus-url-copy</a></li>
+<li><a href="#_if_your_server_starts">If your server starts&#8230;&#8203;</a></li>
+<li><a href="#gridftp-troubleshooting-latency">High latency for GridFTP server connections</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-relateddocs">Related Documentation</a></li>
+<li><a href="#gridftp-developer-dcsc-spec">DCSC Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_dcsc_command">DCSC Command</a></li>
+<li><a href="#dcsc-p">DCSC P</a></li>
+<li><a href="#_dcsc_d">DCSC D</a></li>
+<li><a href="#_security_considerations">Security Considerations</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-dsi">Developing DSIs for GridFTP</a>
+<ul class="sectlevel2">
+<li><a href="#_dsi_interface">DSI Interface</a></li>
+<li><a href="#_dsi_utility_api">DSI utility API</a></li>
+<li><a href="#_implementation">Implementation</a></li>
+<li><a href="#_dsi_bones">DSI Bones</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-multicast-driver">GridFTP Multicast</a>
+<ul class="sectlevel2">
+<li><a href="#_architecture">Architecture</a></li>
+<li><a href="#_globus_xio">Globus XIO</a></li>
+<li><a href="#gridftp-multicast-networkoverlay-arch">Network Overlay</a></li>
+<li><a href="#_results">Results</a></li>
+<li><a href="#_protocol_details">Protocol Details</a></li>
+<li><a href="#_usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-developer-index">Index</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -4769,7 +4893,7 @@ list it.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 13:28:12 CST
 </div>
 </div>
 </body>

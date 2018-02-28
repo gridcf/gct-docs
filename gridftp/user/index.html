@@ -425,9 +425,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="gridftpUser" class="book">
+<body id="gridftpUser" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 GridFTP: User&#8217;s Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#gridftp-user-quickstart">Using GridFTP for Data Movement</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-user-quickstart-building">GridFTP clients</a></li>
+<li><a href="#gridftp-user-quickstart-config">Configuring the GridFTP client</a></li>
+<li><a href="#gridftp-user-basic">Basic procedure for using globus-url-copy</a></li>
+<li><a href="#gridftp-user-ftp">Using standard FTP clients with GridFTP server</a></li>
+<li><a href="#gridftp-user-advanced">Advanced Features</a></li>
+<li><a href="#gridftp-user-experimental">Experimental Features</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-user-command">GridFTP Client Tools</a>
+<ul class="sectlevel2">
+<li><a href="#globus-url-copy">GLOBUS-URL-COPY(1)</a></li>
+<li><a href="#globus-url-copy-interactiveclients">Interactive clients for GridFTP</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-guis">Graphical User Interface</a>
+<ul class="sectlevel2">
+<li><a href="#_globus_online">Globus Online</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-error-codes">Error Codes in GridFTP</a></li>
+<li><a href="#_establish_control_channel_connection">Establish control channel connection</a></li>
+<li><a href="#_try_running_globus_url_copy">Try running globus-url-copy</a></li>
+<li><a href="#_if_your_server_starts">If your server starts&#8230;&#8203;</a></li>
+<li><a href="#gridftp-troubleshooting-latency">High latency for GridFTP server connections</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-usage">Usage statistics collection by the Globus Alliance</a>
+<ul class="sectlevel2">
+<li><a href="#gridftp-usage-stats">GridFTP-specific usage statistics</a></li>
+</ul>
+</li>
+<li><a href="#gridftp-user-index">Index</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -2012,7 +2053,7 @@ the collection of usage statistics.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 13:28:12 CST
 </div>
 </div>
 </body>

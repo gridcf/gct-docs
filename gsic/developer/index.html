@@ -425,9 +425,182 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="gsicDeveloper" class="book">
+<body id="gsicDeveloper" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0 GSI C: Developer&#8217;s Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#gsic-developer-beforeyoubegin">Before you begin</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-features">Feature summary</a></li>
+<li><a href="#gsic-platforms">Tested platforms</a></li>
+<li><a href="#gsic-compatibility">Backward compatibility summary</a></li>
+<li><a href="#gsic-dependencies">Technology dependencies</a></li>
+<li><a href="#gsic-security-considerations">Security considerations for GSI C</a></li>
+</ul>
+</li>
+<li><a href="#gsic-developer-scenarios">Usage scenarios</a></li>
+<li><a href="#gsic-developer-tutorials">Tutorials</a></li>
+<li><a href="#gsic-developer-archdes">Architecture and design overview</a>
+<ul class="sectlevel2">
+<li><a href="#_authentication">Authentication</a></li>
+<li><a href="#_authorization">Authorization</a></li>
+</ul>
+</li>
+<li><a href="#gsic-apis">APIs</a></li>
+<li><a href="#gsic-protocol">Protocol Specifications</a>
+<ul class="sectlevel2">
+<li><a href="#_gsi_message_specification">GSI Message Specification</a></li>
+</ul>
+</li>
+<li><a href="#gsic-cmd">GSI Commands</a>
+<ul class="sectlevel1">
+<li><a href="#_globus_update_certificate_dir_8">GLOBUS-UPDATE-CERTIFICATE-DIR(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name">NAME</a></li>
+<li><a href="#_synopsis">SYNOPSIS</a></li>
+<li><a href="#_description">Description</a></li>
+<li><a href="#_environment">Environment</a></li>
+</ul>
+</li>
+<li><a href="#grid-cert-diagnostics">GRID-CERT-DIAGNOSTICS(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_2">NAME</a></li>
+<li><a href="#_synopsis_2">SYNOPSIS</a></li>
+<li><a href="#_description_2">Description</a></li>
+<li><a href="#_examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#grid-cert-info">GRID-CERT-INFO(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_3">NAME</a></li>
+<li><a href="#_synopsis_3">SYNOPSIS</a></li>
+<li><a href="#_description_3">Description</a></li>
+<li><a href="#_examples_2">Examples</a></li>
+<li><a href="#_environment_variables">Environment Variables</a></li>
+</ul>
+</li>
+<li><a href="#grid-cert-request">GRID-CERT-REQUEST(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_4">NAME</a></li>
+<li><a href="#_synopsis_4">SYNOPSIS</a></li>
+<li><a href="#_description_4">Description</a></li>
+<li><a href="#_examples_3">Examples</a></li>
+<li><a href="#_environment_variables_2">Environment Variables</a></li>
+<li><a href="#_files">Files</a></li>
+</ul>
+</li>
+<li><a href="#grid-default-ca">GRID-DEFAULT-CA(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_5">NAME</a></li>
+<li><a href="#_synopsis_5">SYNOPSIS</a></li>
+<li><a href="#_description_5">Description</a></li>
+<li><a href="#_examples_4">Examples</a></li>
+<li><a href="#_environment_variables_3">Environment Variables</a></li>
+<li><a href="#_bugs">Bugs</a></li>
+<li><a href="#_see_also">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-change-pass-phrase">GRID-CHANGE-PASS-PHRASE(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_6">NAME</a></li>
+<li><a href="#_synopsis_6">SYNOPSIS</a></li>
+<li><a href="#_description_6">Description</a></li>
+<li><a href="#_examples_5">Examples</a></li>
+<li><a href="#_environment_variables_4">Environment Variables</a></li>
+</ul>
+</li>
+<li><a href="#grid-proxy-init">GRID-PROXY-INIT(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_7">NAME</a></li>
+<li><a href="#_synopsis_7">SYNOPSIS</a></li>
+<li><a href="#_description_7">Description</a></li>
+<li><a href="#_examples_6">Examples</a></li>
+<li><a href="#_environment_variables_5">Environment Variables</a></li>
+<li><a href="#_files_2">Files</a></li>
+<li><a href="#_compatibility">Compatibility</a></li>
+<li><a href="#_see_also_2">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-proxy-destroy">GRID-PROXY-DESTROY(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_8">NAME</a></li>
+<li><a href="#_synopsis_8">SYNOPSIS</a></li>
+<li><a href="#_description_8">Description</a></li>
+<li><a href="#_environment_variables_6">Environment Variables</a></li>
+<li><a href="#_see_also_3">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-proxy-info">GRID-PROXY-INFO(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_9">NAME</a></li>
+<li><a href="#_synopsis_9">SYNOPSIS</a></li>
+<li><a href="#_description_9">Description</a></li>
+<li><a href="#_environment_variables_7">Environment Variables</a></li>
+<li><a href="#_see_also_4">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-mapfile-add-entry">GRID-MAPFILE-ADD-ENTRY(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_10">NAME</a></li>
+<li><a href="#_synopsis_10">SYNOPSIS</a></li>
+<li><a href="#_description_10">Description</a></li>
+<li><a href="#_examples_7">Examples</a></li>
+<li><a href="#_environment_variables_8">Environment Variables</a></li>
+<li><a href="#_files_3">Files</a></li>
+<li><a href="#_see_also_5">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-mapfile-check-consistency">GRID-MAPFILE-CHECK-CONSISTENCY(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_11">NAME</a></li>
+<li><a href="#_synopsis_11">SYNOPSIS</a></li>
+<li><a href="#_description_11">Description</a></li>
+<li><a href="#_examples_8">Examples</a></li>
+<li><a href="#_environment_variables_9">Environment Variables</a></li>
+<li><a href="#_files_4">Files</a></li>
+<li><a href="#_see_also_6">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-mapfile-delete-entry">GRID-MAPFILE-DELETE-ENTRY(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_12">NAME</a></li>
+<li><a href="#_synopsis_12">SYNOPSIS</a></li>
+<li><a href="#_description_12">Description</a></li>
+<li><a href="#_examples_9">Examples</a></li>
+<li><a href="#_environment_variables_10">Environment Variables</a></li>
+<li><a href="#_files_5">Files</a></li>
+<li><a href="#_see_also_7">See Also</a></li>
+</ul>
+</li>
+<li><a href="#gsic-configuring">Configuring GSI</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-configuring-global-security-parameters">Configuring Global Security Parameters</a></li>
+<li><a href="#gsic-configuring-trustCA">Configuring Globus to Trust a Particular Certificate Authority</a></li>
+<li><a href="#_configuring_globus_to_create_appropriate_certificate_requests">Configuring Globus to Create Appropriate Certificate Requests</a></li>
+<li><a href="#_requesting_service_certificates">Requesting Service Certificates</a></li>
+<li><a href="#setting-up-gridmap">Configuring Credential Mappings</a></li>
+<li><a href="#gsic-config-permissions">GSI File Permissions Requirements</a></li>
+</ul>
+</li>
+<li><a href="#gsic-developer-env">Environment variable interface</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-env-var">Environmental Variables for GSI C</a></li>
+</ul>
+</li>
+<li><a href="#gsic-developer-debugging">Debugging</a></li>
+<li><a href="#gsic-developer-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#security-credential-troubleshooting">Credential Troubleshooting</a></li>
+<li><a href="#security-gridmap-troubleshooting">Grid map Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#gsic-developer-relateddocs">Related Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -3825,7 +3998,7 @@ to report that user are not authorized:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 13:28:12 CST
 </div>
 </div>
 </body>

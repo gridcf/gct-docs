@@ -425,9 +425,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="gsicAdmin" class="book">
+<body id="gsicAdmin" class="book toc2 toc-left">
 <div id="header">
 <h1>GT 6.0: GSI C Admin Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#gsic-configuring">Configuring GSI</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-configuring-global-security-parameters">Configuring Global Security Parameters</a></li>
+<li><a href="#gsic-configuring-trustCA">Configuring Globus to Trust a Particular Certificate Authority</a></li>
+<li><a href="#_configuring_globus_to_create_appropriate_certificate_requests">Configuring Globus to Create Appropriate Certificate Requests</a></li>
+<li><a href="#_requesting_service_certificates">Requesting Service Certificates</a></li>
+<li><a href="#setting-up-gridmap">Configuring Credential Mappings</a></li>
+<li><a href="#gsic-config-permissions">GSI File Permissions Requirements</a></li>
+</ul>
+</li>
+<li><a href="#gsic-admin-testing">Testing</a></li>
+<li><a href="#gsic-admin-security_considerations">Security Considerations</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-security-considerations">Security considerations for GSI C</a></li>
+</ul>
+</li>
+<li><a href="#gsic-admin-debugging">Debugging</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-logging">Logging</a></li>
+</ul>
+</li>
+<li><a href="#gsic-admin-troubleshooting">Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#security-credential-troubleshooting">Credential Troubleshooting</a></li>
+<li><a href="#security-gridmap-troubleshooting">Grid map Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -1473,7 +1505,7 @@ to report that user are not authorized:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-28 11:42:20 CST
+Last updated 2018-02-28 13:28:12 CST
 </div>
 </div>
 </body>
