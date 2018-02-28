@@ -1,5 +1,6 @@
 [[gt]]
 :doctype: article
+:toc: macro
 = Grid Community Toolkit =
 
 The Grid Community Toolkit (GCT) is an open-source fork of the venerable link:http://toolkit.globus.org/toolkit[Globus Toolkit] created by the Globus Alliance.
