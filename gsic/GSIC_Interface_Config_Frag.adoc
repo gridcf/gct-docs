@@ -18,7 +18,7 @@ determine whether or not to trust certificates issued by a particular Certificat
 
 
 
-In general, Globus tools will look for a configuration file in a
+In general, GCT tools will look for a configuration file in a
 user-specific location first, and in a system-wide location if no
 user-specific file was found. The configuration commands described here
 may be run by administrators to create system-wide defaults and by
@@ -78,12 +78,12 @@ The NAME strings that are currently understood are
 
 
 [[gsic-configuring-trustCA]]
-=== Configuring Globus to Trust a Particular Certificate Authority ===
+=== Configuring GCT to Trust a Particular Certificate Authority ===
 
 
 ==== Trusted certificates directory ====
 
-The Globus tools will trust certificates issued by a CA if (and only if)
+The GCT tools will trust certificates issued by a CA if (and only if)
 it can find information about the CA in the trusted certificates
 directory.
 
@@ -118,7 +118,7 @@ The following two files must exist in the directory for each trusted CA:
     A configuration file defining the distinguished names of certificates
     signed by the CA.
 
-Globus components will honor a certificate only if: 
+GCT components will honor a certificate only if: 
 
 * its CA certificate exists (with the appropriate name) in the **TRUSTED_CA** directory, and
 
@@ -172,7 +172,7 @@ A repository of CA certificates that are widely used in academic and
 research settings can be found https://www.tacar.org/certs.html[here].
 
 
-=== Configuring Globus to Create Appropriate Certificate Requests ===
+=== Configuring GCT to Create Appropriate Certificate Requests ===
 
 The
 link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
@@ -322,16 +322,16 @@ grid-cert-request -help
 [[setting-up-gridmap]]
 === Configuring Credential Mappings ===
 
-Several Globus services map certificates to local unix usernames to be
+Several GCT services map certificates to local unix usernames to be
 used with unix services. The default implementation uses a gridmap file
 to map the distinguished name of the identity of the client's
 certificate to a local login name. Administrators can modify the
 contents of the gridmap file to control what certificate identities are
-allowed to access Globus services, as well as configure, via an
+allowed to access GCT services, as well as configure, via an
 environment variable, what gridmap file a particular service uses. 
 
 In addition to the identity-based mapping done via the gridmap file,
-administrators can configure Globus services to to use arbitrary mapping
+administrators can configure GCT services to to use arbitrary mapping
 functions. These may use other criteria, such as SAML assertions, to map
 a certificate to a local account, or may map certificates to temporary
 accounts. Administrators can install different mapping implementations

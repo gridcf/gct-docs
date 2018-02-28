@@ -1,9 +1,9 @@
 [[globus-async]]
-== GT 6.0: Asynchronous Event Handling ==
+== GCT 6.0: Asynchronous Event Handling ==
 
 
 --
-The Globus Toolkit contains several APIs written in C for creating grid
+The Grid Community Toolkit contains several APIs written in C for creating grid
 applications. Each of these components is built on a coherent
 asynchronous event model. This text will introduce and explain the
 philosophy behind the model and its basic concepts.
@@ -31,7 +31,7 @@ demonstrates a more complex use of the asynchronous event model
 [[EventModels]]
 === Event Models ===
 
-The Globus Toolkit uses an **asynchronous event model**. Details of this
+The Grid Community Toolkit uses an **asynchronous event model**. Details of this
 model are contained in the remainder of this text but it will be helpful
 to take a few examples of other popular models.
 
@@ -40,7 +40,7 @@ user interfaces (GUIs), IO, or inter-process signaling, must implement
 some event model. Events are characterized by changes in the environment
 at an undetermined time. There are several different popular models used
 to handle such events. We provide examples of them here, and then
-describe in detail the asynchronous event model used by the Globus
+describe in detail the asynchronous event model used by the Grid Community
 Toolkit.
 
 
@@ -147,13 +147,13 @@ processing. In this model, programs are designed as a series of events
 rather than a serial execution of instructions. A programmer registers
 events and when they occur the necessary processing is done. Additional
 events may then be registered and the program goes back to waiting for
-events. This is the approach taken by the Globus Toolkit.
+events. This is the approach taken by the Grid Community Toolkit.
 
 
 [[CallbackLibrary]]
 === Callback Library ===
 
-The heart of the Globus event model is the callback library. This API
+The heart of the GCT event model is the callback library. This API
 provides a user with functionality for asynchronous time events. In
 order to use the API for events, the user must implement a function (the
 callback) that is called when the event has occurred and processes it. 
@@ -181,12 +181,12 @@ The first function is fairly clear. It registers the callback
 specified by ++delay_time++ has expired. 
 
 The more interesting of the two is ++globus_poll()++. Semantically this
-function is used to briefly turn control over to the Globus event system
+function is used to briefly turn control over to the GCT event system
 for processing. What this means is that ++globus_poll()++ must be called
-often enough for the Globus event system to function. This is recognized
+often enough for the GCT event system to function. This is recognized
 as a rather ambiguous statement. Therefore, a look at what happens with
 ++globus_poll()++ should assist in explanation. In threaded builds of
-Globus this ++globus_poll()++ simply results in a call to
+GCT this ++globus_poll()++ simply results in a call to
 ++thread_yield()++ where control can be switched to a background thread
 dedicated to event processing. In non-threaded builds, a list of events
 is maintained by the system. A call to ++globus_poll()++ finds ready
@@ -198,18 +198,18 @@ is displayed. The function ++user_callback++ is registered for execution
 after 1 second has elapsed. 
 
 In a non-threaded build, there is a single thread of execution. In the
-main loop, the call to ++globus_poll()++ invokes the Globus event
+main loop, the call to ++globus_poll()++ invokes the GCT event
 process code. The code checks internal data structures for any ready
 events. If found, the user callbacks associated with the events will be
 called in the same call stack.
 
 In a threaded build a user would see two threads (possibly more, but for
 the sake of clarity two will be used): the main thread that is executing
-the loop in ++main()++ and an internal Globus thread that is handling
-polling of events. The Globus thread is created when the user calls
+the loop in ++main()++ and an internal GCT thread that is handling
+polling of events. The GCT thread is created when the user calls
 ++globus_module_activate(GLOBUS_COMMON_MODULE)++. This function must be
 called before any API function in the the ++globus_common++ package can
-be used. This is another common theme in Globus: all modules must be
+be used. This is another common theme in GCT: all modules must be
 activated before use and deactivated when finished. The event thread
 polls all events and as they become ready the functions associated with
 them are dispatched.
@@ -230,8 +230,8 @@ more complicated example of this see link:#globus-async-example2[Example
 [[ThreadAbstraction]]
 === Thread Abstraction ===
 
-The first thing to look at in understanding the Globus event model is
-the thread abstraction layer. Globus can be built in a variety of ways
+The first thing to look at in understanding the GCT event model is
+the thread abstraction layer. GCT can be built in a variety of ways
 with regard to the underlying thread system. It can be built with
 pthreads, win32 threads, or non threaded depending on the user's
 preferences and the available packages on the system. All builds present
@@ -292,14 +292,14 @@ calls ++signal()++.
 In most cases the thread layer abstraction is a very thin pass through
 to the underlying thread package. 
 
-The notable exception is the non-threaded build. The Globus Toolkit has
+The notable exception is the non-threaded build. The Grid Community Toolkit has
 created a non-threaded, semantically equivalent implementation of all
 the functions described above (and of most in the pthreads API) with the
 exception of ++globus_thread_create()++. In the non-threaded case this
 is a no-op. However the model of asynchronous programming used in the
-Globus Toolkit, ++globus_thread_create()++ is rarely needed or used.
+Grid Community Toolkit, ++globus_thread_create()++ is rarely needed or used.
 
-In the Globus model, the callback code and the thread abstraction are
+In the GCT model, the callback code and the thread abstraction are
 coupled. link:#globus-async-example2[Example 2] shows how this coupling
 works:
 
@@ -407,7 +407,7 @@ What happens if an event handler blocks? The correct answer to this
 question is: **They never should**. This answer is of course a bit
 naive. There will be times when blocking in a callback is the only
 solution, and there will be even more times when it is the chosen
-solution, albeit the wrong one. Therefore, the Globus Toolkit does have
+solution, albeit the wrong one. Therefore, the Grid Community Toolkit does have
 mechanisms to allow this. That said, a user should make every effort to
 find alternative solutions to blocking in event callbacks. If the only
 solution is to block in a callback it could be an indication that the
@@ -417,7 +417,7 @@ If an event callback is going to block, it must call the following
 function: ++void globus_thread_blocking_will_block();++ If
 ++globus_cond_wait()++ is called, this function is implied. 
 
-In the threaded build of Globus there is a background thread that
+In the threaded build of GCT there is a background thread that
 handles the polling of events and dispatching of the handler functions.
 When a handler function blocks, it prevents this process.
 ++globus_thread_blocking_will_block()++ starts a new thread to handle
@@ -442,9 +442,9 @@ run through of any ready events.
 [[Conclusion]]
 === Conclusion ===
 
-The Globus Toolkit is middleware for the grid. Because grid
+The Grid Community Toolkit is middleware for the grid. Because grid
 infrastructure often depends heavily on both push and pull notifications
-(remote events), the callback style event handling model the Globus
+(remote events), the callback style event handling model the Grid Community
 Toolkit provides is essential. It allows entire APIs within the toolkit
 to be designed with asynchronous functions that use the event handling
 model. Once an API provides that asynchronous functionality (such as
@@ -454,13 +454,13 @@ to implement a callback function to handle possibly many notification
 events efficiently, instead of stopping execution until one is received,
 or managing multiple threads. 
 
-In the Globus Toolkit, because of the thread abstraction it provides,
+In the Grid Community Toolkit, because of the thread abstraction it provides,
 threads are managed by the underlying code base, so that the developer
 can be ignorant of using threads but still be able to get their
 benefits, simply by specifying a compile time switch. Overall, this
 flexibility is quite powerful, which is why we encourage the use of this
 model when designing and developing your own software components using
-the Globus Toolkit.
+the Grid Community Toolkit.
 
 
 === Further Reading ===

@@ -1,6 +1,6 @@
 [[xio,XIO]]
 :doctype: article
-= GT 6.0: XIO =
+= GCT 6.0: XIO =
 
   
 include::XIO_Overview_Brief_Frag.adoc[]
@@ -11,7 +11,7 @@ include::XIO_Overview_Brief_Frag.adoc[]
 
 
 | link:admin/index.html[**Admin Guide**]
-| For system administrators and those installing, building and deploying GT.
+| For system administrators and those installing, building and deploying GCT.
   Contains information specific to the XIO.
   You should already have read the 
   link:../admin/index.html[**Installation Guide**] and 
@@ -40,7 +40,7 @@ include::XIO_Overview_Brief_Frag.adoc[]
 
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a
-  previous version of GT.  [link:mig/xioMigratingGuide.pdf[pdf]]
+  previous version of GT or GCT.  [link:mig/xioMigratingGuide.pdf[pdf]]
 
 | link:xio.pdf[**All XIO Guides (PDF only)**]
 | Includes all XIO guides except Public Interfaces (which is a

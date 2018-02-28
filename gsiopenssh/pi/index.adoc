@@ -1,7 +1,7 @@
 
 [[gsiopensshPI,Public Interface Guide]]
 :doctype: book
-= GT 6.0 Component Guide to Public Interfaces: GSI-OpenSSH =
+= GCT 6.0 Component Guide to Public Interfaces: GSI-OpenSSH =
 
   
 include::../Util_OpenSSH_Interface_Commandline_Frag.adoc[]

@@ -11,7 +11,7 @@ following prompts:
      Run this command as the **++myproxy++** user, on the **++elephant++** host. This user is created automatically when the **++myproxy-server++** package is installed.
 
 **++quser% ++, ++quser@donkey% ++**::
-     Run this command as the normal user account you are intending to interact with your Globus sevices, on the **++elephant++** or **++donkey++** hosts. In this document, we use the **++quser++** accout for this, but if you have another user, you can use it for that purpose.
+     Run this command as the normal user account you are intending to interact with your GCT sevices, on the **++elephant++** or **++donkey++** hosts. In this document, we use the **++quser++** accout for this, but if you have another user, you can use it for that purpose.
 
 
 Commands themselves will be typeset as **++run-this-command

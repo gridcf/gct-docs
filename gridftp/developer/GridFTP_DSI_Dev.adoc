@@ -165,7 +165,7 @@ stubbed-out functions with the necessary code specific to their needs.
 --------
 
 This command will generate the c source file. "dsi name" is the string
-that will be associated with the DSI. It must be unique to your Globus
+that will be associated with the DSI. It must be unique to your GCT
 installation. To load it into the server use the '-dsi ' option to the
 server.
 

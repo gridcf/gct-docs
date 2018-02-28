@@ -1,6 +1,6 @@
 [[gram5QP,Quality Profile]]
 :doctype: article
-= GT 6.0 GRAM5: Quality Profile =
+= GCT 6.0 GRAM5: Quality Profile =
 
   
 [[gram5-qp-test]]

@@ -1,4 +1,4 @@
-The Globus Toolkit GSI C component provides APIs and tools for
+The Grid Community Toolkit GSI C component provides APIs and tools for
 authentication, authorization and certificate management. The
 authentication API is built using Public Key Infrastructure (PKI)
 technologies, e.g. X.509 Certificates and TLS. In addition to

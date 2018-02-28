@@ -1,7 +1,7 @@
 
 [[gsicDeveloper,Developer's Guide]]
 :doctype: book
-= GT 6.0 GSI C: Developer's Guide =
+= GCT 6.0 GSI C: Developer's Guide =
 
   
 [[gsic-developer-introduction]]

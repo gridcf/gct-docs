@@ -157,7 +157,7 @@ The following environment variables affect the execution of
      Path to the directory containing SSL configuration files for generating certificate requests. This value is used if ++X509_CERT_DIR++ is not set.
 
 **++GLOBUS_LOCATION++**::
-     Path to the directory containing the Globus Toolkit. This is searched if neither the ++X509_CERT_DIR++ nor the ++GRID_SECURITY_DIR++ environment variables are set.
+     Path to the directory containing the Grid Community Toolkit. This is searched if neither the ++X509_CERT_DIR++ nor the ++GRID_SECURITY_DIR++ environment variables are set.
 
 
 

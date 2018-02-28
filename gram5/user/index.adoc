@@ -1,7 +1,7 @@
 
 [[gram5User,User's Guide]]
 :doctype: book
-= GT 6.0 GRAM5: User's Guide =
+= GCT 6.0 GRAM5: User's Guide =
 
   
 .Introduction
@@ -71,7 +71,7 @@ than services which require polling for job completion.
 === GRAM Client Tools ===
 
 There are a number of GRAM clients which can be used to interact with
-the GRAM service. The Globus Toolkit includes **++globusrun++**,
+the GRAM service. The Grid Community Toolkit includes **++globusrun++**,
 **++globus-job-submit++**, and **++globus-job-run++**. Other projects
 provide higher-level tools which can be used to manage large sets of
 jobs. 
@@ -711,7 +711,7 @@ manager and a job.
 
 [NOTE]
 --
-In GT 6.0, **++globusrun++** does not print any diagnostics when given
+In GCT 6.0, **++globusrun++** does not print any diagnostics when given
 the '-refresh-proxy' command-line option. Therefore, check the exit code
 as above to ensure that the refresh is successful. 
 

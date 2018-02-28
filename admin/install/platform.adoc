@@ -26,7 +26,7 @@ to set the ++LIBTOOLIZE++ environment variable to the path to the
 your path to regenerate the configurable scripts and Makefile.in files
 for the toolkit. 
 
-The Globus Toolki build requires the **++pkg-config++** package to be
+The Grid Community Toolkit build requires the **++pkg-config++** package to be
 installed. It is available from
 http://pkgconfig.freedesktop.org/releases/[freedesktop.org].
 Additionally, you'll need to set the environment variable

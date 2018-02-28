@@ -1,6 +1,6 @@
 [[gram5,GRAM5]]
 :doctype: article
-= GT 6.0 GRAM5 =
+= GCT 6.0 GRAM5 =
 
   
 include::GRAM5_Overview_Brief_Frag.adoc[]
@@ -12,11 +12,11 @@ The following guides are available for this component:
 [cols="2",frame="none"]
 |=======================================================================
 | link:key/index.html[**Key Concepts**]
-| For important general concepts about job management in Globus. Includes
+| For important general concepts about job management in GCT. Includes
     link:key/index.html#gram5-approach[GRAM5 Approach].
     [link:key/gram5KeyConcepts.pdf[pdf]]
 | link:admin/index.html[**Admin Guide**]
-| For system administrators and those installing, building and deploying GT.
+| For system administrators and those installing, building and deploying GCT.
     You should already have read the 
     link:../admin/index.html[Installation Guide] and 
     link:../admin/quickstart/index.html[Quickstart]
@@ -42,7 +42,7 @@ The following guides are available for this component:
     [link:qp/gram5QualityProfile.pdf[pdf]].
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
-    version of GT. [link:mig/gram5MigratingGuide.pdf[pdf]]
+    version of GT or GCT. [link:mig/gram5MigratingGuide.pdf[pdf]]
 | link:gram5.pdf[**All GRAM5 Guides (PDF only)**]
 | Includes all GRAM5 guides except Public Interfaces (which is a subset of
     the Developer's Guide)

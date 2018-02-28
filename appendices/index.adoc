@@ -1,10 +1,10 @@
 [[appendices,Appendices]]
 :doctype: article
-= GT 6.0: Appendices =
+= GCT 6.0: Appendices =
 
 --
-* link:commands/index.html[Globus Toolkit 6.0 Commandline Tools] [link:commands/gtCommands.pdf[PDF]]
-* link:developer/index.htmlGlobus Toolkit 6.0 Developer's Guide] [link:developer/gtDeveloperGuide.pdf[PDF]]
-* link:key/index.html[Globus Toolkit 6.0 Key Concepts] [link:key/gtKeyConcepts.pdf[PDF]]
-* link:mig/index.html[GT 6.0 Migrating Guides] [link:mig/gtMigratingGuide.pdf[PDF]]
+* link:commands/index.html[Grid Community Toolkit 6.0 Commandline Tools] [link:commands/gtCommands.pdf[PDF]]
+* link:developer/index.html[Grid Community Toolkit 6.0 Developer's Guide] [link:developer/gtDeveloperGuide.pdf[PDF]]
+* link:key/index.html[Grid Community Toolkit 6.0 Key Concepts] [link:key/gtKeyConcepts.pdf[PDF]]
+* link:mig/index.html[GCT 6.0 Migrating Guides] [link:mig/gtMigratingGuide.pdf[PDF]]
 --

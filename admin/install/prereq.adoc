@@ -6,13 +6,13 @@
 [[gtadmin-prereq]]
 === Required software ===
 
-To build the Globus Toolkit from the source installer, first download
+To build the Grid Community Toolkit from the source installer, first download
 the source from
 http://www.globus.org/toolkit/downloads/{$version}[download page], and
 be sure you have all of the following prerequisites installed. 
 
 This table shows specific package names (where available) for systems
-supported by GT 6.0: 
+supported by GCT 6.0: 
 
 [options='header']
 |=======================================================================

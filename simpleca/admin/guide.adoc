@@ -23,7 +23,7 @@ Make sure you have the following users on your machine:
 
 SimpleCA can be installed in three ways, from a debian package, from an
 RPM package, and from the source installer. These installation methods
-are described in link:../../admin/install/index.html[Installing GT 6.0].
+are described in link:../../admin/install/index.html[Installing GCT 6.0].
 
 To install SimpleCA from binary packages, install the packages
 **++globus-simple-ca++** and **++globus-gsi-cert-utils-progs++** and
@@ -75,7 +75,7 @@ done.
 === Create SimpleCA Administrator Account ===
 
 Create a user to adminster the SimpleCA. You can use the the
-**++globus++** user you used to build Globus, or another user that you
+**++globus++** user you used to build GCT, or another user that you
 create. For the purposes of this document, we'll assume a user named
 **++simpleca++**. Log in to that user, and run the
 **++grid-ca-create++** command. This will prompt for information needed

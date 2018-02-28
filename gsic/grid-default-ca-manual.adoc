@@ -101,7 +101,7 @@ The following environment variables affect the execution of
      Path to the default trusted certificate directory.
 
 **++GLOBUS_LOCATION++**::
-     Path to the Globus Toolkit installation directory.
+     Path to the Grid Community Toolkit installation directory.
 
 
 

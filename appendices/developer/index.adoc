@@ -1,12 +1,12 @@
 [[gtdeveloper]]
 :doctype: book
-= Globus Toolkit 6.0 Developer's Guide =
+= Grid Community Toolkit 6.0 Developer's Guide =
 
 .Introduction
 --
 [NOTE]
 --
-Please note that the Best Practices need to be updated for GT6 and are not being published at this time. 
+Please note that the Best Practices need to be updated for GCT 6 and are not being published at this time. 
 --
 
 You can download the link:gtDeveloperGuide.pdf[PDF version here].
@@ -17,7 +17,7 @@ Following are some docs you should be familiar with as well:
 
 * link:../../admin/quickstart/index.html[Quickstart]
 
-* All GT command line clients are listed link:../commands/index.html[here].
+* All GCT command line clients are listed link:../commands/index.html[here].
 
 --
 

@@ -1,6 +1,6 @@
 [[gridftpUser,User's Guide ]]
 :doctype: book
-= GT 6.0 GridFTP: User's Guide =
+= GCT 6.0 GridFTP: User's Guide =
 
   
 .Introduction
@@ -23,7 +23,7 @@ GUI, command line interface and a REST API for GridFTP data movement. It
 provides automatic fault recovery and automatic tuning of optimization
 parameters to achieve high performance. 
 
-The Globus Toolkit provides a GridFTP client called ++globus-url-copy++,
+The Grid Community Toolkit provides a GridFTP client called ++globus-url-copy++,
 a command line interface, suitable for scripting. For example, the
 following command:
 
@@ -35,7 +35,7 @@ globus-url-copy gsiftp://remote.host.edu/path/to/file
 would transfer a file from a remote host to the locally accessible path
 specified in the second URL.
 
-The Globus Toolkit also provides
+The Grid Community Toolkit also provides
 http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/index.html[FTP
 client libraries in C] and the
 http://www.globus.org/toolkit/jglobus/[jGlobus] provides Java client
@@ -218,7 +218,7 @@ globus-url-copy -vb -p 4 gsiftp://other.machine.my.edu/tmp/foo gsiftp://remote.m
 
 If you want more information and details on URLs and the
 link:../../gridftp/user/index.html#globus-url-copy-commandlineoptions[command
-line options], the link:../../gridftp/key/index.html[GT 6.0 GridFTP Key
+line options], the link:../../gridftp/key/index.html[GCT 6.0 GridFTP Key
 Concepts] gives basic
 definitions and an overview of the GridFTP protocol as well as our
 implementation of it.
@@ -467,7 +467,7 @@ include::../globus-url-copy.adoc[]
 [[globus-url-copy-interactiveclients]]
 === Interactive clients for GridFTP ===
 
-The Globus Project does **not** provide an interactive client for
+The Grid Community Toolkit does **not** contain an interactive client for
 GridFTP. Any normal FTP client will work with a GridFTP server, but it
 cannot take advantage of the advanced features of GridFTP. The
 interactive clients listed below take advantage of the advanced features

@@ -2,7 +2,7 @@
 [[xio-dependencies]]
 === Technology dependencies ===
 
-XIO depends on the following GT components:
+XIO depends on the following GCT components:
 
 
 

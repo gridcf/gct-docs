@@ -1,7 +1,7 @@
 
 [[myproxyPI,Public Interface Guide]]
 :doctype: book
-= GT 6.0 Component Guide to Public Interfaces: MyProxy =
+= GCT 6.0 Component Guide to Public Interfaces: MyProxy =
 
   
 include::../Cred_Mgmt_MyProxy_Interface_API_Frag.adoc[]

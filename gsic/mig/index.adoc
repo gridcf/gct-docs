@@ -1,6 +1,6 @@
 [[gsicMig,Migrating Guide]]
 :doctype: article
-= GT 6.0 Migrating Guide for GSI C =
+= GCT 6.0 Migrating Guide for GSI C =
 
   
 --

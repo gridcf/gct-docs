@@ -1,11 +1,11 @@
 [[gtadmin-before]]
 == Before you begin ==
 
-Before you start installing the Globus Toolkit 6.0, there are a few
+Before you start installing the Grid Community Toolkit 6.0, there are a few
 things you should consider. The toolkit contains several components, and
 you may only be interested in some of them. 
 
-The Globus Toolkit version 6.0 includes:
+The Grid Community Toolkit version 6.0 includes:
 
 * link:../../gsic/index.html[GSI]: security
 * link:../../gridftp/index.html[GridFTP]: file transfer
@@ -18,9 +18,9 @@ The Globus Toolkit version 6.0 includes:
 If you are new to the toolkit and want to experiment with the
 components, you may want to use a supported RedHat based or Debian based
 Linux system. With the new supported native packaging installs, they are
-the simplest platforms on which to install GT services. 
+the simplest platforms on which to install GCT services. 
 
-For the purposes of this documentation, Globus is being installed on a
+For the purposes of this documentation, GCT is being installed on a
 machine called **++elephant++**. 
 
 include::../quickstart/typography.adoc[]

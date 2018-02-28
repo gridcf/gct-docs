@@ -1,6 +1,6 @@
 [[gsicAdmin,Admin Guide]]
 :doctype: book
-= GT 6.0: GSI C Admin Guide =
+= GCT 6.0: GSI C Admin Guide =
   
 [[gsic-admin-introduction]]
 
@@ -11,12 +11,12 @@ administrators working with GSI C. It provides references to information
 on procedures typically performed by system administrators, including
 installation, configuring, deploying, and testing the installation.
 
-The security tools are installed as part of the Globus Toolkit
+The security tools are installed as part of the Grid Community Toolkit
 installation process. For instructions on basic installation of the
-Globus Toolkit, see the link:../../admin/install/index.html[Globus Toolkit
+Grid Community Toolkit, see the link:../../admin/install/index.html[Grid Community Toolkit
 Installation Guide].
 
-Authentication in the Globus Toolkit is based on X.509 certificates.
+Authentication in the Grid Community Toolkit is based on X.509 certificates.
 This document describes the configuration steps required to:
 
 * determine whether or not to trust certificates issued by a particular

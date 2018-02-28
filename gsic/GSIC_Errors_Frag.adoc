@@ -25,7 +25,7 @@ Check the system clocks on the local and remote system.
 check your certificate's expiration date.  If it has expired, follow your CA's
 procedures to get a new one.
 | ++The permissions may be wrong on your proxy file++
-| If the permissions on your proxy file are too lax (for example, if others can read your proxy file), Globus Toolkit clients will not use that 
+| If the permissions on your proxy file are too lax (for example, if others can read your proxy file), Grid Community Toolkit clients will not use that 
    file to authenticate. 
 | You can "fix" this problem by changing the permissions on the file or by
 destroying it (with 

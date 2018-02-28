@@ -76,7 +76,7 @@ The following environment variables affect the execution of
 **++grid-ca-sign++**: 
 
 **++GLOBUS_LOCATION++**::
-     Non-standard installation path of the Globus toolkit.
+     Non-standard installation path of the Grid Community Toolkit.
 
 
 

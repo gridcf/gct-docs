@@ -12,7 +12,7 @@ grid-ca-create - Create a CA to sign certificates for use on a grid
 == Description ==
 
 The **++grid-ca-create++** program creates a self-signed CA certificate
-and related files needed to use the CA with other Globus tools. The
+and related files needed to use the CA with other GCT tools. The
 **++grid-ca-create++** program prompts for information to use to
 generate the CA certificate, but the prompts may be avoided by using the
 command line options. 
@@ -113,7 +113,7 @@ The following environment variables affect the execution of
 **++grid-ca-create++**: 
 
 **++GLOBUS_LOCATION++**::
-     Non-standard installation path of the Globus toolkit.
+     Non-standard installation path of the Grid Community Toolkit.
 
 
 

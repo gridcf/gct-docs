@@ -1,6 +1,6 @@
 [[ccommonlib,C Common Libraries]]
 :doctype: article
-= GT 6.0: C Common Libraries =
+= GCT 6.0: C Common Libraries =
 
   
 include::C_Common_Libraries_Overview_Brief_Frag.adoc[]
@@ -27,7 +27,7 @@ The following guides are available for this component:
     [link:qp/ccommonlibQualityProfile.pdf[pdf]].
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
-    version of GT
+    version of GT or GCT
     [link:mig/ccommonlibMigratingGuide.pdf[pdf]].
 | link:ccommonlib.pdf[**All C Common Libraries Guides (PDF only)**]
 | Includes all C Common Libraries guides except Public Interfaces (which is a

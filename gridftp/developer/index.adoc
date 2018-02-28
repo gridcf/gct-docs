@@ -1,6 +1,6 @@
 [[gridftpDeveloper,Developer's Guide]]
 :doctype: book
-= GT 6.0 GridFTP : Developer's Guide =
+= GCT 6.0 GridFTP : Developer's Guide =
 
   
 .Introduction
@@ -117,7 +117,7 @@ http://gridftp.globus.org/tutorials/[http://gridftp.globus.org/tutorials/].
 indexterm:[specification]
 
 --
-Globus implemention of GridFTP is based on the following standards: RFC
+GCT implemention of GridFTP is based on the following standards: RFC
 959, RFC 2228, RFC 2389, IETF Draft MLST-16 , OGF GFD.020. In addition
 to these standards, some additional commands are implemented as well.
 The specification for one such command Data Channel Security Context

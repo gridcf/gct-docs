@@ -1,14 +1,14 @@
 
 [[gram5Key,GRAM5 Key Concepts]]
 :doctype: book
-= GT 6.0 GRAM5 Key Concepts =
+= GCT 6.0 GRAM5 Key Concepts =
 
   
 [[gram5-key-overview]]
 
 .Overview
 --
-The Globus Toolkit provides GRAM5: a service to submit, monitor, and
+The Grid Community Toolkit provides GRAM5: a service to submit, monitor, and
 cancel jobs on Grid computing resources. In GRAM, a job consists of a
 computation and, optionally, file transfer and management operations
 related to the computation. Some users, particularly interactive ones,

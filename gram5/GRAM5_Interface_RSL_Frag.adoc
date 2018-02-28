@@ -4,7 +4,7 @@
 --
 
 This is a document to specify the existing RSL v1.0 implementation and
-interfaces, as they are provided in the GT 6.0 release. This document
+interfaces, as they are provided in the GCT 6.0 release. This document
 serves as a reference, and more introductory text.
 
 
@@ -218,7 +218,7 @@ different resource management functions.
 
 
 The following listing summarizes the attribute names utilized by
-existing resource management components in the standard Globus release.
+existing resource management components in the standard GCT release.
 Please see the individual component documentation for discussion of the
 attribute semantics.
 

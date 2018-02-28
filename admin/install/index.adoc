@@ -1,7 +1,7 @@
 
 [[gtadmin]]
 :doctype: book
-= Installing GT 6.0 =
+= Installing GCT 6.0 =
 
  
 include::intro.adoc[]

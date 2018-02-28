@@ -1,6 +1,6 @@
 [[gsiopenssh,GSI-OpenSSH]]
 :doctype: article
-= GT 6.0: GSI-OpenSSH =
+= GCT 6.0: GSI-OpenSSH =
 
   
 include::Util_OpenSSH_Overview_Brief_Frag.adoc[]
@@ -15,7 +15,7 @@ The following guides are available for this component:
 | For important general concepts.  [link:../key/securityKeyConcepts.pdf[pdf]]
 
 | link:admin/index.html[**Admin Guide**]
-| For system administrators and those installing, building and deploying GT.
+| For system administrators and those installing, building and deploying GCT.
   You should already have read the 
   link:../admin/index.html[**Installation Guide**] and 
   link:../admin/quickstart/index.html[Quickstart]
@@ -47,7 +47,7 @@ The following guides are available for this component:
 
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a
-  previous version of GT.  [link:mig/gsiopensshMigratingGuide.pdf[pdf]]
+  previous version of GT or GCT.  [link:mig/gsiopensshMigratingGuide.pdf[pdf]]
 
 | link:gsiopenssh.pdf[**All GSI-OpenSSH Guides (PDF only)**]
 | Includes all GSI-OpenSSH guides except Public Interfaces (which is a subset

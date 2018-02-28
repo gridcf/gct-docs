@@ -1,7 +1,7 @@
 
 [[gridftpKey,GridFTP Key Concepts]]
 :doctype: book
-= GT 6.0 GridFTP Key Concepts =
+= GCT 6.0 GridFTP Key Concepts =
 
   
 [[gridftp-key-overview]]
@@ -46,11 +46,11 @@ working group. Key features include:
 
 --
 The GridFTP protocol provides for the secure, robust, fast and efficient
-transfer of (especially bulk) data. The Globus Toolkit provides the most
+transfer of (especially bulk) data. The Grid Community Toolkit provides the most
 commonly used implementation of that protocol, though others do exist
 (primarily tied to proprietary internal systems). 
 
-The Globus Toolkit provides:
+The Grid Community Toolkit provides:
 
 
 * a server implementation called ++globus-gridftp-server++,
@@ -60,7 +60,7 @@ The Globus Toolkit provides:
 * a set of development libraries for custom clients.
 
 
-While the Globus Toolkit does not provide a client with Graphical User
+While the Grid Community Toolkit does not provide a client with Graphical User
 Interface (GUI), http://www.globusonline.org[Globus Online] provides a
 web GUI for GridFTP data movement. 
 
@@ -90,7 +90,7 @@ GUI, command line interface and a REST API for GridFTP data movement. It
 provides automatic fault recovery and automatic tuning of optimization
 parameters to achieve high performance. 
 
-The Globus Toolkit provides a GridFTP client called ++globus-url-copy++,
+The Grid Community Toolkit provides a GridFTP client called ++globus-url-copy++,
 a command line interface, suitable for scripting. For example, the
 following command:
 

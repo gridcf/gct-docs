@@ -1,13 +1,13 @@
 [[ccommonlibDeveloper,Developer's Guide]]
 :doctype: book
-= GT 6.0 C Common Libraries: Developer's Guide =
+= GCT 6.0 C Common Libraries: Developer's Guide =
 
 :numbered!:
 [preface]
 == Introduction ==
 The C Common Libraries provide an abstraction layer for data types, libc
-system calls, and data structures used throughout the Globus Toolkit and
-useful for applications that use the Globus Toolkit. 
+system calls, and data structures used throughout the Grid Community Toolkit and
+useful for applications that use the Grid Community Toolkit. 
 
 ::numbered:
 

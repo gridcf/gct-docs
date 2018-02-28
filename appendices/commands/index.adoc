@@ -1,5 +1,5 @@
 [[gtcommands]]
-= Globus Toolkit 6.0 Command-Line Tools =
+= Grid Community Toolkit 6.0 Command-Line Tools =
 :doctype: book
 
 --

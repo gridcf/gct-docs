@@ -2,7 +2,7 @@
 [[simpleca-techdependencies]]
 === Technology Dependencies ===
 
-SimpleCA depends on the following GT components:
+SimpleCA depends on the following GCT components:
 
 
 

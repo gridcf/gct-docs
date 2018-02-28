@@ -1,6 +1,6 @@
 [[gridftpPI,Public Interface Guide ]]
 :doctype: book
-= GT 6.0 Component Guide to Public Interfaces: GridFTP =
+= GCT 6.0 Component Guide to Public Interfaces: GridFTP =
 
 include::../GridFTP_Interface_API_Frag.adoc[]
 

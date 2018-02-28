@@ -1,6 +1,6 @@
 [[gridftpQP,Quality Profile]]
 :doctype: article
-= GT 6.0 GridFTP: Quality Profile =
+= GCT 6.0 GridFTP: Quality Profile =
 
   
 [[gridftp-qp-test]]

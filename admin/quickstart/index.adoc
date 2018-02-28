@@ -1,6 +1,6 @@
 [[quickstart]]
 :doctype: article
-= GT 6 Quickstart =
+= GCT 6 Quickstart =
 
 [abstract]
 --
@@ -35,7 +35,7 @@ root# yum install globus-gridftp globus-gram5 globus-gsi myproxy \
 
 This will install the GridFTP, GRAM, and MyProxy services, as well as
 set up a basic SimpleCA so that you can issue security credentials for
-users to run the Globus services.
+users to run the GCT services.
 
 [NOTE]
 --
@@ -47,9 +47,9 @@ For Debian and Ubuntu systems, use **++apt-get++** or **++aptitude++** or anothe
 [[q-security]]
 === Setting up security on your first machine ===
 
-The Globus Toolkit uses X.509 certificates and proxy certificates to
+The Grid Community Toolkit uses X.509 certificates and proxy certificates to
 authenticate and authorize grid users. For this quickstart, we use the
-Globus link:../../simpleca/index.html[SimpleCA] tools to manage our own
+GCT link:../../simpleca/index.html[SimpleCA] tools to manage our own
 Certificate Authority, so
 that we don't need to rely on any external entitty to authorize our grid
 users. 
@@ -67,7 +67,7 @@ certificates.
 When the **++globus-simple-ca++** package is installed, it will
 automatically create a new Certificate Authority and deploy its public
 certificate into the globus trusted certificate directory. It will also
-create a host certificate and key, so that the Globus services will be
+create a host certificate and key, so that the GCT services will be
 able to run. 
 
 We'll also need to copy the host certificate and key into place so that
@@ -364,7 +364,7 @@ Trust roots have been installed in /etc/grid-security/certificates/.
 --------
 This allows clients and services on **++donkey++** to trust certificates
 which are signed by the CA on **++elephant++** machine. If we weren't
-going to run any Globus services on **++donkey++**, then we could stop
+going to run any GCT services on **++donkey++**, then we could stop
 here. Users on **++donkey++** could acquire credentials using the
 **++myproxy-logon++** command and perform file transfers and execute
 jobs using the **++globus-url-copy++** and **++globus-job-run++**
@@ -430,8 +430,8 @@ New entry:
 
 At this point, we have set up security on donkey to trust the CA on
 elephant. We have created a host certificate for donkey so that we can
-run Globus services on donkey, and we have enabled the quser account to
-use services on donkey. The last thing to do is to turn on the Globus
+run GCT services on donkey, and we have enabled the quser account to
+use services on donkey. The last thing to do is to turn on the GCT
 services on donkey. 
 
 
@@ -449,7 +449,7 @@ Started GridFTP Server                                     [  OK  ]
 Now we can test it. 
 
 First, we'll retrive a proxy credential from the myproxy server so that
-the user on donkey can interact with the Globus services. Here we'll use
+the user on donkey can interact with the GCT services. Here we'll use
 the same passphrase as we used to create the **++quser++** credential. 
 
 --------
@@ -517,7 +517,7 @@ scenarios].
 == Conclusion ==
 
 Hopefully this guide has been helpful in familiarizing you with some of the
-administration tasks and tools to use the Globus Toolkit. If you've reached
+administration tasks and tools to use the Grid Community Toolkit. If you've reached
 this point successfully, you should have enough knowledge to enable additional
 hosts to use your grid by repeating the tasks in link:#q-second[Setting up your
 second machine]. Also, by repeating the tasks in link:#q-user-credential[User

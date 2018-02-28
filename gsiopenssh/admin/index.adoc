@@ -1,7 +1,7 @@
 
 [[gsiopensshAdmin,System Administrator's Guide]]
 :doctype: book
-= GT 6.0 GSI-OpenSSH: System Administrator's Guide =
+= GCT 6.0 GSI-OpenSSH: System Administrator's Guide =
 
   
 [[gsiopenssh-admin-introduction]]
@@ -15,9 +15,9 @@ including installation, configuring, deploying, and testing the
 installation.
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite,
+This information is in addition to the basic Grid Community Toolkit prerequisite,
 overview, installation, security configuration instructions in
-link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide
+link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide
 before continuing!
 --
 
@@ -34,9 +34,9 @@ OpenSSH.
 
 
 --
-GSI-OpenSSH is built and installed as part of a default GT 6.0
+GSI-OpenSSH is built and installed as part of a default GCT 6.0
 installation. For basic installation instructions, see
-link:../../admin/install/index.html[Installing GT 6.0]. No extra installation
+link:../../admin/install/index.html[Installing GCT 6.0]. No extra installation
 steps are required for this component. 
 
 
@@ -47,7 +47,7 @@ steps are required for this component.
 
 You can optionally pass build-time configure options to the GSI-OpenSSH
 package using the --with-gsiopensshargs option when running configure
-for your GT 6.0 installation. For example:
+for your GCT 6.0 installation. For example:
 
 ***********************************************************************
 
@@ -106,8 +106,8 @@ functionality is turned on by default.
 === Building and Installing only GSI-OpenSSH ===
 
 If you wish to install GSI-OpenSSH without installing the rest of the
-Globus Toolkit, follow the instructions in
-link:../../admin/install/index.html[Installing GT 6.0] with the following
+Grid Community Toolkit, follow the instructions in
+link:../../admin/install/index.html[Installing GCT 6.0] with the following
 changes.
 First, you do not need Ant, a JDK, or a JDBC database to build only
 GSI-OpenSSH. Second, instead of running "make", run: 

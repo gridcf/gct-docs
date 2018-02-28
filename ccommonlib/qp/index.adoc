@@ -1,6 +1,6 @@
 [[ccommonlibQP,Quality Profile]]
 :doctype: article
-= GT 6.0 C Common Libraries: Quality Profile =
+= GCT 6.0 C Common Libraries: Quality Profile =
 
   
 [[ccommonlib-qp-test]]

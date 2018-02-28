@@ -1,6 +1,6 @@
 
 [[gtadmin-sec-considerations]]
-== Security Considerations in GT 6.0 ==
+== Security Considerations in GCT 6.0 ==
 
 
 [[gtadmin-sec-consid-common-runtime]]

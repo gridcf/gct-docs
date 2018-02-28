@@ -3,7 +3,7 @@
 === Technology dependencies ===
 
 indexterm:[dependencies]
-GRAM depends on the following GT components:
+GRAM depends on the following GCT components:
 * Globus Common
 * GSI C
 * GridFTP server

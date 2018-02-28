@@ -208,7 +208,7 @@ Where 'MIN-PORT' is the minimum outgoing TCP port number the Job Manager
 will use and 'MAX-PORT' is the maximum TCP outgoing port number the Job
 Manager will use. 
 
-For more information about Globus and firewalls, see
+For more information about GCT and firewalls, see
 link:../../admin/install/index.html#gt-admin-firewall[Firewall configuration].
 
 

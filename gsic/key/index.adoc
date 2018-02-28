@@ -1,7 +1,7 @@
 
 [[gsicKey,GSI C Security Key Concepts]]
 :doctype: book
-= GT 6.0 GSI C Security: Key Concepts =
+= GCT 6.0 GSI C Security: Key Concepts =
 
   
 [[gsic-key-overview]]
@@ -204,7 +204,7 @@ communication, but not as large an overhead as encryption.
 [[gsic-key-securingprivatekeys]]
 === Securing Private Keys ===
 
-The core GSI software provided by the Globus Toolkit expects the user's
+The core GSI software provided by the Grid Community Toolkit expects the user's
 private key to be stored in a file in the local computer's storage. To
 prevent other users of the computer from stealing the private key, the
 file that contains the key is encrypted via a password (also known as a

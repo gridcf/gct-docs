@@ -1,6 +1,6 @@
 [[gridftpAdmin,System Administrator's Guide]]
 :doctype: book
-= GT 6.0 GridFTP : System Administrator's Guide =
+= GCT 6.0 GridFTP : System Administrator's Guide =
 
   
 .Introduction
@@ -13,9 +13,9 @@ installation. This guide should help you configure and run the GridFTP
 server in some standard configurations.
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite,
+This information is in addition to the basic Grid Community Toolkit prerequisite,
 overview, installation, security configuration instructions in the
-link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide
+link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide
 before continuing!
 --
 
@@ -203,7 +203,7 @@ available. This can be done in the GridFTP server by using the option:
 
 --
 It is assumed that the toolkit installation was successful. For more
-information, see the link:../../admin/install/index.html[Installing GT 6.0].
+information, see the link:../../admin/install/index.html[Installing GCT 6.0].
 Also be sure
 to reference link:#gridftp-configuring[Configuring GridFTP] and
 link:../../gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-server++**].
@@ -215,7 +215,7 @@ link:../../gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-ser
 === Configuring GridFTP to use UDT instead of TCP ===
 indexterm:[configuring GridFTP,run with UDT for third party transfers]
 
-UDT is bundled with Globus starting with Globus v4.2, so downloading UDT
+UDT is bundled with GCT starting with Globus v4.2, so downloading UDT
 separately is no longer needed. 
 
 
@@ -439,10 +439,10 @@ indexterm:[configuring GridFTP,with DSI]
 GridFTP can be used as a network interface to existing Data Storage
 Interfaces (DSIs) using the '-dsi' option. With this option the DSI
 plugs into the backend (compatible with striping) and is transparent to
-the client or remote party. It can be used with either the GT standard
+the client or remote party. It can be used with either the GCT standard
 DSI plugins or with
 link:../../gridftp/developer/index.html#gridftp-developer-dsi[custom-built
-DSI plugins]. The standard DSI plugins available in a default GT
+DSI plugins]. The standard DSI plugins available in a default GCT
 installation are:
 
 

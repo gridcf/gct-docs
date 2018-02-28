@@ -1,6 +1,6 @@
 [appendix]
 [[gridftp-SRB,Setting up SRB for use with GridFTP]]
-= GT 6.0 GridFTP: Setting up Storage Resource Broker (SRB) =
+= GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB) =
 
 
 [[gridftp-SRB-intro]]
@@ -40,7 +40,7 @@ You need the following items to use the SRB-DSI:
 
 
 
-* **Globus Toolkit** - You need the GridFTP distributed with GT (compatible with 4.0.1 or later). You can find that http://www.globus.org/toolkit/downloads/{$version}/[here].
+* **Grid Community Toolkit** - You need the GridFTP distributed with GT or GCT (compatible with 4.0.1 or later). You can find that http://www.globus.org/toolkit/downloads/{$version}/[here].
 
 * **SRB Client 3.4.0** - You only need the client libraries to build the SRB-DSI, but you will need access to a running SRB server and resource. You can find the client libraries http://www.sdsc.edu/srb/tarfiles/main.html[here].
 
@@ -51,7 +51,7 @@ You need the following items to use the SRB-DSI:
 [[gridftp-SRB-building]]
 === Building ===
 
-Instructions for building link:../../admin/install/index.html[Globus]
+Instructions for building link:../../admin/install/index.html[GCT]
 and http://www.sdsc.edu/srb[SRB] are well documented in the above links.
 The following sections describe one way of building these two packages.
 However, if any questions or errors are discovered, the reader should
@@ -59,7 +59,7 @@ look to the above links for solutions.
 
 
 [[gridftp-SRB-building-globus]]
-==== Building Globus ====
+==== Building GCT ====
 
 Download the source installer, choose a path on your filesystem for your
 ++GLOBUS_LOCATION++, and run the following:

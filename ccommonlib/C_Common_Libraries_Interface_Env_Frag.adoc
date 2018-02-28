@@ -20,9 +20,9 @@
      Set this variable to 1 to attempt to use localized messages. (Currently not working)
 
 **GLOBUS_LOCATION**::
-     Set this variable to the path where the Globus Toolkit is installed, so that Globus tools can find libraries and data files. This is only needed if the Globus Toolkit was built with the source installer.
+     Set this variable to the path where the Grid Community Toolkit is installed, so that GCT tools can find libraries and data files. This is only needed if the Grid Community Toolkit was built with the source installer.
 
 **GLOBUS_THREAD_MODEL**::
-     Set to the name of a thread model to control the operation of the Globus event driver. Valid values are (depending on the platform) ++none++ for non-threaded operation (the default), ++pthread++ for POSIX threads, or ++windows++ for Windows threads.
+     Set to the name of a thread model to control the operation of the GCT event driver. Valid values are (depending on the platform) ++none++ for non-threaded operation (the default), ++pthread++ for POSIX threads, or ++windows++ for Windows threads.
 
 

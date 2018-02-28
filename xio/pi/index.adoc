@@ -1,7 +1,7 @@
 
 [[xioPI,Public Interface Guide]]
 :doctype: book
-= GT 6.0 Component Guide to Public Interfaces: XIO =
+= GCT 6.0 Component Guide to Public Interfaces: XIO =
 
   
 include::../XIO_Interface_API_Frag.adoc[]

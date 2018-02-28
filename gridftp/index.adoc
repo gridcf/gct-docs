@@ -1,6 +1,6 @@
 [[gridftp,GridFTP]]
 :doctype: article
-= GT 6.0 GridFTP =
+= GCT 6.0 GridFTP =
 
   
 include::GridFTP_Overview_Brief_Frag.adoc[]
@@ -13,7 +13,7 @@ The following guides are available for this component:
 | For important general concepts [link:key/gridftpKeyConcepts.pdf[pdf]].
 
 | link:admin/index.html[**Admin Guide**]
-| For system administrators and those installing, building and deploying GT.
+| For system administrators and those installing, building and deploying GCT.
   You should already have read the 
   link:../admin/index.html[Installation Guide] and 
   link:../admin/quickstart/index.html[Quickstart]
@@ -45,7 +45,7 @@ The following guides are available for this component:
 
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
-  version of GT.
+  version of GCT.
   [link:mig/gridftpMigratingGuide.pdf[pdf]]
 
 | link:gridftp.pdf[**All GridFTP Guides (PDF only)**]

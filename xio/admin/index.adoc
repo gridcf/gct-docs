@@ -1,7 +1,7 @@
 
 [[xioAdmin,System Administrator's Guide]]
 :doctype: book
-= GT 6.0 XIO: System Administrator's Guide =
+= GCT 6.0 XIO: System Administrator's Guide =
 
   
 .Introduction
@@ -12,7 +12,7 @@ link:../../admin/install/index.html#gtadmin-install[GT6.0 installation
 instructions].
 [IMPORTANT]
 --
-This information is in addition to the basic Globus Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[Installing GT 6.0]. Read through this guide before continuing!
+This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide before continuing!
 --
 
 
@@ -24,8 +24,8 @@ This information is in addition to the basic Globus Toolkit prerequisite, overvi
 
 
 --
-XIO is built and installed with a default GT 6.0 installation, see the
-link:../../admin/install/index.html#gtadmin-install[Installing GT 6.0].
+XIO is built and installed with a default GCT 6.0 installation, see the
+link:../../admin/install/index.html#gtadmin-install[Installing GCT 6.0].
 
 
 --

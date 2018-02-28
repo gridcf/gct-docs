@@ -2,7 +2,7 @@
 [[gridftp-tech-dependencies]]
 === Technology dependencies ===
 
-GridFTP depends on the following GT components:
+GridFTP depends on the following GCT components:
 
 
 

@@ -1,6 +1,6 @@
 
 [[gtadmin-advanced-build]]
-== Advanced Installation for GT 6.0 ==
+== Advanced Installation for GCT 6.0 ==
 
 
 --
@@ -17,13 +17,13 @@ installation sections of component documentation.
 [[gtadmin-install-build-git]]
 ==== Building from Git ====
 
-The Globus Toolkit is available for download from github. See
-https://github.com/globus/globus-toolkit/tree/globus%5f6%5fbranch[https://github.com/globus/globus-toolkit/tree/globus_6_branch]
-to branch or checkout the toolkit source code. 
+The Grid Community Toolkit is available for download from github. See
+https://github.com/gridcf[https://github.com/gridcf]
+to branch or checkout the toolkit source code.
 
 After checking out the toolkit, run **++autoreconf -i++** in the
 checkout root to generate configure scripts for building the toolkit
-components. 
+components.
 
 
 [[gtadmin-install-build-source]]

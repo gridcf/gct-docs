@@ -1,4 +1,4 @@
-= Globus Toolkit 6.0 Key Concepts =
+= Grid Community Toolkit 6.0 Key Concepts =
 :doctype: book
 
 :leveloffset: 1

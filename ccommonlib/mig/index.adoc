@@ -1,6 +1,6 @@
 [[ccommonlibMig,Migrating Guide]]
 :doctype: article
-= GT 6.0 Migrating Guide for C Common Libraries =
+= GCT 6.0 Migrating Guide for C Common Libraries =
 
   
 --

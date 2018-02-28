@@ -2,7 +2,7 @@
 [[gsic-dependencies]]
 === Technology dependencies ===
 
-The GSI C component depends on the following GT components:
+The GSI C component depends on the following GCT components:
 
 
 

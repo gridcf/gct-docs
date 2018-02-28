@@ -32,7 +32,7 @@ the resolver on your system.
 | ++grid-proxy-init failed++
 | This error indicates that the grid-proxy-init command failed when
    myproxy-init attempted to run it, which implies a problem with the
-   underlying Globus installation.
+   underlying GCT installation.
 | Run **++grid-proxy-init -debug -verify++** for more information. 
 | ++User not authorized++
 | An error from the myproxy-server saying you are "not authorized" to complete

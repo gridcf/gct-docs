@@ -1,7 +1,7 @@
 
 [[myproxyDeveloper,Developer's Guide]]
 :doctype: book
-= GT 6.0 MyProxy: Developer's Guide =
+= GCT 6.0 MyProxy: Developer's Guide =
 
   
 [[myproxy-developer-introduction]]

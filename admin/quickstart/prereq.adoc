@@ -1,7 +1,7 @@
 [[q-prereq]]
 === Prerequisites ===
 
-We distribute the Globus Toolkit 6 as a set of RPM and Debian packages
+We distribute the Grid Community Toolkit 6 as a set of RPM and Debian packages
 for Linux systems, as an installable package for Mac OS X, as a .zip
 file for Windows and Cygwin, as well as a source installer which can be
 used on other operating systems. In this quickstart, we will be
@@ -14,10 +14,10 @@ is more work involved, and you'll need to consult the full installation
 guide. 
 
 First, we will to set up our system to use the Globus package
-repository. This repository contains the Globus software packages,
+repository. This repository contains the GCT software packages,
 signed by our build manager. We provide RPM and Debian packages that
 contain a source configuration file and the public key which can be used
-to verify the packages. If your distribution has Globus 6.0 packages
+to verify the packages. If your distribution has GCT 6.0 packages
 within its repository, you can skip to the next section. 
 
 The globus toolkit package repo RPM can be downloaded from

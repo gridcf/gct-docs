@@ -98,7 +98,7 @@ The audit record of each job contains the following data:
 
 * **clean_up_grid_id**: String representation of the cleanUp-EPR (RFT)
 
-* **globus_toolkit_version**: Version of the server-side GT
+* **globus_toolkit_version**: Version of the server-side GCT
 
 * **resource_manager_type**: Type of the resource manager (Fork, Condor,
 ...)

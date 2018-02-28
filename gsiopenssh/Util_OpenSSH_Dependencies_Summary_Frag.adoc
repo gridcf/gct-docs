@@ -1,7 +1,7 @@
 [[gsiopenssh-dependencies]]
 === Technology dependencies ===
 
-GSI-OpenSSH depends on the following GT components:
+GSI-OpenSSH depends on the following GCT components:
 
 * link:../../gsic/index.html[GSI C]
 

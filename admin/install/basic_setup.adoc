@@ -1,6 +1,6 @@
 
 [[gtadmin-basic-setup]]
-== Basic Setup for GT 6.0 ==
+== Basic Setup for GCT 6.0 ==
 
 
 --

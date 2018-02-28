@@ -1,6 +1,6 @@
 [[myproxy,MyProxy]]
 :doctype: article
-= GT 6.0: MyProxy =
+= GCT 6.0: MyProxy =
 
   
 include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
@@ -15,7 +15,7 @@ include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
         
 | link:admin/index.html[**Admin Guide**]
 | For system administrators and those installing, building and
-  deploying GT.
+  deploying GCT.
   You should already have read the 
   link:../admin/index.html[Installation Guide] and 
   link:../admin/quickstart/index.html[Quickstart]
@@ -44,8 +44,8 @@ include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
   [link:qp/myproxyQualityProfile.pdf[pdf]]
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
-  version of GT.  [link:mig/myproxyMigratingGuide.pdf[pdf]]
-| link:myproxy.pdf[**All GT MyProxy Guides (PDF only)**]
-| Includes all GT MyProxy guides except Public Interfaces
+  version of GT or GCT.  [link:mig/myproxyMigratingGuide.pdf[pdf]]
+| link:myproxy.pdf[**All GT/GCT MyProxy Guides (PDF only)**]
+| Includes all GT or GCT MyProxy guides except Public Interfaces
   (which is a subset of the Developer's Guide)
 |=======================================================================

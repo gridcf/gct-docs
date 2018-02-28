@@ -1,5 +1,5 @@
 [[gsiopensshDeveloper,Developer's Guide]]
-= GT 6.0 GSI-OpenSSH: Developer's Guide =
+= GCT 6.0 GSI-OpenSSH: Developer's Guide =
 :doctype: book
   
 [[gsiopenssh-developer-introduction]]
@@ -83,7 +83,7 @@ include::../Util_OpenSSH_Interface_Env_Frag.adoc[]
 
 
 [[gsiopenssh-gterrors]]
-=== Common GT Errors ===
+=== Common GCT Errors ===
 
 
 :leveloffset: 1

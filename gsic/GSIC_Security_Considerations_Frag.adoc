@@ -21,6 +21,6 @@ If a host was set up to accept `hostname-1.edu`, it will not accept
 `hostname-`'ANYTHING'`.edu` but will accept `hostname.edu`. That is, only one
 of the names being compared may contain the hyphen character in the host name.
 --
-In GT 6.0, it is possible to disable this behavior, by setting the enviornment variable ++GLOBUS_GSSAPI_NAME_COMPATIBILITY++ to ++STRICT_RFC2818++.
+In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable ++GLOBUS_GSSAPI_NAME_COMPATIBILITY++ to ++STRICT_RFC2818++.
 
 

@@ -1,6 +1,6 @@
 [[xioMig,Migrating Guide]]
 :doctype: article
-= GT 6.0 Migrating Guide for XIO =
+= GCT 6.0 Migrating Guide for XIO =
 
   
 --
@@ -91,7 +91,7 @@ with globus_xio.
 == Migrating XIO from GT3 ==
 
 Globus XIO has made very few changes in the API since its introduction.
-Users of GT 6.0 who are previously familiar with globus_xio will notice
+Users of GCT or GT 6.0 who are previously familiar with globus_xio will notice
 no difference. 
 
  

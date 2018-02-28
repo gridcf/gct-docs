@@ -1,6 +1,6 @@
 [[admin,Admin Manuals]]
 :doctype: book
-= GT 6.0: Admin Manuals =
+= GCT 6.0: Admin Manuals =
 
 --
 * link:../admin/install/index.html[Installation Guide] [link:install/installingGT.pdf[PDF]]

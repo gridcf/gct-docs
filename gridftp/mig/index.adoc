@@ -1,6 +1,6 @@
 [[gridftpMig,Migrating Guide]]
 :doctype: article
-= GT 6.0 Migrating Guide for GridFTP =
+= GCT 6.0 Migrating Guide for GridFTP =
 
   
 --

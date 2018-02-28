@@ -1,6 +1,6 @@
 [[gsic,GSI C]]
 :doctype: article
-= GT 6.0: Grid Security Infrastructure in C (GSI C) =
+= GCT 6.0: Grid Security Infrastructure in C (GSI C) =
 
   
 include::GSIC_Overview_Brief_Frag.adoc[]
@@ -11,7 +11,7 @@ include::GSIC_Overview_Brief_Frag.adoc[]
 | For important general concepts.  [link:key/securityKeyConcepts.pdf[pdf]]]
 
 | link:admin/index.html[**Admin Guide**]
-| For system administrators and those installing, building and deploying GT.
+| For system administrators and those installing, building and deploying GCT.
   You should already have read the 
   link:../admin/index.html[Installation Guide] and 
   link:../admin/quickstart/index.html[Quickstart]
@@ -43,7 +43,7 @@ include::GSIC_Overview_Brief_Frag.adoc[]
 
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
-    version of GT.  [link:mig/gsicMigratingGuide.pdf[pdf]]]
+    version of GT or GCT.  [link:mig/gsicMigratingGuide.pdf[pdf]]]
 
 | link:gsic.pdf[**All GSI C Guides (PDF only)**]
 | Includes all GSI C guides except Public Interfaces (which is a subset of

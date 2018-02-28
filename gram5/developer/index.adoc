@@ -1,6 +1,6 @@
 [[gram5Developer,Developer's Guide]]
 :doctype: book
-= GT 6.0 GRAM5: Developer's Guide =
+= GCT 6.0 GRAM5: Developer's Guide =
 
   
 .Introduction 
@@ -50,7 +50,7 @@ The blocking variants, such as the
 **++globus_gram_client_job_request++** function require less application
 code, but will prevent subsequent instructions from executing until the
 request has been sent and the reply parsed. In a non-threaded
-environment, other callback functions registered with the Globus event
+environment, other callback functions registered with the GCT event
 driver may be invoked while the blocking function is running. In a
 threaded environment, other events may occur in other threads while the
 function is blocking, but the current thread will be blocked until the
@@ -58,7 +58,7 @@ response is parsed.
 
 The nonblocking variants, such as
 **++globus_gram_client_register_job_request++** require the application
-to include a callback function which will be called by the Globus event
+to include a callback function which will be called by the GCT event
 driver when the reply has been parsed. In a non-threaded environment,
 applications must poll the event driver using functions from the
 **++globus_poll++** or **++globus_cond_wait++** families of functions.
@@ -72,7 +72,7 @@ functions.
 An application writer should use the non-blocking variants if the
 application will be submitting many jobs concurrently or requires custom
 network or security attributes. Using the non-blocking variants allows
-the Globus event driver to better schedule network I/O in these cases. 
+the GCT event driver to better schedule network I/O in these cases. 
 
 
 === Service Contact Strings ===

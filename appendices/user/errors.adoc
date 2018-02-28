@@ -1,6 +1,6 @@
 
 [[errors]]
-== Globus Toolkit 6.0 Errors ==
+== Grid Community Toolkit 6.0 Errors ==
 
 
 --
