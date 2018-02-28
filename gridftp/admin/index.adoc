@@ -26,7 +26,7 @@ before continuing!
 include::../GridFTP_Building.txt[]
 
  
-include::../GridFTP_Interface_Config_Frag.txt[]
+include::../GridFTP_Interface_Config_Frag.adoc[]
 
  
 [[gridftp-admin-tuning]]
@@ -428,7 +428,7 @@ link:#gridftp-admin-gfork-master[here].
 
 
 :leveloffset: 1
-include::../GridFTP_DSI_General_Frag.txt[]
+include::../GridFTP_DSI_General_Frag.adoc[]
 :leveloffset: 0
 
 
@@ -565,13 +565,13 @@ set up the globus environment, chdir to
 indexterm:[logging]
 
 
-include::../GridFTP_Logging_Frag.txt[]
+include::../GridFTP_Logging_Frag.adoc[]
 
  
-include::../GridFTP_Troubleshooting_Frag.txt[]
+include::../GridFTP_Troubleshooting_Frag.adoc[]
 
  
-include::../GridFTP_Usage_Statistics_Frag.txt[]
+include::../GridFTP_Usage_Statistics_Frag.adoc[]
 
  
 [appendix]

@@ -16,15 +16,15 @@ useful for applications that use the Globus Toolkit.
 
 :leveloffset: 1 
 
-include::../C_Common_Libraries_Feature_Summary_Frag.txt[]
+include::../C_Common_Libraries_Feature_Summary_Frag.adoc[]
 
-include::../C_Common_Libraries_Platform_Summary_Frag.txt[]
+include::../C_Common_Libraries_Platform_Summary_Frag.adoc[]
 
-include::../C_Common_Libraries_Compatibility_Summary_Frag.txt[]
+include::../C_Common_Libraries_Compatibility_Summary_Frag.adoc[]
 
-include::../C_Common_Libraries_Dependencies_Summary_Frag.txt[]
+include::../C_Common_Libraries_Dependencies_Summary_Frag.adoc[]
 
-include::../C_Common_Libraries_Security_Considerations_Frag.txt[]
+include::../C_Common_Libraries_Security_Considerations_Frag.adoc[]
 
 :leveloffset: 0
  
@@ -50,14 +50,14 @@ Not available at this time.
 
 --
  
-include::../C_Common_Libraries_Interface_API_Frag.txt[]
+include::../C_Common_Libraries_Interface_API_Frag.adoc[]
 
  
 [[ccommonlib-developer-env]]
 == Environment variable interface ==
 
 
-include::../C_Common_Libraries_Interface_Env_Frag.txt[]
+include::../C_Common_Libraries_Interface_Env_Frag.adoc[]
 
  
 [[ccommonlib-developer-debugging]]

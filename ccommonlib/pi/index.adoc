@@ -4,13 +4,13 @@
 = GT 6.0 Component Guide to Public Interfaces: C Common Libraries =
 
   
-include::../C_Common_Libraries_Interface_API_Frag.txt[]
+include::../C_Common_Libraries_Interface_API_Frag.adoc[]
 
  
 [[ccommonlib-pi-env]]
 == Environment variable interface ==
 
 
-include::../C_Common_Libraries_Interface_Env_Frag.txt[]
+include::../C_Common_Libraries_Interface_Env_Frag.adoc[]
 
  

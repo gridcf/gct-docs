@@ -7,31 +7,31 @@
 == Component Overview ==
 
 
-include::../C_Common_Libraries_Overview_Brief_Frag.txt[]
+include::../C_Common_Libraries_Overview_Brief_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Feature_Summary_Frag.txt[]
+include::../C_Common_Libraries_Feature_Summary_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Change_Summary_Frag.txt[]
+include::../C_Common_Libraries_Change_Summary_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Fixed_Bugs_Frag.txt[]
+include::../C_Common_Libraries_Fixed_Bugs_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Known_Problems_Frag.txt[]
+include::../C_Common_Libraries_Known_Problems_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Dependencies_Summary_Frag.txt[]
+include::../C_Common_Libraries_Dependencies_Summary_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Platform_Summary_Frag.txt[]
+include::../C_Common_Libraries_Platform_Summary_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Compatibility_Summary_Frag.txt[]
+include::../C_Common_Libraries_Compatibility_Summary_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Associated_Standards_Frag.txt[]
+include::../C_Common_Libraries_Associated_Standards_Frag.adoc[]
 
  
 [[ccommonlib-rn-formoreinfo]]

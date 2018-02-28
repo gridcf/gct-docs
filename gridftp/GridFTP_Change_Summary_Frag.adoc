@@ -6,9 +6,9 @@
 ==== New Features: GridFTP ====
 
 * Highlights
-include::GridFTP_Change_Summary_Highlights_Frag.txt[]
+include::GridFTP_Change_Summary_Highlights_Frag.adoc[]
 * Other New Features
-include::GridFTP_Change_Summary_Minor_Frag.txt[]
+include::GridFTP_Change_Summary_Minor_Frag.adoc[]
 
 
 ==== Improvements: GridFTP ====

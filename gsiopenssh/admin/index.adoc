@@ -123,7 +123,7 @@ client-only installations, simply do not configure or use the installed
 server. 
 
  
-include::../Util_OpenSSH_Interface_Config_Frag.txt[]
+include::../Util_OpenSSH_Interface_Config_Frag.adoc[]
 
  
 [[gsiopenssh-admin-deploying]]
@@ -268,14 +268,14 @@ should start the server on the default port (22).
 == Security Considerations ==
 
 
-include::../Util_OpenSSH_Security_Considerations_Frag.txt[]
+include::../Util_OpenSSH_Security_Considerations_Frag.adoc[]
 
  
 [[gsiopenssh-admin-debugging]]
 == Debugging ==
 
 
-include::../Util_OpenSSH_Logging_Frag.txt[]
+include::../Util_OpenSSH_Logging_Frag.adoc[]
 
  
 [[gsiopenssh-admin-troubleshooting]]
@@ -290,6 +290,6 @@ Troubleshooting Page].
 
 --
  
-include::../Util_OpenSSH_Usage_Statistics_Frag.txt[]
+include::../Util_OpenSSH_Usage_Statistics_Frag.adoc[]
 
  

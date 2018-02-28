@@ -50,7 +50,7 @@ libraries for building custom GridFTP clients.
 ==== If client is behind a firewall ====
 
 
-include::../GridFTP_Interface_Config_Client_Firewall_Frag.txt[]
+include::../GridFTP_Interface_Config_Client_Firewall_Frag.adoc[]
 
 
 [[gridftp-user-quickstart-config-security]]
@@ -486,13 +486,13 @@ TeraGrid:
 * http://dims.ncsa.uiuc.edu/set/uberftp/userdoc.html[UberFTP User's Guide]
 
  
-include::../GridFTP_Interface_GUI_Frag.txt[]
+include::../GridFTP_Interface_GUI_Frag.adoc[]
 
  
-include::../GridFTP_Troubleshooting_Frag.txt[]
+include::../GridFTP_Troubleshooting_Frag.adoc[]
 
  
-include::../GridFTP_Usage_Statistics_Frag.txt[]
+include::../GridFTP_Usage_Statistics_Frag.adoc[]
 
 [index]
 [[gridftp-user-index]]

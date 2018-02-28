@@ -23,23 +23,23 @@
 
 --
 
-include::../../xio/XIO_Errors_Frag.txt[]
+include::../../xio/XIO_Errors_Frag.adoc[]
 
 
-include::../../Credential_Troubleshooting_Frag.txt[]
+include::../../Credential_Troubleshooting_Frag.adoc[]
 
 
-include::../../Gridmap_Troubleshooting_Frag.txt[]
+include::../../Gridmap_Troubleshooting_Frag.adoc[]
 
 
-include::../../myproxy/Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+include::../../myproxy/Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
 
 
-include::../../gsiopenssh/Util_OpenSSH_Errors_Frag.txt[]
+include::../../gsiopenssh/Util_OpenSSH_Errors_Frag.adoc[]
 
 
-include::../../gridftp/GridFTP_Errors_Frag.txt[]
+include::../../gridftp/GridFTP_Errors_Frag.adoc[]
 
 
-include::../../gram5/GRAM5_Errors_Frag.txt[]
+include::../../gram5/GRAM5_Errors_Frag.adoc[]
 

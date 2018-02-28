@@ -15,10 +15,10 @@ There are no reports on this component.
 There are no reports on this component.
 
  
-include::../C_Common_Libraries_Known_Problems_Frag.txt[]
+include::../C_Common_Libraries_Known_Problems_Frag.adoc[]
 
  
-include::../C_Common_Libraries_Fixed_Bugs_Frag.txt[]
+include::../C_Common_Libraries_Fixed_Bugs_Frag.adoc[]
 
  
 [[ccommonlib-qp-performance]]

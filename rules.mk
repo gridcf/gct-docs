@@ -33,7 +33,7 @@ html-recursive pdf-recursive clean-recursive:
         fi
 
 %.html: %.txt
-	@if expr X$< : '.*_Frag.txt' > /dev/null; then \
+	@if expr X$< : '.*_Frag.adoc' > /dev/null; then \
 		true; \
 	else \
 		$(TXT_TO_HTML); \

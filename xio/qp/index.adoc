@@ -23,10 +23,10 @@
 
 
  
-include::../XIO_Known_Problems_Frag.txt[]
+include::../XIO_Known_Problems_Frag.adoc[]
 
  
-include::../XIO_Fixed_Bugs_Frag.txt[]
+include::../XIO_Fixed_Bugs_Frag.adoc[]
 
  
 [[xio-qp-performance]]

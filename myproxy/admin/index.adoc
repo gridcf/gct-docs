@@ -43,7 +43,7 @@ server.
 
 --
 
-include::../Cred_Mgmt_MyProxy_Interface_Config_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Interface_Config_Frag.adoc[]
 
 [[myproxy-admin-deploying]]
 == Deploying ==
@@ -136,18 +136,18 @@ information via the syslog service under the daemon facility.
 == Security Considerations ==
 
 
-include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.adoc[]
 
 
 [[myproxy-admin-debugging]]
 == Debugging ==
 
 
-include::../Cred_Mgmt_MyProxy_Logging_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Logging_Frag.adoc[]
 
 
 == Troubleshooting ==
 
-include::../Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
 
-include::../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.adoc[]

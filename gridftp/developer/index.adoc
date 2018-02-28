@@ -17,16 +17,16 @@ samples.
 == Before you begin ==
 
 
-include::../GridFTP_Feature_Summary_Frag.txt[]
+include::../GridFTP_Feature_Summary_Frag.adoc[]
 
 
-include::../GridFTP_Platform_Summary_Frag.txt[]
+include::../GridFTP_Platform_Summary_Frag.adoc[]
 
 
-include::../GridFTP_Compatibility_Summary_Frag.txt[]
+include::../GridFTP_Compatibility_Summary_Frag.adoc[]
 
 
-include::../GridFTP_Dependencies_Summary_Frag.txt[]
+include::../GridFTP_Dependencies_Summary_Frag.adoc[]
 
  
 [[gridftp-developer-scenarios]]
@@ -176,28 +176,28 @@ There are basically four important components of the exchange:
 
 :leveloffset: 1
 
-include::../GridFTP_DSI_General_Frag.txt[]
+include::../GridFTP_DSI_General_Frag.adoc[]
 
 :leveloffset: 0
 
-include::../GridFTP_DSI_HPSS_Frag.txt[]
+include::../GridFTP_DSI_HPSS_Frag.adoc[]
 
-include::../GridFTP_DSI_SRB_Frag.txt[]
+include::../GridFTP_DSI_SRB_Frag.adoc[]
  
-include::../GridFTP_Interface_API_Frag.txt[]
+include::../GridFTP_Interface_API_Frag.adoc[]
 
-include::../GridFTP_Interface_Commandline_Frag.txt[]
+include::../GridFTP_Interface_Commandline_Frag.adoc[]
  
-include::../GridFTP_Interface_GUI_Frag.txt[]
+include::../GridFTP_Interface_GUI_Frag.adoc[]
  
-include::../GridFTP_Interface_Config_Frag.txt[]
+include::../GridFTP_Interface_Config_Frag.adoc[]
 
  
 [[gridftp-developer-env-var]]
 == Environment variable interface ==
 
 
-include::../GridFTP_Interface_Env_Frag.txt[]
+include::../GridFTP_Interface_Env_Frag.adoc[]
 
  
 [[gridftp-developer-debugging]]
@@ -211,7 +211,7 @@ link:../../gridftp/admin/index.html#gridftp-admin-debugging[Debugging].
 
 --
  
-include::../GridFTP_Troubleshooting_Frag.txt[]
+include::../GridFTP_Troubleshooting_Frag.adoc[]
 
  
 [[gridftp-developer-relateddocs]]

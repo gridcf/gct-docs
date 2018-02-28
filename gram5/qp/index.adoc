@@ -39,9 +39,9 @@
 
 
  
-include::../GRAM5_Known_Problems_Frag.txt[]
+include::../GRAM5_Known_Problems_Frag.adoc[]
 
  
-include::../GRAM5_Fixed_Bugs_Frag.txt[]
+include::../GRAM5_Fixed_Bugs_Frag.adoc[]
 
  

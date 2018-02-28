@@ -15,10 +15,10 @@ Not yet available.
 Not yet available.
 
  
-include::../Util_OpenSSH_Known_Problems_Frag.txt[]
+include::../Util_OpenSSH_Known_Problems_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Fixed_Bugs_Frag.txt[]
+include::../Util_OpenSSH_Fixed_Bugs_Frag.adoc[]
 
  
 [[gsiopenssh-qp-performance]]

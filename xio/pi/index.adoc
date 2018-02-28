@@ -4,18 +4,18 @@
 = GT 6.0 Component Guide to Public Interfaces: XIO =
 
   
-include::../XIO_Interface_API_Frag.txt[]
+include::../XIO_Interface_API_Frag.adoc[]
 
  
 [[xio-pi-env-vars]]
 == Environmental variables ==
 
 
-include::../XIO_Interface_Env_Frag.txt[]
+include::../XIO_Interface_Env_Frag.adoc[]
 
  
 [appendix]
 [[xio-pi-error-codes]]
 == Errors ==
 
-include::../XIO_Errors_Frag.txt[]
+include::../XIO_Errors_Frag.adoc[]

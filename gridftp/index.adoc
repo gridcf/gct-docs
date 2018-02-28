@@ -3,7 +3,7 @@
 = GT 6.0 GridFTP =
 
   
-include::GridFTP_Overview_Brief_Frag.txt[]
+include::GridFTP_Overview_Brief_Frag.adoc[]
 
 The following guides are available for this component:
 

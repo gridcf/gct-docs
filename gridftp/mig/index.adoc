@@ -76,6 +76,6 @@ New Functionality in 3.2:
 
 
  
-include::../GridFTP_Migrating_GT2_Frag.txt[]
+include::../GridFTP_Migrating_GT2_Frag.adoc[]
 
   

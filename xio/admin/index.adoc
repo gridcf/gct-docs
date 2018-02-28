@@ -30,7 +30,7 @@ link:../../admin/install/index.html#gtadmin-install[Installing GT 6.0].
 
 --
  
-include::../XIO_Interface_Config_Frag.txt[]
+include::../XIO_Interface_Config_Frag.adoc[]
 
  
 [[xio-admin-deploying]]
@@ -67,6 +67,6 @@ installer, you can run the following command to run the tests:
 == Security Considerations ==
 
 
-include::../XIO_Security_Considerations_Frag.txt[]
+include::../XIO_Security_Considerations_Frag.adoc[]
 
-include::../XIO_Troubleshooting_Admin_Frag.txt[] 
+include::../XIO_Troubleshooting_Admin_Frag.adoc[] 

@@ -4,9 +4,9 @@
 === New Features: C Common Libraries ===
 
 * Highlights
-include::C_Common_Libraries_Change_Summary_Highlights_Frag.txt[]
+include::C_Common_Libraries_Change_Summary_Highlights_Frag.adoc[]
 * Other New Features
-include::C_Common_Libraries_Change_Summary_Minor_Frag.txt[]
+include::C_Common_Libraries_Change_Summary_Minor_Frag.adoc[]
 
 
 === Improvements: C Common Libraries ===

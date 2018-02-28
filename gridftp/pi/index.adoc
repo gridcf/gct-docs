@@ -2,23 +2,23 @@
 :doctype: book
 = GT 6.0 Component Guide to Public Interfaces: GridFTP =
 
-include::../GridFTP_Interface_API_Frag.txt[]
+include::../GridFTP_Interface_API_Frag.adoc[]
 
-include::../GridFTP_Interface_Commandline_Frag.txt[]
+include::../GridFTP_Interface_Commandline_Frag.adoc[]
  
-include::../GridFTP_Interface_GUI_Frag.txt[]
+include::../GridFTP_Interface_GUI_Frag.adoc[]
  
-include::../GridFTP_Interface_Config_Frag.txt[]
+include::../GridFTP_Interface_Config_Frag.adoc[]
  
 [[gridftp-pi-env-var]]
 == Environment variable interface ==
 
 
-include::../GridFTP_Interface_Env_Frag.txt[]
+include::../GridFTP_Interface_Env_Frag.adoc[]
 
  
 [[gridftp-pi-error-codes]]
 == Errors ==
 indexterm:[errors]
 
-include::../GridFTP_Errors_Frag.txt[]
+include::../GridFTP_Errors_Frag.adoc[]

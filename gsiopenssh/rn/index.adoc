@@ -7,31 +7,31 @@
 == Component Overview ==
 
 
-include::../Util_OpenSSH_Overview_Brief_Frag.txt[]
+include::../Util_OpenSSH_Overview_Brief_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Feature_Summary_Frag.txt[]
+include::../Util_OpenSSH_Feature_Summary_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Change_Summary_Frag.txt[]
+include::../Util_OpenSSH_Change_Summary_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Fixed_Bugs_Frag.txt[]
+include::../Util_OpenSSH_Fixed_Bugs_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Known_Problems_Frag.txt[]
+include::../Util_OpenSSH_Known_Problems_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Dependencies_Summary_Frag.txt[]
+include::../Util_OpenSSH_Dependencies_Summary_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Platform_Summary_Frag.txt[]
+include::../Util_OpenSSH_Platform_Summary_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Compatibility_Summary_Frag.txt[]
+include::../Util_OpenSSH_Compatibility_Summary_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Associated_Standards_Frag.txt[]
+include::../Util_OpenSSH_Associated_Standards_Frag.adoc[]
 
  
 [[gsiopenssh-rn-formoreinfo]]

@@ -25,9 +25,9 @@ Highlights of this release include:
 ** Make binaries and scripts more easily relocatable (don't need to set
    GLOBUS_LOCATION for most cases)
 * GridFTP
-include::../gridftp/GridFTP_Change_Summary_Highlights_Frag.txt[]
+include::../gridftp/GridFTP_Change_Summary_Highlights_Frag.adoc[]
 * C Common Libraries
-include::../ccommonlib/C_Common_Libraries_Change_Summary_Highlights_Frag.txt[]
+include::../ccommonlib/C_Common_Libraries_Change_Summary_Highlights_Frag.adoc[]
 
 To view details for each component, see link:#rn-bycomponents[Release Notes by
 Component].

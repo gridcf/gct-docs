@@ -20,7 +20,7 @@ information on these and other configuration options.
 
 --
 
-include::GridFTP_Errors_Frag.txt[]
+include::GridFTP_Errors_Frag.adoc[]
 
 
 === Establish control channel connection ===

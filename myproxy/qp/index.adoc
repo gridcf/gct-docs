@@ -12,9 +12,9 @@ Not yet available.
 
 Not yet available. 
 
-include::../Cred_Mgmt_MyProxy_Known_Problems_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Known_Problems_Frag.adoc[]
 
-include::../Cred_Mgmt_MyProxy_Fixed_Bugs_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Fixed_Bugs_Frag.adoc[]
 
 [[myproxy-qp-performance]]
 === Performance reports ===

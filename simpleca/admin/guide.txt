@@ -505,4 +505,4 @@ correct certificate.
 == Security Considerations ==
 
 
-include::../Cred_Mgmt_SimpleCA_Security_Considerations_Frag.txt[]
+include::../Cred_Mgmt_SimpleCA_Security_Considerations_Frag.adoc[]

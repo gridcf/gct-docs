@@ -41,10 +41,10 @@
 
 
  
-include::../GSIC_Known_Problems_Frag.txt[]
+include::../GSIC_Known_Problems_Frag.adoc[]
 
  
-include::../GSIC_Fixed_Bugs_Frag.txt[]
+include::../GSIC_Fixed_Bugs_Frag.adoc[]
 
  
 [[gsic-qp-performance]]

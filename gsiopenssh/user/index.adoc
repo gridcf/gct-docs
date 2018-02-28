@@ -90,7 +90,7 @@ the remote system. If something goes wrong, please see
 link:#gsiopenssh-user-troubleshooting[Troubleshooting] for assistance. 
 
  
-include::../Util_OpenSSH_Interface_Commandline_Frag.txt[]
+include::../Util_OpenSSH_Interface_Commandline_Frag.adoc[]
 
  
 [[gsiopenssh-user-troubleshooting]]
@@ -105,7 +105,7 @@ and send the output to your system administrator for assistance.
 
 --
 
-include::../Util_OpenSSH_Errors_Frag.txt[]
+include::../Util_OpenSSH_Errors_Frag.adoc[]
 
 
 [[gsiopenssh-user-passphrase]]
@@ -144,6 +144,6 @@ argument (specifying verbose output) and send the output to your system
 administrator for assistance.
 
  
-include::../Util_OpenSSH_Usage_Statistics_Frag.txt[]
+include::../Util_OpenSSH_Usage_Statistics_Frag.adoc[]
 
   

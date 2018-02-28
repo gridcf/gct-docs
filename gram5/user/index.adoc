@@ -1025,7 +1025,7 @@ GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE
 == Troubleshooting ==
 
 
-include::../GRAM5_Troubleshooting_User_Frag.txt[]
+include::../GRAM5_Troubleshooting_User_Frag.adoc[]
 
  
 [[gram5-user-clientcli]]
@@ -1096,16 +1096,16 @@ include::../GRAM5_RSL_Attribute_List.txt[]
 [[gram5-user-errors]]
 == GRAM Error Message Reference ==
 
-include::../GRAM5_Errors_Frag.txt[]
+include::../GRAM5_Errors_Frag.adoc[]
  
 [[gram5-user-knownproblems]]
 == Known Problems in GRAM5 ==
 
 
-include::../GRAM5_Known_Problems_Frag.txt[]
+include::../GRAM5_Known_Problems_Frag.adoc[]
 
  
-include::../GRAM5_Usage_Statistics_Frag.txt[]
+include::../GRAM5_Usage_Statistics_Frag.adoc[]
 
 [index]
 [[gram5-user-index]]

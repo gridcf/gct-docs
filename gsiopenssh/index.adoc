@@ -3,7 +3,7 @@
 = GT 6.0: GSI-OpenSSH =
 
   
-include::Util_OpenSSH_Overview_Brief_Frag.txt[]
+include::Util_OpenSSH_Overview_Brief_Frag.adoc[]
 
  
 

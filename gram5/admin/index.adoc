@@ -279,7 +279,7 @@ pbs [DISABLED]
 
 
  
-include::../GRAM5_Interface_Config_Frag.txt[]
+include::../GRAM5_Interface_Config_Frag.adoc[]
 
  
 include::../GRAM5_Audit_Logging.txt[]
@@ -289,14 +289,14 @@ include::../GRAM5_Audit_Logging.txt[]
 == Security Considerations ==
 
 
-include::../GRAM5_Security_Considerations_Frag.txt[]
+include::../GRAM5_Security_Considerations_Frag.adoc[]
 
  
 [[gram5-admin-troubleshooting]]
 == Troubleshooting ==
 
 
-include::../GRAM5_Troubleshooting_Admin_Frag.txt[]
+include::../GRAM5_Troubleshooting_Admin_Frag.adoc[]
 
  
 [[gram5-admin-programs]]
@@ -360,7 +360,7 @@ include::../globus-scheduler-event-generator-admin-manual.txt[]
 :leveloffset: 0
 :doctype: book
  
-include::../GRAM5_Usage_Statistics_Frag.txt[]
+include::../GRAM5_Usage_Statistics_Frag.adoc[]
 
 [index]
 [[gram5-admin-index]]

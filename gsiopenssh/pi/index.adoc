@@ -4,23 +4,23 @@
 = GT 6.0 Component Guide to Public Interfaces: GSI-OpenSSH =
 
   
-include::../Util_OpenSSH_Interface_Commandline_Frag.txt[]
+include::../Util_OpenSSH_Interface_Commandline_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Interface_Config_Frag.txt[]
+include::../Util_OpenSSH_Interface_Config_Frag.adoc[]
 
  
 [[gsiopenssh-pi-env]]
 == Environment variable interface ==
 
 
-include::../Util_OpenSSH_Interface_Env_Frag.txt[]
+include::../Util_OpenSSH_Interface_Env_Frag.adoc[]
 
  
 [[gsiopenssh-pi-error-codes]]
 == Errors ==
 
 
-include::../Util_OpenSSH_Errors_Frag.txt[]
+include::../Util_OpenSSH_Errors_Frag.adoc[]
 
   

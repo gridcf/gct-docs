@@ -27,19 +27,19 @@ through the use of dynamic library loading.
 == Before you begin ==
 
 
-include::../GSIC_Feature_Summary_Frag.txt[]
+include::../GSIC_Feature_Summary_Frag.adoc[]
 
 
-include::../GSIC_Platform_Summary_Frag.txt[]
+include::../GSIC_Platform_Summary_Frag.adoc[]
 
 
-include::../GSIC_Compatibility_Summary_Frag.txt[]
+include::../GSIC_Compatibility_Summary_Frag.adoc[]
 
 
-include::../GSIC_Dependencies_Summary_Frag.txt[]
+include::../GSIC_Dependencies_Summary_Frag.adoc[]
 
 
-include::../GSIC_Security_Considerations_Frag.txt[]
+include::../GSIC_Security_Considerations_Frag.adoc[]
 
  
 [[gsic-developer-scenarios]]
@@ -158,23 +158,23 @@ callouts can be found
 link:../GSIAuthorizationCalloutSpecification-04.pdf[here].
 
  
-include::../GSIC_Interface_API_Frag.txt[]
+include::../GSIC_Interface_API_Frag.adoc[]
 
  
-include::../GSIC_Interface_Protocol_Frag.txt[]
+include::../GSIC_Interface_Protocol_Frag.adoc[]
 
  
-include::../GSIC_Interface_Commandline_Frag.txt[]
+include::../GSIC_Interface_Commandline_Frag.adoc[]
 
  
-include::../GSIC_Interface_Config_Frag.txt[]
+include::../GSIC_Interface_Config_Frag.adoc[]
 
  
 [[gsic-developer-env]]
 == Environment variable interface ==
 
 
-include::../GSIC_Interface_Env_Frag.txt[]
+include::../GSIC_Interface_Env_Frag.adoc[]
 
  
 [[gsic-developer-debugging]]
@@ -193,10 +193,10 @@ Admin Guide.
 == Troubleshooting ==
 
 
-include::../../Credential_Troubleshooting_Frag.txt[]
+include::../../Credential_Troubleshooting_Frag.adoc[]
 
 
-include::../../Gridmap_Troubleshooting_Frag.txt[]
+include::../../Gridmap_Troubleshooting_Frag.adoc[]
 
  
 [[gsic-developer-relateddocs]]

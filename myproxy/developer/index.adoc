@@ -18,19 +18,19 @@ Developer's Guide] on the MyProxy web site.
 == Before you begin ==
 
 
-include::../Cred_Mgmt_MyProxy_Feature_Summary_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Feature_Summary_Frag.adoc[]
 
 
-include::../Cred_Mgmt_MyProxy_Platform_Summary_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Platform_Summary_Frag.adoc[]
 
 
-include::../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.adoc[]
 
 
-include::../Cred_Mgmt_MyProxy_Dependencies_Summary_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Dependencies_Summary_Frag.adoc[]
 
 
-include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.adoc[]
 
  
 [[myproxy-developer-scenarios]]
@@ -73,7 +73,7 @@ two publications:
  
 == Troubleshooting ==
 
-include::../Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
 
 [[myproxy-errors]]
 === Additional MyProxy Troubleshooting ===

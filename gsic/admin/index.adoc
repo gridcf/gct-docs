@@ -28,7 +28,7 @@ This document describes the configuration steps required to:
 * specify identity mapping information.
 --
 
-include::../GSIC_Interface_Config_Frag.txt[]
+include::../GSIC_Interface_Config_Frag.adoc[]
 
 [[gsic-admin-testing]]
 == Testing ==
@@ -39,15 +39,15 @@ There is no content available at this time.
  
 [[gsic-admin-security_considerations]]
 == Security Considerations ==
-include::../GSIC_Security_Considerations_Frag.txt[]
+include::../GSIC_Security_Considerations_Frag.adoc[]
 
 [[gsic-admin-debugging]]
 == Debugging ==
-include::../GSIC_Logging_Frag.txt[]
+include::../GSIC_Logging_Frag.adoc[]
  
 [[gsic-admin-troubleshooting]]
 == Troubleshooting ==
 
-include::../../Credential_Troubleshooting_Frag.txt[]
+include::../../Credential_Troubleshooting_Frag.adoc[]
 
-include::../../Gridmap_Troubleshooting_Frag.txt[]
+include::../../Gridmap_Troubleshooting_Frag.adoc[]

@@ -3,7 +3,7 @@
 = GT 6.0: XIO =
 
   
-include::XIO_Overview_Brief_Frag.txt[]
+include::XIO_Overview_Brief_Frag.adoc[]
 
 [cols="2",frame="none"]
 |=======================================================================

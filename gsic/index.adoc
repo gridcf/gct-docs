@@ -3,7 +3,7 @@
 = GT 6.0: Grid Security Infrastructure in C (GSI C) =
 
   
-include::GSIC_Overview_Brief_Frag.txt[]
+include::GSIC_Overview_Brief_Frag.adoc[]
 
 [cols="2",frame="none"]
 |=======================================================================

@@ -15,14 +15,14 @@ User's Guide] on the MyProxy web site.
 
 --
  
-include::../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.adoc[]
 
  
 [[myproxy-user-troubleshooting]]
 == Troubleshooting ==
 
 
-include::../Cred_Mgmt_MyProxy_Errors_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
 
 
 [[myproxy-errors]]
@@ -33,6 +33,6 @@ http://myproxy.ncsa.uiuc.edu/troubleshooting.html[MyProxy
 Troubleshooting Page] at NCSA. 
 
  
-include::../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.txt[]
+include::../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.adoc[]
 
   

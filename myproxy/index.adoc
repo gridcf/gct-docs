@@ -3,7 +3,7 @@
 = GT 6.0: MyProxy =
 
   
-include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.txt[]
+include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
 
 [cols="2",frame="none"]
 |=======================================================================

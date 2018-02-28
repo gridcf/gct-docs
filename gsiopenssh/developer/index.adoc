@@ -19,19 +19,19 @@ page for more details.
 == Before you begin ==
 
 
-include::../Util_OpenSSH_Feature_Summary_Frag.txt[]
+include::../Util_OpenSSH_Feature_Summary_Frag.adoc[]
 
 
-include::../Util_OpenSSH_Platform_Summary_Frag.txt[]
+include::../Util_OpenSSH_Platform_Summary_Frag.adoc[]
 
 
-include::../Util_OpenSSH_Compatibility_Summary_Frag.txt[]
+include::../Util_OpenSSH_Compatibility_Summary_Frag.adoc[]
 
 
-include::../Util_OpenSSH_Dependencies_Summary_Frag.txt[]
+include::../Util_OpenSSH_Dependencies_Summary_Frag.adoc[]
 
 
-include::../Util_OpenSSH_Security_Considerations_Frag.txt[]
+include::../Util_OpenSSH_Security_Considerations_Frag.adoc[]
 
  
 [[gsiopenssh-developer-scenarios]]
@@ -65,17 +65,17 @@ Internals] page.
 
 --
  
-include::../Util_OpenSSH_Interface_Commandline_Frag.txt[]
+include::../Util_OpenSSH_Interface_Commandline_Frag.adoc[]
 
  
-include::../Util_OpenSSH_Interface_Config_Frag.txt[]
+include::../Util_OpenSSH_Interface_Config_Frag.adoc[]
 
  
 [[gsiopenssh-developer-env]]
 == Environment variable interface ==
 
 
-include::../Util_OpenSSH_Interface_Env_Frag.txt[]
+include::../Util_OpenSSH_Interface_Env_Frag.adoc[]
 
  
 [[gsiopenssh-developer-troubleshooting]]
@@ -88,7 +88,7 @@ include::../Util_OpenSSH_Interface_Env_Frag.txt[]
 
 :leveloffset: 1
 
-include::../Util_OpenSSH_Errors_Frag.txt[]
+include::../Util_OpenSSH_Errors_Frag.adoc[]
 
 :leveloffset: 0
 

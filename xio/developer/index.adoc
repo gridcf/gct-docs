@@ -20,19 +20,19 @@ samples.
 == Before you begin ==
 
 
-include::../XIO_Feature_Summary_Frag.txt[]
+include::../XIO_Feature_Summary_Frag.adoc[]
 
 
-include::../XIO_Platform_Summary_Frag.txt[]
+include::../XIO_Platform_Summary_Frag.adoc[]
 
 
-include::../XIO_Compatibility_Summary_Frag.txt[]
+include::../XIO_Compatibility_Summary_Frag.adoc[]
 
 
-include::../XIO_Dependencies_Summary_Frag.txt[]
+include::../XIO_Dependencies_Summary_Frag.adoc[]
 
 
-include::../XIO_Security_Considerations_Frag.txt[]
+include::../XIO_Security_Considerations_Frag.adoc[]
 
  
 include::UserQuickStart.txt[]
@@ -56,14 +56,14 @@ include::DriverQuickStart.txt[]
 include::xio_arch.txt[]
 
  
-include::../XIO_Interface_API_Frag.txt[]
+include::../XIO_Interface_API_Frag.adoc[]
 
  
 [[xio-developer-env]]
 == Environment Variable Interface ==
 
 
-include::../XIO_Interface_Env_Frag.txt[]
+include::../XIO_Interface_Env_Frag.adoc[]
 
  
 [[xio-developer-debugging]]
@@ -120,7 +120,7 @@ each run. Otherwise, the output will be appended to the existing file.
 
 --
  
-include::../XIO_Troubleshooting_Admin_Frag.txt[]
+include::../XIO_Troubleshooting_Admin_Frag.adoc[]
 
  
 [[xio-developer-relateddocs]]

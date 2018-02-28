@@ -15,10 +15,10 @@ There are no test coverage reports available at this time.
 There are no code analysis reports available at this time.
 
  
-include::../GridFTP_Known_Problems_Frag.txt[]
+include::../GridFTP_Known_Problems_Frag.adoc[]
 
  
-include::../GridFTP_Fixed_Bugs_Frag.txt[]
+include::../GridFTP_Fixed_Bugs_Frag.adoc[]
 
  
 [[gridftp-qp-performance]]

@@ -39,5 +39,5 @@ include::guide.txt[]
 
 [[simpleca-admin-reference]]
 
-include::../Cred_Mgmt_SimpleCA_Interface_Commandline_Frag.txt[]
+include::../Cred_Mgmt_SimpleCA_Interface_Commandline_Frag.adoc[]
 

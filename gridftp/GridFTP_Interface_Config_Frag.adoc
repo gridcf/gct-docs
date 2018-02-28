@@ -119,7 +119,7 @@ option needs to be used on the server.
 
 --
 
-include::GridFTP_Interface_Config_Client_Firewall_Frag.txt[]
+include::GridFTP_Interface_Config_Client_Firewall_Frag.adoc[]
 
 [[gridftp-admin-config-security]]
 === Configuring Security for GridFTP ===
