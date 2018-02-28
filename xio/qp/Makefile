@@ -1,6 +1,6 @@
 default: all
 
-xioQualityProfile.pdf: index.txt
+xioQualityProfile.pdf: index.adoc
 PDF_FILES = xioQualityProfile.pdf
 
 TOPDIR=../..

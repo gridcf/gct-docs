@@ -1,6 +1,6 @@
 default: all
 
-gridftpReleaseNotes.pdf: index.txt
+gridftpReleaseNotes.pdf: index.adoc
 
 PDF_FILES   = gridftpReleaseNotes.pdf
 TOPDIR      = ../..

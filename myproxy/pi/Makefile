@@ -1,6 +1,6 @@
 default: all
 
-myproxyPublicInterfacesGuide.pdf: index.txt
+myproxyPublicInterfacesGuide.pdf: index.adoc
 PDF_FILES = myproxyPublicInterfacesGuide.pdf
 
 TOPDIR=../..

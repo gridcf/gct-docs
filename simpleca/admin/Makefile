@@ -1,6 +1,6 @@
 default: all
 
-simplecaAdminGuide.pdf: index.txt
+simplecaAdminGuide.pdf: index.adoc
 PDF_FILES = simplecaAdminGuide.pdf
 
 TOPDIR=../..

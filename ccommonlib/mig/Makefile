@@ -1,6 +1,6 @@
 default: all
 
-ccommonlibMigratingGuide.pdf: index.txt
+ccommonlibMigratingGuide.pdf: index.adoc
 PDF_FILES = ccommonlibMigratingGuide.pdf
 
 TOPDIR=../..

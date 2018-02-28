@@ -1,6 +1,6 @@
 default: all
 
-ccommonlibDevelopersGuide.pdf: index.txt
+ccommonlibDevelopersGuide.pdf: index.adoc
 PDF_FILES = ccommonlibDevelopersGuide.pdf
 
 TOPDIR=../..

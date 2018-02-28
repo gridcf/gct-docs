@@ -1,6 +1,6 @@
 default: all
 
-gtCommands.pdf: index.txt
+gtCommands.pdf: index.adoc
 	$(TXT_TO_PDF)
 
 PDF_FILES = gtCommands.pdf

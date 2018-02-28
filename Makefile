@@ -7,7 +7,7 @@ admin       gram5    gsiopenssh  simpleca \
 appendices  gridftp  myproxy     xio \
 ccommonlib  gsic     rn
 
-index.pdf: index.txt
+index.pdf: index.adoc
 	$(TXT_TO_PDF)
 
 

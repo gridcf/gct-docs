@@ -1,6 +1,6 @@
 default: all
 
-gtKeyConcepts.pdf: index.txt
+gtKeyConcepts.pdf: index.adoc
 	$(TXT_TO_PDF)
 PDF_FILES = gtKeyConcepts.pdf
 

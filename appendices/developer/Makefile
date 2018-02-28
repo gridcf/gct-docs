@@ -1,6 +1,6 @@
 default: all
 
-gtDeveloperGuide.pdf: index.txt
+gtDeveloperGuide.pdf: index.adoc
 	$(TXT_TO_PDF)
 PDF_FILES = gtDeveloperGuide.pdf
 

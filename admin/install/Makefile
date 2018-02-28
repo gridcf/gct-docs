@@ -1,6 +1,6 @@
 default: all
 
-installingGT.pdf: index.txt
+installingGT.pdf: index.adoc
 	$(TXT_TO_PDF)
 installationAppendix.pdf: appendix.txt
 	$(TXT_TO_PDF)

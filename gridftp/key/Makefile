@@ -1,6 +1,6 @@
 default: all
 
-gridftpKeyConcepts.pdf: index.txt
+gridftpKeyConcepts.pdf: index.adoc
 PDF_FILES   = gridftpKeyConcepts.pdf
 
 TOPDIR      = ../..

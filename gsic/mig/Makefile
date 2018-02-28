@@ -1,6 +1,6 @@
 default: all
 
-gsicMigratingGuide.pdf: index.txt
+gsicMigratingGuide.pdf: index.adoc
 PDF_FILES = gsicMigratingGuide.pdf
 
 TOPDIR=../..

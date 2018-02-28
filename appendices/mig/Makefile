@@ -1,6 +1,6 @@
 default: all
 
-gtMigratingGuide.pdf: index.txt
+gtMigratingGuide.pdf: index.adoc
 	$(TXT_TO_PDF)
 PDF_FILES = gtMigratingGuide.pdf
 

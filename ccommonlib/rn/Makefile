@@ -1,6 +1,6 @@
 default: all
 
-ccommonlibReleaseNotes.pdf: index.txt
+ccommonlibReleaseNotes.pdf: index.adoc
 PDF_FILES = ccommonlibReleaseNotes.pdf
 
 TOPDIR=../..

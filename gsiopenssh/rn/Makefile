@@ -1,6 +1,6 @@
 default: all
 
-gsiopensshReleaseNotes.pdf: index.txt
+gsiopensshReleaseNotes.pdf: index.adoc
 PDF_FILES = gsiopensshReleaseNotes.pdf
 
 TOPDIR=../..

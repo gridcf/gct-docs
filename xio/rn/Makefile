@@ -1,6 +1,6 @@
 default: all
 
-xioReleaseNotes.pdf: index.txt
+xioReleaseNotes.pdf: index.adoc
 PDF_FILES = xioReleaseNotes.pdf
 
 TOPDIR=../..

@@ -2,7 +2,7 @@
 default: all
 
 PDF_FILES   = gtQuickstart.pdf
-gtQuickstart.pdf: index.txt
+gtQuickstart.pdf: index.adoc
 	asciidoctor-pdf -d book -o $@ $<
 
 TOPDIR=../..

@@ -1,6 +1,6 @@
 default: all
 
-gtReleaseNotes.pdf: index.txt
+gtReleaseNotes.pdf: index.adoc
 PDF_FILES = gtReleaseNotes.pdf
 
 TOPDIR=..

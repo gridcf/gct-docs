@@ -1,5 +1,5 @@
 default: all
-gram5MigratingGuide.pdf: index.txt
+gram5MigratingGuide.pdf: index.adoc
 PDF_FILES=gram5MigratingGuide.pdf
 
 TOPDIR=../..

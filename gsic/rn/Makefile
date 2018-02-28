@@ -1,6 +1,6 @@
 default: all
 
-gsicReleaseNotes.pdf: index.txt
+gsicReleaseNotes.pdf: index.adoc
 PDF_FILES = gsicReleaseNotes.pdf
 
 TOPDIR=../..

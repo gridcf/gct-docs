@@ -1,6 +1,6 @@
 default: all
 
-gsicKeyConcepts.pdf: index.txt
+gsicKeyConcepts.pdf: index.adoc
 PDF_FILES = gsicKeyConcepts.pdf
 
 TOPDIR=../..

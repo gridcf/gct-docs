@@ -1,6 +1,6 @@
 default: all
 
-gsicAdminGuide.pdf: index.txt
+gsicAdminGuide.pdf: index.adoc
 PDF_FILES = gsicAdminGuide.pdf
 
 TOPDIR=../..

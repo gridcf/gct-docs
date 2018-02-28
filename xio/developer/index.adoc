@@ -134,6 +134,6 @@ include::../XIO_Troubleshooting_Admin_Frag.txt[]
 
 --
  
-include::../drivers/index.txt[]
+include::../drivers/index.adoc[]
 
  

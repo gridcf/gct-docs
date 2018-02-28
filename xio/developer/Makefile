@@ -1,6 +1,6 @@
 default: all
 
-xioDeveloperGuide.pdf: index.txt
+xioDeveloperGuide.pdf: index.adoc
 PDF_FILES = xioDeveloperGuide.pdf
 
 TOPDIR=../..

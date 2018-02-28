@@ -1,6 +1,6 @@
 default: all
 
-gram5UserGuide.pdf: index.txt
+gram5UserGuide.pdf: index.adoc
 PDF_FILES = gram5UserGuide.pdf
 
 TOPDIR=../..

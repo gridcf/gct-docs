@@ -1,6 +1,6 @@
 default: all
 
-gridftpMigratingGuide.pdf: index.txt
+gridftpMigratingGuide.pdf: index.adoc
 PDF_FILES   = gridftpMigratingGuide.pdf
 TOPDIR      = ../..
 

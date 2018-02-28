@@ -1,5 +1,5 @@
 default: all
-gram5DeveloperGuide.pdf: index.txt
+gram5DeveloperGuide.pdf: index.adoc
 PDF_FILES=gram5DeveloperGuide.pdf
 
 # We can generate this from the fragments included in the tutorial so that

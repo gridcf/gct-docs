@@ -1,6 +1,6 @@
 default: all
 
-gsiopensshPublicInterfacesGuide.pdf: index.txt
+gsiopensshPublicInterfacesGuide.pdf: index.adoc
 PDF_FILES = gsiopensshPublicInterfacesGuide.pdf
 
 TOPDIR=../..
