@@ -288,7 +288,7 @@ indexterm:[configuring GridFTP,security,gsiftp]
 
 This security option can be the most involved to set up, but provides
 the most security. It requires setting up GSI security as described in
-the GT Installation Guide here:
+the GCT Installation Guide here:
 link:../../admin/install/index.html#gtadmin-basic-security[Basic Security
 Configuration]. 
 

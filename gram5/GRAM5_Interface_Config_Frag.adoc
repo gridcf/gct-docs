@@ -39,7 +39,7 @@ The following configuration variables are available in the
      Gatekeeper Service Port. If not set, the **++globus-gatekeeper++** uses the default of ++2119++.
 
 **GLOBUS_LOCATION**::
-     Globus Installation Path. If not set, the **++globus-gatekeeper++** uses the paths defined at package compilation time.
+     GCT Installation Path. If not set, the **++globus-gatekeeper++** uses the paths defined at package compilation time.
 
 **GLOBUS_GATEKEEPER_LOG**::
      Gatekeeper Log Filename. If not set, the **++globus-gatekeeper++** logs to syslog using the ++GRAM-gatekeeper++ log identification prefix. The default configuration value is ++/var/log/globus-gatekeeper.log++

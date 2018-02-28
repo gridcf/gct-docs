@@ -5,7 +5,7 @@ indexterm:[GridFTP Server]
 
 === Interface introduction ===
 
-The Globus implementation of the GridFTP server draws on: 
+The GCT implementation of the GridFTP server draws on: 
 
 * three IETF RFCs: 
 

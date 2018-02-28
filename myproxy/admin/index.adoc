@@ -89,7 +89,7 @@ example) ++/etc/cron.hourly++. .
 To verify your myproxy-server installation and configuration, you can
 run the myproxy-server directly from your shell. If using a host
 certificate, you will need to run the myproxy-server as root. First,
-make sure your Globus environment is setup in your shell. Set the
+make sure your GCT environment is setup in your shell. Set the
 ++GLOBUS_LOCATION++ environment variable to the location of your MyProxy
 installation. Then, depending on your shell, run one of the following
 commands.  environment variable to the location of your MyProxy

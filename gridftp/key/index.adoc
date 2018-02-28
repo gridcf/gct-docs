@@ -41,7 +41,7 @@ working group. Key features include:
 --
  
 [[globus-gridftp]]
-== Globus Implementation of GridFTP ==
+== GCT Implementation of GridFTP ==
 
 
 --
@@ -69,7 +69,7 @@ protocol mentioned above. It supports both Grid Security Infrastructure
 (GSI) and SSH for securing the data transfer. Unlike sftp, SSH based
 GridFTP supports multiple security options on the data channel -
 authentication only, authentication and integrity protection, fully
-encrypted. Globus implemention of GridFTP is modular and extensibl. XIO
+encrypted. GCT implemention of GridFTP is modular and extensible. XIO
 based Globus GridFTP framework makes it easy to plugin alternate
 transport protocols. The Data Storage Interface (DSI) allows for easier
 integration with various storage systems. We currently have DSIs for

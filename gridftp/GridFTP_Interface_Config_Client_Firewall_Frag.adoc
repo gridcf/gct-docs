@@ -31,5 +31,5 @@ because if parallel TCP streams are used for transfers, the listening
 port would remain the same for each connection but the connecting port
 would be different for each connection.
 
-Additional information on Globus Toolkit Firewall Requirements is
+Additional information on Grid Community Toolkit Firewall Requirements is
 available http://www.globus.org/toolkit/security/firewalls/[here].

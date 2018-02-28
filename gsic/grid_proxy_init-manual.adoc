@@ -160,7 +160,7 @@ The following files affect the execution of **++grid-proxy-init++**:
 == Compatibility ==
 
 For more information about proxy certificate types and their
-compatibility in GT, see
+compatibility in GT and GCT, see
 http://dev.globus.org/wiki/Security/ProxyCertTypes[http://dev.globus.org/wiki/Security/ProxyCertTypes].
 
 

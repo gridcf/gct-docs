@@ -13,7 +13,7 @@ at an example. See link:../globus_xio_example.c[globus_xio_example.c].
 
 
 [[x-xio-user-quick-start-ActivateGlobus]]
-=== Activate Globus ===
+=== Activate the Globus XIO Module ===
 
 Let's examine the case where a user wishes to use Globus XIO for reading
 data from a file. As in all globus programs the first thing that must be

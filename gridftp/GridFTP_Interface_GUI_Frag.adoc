@@ -6,7 +6,7 @@ indexterm:[GUI information for GridFTP]
 
 === Globus Online ===
 
-Globus Toolkit does not provide a client with Graphical User Interface
+Grid Community Toolkit does not provide a client with Graphical User Interface
 (GUI) but http://www.globus.org[Globus Service] provides a web GUI
 for GridFTP data movement. It has the following features: 
 * With a one-click https://www.globus.org/globus%5fconnect/[Globus

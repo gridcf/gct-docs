@@ -8,7 +8,7 @@ indexterm:[security considerations for GridFTP]
 
 There are various ways to configure your GridFTP server that provide
 varying levels of security. For more information, see
-link:../../gridftp/admin/index.html[Installing GT 6.0].
+link:../../gridftp/admin/index.html[Installing GCT 6.0].
 
 
 [[gridftp-security-firewalls]]
@@ -91,6 +91,6 @@ port would remain the same for each connection but the connecting port
 would be different for each connection.
 
 
-Additional information on Globus Toolkit Firewall Requirements is
+Additional information on Grid Community Toolkit Firewall Requirements is
 available http://www.globus.org/toolkit/security/firewalls/[here].
 
