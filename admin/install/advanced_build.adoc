@@ -18,7 +18,7 @@ installation sections of component documentation.
 ==== Building from Git ====
 
 The Grid Community Toolkit is available for download from github. See
-https://github.com/gridcf[https://github.com/gridcf]
+https://github.com/gridcf/gct[https://github.com/gridcf/gct]
 to branch or checkout the toolkit source code.
 
 After checking out the toolkit, run **++autoreconf -i++** in the
