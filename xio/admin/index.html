@@ -557,10 +557,10 @@ driver, which provides a driver that allows for secure connections.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The environment variable GLOBUS_LOCATION must be set to a valid GCT 6.0 installation.</p>
+<p>The environment variable <code>GLOBUS_LOCATION</code> must be set to a valid GCT 6.0 installation.</p>
 </li>
 <li>
-<p>Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: source $GLOBUS_LOCATION/etc/globus-user-env.sh or source $GLOBUS_LOCATION/etc/globus-user-env.csh depending on the shell you are using.</p>
+<p>Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: <code>source $GLOBUS_LOCATION/etc/globus-user-env.sh</code> or <code>source $GLOBUS_LOCATION/etc/globus-user-env.csh</code> depending on the shell you are using.</p>
 </li>
 </ul>
 </div>
@@ -583,7 +583,7 @@ driver, which provides a driver that allows for secure connections.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Operation was canceled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Operation was canceled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An I/O operation has been canceled by a close or a cancel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">In most cases this will be intentionally performed by the
   application developer.  In unexpected cases the applciation
@@ -591,7 +591,7 @@ driver, which provides a driver that allows for secure connections.</p>
   relating to closing a handle.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Operation timed out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Operation timed out</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Occurs when the application developer associates a timeout with
   a handle&#8217;s I/O operations.  If no I/O is performed before the
   timeout expires this error will be triggered.</p></td>
@@ -600,7 +600,7 @@ driver, which provides a driver that allows for secure connections.</p>
    be over worked.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An end of file occurred</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>An end of file occurred</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This occurs when and EOF is detected on the file descriptor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When doing file I/O this like means you read to the end of the file
   and thus you are finished and should now close it.  On network
@@ -609,30 +609,30 @@ driver, which provides a driver that allows for secure connections.</p>
   is common here) or if the remote side chooses to close the connection.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contact string invalid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Contact string invalid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A poorly formed contact string was passed in to open</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify the format of the contact string with the documentation of
   the drivers in use.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Memory allocation failed on XXXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Memory allocation failed on XXXX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">malloc failed.  The system is likely quite overloaded</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Free up memory in your application</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> System error in XXXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code> System error in XXXX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A low level system error occurred.  The errno and errstring should
     indicate more information.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid stack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Invalid stack</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The requested stack does not meet XIO standards</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Most likely a transport driver is not on the bottom of the stack,
   or 2 transport drivers are in the stack.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Operation already registered</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Operation already registered</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">With certain common drivers like TCP and FILE, only one specific
   operations can be registered at a time (1 read, 1 write).  If
   another operation of the same type is posted to the handle before
@@ -641,7 +641,7 @@ driver, which provides a driver that allows for secure connections.</p>
   before registering the next IO operation.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unexpected state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Unexpected state</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The internal logic of XIO came across a logical path that should
   not be possible.  Often times this is due to application memory
   corruption or trying to perform an IO operation on a closed or
@@ -652,14 +652,14 @@ driver, which provides a driver that allows for secure connections.</p>
   <a href="http://jira.globus.org">Globus bug tracker</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Driver in handle has been unloaded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Driver in handle has been unloaded</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A driver associated with the offending operation has already been
   unloaded by the application code.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that you are not unloading drivers until they are no longer
   in use.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Module not activated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Module not activated</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">globus_module_activate(GLOBUS_XIO_MODULE); has not been called.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Call this before making any other XIO API calls.</p></td>
 </tr>

@@ -693,13 +693,13 @@ samples.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>globus_xio_stack_copy added to the API. This allows a user to duplicated a configured stack.</p>
+<p><code>globus_xio_stack_copy</code> added to the API. This allows a user to duplicated a configured stack.</p>
 </li>
 <li>
-<p>globus_xio_driver_set_eof_received added to the driver API. This function allows drivers to have multiple outstanding reads at one time.</p>
+<p><code>globus_xio_driver_set_eof_received</code> added to the driver API. This function allows drivers to have multiple outstanding reads at one time.</p>
 </li>
 <li>
-<p>globus_xio_driver_eof_received added to the driver API. Working in conjunction with globus_xio_driver_set_eof_received to allow drivers to have multiple outstanding reads.</p>
+<p><code>globus_xio_driver_eof_received</code> added to the driver API. Working in conjunction with <code>globus_xio_driver_set_eof_received</code> to allow drivers to have multiple outstanding reads.</p>
 </li>
 <li>
 <p>Users can now pass in a NULL callback for timeouts and it is assumed that when time expires the user wants the operation to timeout. Previously a user callback was required where the user would decide if they wanted the timeout.</p>
@@ -787,7 +787,7 @@ would be loaded with the following code:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If upon completion of the above function call res returns
+<p>If upon completion of the above function call <code>res</code> returns
 GLOBUS_SUCCESS then the driver was successfully loaded and can be
 referenced with the variable "driver".</p>
 </div>
@@ -833,7 +833,7 @@ illustrates initialization for client side handles:</p>
 </div>
 <div class="paragraph">
 <p>Server side handles are a bit more complicated. First we must introduce
-the data structure globus_xio_server_t. This structure shares many
+the data structure <code>globus_xio_server_t</code>. This structure shares many
 concepts with a TCP listener, mainly that it spawns handles
 ("connections") as passive open requests are made. If the user wishes to
 accept a new connection a call to globus_xio_accept() or
@@ -986,11 +986,11 @@ API doc</a> for more information.</p>
 <a href="../globus_xio_driver_example.c">Driver Example</a>. The file driver
 needs a way to provide the user level programmer with a means of setting
 the mode and flags when a file is open (akin to the POSIX function
-open()).</p>
+<code>open()</code>).</p>
 </div>
 <div class="paragraph">
 <p>The first step in creating this ability is to a) define the attribute
-structure and b) implement the globus_xio_driver_attr_init_t
+structure and b) implement the<code> globus_xio_driver_attr_init_t</code>
 function which will initialize it:</p>
 </div>
 <div class="listingblock">
@@ -1028,7 +1028,7 @@ globus_xio_driver_file_attr_init(
 <div class="paragraph">
 <p>The above simply defines a structure that can hold two integers, mode
 and flags, then defines a function the will allocate and initialize this
-structure. globus_xio hides much of the memory management of these
+structure. <code>globus_xio</code> hides much of the memory management of these
 attribute structures from the driver. However, it does need the driver
 to provide a means of copying them, and free all resources associated
 with them. In the case of the file driver example, these are both
@@ -1109,20 +1109,20 @@ globus_xio_driver_file_attr_cntl(
 </div>
 </div>
 <div class="paragraph">
-<p>This function is called passing the driver an initialized file_attr
+<p>This function is called passing the driver an <code>initialized file_attr</code>
 structure, a command, and a variable argument list.</p>
 </div>
 <div class="paragraph">
-<p>Based on the value of cmd, the driver decides to do one of the
+<p>Based on the value of <code>cmd</code>, the driver decides to do one of the
 following:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>set flags or mode from the va_args</p>
+<p>set flags or mode from the <code>va_args</code></p>
 </li>
 <li>
-<p>return flags or mode to the user via a pointer in va_args</p>
+<p>return flags or mode to the user via a pointer in <code>va_args</code></p>
 </li>
 </ul>
 </div>
@@ -1218,16 +1218,16 @@ the handle structure is used:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>globus_xio_driver_file_open()</p>
+<p><code>globus_xio_driver_file_open()</code></p>
 </li>
 <li>
-<p>globus_xio_driver_file_write()</p>
+<p><code>globus_xio_driver_file_write()</code></p>
 </li>
 <li>
-<p>globus_xio_driver_file_read()</p>
+<p><code>globus_xio_driver_file_read()</code></p>
 </li>
 <li>
-<p>globus_xio_driver_file_close()</p>
+<p><code>globus_xio_driver_file_close()</code></p>
 </li>
 </ul>
 </div>
@@ -1237,22 +1237,22 @@ the handle structure is used:</p>
 <div class="paragraph">
 <p>The read and write interface functions are called in response to a user
 read or write request. Both functions are provided with a vector that
-has at least the same members as the struct iovec and a vector
+has at least the same members as the <code>struct iovec</code> and a vector
 length. As of now, the iovec elements may contain extra members, so if
-you wish to use readv() or writev(), you will have to transfer
-the iov_base and iov_len members to the POSIX iovec.</p>
+you wish to use <code>readv()</code> or <code>writev()</code>, you will have to transfer
+the <code>iov_base</code> and <code>iov_len</code> members to the POSIX iovec.</p>
 </div>
 <div class="paragraph">
 <p>As with the open and close interface functions, if an error occurs
 before any real processing has occurred, the interface function may
-simply return the error (in a result_t), effectively canceling the
+simply return the error (in a <code>result_t</code>), effectively canceling the
 operation. However, once bytes have been read or written, you must not
 return the error. You must report the number of bytes read/written along
 with the result.</p>
 </div>
 <div class="paragraph">
 <p>When an operation is done, either by error or successful completion, the
-operation must be 'finished'. To do this, a call must be made to:</p>
+operation must be <em>finished</em>. To do this, a call must be made to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1282,7 +1282,7 @@ callback kick out via the globus_callback API.</p>
 <h3 id="x-xio-driver-quick-start-glue">The Glue</h3>
 <div class="paragraph">
 <p>Through a process not finalized yet, XIO will request the
-globus_xio_driver_t structure from the driver. This structure
+<code>globus_xio_driver_t</code> structure from the driver. This structure
 defines all of the interface functions that the driver supports. In
 detail:</p>
 </div>
@@ -1588,7 +1588,7 @@ in Globus XIO. GLOBUS_XIO_DEBUG is set in the following way:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The value of &lt;level&gt; can take on the logical OR of any of the
+<p>The value of <code>&lt;level&gt;</code> can take on the logical OR of any of the
 following:</p>
 </div>
 <div class="ulist">
@@ -1617,12 +1617,12 @@ following:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>&lt;file name&gt; is a debug output file, if empty stderr will be used by
-default. If a '#' precedes the filename, the file will be overwritten on
+<p><code>&lt;file name&gt;</code> is a debug output file, if empty stderr will be used by
+default. If a <em>#</em> precedes the filename, the file will be overwritten on
 each run. Otherwise, the output will be appended to the existing file.</p>
 </div>
 <div class="paragraph">
-<p>&lt;flags&gt;</p>
+<p><code>&lt;flags&gt;</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1649,10 +1649,10 @@ each run. Otherwise, the output will be appended to the existing file.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The environment variable GLOBUS_LOCATION must be set to a valid GCT 6.0 installation.</p>
+<p>The environment variable <code>GLOBUS_LOCATION</code> must be set to a valid GCT 6.0 installation.</p>
 </li>
 <li>
-<p>Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: source $GLOBUS_LOCATION/etc/globus-user-env.sh or source $GLOBUS_LOCATION/etc/globus-user-env.csh depending on the shell you are using.</p>
+<p>Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: <code>source $GLOBUS_LOCATION/etc/globus-user-env.sh</code> or <code>source $GLOBUS_LOCATION/etc/globus-user-env.csh</code> depending on the shell you are using.</p>
 </li>
 </ul>
 </div>
@@ -1675,7 +1675,7 @@ each run. Otherwise, the output will be appended to the existing file.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Operation was canceled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Operation was canceled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An I/O operation has been canceled by a close or a cancel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">In most cases this will be intentionally performed by the
   application developer.  In unexpected cases the applciation
@@ -1683,7 +1683,7 @@ each run. Otherwise, the output will be appended to the existing file.</p>
   relating to closing a handle.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Operation timed out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Operation timed out</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Occurs when the application developer associates a timeout with
   a handle&#8217;s I/O operations.  If no I/O is performed before the
   timeout expires this error will be triggered.</p></td>
@@ -1692,7 +1692,7 @@ each run. Otherwise, the output will be appended to the existing file.</p>
    be over worked.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An end of file occurred</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>An end of file occurred</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This occurs when and EOF is detected on the file descriptor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When doing file I/O this like means you read to the end of the file
   and thus you are finished and should now close it.  On network
@@ -1701,30 +1701,30 @@ each run. Otherwise, the output will be appended to the existing file.</p>
   is common here) or if the remote side chooses to close the connection.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contact string invalid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Contact string invalid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A poorly formed contact string was passed in to open</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify the format of the contact string with the documentation of
   the drivers in use.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Memory allocation failed on XXXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Memory allocation failed on XXXX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">malloc failed.  The system is likely quite overloaded</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Free up memory in your application</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> System error in XXXX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code> System error in XXXX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A low level system error occurred.  The errno and errstring should
     indicate more information.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid stack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Invalid stack</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The requested stack does not meet XIO standards</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Most likely a transport driver is not on the bottom of the stack,
   or 2 transport drivers are in the stack.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Operation already registered</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Operation already registered</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">With certain common drivers like TCP and FILE, only one specific
   operations can be registered at a time (1 read, 1 write).  If
   another operation of the same type is posted to the handle before
@@ -1733,7 +1733,7 @@ each run. Otherwise, the output will be appended to the existing file.</p>
   before registering the next IO operation.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unexpected state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Unexpected state</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The internal logic of XIO came across a logical path that should
   not be possible.  Often times this is due to application memory
   corruption or trying to perform an IO operation on a closed or
@@ -1744,14 +1744,14 @@ each run. Otherwise, the output will be appended to the existing file.</p>
   <a href="http://jira.globus.org">Globus bug tracker</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Driver in handle has been unloaded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Driver in handle has been unloaded</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A driver associated with the offending operation has already been
   unloaded by the application code.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that you are not unloading drivers until they are no longer
   in use.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Module not activated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Module not activated</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">globus_module_activate(GLOBUS_XIO_MODULE); has not been called.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Call this before making any other XIO API calls.</p></td>
 </tr>

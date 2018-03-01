@@ -599,7 +599,7 @@ will need to authenticate yourself to GCT services.</p>
 </div>
 </li>
 <li>
-<p>Use the end-user certificate to create a proxy certificate using <a href="../../gsic/user/index.html#grid-proxy-init">grid-proxy-init</a>. This will be used to authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user certificates (usually 12 hours). Once your proxy certificate expires, simply rerun <strong>grid-proxy-init</strong>.</p>
+<p>Use the end-user certificate to create a proxy certificate using <a href="../../gsic/user/index.html#grid-proxy-init">grid-proxy-init</a>. This will be used to authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user certificates (usually 12 hours). Once your proxy certificate expires, simply rerun <strong><code>grid-proxy-init</code></strong>.</p>
 </li>
 </ul>
 </div>
@@ -619,25 +619,25 @@ will need to authenticate yourself to GCT services.</p>
 <div class="sect2">
 <h3 id="_synopsis">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>globus-update-certificate-dir</strong> [-help ] [-d 'DIRECTORY']</p>
+<p><strong><code>globus-update-certificate-dir</code></strong> [<code>-help</code> ] [<code>-d</code> <em>DIRECTORY</em>]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description">Description</h3>
 <div class="paragraph">
-<p>The <strong>globus-update-certificate-dir</strong> program creates symlinks
+<p>The <strong><code>globus-update-certificate-dir</code></strong> program creates symlinks
 between files (CA certificates, certificate revocation lists, signing
 policy, and certificate request configuration files) using the
 certificate hash the installed version of OpenSSL uses. OpenSSL 1.0.0
 uses a different name hashing algorithm than previous versions, so CA
 distributions created with older versions of OpenSSL might not be able
 to locate trusted CAs and related files. Running
-<strong>globus-update-certificate-dir</strong> against a trusted CA directory
+<strong><code>globus-update-certificate-dir</code></strong> against a trusted CA directory
 will add symlinks to the files to the hash if needed.</p>
 </div>
 <div class="paragraph">
 <p>The full set of command-line options to
-<strong>globus-update-certificate-dir</strong> consists of:</p>
+<strong><code>globus-update-certificate-dir</code></strong> consists of:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -645,9 +645,9 @@ will add symlinks to the files to the hash if needed.</p>
 <dd>
 <p>Display a help message to standard output and exit</p>
 </dd>
-<dt class="hdlist1"><strong>-d 'DIRECTORY'</strong></dt>
+<dt class="hdlist1"><strong>-d <em>DIRECTORY</em></strong></dt>
 <dd>
-<p>Create links in the trusted CA directory 'DIRECTORY' instead of using the default search path.</p>
+<p>Create links in the trusted CA directory <em>DIRECTORY</em> instead of using the default search path.</p>
 </dd>
 </dl>
 </div>
@@ -656,19 +656,19 @@ will add symlinks to the files to the hash if needed.</p>
 <h3 id="_environment">Environment</h3>
 <div class="paragraph">
 <p>If the following variables affect the execution of
-<strong>globus-update-certificate-dir</strong></p>
+<strong><code>globus-update-certificate-dir</code></strong></p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_CERT_DIR</strong></dt>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
 <dd>
 <p>Default trusted certificate directory.</p>
 </dd>
-<dt class="hdlist1"><strong>HOME</strong></dt>
+<dt class="hdlist1"><strong><code>HOME</code></strong></dt>
 <dd>
 <p>Path to the current user&#8217;s home directory.</p>
 </dd>
-<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
 <dd>
 <p>Path to the GCT installation.</p>
 </dd>
@@ -689,26 +689,26 @@ will add symlinks to the files to the hash if needed.</p>
 <div class="sect2">
 <h3 id="_synopsis_2">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-cert-diagnostics</strong> [-h ] | [-help ] [-p ] [-n ] [-c 'CERTIFICATE']</p>
+<p><strong><code>grid-cert-diagnostics</code></strong> [<code>-h</code> ] | [<code>-help</code> ] [<code>-p</code> ] [<code>-n</code> ] [<code>-c</code> <em>CERTIFICATE</em>]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_2">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-cert-diagnostics</strong> program displays information about the
+<p>The <strong><code>grid-cert-diagnostics</code></strong> program displays information about the
 current user&#8217;s security environment, including information about
 security-related environment variables, security directory search path,
 personal key and certificates, and trusted certificates. It is intended
 to provide information to help diagnose problems using GSIC.</p>
 </div>
 <div class="paragraph">
-<p>By default, <strong>grid-cert-diagnostics</strong> prints out information
-regarding the environment and trusted certificate directory. If the '-p'
+<p>By default, <strong><code>grid-cert-diagnostics</code></strong> prints out information
+regarding the environment and trusted certificate directory. If the <em>-p</em>
 command-line option is used, then additional information about the
 current user&#8217;s default certificate and key will be printed.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-cert-diagnostics</strong>
+<p>The full set of command-line options to <strong><code>grid-cert-diagnostics</code></strong>
 consists of:</p>
 </div>
 <div class="dlist">
@@ -723,11 +723,11 @@ consists of:</p>
 </dd>
 <dt class="hdlist1"><strong>-n</strong></dt>
 <dd>
-<p>Check time synchronization with the <strong>ntpdate</strong> command.</p>
+<p>Check time synchronization with the <strong><code>ntpdate</code></strong> command.</p>
 </dd>
-<dt class="hdlist1"><strong>-c 'CERTIFICATE', -c -</strong></dt>
+<dt class="hdlist1"><strong>-c <em>CERTIFICATE</em>, -c -</strong></dt>
 <dd>
-<p>Check the validity of the certificate in the file named by 'CERTIFICATE' or standard input if the parameter to '-c' is -.</p>
+<p>Check the validity of the certificate in the file named by <em>CERTIFICATE</em> or standard input if the parameter to <em>-c</em> is <code>-</code>.</p>
 </dd>
 </dl>
 </div>
@@ -738,7 +738,7 @@ consists of:</p>
 <p>In this example, we see the default mode of checking the default
 security environment for the system, without processing the user&#8217;s key
 and certificate. Note the user receives a warning about a
-cog.properties and about an expired CA certificate.  and about an
+<code>cog.properties</code> and about an expired CA certificate.  and about an
 expired CA certificate.</p>
 </div>
 <div class="listingblock">
@@ -834,18 +834,18 @@ Certificate and and private key don't match</pre>
 <div class="sect2">
 <h3 id="_synopsis_3">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-cert-info</strong> [-help ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-cert-info</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_3">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-cert-info</strong> program displays information contained within
+<p>The <strong><code>grid-cert-info</code></strong> program displays information contained within
 a certificate file. By default it shows a text representation of the
 entire certificate. Specific facts about the certificate can be shown
 instead by using command-line options. If any of those options are used,
 then the default display is suppressed. This can be added to the output
-by using the '-all' command-line option.</p>
+by using the <em>-all</em> command-line option.</p>
 </div>
 <div class="paragraph">
 <p>If multiple display options are included on the command-line, the facts
@@ -854,21 +854,21 @@ they occur. If an option is specified multiple time, that fact will be
 displayed multiple times.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-cert-info</strong> are:</p>
+<p>The full set of command-line options to <strong><code>grid-cert-info</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-cert-info</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-cert-info</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-cert-info</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-cert-info</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-file 'CERTIFICATE-FILE'</strong></dt>
+<dt class="hdlist1"><strong>-file <em>CERTIFICATE-FILE</em></strong></dt>
 <dd>
-<p>Display information about the first certificate contained in the file named by 'CERTIFICATE-FILE' instead of the default user certificate.</p>
+<p>Display information about the first certificate contained in the file named by <em>CERTIFICATE-FILE</em> instead of the default user certificate.</p>
 </dd>
 <dt class="hdlist1"><strong>-rfc2253</strong></dt>
 <dd>
@@ -892,11 +892,11 @@ displayed multiple times.</p>
 </dd>
 <dt class="hdlist1"><strong>-startdate, -sd</strong></dt>
 <dd>
-<p>Display a string representation of the date and time when the certificate is valid from. This is displayed in the format used by the OpenSSL <strong>x509</strong> command.</p>
+<p>Display a string representation of the date and time when the certificate is valid from. This is displayed in the format used by the OpenSSL <strong><code>x509</code></strong> command.</p>
 </dd>
 <dt class="hdlist1"><strong>-enddate, -dd</strong></dt>
 <dd>
-<p>Display a string representation of the date and time when the certificate is valid until. This is displayed in the format used by the OpenSSL <strong>x509</strong> command.</p>
+<p>Display a string representation of the date and time when the certificate is valid until. This is displayed in the format used by the OpenSSL <strong><code>x509</code></strong> command.</p>
 </dd>
 </dl>
 </div>
@@ -941,11 +941,11 @@ CN=Joe User,DC=grid,DC=example,DC=org</pre>
 <h3 id="_environment_variables">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-cert-info</strong>:</p>
+<strong><code>grid-cert-info</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_USER_CERT</strong></dt>
+<dt class="hdlist1"><strong><code>X509_USER_CERT</code></strong></dt>
 <dd>
 <p>Path to the default certificate file to inspect.</p>
 </dd>
@@ -967,62 +967,62 @@ CN=Joe User,DC=grid,DC=example,DC=org</pre>
 <div class="sect2">
 <h3 id="_synopsis_4">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-cert-request</strong> [-help ] [-h ] [-? ] [-usage ] <br>
+<p><strong><code>grid-cert-request</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-?</code> ] [<code>-usage</code> ] <br>
 <br>
- [-version ] [-versions ]</p>
+ [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_4">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-cert-request</strong> program generates an X.509 Certificate
+<p>The <strong><code>grid-cert-request</code></strong> program generates an X.509 Certificate
 Request and corresponding private key for the specified name, host, or
 service. It is intended to be used with a CA implemented using the
-<strong>globus_simple_ca</strong> package.</p>
+<strong><code>globus_simple_ca</code></strong> package.</p>
 </div>
 <div class="paragraph">
-<p>The default behavior of <strong>grid-cert-request</strong> is to generate a
+<p>The default behavior of <strong><code>grid-cert-request</code></strong> is to generate a
 certificate request and private key for the user running the command.
 The subject name is derived from the gecos information in the local
-system&#8217;s password database, unless the '-commonname', '-cn', or '-host'
+system&#8217;s password database, unless the <em>-commonname</em>, <em>-cn</em>, or <em>-host</em>
 command-line options are used.</p>
 </div>
 <div class="paragraph">
-<p>By default, <strong>grid-cert-request</strong> writes user certificate requests
-and keys to the $HOME/.globus directory, and host and service
+<p>By default, <strong><code>grid-cert-request</code></strong> writes user certificate requests
+and keys to the <code>$HOME/.globus</code> directory, and host and service
 certificate requests and keys to  directory, and host and service
-certificate requests and keys to /etc/grid-security. This can be
-overridden by using the . This can be overridden by using the '-dir'
+certificate requests and keys to <code>/etc/grid-security</code>. This can be
+overridden by using the . This can be overridden by using the <em>-dir</em>
 command-line option.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-cert-request</strong> are:</p>
+<p>The full set of command-line options to <strong><code>grid-cert-request</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -h, -?, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-cert-request</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-cert-request</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-cert-request</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-cert-request</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-cn 'NAME', -commonname 'NAME'</strong></dt>
+<dt class="hdlist1"><strong>-cn <em>NAME</em>, -commonname <em>NAME</em></strong></dt>
 <dd>
-<p>Create a certificate request with the common name component of the subject set to 'NAME'. This is used to create user identity certificates.</p>
+<p>Create a certificate request with the common name component of the subject set to <em>NAME</em>. This is used to create user identity certificates.</p>
 </dd>
-<dt class="hdlist1"><strong>-dir 'DIRECTORY'</strong></dt>
+<dt class="hdlist1"><strong>-dir <em>DIRECTORY</em></strong></dt>
 <dd>
-<p>Write the certificate request and key to files in the directory specified by 'DIRECTORY'.</p>
+<p>Write the certificate request and key to files in the directory specified by <em>DIRECTORY</em>.</p>
 </dd>
-<dt class="hdlist1"><strong>-prefix 'PREFIX'</strong></dt>
+<dt class="hdlist1"><strong>-prefix <em>PREFIX</em></strong></dt>
 <dd>
-<p>Use the string 'PREFIX' as the base name of the certificate, certificate_request, and key files instead of the default. For a user certificate request, this would mean creating files $HOME/.globus/PREFIXcert_request.pem, , $HOME/.globus/PREFIXcert.pem, and , and $HOME/.globus/PREFIXkey.pem..</p>
+<p>Use the string <em>PREFIX</em> as the base name of the certificate, certificate_request, and key files instead of the default. For a user certificate request, this would mean creating files <code>$HOME/.globus/PREFIXcert_request.pem</code>, , <code>$HOME/.globus/PREFIXcert.pem</code>, and , and <code>$HOME/.globus/PREFIXkey.pem</code>..</p>
 </dd>
-<dt class="hdlist1"><strong>-ca 'CA-HASH'</strong></dt>
+<dt class="hdlist1"><strong>-ca <em>CA-HASH</em></strong></dt>
 <dd>
-<p>Use the certificate request configuration for the CA with the name hash 'CA-HASH' instead of the default CA chosen by running <strong>grid-default-ca</strong>.</p>
+<p>Use the certificate request configuration for the CA with the name hash <em>CA-HASH</em> instead of the default CA chosen by running <strong><code>grid-default-ca</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-verbose</strong></dt>
 <dd>
@@ -1040,21 +1040,21 @@ command-line option.</p>
 <dd>
 <p>Create an unencrypted private key for the certificate instead of prompting for a passphrase. This is the default behavior for host or service certificates, but not recommended for user certificates.</p>
 </dd>
-<dt class="hdlist1"><strong>-host 'FQDN'</strong></dt>
+<dt class="hdlist1"><strong>-host <em>FQDN</em></strong></dt>
 <dd>
-<p>Create a certificate request for use on a particular host. This option also causes the private key assoicated with the certificate request to be unencrypted. The 'FQDN' argument to this option should be the fully qualified domain name of the host that will use this certificate. The subject name of the certificate will be derived from the 'FQDN' and the service option if specified by the '-service' command-line option. If the host for the certificate has multiple names, then use either the '-dns' or '-ip' command-line options to add alternate names or addresses to the certificates.</p>
+<p>Create a certificate request for use on a particular host. This option also causes the private key assoicated with the certificate request to be unencrypted. The <em>FQDN</em> argument to this option should be the fully qualified domain name of the host that will use this certificate. The subject name of the certificate will be derived from the <em>FQDN</em> and the service option if specified by the <em>-service</em> command-line option. If the host for the certificate has multiple names, then use either the <em>-dns</em> or <em>-ip</em> command-line options to add alternate names or addresses to the certificates.</p>
 </dd>
-<dt class="hdlist1"><strong>-service 'SERVICE'</strong></dt>
+<dt class="hdlist1"><strong>-service <em>SERVICE</em></strong></dt>
 <dd>
-<p>Create a certificate request for a particular service on a host. The subject name of the certificate will be derived from the 'FQDN' passed as the argument to the '-host' command-line option and the 'SERVICE' string.</p>
+<p>Create a certificate request for a particular service on a host. The subject name of the certificate will be derived from the <em>FQDN</em> passed as the argument to the <em>-host</em> command-line option and the <em>SERVICE</em> string.</p>
 </dd>
-<dt class="hdlist1"><strong>-dns 'FQDN,&#8230;&#8203;'</strong></dt>
+<dt class="hdlist1"><strong>-dns <em>FQDN,&#8230;&#8203;</em></strong></dt>
 <dd>
-<p>Create a certificate request containing a subjectAltName extension containing one or more host names. This is used when a certificate may be used by multiple virtual servers or if a host has different names when contacted within or outside a private network. Multiple DNS names can be included in the extension by separating then with a comma.</p>
+<p>Create a certificate request containing a <code>subjectAltName</code> extension containing one or more host names. This is used when a certificate may be used by multiple virtual servers or if a host has different names when contacted within or outside a private network. Multiple DNS names can be included in the extension by separating then with a comma.</p>
 </dd>
-<dt class="hdlist1"><strong>-ip 'IP-ADDRESS,&#8230;&#8203;'</strong></dt>
+<dt class="hdlist1"><strong>-ip <em>IP-ADDRESS,&#8230;&#8203;</em></strong></dt>
 <dd>
-<p>Create a certificate request containing a subjectAltName extension containing the IP addresses named by the 'IP-ADDRESS' strings. This is used when a certificate may be used by services listening on multiple networks. Multiple IP addresses can be included in the extension by separating then with a comma.</p>
+<p>Create a certificate request containing a <code>subjectAltName</code> extension containing the IP addresses named by the <em>IP-ADDRESS</em> strings. This is used when a certificate may be used by services listening on multiple networks. Multiple IP addresses can be included in the extension by separating then with a comma.</p>
 </dd>
 </dl>
 </div>
@@ -1130,21 +1130,21 @@ ca@grid.example.org</pre>
 <h3 id="_environment_variables_2">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-cert-request</strong>:</p>
+<strong><code>grid-cert-request</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_CERT_DIR</strong></dt>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
 <dd>
 <p>Path to the directory containing SSL configuration files for generating certificate requests.</p>
 </dd>
-<dt class="hdlist1"><strong>GRID_SECURITY_DIR</strong></dt>
+<dt class="hdlist1"><strong><code>GRID_SECURITY_DIR</code></strong></dt>
 <dd>
-<p>Path to the directory containing SSL configuration files for generating certificate requests. This value is used if X509_CERT_DIR is not set.</p>
+<p>Path to the directory containing SSL configuration files for generating certificate requests. This value is used if <code>X509_CERT_DIR</code> is not set.</p>
 </dd>
-<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
 <dd>
-<p>Path to the directory containing the Grid Community Toolkit. This is searched if neither the X509_CERT_DIR nor the GRID_SECURITY_DIR environment variables are set.</p>
+<p>Path to the directory containing the Grid Community Toolkit. This is searched if neither the <code>X509_CERT_DIR</code> nor the <code>GRID_SECURITY_DIR</code> environment variables are set.</p>
 </dd>
 </dl>
 </div>
@@ -1153,37 +1153,37 @@ ca@grid.example.org</pre>
 <h3 id="_files">Files</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>$HOME/.globus/usercert_request.pem</strong></dt>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercert_request.pem</code></strong></dt>
 <dd>
 <p>Default path to write a user certificate request.</p>
 </dd>
-<dt class="hdlist1"><strong>$HOME/.globus/usercert.pem</strong></dt>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercert.pem</code></strong></dt>
 <dd>
 <p>Default path to write a user certificate.</p>
 </dd>
-<dt class="hdlist1"><strong>$HOME/.globus/userkey.pem</strong></dt>
+<dt class="hdlist1"><strong><code>$HOME/.globus/userkey.pem</code></strong></dt>
 <dd>
 <p>Default path to write a user private key.</p>
 </dd>
-<dt class="hdlist1"><strong>/etc/grid-security/hostcert_request.pem</strong></dt>
+<dt class="hdlist1"><strong><code>/etc/grid-security/hostcert_request.pem</code></strong></dt>
 <dd>
 <p>Default path to write a host certificate request.</p>
 </dd>
-<dt class="hdlist1"><strong>/etc/grid-security/hostcert.pem</strong></dt>
+<dt class="hdlist1"><strong><code>/etc/grid-security/hostcert.pem</code></strong></dt>
 <dd>
 <p>Default path to write a host certificate.</p>
 </dd>
-<dt class="hdlist1"><strong>/etc/grid-security/hostkey.pem</strong></dt>
+<dt class="hdlist1"><strong><code>/etc/grid-security/hostkey.pem</code></strong></dt>
 <dd>
 <p>Default path to write a host private key.</p>
 </dd>
-<dt class="hdlist1"><strong>TRUSTED-CERT-DIR/globus-user-ssl.conf, TRUSTED-CERT-DIR/globus-user-ssl.conf.CA-HASH</strong></dt>
+<dt class="hdlist1"><strong><code>TRUSTED-CERT-DIR/globus-user-ssl.conf</code>, <code>TRUSTED-CERT-DIR/globus-user-ssl.conf.CA-HASH</code></strong></dt>
 <dd>
-<p>SSL configuration file for requesting a user certificate. The first form is the default location, the second form is used when the '-ca' command-line option is specified.</p>
+<p>SSL configuration file for requesting a user certificate. The first form is the default location, the second form is used when the <em>-ca</em> command-line option is specified.</p>
 </dd>
-<dt class="hdlist1"><strong>TRUSTED-CERT-DIR/globus-host-ssl.conf, TRUSTED-CERT-DIR/globus-host-ssl.conf.CA-HASH</strong></dt>
+<dt class="hdlist1"><strong><code>TRUSTED-CERT-DIR/globus-host-ssl.conf</code>, <code>TRUSTED-CERT-DIR/globus-host-ssl.conf.CA-HASH</code></strong></dt>
 <dd>
-<p>SSL configuration file for requesting a host or service certificate. The first form is the default location, the second form is used when the '-ca' command-line option is specified.</p>
+<p>SSL configuration file for requesting a host or service certificate. The first form is the default location, the second form is used when the <em>-ca</em> command-line option is specified.</p>
 </dd>
 </dl>
 </div>
@@ -1202,63 +1202,63 @@ ca@grid.example.org</pre>
 <div class="sect2">
 <h3 id="_synopsis_5">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-default-ca</strong> [-help ] [-h ] [-usage ] [-u ] [-version ] [-versions ]</p>
+<p><strong><code>grid-default-ca</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-usage</code> ] [<code>-u</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_5">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-default-ca</strong> program sets the default certificate
-authority to use when the <strong>grid-cert-request</strong> script is run. The
+<p>The <strong><code>grid-default-ca</code></strong> program sets the default certificate
+authority to use when the <strong><code>grid-cert-request</code></strong> script is run. The
 CA&#8217;s certificate, configuration, and signing policy must be installed in
 the trusted certificate directory to be able to request certificates
 from that CA. Note that some CAs have different policies and use other
 tools to handle certificate requests. Please consult your CA&#8217;s support
-staff if you unsure. The <strong>grid-default-ca</strong> is designed to work
-with CAs implemented using the <strong>globus_simple_ca</strong> package.</p>
+staff if you unsure. The <strong><code>grid-default-ca</code></strong> is designed to work
+with CAs implemented using the <strong><code>globus_simple_ca</code></strong> package.</p>
 </div>
 <div class="paragraph">
-<p>By default, the <strong>grid-default-ca</strong> program displays a list of
+<p>By default, the <strong><code>grid-default-ca</code></strong> program displays a list of
 installed CA certificates and the prompts the user for which one to set
-as the default. If invoked with the '-list' command-line option,
-<strong>grid-default-ca</strong> will print the list and not prompt nor set the
-default CA. If invoked with the '-ca' option, it will not list or
+as the default. If invoked with the <em>-list</em> command-line option,
+<strong><code>grid-default-ca</code></strong> will print the list and not prompt nor set the
+default CA. If invoked with the <em>-ca</em> option, it will not list or
 prompt, but set the default CA to the one with the hash that matches the
-'CA-HASH' argument to that option. If <strong>grid-default-ca</strong> is used to
+<em>CA-HASH</em> argument to that option. If <strong><code>grid-default-ca</code></strong> is used to
 set the default CA, the caller of this program must have write
 permissions to the trusted certificate directory.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>grid-default-ca</strong> program sets the CA in the one of the grid
+<p>The <strong><code>grid-default-ca</code></strong> program sets the CA in the one of the grid
 security directories. It looks in the directory named by the
-GRID_SECURITY_DIR environment, the X509_CERT_DIR,
-/etc/grid-security, and , and
-$GLOBUS_LOCATION/share/certificates. .</p>
+<code>GRID_SECURITY_DIR</code> environment, the <code>X509_CERT_DIR</code>,
+<code>/etc/grid-security</code>, and , and
+<code>$GLOBUS_LOCATION/share/certificates</code>. .</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-default-ca</strong> are:</p>
+<p>The full set of command-line options to <strong><code>grid-default-ca</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -h, -usage, -u</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-default-ca</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-default-ca</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-default-ca</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-default-ca</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-dir 'CA-DIRECTORY'</strong></dt>
+<dt class="hdlist1"><strong>-dir <em>CA-DIRECTORY</em></strong></dt>
 <dd>
-<p>Use the trusted certificate directory named by 'CA-DIRECTORY' instead of the default.</p>
+<p>Use the trusted certificate directory named by <em>CA-DIRECTORY</em> instead of the default.</p>
 </dd>
 <dt class="hdlist1"><strong>-list</strong></dt>
 <dd>
 <p>Instead of changing the default CA, print out a list of all available CA certificates in the trusted certificate directory</p>
 </dd>
-<dt class="hdlist1"><strong>-ca 'CA-HASH'</strong></dt>
+<dt class="hdlist1"><strong>-ca <em>CA-HASH</em></strong></dt>
 <dd>
-<p>Set the default CA without displaying the list of choices or prompting. The CA file named by 'CA-HASH' must exist.</p>
+<p>Set the default CA without displaying the list of choices or prompting. The CA file named by <em>CA-HASH</em> must exist.</p>
 </dd>
 </dl>
 </div>
@@ -1301,19 +1301,19 @@ linking /etc/grid-security/certificates/grid-user-ssl.conf.cd1186ff  to
 <h3 id="_environment_variables_3">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-default-ca</strong>:</p>
+<strong><code>grid-default-ca</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GRID_SECURITY_DIRECTORY</strong></dt>
+<dt class="hdlist1"><strong><code>GRID_SECURITY_DIRECTORY</code></strong></dt>
 <dd>
 <p>Path to the default trusted certificate directory.</p>
 </dd>
-<dt class="hdlist1"><strong>X509_CERT_DIR</strong></dt>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
 <dd>
 <p>Path to the default trusted certificate directory.</p>
 </dd>
-<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
 <dd>
 <p>Path to the Grid Community Toolkit installation directory.</p>
 </dd>
@@ -1323,21 +1323,21 @@ linking /etc/grid-security/certificates/grid-user-ssl.conf.cd1186ff  to
 <div class="sect2">
 <h3 id="_bugs">Bugs</h3>
 <div class="paragraph">
-<p>The <strong>grid-default-ca</strong> program displays CAs from all of the
-directories in its search list; however, <strong>grid-cert-request</strong> only
+<p>The <strong><code>grid-default-ca</code></strong> program displays CAs from all of the
+directories in its search list; however, <strong><code>grid-cert-request</code></strong> only
 uses the first which contains a grid security configuration.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>grid-default-ca</strong> program may display the same CA multiple
+<p>The <strong><code>grid-default-ca</code></strong> program may display the same CA multiple
 times if it is located in multiple directories in its search path.
 However, it does not provide any information about which one would
-actually be used by the <strong>grid-cert-request</strong> command.</p>
+actually be used by the <strong><code>grid-cert-request</code></strong> command.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_see_also">See Also</h3>
 <div class="paragraph">
-<p>grid-cert-request(1)</p>
+<p><code>grid-cert-request(1)</code></p>
 </div>
 </div>
 </div>
@@ -1354,38 +1354,38 @@ actually be used by the <strong>grid-cert-request</strong> command.</p>
 <div class="sect2">
 <h3 id="_synopsis_6">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-change-pass-phrase</strong> [-help ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-change-pass-phrase</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_6">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-change-pass-phrase</strong> program changes the passphrase
+<p>The <strong><code>grid-change-pass-phrase</code></strong> program changes the passphrase
 protecting a private key or PKCS12 bundle containing a private key and
-certificate. By default, <strong>grid-change-pass-phrase</strong> uses the
-X509_USER_KEY environment variable to locate the private key. If
-that is not set, then it looks for $HOME/.globus/userkey.pem and
-and $HOME/.globus/usercred.p12 in succession. The path to a key can
+certificate. By default, <strong><code>grid-change-pass-phrase</code></strong> uses the
+<code>X509_USER_KEY</code> environment variable to locate the private key. If
+that is not set, then it looks for <code>$HOME/.globus/userkey.pem</code> and
+and <code>$HOME/.globus/usercred.p12</code> in succession. The path to a key can
 be specified by using the  in succession. The path to a key can be
-specified by using the '-file' command-line option.</p>
+specified by using the <em>-file</em> command-line option.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-change-pass-phrase</strong>
+<p>The full set of command-line options to <strong><code>grid-change-pass-phrase</code></strong>
 are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-change-pass-phrase</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-change-pass-phrase</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-change-pass-phrase</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-change-pass-phrase</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-file 'PRIVATE-KEY'</strong></dt>
+<dt class="hdlist1"><strong>-file <em>PRIVATE-KEY</em></strong></dt>
 <dd>
-<p>Change the passphrase of the private key named by 'PRIVATE-KEY' instead of the default.</p>
+<p>Change the passphrase of the private key named by <em>PRIVATE-KEY</em> instead of the default.</p>
 </dd>
 </dl>
 </div>
@@ -1410,11 +1410,11 @@ Verifying - Enter PEM pass phrase:</pre>
 <h3 id="_environment_variables_4">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-change-pass-phrase</strong>:</p>
+<strong><code>grid-change-pass-phrase</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_USER_KEY</strong></dt>
+<dt class="hdlist1"><strong><code>X509_USER_KEY</code></strong></dt>
 <dd>
 <p>Path to the default private key file.</p>
 </dd>
@@ -1435,17 +1435,17 @@ Verifying - Enter PEM pass phrase:</pre>
 <div class="sect2">
 <h3 id="_synopsis_7">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-proxy-init</strong> [-help ] [-usage ] [-version ]</p>
+<p><strong><code>grid-proxy-init</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_7">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-proxy-init</strong> program generates X.509 proxy certificates
+<p>The <strong><code>grid-proxy-init</code></strong> program generates X.509 proxy certificates
 derived from the currently available certificate files. By default, this
 command generates a <a href="http://www.ietf.org/rfc/rfc3820.txt">RFC 3820</a> Proxy
 Certificate with a 512 bit key valid for 12 hours in a file named
-/tmp/x509up_uUID. Command-line options and variables can modify the
+<code>/tmp/x509up_uUID</code>. Command-line options and variables can modify the
 format, strength, lifetime, and location of the generated proxy
 certificate. . Command-line options and variables can modify the format,
 strength, lifetime, and location of the generated proxy certificate.</p>
@@ -1464,27 +1464,27 @@ security credential. Therefore, they should always be user-readable only
 they are no longer needed.</p>
 </div>
 <div class="paragraph">
-<p>This version of <strong>grid-proxy-init</strong> supports three different proxy
+<p>This version of <strong><code>grid-proxy-init</code></strong> supports three different proxy
 formats: the old proxy format used in early releases of the Globus
 Toolkit up to version 2.4.x, an IETF draft version of X.509 Proxy
 Certificate profile used in Globus Toolkit 3.0.x and 3.2.x, and the RFC
 3820 profile used in Globus Toolkit Version 4.0.x and 4.2.x. By default,
-this version of <strong>grid-proxy-init</strong> creates an RFC 3820 compliant
+this version of <strong><code>grid-proxy-init</code></strong> creates an RFC 3820 compliant
 proxy. To create a proxy compatible with older versions of the Globus
-Toolkit, use the '-old' or '-draft' command-line options.</p>
+Toolkit, use the <em>-old</em> or <em>-draft</em> command-line options.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-proxy-init</strong> are:</p>
+<p>The full set of command-line options to <strong><code>grid-proxy-init</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-proxy-init</strong>.</p>
+<p>Display the command-line options to <strong><code>grid-proxy-init</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-version</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-proxy-init</strong> command</p>
+<p>Display the version number of the <strong><code>grid-proxy-init</code></strong> command</p>
 </dd>
 <dt class="hdlist1"><strong>-debug</strong></dt>
 <dd>
@@ -1492,47 +1492,47 @@ Toolkit, use the '-old' or '-draft' command-line options.</p>
 </dd>
 <dt class="hdlist1"><strong>-q</strong></dt>
 <dd>
-<p>Suppress all output from <strong>grid-proxy-init</strong> except for passphrase prompts.</p>
+<p>Suppress all output from <strong><code>grid-proxy-init</code></strong> except for passphrase prompts.</p>
 </dd>
 <dt class="hdlist1"><strong>-verify</strong></dt>
 <dd>
 <p>Perform certificate chain validity checks on the generated proxy.</p>
 </dd>
-<dt class="hdlist1"><strong>-valid 'HOURS':'MINUTES', -hours 'HOURS'</strong></dt>
+<dt class="hdlist1"><strong>-valid <em>HOURS</em>:'MINUTES', -hours <em>HOURS</em></strong></dt>
 <dd>
-<p>Create a certificate that is valid for 'HOURS' hours and 'MINUTES' minutes. If not specified, the default of twelve hours and no minutes is used.</p>
+<p>Create a certificate that is valid for <em>HOURS</em> hours and <em>MINUTES</em> minutes. If not specified, the default of twelve hours and no minutes is used.</p>
 </dd>
-<dt class="hdlist1"><strong>-cert 'CERTFILE', -key 'KEYFILE'</strong></dt>
+<dt class="hdlist1"><strong>-cert <em>CERTFILE</em>, -key <em>KEYFILE</em></strong></dt>
 <dd>
-<p>Create a proxy certificate signed by the certificate located in CERTFILE using the key located in  using the key located in KEYFILE. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.</p>
+<p>Create a proxy certificate signed by the certificate located in <code>CERTFILE</code> using the key located in  using the key located in <code>KEYFILE</code>. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.</p>
 </dd>
-<dt class="hdlist1"><strong>-certdir 'CERTDIR'</strong></dt>
+<dt class="hdlist1"><strong>-certdir <em>CERTDIR</em></strong></dt>
 <dd>
-<p>Search 'CERTDIR' for trusted certificates if verifying the proxy certificate. If not specified, the default trusted certificate search path is used. This overrides the value of the X509_CERT_DIR environment variable</p>
+<p>Search <em>CERTDIR</em> for trusted certificates if verifying the proxy certificate. If not specified, the default trusted certificate search path is used. This overrides the value of the <code>X509_CERT_DIR</code> environment variable</p>
 </dd>
-<dt class="hdlist1"><strong>-out 'PROXYPATH'</strong></dt>
+<dt class="hdlist1"><strong>-out <em>PROXYPATH</em></strong></dt>
 <dd>
-<p>Write the generated proxy certificate file to 'PROXYPATH' instead of the default path of /tmp/x509up_uUID..</p>
+<p>Write the generated proxy certificate file to <em>PROXYPATH</em> instead of the default path of <code>/tmp/x509up_uUID</code>..</p>
 </dd>
-<dt class="hdlist1"><strong>-bits 'BITS'</strong></dt>
+<dt class="hdlist1"><strong>-bits <em>BITS</em></strong></dt>
 <dd>
-<p>When creating the proxy certificate, use a 'BITS' bit key instead of the default 512 bit keys.</p>
+<p>When creating the proxy certificate, use a <em>BITS</em> bit key instead of the default 512 bit keys.</p>
 </dd>
-<dt class="hdlist1"><strong>-policy 'POLICYFILE'</strong></dt>
+<dt class="hdlist1"><strong>-policy <em>POLICYFILE</em></strong></dt>
 <dd>
-<p>Add the certificate policy data described in 'POLICYFILE' as the ProxyCertInfo X.509 extension to the generated proxy certificate.</p>
+<p>Add the certificate policy data described in <em>POLICYFILE</em> as the ProxyCertInfo X.509 extension to the generated proxy certificate.</p>
 </dd>
-<dt class="hdlist1"><strong>-pl 'POLICY-OID', -policy-language 'POLICY-OID'</strong></dt>
+<dt class="hdlist1"><strong>-pl <em>POLICY-OID</em>, -policy-language <em>POLICY-OID</em></strong></dt>
 <dd>
-<p>Set the policy language identifier of the policy data specified by the '-policy' command-line option to the oid specified by the 'POLICY-OID' string.</p>
+<p>Set the policy language identifier of the policy data specified by the <em>-policy</em> command-line option to the oid specified by the <em>POLICY-OID</em> string.</p>
 </dd>
-<dt class="hdlist1"><strong>-path-length 'MAXIMUM'</strong></dt>
+<dt class="hdlist1"><strong>-path-length <em>MAXIMUM</em></strong></dt>
 <dd>
-<p>Set the maximum length of the chain of proxies that can be created by the generated proxy to 'MAXIMUM'. If not set, the default of an unlimited proxy chain length is used.</p>
+<p>Set the maximum length of the chain of proxies that can be created by the generated proxy to <em>MAXIMUM</em>. If not set, the default of an unlimited proxy chain length is used.</p>
 </dd>
 <dt class="hdlist1"><strong>-pwstdin</strong></dt>
 <dd>
-<p>Read the private key&#8217;s passphrase from stdin instead of reading input from the controlling tty. This is useful when scripting <strong>grid-proxy-init</strong>.</p>
+<p>Read the private key&#8217;s passphrase from stdin instead of reading input from the controlling tty. This is useful when scripting <strong><code>grid-proxy-init</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-limited</strong></dt>
 <dd>
@@ -1552,7 +1552,7 @@ Toolkit, use the '-old' or '-draft' command-line options.</p>
 </dd>
 <dt class="hdlist1"><strong>-rfc</strong></dt>
 <dd>
-<p>Create an RFC 3820-compliant proxy certificate. This is the default for this version of <strong>grid-proxy-init</strong>.</p>
+<p>Create an RFC 3820-compliant proxy certificate. This is the default for this version of <strong><code>grid-proxy-init</code></strong>.</p>
 </dd>
 </dl>
 </div>
@@ -1561,7 +1561,7 @@ Toolkit, use the '-old' or '-draft' command-line options.</p>
 <h3 id="_examples_6">Examples</h3>
 <div class="paragraph">
 <p>To create a proxy with the default lifetime and format, run the
-<strong>grid-proxy-init</strong> program with no arguments. For example:</p>
+<strong><code>grid-proxy-init</code></strong> program with no arguments. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1572,8 +1572,8 @@ Your proxy is valid until: Thu Mar 18 03:48:05 2010</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To create a stronger proxy that lasts for only 8 hours, use the '-hours'
-and '-bits' command-line options to <strong>grid-proxy-init</strong>. For
+<p>To create a stronger proxy that lasts for only 8 hours, use the <em>-hours</em>
+and <em>-bits</em> command-line options to <strong><code>grid-proxy-init</code></strong>. For
 example:</p>
 </div>
 <div class="listingblock">
@@ -1589,19 +1589,19 @@ Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
 <h3 id="_environment_variables_5">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-proxy-init</strong>:</p>
+<strong><code>grid-proxy-init</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_USER_CERT</strong></dt>
+<dt class="hdlist1"><strong><code>X509_USER_CERT</code></strong></dt>
 <dd>
 <p>Path to the certificate to use as issuer of the new proxy.</p>
 </dd>
-<dt class="hdlist1"><strong>X509_USER_KEY</strong></dt>
+<dt class="hdlist1"><strong><code>X509_USER_KEY</code></strong></dt>
 <dd>
 <p>Path to the key to use to sign the new proxy.</p>
 </dd>
-<dt class="hdlist1"><strong>X509_CERT_DIR</strong></dt>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
 <dd>
 <p>Path to the directory containing trusted certifiate certificates and signing policies.</p>
 </dd>
@@ -1611,15 +1611,15 @@ Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
 <div class="sect2">
 <h3 id="_files_2">Files</h3>
 <div class="paragraph">
-<p>The following files affect the execution of <strong>grid-proxy-init</strong>:</p>
+<p>The following files affect the execution of <strong><code>grid-proxy-init</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>$HOME/.globus/usercert.pem</strong></dt>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercert.pem</code></strong></dt>
 <dd>
 <p>Default path to the certificate to use as issuer of the new proxy.</p>
 </dd>
-<dt class="hdlist1"><strong>$HOME/.globus/userkey.pem</strong></dt>
+<dt class="hdlist1"><strong><code>$HOME/.globus/userkey.pem</code></strong></dt>
 <dd>
 <p>Default path to the key to use to sign the new proxy.</p>
 </dd>
@@ -1637,7 +1637,7 @@ compatibility in GT and GCT, see
 <div class="sect2">
 <h3 id="_see_also_2">See Also</h3>
 <div class="paragraph">
-<p>grid-proxy-destroy(1), grid-proxy-info(1)</p>
+<p><code>grid-proxy-destroy(1)</code>, <code>grid-proxy-info(1)</code></p>
 </div>
 </div>
 </div>
@@ -1654,37 +1654,37 @@ compatibility in GT and GCT, see
 <div class="sect2">
 <h3 id="_synopsis_8">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-proxy-destroy</strong> [-help ] [-usage ] [-version ]</p>
+<p><strong><code>grid-proxy-destroy</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_8">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-proxy-destroy</strong> program removes X.509 proxy files from
+<p>The <strong><code>grid-proxy-destroy</code></strong> program removes X.509 proxy files from
 the local filesystem. It overwrites the data in the files and removes
 the files from the filesystem. By default, it removes the current user&#8217;s
-default proxy (either /tmp/x509up_uUID where  where 'UID' is the
-current POSIX user id, or the file pointed to by the X509_USER_PROXY
+default proxy (either <code>/tmp/x509up_uUID</code> where  where <em>UID</em> is the
+current POSIX user id, or the file pointed to by the <code>X509_USER_PROXY</code>
 environment variable) unless a list of proxy file paths are included as
 part of the command line.</p>
 </div>
 <div class="paragraph">
-<p>Use the -- command-line option to separate a list of proxy paths
-from command line options if the proxy file begins with the -
+<p>Use the <code>--</code> command-line option to separate a list of proxy paths
+from command line options if the proxy file begins with the <code>-</code>
 character.</p>
 </div>
 <div class="paragraph">
-<p>The full list of command-line options to <strong>grid-proxy-destroy</strong> are:</p>
+<p>The full list of command-line options to <strong><code>grid-proxy-destroy</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-proxy-destroy</strong>.</p>
+<p>Display the command-line options to <strong><code>grid-proxy-destroy</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-version</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-proxy-destroy</strong> command</p>
+<p>Display the version number of the <strong><code>grid-proxy-destroy</code></strong> command</p>
 </dd>
 <dt class="hdlist1"><strong>-debug</strong></dt>
 <dd>
@@ -1692,7 +1692,7 @@ character.</p>
 </dd>
 <dt class="hdlist1"><strong>-dryrun</strong></dt>
 <dd>
-<p>Do not remove the proxy, but display the path of the files that would have been removed, or the directory where they would have been removed from if the '-all' command-line option is used.</p>
+<p>Do not remove the proxy, but display the path of the files that would have been removed, or the directory where they would have been removed from if the <em>-all</em> command-line option is used.</p>
 </dd>
 <dt class="hdlist1"><strong>-default</strong></dt>
 <dd>
@@ -1709,11 +1709,11 @@ character.</p>
 <h3 id="_environment_variables_6">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-proxy-destroy</strong>:</p>
+<strong><code>grid-proxy-destroy</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_USER_PROXY</strong></dt>
+<dt class="hdlist1"><strong><code>X509_USER_PROXY</code></strong></dt>
 <dd>
 <p>Path to the default user proxy.</p>
 </dd>
@@ -1723,7 +1723,7 @@ character.</p>
 <div class="sect2">
 <h3 id="_see_also_3">See Also</h3>
 <div class="paragraph">
-<p>grid-proxy-init(1), grid-proxy-info(1)</p>
+<p><code>grid-proxy-init(1)</code>, <code>grid-proxy-info(1)</code></p>
 </div>
 </div>
 </div>
@@ -1740,50 +1740,50 @@ character.</p>
 <div class="sect2">
 <h3 id="_synopsis_9">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-proxy-info</strong> [-help ] [-usage ] [-version ]</p>
+<p><strong><code>grid-proxy-info</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_9">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-proxy-info</strong> program extracts information from an X.509
+<p>The <strong><code>grid-proxy-info</code></strong> program extracts information from an X.509
 proxy certificates, and optionally displays or returns an exit code
 based on that information.</p>
 </div>
 <div class="paragraph">
 <p>The default mode of operation is to print the following facts about the
 current user&#8217;s default proxy: subject, issuer, identity, type, strength,
-path, and time left. If the command-line option '-exists' or '-e' is
+path, and time left. If the command-line option <em>-exists</em> or <em>-e</em> is
 included in the command-line, nothing is printed unless one of the print
-options is specified. Instead, <strong>grid-proxy-info</strong> determines if a
-valid proxy exists and, if so, exits with the exit code 0; if a
-proxy does not exist or is not valid, <strong>grid-proxy-info</strong> exits with
-the exit code 1. Additional validity criteria can be added by using
-the '-valid', '-v', '-hours', '-h', '-bits', or '-b' command-line
-options. If used, these options must occur <strong>after</strong> the '-e' or
-'-exists' command-line options. Those options are only valid if one of
-the '-e' or '-exists' command-line options is used.</p>
+options is specified. Instead, <strong><code>grid-proxy-info</code></strong> determines if a
+valid proxy exists and, if so, exits with the exit code <code>0</code>; if a
+proxy does not exist or is not valid, <strong><code>grid-proxy-info</code></strong> exits with
+the exit code <code>1</code>. Additional validity criteria can be added by using
+the <em>-valid</em>, <em>-v</em>, <em>-hours</em>, <em>-h</em>, <em>-bits</em>, or <em>-b</em> command-line
+options. If used, these options must occur <strong>after</strong> the <em>-e</em> or
+<em>-exists</em> command-line options. Those options are only valid if one of
+the <em>-e</em> or <em>-exists</em> command-line options is used.</p>
 </div>
 <div class="paragraph">
-<p>The complete set of command-line options to <strong>grid-proxy-info</strong> are:</p>
+<p>The complete set of command-line options to <strong><code>grid-proxy-info</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-proxy-info</strong>.</p>
+<p>Display the command-line options to <strong><code>grid-proxy-info</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-version</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-proxy-info</strong> command</p>
+<p>Display the version number of the <strong><code>grid-proxy-info</code></strong> command</p>
 </dd>
 <dt class="hdlist1"><strong>-debug</strong></dt>
 <dd>
 <p>Display verbose error messages.</p>
 </dd>
-<dt class="hdlist1"><strong>-file 'PROXYFILE', -f 'PROXYFILE'</strong></dt>
+<dt class="hdlist1"><strong>-file <em>PROXYFILE</em>, -f <em>PROXYFILE</em></strong></dt>
 <dd>
-<p>Read the proxy located in the file 'PROXYFILE' instead of using the default proxy.</p>
+<p>Read the proxy located in the file <em>PROXYFILE</em> instead of using the default proxy.</p>
 </dd>
 <dt class="hdlist1"><strong>-subject, -s</strong></dt>
 <dd>
@@ -1799,7 +1799,7 @@ the '-e' or '-exists' command-line options is used.</p>
 </dd>
 <dt class="hdlist1"><strong>-type</strong></dt>
 <dd>
-<p>Display the type of proxy certificate. The type string includes the format ("legacy", "draft", or RFC 3280 compliant), identity type ("impersonation" or "independent"), and policy ("limited" or "full"). See grid-proxy-init(1) for information about how to create different types of proxies.</p>
+<p>Display the type of proxy certificate. The type string includes the format ("legacy", "draft", or RFC 3280 compliant), identity type ("impersonation" or "independent"), and policy ("limited" or "full"). See <code>grid-proxy-init(1)</code> for information about how to create different types of proxies.</p>
 </dd>
 <dt class="hdlist1"><strong>-timeleft</strong></dt>
 <dd>
@@ -1811,7 +1811,7 @@ the '-e' or '-exists' command-line options is used.</p>
 </dd>
 <dt class="hdlist1"><strong>-all</strong></dt>
 <dd>
-<p>Display the default information for the proxy when also using the '-e' or '-exists' command-line option.</p>
+<p>Display the default information for the proxy when also using the <em>-e</em> or <em>-exists</em> command-line option.</p>
 </dd>
 <dt class="hdlist1"><strong>-text</strong></dt>
 <dd>
@@ -1827,15 +1827,15 @@ the '-e' or '-exists' command-line options is used.</p>
 </dd>
 <dt class="hdlist1"><strong>-exists, -e</strong></dt>
 <dd>
-<p>Perform an existence and validity check for the proxy. If a valid proxy exists and matches the criteria described by other command-line options (if any), exit with 0; otherwise, exit with 1. This option must be before other validity check predicate in the command-line options. If this option is specified, the output of the default facts about the proxy is disabled. Use the '-all' option to have the information displayed as well as the exit code set.</p>
+<p>Perform an existence and validity check for the proxy. If a valid proxy exists and matches the criteria described by other command-line options (if any), exit with 0; otherwise, exit with 1. This option must be before other validity check predicate in the command-line options. If this option is specified, the output of the default facts about the proxy is disabled. Use the <em>-all</em> option to have the information displayed as well as the exit code set.</p>
 </dd>
-<dt class="hdlist1"><strong>-valid 'HOURS':'MINUTES', -v 'HOURS':'MINUTES', -hours 'HOURS', -h 'HOURS'</strong></dt>
+<dt class="hdlist1"><strong>-valid <em>HOURS</em>:'MINUTES', -v <em>HOURS</em>:'MINUTES', -hours <em>HOURS</em>, -h <em>HOURS</em></strong></dt>
 <dd>
-<p>Check that the proxy certificate is valid for at least 'HOURS' hours and 'MINUTES' minutes. If it is not, <strong>grid-proxy-info</strong> will exit with exit code 1.</p>
+<p>Check that the proxy certificate is valid for at least <em>HOURS</em> hours and <em>MINUTES</em> minutes. If it is not, <strong><code>grid-proxy-info</code></strong> will exit with exit code <code>1</code>.</p>
 </dd>
-<dt class="hdlist1"><strong>-bits 'BITS', -b 'BITS'</strong></dt>
+<dt class="hdlist1"><strong>-bits <em>BITS</em>, -b <em>BITS</em></strong></dt>
 <dd>
-<p>Check that the proxy certificate key strength is at least 'BITS' bits.</p>
+<p>Check that the proxy certificate key strength is at least <em>BITS</em> bits.</p>
 </dd>
 </dl>
 </div>
@@ -1844,11 +1844,11 @@ the '-e' or '-exists' command-line options is used.</p>
 <h3 id="_environment_variables_7">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-proxy-info</strong>:</p>
+<strong><code>grid-proxy-info</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>X509_USER_PROXY</strong></dt>
+<dt class="hdlist1"><strong><code>X509_USER_PROXY</code></strong></dt>
 <dd>
 <p>Path to the default user proxy.</p>
 </dd>
@@ -1858,7 +1858,7 @@ the '-e' or '-exists' command-line options is used.</p>
 <div class="sect2">
 <h3 id="_see_also_4">See Also</h3>
 <div class="paragraph">
-<p>grid-proxy-init(1), grid-proxy-destroy(1)</p>
+<p><code>grid-proxy-init(1)</code>, <code>grid-proxy-destroy(1)</code></p>
 </div>
 </div>
 </div>
@@ -1875,65 +1875,65 @@ the '-e' or '-exists' command-line options is used.</p>
 <div class="sect2">
 <h3 id="_synopsis_10">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-mapfile-add-entry</strong> [-help ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-mapfile-add-entry</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_10">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-mapfile-add-entry</strong> program adds a new mapping from an
+<p>The <strong><code>grid-mapfile-add-entry</code></strong> program adds a new mapping from an
 X.509 distinguished name to a local POSIX user name to a gridmap file.
 Gridmap files are used as a simple authorization method for services
 such as GRAM5 or GridFTP.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>grid-mapfile-add-entry</strong> program verifies that the
-'LOCAL-NAME' is a valid user name on the system on which it was run, and
-that the mapping between 'DISTINGUISHED-NAME' and 'LOCAL-NAME' does not
+<p>The <strong><code>grid-mapfile-add-entry</code></strong> program verifies that the
+<em>LOCAL-NAME</em> is a valid user name on the system on which it was run, and
+that the mapping between <em>DISTINGUISHED-NAME</em> and <em>LOCAL-NAME</em> does not
 already exist in the gridmap file.</p>
 </div>
 <div class="paragraph">
-<p>By default, <strong>grid-mapfile-add-entry</strong> will modify the gridmap file
-named by the GRIDMAP environment variable if present, or the file
-/etc/grid-security/grid-mapfile if not. This can be changed by the
-use of the  if not. This can be changed by the use of the '-mapfile' or
-'-f' command-line options.</p>
+<p>By default, <strong><code>grid-mapfile-add-entry</code></strong> will modify the gridmap file
+named by the <code>GRIDMAP</code> environment variable if present, or the file
+<code>/etc/grid-security/grid-mapfile</code> if not. This can be changed by the
+use of the  if not. This can be changed by the use of the <em>-mapfile</em> or
+<em>-f</em> command-line options.</p>
 </div>
 <div class="paragraph">
-<p>If the gridmap file does not exist, <strong>grid-mapfile-add-entry</strong> will
-create it. If it already exists, <strong>grid-mapfile-add-entry</strong> will
+<p>If the gridmap file does not exist, <strong><code>grid-mapfile-add-entry</code></strong> will
+create it. If it already exists, <strong><code>grid-mapfile-add-entry</code></strong> will
 save the current contents of the file to a new file with the string
-.old appended to the file name.</p>
+<code>.old</code> appended to the file name.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-mapfile-add-entry</strong>
+<p>The full set of command-line options to <strong><code>grid-mapfile-add-entry</code></strong>
 are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-mapfile-add-entry</strong>.</p>
+<p>Display the command-line options to <strong><code>grid-mapfile-add-entry</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-mapfile-add-entry</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-mapfile-add-entry</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-dn 'DISTINGUISHED-NAME'</strong></dt>
+<dt class="hdlist1"><strong>-dn <em>DISTINGUISHED-NAME</em></strong></dt>
 <dd>
-<p>The X.509 distinguished name to add a mapping for. The name should be in OpenSSL&#8217;s oneline format.</p>
+<p>The X.509 distinguished name to add a mapping for. The name should be in OpenSSL&#8217;s <code>oneline</code> format.</p>
 </dd>
-<dt class="hdlist1"><strong>-ln 'LOCAL-NAME'&#8230;&#8203;</strong></dt>
+<dt class="hdlist1"><strong>-ln <em>LOCAL-NAME</em>&#8230;&#8203;</strong></dt>
 <dd>
-<p>The POSIX user name to map the distinguished name to. This name must be a valid username. Add multiple 'LOCAL-NAME' strings after the '-ln' command-line option. If any of the local names are invalid, no changes will be made to the gridmap file. Note that if multiple occurances of the '-ln' command-line option are present, only the the last one will be added.</p>
+<p>The POSIX user name to map the distinguished name to. This name must be a valid username. Add multiple <em>LOCAL-NAME</em> strings after the <em>-ln</em> command-line option. If any of the local names are invalid, no changes will be made to the gridmap file. Note that if multiple occurances of the <em>-ln</em> command-line option are present, only the the last one will be added.</p>
 </dd>
 <dt class="hdlist1"><strong>-d, -dryrun</strong></dt>
 <dd>
 <p>Verify local names and display diagnostics about what would be added to the gridmap file, but don&#8217;t actually modify the file.</p>
 </dd>
-<dt class="hdlist1"><strong>-mapfile 'MAPFILE', -f 'MAPFILE'</strong></dt>
+<dt class="hdlist1"><strong>-mapfile <em>MAPFILE</em>, -f <em>MAPFILE</em></strong></dt>
 <dd>
-<p>Modify the gridmap file named by 'MAPFILE' instead of the default.</p>
+<p>Modify the gridmap file named by <em>MAPFILE</em> instead of the default.</p>
 </dd>
 </dl>
 </div>
@@ -1942,7 +1942,7 @@ are:</p>
 <h3 id="_examples_7">Examples</h3>
 <div class="paragraph">
 <p>Add a mapping between the current user&#8217;s certificate to the current user
-id to a gridmap file in $HOME/.gridmap: :</p>
+id to a gridmap file in <code>$HOME/.gridmap</code>: :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1972,11 +1972,11 @@ New entry:
 <h3 id="_environment_variables_8">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-mapfile-add-entry</strong>:</p>
+<strong><code>grid-mapfile-add-entry</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GRIDMAP</strong></dt>
+<dt class="hdlist1"><strong><code>GRIDMAP</code></strong></dt>
 <dd>
 <p>Path to the default gridmap to modify.</p>
 </dd>
@@ -1987,13 +1987,13 @@ New entry:
 <h3 id="_files_3">Files</h3>
 <div class="paragraph">
 <p>The following files affect the execution of
-<strong>grid-mapfile-add-entry</strong>:</p>
+<strong><code>grid-mapfile-add-entry</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>/etc/grid-security/grid-mapfile</strong></dt>
+<dt class="hdlist1"><strong><code>/etc/grid-security/grid-mapfile</code></strong></dt>
 <dd>
-<p>Path to the default gridmap to modify if GRIDMAP environment variable is not set.</p>
+<p>Path to the default gridmap to modify if <code>GRIDMAP</code> environment variable is not set.</p>
 </dd>
 </dl>
 </div>
@@ -2001,7 +2001,7 @@ New entry:
 <div class="sect2">
 <h3 id="_see_also_5">See Also</h3>
 <div class="paragraph">
-<p>grid-mapfile-check-consistency(8), grid-mapfile-delete-entry(8)</p>
+<p><code>grid-mapfile-check-consistency(8)</code>, <code>grid-mapfile-delete-entry(8)</code></p>
 </div>
 </div>
 </div>
@@ -2018,48 +2018,48 @@ New entry:
 <div class="sect2">
 <h3 id="_synopsis_11">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-mapfile-check-consistency</strong> [-h ] [-help ] [-usage ] [-version ]</p>
+<p><strong><code>grid-mapfile-check-consistency</code></strong> [<code>-h</code> ] [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_11">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-mapfile-check-consistency</strong> program performs basic checks
+<p>The <strong><code>grid-mapfile-check-consistency</code></strong> program performs basic checks
 for validity of a gridmap file. These checks include checks for
 existence, duplication of entries, and valid local user names. If the
-gridmap file is valid, <strong>grid-mapfile-check-consistency</strong> exits with
+gridmap file is valid, <strong><code>grid-mapfile-check-consistency</code></strong> exits with
 a zero exit code, otherwise it exits with a non-zero exit code. In
 either case, it displays information about its progress as it parses and
 validates the gridmap file.</p>
 </div>
 <div class="paragraph">
-<p>By default, <strong>grid-mapfile-check-consistency</strong> will check the
-gridmap file named by the GRIDMAP environment variable if present.
-If that variable is not set, it will check the file $HOME/.gridmap
+<p>By default, <strong><code>grid-mapfile-check-consistency</code></strong> will check the
+gridmap file named by the <code>GRIDMAP</code> environment variable if present.
+If that variable is not set, it will check the file <code>$HOME/.gridmap</code>
 for non-root users if present. If that doesn&#8217;t exist or  for non-root
 users if present. If that doesn&#8217;t exist or
-<strong>grid-mapfile-check-consistency</strong> is run as root, it will then
-check /etc/grid-security/grid-mapfile. This can be changed by the
-use of the . This can be changed by the use of the '-mapfile' or '-f'
+<strong><code>grid-mapfile-check-consistency</code></strong> is run as root, it will then
+check <code>/etc/grid-security/grid-mapfile</code>. This can be changed by the
+use of the . This can be changed by the use of the <em>-mapfile</em> or <em>-f</em>
 command-line options.</p>
 </div>
 <div class="paragraph">
 <p>The full set of command-line options to
-<strong>grid-mapfile-check-consistency</strong> are:</p>
+<strong><code>grid-mapfile-check-consistency</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -h, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-mapfile-check-consistency</strong>.</p>
+<p>Display the command-line options to <strong><code>grid-mapfile-check-consistency</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-version</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-mapfile-check-consistency</strong> command.</p>
+<p>Display the version number of the <strong><code>grid-mapfile-check-consistency</code></strong> command.</p>
 </dd>
-<dt class="hdlist1"><strong>-mapfile 'MAPFILE', -f 'MAPFILE'</strong></dt>
+<dt class="hdlist1"><strong>-mapfile <em>MAPFILE</em>, -f <em>MAPFILE</em></strong></dt>
 <dd>
-<p>Check the gridmap file named by 'MAPFILE' instead of the default.</p>
+<p>Check the gridmap file named by <em>MAPFILE</em> instead of the default.</p>
 </dd>
 </dl>
 </div>
@@ -2067,7 +2067,7 @@ command-line options.</p>
 <div class="sect2">
 <h3 id="_examples_8">Examples</h3>
 <div class="paragraph">
-<p>Check that the gridmap file in /etc/grid-security is valid:  is
+<p>Check that the gridmap file in <code>/etc/grid-security</code> is valid:  is
 valid:</p>
 </div>
 <div class="listingblock">
@@ -2097,11 +2097,11 @@ ERROR: Found 1 invalid username(s)</pre>
 <h3 id="_environment_variables_9">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-mapfile-check-consistency</strong>:</p>
+<strong><code>grid-mapfile-check-consistency</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GRIDMAP</strong></dt>
+<dt class="hdlist1"><strong><code>GRIDMAP</code></strong></dt>
 <dd>
 <p>Path to the default gridmap to check.</p>
 </dd>
@@ -2112,17 +2112,17 @@ ERROR: Found 1 invalid username(s)</pre>
 <h3 id="_files_4">Files</h3>
 <div class="paragraph">
 <p>The following files affect the execution of
-<strong>grid-mapfile-check-consistency</strong>:</p>
+<strong><code>grid-mapfile-check-consistency</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>$HOME/.gridmap</strong></dt>
+<dt class="hdlist1"><strong><code>$HOME/.gridmap</code></strong></dt>
 <dd>
-<p>Path to the default gridmap to check if the GRIDMAP environment variable is not set for non-root users.</p>
+<p>Path to the default gridmap to check if the <code>GRIDMAP</code> environment variable is not set for non-root users.</p>
 </dd>
-<dt class="hdlist1"><strong>/etc/grid-security/grid-mapfile</strong></dt>
+<dt class="hdlist1"><strong><code>/etc/grid-security/grid-mapfile</code></strong></dt>
 <dd>
-<p>Path to the default gridmap to check if GRIDMAP environment variable is not set and the above file does not exist.</p>
+<p>Path to the default gridmap to check if <code>GRIDMAP</code> environment variable is not set and the above file does not exist.</p>
 </dd>
 </dl>
 </div>
@@ -2130,7 +2130,7 @@ ERROR: Found 1 invalid username(s)</pre>
 <div class="sect2">
 <h3 id="_see_also_6">See Also</h3>
 <div class="paragraph">
-<p>grid-mapfile-add-entry(8), grid-mapfile-delete-entry(8)</p>
+<p><code>grid-mapfile-add-entry(8)</code>, <code>grid-mapfile-delete-entry(8)</code></p>
 </div>
 </div>
 </div>
@@ -2147,61 +2147,61 @@ ERROR: Found 1 invalid username(s)</pre>
 <div class="sect2">
 <h3 id="_synopsis_12">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-mapfile-delete-entry</strong> [-help ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-mapfile-delete-entry</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_12">Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-mapfile-delete-entry</strong> program deletes mappings from a
-gridmap file. If both the '-dn' and '-ln'&gt; options are specified,
-<strong>grid-mapfile-delete-entry</strong> removes entries which meet both
-criteria (remove entries mapping 'DISTINGUISHED-NAME' to 'LOCAL-NAME'
-for each 'LOCAL-NAME' specified). If only '-dn' or '-ln' is specified
-<strong>all</strong> entries for that 'DISTINGUISHED-NAME' or 'LOCAL-NAME' are
+<p>The <strong><code>grid-mapfile-delete-entry</code></strong> program deletes mappings from a
+gridmap file. If both the <em>-dn</em> and <em>-ln</em>&gt; options are specified,
+<strong><code>grid-mapfile-delete-entry</code></strong> removes entries which meet both
+criteria (remove entries mapping <em>DISTINGUISHED-NAME</em> to <em>LOCAL-NAME</em>
+for each <em>LOCAL-NAME</em> specified). If only <em>-dn</em> or <em>-ln</em> is specified
+<strong>all</strong> entries for that <em>DISTINGUISHED-NAME</em> or <em>LOCAL-NAME</em> are
 removed.</p>
 </div>
 <div class="paragraph">
-<p>By default, <strong>grid-mapfile-delete-entry</strong> will modify the gridmap
-file named by the GRIDMAP environment variable if present, or the
-file /etc/grid-security/grid-mapfile if not. This can be changed by
-the use of the  if not. This can be changed by the use of the '-mapfile'
-or '-f' command-line options.</p>
+<p>By default, <strong><code>grid-mapfile-delete-entry</code></strong> will modify the gridmap
+file named by the <code>GRIDMAP</code> environment variable if present, or the
+file <code>/etc/grid-security/grid-mapfile</code> if not. This can be changed by
+the use of the  if not. This can be changed by the use of the <em>-mapfile</em>
+or <em>-f</em> command-line options.</p>
 </div>
 <div class="paragraph">
-<p>Prior to modifying a gridmap file, <strong>grid-mapfile-delete-entry</strong>
-saves its current contents to a file with the string .old appended
+<p>Prior to modifying a gridmap file, <strong><code>grid-mapfile-delete-entry</code></strong>
+saves its current contents to a file with the string <code>.old</code> appended
 to the original file name.</p>
 </div>
 <div class="paragraph">
 <p>The full set of command-line options to
-<strong>grid-mapfile-delete-entry</strong> are:</p>
+<strong><code>grid-mapfile-delete-entry</code></strong> are:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-mapfile-delete-entry</strong>.</p>
+<p>Display the command-line options to <strong><code>grid-mapfile-delete-entry</code></strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-mapfile-delete-entry</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-mapfile-delete-entry</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-dn 'DISTINGUISHED-NAME'</strong></dt>
+<dt class="hdlist1"><strong>-dn <em>DISTINGUISHED-NAME</em></strong></dt>
 <dd>
-<p>The X.509 distinguished name to remove from the gridmap file. If the '-ln' option is not specified, remove all entries for this name; otherwise, remove entries that match both this name and the local name. The name should be in OpenSSL&#8217;s oneline format.</p>
+<p>The X.509 distinguished name to remove from the gridmap file. If the <em>-ln</em> option is not specified, remove all entries for this name; otherwise, remove entries that match both this name and the local name. The name should be in OpenSSL&#8217;s <code>oneline</code> format.</p>
 </dd>
-<dt class="hdlist1"><strong>-ln 'LOCAL-NAME'&#8230;&#8203;</strong></dt>
+<dt class="hdlist1"><strong>-ln <em>LOCAL-NAME</em>&#8230;&#8203;</strong></dt>
 <dd>
-<p>The POSIX user name to remove from the gridmap file. Include multiple 'LOCAL-NAME' strings after the '-ln' command-line option to remove multiple names from the gridmap. If the '-dn' option is not specifeid, remove all entries for these names; otherwise, remove entries that match the 'DISTINGUISHED-NAME' and any of the 'LOCAL-NAME' values.</p>
+<p>The POSIX user name to remove from the gridmap file. Include multiple <em>LOCAL-NAME</em> strings after the <em>-ln</em> command-line option to remove multiple names from the gridmap. If the <em>-dn</em> option is not specifeid, remove all entries for these names; otherwise, remove entries that match the <em>DISTINGUISHED-NAME</em> and any of the <em>LOCAL-NAME</em> values.</p>
 </dd>
 <dt class="hdlist1"><strong>-d, -dryrun</strong></dt>
 <dd>
 <p>Display diagnostics about what would be removed from the gridmap file, but don&#8217;t actually modify the file.</p>
 </dd>
-<dt class="hdlist1"><strong>-mapfile 'MAPFILE', -f 'MAPFILE'</strong></dt>
+<dt class="hdlist1"><strong>-mapfile <em>MAPFILE</em>, -f <em>MAPFILE</em></strong></dt>
 <dd>
-<p>Modify the gridmap file named by 'MAPFILE' instead of the default.</p>
+<p>Modify the gridmap file named by <em>MAPFILE</em> instead of the default.</p>
 </dd>
 </dl>
 </div>
@@ -2237,11 +2237,11 @@ Current entry: "/DC=org/DC=example/DC=grid/CN=Joe User" juser
 <h3 id="_environment_variables_10">Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-mapfile-delete-entry</strong>:</p>
+<strong><code>grid-mapfile-delete-entry</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GRIDMAP</strong></dt>
+<dt class="hdlist1"><strong><code>GRIDMAP</code></strong></dt>
 <dd>
 <p>Path to the default gridmap to modify.</p>
 </dd>
@@ -2252,13 +2252,13 @@ Current entry: "/DC=org/DC=example/DC=grid/CN=Joe User" juser
 <h3 id="_files_5">Files</h3>
 <div class="paragraph">
 <p>The following files affect the execution of
-<strong>grid-mapfile-delete-entry</strong>:</p>
+<strong><code>grid-mapfile-delete-entry</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>/etc/grid-security/grid-mapfile</strong></dt>
+<dt class="hdlist1"><strong><code>/etc/grid-security/grid-mapfile</code></strong></dt>
 <dd>
-<p>Path to the default gridmap to modify if GRIDMAP environment variable is not set.</p>
+<p>Path to the default gridmap to modify if <code>GRIDMAP</code> environment variable is not set.</p>
 </dd>
 </dl>
 </div>
@@ -2266,7 +2266,7 @@ Current entry: "/DC=org/DC=example/DC=grid/CN=Joe User" juser
 <div class="sect2">
 <h3 id="_see_also_7">See Also</h3>
 <div class="paragraph">
-<p>grid-mapfile-add-entry(8), grid-mapfile-check-consistency(8)</p>
+<p><code>grid-mapfile-add-entry(8)</code>, <code>grid-mapfile-check-consistency(8)</code></p>
 </div>
 </div>
 </div>
@@ -2308,31 +2308,31 @@ to report that credentials are invalid:</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your proxy credential may have expired</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Your proxy credential may have expired</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your proxy credential may have expired.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="gsic/pi/index.html#grid-proxy-info">grid-proxy-info</a> to check
 whether the proxy credential has actually expired. If it has,
 generate a new proxy with <a href="gsic/pi/index.html#grid-proxy-init">grid-proxy-init</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The system clock on either the local or remote system
-is wrong.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The system clock on either the local or remote system
+is wrong.</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This may cause the server or client to conclude that a
 credential has expired.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check the system clocks on the local and remote
 system.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your end-user certificate may have
-expired</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Your end-user certificate may have
+expired</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your end-user certificate may have expired</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="gsic/pi/index.html#grid-cert-info">grid-cert-info</a> to check your
 certificate&#8217;s expiration date. If it has expired, follow your CA&#8217;s
 procedures to get a new one.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The permissions may be wrong on your proxy
-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The permissions may be wrong on your proxy
+file</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your proxy file are too lax (for
 example, if others can read your proxy file), Grid Community Toolkit
 clients will not use that file to authenticate.</p></td>
@@ -2347,8 +2347,8 @@ or your permissions or end-user certificate are revoked, whichever
 happens first.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The permissions may be wrong on your private key
-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The permissions may be wrong on your private key
+file</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your end user certificate private key
 file are too lax (for example, if others can read the file),
 grid-proxy-init will refuse to create a proxy certificate.</p></td>
@@ -2365,23 +2365,23 @@ have your end-user certificate revoked and get a new
 one.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The remote system may not trust your
-CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The remote system may not trust your
+CA</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The remote system may not trust your CA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the remote system is configured to trust the CA
 that issued your end-entity certificate. See link:admin/install/index.html for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">You may not trust the remote system's
-CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>You may not trust the remote system&#8217;s
+CA</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You may not trust the remote system&#8217;s CA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that your system is configured to trust the remote
 CA (or that your environment is set up to trust the remote CA).
 See admin/install/index.html for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">There may be something wrong with the remote
-service's credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>There may be something wrong with the remote
+service&#8217;s credentials</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">There may be something wrong with the remote service&#8217;s
 credentials</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">It is sometimes difficult to distinguish between errors
@@ -2400,7 +2400,7 @@ credentials, check for the same conditions on the remote system
 <h5 id="_grid_cert_diagnostics">grid-cert-diagnostics</h5>
 <div class="paragraph">
 <p>The
-<a href="../../gsic/user/index.html#grid-cert-diagnostics"><strong>grid-cert-diagnostics</strong></a>
+<a href="../../gsic/user/index.html#grid-cert-diagnostics"><strong><code>grid-cert-diagnostics</code></strong></a>
 program checks prints diagnostics about the user&#8217;s certificates, and
 host security environment.</p>
 </div>
@@ -2429,7 +2429,7 @@ host security environment.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Here '&lt;host:port&gt;' denotes the server and port you connect to.</p>
+<p>Here <em>&lt;host:port&gt;</em> denotes the server and port you connect to.</p>
 </div>
 <div class="paragraph">
 <p>If it prints an error and puts you back at the command prompt, then it
@@ -2498,14 +2498,14 @@ to report that user are not authorized:</p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The content of the grid map file does not conform to the expected format</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The content of the grid map file does not conform to the expected format</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The content of the grid map file does not conform to the expected format</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-mapfile-check-consistency"><strong>grid-mapfile-check-consistency</strong></a> to make sure that your gridmap file conforms to the expected format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-mapfile-check-consistency"><strong><code>grid-mapfile-check-consistency</code></strong></a> to make sure that your gridmap file conforms to the expected format.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The grid map file does not contain a entry for your DN</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The grid map file does not contain a entry for your DN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The grid map file does not contain a entry for your DN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="../../gsic/pi/index.html#grid-mapfile-add-entry"><strong>grid-mapfile-add-entry</strong></a> to add the relevant entry.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="../../gsic/pi/index.html#grid-mapfile-add-entry"><strong><code>grid-mapfile-add-entry</code></strong></a> to add the relevant entry.</p></td>
 </tr>
 </tbody>
 </table>

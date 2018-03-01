@@ -12,8 +12,8 @@ endif
 
 CLEANFILES = $(HTML_FILES) $(PDF_FILES)
 
-ADOC_TO_PDF = asciidoctor-pdf -d book -o $@ $<
-ADOC_TO_HTML = asciidoctor --attribute=last-update-label\! --attribute=toc=left@ -d book -o $@ $<
+ADOC_TO_PDF = asciidoctor-pdf -a compat-mode --attribute=last-update-label\! -d book -o $@ $<
+ADOC_TO_HTML = asciidoctor -a compat-mode --attribute=last-update-label\! --attribute=toc=left@ -d book -o $@ $<
 CONCAT_PDFS = gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=$@ $(filter %.pdf,$^)
 
 # default rule

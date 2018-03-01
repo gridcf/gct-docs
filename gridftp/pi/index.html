@@ -480,7 +480,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#gridftp-config-types">Typical configuration</a></li>
 <li><a href="#gridftp-config-security-firewalls">Firewall requirements</a></li>
 <li><a href="#gridftp-admin-config-security">Configuring Security for GridFTP</a></li>
-<li><a href="#_strong_globus_gridftp_server_strong_quickstart"><strong>globus-gridftp-server</strong> quickstart</a></li>
+<li><a href="#_strong_code_globus_gridftp_server_code_strong_quickstart"><strong><code>globus-gridftp-server</code></strong> quickstart</a></li>
 <li><a href="#_enabling_file_sharing_with_globus_sharing_service">Enabling File Sharing with Globus Sharing Service</a></li>
 </ul>
 </li>
@@ -529,7 +529,7 @@ to run it on a different grid.</p>
 </div>
 <div class="paragraph">
 <p>All applications which use the Globus FTP Client API must include the
-header file globus_ftp_client.h and activate the  and activate the
+header file <code>globus_ftp_client.h</code> and activate the  and activate the
 <a href="http://www.globus.org/api/c-globus-{$version}/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5factivation.html">GLOBUS_FTP_CLIENT_MODULE</a>.</p>
 </div>
 <div class="paragraph">
@@ -1061,7 +1061,7 @@ and parallel data layouts.</p>
 <div class="sect2">
 <h3 id="_options">OPTIONS</h3>
 <div class="paragraph">
-<p>The list below contains the command-line options for the server, and also the name of the configuration file entry that implements that option. Note that any boolean option can be negated on the command line by preceding the specified option with '-no-' or '-n'.  example: -no-cas or -nf.</p>
+<p>The list below contains the command-line options for the server, and also the name of the configuration file entry that implements that option. Note that any boolean option can be negated on the command line by preceding the specified option with <em>-no-</em> or <em>-n</em>.  example: <code>-no-cas</code> or <code>-nf</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="_informational_options">Informational Options</h4>
@@ -1071,32 +1071,32 @@ and parallel data layouts.</p>
 <dd>
 <p>Show usage information and exit.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as help.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>help</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-hh,-longhelp</strong></dt>
 <dd>
 <p>Show more usage information and exit.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as longhelp.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>longhelp</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-v,-version</strong></dt>
 <dd>
 <p>Show version information for the server and exit.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as version.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>version</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-V,-versions</strong></dt>
 <dd>
 <p>Show version information for all loaded globus libraries and exit.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as versions.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>versions</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1110,84 +1110,84 @@ and parallel data layouts.</p>
 <dd>
 <p>Run under an inetd service.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as inetd.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>inetd</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-s,-daemon</strong></dt>
 <dd>
 <p>Run as a daemon.  All connections will fork off a new process and setuid if allowed.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as daemon.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>daemon</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-S,-detach</strong></dt>
 <dd>
 <p>Run as a background daemon detached from any controlling terminals.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as detach.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>detach</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ssh</strong></dt>
 <dd>
 <p>Run over a connected ssh session.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ssh.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>ssh</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-exec string</strong></dt>
 <dd>
 <p>For statically compiled or non-GLOBUS_LOCATION standard binary locations, specify the full path of the server binary here.  Only needed when run in daemon mode.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as exec.</p>
+<p>This option can also be set in the configuration file as <code>exec</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-chdir</strong></dt>
 <dd>
 <p>Change directory when the server starts. This will change directory to the dir specified by the chdir_to option.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as chdir.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>chdir</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-chdir-to string</strong></dt>
 <dd>
 <p>Directory to chdir to after starting.  Will use / if not set.  Note that this is the directory of the process, not the client&#8217;s home directory.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as chdir_to.</p>
+<p>This option can also be set in the configuration file as <code>chdir_to</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-threads number</strong></dt>
 <dd>
 <p>Enable threaded operation and set the number of threads.  The default is 0, which is non-threaded.  When threading is required, a thread count of 1 or 2 should be sufficient.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as threads.</p>
+<p>This option can also be set in the configuration file as <code>threads</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-f,-fork</strong></dt>
 <dd>
-<p>Server will fork for each new connection.  Disabling this option is only recommended when debugging. Note that non-forked servers running as 'root' will only accept a single connection, and then exit.</p>
+<p>Server will fork for each new connection.  Disabling this option is only recommended when debugging. Note that non-forked servers running as <em>root</em> will only accept a single connection, and then exit.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as fork.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>fork</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-1,-single</strong></dt>
 <dd>
 <p>Exit after a single connection.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as single.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>single</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-chroot-path string</strong></dt>
 <dd>
 <p>Path to become the new root after authentication.  This path must contain a valid certificate structure, /etc/passwd, and /etc/group.  The command globus-gridftp-server-setup-chroot can help create a suitable directory structure.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as chroot_path.</p>
+<p>This option can also be set in the configuration file as <code>chroot_path</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1217,7 +1217,7 @@ and parallel data layouts.</p>
 <p>If not set uses level 2 for front ends and level 1 for data nodes.  Note that levels 2 and 4 imply level 1 as well.</p>
 </div>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as auth_level.</p>
+<p>This option can also be set in the configuration file as <code>auth_level</code>.</p>
 </div>
 </li>
 </ul>
@@ -1225,229 +1225,229 @@ and parallel data layouts.</p>
 </dd>
 <dt class="hdlist1"><strong>-ipc-allow-from string</strong></dt>
 <dd>
-<p>Only allow connections from these source ip addresses.  Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: '192.168.1.' will match and allow a connection from 192.168.1.45.  Note that if this option is used any address not specifically allowed will be denied.</p>
+<p>Only allow connections from these source ip addresses.  Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: <em>192.168.1.</em> will match and allow a connection from 192.168.1.45.  Note that if this option is used any address not specifically allowed will be denied.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_allow_from.</p>
+<p>This option can also be set in the configuration file as <code>ipc_allow_from</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ipc-deny-from string</strong></dt>
 <dd>
-<p>Deny connections from these source ip addresses. Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: '192.168.2.' will match and deny a connection from 192.168.2.45.</p>
+<p>Deny connections from these source ip addresses. Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: <em>192.168.2.</em> will match and deny a connection from 192.168.2.45.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_deny_from.</p>
+<p>This option can also be set in the configuration file as <code>ipc_deny_from</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-allow-from string</strong></dt>
 <dd>
-<p>Only allow connections from these source ip addresses.  Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: '192.168.1.' will match and allow a connection from 192.168.1.45.  Note that if this option is used any address not specifically allowed will be denied.</p>
+<p>Only allow connections from these source ip addresses.  Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: <em>192.168.1.</em> will match and allow a connection from 192.168.1.45.  Note that if this option is used any address not specifically allowed will be denied.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as allow_from.</p>
+<p>This option can also be set in the configuration file as <code>allow_from</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-deny-from string</strong></dt>
 <dd>
-<p>Deny connections from these source ip addresses. Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: '192.168.2.' will match and deny a connection from 192.168.2.45.</p>
+<p>Deny connections from these source ip addresses. Specify a comma separated list of ip address fragments.  A match is any ip address that starts with the specified fragment.  Example: <em>192.168.2.</em> will match and deny a connection from 192.168.2.45.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as deny_from.</p>
+<p>This option can also be set in the configuration file as <code>deny_from</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-si,-secure-ipc</strong></dt>
 <dd>
 <p>Use GSI security on ipc channel.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as secure_ipc.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>secure_ipc</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ia string,-ipc-auth-mode string</strong></dt>
 <dd>
 <p>Set GSI authorization mode for the ipc connection. Options are: none, host, self or subject:[subject].</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_auth_mode.
-    The default value of this option is host.</p>
+<p>This option can also be set in the configuration file as <code>ipc_auth_mode</code>.
+    The default value of this option is <code>host</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-aa,-allow-anonymous</strong></dt>
 <dd>
 <p>Allow clear text anonymous access. If server is running as root anonymous_user must also be set.  Disables ipc security.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as allow_anonymous.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>allow_anonymous</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-anonymous-names-allowed string</strong></dt>
 <dd>
-<p>Comma separated list of names to treat as anonymous users when allowing anonymous access.  If not set, the default names of 'anonymous' and 'ftp' will be allowed.  Use '*' to allow any username.</p>
+<p>Comma separated list of names to treat as anonymous users when allowing anonymous access.  If not set, the default names of <em>anonymous</em> and <em>ftp</em> will be allowed.  Use <em>*</em> to allow any username.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as anonymous_names_allowed.</p>
+<p>This option can also be set in the configuration file as <code>anonymous_names_allowed</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-anonymous-user string</strong></dt>
 <dd>
 <p>User to setuid to for an anonymous connection. Only applies when running as root.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as anonymous_user.</p>
+<p>This option can also be set in the configuration file as <code>anonymous_user</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-anonymous-group string</strong></dt>
 <dd>
 <p>Group to setgid to for an anonymous connection. If unset, the default group of anonymous_user will be used.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as anonymous_group.</p>
+<p>This option can also be set in the configuration file as <code>anonymous_group</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-dn string</strong></dt>
 <dd>
 <p>Allow sharing when using the supplied DN.  A client connected with these credentials will be able to access any user for which sharing is enabled.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_dn.</p>
+<p>This option can also be set in the configuration file as <code>sharing_dn</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-state-dir string</strong></dt>
 <dd>
-<p>Full path to a directory that will contain files used by GridFTP to control sharing access for individual local accounts. The special variables '$HOME' and '$USER' can be used to create a dynamic path that is unique to each local account.  This pathmust be writable by the associated account. The default path is '$HOME/.globus/sharing/'.  This must refer to a path on the filesystem, not a path that is only accessible via a DSI plugin.</p>
+<p>Full path to a directory that will contain files used by GridFTP to control sharing access for individual local accounts. The special variables <em>$HOME</em> and <em>$USER</em> can be used to create a dynamic path that is unique to each local account.  This pathmust be writable by the associated account. The default path is <em>$HOME/.globus/sharing/</em>.  This must refer to a path on the filesystem, not a path that is only accessible via a DSI plugin.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_state_dir.</p>
+<p>This option can also be set in the configuration file as <code>sharing_state_dir</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-control</strong></dt>
 <dd>
 <p>Allow a local user account to control its own sharing access via special GridFTP client commands.  The user account must have filesystem write access to the sharing state dir.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_control.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>sharing_control</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-rp string</strong></dt>
 <dd>
 <p>Sharing specific path restrictions.  This completely replaces the normal path restrictions (-rp) when an account is being shared by a sharing-dn login.Follows normal path restriction semantics.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_rp.</p>
+<p>This option can also be set in the configuration file as <code>sharing_rp</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-users-allow string</strong></dt>
 <dd>
 <p>Comma separated list of usernames that are allowed to share unless matched in the user deny lists.  If this list is set, users that are not included will be denied unless matched in the group allow list.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_users_allow.</p>
+<p>This option can also be set in the configuration file as <code>sharing_users_allow</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-users-deny string</strong></dt>
 <dd>
 <p>Comma separated list of usernames that are denied sharing even if matched in the user or group allow lists.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_users_deny.</p>
+<p>This option can also be set in the configuration file as <code>sharing_users_deny</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-groups-allow string</strong></dt>
 <dd>
 <p>Comma separated list of groups whose members are allowed to share unless matched in the user or group deny lists.  If this list is set, groups that are not included will be denied unless matched in the user allow list.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_groups_allow.</p>
+<p>This option can also be set in the configuration file as <code>sharing_groups_allow</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sharing-groups-deny string</strong></dt>
 <dd>
 <p>Comma separated list of groups whose members will be denied sharing unless matched in the user allow list.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sharing_groups_deny.</p>
+<p>This option can also be set in the configuration file as <code>sharing_groups_deny</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-allow-root</strong></dt>
 <dd>
 <p>Allow clients to be mapped to the root account.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as allow_root.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>allow_root</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-allow-disabled-login</strong></dt>
 <dd>
 <p>Do not check if a user&#8217;s system account is disabled before allowing login.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as allow_disabled_login.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>allow_disabled_login</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-password-file string</strong></dt>
 <dd>
 <p>Enable clear text access and authenticate users against this /etc/passwd formatted file.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as pw_file.</p>
+<p>This option can also be set in the configuration file as <code>pw_file</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-connections-max number</strong></dt>
 <dd>
 <p>Maximum concurrent connections allowed.  Only applies when running in daemon mode.  Unlimited if not set.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as connections_max.</p>
+<p>This option can also be set in the configuration file as <code>connections_max</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-connections-disabled</strong></dt>
 <dd>
 <p>Disable all new connections.  For daemon mode, issue a SIGHUP to the server process after changing the config file in order to not affect ongoing connections.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as connections_disabled.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>connections_disabled</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-offline-msg string</strong></dt>
 <dd>
 <p>Custom message to be displayed to clients when the server is offline via the connections_disabled or connections_max = 0 options.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as offline_msg.</p>
+<p>This option can also be set in the configuration file as <code>offline_msg</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-disable-command-list string</strong></dt>
 <dd>
 <p>A comma separated list of client commands that will be disabled.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as disable_command_list.</p>
+<p>This option can also be set in the configuration file as <code>disable_command_list</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-authz-callouts,-cas</strong></dt>
 <dd>
 <p>Enable the GSI authorization callout framework, for callouts such as CAS.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as cas.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>cas</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-use-home-dirs</strong></dt>
 <dd>
-<p>Set the starting directory to the authenticated users home dir.  Disabling this is the same as setting '-home-dir /'.</p>
+<p>Set the starting directory to the authenticated users home dir.  Disabling this is the same as setting <em>-home-dir /</em>.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as use_home_dirs.
-    The default value of this option is TRUE.</p>
+<p>This option can also be set in the configuration file as <code>use_home_dirs</code>.
+    The default value of this option is <code>TRUE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-home-dir string</strong></dt>
 <dd>
-<p>Set a path to override the system defined home/starting directory for authenticated users.  The special variable strings '$USER' and '$HOME' may be used.  The authenticated username will be substituted for $USER, and the user&#8217;s real home dir will be substituted for $HOME.  Be sure to escape the $ character if using these on the command line.</p>
+<p>Set a path to override the system defined home/starting directory for authenticated users.  The special variable strings <em>$USER</em> and <em>$HOME</em> may be used.  The authenticated username will be substituted for $USER, and the user&#8217;s real home dir will be substituted for $HOME.  Be sure to escape the $ character if using these on the command line.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as home_dir.</p>
+<p>This option can also be set in the configuration file as <code>home_dir</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-rp string,-restrict-paths string</strong></dt>
 <dd>
-<p>A comma separated list of full paths that clients may access.  Each path may be prefixed by R and/or W, denoting read or write access, otherwise full access is granted.  If a given path is a directory, all contents and subdirectories will be given the same access.  Order of paths does not matter&#8201;&#8212;&#8201;the permissions on the longest matching path will apply.  The special character '\~' will be replaced by the authenticated user&#8217;s home directory, or the '-home-dir' option, if used. Note that if the home directory is not accessible, '\~' will be set to '/'.  By default all paths are allowed, and access control is handled by the OS. In a striped or split process configuration, this should be set on both the frontend and data nodes.</p>
+<p>A comma separated list of full paths that clients may access.  Each path may be prefixed by R and/or W, denoting read or write access, otherwise full access is granted.  If a given path is a directory, all contents and subdirectories will be given the same access.  Order of paths does not matter&#8201;&#8212;&#8201;the permissions on the longest matching path will apply.  The special character <em>\~</em> will be replaced by the authenticated user&#8217;s home directory, or the <em>-home-dir</em> option, if used. Note that if the home directory is not accessible, <em>\~</em> will be set to <em>/</em>.  By default all paths are allowed, and access control is handled by the OS. In a striped or split process configuration, this should be set on both the frontend and data nodes.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as restrict_paths.</p>
+<p>This option can also be set in the configuration file as <code>restrict_paths</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-rp-follow-symlinks</strong></dt>
 <dd>
 <p>Do not verify that a symlink points to an allowed path before following.  By default, symlinks are followed only when they point to an allowed path.  By enabling this option, symlinks will be followed even if they point to a path that is otherwise restricted.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as rp_follow_symlinks.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>rp_follow_symlinks</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-em string,-acl string</strong></dt>
 <dd>
 <p>A comma separated list of ACL or event modules to load.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as acl.</p>
+<p>This option can also be set in the configuration file as <code>acl</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1459,53 +1459,53 @@ and parallel data layouts.</p>
 <dl>
 <dt class="hdlist1"><strong>-d string,-log-level string</strong></dt>
 <dd>
-<p>Log level. A comma separated list of levels from: 'ERROR, WARN, INFO, TRANSFER, DUMP, ALL'. TRANSFER includes the same statistics that are sent to the separate transfer log when -log-transfer is used.  Example: error,warn,info. You may also specify a numeric level of 1-255.  The default level is ERROR.</p>
+<p>Log level. A comma separated list of levels from: <em>ERROR, WARN, INFO, TRANSFER, DUMP, ALL</em>. TRANSFER includes the same statistics that are sent to the separate transfer log when -log-transfer is used.  Example: error,warn,info. You may also specify a numeric level of 1-255.  The default level is ERROR.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as log_level.
-    The default value of this option is ERROR.</p>
+<p>This option can also be set in the configuration file as <code>log_level</code>.
+    The default value of this option is <code>ERROR</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-log-module string</strong></dt>
 <dd>
-<p>globus_logging module that will be loaded. If not set, the default 'stdio' module will be used, and the logfile options apply.  Built in modules are 'stdio' and 'syslog'.  Log module options may be set by specifying module:opt1=val1:opt2=val2.  Available options for the built in modules are 'interval' and 'buffer', for buffer flush interval and buffer size, respectively. The default options are a 64k buffer size and a 5 second flush interval.  A 0 second flush interval will disable periodic flushing, and the buffer will only flush when it is full.  A value of 0 for buffer will disable buffering and all messages will be written immediately.  Example: -log-module stdio:buffer=4096:interval=10</p>
+<p>globus_logging module that will be loaded. If not set, the default <em>stdio</em> module will be used, and the logfile options apply.  Built in modules are <em>stdio</em> and <em>syslog</em>.  Log module options may be set by specifying module:opt1=val1:opt2=val2.  Available options for the built in modules are <em>interval</em> and <em>buffer</em>, for buffer flush interval and buffer size, respectively. The default options are a 64k buffer size and a 5 second flush interval.  A 0 second flush interval will disable periodic flushing, and the buffer will only flush when it is full.  A value of 0 for buffer will disable buffering and all messages will be written immediately.  Example: -log-module stdio:buffer=4096:interval=10</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as log_module.</p>
+<p>This option can also be set in the configuration file as <code>log_module</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-l string,-logfile string</strong></dt>
 <dd>
 <p>Path of a single file to log all activity to.  If neither this option or log_unique is set, logs will be written to stderr unless the execution mode is detached or inetd, in which case logging will be disabled.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as log_single.</p>
+<p>This option can also be set in the configuration file as <code>log_single</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-L string,-logdir string</strong></dt>
 <dd>
-<p>Partial path to which 'gridftp.(pid).log' will be appended to construct the log filename. Example: -L /var/log/gridftp/ will create a separate log ( /var/log/gridftp/gridftp.xxxx.log ) for each process (which is normally each new client session).  If neither this option or log_single is set, logs will be written to stderr unless the execution mode is detached or inetd, in which case logging will be disabled.</p>
+<p>Partial path to which <em>gridftp.(pid).log</em> will be appended to construct the log filename. Example: -L /var/log/gridftp/ will create a separate log ( /var/log/gridftp/gridftp.xxxx.log ) for each process (which is normally each new client session).  If neither this option or log_single is set, logs will be written to stderr unless the execution mode is detached or inetd, in which case logging will be disabled.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as log_unique.</p>
+<p>This option can also be set in the configuration file as <code>log_unique</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-Z string,-log-transfer string</strong></dt>
 <dd>
 <p>Log netlogger style info for each transfer into this file.  You may also use the log-level of TRANSFER to include this info in the standard log.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as log_transfer.</p>
+<p>This option can also be set in the configuration file as <code>log_transfer</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-log-filemode string</strong></dt>
 <dd>
 <p>File access permissions of log files. Should be an octal number such as 0644.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as log_filemode.</p>
+<p>This option can also be set in the configuration file as <code>log_filemode</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-disable-usage-stats</strong></dt>
 <dd>
 <p>Disable transmission of per-transfer usage statistics.  See the Usage Statistics section in the online documentation for more information.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as disable_usage_stats.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>disable_usage_stats</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-usage-stats-target string</strong></dt>
@@ -1539,14 +1539,14 @@ and parallel data layouts.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as usage_stats_target.</p>
+<p>This option can also be set in the configuration file as <code>usage_stats_target</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-usage-stats-id string</strong></dt>
 <dd>
 <p>Identifying tag to include in usage statistics data.  If this is set and usage-stats-target is unset, CONFID will be added to the default usage stats data.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as usage_stats_id.</p>
+<p>This option can also be set in the configuration file as <code>usage_stats_id</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1560,38 +1560,38 @@ and parallel data layouts.</p>
 <dd>
 <p>Comma separated list of remote node contact strings.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as remote_nodes.</p>
+<p>This option can also be set in the configuration file as <code>remote_nodes</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-hybrid</strong></dt>
 <dd>
-<p>When a server is configured for striped operation with the 'remote_nodes' option, both a frontend and backend process are started even if the client does not request multiple stripes.  This option will start backend processes only when striped operation is requested by the client, while servicing non-striped requests with a single frontend process.</p>
+<p>When a server is configured for striped operation with the <em>remote_nodes</em> option, both a frontend and backend process are started even if the client does not request multiple stripes.  This option will start backend processes only when striped operation is requested by the client, while servicing non-striped requests with a single frontend process.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as hybrid.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>hybrid</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-dn,-data-node</strong></dt>
 <dd>
 <p>This server is a backend data node.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as data_node.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>data_node</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sbs number,-stripe-blocksize number</strong></dt>
 <dd>
 <p>Size in bytes of sequential data that each stripe will transfer.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as stripe_blocksize.
-    The default value of this option is 1048576.</p>
+<p>This option can also be set in the configuration file as <code>stripe_blocksize</code>.
+    The default value of this option is <code>1048576</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-stripe-count number</strong></dt>
 <dd>
 <p>Number of number stripes to use per transfer when this server controls that number.  If remote nodes are statically configured (via -r or remote_nodes), this will be set to that number of nodes, otherwise the default is 1.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as stripe_count.</p>
+<p>This option can also be set in the configuration file as <code>stripe_count</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sl number,-stripe-layout number</strong></dt>
@@ -1600,24 +1600,24 @@ and parallel data layouts.</p>
     1 = Partitioned
    2 = Blocked.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as stripe_layout.
-    The default value of this option is 2.</p>
+<p>This option can also be set in the configuration file as <code>stripe_layout</code>.
+    The default value of this option is <code>2</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-stripe-blocksize-locked</strong></dt>
 <dd>
 <p>Do not allow client to override stripe blocksize with the OPTS RETR command</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as stripe_blocksize_locked.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>stripe_blocksize_locked</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-stripe-layout-locked</strong></dt>
 <dd>
 <p>Do not allow client to override stripe layout with the OPTS RETR command</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as stripe_layout_locked.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>stripe_layout_locked</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1631,30 +1631,30 @@ and parallel data layouts.</p>
 <dd>
 <p>Size in bytes of data blocks to read from disk before posting to the network.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as blocksize.
-    The default value of this option is 262144.</p>
+<p>This option can also be set in the configuration file as <code>blocksize</code>.
+    The default value of this option is <code>262144</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-sync-writes</strong></dt>
 <dd>
 <p>Flush disk writes before sending a restart marker.  This attempts to ensure that the range specified in the restart marker has actually been committed to disk. This option will probably impact performance, and may result in different behavior on different storage systems. See the manpage for sync() for more information.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as sync_writes.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>sync_writes</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-perms string</strong></dt>
 <dd>
 <p>Set the default permissions for created files. Should be an octal number such as 0644.  The default is 0644.  Note: If umask is set it will affect this setting&#8201;&#8212;&#8201;i.e. if the umask is 0002 and this setting is 0666, the resulting files will be created with permissions of 0664.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as perms.</p>
+<p>This option can also be set in the configuration file as <code>perms</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-file-timeout number</strong></dt>
 <dd>
 <p>Timeout in seconds for all disk accesses.  A value of 0 disables the timeout.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as file_timeout.</p>
+<p>This option can also be set in the configuration file as <code>file_timeout</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1668,89 +1668,89 @@ and parallel data layouts.</p>
 <dd>
 <p>Port on which a frontend will listen for client control channel connections, or on which a data node will listen for connections from a frontend.  If not set a random port will be chosen and printed via the logging mechanism.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as port.</p>
+<p>This option can also be set in the configuration file as <code>port</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-control-interface string</strong></dt>
 <dd>
 <p>Hostname or IP address of the interface to listen for control connections on. If not set will listen on all interfaces.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as control_interface.</p>
+<p>This option can also be set in the configuration file as <code>control_interface</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-data-interface string</strong></dt>
 <dd>
 <p>Hostname or IP address of the interface to use for data connections. If not set will use the current control interface.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as data_interface.</p>
+<p>This option can also be set in the configuration file as <code>data_interface</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ipc-interface string</strong></dt>
 <dd>
 <p>Hostname or IP address of the interface to use for ipc connections. If not set will listen on all interfaces.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_interface.</p>
+<p>This option can also be set in the configuration file as <code>ipc_interface</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-hostname string</strong></dt>
 <dd>
 <p>Effectively sets the above control_interface, data_interface and ipc_interface options.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as hostname.</p>
+<p>This option can also be set in the configuration file as <code>hostname</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ipc-port number</strong></dt>
 <dd>
 <p>Port on which the frontend will listen for data node connections.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_port.</p>
+<p>This option can also be set in the configuration file as <code>ipc_port</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-control-preauth-timeout number</strong></dt>
 <dd>
 <p>Time in seconds to allow a client to remain connected to the control channel without activity before authenticating.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as control_preauth_timeout.
-    The default value of this option is 120.</p>
+<p>This option can also be set in the configuration file as <code>control_preauth_timeout</code>.
+    The default value of this option is <code>120</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-control-idle-timeout number</strong></dt>
 <dd>
 <p>Time in seconds to allow a client to remain connected to the control channel without activity.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as control_idle_timeout.
-    The default value of this option is 600.</p>
+<p>This option can also be set in the configuration file as <code>control_idle_timeout</code>.
+    The default value of this option is <code>600</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ipc-idle-timeout number</strong></dt>
 <dd>
 <p>Idle time in seconds before an unused ipc connection will close.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_idle_timeout.
-    The default value of this option is 900.</p>
+<p>This option can also be set in the configuration file as <code>ipc_idle_timeout</code>.
+    The default value of this option is <code>900</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-ipc-connect-timeout number</strong></dt>
 <dd>
 <p>Time in seconds before canceling an attempted ipc connection.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as ipc_connect_timeout.
-    The default value of this option is 60.</p>
+<p>This option can also be set in the configuration file as <code>ipc_connect_timeout</code>.
+    The default value of this option is <code>60</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-allow-udt</strong></dt>
 <dd>
 <p>Enable protocol support for UDT with NAT traversal if the udt driver is available.  Requires threads.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as allow_udt.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>allow_udt</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-port-range string</strong></dt>
 <dd>
 <p>Port range to use for incoming connections. The format is "startport,endport". This, along with -data-interface, can be used to enable operation behind a firewall and/or when NAT is involved. This is the same as setting the environment variable GLOBUS_TCP_PORT_RANGE.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as port_range.</p>
+<p>This option can also be set in the configuration file as <code>port_range</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1764,51 +1764,51 @@ and parallel data layouts.</p>
 <dd>
 <p>Message to display to the client before authentication.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as banner.</p>
+<p>This option can also be set in the configuration file as <code>banner</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-banner-file string</strong></dt>
 <dd>
 <p>File to read banner message from.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as banner_file.</p>
+<p>This option can also be set in the configuration file as <code>banner_file</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-banner-terse</strong></dt>
 <dd>
 <p>When this is set, the minimum allowed banner message will be displayed to unauthenticated clients.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as banner_terse.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>banner_terse</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-banner-append</strong></dt>
 <dd>
-<p>When this is set, the message set in the 'banner' or 'banner_file' option will be appended to the default banner message rather than replacing it.</p>
+<p>When this is set, the message set in the <em>banner</em> or <em>banner_file</em> option will be appended to the default banner message rather than replacing it.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as banner_append.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>banner_append</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-version-tag string</strong></dt>
 <dd>
 <p>Add an identifying string to the existing toolkit version.  This is displayed in the default banner message, the SITE VERSION command, and usage stats.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as version_tag.</p>
+<p>This option can also be set in the configuration file as <code>version_tag</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-login-msg string</strong></dt>
 <dd>
 <p>Message to display to the client after authentication.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as login_msg.</p>
+<p>This option can also be set in the configuration file as <code>login_msg</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-login-msg-file string</strong></dt>
 <dd>
 <p>File to read login message from.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as login_msg_file.</p>
+<p>This option can also be set in the configuration file as <code>login_msg_file</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1820,58 +1820,58 @@ and parallel data layouts.</p>
 <dl>
 <dt class="hdlist1"><strong>-dsi string</strong></dt>
 <dd>
-<p>Data Storage Interface module to load. File and remote modules are defined by the server. If not set, the file module is loaded, unless the 'remote' option is specified, in which case the remote module is loaded.  An additional configuration string can be passed to the DSI using the format [module name]:[configuration string] to this option.  The format of the configuration string is defined by the DSI being loaded.</p>
+<p>Data Storage Interface module to load. File and remote modules are defined by the server. If not set, the file module is loaded, unless the <em>remote</em> option is specified, in which case the remote module is loaded.  An additional configuration string can be passed to the DSI using the format [module name]:[configuration string] to this option.  The format of the configuration string is defined by the DSI being loaded.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as load_dsi_module.</p>
+<p>This option can also be set in the configuration file as <code>load_dsi_module</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-allowed-modules string</strong></dt>
 <dd>
 <p>Comma separated list of ERET/ESTO modules to allow, and optionally specify an alias for. Example: module1,alias2:module2,module3 (module2 will be loaded when a client asks for alias2).</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as allowed_modules.</p>
+<p>This option can also be set in the configuration file as <code>allowed_modules</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-dc-whitelist string</strong></dt>
 <dd>
 <p>A comma separated list of drivers allowed on the network stack.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as dc_whitelist.</p>
+<p>This option can also be set in the configuration file as <code>dc_whitelist</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-fs-whitelist string</strong></dt>
 <dd>
 <p>A comma separated list of drivers allowed on the disk stack.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as fs_whitelist.</p>
+<p>This option can also be set in the configuration file as <code>fs_whitelist</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-popen-whitelist string</strong></dt>
 <dd>
 <p>A comma separated list of programs that the popen driver is allowed to execute, when used on the network or disk stack.  An alias may also be specified, so that a client does not need to specify the full path. Format is [alias:]prog,[alias:]prog. example: /bin/gzip,tar:/bin/tar</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as popen_whitelist.</p>
+<p>This option can also be set in the configuration file as <code>popen_whitelist</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-xnetmgr string</strong></dt>
 <dd>
 <p>An option string to pass to the XIO Network Manager Driver, which will then be loaded for all data channel connections.  This must be in the form "manager=module;option1=value;option2=value;".  See the Network Manager documentation for more info.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as xnetmgr.</p>
+<p>This option can also be set in the configuration file as <code>xnetmgr</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-dc-default string</strong></dt>
 <dd>
 <p>A comma separated list of XIO drivers and options representing the default network stack. Format is of each driver entry is driver1[:opt1=val1;opt2=val2;&#8230;&#8203;]. The bottom of the stack, the transport driver, is always first.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as dc_default.</p>
+<p>This option can also be set in the configuration file as <code>dc_default</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-fs-default string</strong></dt>
 <dd>
 <p>A comma separated list of XIO drivers and options representing the default disk stack. Format is of each driver entry is driver1[:opt1=val1;opt2=val2;&#8230;&#8203;]. The bottom of the stack, the transport driver, is always first.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as fs_default.</p>
+<p>This option can also be set in the configuration file as <code>fs_default</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1887,31 +1887,31 @@ and parallel data layouts.</p>
 </dd>
 <dt class="hdlist1"><strong>-C string</strong></dt>
 <dd>
-<p>Path to directory holding configuration files that should be loaded. Files will be loaded in alphabetical order, and in the event of duplicate parameters the last loaded file will take precedence.  Files with a '.' in the name (file.bak, file.rpmsave, etc.) will be ignored.  Note that the main configuration file, if one exists, will always be loaded last.</p>
+<p>Path to directory holding configuration files that should be loaded. Files will be loaded in alphabetical order, and in the event of duplicate parameters the last loaded file will take precedence.  Files with a <em>.</em> in the name (file.bak, file.rpmsave, etc.) will be ignored.  Note that the main configuration file, if one exists, will always be loaded last.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as config_dir.</p>
+<p>This option can also be set in the configuration file as <code>config_dir</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-config-base-path string</strong></dt>
 <dd>
 <p>Base path to use when config and log path options are not full paths. By default this is the current directory when the process is started.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as config_base_path.</p>
+<p>This option can also be set in the configuration file as <code>config_base_path</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-debug</strong></dt>
 <dd>
-<p>Sets options that make server easier to debug.  Forces no-fork, no-chdir, and allows core dumps on bad signals instead of exiting cleanly. Not recommended for production servers.  Note that non-forked servers running as 'root' will only accept a single connection, and then exit.</p>
+<p>Sets options that make server easier to debug.  Forces no-fork, no-chdir, and allows core dumps on bad signals instead of exiting cleanly. Not recommended for production servers.  Note that non-forked servers running as <em>root</em> will only accept a single connection, and then exit.</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as debug.
-    The default value of this option is FALSE.</p>
+<p>This option can also be set in the configuration file as <code>debug</code>.
+    The default value of this option is <code>FALSE</code>.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-pidfile string</strong></dt>
 <dd>
 <p>Write PID of the GridFTP server to this path. May contain variable references to ${localstatedir}</p>
 <div class="paragraph">
-<p>This option can also be set in the configuration file as pidfile.</p>
+<p>This option can also be set in the configuration file as <code>pidfile</code>.</p>
 </div>
 </dd>
 </dl>
@@ -1956,7 +1956,7 @@ grid-security configuration files in etc; and a temporary file directory in
 tmp.</p>
 </div>
 <div class="paragraph">
-<p>The '-c CERT-DIR' option copies certificate files from a different
+<p>The <em>-c CERT-DIR</em> option copies certificate files from a different
 directory than the default [/etc/grid-security/certificates].</p>
 </div>
 </div>
@@ -2074,13 +2074,13 @@ locations, in the given order. Only the first file found will be loaded:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Path specified with the -c &lt;configfile&gt; command line option.</p>
+<p>Path specified with the <code>-c &lt;configfile&gt;</code> command line option.</p>
 </li>
 <li>
-<p>$GLOBUS_LOCATION/etc/gridftp.conf</p>
+<p><code>$GLOBUS_LOCATION/etc/gridftp.conf</code></p>
 </li>
 <li>
-<p>/etc/grid-security/gridftp.conf</p>
+<p><code>/etc/grid-security/gridftp.conf</code></p>
 </li>
 </ul>
 </div>
@@ -2162,7 +2162,7 @@ connections as well.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>where 'min','max' specify the port range that you have opened for the
+<p>where <em>min</em>,<em>max</em> specify the port range that you have opened for the
 incoming connections on the firewall. This restricts the listening ports
 of the GridFTP server to this range. Recommended range is 1000 (e.g.,
 50000-51000) but it really depends on how much use you expect.</p>
@@ -2178,7 +2178,7 @@ GLOBUS_TCP_SOURCE_RANGE:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>where 'min','max' specify the port range that you have opened for the
+<p>where <em>min</em>,<em>max</em> specify the port range that you have opened for the
 outgoing connections on the firewall. This restricts the GridFTP server
 to bind to a local port in this range for outbound connections.
 Recommended range is twice the range used for GLOBUS_TCP_PORT_RANGE,
@@ -2197,7 +2197,7 @@ would be different for each connection.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the server is behind NAT, the --data-interface &lt;real ip/hostname&gt;
+<p>If the server is behind NAT, the <code>--data-interface &lt;real ip/hostname&gt;</code>
 option needs to be used on the server.</p>
 </div>
 </td>
@@ -2267,7 +2267,7 @@ higher security via GSI .</p>
 <p></p>
 </div>
 <div class="paragraph">
-<p>Anonymous mode (using the '-aa' option) allows any user with an FTP
+<p>Anonymous mode (using the <em>-aa</em> option) allows any user with an FTP
 client to read and write (and delete) files that the server process can
 similarly access (it is also a quick way to test that your server
 works).</p>
@@ -2288,7 +2288,7 @@ Server listening at 127.0.0.1:58806</pre>
 <div class="paragraph">
 <p>When the server is run in this way, anyone who can connect to the server
 will posses all the same rights as the user that the process is run as
-(directly or via '-anonymous-user'). If using this mode intentionally
+(directly or via <em>-anonymous-user</em>). If using this mode intentionally
 for open access, it is best to run under a dedicated account with
 limited filesystem permissions. You can also use the option below to
 disable FTP commands such as STOR, ESTO, DELE, RDEL, RNTO, etc to make
@@ -2391,7 +2391,7 @@ Server listening at 127.0.0.1:5555</pre>
 protocol. This is a very simple means of obtaining strong security on
 the control channel only (the data channel is <strong>not</strong> authenticated).
 With this approach, you can run a GridFTP transfer anywhere that you can
-ssh. sshftp:// leverages the ubiquitous ssh/sshd programs to form
+ssh. <code>sshftp://</code> leverages the ubiquitous ssh/sshd programs to form
 control channel connections much in the same way that inetd forms
 connections. leverages the ubiquitous ssh/sshd programs to form control
 channel connections much in the same way that inetd forms connections.</p>
@@ -2399,8 +2399,8 @@ channel connections much in the same way that inetd forms connections.</p>
 <div class="sect4">
 <h5 id="_configure_server_for_ssh_gridftp_support">Configure Server for SSH GridFTP Support</h5>
 <div class="paragraph">
-<p>Every host that wishes to run a <strong>globus-gridftp-server</strong> which can
-accept sshftp:// connections must run the following command as root:
+<p>Every host that wishes to run a <strong><code>globus-gridftp-server</code></strong> which can
+accept <code>sshftp://</code> connections must run the following command as root:
 connections must run the following command as root:</p>
 </div>
 <div class="listingblock">
@@ -2410,7 +2410,7 @@ connections must run the following command as root:</p>
 </div>
 <div class="paragraph">
 <p>In the absence of root access, a user can configure the server to allow
-sshftp:// connections for that user only with the following command:
+<code>sshftp://</code> connections for that user only with the following command:
 connections for that user only with the following command:</p>
 </div>
 <div class="listingblock">
@@ -2419,21 +2419,21 @@ connections for that user only with the following command:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The above command creates a file named 'sshftp' in '/etc/grid-security'
-(if run as root) or in '$HOME/.globus' (if run as nonroot). You may edit
+<p>The above command creates a file named <em>sshftp</em> in <em>/etc/grid-security</em>
+(if run as root) or in <em>$HOME/.globus</em> (if run as nonroot). You may edit
 this file to set gridftp commandline options or environment variables
 such as GLOBUS_TCP_PORT_RANGE, but you can also set those options in the
 config file.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_performing_sshftp_transfers_transfers">Performing sshftp:// Transfers Transfers</h5>
+<h5 id="_performing_code_sshftp_code_transfers_transfers">Performing <code>sshftp://</code> Transfers Transfers</h5>
 <div class="paragraph">
-<p>In this case, a <strong>globus-gridftp-server</strong> does not need to be
+<p>In this case, a <strong><code>globus-gridftp-server</code></strong> does not need to be
 running. The server will be started via the sshd program. Therefore, the
 hostname and port should be that of the sshd server. Run
-<strong>globus-url-copy</strong> just as you have before; simply change
-ftp:// to  to sshftp://..</p>
+<strong><code>globus-url-copy</code></strong> just as you have before; simply change
+<code>ftp://</code> to  to <code>sshftp://</code>..</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2473,7 +2473,7 @@ certificate), you simply run the GridFTP server:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If run as root, it will pick up the host cert; if not, it will pick
+<p>If run as <code>root</code>, it will pick up the host cert; if not, it will pick
 up the user cert.</p>
 </div>
 </td>
@@ -2546,10 +2546,10 @@ Configuration</a>):</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Create a ~/.gridmap file, containing the DNs of any clients you wish to allow, mapped to the current username. file, containing the DNs of any clients you wish to allow, mapped to the current username.</p>
+<p>Create a <code>~/.gridmap</code> file, containing the DNs of any clients you wish to allow, mapped to the current username. file, containing the DNs of any clients you wish to allow, mapped to the current username.</p>
 </li>
 <li>
-<p>Create a proxy with <strong>grid-proxy-init</strong>.</p>
+<p>Create a proxy with <strong><code>grid-proxy-init</code></strong>.</p>
 </li>
 </ul>
 </div>
@@ -2589,7 +2589,7 @@ more information.</p>
 <td class="content">
 <div class="paragraph">
 <p>The service name used (gsiftp in this case) should be defined in
-/etc/services with the desired port.</p>
+<code>/etc/services</code> with the desired port.</p>
 </div>
 </td>
 </tr>
@@ -2597,7 +2597,7 @@ more information.</p>
 </div>
 <div class="paragraph">
 <p>Here is a sample GridFTP server xinetd config entry in
-/etc/xinetd.conf: :</p>
+<code>/etc/xinetd.conf</code>: :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2619,7 +2619,7 @@ more information.</p>
 </div>
 <div class="paragraph">
 <p>Here is a sample gridftp server inetd config entry in
-/etc/inetd.conf (read as a single line)</p>
+<code>/etc/inetd.conf</code> (read as a single line)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2664,7 +2664,7 @@ latency for GridFTP server connections</a> for more information.</p>
 <li>
 <p>globus-gridftp-server -i</p>
 <div class="paragraph">
-<p>Use the '-i' commandline option with <strong>globus-gridftp-server</strong>:</p>
+<p>Use the <em>-i</em> commandline option with <strong><code>globus-gridftp-server</code></strong>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2735,7 +2735,7 @@ configuration file for launchd to start the server:</p>
 </div>
 <div class="paragraph">
 <p>Provided that the configuration file is stored in
-/System/Library/LaunchDaemons/globus.gridftp.plist, the following
+<code>/System/Library/LaunchDaemons/globus.gridftp.plist</code>, the following
 command starts the GridFTP server:, the following command starts the
 GridFTP server:</p>
 </div>
@@ -2746,8 +2746,8 @@ GridFTP server:</p>
 </div>
 <div class="paragraph">
 <p>The server will be started automatically with a system, unless the value
-of the key 'Disabled' is changed from <strong>&lt;false/&gt;</strong> to
-<strong>&lt;true/&gt;</strong>.</p>
+of the key <em>Disabled</em> is changed from <strong><code>&lt;false/&gt;</code></strong> to
+<strong><code>&lt;true/&gt;</code></strong>.</p>
 </div>
 </div>
 </div>
@@ -2794,7 +2794,7 @@ will be disabled. Default: not set.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strong_globus_gridftp_server_strong_quickstart"><strong>globus-gridftp-server</strong> quickstart</h3>
+<h3 id="_strong_code_globus_gridftp_server_code_strong_quickstart"><strong><code>globus-gridftp-server</code></strong> quickstart</h3>
 <div class="paragraph">
 <p>The following is a quick guide to running the server and using the
 client:</p>
@@ -2903,7 +2903,7 @@ their transfer is progressing.</p>
 <td class="content">
 <div class="paragraph">
 <p>There are many possible options and configurations with
-<strong>globus-gridftp-server</strong>. For some guidelines on setting it up for
+<strong><code>globus-gridftp-server</code></strong>. For some guidelines on setting it up for
 your situation, see
 <a href="../../gridftp/admin/index.html#gridftp-admin-tuning">Key Admin Settings and
 Tuning Recommendations</a>.</p>
@@ -2920,7 +2920,7 @@ Tuning Recommendations</a>.</p>
 <a href="https://www.globus.org/researchers/plus-plans">Globus Sharing</a>, you have
 to add the <a href="../securityd2b.tar.gz">Globus Sharing CA certificates</a> to
 your trusted certificates directory (/etc/grid-security/certificates)
-and use '-sharing-dn' option in the server as follows:</p>
+and use <em>-sharing-dn</em> option in the server as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2928,7 +2928,7 @@ and use '-sharing-dn' option in the server as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>and use '-sharing-rp' option to restrict the file paths allowed for
+<p>and use <em>-sharing-rp</em> option to restrict the file paths allowed for
 sharing:</p>
 </div>
 <div class="listingblock">
@@ -2992,28 +2992,28 @@ described below may be useful.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">
-    globus_ftp_client: the server responded with an error +
-530 530-globus_xio: Authentication Error +
-530-OpenSSL Error: s3_srvr.c:2525: in library: SSL routines,  +
-     function SSL3_GET_CLIENT_CERTIFICATE: no certificate returned +
-530-globus_gsi_callback_module: Could not verify credential +
-530-globus_gsi_callback_module: Can't get the local trusted CA certificate:  +
-Untrusted self-signed certificate in chain with hash d1b603c3 +
-530 End. +
-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>
+    globus_ftp_client: the server responded with an error<br>
+530 530-globus_xio: Authentication Error<br>
+530-OpenSSL Error: s3_srvr.c:2525: in library: SSL routines, <br>
+     function SSL3_GET_CLIENT_CERTIFICATE: no certificate returned<br>
+530-globus_gsi_callback_module: Could not verify credential<br>
+530-globus_gsi_callback_module: Can&#8217;t get the local trusted CA certificate: <br>
+Untrusted self-signed certificate in chain with hash d1b603c3<br>
+530 End.<br>
+</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error message indicates that the GridFTP server doesn&#8217;t trust the
   certificate authority (CA) that issued your certificate.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You need to ask the GridFTP server administrator to install your CA
 certificate chain in the GridFTP server&#8217;s trusted certificates directory.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> globus_ftp_control: gss_init_sec_context failed +
-OpenSSL Error: s3_clnt.c:951: in library: SSL routines, function  +
-SSL3_GET_SERVER_CERTIFICATE: certificate verify failed +
-globus_gsi_callback_module: Could not verify credential +
-globus_gsi_callback_module: Can't get the local trusted CA certificate:  +
-Untrusted self-signed certificate in chain with hash d1b603c3 </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code> globus_ftp_control: gss_init_sec_context failed<br>
+OpenSSL Error: s3_clnt.c:951: in library: SSL routines, function <br>
+SSL3_GET_SERVER_CERTIFICATE: certificate verify failed<br>
+globus_gsi_callback_module: Could not verify credential<br>
+globus_gsi_callback_module: Can&#8217;t get the local trusted CA certificate: <br>
+Untrusted self-signed certificate in chain with hash d1b603c3 </code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error message indicates that your local system doesn&#8217;t trust the
   certificate authority (CA) that issued the certificate on the resource you are
   connecting to.</p></td>
@@ -3021,11 +3021,11 @@ Untrusted self-signed certificate in chain with hash d1b603c3 </p></td>
   and  install the CA certificate in the local trusted certificates directory.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> 530-globus_xio: Authentication Error +
-  530-globus_gsi_callback_module: Could not verify credential +
-  530-globus_gsi_callback_module: Could not verify credential +
-  530-globus_gsi_callback_module: Invalid CRL: The available CRL has expired +
-  530 End. </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code> 530-globus_xio: Authentication Error<br>
+  530-globus_gsi_callback_module: Could not verify credential<br>
+  530-globus_gsi_callback_module: Could not verify credential<br>
+  530-globus_gsi_callback_module: Invalid CRL: The available CRL has expired<br>
+  530 End. </code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error message indicates one of the following:
   Certificate Revocation List (CRL) for the source or destination server CA at
   the client has expired or CRL for client CA has expired at source or

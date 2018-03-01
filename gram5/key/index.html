@@ -508,10 +508,10 @@ implementation as well as the abstract design and features.</p>
 <dl>
 <dt class="hdlist1">Service model</dt>
 <dd>
-<p>For GRAM5, the <strong>globus-gatekeeper</strong> daemon and GSI library are used
+<p>For GRAM5, the <strong><code>globus-gatekeeper</code></strong> daemon and GSI library are used
 for secure communications and service dispatch.</p>
 <div class="paragraph">
-<p>The <strong>globus-job-manager</strong> daemon implements the job management and
+<p>The <strong><code>globus-job-manager</code></strong> daemon implements the job management and
 file transfer functionality.</p>
 </div>
 </dd>
@@ -592,23 +592,23 @@ stage files. These components are:</p>
 <dl>
 <dt class="hdlist1"><strong>Gatekeeper</strong></dt>
 <dd>
-<p>The <strong>globus-gatekeeper</strong> service provides a network
+<p>The <strong><code>globus-gatekeeper</code></strong> service provides a network
 interface to the GRAM5 system. It authenticates client identities and
 starts Job Manager processes using the local user account to which the
 client identity is mapped. Typically, one instance of the
-<strong>globus-gatekeeper</strong> process runs to accept network
+<strong><code>globus-gatekeeper</code></strong> process runs to accept network
 connections, and forks a new short-lived process to process each new
 connection.</p>
 </dd>
 <dt class="hdlist1"><strong>Job Manager</strong></dt>
 <dd>
-<p>The <strong>globus-job-manager</strong> daemon processes job
+<p>The <strong><code>globus-job-manager</code></strong> daemon processes job
 requests and coordinates file transfers. There is one long-lived instance
 of this per user per LRM and one short-lived instance per job.</p>
 </dd>
 <dt class="hdlist1"><strong>Scheduler Event Generator</strong></dt>
 <dd>
-<p>The <strong>globus-scheduler-event-generator</strong> process parses LRM-specific
+<p>The <strong><code>globus-scheduler-event-generator</code></strong> process parses LRM-specific
 data relating to job startup, execution, and termination into an
 LRM-independent data format. There is optionally one instance of this
 program per LRM.</p>

@@ -490,7 +490,7 @@ This document describes the configuration steps required to:</p>
 Certificate Authority (CA),</p>
 </li>
 <li>
-<p>provide appropriate default values for use by the <strong>grid-cert-request</strong>
+<p>provide appropriate default values for use by the <strong><code>grid-cert-request</code></strong>
 command, which is used to generate certificates,</p>
 </li>
 <li>
@@ -523,7 +523,7 @@ users, and</p>
 </div>
 </li>
 <li>
-<p>provide appropriate default values for use by the <a href="../../gsic/pi/index.html#grid-cert-request"><strong>grid-cert-request</strong></a> command, which is used to generate certificates,</p>
+<p>provide appropriate default values for use by the <a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a> command, which is used to generate certificates,</p>
 </li>
 <li>
 <p>request service certificates, used by services to authenticate themselves to users, and</p>
@@ -551,13 +551,13 @@ globus-gssapi-gsi-11.16 and the toolkit binary package version
 </div>
 <div class="paragraph">
 <p>The global security parameters for GSIC are included in the file
-/etc/grid-security/gsi.conf. This file contains the default values
+<code>/etc/grid-security/gsi.conf</code>. This file contains the default values
 used by all GSI-enabled servers and clients. The format of the file is a
 sequence of lines containing a single NAME=VALUE pair, with comments
 beginning with the . This file contains the default values used by all
 GSI-enabled servers and clients. The format of the file is a sequence of
 lines containing a single NAME=VALUE pair, with comments beginning with
-the # character. All values in the default configuration file may be
+the <code>#</code> character. All values in the default configuration file may be
 overridden by setting the corresponding environment variable for a
 particular process.</p>
 </div>
@@ -582,32 +582,32 @@ particular process.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FORCE_TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FORCE_TLS</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A flag to choose whether to force TLS or
-  to allow SSLv3 as well. Set this to true to
-  disable SSLv3, or false to allow either to be
+  to allow SSLv3 as well. Set this to <code>true</code> to
+  disable SSLv3, or <code>false</code> to allow either to be
   negotiated.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GLOBUS_GSSAPI_FORCE_TLS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GLOBUS_GSSAPI_FORCE_TLS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NAME_COMPATIBILITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NAME_COMPATIBILITY</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GSSAPI Name compatibility mode when trying to
   determine if a host certificate is legitimate. GSI predates
   <a href="http://tools.ietf.org/html/rfc2818">RFC2818</a>,
   so old versions of GSI use some old, less-secure,
   practices. The possible values are described in
   <a href="../../gsic/pi/index.html#gsic-env-name">GLOBUS_GSSAPI_NAME_COMPATIBILITY</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GLOBUS_GSSAPI_NAME_COMPATIBILITY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HYBRID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HYBRID</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CIPHERS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CIPHERS</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OpenSSL Cipher List. This is an preference-ordered list of OpenSSL cipher
   names. See the <a href="https://www.openssl.org/docs/apps/ciphers.html">OpenSSL cipher
   documentation</a> for information on the syntax of this string.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GLOBUS_GSSAPI_CIPHERS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GLOBUS_GSSAPI_CIPHERS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HIGH</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -626,25 +626,25 @@ directory.</p>
 exists either on a per-machine or on a per-installation basis.</p>
 </div>
 <div class="paragraph">
-<p>X509_CERT_DIR is the environment variable used to specify the path
+<p><code>X509_CERT_DIR</code> is the environment variable used to specify the path
 to the trusted certificates directory. This directory contains
 information about which CAs are trusted (including the CA certificates
 themselves) and, in some cases, configuration information used by
-<a href="../../gsic/pi/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
 to formulate certificate requests. The location of the trusted
 certificates directory is looked for in the following order:
-. value of the X509_CERT_DIR environment variable</p>
+. value of the <code>X509_CERT_DIR</code> environment variable</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>$HOME/.globus/certificates</p>
+<p><code>$HOME/.globus/certificates</code></p>
 </li>
 <li>
-<p>/etc/grid-security/certificates exists exists</p>
+<p><code>/etc/grid-security/certificates</code> exists exists</p>
 </li>
 <li>
-<p>$GLOBUS_LOCATION/share/certificates</p>
+<p><code>$GLOBUS_LOCATION/share/certificates</code></p>
 </li>
 </ol>
 </div>
@@ -656,11 +656,11 @@ certificates directory is looked for in the following order:
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">'cert_hash'.0</dt>
+<dt class="hdlist1"><em>cert_hash</em><code>.0</code></dt>
 <dd>
 <p>The trusted CA Certificate.</p>
 </dd>
-<dt class="hdlist1">'cert_hash'.signing_policy</dt>
+<dt class="hdlist1"><em>cert_hash</em><code>.signing_policy</code></dt>
 <dd>
 <p>A configuration file defining the distinguished names of certificates
 signed by the CA.</p>
@@ -715,8 +715,8 @@ to match the distinguished names of certificates granted by the CA.</p>
 </div>
 <div class="paragraph">
 <p>Some very simple wildcard matching is done: if the <strong>Distinguished Name
-Pattern</strong> ends with a '<strong>', then any distinguished name that matches the
-part of the CA subject name before the '</strong>' is considered a match.</p>
+Pattern</strong> ends with a <em><strong></em>, then any distinguished name that matches the
+part of the CA subject name before the <em></strong></em> is considered a match.</p>
 </div>
 <div class="paragraph">
 <p>Note: the cond_subjects line may contain a space-separated list of
@@ -735,27 +735,27 @@ research settings can be found <a href="https://www.tacar.org/certs.html">here</
 <h3 id="_configuring_gct_to_create_appropriate_certificate_requests">Configuring GCT to Create Appropriate Certificate Requests</h3>
 <div class="paragraph">
 <p>The
-<a href="../../gsic/pi/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
 command, which is used to create certificates, uses the following
 configuration files:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">globus-user-ssl.conf</dt>
+<dt class="hdlist1"><code>globus-user-ssl.conf</code></dt>
 <dd>
 <p>Defines the distinguished name to use for a user&#8217;s certificate request. The
 format is described
 <a href="http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT">here</a>.</p>
 </dd>
-<dt class="hdlist1">globus-host-ssl.conf</dt>
+<dt class="hdlist1"><code>globus-host-ssl.conf</code></dt>
 <dd>
 <p>    Defines the distinguished name for a host (or service) certificate request.
     The format is described
     <a href="http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT">here</a>.
-grid-security.conf:
+<code>grid-security.conf</code>:
     A base configuration file that contains the name and email address for the
     CA.
-directions:
+<code>directions</code>:
     An optional file that may contain directions on using the CA.</p>
 </dd>
 </dl>
@@ -767,16 +767,16 @@ names in the Trusted Certificates directory:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>globus-user-ssl.conf.'cert_hash'</p>
+<p><code>globus-user-ssl.conf.</code><em>cert_hash</em></p>
 </li>
 <li>
-<p>globus-host-ssl.conf.'cert_hash'</p>
+<p><code>globus-host-ssl.conf.</code><em>cert_hash</em></p>
 </li>
 <li>
-<p>grid_security.conf.'cert_hash'</p>
+<p><code>grid_security.conf.</code><em>cert_hash</em></p>
 </li>
 <li>
-<p>directions.'cert_hash'</p>
+<p><code>directions.</code><em>cert_hash</em></p>
 </li>
 </ul>
 </div>
@@ -814,19 +814,19 @@ a request for.</p>
 <h4 id="_specifying_a_default_ca_for_certificate_requests">Specifying a default CA for certificate requests</h4>
 <div class="paragraph">
 <p>The default CA is the CA that will be used for certificate requests if
-<a href="../../gsic/pi/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>
-is invoked without the '-ca' flag.</p>
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
+is invoked without the <em>-ca</em> flag.</p>
 </div>
 <div class="paragraph">
 <p>You can specify a default CA by invoking the
-<a href="../../gsic/pi/index.html#grid-default-ca"><strong>grid-default-ca</strong></a>
+<a href="../../gsic/pi/index.html#grid-default-ca"><strong><code>grid-default-ca</code></strong></a>
 command (follow the link for examples of using the command).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_directions_file_file">directions file file</h4>
+<h4 id="_code_directions_code_file_file"><code>directions</code> file file</h4>
 <div class="paragraph">
-<p>The directions file may contain specific directions on how to use
+<p>The <code>directions</code> file may contain specific directions on how to use
 the CA. There are three types of printed messages:  file may contain
 specific directions on how to use the CA. There are three types of
 printed messages:</p>
@@ -847,7 +847,7 @@ printed messages:</p>
 <div class="paragraph">
 <p>Each message is delimited from others with lines <strong>----- BEGIN message
 type TEXT -----</strong> and <strong>----- END message type TEXT -----</strong>. For
-example, the directions file would contain the following lines: file
+example, the <code>directions</code> file would contain the following lines: file
 would contain the following lines:</p>
 </div>
 <div class="listingblock">
@@ -885,26 +885,26 @@ service. This will create the following three files:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">'GRID_SECURITY/service_name/service_name'cert.pem</dt>
+<dt class="hdlist1"><em>GRID_SECURITY/service_name/service_name</em><code>cert.pem</code></dt>
 <dd>
 <p>An empty file. When you receive your actual service certificate from your
 CA, you should place it in this file.</p>
 </dd>
-<dt class="hdlist1">'GRID_SECURITY/service_name/service_name'cert_request.pem</dt>
+<dt class="hdlist1"><em>GRID_SECURITY/service_name/service_name</em><code>cert_request.pem</code></dt>
 <dd>
 <p>The certificate request, which you should send to your CA.</p>
 </dd>
-<dt class="hdlist1">'GRID_SECURITY/service_name/service_name'key.pem</dt>
+<dt class="hdlist1"><em>GRID_SECURITY/service_name/service_name</em><code>key.pem</code></dt>
 <dd>
 <p>The private key associated with your certificate request, encrypted with
 the pass phrase that you entered when prompted by
-<strong>grid-cert-request</strong>.</p>
+<strong><code>grid-cert-request</code></strong>.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
 <p>The
-<a href="../../gsic/pi/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
 command recognizes several other useful options; you can list these
 with:</p>
 </div>
@@ -935,7 +935,7 @@ and configure services to use them by creating appropriate configuration
 files and setting environment variables.</p>
 </div>
 <div class="sect3">
-<h4 id="_configuring_identity_mappings_using_gridmap_files_files">Configuring Identity Mappings Using gridmap Files Files</h4>
+<h4 id="_configuring_identity_mappings_using_code_gridmap_code_files_files">Configuring Identity Mappings Using <code>gridmap</code> Files Files</h4>
 <div class="paragraph">
 <p>Gridmap files contain a database of entries mapping distinguished names
 to local user names. These may be manipulated by using the following
@@ -982,29 +982,29 @@ tools.</p>
 <h5 id="_configuring_per_service_gridmap_files">Configuring per-service gridmap files</h5>
 <div class="paragraph">
 <p>To configure a service to use a particular gridmap file, set the
-GRIDMAP variable in the service&#8217;s environment to the path of the
+<code>GRIDMAP</code> variable in the service&#8217;s environment to the path of the
 gridmap file. In this way, you can grant different access rights to
 different certificate identities on a per-service basis by setting the
-GRIDMAP variable in different service environments.</p>
+<code>GRIDMAP</code> variable in different service environments.</p>
 </div>
 <div class="paragraph">
 <p>You can use tools described above to operate on different gridmap files
-by either setting the GRIDMAP environment variable prior to invoking
-them, or by using the '-mapfile' command-line option.</p>
+by either setting the <code>GRIDMAP</code> environment variable prior to invoking
+them, or by using the <em>-mapfile</em> command-line option.</p>
 </div>
 <div class="paragraph">
 <p>For reference, the GSI C code looks for the gridmap in these locations:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">GRIDMAP environment variable</dt>
+<dt class="hdlist1"><code>GRIDMAP</code> environment variable</dt>
 <dd>
 <p>Default</p>
 </dd>
-<dt class="hdlist1">/etc/grid-security/grid-mapfile</dt>
+<dt class="hdlist1"><code>/etc/grid-security/grid-mapfile</code></dt>
 <dd>
 <p>    For services running as root. &lt;/simpara&gt;
-HOME/.gridmap:
+<code>HOME/.gridmap</code>:
     For services not running as root.</p>
 </dd>
 </dl>
@@ -1021,8 +1021,8 @@ HOME/.gridmap:
 </div>
 </div>
 <div class="paragraph">
-<p>maps the distinguished name 'Distinguished Name' to the local name
-'local_name'.</p>
+<p>maps the distinguished name <em>Distinguished Name</em> to the local name
+<em>local_name</em>.</p>
 </div>
 <div class="paragraph">
 <p>A gridmap line of the form:</p>
@@ -1033,7 +1033,7 @@ HOME/.gridmap:
 </div>
 </div>
 <div class="paragraph">
-<p>maps 'Distinguished Name' to both 'local_name1' and 'local_name2'; any
+<p>maps <em>Distinguished Name</em> to both <em>local_name1</em> and <em>local_name2</em>; any
 number of local user names may occur in the comma-separated local name
 list.</p>
 </div>
@@ -1048,14 +1048,14 @@ dev.globus.org.</p>
 <h4 id="_configuring_alternate_credential_mappings">Configuring Alternate Credential Mappings</h4>
 <div class="paragraph">
 <p>To use an alternative credential mapping, you create a
-gsi-authz.conf file containing information about how the mapping
+<code>gsi-authz.conf</code> file containing information about how the mapping
 functions are called from the authorization library.  file containing
 information about how the mapping functions are called from the
 authorization library.</p>
 </div>
 <div class="paragraph">
 <p>To configure a per-service authorization configuration file, set the
-GSI_AUTHZ_CONF variable to the path to the configuration file in the
+<code>GSI_AUTHZ_CONF</code> variable to the path to the configuration file in the
 environment of the service.</p>
 </div>
 <div class="paragraph">
@@ -1065,16 +1065,16 @@ file in these locations (in the given order):</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>GSI_AUTHZ_CONF environment variable</p>
+<p><code>GSI_AUTHZ_CONF</code> environment variable</p>
 </li>
 <li>
-<p>/etc/grid-security/gsi-authz.conf</p>
+<p><code>/etc/grid-security/gsi-authz.conf</code></p>
 </li>
 <li>
-<p>GLOBUS_LOCATION/etc/gsi-authz.conf</p>
+<p><code>GLOBUS_LOCATION/etc/gsi-authz.conf</code></p>
 </li>
 <li>
-<p>HOME/.gsi-authz.conf</p>
+<p><code>HOME/.gsi-authz.conf</code></p>
 </li>
 </ol>
 </div>
@@ -1088,19 +1088,19 @@ continue to the end of line.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">'abstract type'</dt>
+<dt class="hdlist1"><em>abstract type</em></dt>
 <dd>
 <p>Type of the callout: <strong>globus_mapping</strong> is used for credential mapping
 callouts</p>
 </dd>
-<dt class="hdlist1">'library'</dt>
+<dt class="hdlist1"><em>library</em></dt>
 <dd>
 <p>Path to the shared object containing the callout implementation. The
 library name may be a literal filename, or a partial filename to which the
 compilation flavor of the service is appended to the filename before its
 extension.</p>
 </dd>
-<dt class="hdlist1">'symbol'</dt>
+<dt class="hdlist1"><em>symbol</em></dt>
 <dd>
 <p>The exported symbol containing the entry point to the callout
 implementation.</p>
@@ -1108,10 +1108,10 @@ implementation.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>Here is a sample gsi-authz.conf file that configures a  file that
+<p>Here is a sample <code>gsi-authz.conf</code> file that configures a  file that
 configures a <strong>globus_mapping</strong> callout to use the
 <strong>globus_gridmap_callout</strong> function in the
-/usr/local/globus/lib/libglobus_gridmap_callout shared
+<code>/usr/local/globus/lib/libglobus_gridmap_callout</code> shared
 object:  shared object:</p>
 </div>
 <div class="listingblock">
@@ -1220,10 +1220,10 @@ Configuration File:</p>
 <h3 id="gsic-security-considerations">Security considerations for GSI C</h3>
 <div class="paragraph">
 <p>During host authorization, the toolkit treats host names of the form
-<code>hostname-&#8217;ANYTHING'</code>.edu` as equivalent to <code>hostname.edu</code>. This means that if
+<code>hostname-</code><em>ANYTHING</em><code>.edu</code> as equivalent to <code>hostname.edu</code>. This means that if
 a service was set up to do host authorization and hence accept the certificate
 <code>hostname.edu</code>, it would also accept certificates with DNs
-<code>hostname-&#8217;ANYTHING'</code>.edu`.</p>
+<code>hostname-</code><em>ANYTHING</em><code>.edu</code>.</p>
 </div>
 <div class="paragraph">
 <p>The feature is in place to allow a multi-homed host following a
@@ -1239,13 +1239,13 @@ or <code>grid-foo.test.edu</code>.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The string 'ANYTHING' matches only the name of the host and not domain
+<p>The string <em>ANYTHING</em> matches only the name of the host and not domain
 components. This means that <code>hostname.edu</code> will not match
 <code>hostname-foo.sub.edu</code>, but will match <code>host-foo.edu</code>.</p>
 </div>
 <div class="paragraph">
 <p>If a host was set up to accept <code>hostname-1.edu</code>, it will not accept
-<code>hostname-&#8217;ANYTHING'</code>.edu` but will accept <code>hostname.edu</code>. That is, only one
+<code>hostname-</code><em>ANYTHING</em><code>.edu</code> but will accept <code>hostname.edu</code>. That is, only one
 of the names being compared may contain the hyphen character in the host name.</p>
 </div>
 </td>
@@ -1253,7 +1253,7 @@ of the names being compared may contain the hyphen character in the host name.</
 </table>
 </div>
 <div class="paragraph">
-<p>In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable GLOBUS_GSSAPI_NAME_COMPATIBILITY to STRICT_RFC2818.</p>
+<p>In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable <code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code> to <code>STRICT_RFC2818</code>.</p>
 </div>
 </div>
 </div>
@@ -1297,31 +1297,31 @@ to report that credentials are invalid:</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your proxy credential may have expired</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Your proxy credential may have expired</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your proxy credential may have expired.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="gsic/pi/index.html#grid-proxy-info">grid-proxy-info</a> to check
 whether the proxy credential has actually expired. If it has,
 generate a new proxy with <a href="gsic/pi/index.html#grid-proxy-init">grid-proxy-init</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The system clock on either the local or remote system
-is wrong.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The system clock on either the local or remote system
+is wrong.</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This may cause the server or client to conclude that a
 credential has expired.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check the system clocks on the local and remote
 system.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your end-user certificate may have
-expired</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Your end-user certificate may have
+expired</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your end-user certificate may have expired</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="gsic/pi/index.html#grid-cert-info">grid-cert-info</a> to check your
 certificate&#8217;s expiration date. If it has expired, follow your CA&#8217;s
 procedures to get a new one.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The permissions may be wrong on your proxy
-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The permissions may be wrong on your proxy
+file</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your proxy file are too lax (for
 example, if others can read your proxy file), Grid Community Toolkit
 clients will not use that file to authenticate.</p></td>
@@ -1336,8 +1336,8 @@ or your permissions or end-user certificate are revoked, whichever
 happens first.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The permissions may be wrong on your private key
-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The permissions may be wrong on your private key
+file</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your end user certificate private key
 file are too lax (for example, if others can read the file),
 grid-proxy-init will refuse to create a proxy certificate.</p></td>
@@ -1354,23 +1354,23 @@ have your end-user certificate revoked and get a new
 one.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The remote system may not trust your
-CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The remote system may not trust your
+CA</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The remote system may not trust your CA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the remote system is configured to trust the CA
 that issued your end-entity certificate. See link:admin/install/index.html for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">You may not trust the remote system's
-CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>You may not trust the remote system&#8217;s
+CA</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You may not trust the remote system&#8217;s CA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that your system is configured to trust the remote
 CA (or that your environment is set up to trust the remote CA).
 See admin/install/index.html for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">There may be something wrong with the remote
-service's credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>There may be something wrong with the remote
+service&#8217;s credentials</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">There may be something wrong with the remote service&#8217;s
 credentials</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">It is sometimes difficult to distinguish between errors
@@ -1389,7 +1389,7 @@ credentials, check for the same conditions on the remote system
 <h5 id="_grid_cert_diagnostics">grid-cert-diagnostics</h5>
 <div class="paragraph">
 <p>The
-<a href="../../gsic/user/index.html#grid-cert-diagnostics"><strong>grid-cert-diagnostics</strong></a>
+<a href="../../gsic/user/index.html#grid-cert-diagnostics"><strong><code>grid-cert-diagnostics</code></strong></a>
 program checks prints diagnostics about the user&#8217;s certificates, and
 host security environment.</p>
 </div>
@@ -1418,7 +1418,7 @@ host security environment.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Here '&lt;host:port&gt;' denotes the server and port you connect to.</p>
+<p>Here <em>&lt;host:port&gt;</em> denotes the server and port you connect to.</p>
 </div>
 <div class="paragraph">
 <p>If it prints an error and puts you back at the command prompt, then it
@@ -1487,14 +1487,14 @@ to report that user are not authorized:</p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The content of the grid map file does not conform to the expected format</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The content of the grid map file does not conform to the expected format</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The content of the grid map file does not conform to the expected format</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-mapfile-check-consistency"><strong>grid-mapfile-check-consistency</strong></a> to make sure that your gridmap file conforms to the expected format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-mapfile-check-consistency"><strong><code>grid-mapfile-check-consistency</code></strong></a> to make sure that your gridmap file conforms to the expected format.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The grid map file does not contain a entry for your DN</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The grid map file does not contain a entry for your DN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The grid map file does not contain a entry for your DN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="../../gsic/pi/index.html#grid-mapfile-add-entry"><strong>grid-mapfile-add-entry</strong></a> to add the relevant entry.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="../../gsic/pi/index.html#grid-mapfile-add-entry"><strong><code>grid-mapfile-add-entry</code></strong></a> to add the relevant entry.</p></td>
 </tr>
 </tbody>
 </table>

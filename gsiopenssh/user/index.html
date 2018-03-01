@@ -514,13 +514,13 @@ your system administrator.</p>
 </div>
 <div class="paragraph">
 <p>Then, create a proxy credential for GSI authentication by running the
-<strong>grid-proxy-init</strong> program. This is your single sign-on to the
-Grid. By default, <strong>grid-proxy-init</strong> will create a proxy credential
+<strong><code>grid-proxy-init</code></strong> program. This is your single sign-on to the
+Grid. By default, <strong><code>grid-proxy-init</code></strong> will create a proxy credential
 good for 12 hours.</p>
 </div>
 <div class="paragraph">
 <p>To create a proxy credential with a different lifetime, use the
-<strong>-hours</strong> option.</p>
+<strong><code>-hours</code></strong> option.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -549,7 +549,7 @@ good for 12 hours.</p>
 your certificate so that it can map that identity to your local account.
 At a minimum, the site will need to know your subject name from your
 certificate. You can get your subject name by running
-<strong>grid-cert-info</strong> with the <strong>-subject</strong> argument. For example:</p>
+<strong><code>grid-cert-info</code></strong> with the <strong><code>-subject</code></strong> argument. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -603,7 +603,7 @@ proxy credential authentication and delegation.</p>
 <div class="sect2">
 <h3 id="_synopsis">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>gsissh</strong></p>
+<p><strong><code>gsissh</code></strong></p>
 </div>
 </div>
 <div class="sect2">
@@ -632,7 +632,7 @@ proxy credential authentication and delegation.</p>
 <div class="sect2">
 <h3 id="_synopsis_2">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>gsiscp</strong></p>
+<p><strong><code>gsiscp</code></strong></p>
 </div>
 </div>
 <div class="sect2">
@@ -662,7 +662,7 @@ machine.</p>
 <div class="sect2">
 <h3 id="_synopsis_3">SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>gsisftp</strong></p>
+<p><strong><code>gsisftp</code></strong></p>
 </div>
 </div>
 <div class="sect2">
@@ -687,7 +687,7 @@ transferring files to and from remote machines.</p>
 <div class="content">
 <div class="paragraph">
 <p>Some common errors are listed below. If you need additional assistance,
-please run gsissh with the '-vvv' argument (specifying verbose output)
+please run gsissh with the <em>-vvv</em> argument (specifying verbose output)
 and send the output to your system administrator for assistance.</p>
 </div>
 </div>
@@ -710,24 +710,24 @@ and send the output to your system administrator for assistance.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GSS-API error Failure acquiring GSSAPI credentials: GSS_S_CREDENTIALS_EXPIRED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GSS-API error Failure acquiring GSSAPI credentials: GSS_S_CREDENTIALS_EXPIRED</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This means that your proxy certificate has expired.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-proxy-init"><strong>grid-proxy-init</strong></a> to
-  acquire a new proxy certificate, then run gsissh again.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-proxy-init"><strong><code>grid-proxy-init</code></strong></a> to
+  acquire a new proxy certificate, then run <code>gsissh</code> again.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">...no proxy credentials...</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;no proxy credentials&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Failing to run grid-proxy-init to create a user proxy with which to connect
   will result in the client notifying you that no local credentials exist. Any
   attempt to authenticate using GSI will fail in this case.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that your GSI proxy has been properly initialized via
-  <a href="../../gsic/pi/index.html#grid-proxy-info"><strong>grid-proxy-info</strong></a>.  If
+  <a href="../../gsic/pi/index.html#grid-proxy-info"><strong><code>grid-proxy-info</code></strong></a>.  If
   you need to initialize the proxy, use the command
-  <a href="../../gsic/pi/index.html#grid-proxy-init"><strong>grid-proxy-init</strong></a>.</p></td>
+  <a href="../../gsic/pi/index.html#grid-proxy-init"><strong><code>grid-proxy-init</code></strong></a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">...bad file system permissions on private key; key must only be readable by
-  the user...</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;bad file system permissions on private key; key must only be readable by
+  the user&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The host key that the SSH server is using for GSI authentication must only be
   readable by the user which owns it.  Any other permissions will cause this
   error.</p></td>
@@ -736,8 +736,8 @@ and send the output to your system administrator for assistance.</p>
   and no other mode bits should be set).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">...gssapi received empty username; failed to set username from gssapi
-  context; Failed external-keyx for &lt;user&gt; from &lt;host&gt; &lt;port&gt;...</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;gssapi received empty username; failed to set username from gssapi
+  context; Failed external-keyx for &lt;user&gt; from &lt;host&gt; &lt;port&gt;&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the server was passed an "implicit username" (i.e. requested to map the
   incoming connection to a username based on some contextual clues such as the
   certificate&#8217;s subject), and no entry exists in the grid-mapfile for the
@@ -747,7 +747,7 @@ and send the output to your system administrator for assistance.</p>
   <a href="../../gsic/pi/index.html#gsic-env-gridmapfile">gridmap file</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">...INTERNAL ERROR: authenticated invalid user xxx...</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;INTERNAL ERROR: authenticated invalid user xxx&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the subject name given in the system&#8217;s grid-mapfile points to a
   non-existent user, the server will give an internal error which is best
   caught when it is running in debugging mode.</p></td>
@@ -755,7 +755,7 @@ and send the output to your system administrator for assistance.</p>
   user&#8217;s subject in the grid-mapfile.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">...gssapi received empty username; no suitable client data; failed to set username from gssapi context; Failed external-keyx for &lt;user&gt; from &lt;host&gt; &lt;port&gt;...</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;gssapi received empty username; no suitable client data; failed to set username from gssapi context; Failed external-keyx for &lt;user&gt; from &lt;host&gt; &lt;port&gt;&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Should the user attempt to connect without first creating a proxy
   certificate, or if the user is connecting via a SSH client that does not
   support GSI authentication, the server will note that no GSSAPI data was sent
@@ -764,9 +764,9 @@ and send the output to your system administrator for assistance.</p>
   correctly.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that you are using a GSI-enabled SSH client and that your GSI proxy
   has been properly initialized via
-  <a href="../../gsic/pi/index.html#grid-proxy-info"><strong>grid-proxy-info</strong></a>. If
+  <a href="../../gsic/pi/index.html#grid-proxy-info"><strong><code>grid-proxy-info</code></strong></a>. If
   you need to initialize this proxy, use the command
-  <a href="../../gsic/pi/index.html#grid-proxy-init"><strong>grid-proxy-init</strong></a>.</p></td>
+  <a href="../../gsic/pi/index.html#grid-proxy-init"><strong><code>grid-proxy-init</code></strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -775,7 +775,7 @@ and send the output to your system administrator for assistance.</p>
 <h3 id="gsiopenssh-user-passphrase">The gsissh command prompts you for a pass phrase when you run it</h3>
 <div class="paragraph">
 <p>This could mean that you don&#8217;t have a proxy certificate; try running
-<strong>grid-proxy-init</strong> and then running gsissh again. It could also
+<strong><code>grid-proxy-init</code></strong> and then running gsissh again. It could also
 mean that the GSI authentication is failing for some reason and gsissh
 is falling back to a different authentication mechanism. Reasons that it
 might fail include:</p>
@@ -807,7 +807,7 @@ might fail include:</p>
 <div class="sect2">
 <h3 id="_specifying_verbose_output">Specifying verbose output</h3>
 <div class="paragraph">
-<p>If you need additional assistance, please run gsissh with the '-vvv'
+<p>If you need additional assistance, please run gsissh with the <em>-vvv</em>
 argument (specifying verbose output) and send the output to your system
 administrator for assistance.</p>
 </div>

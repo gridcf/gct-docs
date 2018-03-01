@@ -519,7 +519,7 @@ the simplest platforms on which to install GCT services.</p>
 </div>
 <div class="paragraph">
 <p>For the purposes of this documentation, GCT is being installed on a
-machine called <strong>elephant</strong>.</p>
+machine called <strong><code>elephant</code></strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="q-typography">Typographical Conventions</h3>
@@ -529,30 +529,30 @@ following prompts:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>root# , root@donkey# </strong></dt>
+<dt class="hdlist1"><strong><code>root# </code>, <code>root@donkey# </code></strong></dt>
 <dd>
-<p>Run this command as the <strong>root</strong> super-user, on the <strong>elephant</strong> or <strong>donkey</strong> hosts respectively. You might have to use a command like <strong>su</strong>(8) or <strong>sudo</strong>(8) to start a root shell before executing the command.</p>
+<p>Run this command as the <strong><code>root</code></strong> super-user, on the <strong><code>elephant</code></strong> or <strong><code>donkey</code></strong> hosts respectively. You might have to use a command like <strong><code>su</code></strong>(8) or <strong><code>sudo</code></strong>(8) to start a root shell before executing the command.</p>
 </dd>
-<dt class="hdlist1"><strong>myproxy% </strong></dt>
+<dt class="hdlist1"><strong><code>myproxy% </code></strong></dt>
 <dd>
-<p>Run this command as the <strong>myproxy</strong> user, on the <strong>elephant</strong> host. This user is created automatically when the <strong>myproxy-server</strong> package is installed.</p>
+<p>Run this command as the <strong><code>myproxy</code></strong> user, on the <strong><code>elephant</code></strong> host. This user is created automatically when the <strong><code>myproxy-server</code></strong> package is installed.</p>
 </dd>
-<dt class="hdlist1"><strong>quser% , quser@donkey% </strong></dt>
+<dt class="hdlist1"><strong><code>quser% </code>, <code>quser@donkey% </code></strong></dt>
 <dd>
-<p>Run this command as the normal user account you are intending to interact with your GCT sevices, on the <strong>elephant</strong> or <strong>donkey</strong> hosts. In this document, we use the <strong>quser</strong> accout for this, but if you have another user, you can use it for that purpose.</p>
+<p>Run this command as the normal user account you are intending to interact with your GCT sevices, on the <strong><code>elephant</code></strong> or <strong><code>donkey</code></strong> hosts. In this document, we use the <strong><code>quser</code></strong> accout for this, but if you have another user, you can use it for that purpose.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Commands themselves will be typeset as <strong>run-this-command
--with-arguments</strong>, and responses to the commands like this Some
-Response Text. If there is some portion of a command which should be
+<p>Commands themselves will be typeset as <strong><code>run-this-command
+-with-arguments</code></strong>, and responses to the commands like this <code>Some
+Response Text</code>. If there is some portion of a command which should be
 replaced by value, such as a version number, it will be typeset like
-this: 'REPLACEME'.</p>
+this: <em>REPLACEME</em>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, in some cases you will be prompted for a passphrase. When that
-occurs, the entry of the passphrase will be indicated by pass:[******],
+occurs, the entry of the passphrase will be indicated by <code>******</code>,
 even though nothing will be printed to the screen.</p>
 </div>
 </div>
@@ -573,7 +573,7 @@ used on other operating systems. In this quickstart, we will be
 installing RPM packages. Thus, it is a prerequisite for following this
 quickstart that you are running a distribution for which we provide
 RPMs. If you are running a supported Debian or Ubuntu system, the
-process is very similar, but you&#8217;ll need to use the <strong>apt-get</strong> or
+process is very similar, but you&#8217;ll need to use the <strong><code>apt-get</code></strong> or
 similar tools to install the packages. For the source installer, there
 is more work involved, and you&#8217;ll need to consult the full installation
 guide.</p>
@@ -616,7 +616,7 @@ package from the link above and install it with the command:</p>
 </div>
 <div class="paragraph">
 <p>Once you&#8217;ve installed the Globus repository package, you can use your
-operating system&#8217;s packaging tools: <strong>yum</strong> or <strong>apt-get</strong>, to
+operating system&#8217;s packaging tools: <strong><code>yum</code></strong> or <strong><code>apt-get</code></strong>, to
 install the Globus components.</p>
 </div>
 <div class="admonitionblock important">
@@ -678,10 +678,10 @@ once. This section will show how to install various components, on both
 RPM based and Debian based Linux systems.</p>
 </div>
 <div class="paragraph">
-<p>For Fedora or Red Hat-based systems, used the <strong>yum</strong> command to
+<p>For Fedora or Red Hat-based systems, used the <strong><code>yum</code></strong> command to
 install the GCT components and their dependencies. For SUSE Linux
-Enterprise Server systems, use <strong>zypper</strong>. For Debian-based systems,
-used the <strong>apt-get</strong> or <strong>aptitude</strong> commands.</p>
+Enterprise Server systems, use <strong><code>zypper</code></strong>. For Debian-based systems,
+used the <strong><code>apt-get</code></strong> or <strong><code>aptitude</code></strong> commands.</p>
 </div>
 <div class="paragraph">
 <p>For example, to install the GridFTP client tools, do the following for
@@ -712,39 +712,39 @@ client or server functionality of some Grid Community Toolkit component.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>globus-gridftp</strong></dt>
+<dt class="hdlist1"><strong><code>globus-gridftp</code></strong></dt>
 <dd>
 <p>GridFTP client and server tools</p>
 </dd>
-<dt class="hdlist1"><strong>globus-gram5</strong></dt>
+<dt class="hdlist1"><strong><code>globus-gram5</code></strong></dt>
 <dd>
 <p>GRAM5 client and server tools</p>
 </dd>
-<dt class="hdlist1"><strong>globus-gsi</strong></dt>
+<dt class="hdlist1"><strong><code>globus-gsi</code></strong></dt>
 <dd>
 <p>Globus Security Infrastructure tools for managing certificates and proxies</p>
 </dd>
-<dt class="hdlist1"><strong>globus-data-management-server</strong></dt>
+<dt class="hdlist1"><strong><code>globus-data-management-server</code></strong></dt>
 <dd>
 <p>Server tools for deploying a GridFTP server.</p>
 </dd>
-<dt class="hdlist1"><strong>globus-data-management-client</strong></dt>
+<dt class="hdlist1"><strong><code>globus-data-management-client</code></strong></dt>
 <dd>
 <p>Client Tools for data management, including the GridFTP client programs and globus-url-copy</p>
 </dd>
-<dt class="hdlist1"><strong>globus-data-management-sdk</strong></dt>
+<dt class="hdlist1"><strong><code>globus-data-management-sdk</code></strong></dt>
 <dd>
 <p>Development headers and documentation for writing applications using the GridFTP APIs.</p>
 </dd>
-<dt class="hdlist1"><strong>globus-resource-management-server</strong></dt>
+<dt class="hdlist1"><strong><code>globus-resource-management-server</code></strong></dt>
 <dd>
 <p>Server tools for deploying a GRAM5 resource manager</p>
 </dd>
-<dt class="hdlist1"><strong>globus-resource-management-client</strong></dt>
+<dt class="hdlist1"><strong><code>globus-resource-management-client</code></strong></dt>
 <dd>
 <p>Client tools for resource management, including the globusrun tool, and the globus-job-* tools.</p>
 </dd>
-<dt class="hdlist1"><strong>globus-resource-management-sdk</strong></dt>
+<dt class="hdlist1"><strong><code>globus-resource-management-sdk</code></strong></dt>
 <dd>
 <p>Development headers and documentation for writing applications using the GRAM5 APIs.</p>
 </dd>
@@ -757,12 +757,12 @@ client or server functionality of some Grid Community Toolkit component.</p>
 <p>In GCT 6, there are three Grid Community Toolkit package repositories:
 <strong>Stable</strong>, <strong>Testing</strong>, and <strong>Unstable</strong>. The <strong>Stable</strong> repository is
 enabled by default, and is updated to to include fixes for major bugs
-and security issues. These can be easily installed via <strong>yum</strong> or
-<strong>apt-get</strong>. These updates will be published in the
+and security issues. These can be easily installed via <strong><code>yum</code></strong> or
+<strong><code>apt-get</code></strong>. These updates will be published in the
 <a href="http://www.globus.org/toolkit/rss/advisories/{$shortversion}.rss">GCT</a>.
 Also, this means that when the next point release is made, collecting
-other minor bug fixes, the upgrade can be done via <strong>yum</strong> or
-<strong>apt-get</strong> without installing a new repository definition package.</p>
+other minor bug fixes, the upgrade can be done via <strong><code>yum</code></strong> or
+<strong><code>apt-get</code></strong> without installing a new repository definition package.</p>
 </div>
 <div class="paragraph">
 <p>In addition, users may enable the <strong>Testing</strong> or <strong>Unstable</strong> package
@@ -789,10 +789,10 @@ the <strong>Testing</strong> repository once they seem to be functional.</p>
 <h4 id="_installing_the_toolkit_on_mac_os_x">Installing the Toolkit on Mac OS X</h4>
 <div class="paragraph">
 <p>Download the Mac OS X Grid Community Toolkit Installation Package from the
-Grid Community Toolkit web site. Click on globus_toolkit-6.0.pkg, and follow
+Grid Community Toolkit web site. Click on <code>globus_toolkit-6.0.pkg</code>, and follow
 the installation instructions. If you select the "Install for me only"
 option, your , and follow the installation instructions. If you select
-the "Install for me only" option, your $HOME/.profile is modified to
+the "Install for me only" option, your <code>$HOME/.profile</code> is modified to
 add the Grid Community Toolkit components to your path. If you are using a
 different shell, you may need to incorporate those changes into your
 shell initialization file. If you install for all users, the global path
@@ -802,7 +802,7 @@ incorporate those changes into your shell initialization file. If you
 install for all users, the global path will be updated.</p>
 </div>
 <div class="paragraph">
-<p>To uninstall the toolkit, run the <strong>globus-uninstall</strong> script which
+<p>To uninstall the toolkit, run the <strong><code>globus-uninstall</code></strong> script which
 will remove the toolkit and revert the PATH changes.</p>
 </div>
 </div>
@@ -961,7 +961,7 @@ supported by GCT 6.0:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In order to use the GNU versions of sed, tar, and make on Solaris, put /usr/gnu/bin at the head of your path. Also, to use all of the perl executables, add  at the head of your path. Also, to use all of the perl executables, add /usr/perl5/bin to your path. to your path.</p>
+<p>In order to use the GNU versions of sed, tar, and make on Solaris, put <code>/usr/gnu/bin</code> at the head of your path. Also, to use all of the perl executables, add  at the head of your path. Also, to use all of the perl executables, add <code>/usr/perl5/bin</code> to your path. to your path.</p>
 </div>
 </td>
 </tr>
@@ -974,7 +974,7 @@ supported by GCT 6.0:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a user named <strong>globus</strong>. This non-privileged user will be
+<p>Create a user named <strong><code>globus</code></strong>. This non-privileged user will be
 used to perform administrative tasks, deploying services, etc. Pick an
 installation directory, and make sure this account has read and write
 permissions in the installation directory.</p>
@@ -986,8 +986,8 @@ permissions in the installation directory.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You might need to create the target directory as <strong>root</strong>, then
-chown it to the <strong>globus</strong> user:</p>
+<p>You might need to create the target directory as <strong><code>root</code></strong>, then
+chown it to the <strong><code>globus</code></strong> user:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1007,7 +1007,7 @@ root# chown globus:globus</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If for some reason you do <strong>not</strong> create a user named <strong>globus</strong>, be
+<p>If for some reason you do <strong>not</strong> create a user named <strong><code>globus</code></strong>, be
 sure to run the installation as a <strong>non-root</strong> user. In that case, make
 sure to pick an install directory that your user account has write
 access to.</p>
@@ -1023,8 +1023,8 @@ Prerequisites</a>.</p>
 </li>
 <li>
 <p>The Grid Community Toolkit Source Installer sets the installation directory by
-default to /usr/local/globus-6, but you may replace , but you may
-replace /usr/local/globus-6 with whatever directory you wish to
+default to <code>/usr/local/globus-6</code>, but you may replace , but you may
+replace <code>/usr/local/globus-6</code> with whatever directory you wish to
 install to, by setting the prefix when you configure. with whatever
 directory you wish to install to, by setting the prefix when you
 configure.</p>
@@ -1041,7 +1041,7 @@ configure.</p>
 install.</p>
 </div>
 <div class="paragraph">
-<p>For a full list of options, see <strong>./configure --help</strong>.</p>
+<p>For a full list of options, see <strong><code>./configure --help</code></strong>.</p>
 </div>
 </li>
 <li>
@@ -1119,7 +1119,7 @@ build subsets of the Grid Community Toolkit:</p>
 </div>
 <div class="paragraph">
 <p>Note that this command can take a while to complete. If you wish to have
-a log file of the build, use <strong>tee</strong>:</p>
+a log file of the build, use <strong><code>tee</code></strong>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1128,7 +1128,7 @@ a log file of the build, use <strong>tee</strong>:</p>
 </div>
 <div class="paragraph">
 <p>The syntax above assumes a Bourne shell. If you are using another shell,
-redirect stderr to stdout and then pipe it to <strong>tee</strong>.</p>
+redirect stderr to stdout and then pipe it to <strong><code>tee</code></strong>.</p>
 </div>
 </dd>
 </dl>
@@ -1150,7 +1150,7 @@ redirect stderr to stdout and then pipe it to <strong>tee</strong>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>where 'COMPONENT' is the name of the package to test. As an example, you
+<p>where <em>COMPONENT</em> is the name of the package to test. As an example, you
 could run</p>
 </div>
 <div class="listingblock">
@@ -1226,10 +1226,10 @@ your own certificates (see section below).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>consist of the following two files: hostcert.pem and  and hostkey.pem</p>
+<p>consist of the following two files: <code>hostcert.pem</code> and  and <code>hostkey.pem</code></p>
 </li>
 <li>
-<p>be in the appropriate directory for secure services: /etc/grid-security/</p>
+<p>be in the appropriate directory for secure services: <code>/etc/grid-security/</code></p>
 </li>
 <li>
 <p>match the hostname for a the machine. If the machine is going to be accessed remotely, the name on the certificate must match the network-visible hostname.</p>
@@ -1253,7 +1253,7 @@ about how to acquire a certificate. You may find your CA listed in the
 <p>If you already have a CA, you will need to follow their configuration
 directions. If they include a CA setup package, follow the CAs
 instruction on how to install the setup package. If they do not, you
-will need to create an /etc/grid-security/certificates directory and
+will need to create an <code>/etc/grid-security/certificates</code> directory and
 include the CA cert and signing policy in that directory. See  directory
 and include the CA cert and signing policy in that directory. See
 <a href="../../gsic/admin/index.html#gsic-configuring">Configuring a Trusted
@@ -1269,7 +1269,7 @@ inter-operation.</p>
 <div class="paragraph">
 <p>SimpleCA provides a wrapper around the OpenSSL CA functionality and is
 sufficient for simple Grid services. Alternatively, you can use
-OpenSSL&#8217;s <strong>CA.sh</strong> command on its own. Instructions on how to use
+OpenSSL&#8217;s <strong><code>CA.sh</code></strong> command on its own. Instructions on how to use
 the SimpleCA can be found in
 <a href="../../admin/install/appendix.html#gtadmin-simpleca">Installing SimpleCA</a>.</p>
 </div>
@@ -1278,17 +1278,17 @@ the SimpleCA can be found in
 available.</p>
 </div>
 <div class="paragraph">
-<p>If you install the <strong>globus-simpleca</strong> native package, it will
+<p>If you install the <strong><code>globus-simpleca</code></strong> native package, it will
 automatically create a CA and host certificate if you don&#8217;t have one
-configured yet. Otherwise, you&#8217;ll need to use <strong>grid-ca-create</strong> to
-create the CA and <strong>grid-default-ca</strong> to make that the default for
+configured yet. Otherwise, you&#8217;ll need to use <strong><code>grid-ca-create</code></strong> to
+create the CA and <strong><code>grid-default-ca</code></strong> to make that the default for
 requesting credentials.</p>
 </div>
 <div class="paragraph">
 <p>To create user credentials, you can run the command
-<strong>grid-cert-request</strong> as a user that you want to create a credential
-for. You can then run the <strong>grid-ca-sign</strong> command as the
-<strong>simpleca</strong> user to sign the certificate.</p>
+<strong><code>grid-cert-request</code></strong> as a user that you want to create a credential
+for. You can then run the <strong><code>grid-ca-sign</code></strong> command as the
+<strong><code>simpleca</code></strong> user to sign the certificate.</p>
 </div>
 </div>
 </div>
@@ -1302,7 +1302,7 @@ account.</p>
 </div>
 <div class="paragraph">
 <p>To add authorizations for users, you&#8217;ll need to update the
-grid-mapfile database to include the mapping between the credentials
+<code>grid-mapfile</code> database to include the mapping between the credentials
 and the local user accounts. database to include the mapping between the
 credentials and the local user accounts.</p>
 </div>
@@ -1321,8 +1321,8 @@ credentials and the local user accounts.</p>
 </div>
 <div class="paragraph">
 <p>To start with, if you have created a user certificate, you can run the
-<strong>grid-cert-info</strong> command to get the certificate&#8217;s subject name,
-and <strong>id -un</strong> to get the account name:</p>
+<strong><code>grid-cert-info</code></strong> command to get the certificate&#8217;s subject name,
+and <strong><code>id -un</code></strong> to get the account name:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1390,10 +1390,10 @@ Your proxy is valid until: Fri Jan 28 23:13:22 2005</pre>
 </div>
 <div class="paragraph">
 <p>There are a few things you can notice from this command. Your usercert
-and key are located in $HOME/.globus/. The proxy certificate is
-created in . The proxy certificate is created in /tmp/. The "up"
+and key are located in <code>$HOME/.globus/</code>. The proxy certificate is
+created in . The proxy certificate is created in <code>/tmp/</code>. The "up"
 stands for "user proxy", and the . The "up" stands for "user proxy", and
-the '_u506' will be your UNIX userid. It also prints out your
+the <em>_u506</em> will be your UNIX userid. It also prints out your
 distinguished name (DN), and the proxy is valid for 12 hours.</p>
 </div>
 <div class="paragraph">
@@ -1706,21 +1706,21 @@ installer, these do not need to be installed.</p>
 </div>
 <div class="paragraph">
 <p>Configure libtool with the configuration option
-<strong>--program-prefix=g</strong> to cause the libtool script to be named
-<strong>glibtool</strong> to avoid conflicts with the OS X libtool program which
+<strong><code>--program-prefix=g</code></strong> to cause the libtool script to be named
+<strong><code>glibtool</code></strong> to avoid conflicts with the OS X libtool program which
 provides different functionality than GNU libtool. Install libtool (and
 the other tools) into the a common directory. If you do so, you&#8217;ll need
-to set the LIBTOOLIZE environment variable to the path to the
-<strong>glibtoolize</strong> program. You&#8217;ll need to include the autotools in
+to set the <code>LIBTOOLIZE</code> environment variable to the path to the
+<strong><code>glibtoolize</code></strong> program. You&#8217;ll need to include the autotools in
 your path to regenerate the configurable scripts and Makefile.in files
 for the toolkit.</p>
 </div>
 <div class="paragraph">
-<p>The Grid Community Toolkit build requires the <strong>pkg-config</strong> package to be
+<p>The Grid Community Toolkit build requires the <strong><code>pkg-config</code></strong> package to be
 installed. It is available from
 <a href="http://pkgconfig.freedesktop.org/releases/">freedesktop.org</a>.
 Additionally, you&#8217;ll need to set the environment variable
-PKG_CONFIG_PATH to /usr/lib/pkgconfig prior to running the
+<code>PKG_CONFIG_PATH</code> to <code>/usr/lib/pkgconfig</code> prior to running the
 configure script.  prior to running the configure script.</p>
 </div>
 </div>

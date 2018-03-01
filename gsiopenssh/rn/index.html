@@ -474,10 +474,10 @@ information about GSI-OpenSSH, see the
 <div class="ulist">
 <ul>
 <li>
-<p>The <strong>gsissh</strong> command provides a secure remote login service with forwarding of X.509 proxy credentials.</p>
+<p>The <strong><code>gsissh</code></strong> command provides a secure remote login service with forwarding of X.509 proxy credentials.</p>
 </li>
 <li>
-<p>The <strong>gsiscp</strong> and <strong>gsisftp</strong> commands provide a secure file transfer service authenticated with X.509 proxy credentials, mimicking the <strong>rcp/scp</strong> and <strong>ftp/sftp</strong> commands.</p>
+<p>The <strong><code>gsiscp</code></strong> and <strong><code>gsisftp</code></strong> commands provide a secure file transfer service authenticated with X.509 proxy credentials, mimicking the <strong><code>rcp/scp</code></strong> and <strong><code>ftp/sftp</code></strong> commands.</p>
 </li>
 <li>
 <p>All standard OpenSSH features are supported, excluding Kerberos authentication. Kerberos authentication is <strong>not</strong> compatible with GSI-enabled OpenSSH.</p>
@@ -486,7 +486,7 @@ information about GSI-OpenSSH, see the
 <p>The GSI-OpenSSH server can replace the standard system SSH server in typical environments.</p>
 </li>
 <li>
-<p>If no username is given on the command-line, GSI-OpenSSH automatically determines the username that corresponds to the X.509 proxy certificate subject in the server&#8217;s grid-mapfile.</p>
+<p>If no username is given on the command-line, GSI-OpenSSH automatically determines the username that corresponds to the X.509 proxy certificate subject in the server&#8217;s <code>grid-mapfile</code>.</p>
 </li>
 </ul>
 </div>

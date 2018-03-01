@@ -508,11 +508,11 @@ philosophy behind the model and its basic concepts.</p>
 <ul>
 <li>
 <p><a href="#globus-async-example1">Example 1</a> - Demonstrates basic use of
-globus_callback_register_oneshot()</p>
+<code>globus_callback_register_oneshot()</code></p>
 </li>
 <li>
 <p><a href="#globus-async-example2">Example 2</a> - An example of
-globus_callback_register_oneshot() using condition variables</p>
+<code>globus_callback_register_oneshot()</code> using condition variables</p>
 </li>
 <li>
 <p><a href="#globus-async-example3">Example 3</a> - Game of Craps example
@@ -669,31 +669,31 @@ globus_poll();</pre>
 </div>
 <div class="paragraph">
 <p>The first function is fairly clear. It registers the callback
-callback_func with the system that will be called once the time
-specified by delay_time has expired.</p>
+<code>callback_func</code> with the system that will be called once the time
+specified by <code>delay_time</code> has expired.</p>
 </div>
 <div class="paragraph">
-<p>The more interesting of the two is globus_poll(). Semantically this
+<p>The more interesting of the two is <code>globus_poll()</code>. Semantically this
 function is used to briefly turn control over to the GCT event system
-for processing. What this means is that globus_poll() must be called
+for processing. What this means is that <code>globus_poll()</code> must be called
 often enough for the GCT event system to function. This is recognized
 as a rather ambiguous statement. Therefore, a look at what happens with
-globus_poll() should assist in explanation. In threaded builds of
-GCT this globus_poll() simply results in a call to
-thread_yield() where control can be switched to a background thread
+<code>globus_poll()</code> should assist in explanation. In threaded builds of
+GCT this <code>globus_poll()</code> simply results in a call to
+<code>thread_yield()</code> where control can be switched to a background thread
 dedicated to event processing. In non-threaded builds, a list of events
-is maintained by the system. A call to globus_poll() finds ready
+is maintained by the system. A call to <code>globus_poll()</code> finds ready
 events in the list and dispatches the associated callback to the user
 within the same call stack.</p>
 </div>
 <div class="paragraph">
 <p>In <a href="#globus-async-example1">Example 1</a> a use of these two functions
-is displayed. The function user_callback is registered for execution
+is displayed. The function <code>user_callback</code> is registered for execution
 after 1 second has elapsed.</p>
 </div>
 <div class="paragraph">
 <p>In a non-threaded build, there is a single thread of execution. In the
-main loop, the call to globus_poll() invokes the GCT event
+main loop, the call to <code>globus_poll()</code> invokes the GCT event
 process code. The code checks internal data structures for any ready
 events. If found, the user callbacks associated with the events will be
 called in the same call stack.</p>
@@ -701,18 +701,18 @@ called in the same call stack.</p>
 <div class="paragraph">
 <p>In a threaded build a user would see two threads (possibly more, but for
 the sake of clarity two will be used): the main thread that is executing
-the loop in main() and an internal GCT thread that is handling
+the loop in <code>main()</code> and an internal GCT thread that is handling
 polling of events. The GCT thread is created when the user calls
-globus_module_activate(GLOBUS_COMMON_MODULE). This function must be
-called before any API function in the the globus_common package can
+<code>globus_module_activate(GLOBUS_COMMON_MODULE)</code>. This function must be
+called before any API function in the the <code>globus_common</code> package can
 be used. This is another common theme in GCT: all modules must be
 activated before use and deactivated when finished. The event thread
 polls all events and as they become ready the functions associated with
 them are dispatched.</p>
 </div>
 <div class="paragraph">
-<p>Another important concept to note in this API is the use of the void *
-user_arg parameter. This is a simple but important part of the model.
+<p>Another important concept to note in this API is the use of the <code>void *
+user_arg</code> parameter. This is a simple but important part of the model.
 On registration of an event, a user can pass in a void pointer and this
 pointer will be threaded through to their event callback. The pointer
 can point to any bit of memory the user likes. Typically it points to
@@ -771,20 +771,20 @@ this text, they will serve for an explanation.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>globus_thread_create() will start a new thread of execution with a
-new call stack running beginning at the parameter func.</p>
+<p><code>globus_thread_create()</code> will start a new thread of execution with a
+new call stack running beginning at the parameter <code>func</code>.</p>
 </li>
 <li>
-<p>globus_mutex_lock() and globus_mutex_unlock() provide mutual
+<p><code>globus_mutex_lock()</code> and <code>globus_mutex_unlock()</code> provide mutual
 exclusive among threads over critical sections of code.</p>
 </li>
 <li>
-<p>globus_cond_wait() and globus_cond_signal() provide a means of
+<p><code>globus_cond_wait()</code> and <code>globus_cond_signal()</code> provide a means of
 thread synchronization.</p>
 </li>
 <li>
-<p>wait() will delay the thread that calls it until some other thread
-calls signal().</p>
+<p><code>wait()</code> will delay the thread that calls it until some other thread
+calls <code>signal()</code>.</p>
 </li>
 </ul>
 </div>
@@ -796,9 +796,9 @@ to the underlying thread package.</p>
 <p>The notable exception is the non-threaded build. The Grid Community Toolkit has
 created a non-threaded, semantically equivalent implementation of all
 the functions described above (and of most in the pthreads API) with the
-exception of globus_thread_create(). In the non-threaded case this
+exception of <code>globus_thread_create()</code>. In the non-threaded case this
 is a no-op. However the model of asynchronous programming used in the
-Grid Community Toolkit, globus_thread_create() is rarely needed or used.</p>
+Grid Community Toolkit, <code>globus_thread_create()</code> is rarely needed or used.</p>
 </div>
 <div class="paragraph">
 <p>In the GCT model, the callback code and the thread abstraction are
@@ -808,7 +808,7 @@ works:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>An event is registered in the main thread, then globus_cond_wait()
+<p>An event is registered in the main thread, then <code>globus_cond_wait()</code>
 is called.</p>
 </li>
 <li>
@@ -826,16 +826,16 @@ is called.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>In the threaded build, globus_cond_wait() and
-globus_cond_signal() are simple passes through to the underlying
+<p>In the threaded build, <code>globus_cond_wait()</code> and
+<code>globus_cond_signal()</code> are simple passes through to the underlying
 thread packages, and as described previously, a background thread
 delivers the event.</p>
 </div>
 <div class="paragraph">
-<p>In the non-threaded build, globus_cond_wait() will call
-globus_poll() and the non-threaded polling code takes over. For this
-reason, it is often not necessary to call globus_poll() in
-non-threaded builds. globus_cond_wait() tends to be used often
+<p>In the non-threaded build, <code>globus_cond_wait()</code> will call
+<code>globus_poll()</code> and the non-threaded polling code takes over. For this
+reason, it is often not necessary to call <code>globus_poll()</code> in
+non-threaded builds. <code>globus_cond_wait()</code> tends to be used often
 enough to satisfy the needs of the event system.</p>
 </div>
 </div>
@@ -854,7 +854,7 @@ logic skills.</p>
 <p>The non-blocking model is a bit more complicated than blocking, but not
 much. The only twist is that a user must check to see if the event
 completed and, if so, how much of it completed. This still allows for
-in-line processing; it only requires an additional if statement.
+in-line processing; it only requires an additional <code>if</code> statement.
 Even when event polling is multiplexed (for example, posix select) the
 processing is still inline. The user must add some branches to determine
 what event is ready and then process it. The most difficult challenge of
@@ -914,7 +914,7 @@ this example.</p>
 <p><a href="#globus-async-example3">Example 3</a> follows this state diagram. In
 the example rolls of the dice are considered events. For the sake of
 simplicity the example only uses a one shot event and then gets the data
-by calling random(); If this were a real world event, the values for
+by calling <code>random();</code> If this were a real world event, the values for
 the dice would come in as part of the event function. Notice how each
 time the event occurs the state is checked and, if needed, advanced to
 the next state. In the main function the program waits until the state
@@ -936,17 +936,17 @@ state machine is erroneous.</p>
 </div>
 <div class="paragraph">
 <p>If an event callback is going to block, it must call the following
-function: void globus_thread_blocking_will_block(); If
-globus_cond_wait() is called, this function is implied.</p>
+function: <code>void globus_thread_blocking_will_block();</code> If
+<code>globus_cond_wait()</code> is called, this function is implied.</p>
 </div>
 <div class="paragraph">
 <p>In the threaded build of GCT there is a background thread that
 handles the polling of events and dispatching of the handler functions.
 When a handler function blocks, it prevents this process.
-globus_thread_blocking_will_block() starts a new thread to handle
+<code>globus_thread_blocking_will_block()</code> starts a new thread to handle
 event processing and allows the user to take over the current thread
 without stopping the processing of other threads. The user must also
-call globus_poll() in order to ensure that event processing
+call <code>globus_poll()</code> in order to ensure that event processing
 continues.</p>
 </div>
 <div class="paragraph">

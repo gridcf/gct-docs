@@ -496,7 +496,7 @@ provides automatic fault recovery and automatic tuning of optimization
 parameters to achieve high performance.</p>
 </div>
 <div class="paragraph">
-<p>The Grid Community Toolkit provides a GridFTP client called globus-url-copy,
+<p>The Grid Community Toolkit provides a GridFTP client called <code>globus-url-copy</code>,
 a command line interface, suitable for scripting. For example, the
 following command:</p>
 </div>
@@ -617,7 +617,7 @@ credential</a></p>
 </div>
 <div class="paragraph">
 <p>If you just want the "rules of thumb" on getting started (without all
-the details), the following options using globus-url-copy will
+the details), the following options using <code>globus-url-copy</code> will
 normally give acceptable performance:</p>
 </div>
 <div class="paragraph">
@@ -695,10 +695,10 @@ transfers.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>'file:///path/to/my/file' if you are accessing a file on a file system accessible by the host on which you are running your client.</p>
+<p><em><a href="file:///path/to/my/file" class="bare">file:///path/to/my/file</a></em> if you are accessing a file on a file system accessible by the host on which you are running your client.</p>
 </li>
 <li>
-<p>'gsiftp://hostname/path/to/remote/file' if you are accessing a file from a GridFTP server.</p>
+<p><em>gsiftp://hostname/path/to/remote/file</em> if you are accessing a file from a GridFTP server.</p>
 </li>
 </ul>
 </div>
@@ -710,11 +710,11 @@ transfers.</p>
 <div class="paragraph">
 <p>One of the most basic tasks in GridFTP is to "put" files, i.e., moving a
 file from your file system to the server. So for example, if you want to
-move the file /tmp/foo from a file system accessible to the host on
+move the file <code>/tmp/foo</code> from a file system accessible to the host on
 which you are running your client to a file name  from a file system
 accessible to the host on which you are running your client to a file
-name /tmp/bar on a host named  on a host named
-remote.machine.my.edu running a GridFTP server, you would use this
+name <code>/tmp/bar</code> on a host named  on a host named
+<code>remote.machine.my.edu</code> running a GridFTP server, you would use this
 command: running a GridFTP server, you would use this command:</p>
 </div>
 <div class="listingblock">
@@ -730,7 +730,7 @@ command: running a GridFTP server, you would use this command:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In theory, remote.machine.my.edu could be the same host as the one on which you are running your client, but that is normally only done in testing situations.  could be the same host as the one on which you are running your client, but that is normally only done in testing situations.</p>
+<p>In theory, <code>remote.machine.my.edu</code> could be the same host as the one on which you are running your client, but that is normally only done in testing situations.  could be the same host as the one on which you are running your client, but that is normally only done in testing situations.</p>
 </div>
 </td>
 </tr>
@@ -754,7 +754,7 @@ reverse the source and destination URLs:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Remember 'file:' always refers to your file system.</p>
+<p>Remember <em>file:</em> always refers to your file system.</p>
 </div>
 </td>
 </tr>
@@ -773,7 +773,7 @@ reverse the source and destination URLs:</p>
 </div>
 <div class="paragraph">
 <p>Finally, if you want to move a file between two GridFTP servers (a third
-party transfer), both URLs would use gsiftp: as the protocol: as the
+party transfer), both URLs would use <code>gsiftp:</code> as the protocol: as the
 protocol:</p>
 </div>
 <div class="listingblock">
@@ -825,13 +825,13 @@ FTP (GWTFTP)</a>.</p>
 <div class="sect3">
 <h4 id="gridftp-user-advanced-failures">Failures and retries</h4>
 <div class="paragraph">
-<p>To retry a transfer after a server or network failure, use the '-rst'
+<p>To retry a transfer after a server or network failure, use the <em>-rst</em>
 option. To store the untransferred urls for restarting the transfer
-after a client failure, use the '-df' option. More information about
+after a client failure, use the <em>-df</em> option. More information about
 these options is available <a href="#globus-url-copy-reliability">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>For example, <strong>globus-url-copy</strong> can be invoked in a loop for long
+<p>For example, <strong><code>globus-url-copy</code></strong> can be invoked in a loop for long
 running transfers, as shown in the script below:</p>
 </div>
 <div class="listingblock">
@@ -849,12 +849,12 @@ running transfers, as shown in the script below:</p>
 <div class="sect3">
 <h4 id="gridftp-user-advanced-load-balancing">Load Balancing</h4>
 <div class="paragraph">
-<p>When there are multiple GridFTP servers avalibale at endpoints, '-af'
+<p>When there are multiple GridFTP servers avalibale at endpoints, <em>-af</em>
 option allows concurrent transfers to be spread across multiple GridFTP
 servers rather than multiple connections to a single GridFTP server.</p>
 </div>
 <div class="paragraph">
-<p>For example, <strong>globus-url-copy</strong> can be invoked as shown below:</p>
+<p>For example, <strong><code>globus-url-copy</code></strong> can be invoked as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -936,7 +936,7 @@ are valid, and they are used for every source or destination url.</p>
 It addresses some of the limitations of TCP in high-bandwidth and
 high-delay networks and achieves better performance than TCP on those
 networks. To use UDT as the underlying transport protocol for the
-GridFTP transfers, use the '-udt' option.</p>
+GridFTP transfers, use the <em>-udt</em> option.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -950,8 +950,8 @@ GridFTP transfers, use the '-udt' option.</p>
 be configured to
 <a href="../../gridftp/admin/index.html#gridftp-config-udt">enable UDT</a>. In
 order to use this for a client-server transfer, you need to enable
-multi-threading in <strong>globus-url-copy</strong>. To switch to threaded
-flavor, set the environment variable 'GLOBUS_THREAD_MODEL=pthread'.</p>
+multi-threading in <strong><code>globus-url-copy</code></strong>. To switch to threaded
+flavor, set the environment variable <em>GLOBUS_THREAD_MODEL=pthread</em>.</p>
 </div>
 </td>
 </tr>
@@ -963,7 +963,7 @@ flavor, set the environment variable 'GLOBUS_THREAD_MODEL=pthread'.</p>
 <div class="paragraph">
 <p>The data channel is authenticated by default. Integrity protection and
 encryption are optional. To integrity protect the data, use the
-'-dcsafe' option. For encrypted data transfer, use the '-dcpriv' option.</p>
+<em>-dcsafe</em> option. For encrypted data transfer, use the <em>-dcpriv</em> option.</p>
 </div>
 </div>
 <div class="sect3">
@@ -983,7 +983,7 @@ connected by 1 Gbit/s Ethernet connections to a switch that is itself
 connected to the external network at 10 Gbit/s or faster.</p>
 </div>
 <div class="paragraph">
-<p>To perform striped data movement, use the '-stripe' option.</p>
+<p>To perform striped data movement, use the <em>-stripe</em> option.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1012,7 +1012,7 @@ striped data movement</a>.</p>
 </div>
 <div class="paragraph">
 <p>To transfer a single file to many destinations in a multicast/broadcast,
-use the new '-mc' option.</p>
+use the new <em>-mc</em> option.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1050,7 +1050,7 @@ information.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The 'filename' must contain a line-separated list of destination urls.
+<p>The <em>filename</em> must contain a line-separated list of destination urls.
 For example:</p>
 </div>
 <div class="listingblock">
@@ -1082,7 +1082,7 @@ the command line in addition to the urls in the file. Examples are:</p>
 <div class="paragraph">
 <p>
 Along with specifying the list of destination urls in a file, a set of
-options for each url can be specified. This is done by appending a ?
+options for each url can be specified. This is done by appending a <code>?</code>
 to the resource string in the url followed by semicolon-separated key
 value pairs. For example:</p>
 </div>
@@ -1092,11 +1092,11 @@ value pairs. For example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This indicates that the receiving host dst1.domain.com will use 4
+<p>This indicates that the receiving host <code>dst1.domain.com</code> will use 4
 parallel stream, a tcp buffer size of 10 MB, and will select 1 host when
 forwarding on data blocks. This url is specified in the  will use 4
 parallel stream, a tcp buffer size of 10 MB, and will select 1 host when
-forwarding on data blocks. This url is specified in the '-mc' file as
+forwarding on data blocks. This url is specified in the <em>-mc</em> file as
 described above.</p>
 </div>
 <div class="paragraph">
@@ -1104,27 +1104,27 @@ described above.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>P='integer'</strong></dt>
+<dt class="hdlist1"><strong>P=<em>integer</em></strong></dt>
 <dd>
 <p>The number of parallel streams this node will use when forwarding.</p>
 </dd>
-<dt class="hdlist1"><strong>cc='integer'</strong></dt>
+<dt class="hdlist1"><strong>cc=<em>integer</em></strong></dt>
 <dd>
 <p>The number of urls to which this node will forward data.</p>
 </dd>
-<dt class="hdlist1"><strong>tcpbs='formatted integer'</strong></dt>
+<dt class="hdlist1"><strong>tcpbs=<em>formatted integer</em></strong></dt>
 <dd>
 <p>The TCP buffer size this node will use when forwarding.</p>
 </dd>
-<dt class="hdlist1"><strong>urls='string list'</strong></dt>
+<dt class="hdlist1"><strong>urls=<em>string list</em></strong></dt>
 <dd>
 <p>The list of urls that must be children of this node when the spanning tree is complete.</p>
 </dd>
-<dt class="hdlist1"><strong>local_write='boolean: y|n'</strong></dt>
+<dt class="hdlist1"><strong>local_write=<em>boolean: y|n</em></strong></dt>
 <dd>
 <p>Determines if this data will be written to a local disk, or just forwarded on to the next hop. This is explained more in the <a href="#gridftp-multicast-networkoverlay">Network Overlay</a> section.</p>
 </dd>
-<dt class="hdlist1"><strong>subject='string'</strong></dt>
+<dt class="hdlist1"><strong>subject=<em>string</em></strong></dt>
 <dd>
 <p>The DN name to expect from the servers this node is connecting to.</p>
 </dd>
@@ -1139,11 +1139,11 @@ In addition to allowing multicast,  function also allows for
 creating user-defined network routes.</p>
 </div>
 <div class="paragraph">
-<p>If the 'local_write' option is set to n, then no data will be
+<p>If the <em>local_write</em> option is set to <code>n</code>, then no data will be
 written to the local disk, the data will only be forwarded on.</p>
 </div>
 <div class="paragraph">
-<p>If the 'local_write' option is set to n and is used with the 'cc=1'
+<p>If the <em>local_write</em> option is set to <code>n</code> and is used with the <em>cc=1</em>
 option, the data will be forwarded on to exactly one location.</p>
 </div>
 <div class="paragraph">
@@ -1156,7 +1156,7 @@ GridFTP server as a router to the ultimate destination.</p>
 <h4 id="gridftp-user-advanced-bottleneck">Bottleneck detection</h4>
 <div class="paragraph">
 <p>To determine whether the disk or the network is the bottleneck for the
-file transfer, use the '-nlb' option. This option uses NetLogger to
+file transfer, use the <em>-nlb</em> option. This option uses NetLogger to
 estimate speeds of disk and network read/write system calls, and attempt
 to determine the bottleneck component.</p>
 </div>
@@ -1715,28 +1715,28 @@ information on these and other configuration options.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">
-    globus_ftp_client: the server responded with an error +
-530 530-globus_xio: Authentication Error +
-530-OpenSSL Error: s3_srvr.c:2525: in library: SSL routines,  +
-     function SSL3_GET_CLIENT_CERTIFICATE: no certificate returned +
-530-globus_gsi_callback_module: Could not verify credential +
-530-globus_gsi_callback_module: Can't get the local trusted CA certificate:  +
-Untrusted self-signed certificate in chain with hash d1b603c3 +
-530 End. +
-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>
+    globus_ftp_client: the server responded with an error<br>
+530 530-globus_xio: Authentication Error<br>
+530-OpenSSL Error: s3_srvr.c:2525: in library: SSL routines, <br>
+     function SSL3_GET_CLIENT_CERTIFICATE: no certificate returned<br>
+530-globus_gsi_callback_module: Could not verify credential<br>
+530-globus_gsi_callback_module: Can&#8217;t get the local trusted CA certificate: <br>
+Untrusted self-signed certificate in chain with hash d1b603c3<br>
+530 End.<br>
+</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error message indicates that the GridFTP server doesn&#8217;t trust the
   certificate authority (CA) that issued your certificate.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You need to ask the GridFTP server administrator to install your CA
 certificate chain in the GridFTP server&#8217;s trusted certificates directory.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> globus_ftp_control: gss_init_sec_context failed +
-OpenSSL Error: s3_clnt.c:951: in library: SSL routines, function  +
-SSL3_GET_SERVER_CERTIFICATE: certificate verify failed +
-globus_gsi_callback_module: Could not verify credential +
-globus_gsi_callback_module: Can't get the local trusted CA certificate:  +
-Untrusted self-signed certificate in chain with hash d1b603c3 </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code> globus_ftp_control: gss_init_sec_context failed<br>
+OpenSSL Error: s3_clnt.c:951: in library: SSL routines, function <br>
+SSL3_GET_SERVER_CERTIFICATE: certificate verify failed<br>
+globus_gsi_callback_module: Could not verify credential<br>
+globus_gsi_callback_module: Can&#8217;t get the local trusted CA certificate: <br>
+Untrusted self-signed certificate in chain with hash d1b603c3 </code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error message indicates that your local system doesn&#8217;t trust the
   certificate authority (CA) that issued the certificate on the resource you are
   connecting to.</p></td>
@@ -1744,11 +1744,11 @@ Untrusted self-signed certificate in chain with hash d1b603c3 </p></td>
   and  install the CA certificate in the local trusted certificates directory.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"> 530-globus_xio: Authentication Error +
-  530-globus_gsi_callback_module: Could not verify credential +
-  530-globus_gsi_callback_module: Could not verify credential +
-  530-globus_gsi_callback_module: Invalid CRL: The available CRL has expired +
-  530 End. </p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code> 530-globus_xio: Authentication Error<br>
+  530-globus_gsi_callback_module: Could not verify credential<br>
+  530-globus_gsi_callback_module: Could not verify credential<br>
+  530-globus_gsi_callback_module: Invalid CRL: The available CRL has expired<br>
+  530 End. </code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error message indicates one of the following:
   Certificate Revocation List (CRL) for the source or destination server CA at
   the client has expired or CRL for client CA has expired at source or
@@ -1852,7 +1852,7 @@ make a transfer using globus-url-copy.</p>
 </div>
 <div class="paragraph">
 <p>If you are doing a client/server transfer (one of your URLs has
-file: in it) then try: in it) then try:</p>
+<code>file:</code> in it) then try: in it) then try:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1937,9 +1937,9 @@ following information as possible:</p>
 <h3 id="gridftp-troubleshooting-latency">High latency for GridFTP server connections</h3>
 <div class="paragraph">
 <p>If you run GridFTP servers via Xinetd and notice high latency for
-connections and/or transfers, check if /etc/xinetd.conf or the
+connections and/or transfers, check if <code>/etc/xinetd.conf</code> or the
 gsiftp service configuration inside  or the gsiftp service configuration
-inside /etc/xinetd.d is set to log USERID as follows:  is set to log
+inside <code>/etc/xinetd.d</code> is set to log USERID as follows:  is set to log
 USERID as follows:</p>
 </div>
 <div class="listingblock">
@@ -2031,7 +2031,7 @@ Stats</a> section.</p>
 intrusive or private and yet still provides us with information that
 will help improve and gauge the usage of the GridFTP server.
 Nevertheless, if you wish to disable this feature for GridFTP only, use
-the '-disable-usage-stats' option of
+the <em>-disable-usage-stats</em> option of
 <a href="../../gridftp/admin/index.html#globus-gridftp-server">globus-gridftp-server</a>.
 Note that you can disable transmission of usage statistics globally for
 all C components by setting "GLOBUS_USAGE_OPTOUT=1" in your environment.</p>

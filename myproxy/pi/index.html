@@ -526,7 +526,7 @@ Manual</a> for documentation of MyProxy environment variable interfaces.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MyProxy server name does not match expected name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MyProxy server name does not match expected name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error appears as a mutual authentication failure or a server authentication failure, and the error message should list two names: the expected name of the MyProxy server and the actual authenticated name.
 +
 By default, the MyProxy clients expect the MyProxy server to be running with a
@@ -540,45 +540,45 @@ If the expected name contains an IP address, your system is unable to do a
 reverse lookup on that address to get the canonical hostname of the server,
 indicating either a problem with that machine&#8217;s DNS record or a problem with
 the resolver on your system.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the server name shown in the error message is acceptable, set the MYPROXY_SERVER_DN environment variable to that name to resolve the problem.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the server name shown in the error message is acceptable, set the <code>MYPROXY_SERVER_DN</code> environment variable to that name to resolve the problem.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Error in bind(): Address already in use</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Error in bind(): Address already in use</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error indicates that the myproxy-server port (default: 7512) is in use
   by another process, probably another myproxy-server instance. You cannot run
   multiple instances of the myproxy-server on the same network port.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If you want to run multiple instances of the myproxy-server on a machine, you
-  can specify different ports with the '-p' option, and then give the same '-p'
+  can specify different ports with the <em>-p</em> option, and then give the same <em>-p</em>
   option to the MyProxy commands to tell them to use the myproxy-server on that
   port.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">grid-proxy-init failed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grid-proxy-init failed</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error indicates that the grid-proxy-init command failed when
    myproxy-init attempted to run it, which implies a problem with the
    underlying GCT installation.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Run <strong>grid-proxy-init -debug -verify</strong> for more information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <strong><code>grid-proxy-init -debug -verify</code></strong> for more information.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User not authorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>User not authorized</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An error from the myproxy-server saying you are "not authorized" to complete
-  an operation typically indicates that the myproxy-server.config file
+  an operation typically indicates that the <code>myproxy-server.config</code> file
   settings are restricting your access to the myproxy-server. It is possible
-  that the myproxy-server is running with the default myproxy-server.config
+  that the myproxy-server is running with the default <code>myproxy-server.config</code>
   file, which does not authorize any operations.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="../myproxy/admin/index.html#myproxy-configuring">Configuring MyProxy</a>
   for more information.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unable to verify remote side's credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Unable to verify remote side&#8217;s credentials</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An error saying "Unable to verify remote side&#8217;s credentials," "Couldn&#8217;t
   verify the remote certificate," or "alert bad certificate" often indicates
   that the client or server&#8217;s certificate is signed by
     an untrusted Certification Authority (CA). The client must have a CA
     certificate and signing policy file installed in
-    /etc/grid-security/certificates for the CA that signed the server&#8217;s
+    <code>/etc/grid-security/certificates</code> for the CA that signed the server&#8217;s
     certificate. Likewise, the server must have a CA certificate and
-    signing policy file installed in /etc/grid-security/certificates for
+    signing policy file installed in <code>/etc/grid-security/certificates</code> for
     the CA that signed the client&#8217;s certificate.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="../../gsic/admin/index.html#gsic-configuring">Configuring
     Certificates</a> for more information.</p></td>

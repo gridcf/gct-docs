@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#simpleca-create-ca">2. Creating a SimpleCA</a>
 <ul class="sectlevel2">
 <li><a href="#_create_simpleca_administrator_account">2.1. Create SimpleCA Administrator Account</a></li>
-<li><a href="#_invoking_strong_grid_ca_create_strong">2.2. Invoking <strong>grid-ca-create</strong></a></li>
+<li><a href="#_invoking_strong_code_grid_ca_create_code_strong">2.2. Invoking <strong><code>grid-ca-create</code></strong></a></li>
 <li><a href="#simpleca-subjectname">2.3. Configure the subject name</a></li>
 <li><a href="#simpleca-email">2.4. Configure the CA&#8217;s email</a></li>
 <li><a href="#simpleca-expiration">2.5. Configure the expiration date</a></li>
@@ -535,7 +535,7 @@ sign a certificate for a GCT 6.0 installation.
 SimpleCA provides an easy way to create and package a Certificate
 Authority
 (CA), as well as tools for requesting and signing user and
-host certificates. It is similar to OpenSSL&#8217;s <strong>CA.sh</strong> command but
+host certificates. It is similar to OpenSSL&#8217;s <strong><code>CA.sh</code></strong> command but
 includes support for packaging the CA certificate, creating a signing
 policy file, and generating information needed by clients to request
 certificates. You can find other CA options in
@@ -559,10 +559,10 @@ credentials</a>.</p>
 <p>Your <strong>user</strong> account, which will be used to run the client programs.</p>
 </li>
 <li>
-<p>A <strong>simpleca</strong> account, which will be used to administer the Simple CA. This is created automatically if you install SimpleCA from RPM or Debian packages.</p>
+<p>A <strong><code>simpleca</code></strong> account, which will be used to administer the Simple CA. This is created automatically if you install SimpleCA from RPM or Debian packages.</p>
 </li>
 <li>
-<p>A generic <strong>globus</strong> account, if you will be building from the source installer.</p>
+<p>A generic <strong><code>globus</code></strong> account, if you will be building from the source installer.</p>
 </li>
 </ul>
 </div>
@@ -576,7 +576,7 @@ are described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from binary packages, install the packages
-<strong>globus-simple-ca</strong> and <strong>globus-gsi-cert-utils-progs</strong> and
+<strong><code>globus-simple-ca</code></strong> and <strong><code>globus-gsi-cert-utils-progs</code></strong> and
 their dependencies. On Debian based systems, use the command</p>
 </div>
 <div class="listingblock">
@@ -594,7 +594,7 @@ their dependencies. On Debian based systems, use the command</p>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from the source installer, build the
-globus_simple_ca and globus_gsi_cert_utils installer targets
+<code>globus_simple_ca</code> and <code>globus_gsi_cert_utils</code> installer targets
 with the command</p>
 </div>
 <div class="listingblock">
@@ -620,8 +620,8 @@ with the command</p>
 <div class="content">
 <div class="paragraph">
 <p>If you install the globus-simpleca Debian or RPM package, it will
-automatically create a <strong>simpleca</strong> user and a Simple CA in
-/var/lib/globus/simple_ca. If want to create a custom CA, or are
+automatically create a <strong><code>simpleca</code></strong> user and a Simple CA in
+<code>/var/lib/globus/simple_ca</code>. If want to create a custom CA, or are
 using the source installer, you&#8217;ll need to do the following. Otherwise,
 you can skip to the . If want to create a custom CA, or are using the
 source installer, you&#8217;ll need to do the following. Otherwise, you can
@@ -635,22 +635,22 @@ done.</p>
 <h3 id="_create_simpleca_administrator_account">2.1. Create SimpleCA Administrator Account</h3>
 <div class="paragraph">
 <p>Create a user to adminster the SimpleCA. You can use the the
-<strong>globus</strong> user you used to build GCT, or another user that you
+<strong><code>globus</code></strong> user you used to build GCT, or another user that you
 create. For the purposes of this document, we&#8217;ll assume a user named
-<strong>simpleca</strong>. Log in to that user, and run the
-<strong>grid-ca-create</strong> command. This will prompt for information needed
+<strong><code>simpleca</code></strong>. Log in to that user, and run the
+<strong><code>grid-ca-create</code></strong> command. This will prompt for information needed
 to name the certificate, how to contact the CA administrator, lifetime
 of the CA certificate, and passphrase, and will then generate the new CA
 certificate and private key. Command-line options described in
-<a href="../../simpleca/admin/index.html#grid-ca-create"><strong>grid-ca-create</strong></a> can
+<a href="../../simpleca/admin/index.html#grid-ca-create"><strong><code>grid-ca-create</code></strong></a> can
 be used to avoid some of these prompts.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_invoking_strong_grid_ca_create_strong">2.2. Invoking <strong>grid-ca-create</strong></h3>
+<h3 id="_invoking_strong_code_grid_ca_create_code_strong">2.2. Invoking <strong><code>grid-ca-create</code></strong></h3>
 <div class="paragraph">
 <p>If you are creating a SimpleCA for testing purposes, you can use the
-'-noint' command-line option to <strong>grid-ca-create</strong> to use the
+<em>-noint</em> command-line option to <strong><code>grid-ca-create</code></strong> to use the
 default values for all prompts like this:</p>
 </div>
 <div class="listingblock">
@@ -659,14 +659,14 @@ default values for all prompts like this:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This will create a SimpleCA in the <strong>simpleca</strong>'s home directory
-with the passphrase globus. You can then move on to the
+<p>This will create a SimpleCA in the <strong><code>simpleca</code></strong>'s home directory
+with the passphrase <code>globus</code>. You can then move on to the
 <a href="#simplecaAdmin-using">Using a SimpleCA</a> chapter of
 this document. For step-by-step details to create a customized SimpleCA,
 continue reading this chapter.</p>
 </div>
 <div class="paragraph">
-<p>As the <strong>simpleca</strong> user, run the command <strong>grid-ca-create</strong>,
+<p>As the <strong><code>simpleca</code></strong> user, run the command <strong><code>grid-ca-create</code></strong>,
 and you&#8217;ll see output like this:</p>
 </div>
 <div class="listingblock">
@@ -686,17 +686,17 @@ be kept in:
 </div>
 <div class="paragraph">
 <p>This intro screen shows the path that the CA will be created into (in
-this example, /home/simpleca/.globus/simpleCA). The other commands
+this example, <code>/home/simpleca/.globus/simpleCA</code>). The other commands
 needed by SimpleCA will automatically look in that path by default when
 invoked by the ). The other commands needed by SimpleCA will
 automatically look in that path by default when invoked by the
-<strong>simpleca</strong> user.</p>
+<strong><code>simpleca</code></strong> user.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="simpleca-subjectname">2.3. Configure the subject name</h3>
 <div class="paragraph">
-<p>The <strong>grid-ca-create</strong> program next prompts you for information
+<p>The <strong><code>grid-ca-create</code></strong> program next prompts you for information
 about the name of CA you wish to create:</p>
 </div>
 <div class="listingblock">
@@ -708,8 +708,8 @@ Do you want to keep this as the CA subject (y/n) [y]:</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To accept the default name, enter y. To choose a different name,
-type n, after which you will be prompted by</p>
+<p>To accept the default name, enter <code>y</code>. To choose a different name,
+type <code>n</code>, after which you will be prompted by</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -753,7 +753,7 @@ requests will be sent to be signed by the CA) [simpleca@elephant.globus.org]:</p
 <p>Enter the email address where you intend to receive certificate
 requests. It should be your real email address that you check, not the
 address of the globus user. When users request certificates with
-<strong>grid-cert-request</strong>, they will be instructed to send the request
+<strong><code>grid-cert-request</code></strong>, they will be instructed to send the request
 to this address.</p>
 </div>
 </div>
@@ -779,7 +779,7 @@ the CA certificate should last before it expires.
 this time expires, the CA certificate will have to be recreated.</p>
 </div>
 <div class="paragraph">
-<p>To accept the default, hit <strong>enter</strong>, or otherwise, enter a value in
+<p>To accept the default, hit <strong><code>enter</code></strong>, or otherwise, enter a value in
 days.</p>
 </div>
 </div>
@@ -803,14 +803,14 @@ Verifying - Enter PEM pass phrase:</pre>
 <div class="sect2">
 <h3 id="simpleca-packageoutput">2.7. SimpleCA Distribution Files</h3>
 <div class="paragraph">
-<p>Finally <strong>grid-ca-create</strong> will create a tarball containing the
+<p>Finally <strong><code>grid-ca-create</code></strong> will create a tarball containing the
 public information about the CA, including its public certificate,
 signing policy, and supported X.509v3 extensions. This information is
 needed on machines that will be trusting the CA, and also on machines
 which will be used to request certificates from this CA.</p>
 </div>
 <div class="paragraph">
-<p>Since we didn&#8217;t run in this example as root, <strong>grid-ca-create</strong> will
+<p>Since we didn&#8217;t run in this example as root, <strong><code>grid-ca-create</code></strong> will
 not be able to write the CA files to system paths, so it displays a
 warning message indicating that. We can use the tarball output here, or
 packages described below to install the CA support files on this and
@@ -830,7 +830,7 @@ Creating RPM source tarball... done
 </div>
 <div class="paragraph">
 <p>This information will be important for setting up other machines in your
-grid. The number '68ea3306' in the last line is known as your <strong>CA
+grid. The number <em>68ea3306</em> in the last line is known as your <strong>CA
 hash</strong>. It is an 8 digit hexadecimal string which is a hash of the
 subject name of the CA certificate.</p>
 </div>
@@ -845,7 +845,7 @@ package for compatibility with older versions of the Globus Toolkit.</p>
 <h3 id="simpleca-binarypkgs">2.8. Generating Binary CA Packages</h3>
 <div class="paragraph">
 <p>The
-<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong><code>grid-ca-package</code></strong></a>
 command can be used to generate RPM, debian, or legacy GPT packages for a
 SimpleCA, or for any other CA which is installed on a host. These packages can
 make it easy to distribute the CA certificate and policy to other hosts
@@ -867,7 +867,7 @@ Creating RPM binary.../home/simpleca/globus-simple-ca-68ea3306</pre>
 </div>
 <div class="paragraph">
 <p>The resulting rpm package will be placed in the current directory. As
-root, you can install this via the <strong>yum</strong> or <strong>rpm</strong> tools.
+root, you can install this via the <strong><code>yum</code></strong> or <strong><code>rpm</code></strong> tools.
 This package can then be installed on any RPM-based system.</p>
 </div>
 </div>
@@ -887,16 +887,16 @@ Creating debian binary...dpkg-buildpackage: export CFLAGS from dpkg-buildflags (
 </div>
 <div class="paragraph">
 <p>The resulting debian package will be placed in the current directory. As
-root, you can install this via the <strong>dpkg</strong> tool.</p>
+root, you can install this via the <strong><code>dpkg</code></strong> tool.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_generating_gpt_packages">2.8.3. Generating GPT Packages</h4>
 <div class="paragraph">
-<p>The <strong>grid-ca-package</strong> command can also generate GPT packages in
+<p>The <strong><code>grid-ca-package</code></strong> command can also generate GPT packages in
 the form similar to previous versions of the Globus Toolkit. This is
-done with the '-g' and '-b' command-line options. See
-<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>
+done with the <em>-g</em> and <em>-b</em> command-line options. See
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong><code>grid-ca-package</code></strong></a>
 for more details.</p>
 </div>
 </div>
@@ -910,12 +910,12 @@ for more details.</p>
 <div class="content">
 <div class="paragraph">
 <p>As a CA, your main task will be to sign certificates. To sign a
-certificate request, use the tool <strong>grid-ca-sign</strong>. This tool reads
+certificate request, use the tool <strong><code>grid-ca-sign</code></strong>. This tool reads
 a certificate request (such as those created by
-<a href="../../gsic/user/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>) and creates a
+<a href="../../gsic/user/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>) and creates a
 certificate signed by the CA certificate with the public key from in the
 certificate request. This indicates that you confirm that the identity
-of the certificate matches its name. You can use the <strong>openssl</strong>
+of the certificate matches its name. You can use the <strong><code>openssl</code></strong>
 command to view the contents of the certificate request.</p>
 </div>
 </div>
@@ -923,8 +923,8 @@ command to view the contents of the certificate request.</p>
 <div class="sect2">
 <h3 id="_examining_a_certificate_request">3.1. Examining a Certificate Request</h3>
 <div class="paragraph">
-<p>To examine a certificate request, use the command <strong>openssl req -text
--in </strong>, as shown in the following example.</p>
+<p>To examine a certificate request, use the command <strong><code>openssl req -text
+-in </code></strong>, as shown in the following example.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 1. Examine a Certificate Request</div>
@@ -967,8 +967,8 @@ Certificate Request:
 </div>
 <div class="paragraph">
 <p>In this case, you see a certificate request with the subject
-distinguished name o=Grid, OU=GlobusTest,
-OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User.</p>
+distinguished name <code>o=Grid, OU=GlobusTest,
+OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User</code>.</p>
 </div>
 </div>
 </div>
@@ -977,14 +977,14 @@ OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User.</p>
 <h3 id="_signing_a_certificate_request">3.2. Signing a Certificate Request</h3>
 <div class="paragraph">
 <p>If you are satisfied with the certificate request and are willing to
-sign it, use the <strong>grid-ca-sign</strong> command to do so. The command will
+sign it, use the <strong><code>grid-ca-sign</code></strong> command to do so. The command will
 store a copy of the newly signed certificate in the SimpleCA directory,
 so that you can keep track of what you&#8217;ve signed, and will also write it
-to the value of the '-out' parameter. Transmit this result file back to
+to the value of the <em>-out</em> parameter. Transmit this result file back to
 the user which requested the certificate.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2. Sign with <strong>grid-ca-sign</strong></div>
+<div class="title">Example 2. Sign with <strong><code>grid-ca-sign</code></strong></div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1008,7 +1008,7 @@ must communicate it back to the user, perhaps via email.</p>
 <h3 id="_revoking_a_certificate">3.3. Revoking a Certificate</h3>
 <div class="paragraph">
 <p>SimpleCA does not yet provide a convenient interface to revoke a signed
-certificate, but it can be done with the <strong>openssl</strong> command.</p>
+certificate, but it can be done with the <strong><code>openssl</code></strong> command.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 3. Revoke a certificate</div>
@@ -1029,7 +1029,7 @@ Data Base Updated</pre>
 List (CRL) for your CA, which will be a signed list of certificates
 which have been revoked. Sites which use your CA will need to keep the
 CRL up to date to be able to reject revoked certificates. This CRL can
-be generated with an <strong>openssl</strong> command. See ca(1) for details
+be generated with an <strong><code>openssl</code></strong> command. See <code>ca(1)</code> for details
 about how to control the CRL lifetime and other options.</p>
 </div>
 <div class="exampleblock">
@@ -1045,7 +1045,7 @@ Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The output file CAHASH.crl (based on the hash of your CA subject
+<p>The output file <code>CAHASH.crl</code> (based on the hash of your CA subject
 name) should be distributed to sites which trust your CA, so that they
 can install it into the trusted certificate directory.  (based on the
 hash of your CA subject name) should be distributed to sites which trust
@@ -1056,11 +1056,11 @@ directory.</p>
 <div class="sect2">
 <h3 id="_renewing_a_ca">3.4. Renewing a CA</h3>
 <div class="paragraph">
-<p>The <strong>openssl</strong> command can be used to renew a CA certificate. This
+<p>The <strong><code>openssl</code></strong> command can be used to renew a CA certificate. This
 will generate a new CA certificate with the same subject name and
 private key as before, but valid for a different time interval. This new
 certificate packaged and distributed as before using
-<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>.</p>
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong><code>grid-ca-package</code></strong></a>.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 5. Renew CA Certificate</div>
@@ -1132,50 +1132,50 @@ clients of the CA must also be modified.</p>
 <div class="sect2">
 <h3 id="_synopsis">5.2. SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-ca-create</strong> [-help ] [-h ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-ca-create</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description">5.3. Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-ca-create</strong> program creates a self-signed CA certificate
+<p>The <strong><code>grid-ca-create</code></strong> program creates a self-signed CA certificate
 and related files needed to use the CA with other GCT tools. The
-<strong>grid-ca-create</strong> program prompts for information to use to
+<strong><code>grid-ca-create</code></strong> program prompts for information to use to
 generate the CA certificate, but the prompts may be avoided by using the
 command line options.</p>
 </div>
 <div class="paragraph">
-<p>By default, the <strong>grid-ca-create</strong> program creates the self-signed
+<p>By default, the <strong><code>grid-ca-create</code></strong> program creates the self-signed
 CA certificate, installs it on the current machine in its trusted
 certificate directory, and creates a source tarball which can be used to
 generate an RPM package for the CA. If the RPM package is installed on a
 machine, users on that machine can create certificate requests for user,
 host, or service identity certificates to be signed by the CA
-certificate generated by running <strong>grid-ca-create</strong>.</p>
+certificate generated by running <strong><code>grid-ca-create</code></strong>.</p>
 </div>
 <div class="paragraph">
-<p>If run as a privileged user, the <strong>grid-ca-create</strong> program creates
+<p>If run as a privileged user, the <strong><code>grid-ca-create</code></strong> program creates
 the CA certificate and support files in
-${localstatedir}/lib/globus/simple_ca and the CA certificate and
+<code>${localstatedir}/lib/globus/simple_ca</code> and the CA certificate and
 signing policy are installed in the  and the CA certificate and signing
-policy are installed in the /etc/grid-security directory. Otherwise,
+policy are installed in the <code>/etc/grid-security</code> directory. Otherwise,
 the files are created in the  directory. Otherwise, the files are
-created in the ${HOME}/.globus/simpleCA directory.  directory.</p>
+created in the <code>${HOME}/.globus/simpleCA</code> directory.  directory.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-ca-create</strong> follows.
+<p>The full set of command-line options to <strong><code>grid-ca-create</code></strong> follows.
 In addition to these, unknown options will be passed to the
-<strong>openssl</strong> command when creating the self-signed certificate.</p>
+<strong><code>openssl</code></strong> command when creating the self-signed certificate.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -h, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-ca-create</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-ca-create</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-ca-create</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-ca-create</code></strong> command. The second form includes more details.</p>
 </dd>
 <dt class="hdlist1"><strong>-force</strong></dt>
 <dd>
@@ -1183,35 +1183,35 @@ In addition to these, unknown options will be passed to the
 </dd>
 <dt class="hdlist1"><strong>-noint</strong></dt>
 <dd>
-<p>Run in non-interactive mode. This will choose defaults for parameters or those specified on the command line without prompting. This option also implies '-force'.</p>
+<p>Run in non-interactive mode. This will choose defaults for parameters or those specified on the command line without prompting. This option also implies <em>-force</em>.</p>
 </dd>
-<dt class="hdlist1"><strong>-dir 'DIRECTORY'</strong></dt>
+<dt class="hdlist1"><strong>-dir <em>DIRECTORY</em></strong></dt>
 <dd>
-<p>Create the CA in 'DIRECTORY'. The 'DIRECTORY' must not exist prior to running <strong>grid-ca-create</strong>.</p>
+<p>Create the CA in <em>DIRECTORY</em>. The <em>DIRECTORY</em> must not exist prior to running <strong><code>grid-ca-create</code></strong>.</p>
 </dd>
-<dt class="hdlist1"><strong>-subject 'SUBJECT'</strong></dt>
+<dt class="hdlist1"><strong>-subject <em>SUBJECT</em></strong></dt>
 <dd>
-<p>Use 'SUBJECT' as the subject name of the self-signed CA to create. If this is not specified on the command-line, <strong>grid-ca-create</strong> will default to using the subject name <strong>cn=Globus Simple CA, ou='$HOSTNAME'</strong>.</p>
+<p>Use <em>SUBJECT</em> as the subject name of the self-signed CA to create. If this is not specified on the command-line, <strong><code>grid-ca-create</code></strong> will default to using the subject name <strong>cn=Globus Simple CA, ou=<em>$HOSTNAME</em></strong>.</p>
 </dd>
-<dt class="hdlist1"><strong>-email 'ADDRESS'</strong></dt>
+<dt class="hdlist1"><strong>-email <em>ADDRESS</em></strong></dt>
 <dd>
-<p>Use 'ADDRESS' as the email address of the CA. The default instructions generated by <strong>grid-ca-create</strong> tell users to mail the certificate request to this address. If this is not specified on the command-line, <strong>grid-ca-create</strong> will default to the $LOGNAME@$HOSTNAME</p>
+<p>Use <em>ADDRESS</em> as the email address of the CA. The default instructions generated by <strong><code>grid-ca-create</code></strong> tell users to mail the certificate request to this address. If this is not specified on the command-line, <strong><code>grid-ca-create</code></strong> will default to the <code>$LOGNAME</code><code>@</code><code>$HOSTNAME</code></p>
 </dd>
-<dt class="hdlist1"><strong>-days 'DAYS'</strong></dt>
+<dt class="hdlist1"><strong>-days <em>DAYS</em></strong></dt>
 <dd>
-<p>Set the default lifetime of the self-signed CA certificate to 'DAYS'. If not set, the <strong>grid-ca-create</strong> program will default to 1825 days (5 years).</p>
+<p>Set the default lifetime of the self-signed CA certificate to <em>DAYS</em>. If not set, the <strong><code>grid-ca-create</code></strong> program will default to <code>1825</code> days (5 years).</p>
 </dd>
-<dt class="hdlist1"><strong>-pass 'PASSWORD'</strong></dt>
+<dt class="hdlist1"><strong>-pass <em>PASSWORD</em></strong></dt>
 <dd>
-<p>Use the string 'PASSWORD' to protect the CA&#8217;s private key. This is useful for automating Simple CA, but may make it easier to compromise the CA if someone obtains a shell on the machine storing the CA&#8217;s private key.</p>
+<p>Use the string <em>PASSWORD</em> to protect the CA&#8217;s private key. This is useful for automating Simple CA, but may make it easier to compromise the CA if someone obtains a shell on the machine storing the CA&#8217;s private key.</p>
 </dd>
 <dt class="hdlist1"><strong>-nobuild</strong></dt>
 <dd>
-<p>Disable building a source tarball for distributing the CA&#8217;s public information to other machines. The source tarball can be created later by using the <strong>grid-ca-package</strong> command.</p>
+<p>Disable building a source tarball for distributing the CA&#8217;s public information to other machines. The source tarball can be created later by using the <strong><code>grid-ca-package</code></strong> command.</p>
 </dd>
 <dt class="hdlist1"><strong>-g</strong></dt>
 <dd>
-<p>Create a binary GPT package containing the new CA&#8217;s public information. The package will be created in the current working directory. This package can be deployed by with the <strong>gpt-install</strong> tool.</p>
+<p>Create a binary GPT package containing the new CA&#8217;s public information. The package will be created in the current working directory. This package can be deployed by with the <strong><code>gpt-install</code></strong> tool.</p>
 </dd>
 <dt class="hdlist1"><strong>-b</strong></dt>
 <dd>
@@ -1223,7 +1223,7 @@ In addition to these, unknown options will be passed to the
 <div class="sect2">
 <h3 id="_examples">5.4. Examples</h3>
 <div class="paragraph">
-<p>Create a simple CA in $HOME/SimpleCA</p>
+<p>Create a simple CA in <code>$HOME/SimpleCA</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1256,11 +1256,11 @@ In addition to these, unknown options will be passed to the
 <h3 id="_environment_variables">5.5. Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-ca-create</strong>:</p>
+<strong><code>grid-ca-create</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
 <dd>
 <p>Non-standard installation path of the Grid Community Toolkit.</p>
 </dd>
@@ -1270,8 +1270,8 @@ In addition to these, unknown options will be passed to the
 <div class="sect2">
 <h3 id="_see_also">5.6. See Also</h3>
 <div class="paragraph">
-<p>grid-cert-request(1), grid-ca-sign(1), grid-default-ca(1),
-grid-ca-package(1)</p>
+<p><code>grid-cert-request(1)</code>, <code>grid-ca-sign(1)</code>, <code>grid-default-ca(1)</code>,
+<code>grid-ca-package(1)</code></p>
 </div>
 </div>
 </div>
@@ -1288,65 +1288,65 @@ grid-ca-package(1)</p>
 <div class="sect2">
 <h3 id="_synopsis_2">6.2. SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-ca-package</strong> [-help ] [-h ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-ca-package</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_2">6.3. Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-ca-package</strong> utility creates a tarball containing an RPM
+<p>The <strong><code>grid-ca-package</code></strong> utility creates a tarball containing an RPM
 spec file and the files needed to use a CA with grid tools. It
 optionally will also create a GPT package for distributing a CA.</p>
 </div>
 <div class="paragraph">
-<p>By default, the <strong>grid-ca-package</strong> utility displays a list of
+<p>By default, the <strong><code>grid-ca-package</code></strong> utility displays a list of
 installed grid CA and prompts for which CA to package. It then creates a
 tarball containing the CA certificate, signing policy, CA configuration
 files, and an spec script to generate a binary RPM package containing
 the CA. If the CA hash is known prior to running
-<strong>grid-ca-package</strong>, it may provided as an argument to the '-ca'
-parameter to avoid prompting. <strong>grid-ca-package</strong> may also be used
-to package a SimpleCA directory, using the '-cadir' parameter.</p>
+<strong><code>grid-ca-package</code></strong>, it may provided as an argument to the <em>-ca</em>
+parameter to avoid prompting. <strong><code>grid-ca-package</code></strong> may also be used
+to package a SimpleCA directory, using the <em>-cadir</em> parameter.</p>
 </div>
 <div class="paragraph">
 <p>In addition to generating a spec script and tarball,
-<strong>grid-ca-package</strong> creates a GPT package if either the '-g' or '-b'
+<strong><code>grid-ca-package</code></strong> creates a GPT package if either the <em>-g</em> or <em>-b</em>
 options are used on the command-line. These packages may be used to
 distribute a CA and configuration to systems which do not support RPM
 packages.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>grid-ca-package</strong> utility writes the package tarballs to the
+<p>The <strong><code>grid-ca-package</code></strong> utility writes the package tarballs to the
 current working directory.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-ca-package</strong> follows.</p>
+<p>The full set of command-line options to <strong><code>grid-ca-package</code></strong> follows.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -h, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-ca-package</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-ca-package</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-ca-package</strong> command. The second form includes more details.</p>
+<p>Display the version number of the <strong><code>grid-ca-package</code></strong> command. The second form includes more details.</p>
 </dd>
-<dt class="hdlist1"><strong>-ca 'CA'</strong></dt>
+<dt class="hdlist1"><strong>-ca <em>CA</em></strong></dt>
 <dd>
-<p>Use the CA whose name matches the hash string 'CA'. When invoked with this option, <strong>grid-ca-package</strong> runs non-interactively.</p>
+<p>Use the CA whose name matches the hash string <em>CA</em>. When invoked with this option, <strong><code>grid-ca-package</code></strong> runs non-interactively.</p>
 </dd>
-<dt class="hdlist1"><strong>-cadir 'SIMPLECADIR'</strong></dt>
+<dt class="hdlist1"><strong>-cadir <em>SIMPLECADIR</em></strong></dt>
 <dd>
-<p>Use the SimpleCA located in 'SIMPLECADIR' When invoked with this option, <strong>grid-ca-package</strong> runs non-interactively.</p>
+<p>Use the SimpleCA located in <em>SIMPLECADIR</em> When invoked with this option, <strong><code>grid-ca-package</code></strong> runs non-interactively.</p>
 </dd>
 <dt class="hdlist1"><strong>-g</strong></dt>
 <dd>
-<p>Create a GPT binary package in addition to the RPM script tarball. This package may be installed on other systems using the <strong>gpt-install</strong> program.</p>
+<p>Create a GPT binary package in addition to the RPM script tarball. This package may be installed on other systems using the <strong><code>gpt-install</code></strong> program.</p>
 </dd>
 <dt class="hdlist1"><strong>-b</strong></dt>
 <dd>
-<p>Create a GPT binary package with GPT metadata located in the path expected by GPT 3.2 (used in Globus 2.0.0-5.0.x) instead of ${datadir}/globus/packages as used in Globus 5.2.x. This option overrides the  as used in Globus 5.2.x. This option overrides the '-g' command-line option.</p>
+<p>Create a GPT binary package with GPT metadata located in the path expected by GPT 3.2 (used in Globus 2.0.0-5.0.x) instead of <code>${datadir}/globus/packages</code> as used in Globus 5.2.x. This option overrides the  as used in Globus 5.2.x. This option overrides the <em>-g</em> command-line option.</p>
 </dd>
 <dt class="hdlist1"><strong>-r</strong></dt>
 <dd>
@@ -1362,7 +1362,7 @@ current working directory.</p>
 <div class="sect2">
 <h3 id="_examples_2">6.4. Examples</h3>
 <div class="paragraph">
-<p>Package a Simple CA with hash 0146c503</p>
+<p>Package a Simple CA with hash <code>0146c503</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1376,11 +1376,11 @@ Creating RPM source tarball... done
 <h3 id="_environment_variables_2">6.5. Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-ca-package</strong>:</p>
+<strong><code>grid-ca-package</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
 <dd>
 <p>Non-standard installation path of the Grid Community Toolkit.</p>
 </dd>
@@ -1390,8 +1390,8 @@ Creating RPM source tarball... done
 <div class="sect2">
 <h3 id="_see_also_2">6.6. See Also</h3>
 <div class="paragraph">
-<p>grid-cert-request(1), grid-ca-sign(1), grid-default-ca(1),
-grid-ca-create(1)</p>
+<p><code>grid-cert-request(1)</code>, <code>grid-ca-sign(1)</code>, <code>grid-default-ca(1)</code>,
+<code>grid-ca-create(1)</code></p>
 </div>
 </div>
 </div>
@@ -1408,63 +1408,63 @@ grid-ca-create(1)</p>
 <div class="sect2">
 <h3 id="_synopsis_3">7.2. SYNOPSIS</h3>
 <div class="paragraph">
-<p><strong>grid-ca-sign</strong> [-help ] [-h ] [-usage ] [-version ] [-versions ]</p>
+<p><strong><code>grid-ca-sign</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_description_3">7.3. Description</h3>
 <div class="paragraph">
-<p>The <strong>grid-ca-sign</strong> program signs a certificate based on a request
-file with a CA certificate created by <strong>grid-ca-create</strong>. The new
+<p>The <strong><code>grid-ca-sign</code></strong> program signs a certificate based on a request
+file with a CA certificate created by <strong><code>grid-ca-create</code></strong>. The new
 certificate is written to a file. If the CA has already signed a
 certificate with the same subject name as contained in the certificate
-request, it will refuse to sign the new request unless the '-force'
+request, it will refuse to sign the new request unless the <em>-force</em>
 option is provided on the command-line.</p>
 </div>
 <div class="paragraph">
-<p>If run as a privileged user, <strong>grid-ca-sign</strong> uses the CA
+<p>If run as a privileged user, <strong><code>grid-ca-sign</code></strong> uses the CA
 certificate and configuration located in
-${localstatedir}/lib/globus/simple_ca to sign the certificate. For a
+<code>${localstatedir}/lib/globus/simple_ca</code> to sign the certificate. For a
 non-privileged user,  to sign the certificate. For a non-privileged
-user, <strong>grid-ca-sign</strong> uses the CA certificate and configuration
-located in $HOME/.globus/simpleCA. The . The <strong>grid-ca-sign</strong>
+user, <strong><code>grid-ca-sign</code></strong> uses the CA certificate and configuration
+located in <code>$HOME/.globus/simpleCA</code>. The . The <strong><code>grid-ca-sign</code></strong>
 program an use a different CA configuration and certificate by using the
-'-dir' option.</p>
+<em>-dir</em> option.</p>
 </div>
 <div class="paragraph">
-<p>The full set of command-line options to <strong>grid-ca-sign</strong> follows. In
-addition to these, unknown options will be passed to the <strong>openssl</strong>
+<p>The full set of command-line options to <strong><code>grid-ca-sign</code></strong> follows. In
+addition to these, unknown options will be passed to the <strong><code>openssl</code></strong>
 command when creating the self-signed certificate.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>-help, -h, -usage</strong></dt>
 <dd>
-<p>Display the command-line options to <strong>grid-ca-sign</strong> and exit.</p>
+<p>Display the command-line options to <strong><code>grid-ca-sign</code></strong> and exit.</p>
 </dd>
 <dt class="hdlist1"><strong>-version, -versions</strong></dt>
 <dd>
-<p>Display the version number of the <strong>grid-ca-sign</strong> command. The second form includes details about the package containing <strong>grid-ca-sign</strong>.</p>
+<p>Display the version number of the <strong><code>grid-ca-sign</code></strong> command. The second form includes details about the package containing <strong><code>grid-ca-sign</code></strong>.</p>
 </dd>
-<dt class="hdlist1"><strong>-in 'REQUEST'</strong></dt>
+<dt class="hdlist1"><strong>-in <em>REQUEST</em></strong></dt>
 <dd>
-<p>Sign the request contained in the 'REQUEST' file.</p>
+<p>Sign the request contained in the <em>REQUEST</em> file.</p>
 </dd>
-<dt class="hdlist1"><strong>-out 'CERTIFICATE'</strong></dt>
+<dt class="hdlist1"><strong>-out <em>CERTIFICATE</em></strong></dt>
 <dd>
-<p>Write the signed request to the 'CERTIFICATE' file.</p>
+<p>Write the signed request to the <em>CERTIFICATE</em> file.</p>
 </dd>
 <dt class="hdlist1"><strong>-force</strong></dt>
 <dd>
-<p>Revoke any previously issued certificate with the same subject name as in the certificate request and issue a new certificate. Otherwise, <strong>grid-ca-sign</strong> will refuse to sign the request.</p>
+<p>Revoke any previously issued certificate with the same subject name as in the certificate request and issue a new certificate. Otherwise, <strong><code>grid-ca-sign</code></strong> will refuse to sign the request.</p>
 </dd>
-<dt class="hdlist1"><strong>-dir 'DIRECTORY'</strong></dt>
+<dt class="hdlist1"><strong>-dir <em>DIRECTORY</em></strong></dt>
 <dd>
-<p>Sign the certificate using the Simple CA certificate and configuration located in 'DIRECTORY' instead of the default.</p>
+<p>Sign the certificate using the Simple CA certificate and configuration located in <em>DIRECTORY</em> instead of the default.</p>
 </dd>
 <dt class="hdlist1"><strong>-openssl-help</strong></dt>
 <dd>
-<p>Print the command-line options available for the <strong>openssl ca</strong> command.</p>
+<p>Print the command-line options available for the <strong><code>openssl ca</code></strong> command.</p>
 </dd>
 </dl>
 </div>
@@ -1472,7 +1472,7 @@ command when creating the self-signed certificate.</p>
 <div class="sect2">
 <h3 id="_examples_3">7.4. Examples</h3>
 <div class="paragraph">
-<p>Sign a certificate request using the simple CA in $HOME/SimpleCA</p>
+<p>Sign a certificate request using the simple CA in <code>$HOME/SimpleCA</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1489,11 +1489,11 @@ The new signed certificate is at: /home/juser/.globus/simpleCA/newcerts/01.pem</
 <h3 id="_environment_variables_3">7.5. Environment Variables</h3>
 <div class="paragraph">
 <p>The following environment variables affect the execution of
-<strong>grid-ca-sign</strong>:</p>
+<strong><code>grid-ca-sign</code></strong>:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>GLOBUS_LOCATION</strong></dt>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
 <dd>
 <p>Non-standard installation path of the Grid Community Toolkit.</p>
 </dd>
@@ -1503,8 +1503,8 @@ The new signed certificate is at: /home/juser/.globus/simpleCA/newcerts/01.pem</
 <div class="sect2">
 <h3 id="_see_also_3">7.6. See Also</h3>
 <div class="paragraph">
-<p>grid-cert-request(1), grid-ca-create(1), grid-default-ca(1),
-grid-ca-package(1)</p>
+<p><code>grid-cert-request(1)</code>, <code>grid-ca-create(1)</code>, <code>grid-default-ca(1)</code>,
+<code>grid-ca-package(1)</code></p>
 </div>
 </div>
 </div>

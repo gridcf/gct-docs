@@ -544,11 +544,11 @@ Admin Guide</a> for MyProxy server configuration instructions.</p>
 <div class="content">
 <div class="paragraph">
 <p>A sample SysV-style boot script for MyProxy is installed at
-$GLOBUS_LOCATION/share/myproxy/etc.init.d.myproxy. To install on
+<code>$GLOBUS_LOCATION/share/myproxy/etc.init.d.myproxy</code>. To install on
 Linux, copy the file to . To install on Linux, copy the file to
-/etc/rc.d/init.d/myproxy and run  and run <strong>chkconfig --add
-myproxy</strong>. You will need to edit the file to set the
-GLOBUS_LOCATION environment variable correctly.  environment
+<code>/etc/rc.d/init.d/myproxy</code> and run  and run <strong><code>chkconfig --add
+myproxy</code></strong>. You will need to edit the file to set the
+<code>GLOBUS_LOCATION</code> environment variable correctly.  environment
 variable correctly.</p>
 </div>
 <div class="paragraph">
@@ -558,10 +558,10 @@ need to do the following as root:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Add the entries in $GLOBUS_LOCATION/share/myproxy/etc.services.modifications to the .modifications to the /etc/services or  or /etc/inet/services file. file.</p>
+<p>Add the entries in <code>$GLOBUS_LOCATION/share/myproxy/etc.services</code>.modifications to the .modifications to the <code>/etc/services</code> or  or <code>/etc/inet/services</code> file. file.</p>
 </li>
 <li>
-<p>Add the entries in $GLOBUS_LOCATION/share/myproxy/etc.inetd.conf.modifications to  to /etc/inetd.conf or  or /etc/inet/inetd.conf, or copy , or copy $GLOBUS_LOCATION/share/myproxy/etc.xinetd.myproxy to  to /etc/xinetd.d/myproxy. You&#8217;ll need to modify the paths in the file according to your installation.. You&#8217;ll need to modify the paths in the file according to your installation.</p>
+<p>Add the entries in <code>$GLOBUS_LOCATION/share/myproxy/etc.inetd.conf.modifications</code> to  to <code>/etc/inetd.conf</code> or  or <code>/etc/inet/inetd.conf</code>, or copy , or copy <code>$GLOBUS_LOCATION/share/myproxy/etc.xinetd.myproxy</code> to  to <code>/etc/xinetd.d/myproxy</code>. You&#8217;ll need to modify the paths in the file according to your installation.. You&#8217;ll need to modify the paths in the file according to your installation.</p>
 </li>
 <li>
 <p>Reactivate the inetd (or xinetd). This is typically accomplished by sending the SIGHUP signal to the daemon. Refer to the inetd or xinetd man page for your system.</p>
@@ -570,13 +570,13 @@ need to do the following as root:</p>
 </div>
 <div class="paragraph">
 <p>In addition, an example cron script is provided in
-$GLOBUS_LOCATION/share/myproxy/myproxy.cron for removing
+<code>$GLOBUS_LOCATION/share/myproxy/myproxy.cron</code> for removing
 expired/revoked credentials from the repository. You will need to edit
 the file to set the  for removing expired/revoked credentials from the
 repository. You will need to edit the file to set the
-GLOBUS_LOCATION environment variable correctly before installing in
+<code>GLOBUS_LOCATION</code> environment variable correctly before installing in
 (for example)  environment variable correctly before installing in (for
-example) /etc/cron.hourly. .</p>
+example) <code>/etc/cron.hourly</code>. .</p>
 </div>
 </div>
 </div>
@@ -592,7 +592,7 @@ example) /etc/cron.hourly. .</p>
 run the myproxy-server directly from your shell. If using a host
 certificate, you will need to run the myproxy-server as root. First,
 make sure your GCT environment is setup in your shell. Set the
-GLOBUS_LOCATION environment variable to the location of your MyProxy
+<code>GLOBUS_LOCATION</code> environment variable to the location of your MyProxy
 installation. Then, depending on your shell, run one of the following
 commands.  environment variable to the location of your MyProxy
 installation. Then, depending on your shell, run one of the following
@@ -606,7 +606,7 @@ commands.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>source $GLOBUS_LOCATION/etc/globus-user-env.csh</strong></p>
+<p><strong><code>source $GLOBUS_LOCATION/etc/globus-user-env.csh</code></strong></p>
 </div>
 </div>
 </div>
@@ -620,21 +620,21 @@ commands.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>. $GLOBUS_LOCATION/etc/globus-user-env.sh</strong></p>
+<p><strong><code>. $GLOBUS_LOCATION/etc/globus-user-env.sh</code></strong></p>
 </div>
 </div>
 </div>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Then, run <strong>$GLOBUS_LOCATION/sbin/myproxy-server -d</strong>. The '-d'
+<p>Then, run <strong><code>$GLOBUS_LOCATION/sbin/myproxy-server -d</code></strong>. The <em>-d</em>
 argument runs the myproxy-server in debug mode. It will write debugging
 messages to the terminal and exit after servicing a single request. You
 will need to start it once for each test request. In another shell, you
 can run the MyProxy client programs to test the server.</p>
 </div>
 <div class="paragraph">
-<p>If run without the '-d' argument, the myproxy-server program will start
+<p>If run without the <em>-d</em> argument, the myproxy-server program will start
 up and background itself. It accepts connections on TCP port 7512,
 forking off a separate child to handle each incoming connection. It logs
 information via the syslog service under the daemon facility.</p>
@@ -676,7 +676,7 @@ facility. Alternatively, run</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>myproxy-server -d</strong></p>
+<p><strong><code>myproxy-server -d</code></strong></p>
 </div>
 </div>
 </div>
@@ -708,7 +708,7 @@ messages to the terminal and exit after servicing a single request.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MyProxy server name does not match expected name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MyProxy server name does not match expected name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error appears as a mutual authentication failure or a server authentication failure, and the error message should list two names: the expected name of the MyProxy server and the actual authenticated name.
 +
 By default, the MyProxy clients expect the MyProxy server to be running with a
@@ -722,45 +722,45 @@ If the expected name contains an IP address, your system is unable to do a
 reverse lookup on that address to get the canonical hostname of the server,
 indicating either a problem with that machine&#8217;s DNS record or a problem with
 the resolver on your system.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the server name shown in the error message is acceptable, set the MYPROXY_SERVER_DN environment variable to that name to resolve the problem.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the server name shown in the error message is acceptable, set the <code>MYPROXY_SERVER_DN</code> environment variable to that name to resolve the problem.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Error in bind(): Address already in use</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Error in bind(): Address already in use</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error indicates that the myproxy-server port (default: 7512) is in use
   by another process, probably another myproxy-server instance. You cannot run
   multiple instances of the myproxy-server on the same network port.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If you want to run multiple instances of the myproxy-server on a machine, you
-  can specify different ports with the '-p' option, and then give the same '-p'
+  can specify different ports with the <em>-p</em> option, and then give the same <em>-p</em>
   option to the MyProxy commands to tell them to use the myproxy-server on that
   port.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">grid-proxy-init failed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grid-proxy-init failed</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This error indicates that the grid-proxy-init command failed when
    myproxy-init attempted to run it, which implies a problem with the
    underlying GCT installation.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Run <strong>grid-proxy-init -debug -verify</strong> for more information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <strong><code>grid-proxy-init -debug -verify</code></strong> for more information.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User not authorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>User not authorized</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An error from the myproxy-server saying you are "not authorized" to complete
-  an operation typically indicates that the myproxy-server.config file
+  an operation typically indicates that the <code>myproxy-server.config</code> file
   settings are restricting your access to the myproxy-server. It is possible
-  that the myproxy-server is running with the default myproxy-server.config
+  that the myproxy-server is running with the default <code>myproxy-server.config</code>
   file, which does not authorize any operations.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="../myproxy/admin/index.html#myproxy-configuring">Configuring MyProxy</a>
   for more information.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unable to verify remote side's credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Unable to verify remote side&#8217;s credentials</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An error saying "Unable to verify remote side&#8217;s credentials," "Couldn&#8217;t
   verify the remote certificate," or "alert bad certificate" often indicates
   that the client or server&#8217;s certificate is signed by
     an untrusted Certification Authority (CA). The client must have a CA
     certificate and signing policy file installed in
-    /etc/grid-security/certificates for the CA that signed the server&#8217;s
+    <code>/etc/grid-security/certificates</code> for the CA that signed the server&#8217;s
     certificate. Likewise, the server must have a CA certificate and
-    signing policy file installed in /etc/grid-security/certificates for
+    signing policy file installed in <code>/etc/grid-security/certificates</code> for
     the CA that signed the client&#8217;s certificate.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="../../gsic/admin/index.html#gsic-configuring">Configuring
     Certificates</a> for more information.</p></td>

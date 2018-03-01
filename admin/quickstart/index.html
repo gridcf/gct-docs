@@ -463,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <div class="title">Introduction</div>
 <p>This is a quickstart that shows a full installation of the Toolkit on
-two Fedora Linux machines, named <strong>elephant</strong> and <strong>donkey</strong>. It
+two Fedora Linux machines, named <strong><code>elephant</code></strong> and <strong><code>donkey</code></strong>. It
 shows the installation of prereqs, installation of the toolkit, creation
 of certificates, and configuration of services. It is designed to
 supplement the <a href="../../admin/install/index.html">main admin guide</a>,
@@ -482,30 +482,30 @@ following prompts:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>root# , root@donkey# </strong></dt>
+<dt class="hdlist1"><strong><code>root# </code>, <code>root@donkey# </code></strong></dt>
 <dd>
-<p>Run this command as the <strong>root</strong> super-user, on the <strong>elephant</strong> or <strong>donkey</strong> hosts respectively. You might have to use a command like <strong>su</strong>(8) or <strong>sudo</strong>(8) to start a root shell before executing the command.</p>
+<p>Run this command as the <strong><code>root</code></strong> super-user, on the <strong><code>elephant</code></strong> or <strong><code>donkey</code></strong> hosts respectively. You might have to use a command like <strong><code>su</code></strong>(8) or <strong><code>sudo</code></strong>(8) to start a root shell before executing the command.</p>
 </dd>
-<dt class="hdlist1"><strong>myproxy% </strong></dt>
+<dt class="hdlist1"><strong><code>myproxy% </code></strong></dt>
 <dd>
-<p>Run this command as the <strong>myproxy</strong> user, on the <strong>elephant</strong> host. This user is created automatically when the <strong>myproxy-server</strong> package is installed.</p>
+<p>Run this command as the <strong><code>myproxy</code></strong> user, on the <strong><code>elephant</code></strong> host. This user is created automatically when the <strong><code>myproxy-server</code></strong> package is installed.</p>
 </dd>
-<dt class="hdlist1"><strong>quser% , quser@donkey% </strong></dt>
+<dt class="hdlist1"><strong><code>quser% </code>, <code>quser@donkey% </code></strong></dt>
 <dd>
-<p>Run this command as the normal user account you are intending to interact with your GCT sevices, on the <strong>elephant</strong> or <strong>donkey</strong> hosts. In this document, we use the <strong>quser</strong> accout for this, but if you have another user, you can use it for that purpose.</p>
+<p>Run this command as the normal user account you are intending to interact with your GCT sevices, on the <strong><code>elephant</code></strong> or <strong><code>donkey</code></strong> hosts. In this document, we use the <strong><code>quser</code></strong> accout for this, but if you have another user, you can use it for that purpose.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Commands themselves will be typeset as <strong>run-this-command
--with-arguments</strong>, and responses to the commands like this Some
-Response Text. If there is some portion of a command which should be
+<p>Commands themselves will be typeset as <strong><code>run-this-command
+-with-arguments</code></strong>, and responses to the commands like this <code>Some
+Response Text</code>. If there is some portion of a command which should be
 replaced by value, such as a version number, it will be typeset like
-this: 'REPLACEME'.</p>
+this: <em>REPLACEME</em>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, in some cases you will be prompted for a passphrase. When that
-occurs, the entry of the passphrase will be indicated by pass:[******],
+occurs, the entry of the passphrase will be indicated by <code>******</code>,
 even though nothing will be printed to the screen.</p>
 </div>
 </div>
@@ -519,7 +519,7 @@ used on other operating systems. In this quickstart, we will be
 installing RPM packages. Thus, it is a prerequisite for following this
 quickstart that you are running a distribution for which we provide
 RPMs. If you are running a supported Debian or Ubuntu system, the
-process is very similar, but you&#8217;ll need to use the <strong>apt-get</strong> or
+process is very similar, but you&#8217;ll need to use the <strong><code>apt-get</code></strong> or
 similar tools to install the packages. For the source installer, there
 is more work involved, and you&#8217;ll need to consult the full installation
 guide.</p>
@@ -562,7 +562,7 @@ package from the link above and install it with the command:</p>
 </div>
 <div class="paragraph">
 <p>Once you&#8217;ve installed the Globus repository package, you can use your
-operating system&#8217;s packaging tools: <strong>yum</strong> or <strong>apt-get</strong>, to
+operating system&#8217;s packaging tools: <strong><code>yum</code></strong> or <strong><code>apt-get</code></strong>, to
 install the Globus components.</p>
 </div>
 <div class="admonitionblock important">
@@ -643,7 +643,7 @@ users to run the GCT services.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For Debian and Ubuntu systems, use <strong>apt-get</strong> or <strong>aptitude</strong> or another package manager to install the same packages as in the <strong>yum</strong> command above.</p>
+<p>For Debian and Ubuntu systems, use <strong><code>apt-get</code></strong> or <strong><code>aptitude</code></strong> or another package manager to install the same packages as in the <strong><code>yum</code></strong> command above.</p>
 </div>
 </td>
 </tr>
@@ -680,7 +680,7 @@ certificates.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>When the <strong>globus-simple-ca</strong> package is installed, it will
+<p>When the <strong><code>globus-simple-ca</code></strong> package is installed, it will
 automatically create a new Certificate Authority and deploy its public
 certificate into the globus trusted certificate directory. It will also
 create a host certificate and key, so that the GCT services will be
@@ -708,9 +708,9 @@ root# install -o myproxy -m 600 \
 instructions at
 <a href="http://grid.ncsa.illinois.edu/myproxy/fromscratch.html#server">http://grid.ncsa.illinois.edu/myproxy/fromscratch.html#server</a>.
 This will be used to store our user&#8217;s certificates. In order to enable
-myproxy to use the SimpleCA, modify the /etc/myproxy-server.config
+myproxy to use the SimpleCA, modify the <code>/etc/myproxy-server.config</code>
 file, by uncommenting every line in the section  file, by uncommenting
-every line in the section Complete Sample Policy #1 such that
+every line in the section <code>Complete Sample Policy #1</code> such that
 section looks like this <a href="myproxy-server.config">myproxy
 configuration</a>:</p>
 </div>
@@ -760,7 +760,7 @@ Starting myproxy-server (via systemctl):                   [  OK  ]</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For Debian and Ubuntu systems, use the <strong>invoke-rc.d</strong> command in place of <strong>service</strong>.</p>
+<p>For Debian and Ubuntu systems, use the <strong><code>invoke-rc.d</code></strong> command in place of <strong><code>service</code></strong>.</p>
 </div>
 </td>
 </tr>
@@ -791,7 +791,7 @@ Nov 02 09:07:51 elephant.globus.org myproxy-server[1205]: Starting myproxy-se...
 </div>
 <div class="paragraph">
 <p>The important thing to see in the above is that the process is in the
-active (running) state. [NOTE]</p>
+<code>active (running)</code> state. [NOTE]</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -801,7 +801,7 @@ active (running) state. [NOTE]</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As a final sanity check, we&#8217;ll make sure the myproxy TCP port 7512
+<p>As a final sanity check, we&#8217;ll make sure the myproxy TCP port <code>7512</code>
 is in use via the netstat command:</p>
 </div>
 <div class="listingblock">
@@ -814,15 +814,15 @@ tcp        0      0 0.0.0.0:7512            0.0.0.0:*               LISTEN</pre>
 <h4 id="q-user-credential">User Credentials</h4>
 <div class="paragraph">
 <p>We&#8217;ll need to specify a full name and a login name for the user we&#8217;ll
-create credentials for. We&#8217;ll be using the QuickStart User as the
-user&#8217;s name and <strong>quser</strong> as user&#8217;s account name. You can use this
+create credentials for. We&#8217;ll be using the <code>QuickStart User</code> as the
+user&#8217;s name and <strong><code>quser</code></strong> as user&#8217;s account name. You can use this
 as well if you first create a quser unix account. Otherwise, you can use
-another local user account. Run the <strong>myproxy-admin-adduser</strong>
-command as the <strong>myproxy</strong> user to create the credentials. You&#8217;ll be
+another local user account. Run the <strong><code>myproxy-admin-adduser</code></strong>
+command as the <strong><code>myproxy</code></strong> user to create the credentials. You&#8217;ll be
 prompted for a passphrase, which must be at least 6 characters long, to
 encrypt the private key for the user. You must communicate this
 passphrase to the user who will be accessing this credential. He can use
-the <strong>myproxy-change-passphrase</strong> command to change the passphrase.</p>
+the <strong><code>myproxy-change-passphrase</code></strong> command to change the passphrase.</p>
 </div>
 <div class="paragraph">
 <p>The command to create the myproxy credential for the user is</p>
@@ -851,10 +851,10 @@ Certificate subject is:
 <p>Finally, we&#8217;ll create a grid map file entry for this credential, so that
 the holder of that credential can use it to access globus services.
 We&#8217;ll use the
-<a href="../../gsic/user/index.html#grid-mapfile-add-entry"><strong>grid-mapfile-add-entry</strong></a>
+<a href="../../gsic/user/index.html#grid-mapfile-add-entry"><strong><code>grid-mapfile-add-entry</code></strong></a>
 program for this. We need to use the exact string from the output above
-as the parameter to the '-dn' command-line option, and the local account
-name of user to authorize as the parameter to the '-ln' command-line
+as the parameter to the <em>-dn</em> command-line option, and the local account
+name of user to authorize as the parameter to the <em>-ln</em> command-line
 option.</p>
 </div>
 <div class="listingblock">
@@ -901,10 +901,10 @@ tcp        0      0 0.0.0.0:2811            0.0.0.0:*               LISTEN</pre>
 </div>
 <div class="paragraph">
 <p>Now the GridFTP server is waiting for a request, so we&#8217;ll generate a
-proxy from the myproxy service by using <strong>myproxy-logon</strong> and then
-copy a file from the GridFTP server with the <strong>globus-url-copy</strong>
+proxy from the myproxy service by using <strong><code>myproxy-logon</code></strong> and then
+copy a file from the GridFTP server with the <strong><code>globus-url-copy</code></strong>
 command. We&#8217;ll use the passphrase used to create the myproxy credential
-for <strong>quser</strong>.</p>
+for <strong><code>quser</code></strong>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1026,19 +1026,19 @@ Trust roots have been installed in /etc/grid-security/certificates/.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This allows clients and services on <strong>donkey</strong> to trust certificates
-which are signed by the CA on <strong>elephant</strong> machine. If we weren&#8217;t
-going to run any GCT services on <strong>donkey</strong>, then we could stop
-here. Users on <strong>donkey</strong> could acquire credentials using the
-<strong>myproxy-logon</strong> command and perform file transfers and execute
-jobs using the <strong>globus-url-copy</strong> and <strong>globus-job-run</strong>
+<p>This allows clients and services on <strong><code>donkey</code></strong> to trust certificates
+which are signed by the CA on <strong><code>elephant</code></strong> machine. If we weren&#8217;t
+going to run any GCT services on <strong><code>donkey</code></strong>, then we could stop
+here. Users on <strong><code>donkey</code></strong> could acquire credentials using the
+<strong><code>myproxy-logon</code></strong> command and perform file transfers and execute
+jobs using the <strong><code>globus-url-copy</code></strong> and <strong><code>globus-job-run</code></strong>
 commands. However, we&#8217;ll continue to configure the GridFTP and GRAM5
-services on <strong>donkey</strong> as well.</p>
+services on <strong><code>donkey</code></strong> as well.</p>
 </div>
 <div class="paragraph">
 <p>We&#8217;re going to create the host certificate for donkey, but we create it
 on elephant, so that we don&#8217;t have to copy the certificate request
-between machines. The <strong>myproxy-admin-addservice</strong> command will
+between machines. The <strong><code>myproxy-admin-addservice</code></strong> command will
 prompt for a passphrase for this credential. We will use this passphrase
 to retrieve the credential on donkey.</p>
 </div>
@@ -1070,8 +1070,8 @@ Credentials for quser have been stored in
 </div>
 </div>
 <div class="paragraph">
-<p>At this point, we no longer need to have <strong>donkey</strong>'s host
-certificate on <strong>elephant</strong>'s myproxy server, so we&#8217;ll delete it.</p>
+<p>At this point, we no longer need to have <strong><code>donkey</code></strong>'s host
+certificate on <strong><code>elephant</code></strong>'s myproxy server, so we&#8217;ll delete it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1081,7 +1081,7 @@ MyProxy credential 'donkey.globus.org' for user donkey was successfully removed.
 </div>
 <div class="paragraph">
 <p>And as a final setup, we&#8217;ll add quser&#8217;s credential to the grid-mapfile
-on <strong>donkey</strong>, so that the <strong>quser</strong> account can access services
+on <strong><code>donkey</code></strong>, so that the <strong><code>quser</code></strong> account can access services
 there as well.</p>
 </div>
 <div class="listingblock">
@@ -1123,7 +1123,7 @@ Started GridFTP Server                                     [  OK  ]</pre>
 <div class="paragraph">
 <p>First, we&#8217;ll retrive a proxy credential from the myproxy server so that
 the user on donkey can interact with the GCT services. Here we&#8217;ll use
-the same passphrase as we used to create the <strong>quser</strong> credential.</p>
+the same passphrase as we used to create the <strong><code>quser</code></strong> credential.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1174,10 +1174,10 @@ GridFTP admin firewall doc.</a></p>
 <h3 id="q-gram2">Setting up your second machine: GRAM5</h3>
 <div class="paragraph">
 <p>Now we can submit a staging job. This job will copy the
-<strong>/bin/echo</strong> program from donkey to a file called /tmp/my_echo.
+<strong><code>/bin/echo</code></strong> program from donkey to a file called <code>/tmp/my_echo</code>.
 Then it runs it with some arguments, and captures the stderr/stdout.
 Finally, it will clean up the . Then it runs it with some arguments, and
-captures the stderr/stdout. Finally, it will clean up the my_echo
+captures the stderr/stdout. Finally, it will clean up the <code>my_echo</code>
 file when execution is done.  file when execution is done.</p>
 </div>
 <div class="listingblock">

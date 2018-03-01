@@ -507,7 +507,7 @@ installation sections of component documentation.</p>
 to branch or checkout the toolkit source code.</p>
 </div>
 <div class="paragraph">
-<p>After checking out the toolkit, run <strong>autoreconf -i</strong> in the
+<p>After checking out the toolkit, run <strong><code>autoreconf -i</code></strong> in the
 checkout root to generate configure scripts for building the toolkit
 components.</p>
 </div>
@@ -554,8 +554,8 @@ Installation</a></p>
 <div class="paragraph">
 <p>If you need to build an updated package that has been released without a
 source installer (for example, a security update to a package, or a new
-version of MyProxy,) you can use the familiar <strong>configure; make; make
-install</strong> sequence to rebuild that package.</p>
+version of MyProxy,) you can use the familiar <strong><code>configure; make; make
+install</code></strong> sequence to rebuild that package.</p>
 </div>
 </div>
 </div>
@@ -687,7 +687,7 @@ to descriptions of the more common driver environment variables:</p>
 </dd>
 <dt class="hdlist1"><strong>GLOBUS_THREAD_MODEL</strong></dt>
 <dd>
-<p>Set to the name of a thread model to control the operation of the GCT event driver. Valid values are (depending on the platform) none for non-threaded operation (the default), pthread for POSIX threads, or windows for Windows threads.</p>
+<p>Set to the name of a thread model to control the operation of the GCT event driver. Valid values are (depending on the platform) <code>none</code> for non-threaded operation (the default), <code>pthread</code> for POSIX threads, or <code>windows</code> for Windows threads.</p>
 </dd>
 </dl>
 </div>
@@ -719,13 +719,13 @@ to descriptions of the more common driver environment variables:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>X509_USER_PROXY specifies the path to the proxy credential. If
-X509_USER_PROXY is not set, the proxy credential is created (by
-<strong>grid-proxy-init</strong>) and searched for (by client programs) in an
+<p><code>X509_USER_PROXY</code> specifies the path to the proxy credential. If
+<code>X509_USER_PROXY</code> is not set, the proxy credential is created (by
+<strong><code>grid-proxy-init</code></strong>) and searched for (by client programs) in an
 operating-system-dependent local temporary file.</p>
 </div>
 <div class="paragraph">
-<p>X509_USER_CERT and X509_USER_KEY specify the path to the end
+<p><code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> specify the path to the end
 entity (user, service, or host) certificate and corresponding private
 key. The paths to the certificate and key files are determined as
 follows:</p>
@@ -736,16 +736,16 @@ follows:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If X509_USER_CERT and X509_USER_KEY exist and contain a valid certificate and key, those files are used.</p>
+<p>If <code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files /etc/grid-security/service/servicecert.pem and  and /etc/grid-security/service/servicekey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+<p>Otherwise, if the files <code>/etc/grid-security/service/servicecert.pem</code> and  and <code>/etc/grid-security/service/servicekey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files $GLOBUS_LOCATION/etc/grid-security/service/servicecert.pem and  and $GLOBUS_LOCATION/etc/grid-security/service/servicekey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+<p>Otherwise, if the files <code>$GLOBUS_LOCATION/etc/grid-security/service/servicecert.pem</code> and  and <code>$GLOBUS_LOCATION/etc/grid-security/service/servicekey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files service/servicecert.pem and  and service/servicekey.pem in the user&#8217;s  in the user&#8217;s .globus directory exist and contain a valid certificate and key, those files are used. directory exist and contain a valid certificate and key, those files are used.</p>
+<p>Otherwise, if the files <code>service/servicecert.pem</code> and  and <code>service/servicekey.pem</code> in the user&#8217;s  in the user&#8217;s <code>.globus</code> directory exist and contain a valid certificate and key, those files are used. directory exist and contain a valid certificate and key, those files are used.</p>
 </li>
 </ol>
 </div>
@@ -755,16 +755,16 @@ follows:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If X509_USER_CERT and X509_USER_KEY exist and contain a valid certificate and key, those files are used.</p>
+<p>If <code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files /etc/grid-security/hostcert.pem and  and /etc/grid-security/hostkey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+<p>Otherwise, if the files <code>/etc/grid-security/hostcert.pem</code> and  and <code>/etc/grid-security/hostkey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files $GLOBUS_LOCATION/etc/hostcert.pem and  and $GLOBUS_LOCATION/etc/hostkey.pem exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+<p>Otherwise, if the files <code>$GLOBUS_LOCATION/etc/hostcert.pem</code> and  and <code>$GLOBUS_LOCATION/etc/hostkey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files hostcert.pem and  and hostkey.pem in the user&#8217;s  in the user&#8217;s .globus directory, exist and contain a valid certificate and key, those files are used. directory, exist and contain a valid certificate and key, those files are used.</p>
+<p>Otherwise, if the files <code>hostcert.pem</code> and  and <code>hostkey.pem</code> in the user&#8217;s  in the user&#8217;s <code>.globus</code> directory, exist and contain a valid certificate and key, those files are used. directory, exist and contain a valid certificate and key, those files are used.</p>
 </li>
 </ol>
 </div>
@@ -774,13 +774,13 @@ follows:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If X509_USER_CERT and X509_USER_KEY exist and contain a valid certificate and key, those files are used.</p>
+<p>If <code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> exist and contain a valid certificate and key, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if the files usercert.pem and  and userkey.pem exist in the user&#8217;s  exist in the user&#8217;s .globus directory, those files are used. directory, those files are used.</p>
+<p>Otherwise, if the files <code>usercert.pem</code> and  and <code>userkey.pem</code> exist in the user&#8217;s  exist in the user&#8217;s <code>.globus</code> directory, those files are used. directory, those files are used.</p>
 </li>
 <li>
-<p>Otherwise, if a PKCS-12 file called usercred.p12 exists in the user&#8217;s  exists in the user&#8217;s .globus directory, the certificate and key are read from that file. directory, the certificate and key are read from that file.</p>
+<p>Otherwise, if a PKCS-12 file called <code>usercred.p12</code> exists in the user&#8217;s  exists in the user&#8217;s <code>.globus</code> directory, the certificate and key are read from that file. directory, the certificate and key are read from that file.</p>
 </li>
 </ol>
 </div>
@@ -788,11 +788,11 @@ follows:</p>
 <div class="sect4">
 <h5 id="gsic-env-gridmapfile">Gridmap file</h5>
 <div class="paragraph">
-<p>GRIDMAP specifies the path to the grid map file, which is used to
+<p><code>GRIDMAP</code> specifies the path to the grid map file, which is used to
 map distinguished names (found in certificates) to local names (such as
 login accounts). The location of the grid map file is determined as
 follows:
-. If the GRIDMAP environment variable is set, the grid map file location is the value of that environment variable.</p>
+. If the <code>GRIDMAP</code> environment variable is set, the grid map file location is the value of that environment variable.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -801,10 +801,10 @@ follows:
 <div class="ulist">
 <ul>
 <li>
-<p>If the user is root (uid 0), then the grid map file is /etc/grid-security/grid-mapfile..</p>
+<p>If the user is root (uid 0), then the grid map file is <code>/etc/grid-security/grid-mapfile</code>..</p>
 </li>
 <li>
-<p>Otherwise, the grid map file is $HOME/.gridmap..</p>
+<p>Otherwise, the grid map file is <code>$HOME/.gridmap</code>..</p>
 </li>
 </ul>
 </div>
@@ -815,24 +815,24 @@ follows:
 <div class="sect4">
 <h5 id="gsic-env-trustedca">Trusted CAs directory</h5>
 <div class="paragraph">
-<p>X509_CERT_DIR is used to specify the path to the trusted
+<p><code>X509_CERT_DIR</code> is used to specify the path to the trusted
 certificates directory. This directory contains information about which
 CAs are trusted (including the CA certificates themselves) and, in some
-cases, configuration information used by <strong>grid-cert-request</strong> to
+cases, configuration information used by <strong><code>grid-cert-request</code></strong> to
 formulate certificate requests. The location of the trusted certificates
 directory is determined as follows:
-. If the X509_CERT_DIR environment variable is set, the trusted certificates directory is the value of that environment variable.</p>
+. If the <code>X509_CERT_DIR</code> environment variable is set, the trusted certificates directory is the value of that environment variable.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Otherwise, if $HOME/.globus/certificates exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
+<p>Otherwise, if <code>$HOME/.globus/certificates</code> exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
 </li>
 <li>
-<p>Otherwise, if /etc/grid-security/certificates exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
+<p>Otherwise, if <code>/etc/grid-security/certificates</code> exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
 </li>
 <li>
-<p>Finally, if $GLOBUS_LOCATION/share/certificates exists, then it is the trusted certificates directory. exists, then it is the trusted certificates directory.</p>
+<p>Finally, if <code>$GLOBUS_LOCATION/share/certificates</code> exists, then it is the trusted certificates directory. exists, then it is the trusted certificates directory.</p>
 </li>
 </ol>
 </div>
@@ -840,23 +840,23 @@ directory is determined as follows:
 <div class="sect4">
 <h5 id="gsic-env-gsiauthz">GSI authorization callout configuration file</h5>
 <div class="paragraph">
-<p>GSI_AUTHZ_CONF is used to specify the path to the GSI authorization
+<p><code>GSI_AUTHZ_CONF</code> is used to specify the path to the GSI authorization
 callout configuration file. This file is used to configure authorization
 callouts used by both the gridmap and the authorization API. The
 location of the GSI authorization callout configuration file is
 determined as follows:
-. If the GSI_AUTHZ_CONF environment variable is set, the authorization callout configuration file location is the value of this environment variable.</p>
+. If the <code>GSI_AUTHZ_CONF</code> environment variable is set, the authorization callout configuration file location is the value of this environment variable.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Otherwise, if /etc/grid-security/gsi-authz.conf exists, then this file is used. exists, then this file is used.</p>
+<p>Otherwise, if <code>/etc/grid-security/gsi-authz.conf</code> exists, then this file is used. exists, then this file is used.</p>
 </li>
 <li>
-<p>Otherwise, if $GLOBUS_LOCATION/etc/gsi-authz.conf exists, then this file is used. exists, then this file is used.</p>
+<p>Otherwise, if <code>$GLOBUS_LOCATION/etc/gsi-authz.conf</code> exists, then this file is used. exists, then this file is used.</p>
 </li>
 <li>
-<p>Finally, if $HOME/.gsi-authz.conf exists, then this file is used. exists, then this file is used.</p>
+<p>Finally, if <code>$HOME/.gsi-authz.conf</code> exists, then this file is used. exists, then this file is used.</p>
 </li>
 </ol>
 </div>
@@ -864,23 +864,23 @@ determined as follows:
 <div class="sect4">
 <h5 id="gsic-env-gaaauthz">GAA (Generic Authorization and Access control) configuration file</h5>
 <div class="paragraph">
-<p>GSI_GAA_CONF is used to specify the path to the GSI GAA (Generic
+<p><code>GSI_GAA_CONF</code> is used to specify the path to the GSI GAA (Generic
 Authorization and Access control)
         configuration file. This file
 is used to configure policy language specific plugins to the GAA-API.
 The location of the GSI GAA configuration file is determined as follows:
-. If the GSI_GAA_CONF environment variable is set, the GAA configuration file location is the value of this environment variable.</p>
+. If the <code>GSI_GAA_CONF</code> environment variable is set, the GAA configuration file location is the value of this environment variable.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Otherwise, if /etc/grid-security/gsi-gaa.conf exists, then this file is used. exists, then this file is used.</p>
+<p>Otherwise, if <code>/etc/grid-security/gsi-gaa.conf</code> exists, then this file is used. exists, then this file is used.</p>
 </li>
 <li>
-<p>Otherwise, if $GLOBUS_LOCATION/etc/gsi-gaa.conf exists, then this file is used. exists, then this file is used.</p>
+<p>Otherwise, if <code>$GLOBUS_LOCATION/etc/gsi-gaa.conf</code> exists, then this file is used. exists, then this file is used.</p>
 </li>
 <li>
-<p>Finally, if $HOME/.gsi-gaa.conf exists, then this file is used. exists, then this file is used.</p>
+<p>Finally, if <code>$HOME/.gsi-gaa.conf</code> exists, then this file is used. exists, then this file is used.</p>
 </li>
 </ol>
 </div>
@@ -888,22 +888,22 @@ The location of the GSI GAA configuration file is determined as follows:
 <div class="sect4">
 <h5 id="gsic-env-gridsecurity">Grid security directory</h5>
 <div class="paragraph">
-<p>GRID_SECURITY_DIR specifies a path to a directory containing
+<p><code>GRID_SECURITY_DIR</code> specifies a path to a directory containing
 configuration files that specify default values to be placed in
 certificate requests. This environment variable is used only by the
-<strong>grid-cert-request</strong> and <strong>grid-default-ca</strong> commands.</p>
+<strong><code>grid-cert-request</code></strong> and <strong><code>grid-default-ca</code></strong> commands.</p>
 </div>
 <div class="paragraph">
 <p>The location of the grid security directory is determined as follows:
-. If the GRID_SECURITY_DIR environment variable is set, the grid security directory is the value of that environment variable.</p>
+. If the <code>GRID_SECURITY_DIR</code> environment variable is set, the grid security directory is the value of that environment variable.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If the configuration files exist in /etc/grid-security, the grid security directory is that directory., the grid security directory is that directory.</p>
+<p>If the configuration files exist in <code>/etc/grid-security</code>, the grid security directory is that directory., the grid security directory is that directory.</p>
 </li>
 <li>
-<p>if the configuration files exist in $GLOBUS_LOCATION/etc, the grid security directory is that directory., the grid security directory is that directory.</p>
+<p>if the configuration files exist in <code>$GLOBUS_LOCATION/etc</code>, the grid security directory is that directory., the grid security directory is that directory.</p>
 </li>
 </ol>
 </div>
@@ -911,7 +911,7 @@ certificate requests. This environment variable is used only by the
 <div class="sect4">
 <h5 id="gsic-env-tls">Using TLS</h5>
 <div class="paragraph">
-<p>GLOBUS_GSSAPI_FORCE_TLS specifies whether to use TLS by default when
+<p><code>GLOBUS_GSSAPI_FORCE_TLS</code> specifies whether to use TLS by default when
 establishing a security context. The default behavior if this is not set
 is to use SSLv3.</p>
 </div>
@@ -919,14 +919,14 @@ is to use SSLv3.</p>
 <div class="sect4">
 <h5 id="gsic-env-name">Name Comparisons</h5>
 <div class="paragraph">
-<p>GLOBUS_GSSAPI_NAME_COMPATIBILITY specifies what name matching
+<p><code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code> specifies what name matching
 algorithms are supported by GSSAPI for mutual authentication and
-<strong>gss_compare_name</strong>. This variable may be set to any of the
+<strong><code>gss_compare_name</code></strong>. This variable may be set to any of the
 following values:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">STRICT_GT2</dt>
+<dt class="hdlist1"><code>STRICT_GT2</code></dt>
 <dd>
 <p>Strictly backward-compatible with GT 2.0 name matching. X.509
 subjectAltName values are ignored. Names with hyphens are treated as
@@ -935,14 +935,14 @@ wildcarded as described in the
 considerations</a> documentation. Name matching will rely on canonical host
 name associated with connection IP addresses.</p>
 </dd>
-<dt class="hdlist1">STRICT_RFC2818</dt>
+<dt class="hdlist1"><code>STRICT_RFC2818</code></dt>
 <dd>
 <p>    Support <a href="http://www.ietf.org/rfc/rfc2818.txt">RFC 2818</a> server identity
     processing. Hyphen characters are treated as normal part of a host name.
     DNSName and IPAddress subjectAltName extensions are matched against the
     host and port passed to GSSAPI. If subjectAltName is present, X.509
     SubjectName is ignored.
-HYBRID:
+<code>HYBRID</code>:
     Support a hybrid of the two previous name matching algorithms, liberally
     matching both hyphen wildcards, canonical names associated with IP
     addresses, and subjectAltName extensions.</p>
@@ -950,7 +950,7 @@ HYBRID:
 </dl>
 </div>
 <div class="paragraph">
-<p>If this variable is not set, the HYBRID behavior is used.</p>
+<p>If this variable is not set, the <code>HYBRID</code> behavior is used.</p>
 </div>
 </div>
 </div>
@@ -1082,10 +1082,10 @@ described below may be useful.</p>
 <p>Your <strong>user</strong> account, which will be used to run the client programs.</p>
 </li>
 <li>
-<p>A <strong>simpleca</strong> account, which will be used to administer the Simple CA. This is created automatically if you install SimpleCA from RPM or Debian packages.</p>
+<p>A <strong><code>simpleca</code></strong> account, which will be used to administer the Simple CA. This is created automatically if you install SimpleCA from RPM or Debian packages.</p>
 </li>
 <li>
-<p>A generic <strong>globus</strong> account, if you will be building from the source installer.</p>
+<p>A generic <strong><code>globus</code></strong> account, if you will be building from the source installer.</p>
 </li>
 </ul>
 </div>
@@ -1099,7 +1099,7 @@ are described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from binary packages, install the packages
-<strong>globus-simple-ca</strong> and <strong>globus-gsi-cert-utils-progs</strong> and
+<strong><code>globus-simple-ca</code></strong> and <strong><code>globus-gsi-cert-utils-progs</code></strong> and
 their dependencies. On Debian based systems, use the command</p>
 </div>
 <div class="listingblock">
@@ -1117,7 +1117,7 @@ their dependencies. On Debian based systems, use the command</p>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from the source installer, build the
-globus_simple_ca and globus_gsi_cert_utils installer targets
+<code>globus_simple_ca</code> and <code>globus_gsi_cert_utils</code> installer targets
 with the command</p>
 </div>
 <div class="listingblock">
@@ -1141,8 +1141,8 @@ with the command</p>
 <div class="content">
 <div class="paragraph">
 <p>If you install the globus-simpleca Debian or RPM package, it will
-automatically create a <strong>simpleca</strong> user and a Simple CA in
-/var/lib/globus/simple_ca. If want to create a custom CA, or are
+automatically create a <strong><code>simpleca</code></strong> user and a Simple CA in
+<code>/var/lib/globus/simple_ca</code>. If want to create a custom CA, or are
 using the source installer, you&#8217;ll need to do the following. Otherwise,
 you can skip to the . If want to create a custom CA, or are using the
 source installer, you&#8217;ll need to do the following. Otherwise, you can
@@ -1156,22 +1156,22 @@ done.</p>
 <h4 id="_create_simpleca_administrator_account">Create SimpleCA Administrator Account</h4>
 <div class="paragraph">
 <p>Create a user to adminster the SimpleCA. You can use the the
-<strong>globus</strong> user you used to build GCT, or another user that you
+<strong><code>globus</code></strong> user you used to build GCT, or another user that you
 create. For the purposes of this document, we&#8217;ll assume a user named
-<strong>simpleca</strong>. Log in to that user, and run the
-<strong>grid-ca-create</strong> command. This will prompt for information needed
+<strong><code>simpleca</code></strong>. Log in to that user, and run the
+<strong><code>grid-ca-create</code></strong> command. This will prompt for information needed
 to name the certificate, how to contact the CA administrator, lifetime
 of the CA certificate, and passphrase, and will then generate the new CA
 certificate and private key. Command-line options described in
-<a href="../../simpleca/admin/index.html#grid-ca-create"><strong>grid-ca-create</strong></a> can
+<a href="../../simpleca/admin/index.html#grid-ca-create"><strong><code>grid-ca-create</code></strong></a> can
 be used to avoid some of these prompts.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_invoking_strong_grid_ca_create_strong">Invoking <strong>grid-ca-create</strong></h4>
+<h4 id="_invoking_strong_code_grid_ca_create_code_strong">Invoking <strong><code>grid-ca-create</code></strong></h4>
 <div class="paragraph">
 <p>If you are creating a SimpleCA for testing purposes, you can use the
-'-noint' command-line option to <strong>grid-ca-create</strong> to use the
+<em>-noint</em> command-line option to <strong><code>grid-ca-create</code></strong> to use the
 default values for all prompts like this:</p>
 </div>
 <div class="listingblock">
@@ -1180,14 +1180,14 @@ default values for all prompts like this:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This will create a SimpleCA in the <strong>simpleca</strong>'s home directory
-with the passphrase globus. You can then move on to the
+<p>This will create a SimpleCA in the <strong><code>simpleca</code></strong>'s home directory
+with the passphrase <code>globus</code>. You can then move on to the
 <a href="#simplecaAdmin-using">Using a SimpleCA</a> chapter of
 this document. For step-by-step details to create a customized SimpleCA,
 continue reading this chapter.</p>
 </div>
 <div class="paragraph">
-<p>As the <strong>simpleca</strong> user, run the command <strong>grid-ca-create</strong>,
+<p>As the <strong><code>simpleca</code></strong> user, run the command <strong><code>grid-ca-create</code></strong>,
 and you&#8217;ll see output like this:</p>
 </div>
 <div class="listingblock">
@@ -1207,17 +1207,17 @@ be kept in:
 </div>
 <div class="paragraph">
 <p>This intro screen shows the path that the CA will be created into (in
-this example, /home/simpleca/.globus/simpleCA). The other commands
+this example, <code>/home/simpleca/.globus/simpleCA</code>). The other commands
 needed by SimpleCA will automatically look in that path by default when
 invoked by the ). The other commands needed by SimpleCA will
 automatically look in that path by default when invoked by the
-<strong>simpleca</strong> user.</p>
+<strong><code>simpleca</code></strong> user.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="simpleca-subjectname">Configure the subject name</h4>
 <div class="paragraph">
-<p>The <strong>grid-ca-create</strong> program next prompts you for information
+<p>The <strong><code>grid-ca-create</code></strong> program next prompts you for information
 about the name of CA you wish to create:</p>
 </div>
 <div class="listingblock">
@@ -1229,8 +1229,8 @@ Do you want to keep this as the CA subject (y/n) [y]:</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To accept the default name, enter y. To choose a different name,
-type n, after which you will be prompted by</p>
+<p>To accept the default name, enter <code>y</code>. To choose a different name,
+type <code>n</code>, after which you will be prompted by</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1274,7 +1274,7 @@ requests will be sent to be signed by the CA) [simpleca@elephant.globus.org]:</p
 <p>Enter the email address where you intend to receive certificate
 requests. It should be your real email address that you check, not the
 address of the globus user. When users request certificates with
-<strong>grid-cert-request</strong>, they will be instructed to send the request
+<strong><code>grid-cert-request</code></strong>, they will be instructed to send the request
 to this address.</p>
 </div>
 </div>
@@ -1300,7 +1300,7 @@ the CA certificate should last before it expires.
 this time expires, the CA certificate will have to be recreated.</p>
 </div>
 <div class="paragraph">
-<p>To accept the default, hit <strong>enter</strong>, or otherwise, enter a value in
+<p>To accept the default, hit <strong><code>enter</code></strong>, or otherwise, enter a value in
 days.</p>
 </div>
 </div>
@@ -1324,14 +1324,14 @@ Verifying - Enter PEM pass phrase:</pre>
 <div class="sect3">
 <h4 id="simpleca-packageoutput">SimpleCA Distribution Files</h4>
 <div class="paragraph">
-<p>Finally <strong>grid-ca-create</strong> will create a tarball containing the
+<p>Finally <strong><code>grid-ca-create</code></strong> will create a tarball containing the
 public information about the CA, including its public certificate,
 signing policy, and supported X.509v3 extensions. This information is
 needed on machines that will be trusting the CA, and also on machines
 which will be used to request certificates from this CA.</p>
 </div>
 <div class="paragraph">
-<p>Since we didn&#8217;t run in this example as root, <strong>grid-ca-create</strong> will
+<p>Since we didn&#8217;t run in this example as root, <strong><code>grid-ca-create</code></strong> will
 not be able to write the CA files to system paths, so it displays a
 warning message indicating that. We can use the tarball output here, or
 packages described below to install the CA support files on this and
@@ -1351,7 +1351,7 @@ Creating RPM source tarball... done
 </div>
 <div class="paragraph">
 <p>This information will be important for setting up other machines in your
-grid. The number '68ea3306' in the last line is known as your <strong>CA
+grid. The number <em>68ea3306</em> in the last line is known as your <strong>CA
 hash</strong>. It is an 8 digit hexadecimal string which is a hash of the
 subject name of the CA certificate.</p>
 </div>
@@ -1366,7 +1366,7 @@ package for compatibility with older versions of the Globus Toolkit.</p>
 <h4 id="simpleca-binarypkgs">Generating Binary CA Packages</h4>
 <div class="paragraph">
 <p>The
-<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong><code>grid-ca-package</code></strong></a>
 command can be used to generate RPM, debian, or legacy GPT packages for a
 SimpleCA, or for any other CA which is installed on a host. These packages can
 make it easy to distribute the CA certificate and policy to other hosts
@@ -1388,7 +1388,7 @@ Creating RPM binary.../home/simpleca/globus-simple-ca-68ea3306</pre>
 </div>
 <div class="paragraph">
 <p>The resulting rpm package will be placed in the current directory. As
-root, you can install this via the <strong>yum</strong> or <strong>rpm</strong> tools.
+root, you can install this via the <strong><code>yum</code></strong> or <strong><code>rpm</code></strong> tools.
 This package can then be installed on any RPM-based system.</p>
 </div>
 </div>
@@ -1408,16 +1408,16 @@ Creating debian binary...dpkg-buildpackage: export CFLAGS from dpkg-buildflags (
 </div>
 <div class="paragraph">
 <p>The resulting debian package will be placed in the current directory. As
-root, you can install this via the <strong>dpkg</strong> tool.</p>
+root, you can install this via the <strong><code>dpkg</code></strong> tool.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_generating_gpt_packages">Generating GPT Packages</h5>
 <div class="paragraph">
-<p>The <strong>grid-ca-package</strong> command can also generate GPT packages in
+<p>The <strong><code>grid-ca-package</code></strong> command can also generate GPT packages in
 the form similar to previous versions of the Globus Toolkit. This is
-done with the '-g' and '-b' command-line options. See
-<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>
+done with the <em>-g</em> and <em>-b</em> command-line options. See
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong><code>grid-ca-package</code></strong></a>
 for more details.</p>
 </div>
 </div>
@@ -1429,12 +1429,12 @@ for more details.</p>
 <div class="content">
 <div class="paragraph">
 <p>As a CA, your main task will be to sign certificates. To sign a
-certificate request, use the tool <strong>grid-ca-sign</strong>. This tool reads
+certificate request, use the tool <strong><code>grid-ca-sign</code></strong>. This tool reads
 a certificate request (such as those created by
-<a href="../../gsic/user/index.html#grid-cert-request"><strong>grid-cert-request</strong></a>) and creates a
+<a href="../../gsic/user/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>) and creates a
 certificate signed by the CA certificate with the public key from in the
 certificate request. This indicates that you confirm that the identity
-of the certificate matches its name. You can use the <strong>openssl</strong>
+of the certificate matches its name. You can use the <strong><code>openssl</code></strong>
 command to view the contents of the certificate request.</p>
 </div>
 </div>
@@ -1442,8 +1442,8 @@ command to view the contents of the certificate request.</p>
 <div class="sect3">
 <h4 id="_examining_a_certificate_request">Examining a Certificate Request</h4>
 <div class="paragraph">
-<p>To examine a certificate request, use the command <strong>openssl req -text
--in </strong>, as shown in the following example.</p>
+<p>To examine a certificate request, use the command <strong><code>openssl req -text
+-in </code></strong>, as shown in the following example.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 1. Examine a Certificate Request</div>
@@ -1486,8 +1486,8 @@ Certificate Request:
 </div>
 <div class="paragraph">
 <p>In this case, you see a certificate request with the subject
-distinguished name o=Grid, OU=GlobusTest,
-OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User.</p>
+distinguished name <code>o=Grid, OU=GlobusTest,
+OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User</code>.</p>
 </div>
 </div>
 </div>
@@ -1496,14 +1496,14 @@ OU=simpleCA-elephant.globus.org, OU=local, CN=Joe User.</p>
 <h4 id="_signing_a_certificate_request">Signing a Certificate Request</h4>
 <div class="paragraph">
 <p>If you are satisfied with the certificate request and are willing to
-sign it, use the <strong>grid-ca-sign</strong> command to do so. The command will
+sign it, use the <strong><code>grid-ca-sign</code></strong> command to do so. The command will
 store a copy of the newly signed certificate in the SimpleCA directory,
 so that you can keep track of what you&#8217;ve signed, and will also write it
-to the value of the '-out' parameter. Transmit this result file back to
+to the value of the <em>-out</em> parameter. Transmit this result file back to
 the user which requested the certificate.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2. Sign with <strong>grid-ca-sign</strong></div>
+<div class="title">Example 2. Sign with <strong><code>grid-ca-sign</code></strong></div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1527,7 +1527,7 @@ must communicate it back to the user, perhaps via email.</p>
 <h4 id="_revoking_a_certificate">Revoking a Certificate</h4>
 <div class="paragraph">
 <p>SimpleCA does not yet provide a convenient interface to revoke a signed
-certificate, but it can be done with the <strong>openssl</strong> command.</p>
+certificate, but it can be done with the <strong><code>openssl</code></strong> command.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 3. Revoke a certificate</div>
@@ -1548,7 +1548,7 @@ Data Base Updated</pre>
 List (CRL) for your CA, which will be a signed list of certificates
 which have been revoked. Sites which use your CA will need to keep the
 CRL up to date to be able to reject revoked certificates. This CRL can
-be generated with an <strong>openssl</strong> command. See ca(1) for details
+be generated with an <strong><code>openssl</code></strong> command. See <code>ca(1)</code> for details
 about how to control the CRL lifetime and other options.</p>
 </div>
 <div class="exampleblock">
@@ -1564,7 +1564,7 @@ Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The output file CAHASH.crl (based on the hash of your CA subject
+<p>The output file <code>CAHASH.crl</code> (based on the hash of your CA subject
 name) should be distributed to sites which trust your CA, so that they
 can install it into the trusted certificate directory.  (based on the
 hash of your CA subject name) should be distributed to sites which trust
@@ -1575,11 +1575,11 @@ directory.</p>
 <div class="sect3">
 <h4 id="_renewing_a_ca">Renewing a CA</h4>
 <div class="paragraph">
-<p>The <strong>openssl</strong> command can be used to renew a CA certificate. This
+<p>The <strong><code>openssl</code></strong> command can be used to renew a CA certificate. This
 will generate a new CA certificate with the same subject name and
 private key as before, but valid for a different time interval. This new
 certificate packaged and distributed as before using
-<a href="../../simpleca/admin/index.html#grid-ca-package"><strong>grid-ca-package</strong></a>.</p>
+<a href="../../simpleca/admin/index.html#grid-ca-package"><strong><code>grid-ca-package</code></strong></a>.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 5. Renew CA Certificate</div>
@@ -1789,10 +1789,10 @@ driver, which provides a driver that allows for secure connections.</p>
 <h4 id="gsic-security-considerations">Security considerations for GSI C</h4>
 <div class="paragraph">
 <p>During host authorization, the toolkit treats host names of the form
-<code>hostname-&#8217;ANYTHING'</code>.edu` as equivalent to <code>hostname.edu</code>. This means that if
+<code>hostname-</code><em>ANYTHING</em><code>.edu</code> as equivalent to <code>hostname.edu</code>. This means that if
 a service was set up to do host authorization and hence accept the certificate
 <code>hostname.edu</code>, it would also accept certificates with DNs
-<code>hostname-&#8217;ANYTHING'</code>.edu`.</p>
+<code>hostname-</code><em>ANYTHING</em><code>.edu</code>.</p>
 </div>
 <div class="paragraph">
 <p>The feature is in place to allow a multi-homed host following a
@@ -1808,13 +1808,13 @@ or <code>grid-foo.test.edu</code>.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The string 'ANYTHING' matches only the name of the host and not domain
+<p>The string <em>ANYTHING</em> matches only the name of the host and not domain
 components. This means that <code>hostname.edu</code> will not match
 <code>hostname-foo.sub.edu</code>, but will match <code>host-foo.edu</code>.</p>
 </div>
 <div class="paragraph">
 <p>If a host was set up to accept <code>hostname-1.edu</code>, it will not accept
-<code>hostname-&#8217;ANYTHING'</code>.edu` but will accept <code>hostname.edu</code>. That is, only one
+<code>hostname-</code><em>ANYTHING</em><code>.edu</code> but will accept <code>hostname.edu</code>. That is, only one
 of the names being compared may contain the hyphen character in the host name.</p>
 </div>
 </td>
@@ -1822,7 +1822,7 @@ of the names being compared may contain the hyphen character in the host name.</
 </table>
 </div>
 <div class="paragraph">
-<p>In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable GLOBUS_GSSAPI_NAME_COMPATIBILITY to STRICT_RFC2818.</p>
+<p>In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable <code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code> to <code>STRICT_RFC2818</code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1888,7 +1888,7 @@ connections as well.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>where 'min','max' specify the port range that you have opened for the
+<p>where <em>min</em>,<em>max</em> specify the port range that you have opened for the
 incoming connections on the firewall. This restricts the listening ports
 of the GridFTP server to this range. Recommended range is 1000 (e.g.,
 50000-51000) but it really depends on how much use you expect.</p>
@@ -1904,7 +1904,7 @@ GLOBUS_TCP_SOURCE_RANGE:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>where 'min','max' specify the port range that you have opened for the
+<p>where <em>min</em>,<em>max</em> specify the port range that you have opened for the
 outgoing connections on the firewall. This restricts the GridFTP server
 to bind to a local port in this range for outbound connections.
 Recommended range is twice the range used for GLOBUS_TCP_PORT_RANGE,
@@ -1923,7 +1923,7 @@ would be different for each connection.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the server is behind NAT, the --data-interface &lt;real ip/hostname&gt;
+<p>If the server is behind NAT, the <code>--data-interface &lt;real ip/hostname&gt;</code>
 option needs to be used on the server.</p>
 </div>
 </td>
@@ -1991,17 +1991,17 @@ available <a href="http://www.globus.org/toolkit/security/firewalls/">here</a>.<
 <h5 id="_gatekeeper_security_considerations">Gatekeeper Security Considerations</h5>
 <div class="paragraph">
 <p>GRAM5 runs different parts of itself under different privilege levels.
-The <strong>globus-gatekeeper</strong> runs as root, and uses its root privilege
+The <strong><code>globus-gatekeeper</code></strong> runs as root, and uses its root privilege
 to access the host&#8217;s private key. It uses the grid map file to map Grid
-Certificates to local user ids and then uses the <strong>setuid()</strong>
+Certificates to local user ids and then uses the <strong><code>setuid()</code></strong>
 function to change to that user and execute the
-<strong>globus-job-manager</strong> program</p>
+<strong><code>globus-job-manager</code></strong> program</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_job_manager_security_considerations">Job Manager Security Considerations</h5>
 <div class="paragraph">
-<p>The <strong>globus-job-manager</strong> program runs as a local non-root account.
+<p>The <strong><code>globus-job-manager</code></strong> program runs as a local non-root account.
 It receives a delegated limited proxy certificate from the GRAM5 client
 which it uses to access Grid storage resources via GridFTP and to
 authenticate job signals (such as client cancel requests), and send job
@@ -2010,7 +2010,7 @@ short-lived, and is automatically removed by the job manager when the
 job completes.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>globus-job-manager</strong> program uses a publicly-writable
+<p>The <strong><code>globus-job-manager</code></strong> program uses a publicly-writable
 directory for job state files. This directory has the <strong>sticky</strong> bit
 set, so users may not remove other users files. Each file is named by a
 UUID, so it should be unique.</p>
@@ -2108,7 +2108,7 @@ Stats</a> section.</p>
 intrusive or private and yet still provides us with information that
 will help improve and gauge the usage of the GridFTP server.
 Nevertheless, if you wish to disable this feature for GridFTP only, use
-the '-disable-usage-stats' option of
+the <em>-disable-usage-stats</em> option of
 <a href="../../gridftp/admin/index.html#globus-gridftp-server">globus-gridftp-server</a>.
 Note that you can disable transmission of usage statistics globally for
 all C components by setting "GLOBUS_USAGE_OPTOUT=1" in your environment.</p>
@@ -2144,25 +2144,25 @@ source IP address) at the end of each job.</p>
 <p>RSL Host Count</p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_UNSUBMITTED</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_UNSUBMITTED</code></p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_FILE_STAGE_IN</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_FILE_STAGE_IN</code></p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_PENDING</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_PENDING</code></p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_ACTIVE</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_ACTIVE</code></p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_FAILED</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_FAILED</code></p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_FILE_STAGE_OUT</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_FILE_STAGE_OUT</code></p>
 </li>
 <li>
-<p>Timestamp when job hit GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE</p>
+<p>Timestamp when job hit <code>GLOBUS_GRAM_PROTOCOL_JOB_STATE_DONE</code></p>
 </li>
 <li>
 <p>Job Failure Code</p>
@@ -2225,10 +2225,10 @@ source IP address) at the end of each job.</p>
 <p>Number of times unregister is called</p>
 </li>
 <li>
-<p>Value of the count RSL attribute</p>
+<p>Value of the <code>count</code> RSL attribute</p>
 </li>
 <li>
-<p>Comma-separated list of string names of other RSL attributes not in the set defined in globus-gram-job-manager.rvf</p>
+<p>Comma-separated list of string names of other RSL attributes not in the set defined in <code>globus-gram-job-manager.rvf</code></p>
 </li>
 <li>
 <p>Job type string</p>

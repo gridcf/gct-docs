@@ -451,7 +451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 Infrastructure (PKI) security credentials (certificates and private
 keys). MyProxy combines an online credential repository with an online
 certificate authority to allow users to securely obtain credentials when
-and where needed. Users run <strong>myproxy-logon</strong> to authenticate and
+and where needed. Users run <strong><code>myproxy-logon</code></strong> to authenticate and
 obtain credentials, including trusted CA certificates and Certificate
 Revocation Lists (CRLs). For more information about MyProxy, see the
 <a href="http://myproxy.ncsa.uiuc.edu/">MyProxy Home Page</a>.</p>
@@ -465,25 +465,25 @@ Revocation Lists (CRLs). For more information about MyProxy, see the
 <div class="ulist">
 <ul>
 <li>
-<p>Users can obtain certificates and trust roots from the MyProxy CA using <strong>myproxy-logon</strong>.</p>
+<p>Users can obtain certificates and trust roots from the MyProxy CA using <strong><code>myproxy-logon</code></strong>.</p>
 </li>
 <li>
-<p>Users can store and retrieve multiple X.509 proxy credentials using <strong>myproxy-init</strong> and <strong>myproxy-logon</strong>.</p>
+<p>Users can store and retrieve multiple X.509 proxy credentials using <strong><code>myproxy-init</code></strong> and <strong><code>myproxy-logon</code></strong>.</p>
 </li>
 <li>
-<p>Users can store and retrieve multiple X.509 end-entity credentials using <strong>myproxy-store</strong> and <strong>myproxy-retrieve</strong>.</p>
+<p>Users can store and retrieve multiple X.509 end-entity credentials using <strong><code>myproxy-store</code></strong> and <strong><code>myproxy-retrieve</code></strong>.</p>
 </li>
 <li>
-<p>Users and administrators can manage trustroots (CA certificates and CRLs) using <strong>myproxy-logon</strong> and <strong>myproxy-get-trustroots</strong>.</p>
+<p>Users and administrators can manage trustroots (CA certificates and CRLs) using <strong><code>myproxy-logon</code></strong> and <strong><code>myproxy-get-trustroots</code></strong>.</p>
 </li>
 <li>
-<p>Administrators can load the repository with X.509 end-entity credentials on the users' behalf using <strong>myproxy-admin-load-credential</strong>.</p>
+<p>Administrators can load the repository with X.509 end-entity credentials on the users' behalf using <strong><code>myproxy-admin-load-credential</code></strong>.</p>
 </li>
 <li>
-<p>Administrators can use the <strong>myproxy-admin-adduser</strong> command to create user credentials and load them into the MyProxy repository.</p>
+<p>Administrators can use the <strong><code>myproxy-admin-adduser</code></strong> command to create user credentials and load them into the MyProxy repository.</p>
 </li>
 <li>
-<p>Administrators can use the <strong>myproxy-admin-addservice</strong> command to create host credentials and load them into the MyProxy repository.</p>
+<p>Administrators can use the <strong><code>myproxy-admin-addservice</code></strong> command to create host credentials and load them into the MyProxy repository.</p>
 </li>
 <li>
 <p>Users and administrators can set access control policies on the credentials in the repository.</p>
