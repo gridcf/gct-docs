@@ -2,6 +2,8 @@
 = Grid Community Toolkit 6.0 Command-Line Tools =
 :doctype: book
 
+include::../breadcrumb_frag.adoc[]
+
 --
 You can also download a link:gtCommands.pdf[PDF version here].
 --

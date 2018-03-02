@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6.0 Migrating Guides =
 
+include::../breadcrumb_frag.adoc[]
+
   
 This page contains links to each GCT 6.0 component's Migrating Guide.
 

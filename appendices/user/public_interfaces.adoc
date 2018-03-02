@@ -2,6 +2,8 @@
 [appendix]
 = Grid Community Toolkit 6.0 Public Interface Guides =
 
+include::../breadcrumb_frag.adoc[]
+
 This page contains links to each GCT 6.0 component's Public Interfaces
 Guide.
 

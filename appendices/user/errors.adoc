@@ -2,6 +2,8 @@
 [[errors]]
 == Grid Community Toolkit 6.0 Errors ==
 
+include::../breadcrumb_frag.adoc[]
+
 
 --
 

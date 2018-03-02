@@ -2,6 +2,7 @@
 :doctype: article
 = GCT 6.0: Appendices =
 
+ifdef::backend-html5[link:../index.html[GCT] -> Appendices]
 --
 * link:commands/index.html[Grid Community Toolkit 6.0 Commandline Tools] [link:commands/gtCommands.pdf[PDF]]
 * link:developer/index.html[Grid Community Toolkit 6.0 Developer's Guide] [link:developer/gtDeveloperGuide.pdf[PDF]]

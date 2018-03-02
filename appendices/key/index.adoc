@@ -1,6 +1,8 @@
 = Grid Community Toolkit 6.0 Key Concepts =
 :doctype: book
 
+include::../breadcrumb_frag.adoc[]
+
 :leveloffset: 1
 
 include::../../gridftp/key/index.adoc[]
