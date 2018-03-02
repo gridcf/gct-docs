@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6.0 C Common Libraries: Quality Profile =
 
+include::../breadcrumb_frag.adoc[]
+
   
 [[ccommonlib-qp-test]]
 == Test coverage reports ==

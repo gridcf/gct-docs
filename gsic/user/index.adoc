@@ -3,6 +3,9 @@
 :doctype: book
 = Security: GSI C User's Guide =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[gsic-user-introduction]]
 

@@ -2,6 +2,7 @@
 :doctype: book
 = GCT 6.0 Component Guide to Public Interfaces: GRAM5 =
 
+include::../breadcrumb_frag.adoc[]
   
 include::../GRAM5_Interface_API_Frag.adoc[]
 

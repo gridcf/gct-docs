@@ -2,6 +2,9 @@
 :doctype: article
 = GCT 6.0 Migrating Guide for GSI C =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 --
 The following provides available information about migrating from

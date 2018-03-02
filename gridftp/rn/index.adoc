@@ -2,6 +2,8 @@
 :doctype: article
 = GT 6.0 Release Notes: GridFTP =
 indexterm:[release notes (GridFTP)]
+
+include::../breadcrumb_frag.adoc[]
    
 [[gridftp-rn-overview]]
 == Component Overview ==

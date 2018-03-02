@@ -2,6 +2,9 @@
 :doctype: article
 = GT6.0 GSI C Quality Profile =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[gsic-qp-test]]
 == Test Reports ==

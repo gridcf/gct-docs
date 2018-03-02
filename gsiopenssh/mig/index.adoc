@@ -2,6 +2,9 @@
 :doctype: article
 = GCT 6.0 Migrating Guide for GSI-OpenSSH =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 --
 No special procedures are required for upgrading GSI-OpenSSH

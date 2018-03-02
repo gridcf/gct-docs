@@ -2,6 +2,9 @@
 = GCT 6.0 MyProxy: System Administrator's Guide =
 :doctype: book
 
+include::../breadcrumb_frag.adoc[]
+
+
 [[myproxy-admin-introduction]]
 == Introduction ==
 This guide contains advanced configuration information for system

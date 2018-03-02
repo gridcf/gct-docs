@@ -3,6 +3,9 @@
 :doctype: book
 = GCT 6.0 MyProxy: User's Guide =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[myproxy-user-introduction]]
 == Introduction ==

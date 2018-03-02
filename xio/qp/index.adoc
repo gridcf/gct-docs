@@ -2,6 +2,9 @@
 :doctype: article
 = GT 6.0 XIO: Quality Profile =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[xio-qp-test]]
 == Test coverage reports ==

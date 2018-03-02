@@ -1,6 +1,9 @@
 [[gsiopensshDeveloper,Developer's Guide]]
 = GCT 6.0 GSI-OpenSSH: Developer's Guide =
 :doctype: book
+
+include::../breadcrumb_frag.adoc[]
+
   
 [[gsiopenssh-developer-introduction]]
 .Introduction

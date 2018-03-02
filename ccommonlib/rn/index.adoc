@@ -2,6 +2,8 @@
 :doctype: article
 = GT 6.0 Release Notes: C Common Libraries =
 
+include::../breadcrumb_frag.adoc[]
+
   
 [[ccommonlib-rn-overview]]
 == Component Overview ==

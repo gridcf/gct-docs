@@ -2,6 +2,7 @@
 :doctype: article
 = GCT 6.0: MyProxy =
 
+ifdef::backend-html5[link:../index.html[GCT] -> MyProxy]
   
 include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
 

@@ -3,6 +3,8 @@
 :doctype: book
 = GCT 6.0 Component Guide to Public Interfaces: C Common Libraries =
 
+include::../breadcrumb_frag.adoc[]
+
   
 include::../C_Common_Libraries_Interface_API_Frag.adoc[]
 

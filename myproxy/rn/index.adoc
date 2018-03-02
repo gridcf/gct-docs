@@ -2,6 +2,9 @@
 :doctype: article
 = GT 6.0 Release Notes: MyProxy =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[myproxy-rn-overview]]
 === Component Overview ===

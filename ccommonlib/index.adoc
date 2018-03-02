@@ -2,6 +2,7 @@
 :doctype: article
 = GCT 6.0: C Common Libraries =
 
+ifdef::backend-html5[link:../index.html[GCT] -> C Common Libraries]
   
 include::C_Common_Libraries_Overview_Brief_Frag.adoc[]
 

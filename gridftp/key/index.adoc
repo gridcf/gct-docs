@@ -3,6 +3,7 @@
 :doctype: book
 = GCT 6.0 GridFTP Key Concepts =
 
+include::../breadcrumb_frag.adoc[]
   
 [[gridftp-key-overview]]
 

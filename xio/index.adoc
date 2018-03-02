@@ -2,6 +2,7 @@
 :doctype: article
 = GCT 6.0: XIO =
 
+ifdef::backend-html5[link:../index.html[GCT] -> XIO]
   
 include::XIO_Overview_Brief_Frag.adoc[]
 

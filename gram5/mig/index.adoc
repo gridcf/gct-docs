@@ -3,6 +3,7 @@
 :doctype: book
 = GCT 6.0 Migrating Guide for GRAM5 =
 
+include::../breadcrumb_frag.adoc[]
   
 --
 The following provides available information about migrating from

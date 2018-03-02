@@ -3,6 +3,8 @@
 :doctype: book
 = GCT 6.0 GRAM5 Key Concepts =
 
+include::../breadcrumb_frag.adoc[]
+
   
 [[gram5-key-overview]]
 

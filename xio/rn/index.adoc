@@ -1,6 +1,9 @@
 [[xioRN,Release Notes]]
 :doctype: article
 = GT 6.0 Release Notes: XIO =
+
+include::../breadcrumb_frag.adoc[]
+
   
 [[xio-rn-overview]]
 === Component Overview ===

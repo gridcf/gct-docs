@@ -2,6 +2,7 @@
 :doctype: article
 = GCT 6.0 GRAM5: Quality Profile =
 
+include::../breadcrumb_frag.adoc[]
   
 [[gram5-qp-test]]
 == Test Reports ==

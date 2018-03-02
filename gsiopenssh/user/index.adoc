@@ -3,6 +3,9 @@
 :doctype: book
 = GCT 6.0 GSI-OpenSSH: User's Guide =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[gsiopenssh-user-introduction]]
 

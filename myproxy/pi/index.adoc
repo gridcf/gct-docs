@@ -3,6 +3,9 @@
 :doctype: book
 = GCT 6.0 Component Guide to Public Interfaces: MyProxy =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 include::../Cred_Mgmt_MyProxy_Interface_API_Frag.adoc[]
 

@@ -1,6 +1,9 @@
 [[gsicAdmin,Admin Guide]]
 :doctype: book
 = GCT 6.0: GSI C Admin Guide =
+
+include::../breadcrumb_frag.adoc[]
+
   
 [[gsic-admin-introduction]]
 

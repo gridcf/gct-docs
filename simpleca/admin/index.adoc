@@ -2,6 +2,9 @@
 :doctype: book
 = GCT 6.0 SimpleCA: Admin Guide =
 
+include::../breadcrumb_frag.adoc[]
+
+
   
 [[simpleca-admin-introduction]]
 :numbered!:
