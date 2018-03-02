@@ -442,7 +442,7 @@ launchd is used to start services in the system Mac OS X 10.4 (Tiger)
 and newer, and is also available as a port to FreeBSD.
 
 Here is a
-http://www.globus.org/toolkit/docs/{$shortversion}/{$version}/gridftp/globus.gridftp.plist[sample]
+http://www.globus.org/toolkit/docs/{shortversion}/{version}/gridftp/globus.gridftp.plist[sample]
 configuration file for launchd to start the server:
 
 

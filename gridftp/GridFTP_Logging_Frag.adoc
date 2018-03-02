@@ -44,7 +44,7 @@ globus-gridftp-server -log-level info,warn,error -logfile /var/log/gridftp.log
 **++stdio++** is the default log-module.
 
 Sample log file:
-link:/toolkit/docs/{$shortversion}/{$version}/data/gridftp/gridftp.log2[gridftp.log2]
+link:/toolkit/docs/{shortversion}/{version}/data/gridftp/gridftp.log2[gridftp.log2]
 
 
 ==== Netlogger-style logging ====
@@ -59,5 +59,5 @@ globus-gridftp-server -log-transfer /var/log/gridftp.log
 --------
 
 Sample log file:
-link:/toolkit/docs/{$shortversion}/{$version}/data/gridftp/gridftp.log3[gridftp.log3]
+link:/toolkit/docs/{shortversion}/{version}/data/gridftp/gridftp.log3[gridftp.log3]
 

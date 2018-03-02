@@ -8,7 +8,7 @@
 
 To build the Grid Community Toolkit from the source installer, first download
 the source from
-http://www.globus.org/toolkit/downloads/{$version}[download page], and
+http://www.globus.org/toolkit/downloads/{version}[download page], and
 be sure you have all of the following prerequisites installed. 
 
 This table shows specific package names (where available) for systems

@@ -83,7 +83,7 @@ In GCT 6, there are three Grid Community Toolkit package repositories:
 enabled by default, and is updated to to include fixes for major bugs
 and security issues. These can be easily installed via **++yum++** or
 **++apt-get++**. These updates will be published in the
-http://www.globus.org/toolkit/rss/advisories/{$shortversion}.rss[GCT].
+http://www.globus.org/toolkit/rss/advisories/{shortversion}.rss[GCT].
 Also, this means that when the next point release is made, collecting
 other minor bug fixes, the upgrade can be done via **++yum++** or
 **++apt-get++** without installing a new repository definition package. 
@@ -319,7 +319,7 @@ configuration sections of the following chapters.
 +
 We recommend that you install any security advisories available for your
 installation, which are available from the
-http://www.globus.org/toolkit/advisories.html?version={$shortversion}[Advisories
+http://www.globus.org/toolkit/advisories.html?version={shortversion}[Advisories
 page]. You may also be interested in subscribing to some
 http://dev.globus.org/wiki/Mailing%5fLists[mailing lists] for general
 discussion and security-related announcements.
@@ -330,7 +330,7 @@ discussion and security-related announcements.
 
 The updates available in the native packages described above are also
 published as source packages on the
-http://www.globus.org/toolkit/advisories.html?version={$shortversion}[updates
+http://www.globus.org/toolkit/advisories.html?version={shortversion}[updates
 page]. To install update packages, follow their download link, untar
 them, and then configure them with the same prefix as your original
 installation. 

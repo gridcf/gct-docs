@@ -5,6 +5,6 @@
 
 === Component API ===
 
-See the http://www.globus.org/api/c-globus-{$version}/[C API pages] for
+See the http://www.globus.org/api/c-globus-{version}/[C API pages] for
 other API documentation on globus_common.
 
