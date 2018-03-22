@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6 Quickstart =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
  
 [abstract]

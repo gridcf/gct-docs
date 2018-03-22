@@ -2,6 +2,8 @@
 :doctype: book
 = GCT 6.0: Admin Manuals =
 
+include::../wascopied_frag.adoc[]
+
 ifdef::backend-html5[link:../index.html[GCT] -> Admin Manuals]
 
 --

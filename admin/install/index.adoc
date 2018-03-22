@@ -2,6 +2,8 @@
 :doctype: book
 = Installing GCT 6.0 =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
  
 include::intro.adoc[]

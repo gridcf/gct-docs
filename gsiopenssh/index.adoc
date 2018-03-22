@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6.0: GSI-OpenSSH =
 
+include::../wascopied_frag.adoc[]
+
 ifdef::backend-html5[link:../index.html[GCT] -> GSI-OpenSSH]
   
 include::Util_OpenSSH_Overview_Brief_Frag.adoc[]

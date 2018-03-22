@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6.0 GRAM5 =
 
+include::../wascopied_frag.adoc[]
+
 ifdef::backend-html5[link:../index.html[GCT] -> GRAM 5]
   
 include::GRAM5_Overview_Brief_Frag.adoc[]

@@ -3,6 +3,8 @@
 :doctype: book
 = GCT 6.0 XIO : Developer's Guide =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 

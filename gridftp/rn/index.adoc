@@ -3,6 +3,8 @@
 = GT 6.0 Release Notes: GridFTP =
 indexterm:[release notes (GridFTP)]
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
    
 [[gridftp-rn-overview]]

@@ -3,6 +3,8 @@
 
 = GCT 6.0 Installation Appendix =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
  

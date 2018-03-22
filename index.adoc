@@ -3,6 +3,8 @@
 :toc: macro
 = Grid Community Toolkit =
 
+include::./wascopied_frag.adoc[]
+
 The Grid Community Toolkit (GCT) is an open-source fork by the link:https://gridcf.org[Grid Community Forum] of the venerable link:http://toolkit.globus.org/toolkit[Globus Toolkit] created by the link:https://globus.org[Globus Alliance].
 The GCT was created in response to the link:https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md[end-of-support] of the Globus Toolkit in January 2018.
 

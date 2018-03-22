@@ -1,6 +1,8 @@
 = Grid Community Toolkit 6.0 Key Concepts =
 :doctype: book
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 :leveloffset: 1

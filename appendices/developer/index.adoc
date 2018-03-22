@@ -2,6 +2,8 @@
 :doctype: book
 = Grid Community Toolkit 6.0 Developer's Guide =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 .Introduction

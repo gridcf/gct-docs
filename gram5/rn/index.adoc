@@ -2,6 +2,8 @@
 :doctype: article
 = GT 6.0 Release Notes: GRAM5 =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
   
 [[gram5-rn-overview]]

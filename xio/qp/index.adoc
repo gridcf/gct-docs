@@ -2,6 +2,8 @@
 :doctype: article
 = GT 6.0 XIO: Quality Profile =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 

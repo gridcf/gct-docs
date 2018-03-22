@@ -3,6 +3,8 @@
 :doctype: book
 = GCT 6.0 GSI-OpenSSH: User's Guide =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 

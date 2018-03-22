@@ -2,6 +2,8 @@
 [[xio-driver-addons,Add-on]]
 = Add on =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 

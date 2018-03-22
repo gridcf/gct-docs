@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6.0: SimpleCA =
 
+include::../wascopied_frag.adoc[]
+
 ifdef::backend-html5[link:../index.html[GCT] -> SimpleCA]
   
 include::Cred_Mgmt_SimpleCA_Overview_Brief_Frag.adoc[]

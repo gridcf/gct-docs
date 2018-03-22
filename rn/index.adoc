@@ -2,6 +2,8 @@
 :doctype: article
 = GT 6.0 Release Notes =
 
+include::../wascopied_frag.adoc[]
+
 ifdef::backend-html5[link:../index.html[GCT] -> Release Notes]
   
 [[rn-intro]]

@@ -2,6 +2,8 @@
 [[gridftp-admin-gfork-master]]
 = Running the Globus GridFTP Server With GFork =
 
+include::../../wascopied_frag.adoc[]
+
 
 [[gridftp-gfork-master-intro]]
 === Introduction ===

@@ -3,6 +3,8 @@
 :doctype: book
 = GCT 6.0 GRAM5: User's Guide =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
   
 .Introduction

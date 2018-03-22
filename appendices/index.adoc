@@ -2,6 +2,8 @@
 :doctype: article
 = GCT 6.0: Appendices =
 
+include::../wascopied_frag.adoc[]
+
 ifdef::backend-html5[link:../index.html[GCT] -> Appendices]
 --
 * link:commands/index.html[Grid Community Toolkit 6.0 Commandline Tools] [link:commands/gtCommands.pdf[PDF]]

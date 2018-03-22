@@ -2,6 +2,8 @@
 :doctype: article
 = GT 6.0 Release Notes: MyProxy =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 

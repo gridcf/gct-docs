@@ -2,6 +2,8 @@
 :doctype: article
 = GT6.0 GSI C Quality Profile =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 

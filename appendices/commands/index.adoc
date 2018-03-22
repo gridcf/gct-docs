@@ -2,6 +2,8 @@
 = Grid Community Toolkit 6.0 Command-Line Tools =
 :doctype: book
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 --

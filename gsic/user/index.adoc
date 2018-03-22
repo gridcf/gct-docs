@@ -3,6 +3,8 @@
 :doctype: book
 = Security: GSI C User's Guide =
 
+include::../../wascopied_frag.adoc[]
+
 include::../breadcrumb_frag.adoc[]
 
 
