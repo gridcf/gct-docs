@@ -9,7 +9,7 @@ include::../breadcrumb_frag.adoc[]
 
   
 [[myproxy-rn-overview]]
-=== Component Overview ===
+== Component Overview ==
 
 include::../Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
 
@@ -35,7 +35,7 @@ include::../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.adoc[]
 include::../Cred_Mgmt_MyProxy_Associated_Standards_Frag.adoc[]
 
 [[myproxy-rn-formoreinfo]]
-=== For More Information ===
+== For More Information ==
 
 See link:../../myproxy/index.html[MyProxy] for more information about this
 component. 

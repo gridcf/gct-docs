@@ -1,5 +1,5 @@
 [[q-typography]]
-=== Typographical Conventions ===
+== Typographical Conventions ==
 
 Where there is a command to be typed, it will be preceded by one of the
 following prompts: 
