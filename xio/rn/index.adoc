@@ -8,7 +8,7 @@ include::../breadcrumb_frag.adoc[]
 
   
 [[xio-rn-overview]]
-=== Component Overview ===
+== Component Overview ==
 
 include::../XIO_Overview_Brief_Frag.adoc[]
  
@@ -29,6 +29,6 @@ include::../XIO_Compatibility_Summary_Frag.adoc[]
 include::../XIO_Associated_Standards_Frag.adoc[]
  
 [[xio-rn-formoreinfo]]
-=== For More Information ===
+== For More Information ==
 
 See link:../../xio/index.html[XIO] for more information about this component. 

@@ -1,5 +1,5 @@
 [[q-prereq]]
-=== Prerequisites ===
+== Prerequisites ==
 
 We distribute the Grid Community Toolkit 6 as a set of RPM and Debian packages
 for Linux systems, as an installable package for Mac OS X, as a .zip

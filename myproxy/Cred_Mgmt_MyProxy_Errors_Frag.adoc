@@ -55,4 +55,4 @@ the resolver on your system.
     the CA that signed the client's certificate.
 | See link:../../gsic/admin/index.html#gsic-configuring[Configuring
     Certificates] for more information.
-|========================================================================
+|=======================================================================
