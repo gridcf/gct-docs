@@ -102,6 +102,6 @@ Audit::
     from abuse or malfunction.
 
  
-include::GRAM5_Approach.adoc[]
+include::GRAM5_Approach_Frag.adoc[]
 
   

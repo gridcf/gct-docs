@@ -18,20 +18,20 @@ separate release. Here you can get each driver individually, or a bundle
 of all the drivers.
 
 
-include::XIO_Driver_UDT_REF.adoc[]
+include::XIO_Driver_UDT_REF_Frag.adoc[]
 
 
-include::XIO_Driver_Token_Bucket.adoc[]
+include::XIO_Driver_Token_Bucket_Frag.adoc[]
 
 
-include::XIO_Driver_Popen.adoc[]
+include::XIO_Driver_Popen_Frag.adoc[]
 
 
-include::XIO_Driver_BIDI.adoc[]
+include::XIO_Driver_BIDI_Frag.adoc[]
 
 
-include::XIO_Driver_Netlog.adoc[]
+include::XIO_Driver_Netlog_Frag.adoc[]
 
 
-include::XIO_Driver_Skeleton.adoc[]
+include::XIO_Driver_Skeleton_Frag.adoc[]
 

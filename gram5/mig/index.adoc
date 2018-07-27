@@ -20,3 +20,9 @@ include::../GRAM5_Migrating_GT42_Frag.adoc[]
 include::../GRAM5_Migrating_GT40_Frag.adoc[]
 
   
+include::../GRAM5_Migrating_GT3_Frag.adoc[]
+
+
+include::../GRAM5_Migrating_GT2_Frag.adoc[]
+
+

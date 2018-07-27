@@ -412,7 +412,7 @@ striped data movement].
 
 :leveloffset: 1
 
-include::GridFTP_User_Multicasting.adoc[]
+include::GridFTP_User_Multicasting_Frag.adoc[]
 
 :leveloffset: 0
 
@@ -462,7 +462,7 @@ indexterm:[commandline tool,globus-url-copy]
 
 :leveloffset: 2
 
-include::../globus-url-copy.adoc[]
+include::../globus-url-copy-manual.adoc[]
 
 :leveloffset: 0
 :doctype: book

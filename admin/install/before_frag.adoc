@@ -23,4 +23,4 @@ the simplest platforms on which to install GCT services.
 For the purposes of this documentation, GCT is being installed on a
 machine called **++elephant++**. 
 
-include::../quickstart/typography.adoc[]
+include::../quickstart/typography_frag.adoc[]

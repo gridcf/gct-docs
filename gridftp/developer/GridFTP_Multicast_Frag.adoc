@@ -238,7 +238,7 @@ the urls in the file. An example globus-url-copy command is:
 
 
 :leveloffset: 1
-include::../user/GridFTP_User_Multicasting.adoc[]
+include::../user/GridFTP_User_Multicasting_Frag.adoc[]
 :leveloffset: 0
 
 

@@ -11,10 +11,10 @@ proxy credential authentication and delegation.
 
 :leveloffset: 1
 
-include::gsissh.adoc[]
+include::gsissh-manual.adoc[]
 
-include::gsiscp.adoc[]
+include::gsiscp-manual.adoc[]
 
-include::gsisftp.adoc[]
+include::gsisftp-manual.adoc[]
 
 :leveloffset: 0

@@ -40,17 +40,17 @@ Resource Manager. These parts include:
 
 
 
-include::GRAM5_LRM_Adapter_Tutorial_RVF.adoc[]
+include::GRAM5_LRM_Adapter_Tutorial_RVF_Frag.adoc[]
 
 
-include::GRAM5_LRM_Adapter_Tutorial_Configuration.adoc[]
+include::GRAM5_LRM_Adapter_Tutorial_Configuration_Frag.adoc[]
 
 
-include::GRAM5_LRM_Adapter_Tutorial_Perl.adoc[]
+include::GRAM5_LRM_Adapter_Tutorial_Perl_Frag.adoc[]
 
 
-include::GRAM5_LRM_Adapter_Tutorial_SEG.adoc[]
+include::GRAM5_LRM_Adapter_Tutorial_SEG_Frag.adoc[]
 
 
-include::GRAM5_LRM_Adapter_Tutorial_Changelog.adoc[]
+include::GRAM5_LRM_Adapter_Tutorial_Changelog_Frag.adoc[]
 

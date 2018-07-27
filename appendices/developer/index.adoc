@@ -27,12 +27,16 @@ Following are some docs you should be familiar with as well:
 
 = Asynchronous Event Handling with Examples =
 
-include::globus-async.adoc[]
+include::globus-async_frag.adoc[]
 
-include::globus-async-example1.adoc[]
+include::globus-async-example1_frag.adoc[]
 
-include::globus-async-example2.adoc[]
+include::globus-async-example2_frag.adoc[]
 
-include::globus-async-example3.adoc[]
+include::globus-async-example3_frag.adoc[]
 
-include::../user/public_interfaces.adoc[]
+:leveloffset: 1
+
+include::../user/public_interfaces_frag.adoc[]
+
+:leveloffset: 0

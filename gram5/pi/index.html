@@ -440,11 +440,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_c_api_documentation_links">C API Documentation Links</a></li>
 <li><a href="#_gram5_perl_api_reference">GRAM5 Perl API Reference</a></li>
-<li><a href="#Globus::GRAM::Error">GLOBUS::GRAM::ERROR(3pm)</a></li>
-<li><a href="#Globus::GRAM::JobDescription">GLOBUS::GRAM::JOBDESCRIPTION(3pm)</a></li>
-<li><a href="#Globus::GRAM::JobManager">GLOBUS::GRAM::JOBMANAGER(3pm)</a></li>
-<li><a href="#Globus::GRAM::JobSignal">GLOBUS::GRAM::JOBSIGNAL(3pm)</a></li>
-<li><a href="#Globus::GRAM::JobState">GLOBUS::GRAM::JOBSTATE(3pm)</a></li>
 </ul>
 </li>
 <li><a href="#gram5-rsl">RSL Specification v1.1</a>
@@ -701,17 +696,16 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 <div class="paragraph">
 <p>GRAM5 also provides a Perl API for creating LRM interface implementations.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="Globus::GRAM::Error">GLOBUS::GRAM::ERROR(3pm)</h3>
 <div class="sect3">
-<h4 id="_name">NAME</h4>
+<h4 id="Globus::GRAM::Error">GLOBUS::GRAM::ERROR(3pm)</h4>
+<div class="sect4">
+<h5 id="_name">NAME</h5>
 <div class="paragraph">
 <p>Globus::GRAM::Error - GRAM Protocol Error Constants</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ID-c60796a234d35f578606676c401dfc40">DESCRIPTION</h4>
+<div class="sect4">
+<h5 id="ID-c60796a234d35f578606676c401dfc40">DESCRIPTION</h5>
 <div class="paragraph">
 <p>The Globus::GRAM::Error module defines symbolic names for the Error
 constants in the GRAM Protocol.</p>
@@ -720,8 +714,8 @@ constants in the GRAM Protocol.</p>
 <p>The Globus::GRAM::Error module methods return an object consisting of an
 integer erorr code, and (optionally) a string explaining the error.</p>
 </div>
-<div class="sect4">
-<h5 id="ID-e31d1ff6b6a89fcd7541fdba326160a1">Methods</h5>
+<div class="sect5">
+<h6 id="ID-e31d1ff6b6a89fcd7541fdba326160a1">Methods</h6>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>$error = new Globus::GRAM::Error($number, $string);</strong></dt>
@@ -1416,32 +1410,32 @@ object.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="Globus::GRAM::JobDescription">GLOBUS::GRAM::JOBDESCRIPTION(3pm)</h3>
 <div class="sect3">
-<h4 id="_name_2">NAME</h4>
+<h4 id="Globus::GRAM::JobDescription">GLOBUS::GRAM::JOBDESCRIPTION(3pm)</h4>
+<div class="sect4">
+<h5 id="_name_2">NAME</h5>
 <div class="paragraph">
 <p>Globus::GRAM::JobDescription - GRAM Job Description</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_name_3">NAME</h4>
+<div class="sect4">
+<h5 id="_name_3">NAME</h5>
 <div class="literalblock">
 <div class="content">
 <pre>-</pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ID-0438a8e2a51c2613b43085fb482b3c22">DESCRIPTION</h4>
+<div class="sect4">
+<h5 id="ID-0438a8e2a51c2613b43085fb482b3c22">DESCRIPTION</h5>
 <div class="paragraph">
 <p>This object contains the parameters of a job request in a simple object
 wrapper. The object may be queried to determine the value of any RSL
 parameter, may be updated with new parameters, and may be saved in the
 filesystem for later use.</p>
 </div>
-<div class="sect4">
-<h5 id="ID-2f6bf008e67124e4a12aa84b09ebfce3">Methods</h5>
+<div class="sect5">
+<h6 id="ID-2f6bf008e67124e4a12aa84b09ebfce3">Methods</h6>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>new Globus::GRAM::JobDescription(</strong>$filename<strong>)</strong></dt>
@@ -1581,31 +1575,31 @@ print "Not defined\n" if(!defined($not_present[0]));</pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="Globus::GRAM::JobManager">GLOBUS::GRAM::JOBMANAGER(3pm)</h3>
 <div class="sect3">
-<h4 id="_name_4">NAME</h4>
+<h4 id="Globus::GRAM::JobManager">GLOBUS::GRAM::JOBMANAGER(3pm)</h4>
+<div class="sect4">
+<h5 id="_name_4">NAME</h5>
 <div class="paragraph">
 <p>Globus::GRAM::JobManager - Base class for all Job Manager scripts</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_name_5">NAME</h4>
+<div class="sect4">
+<h5 id="_name_5">NAME</h5>
 <div class="literalblock">
 <div class="content">
 <pre>-</pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ID-e96f19759006b55f2a0d9c05142531b8">DESCRIPTION</h4>
+<div class="sect4">
+<h5 id="ID-e96f19759006b55f2a0d9c05142531b8">DESCRIPTION</h5>
 <div class="paragraph">
 <p>The Globus::GRAM::JobManager module implements the base behavior for a
 Job Manager script interface. Scheduler-specific job manager scripts
 must inherit from this module in order to be used by the job manager.</p>
 </div>
-<div class="sect4">
-<h5 id="ID-68252c34977081809bd73a304acda1f6">Methods</h5>
+<div class="sect5">
+<h6 id="ID-68252c34977081809bd73a304acda1f6">Methods</h6>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>$manager = Globus::GRAM::JobManager&#8594;new($JobDescription)</strong></dt>
@@ -1849,8 +1843,8 @@ load it.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ID-bcb5fd9dba9a920db0007cc56619dab1">RESPONSES</h4>
+<div class="sect4">
+<h5 id="ID-bcb5fd9dba9a920db0007cc56619dab1">RESPONSES</h5>
 <div class="paragraph">
 <p>When returning from a job interface method, or when sending an
 intermediate response via the <strong>response</strong>() method, the following hash
@@ -1901,16 +1895,16 @@ staged out by the script. This response should only be returned by the
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="Globus::GRAM::JobSignal">GLOBUS::GRAM::JOBSIGNAL(3pm)</h3>
 <div class="sect3">
-<h4 id="_name_6">NAME</h4>
+<h4 id="Globus::GRAM::JobSignal">GLOBUS::GRAM::JOBSIGNAL(3pm)</h4>
+<div class="sect4">
+<h5 id="_name_6">NAME</h5>
 <div class="paragraph">
 <p>Globus::GRAM::JobSignal - GRAM Protocol JobSignal Constants</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ID-dde2a5ed0f147b3205232afefdde1cf6">DESCRIPTION</h4>
+<div class="sect4">
+<h5 id="ID-dde2a5ed0f147b3205232afefdde1cf6">DESCRIPTION</h5>
 <div class="paragraph">
 <p>The Globus::GRAM::JobSignal module defines symbolic names for the
 JobSignal constants in the GRAM Protocol.</p>
@@ -1920,8 +1914,8 @@ JobSignal constants in the GRAM Protocol.</p>
 <pre></pre>
 </div>
 </div>
-<div class="sect4">
-<h5 id="ID-0b9db17dce2bf5bf77e6e0e93adbbea3">Methods</h5>
+<div class="sect5">
+<h6 id="ID-0b9db17dce2bf5bf77e6e0e93adbbea3">Methods</h6>
 <div class="sidebarblock">
 <div class="content">
 <div class="listingblock">
@@ -1978,16 +1972,16 @@ JobSignal constants in the GRAM Protocol.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="Globus::GRAM::JobState">GLOBUS::GRAM::JOBSTATE(3pm)</h3>
 <div class="sect3">
-<h4 id="_name_7">NAME</h4>
+<h4 id="Globus::GRAM::JobState">GLOBUS::GRAM::JOBSTATE(3pm)</h4>
+<div class="sect4">
+<h5 id="_name_7">NAME</h5>
 <div class="paragraph">
 <p>Globus::GRAM::JobState - GRAM Protocol JobState Constants</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ID-419977e2b3d9757b513072e147336574">DESCRIPTION</h4>
+<div class="sect4">
+<h5 id="ID-419977e2b3d9757b513072e147336574">DESCRIPTION</h5>
 <div class="paragraph">
 <p>The Globus::GRAM::JobState module defines symbolic names for the
 JobState constants in the GRAM Protocol.</p>
@@ -1997,8 +1991,8 @@ JobState constants in the GRAM Protocol.</p>
 <pre></pre>
 </div>
 </div>
-<div class="sect4">
-<h5 id="ID-578427db2c7ceece9803b48cb0e9fe8c">Methods</h5>
+<div class="sect5">
+<h6 id="ID-578427db2c7ceece9803b48cb0e9fe8c">Methods</h6>
 <div class="sidebarblock">
 <div class="content">
 <div class="listingblock">
@@ -2047,6 +2041,7 @@ JobState constants in the GRAM Protocol.</p>
 <p>Return the value of the ALL constant.</p>
 </dd>
 </dl>
+</div>
 </div>
 </div>
 </div>

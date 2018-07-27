@@ -6,24 +6,24 @@ include::../../wascopied_frag.adoc[]
 
 include::../breadcrumb_frag.adoc[]
  
-include::intro.adoc[]
+include::intro_frag.adoc[]
 
  
-include::before.adoc[]
+include::before_frag.adoc[]
 
  
-include::install.adoc[]
+include::install_frag.adoc[]
 
  
-include::basic_security.adoc[]
+include::basic_security_frag.adoc[]
 
  
-include::basic_setup.adoc[]
+include::basic_setup_frag.adoc[]
 
  
-include::platform.adoc[]
+include::platform_frag.adoc[]
 
  
-include::appendixptr.adoc[]
+include::appendixptr_frag.adoc[]
 
   

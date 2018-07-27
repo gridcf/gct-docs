@@ -5,7 +5,7 @@
 SimpleCA is tested on the following platforms:
 
 
-include::../platforms.adoc[]
+include::../platforms_frag.adoc[]
 
 
  
