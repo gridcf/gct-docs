@@ -224,7 +224,7 @@ attribute semantics.
 
 
 :leveloffset: 3
-include::rsl.adoc[]
+include::rsl-manual.adoc[]
 :leveloffset: 0
 
 :doctype: book

@@ -20,7 +20,7 @@ and parallel data layouts.
 
 OPTIONS
 -------
-include::globus-gridftp-server-options.adoc[]
+include::globus-gridftp-server-options_frag.adoc[]
 
 EXIT STATUS
 -----------

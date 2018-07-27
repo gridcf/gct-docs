@@ -1088,7 +1088,7 @@ the core job manager. Other LRM-specific RSL attributes may also be
 available in some situations.
 
 
-include::../GRAM5_RSL_Attribute_List.adoc[]
+include::../GRAM5_RSL_Attribute_List_Frag.adoc[]
 
 
  

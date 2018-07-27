@@ -18,9 +18,9 @@ Scenarios are shown for running GridFTP and GRAM5 services, and using
 GridFTP and GRAM clients. 
 --
  
-include::typography.adoc[]
+include::typography_frag.adoc[]
  
-include::prereq.adoc[]
+include::prereq_frag.adoc[]
  
 [[q-first]]
 == Setting up the first machine (GridFTP, GRAM, and MyProxy services) ==

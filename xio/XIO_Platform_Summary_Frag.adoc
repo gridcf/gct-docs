@@ -5,5 +5,5 @@
 Tested Platforms for XIO: 
 
 
-include::../platforms.adoc[]
+include::../platforms_frag.adoc[]
 

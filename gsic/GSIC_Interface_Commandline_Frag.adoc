@@ -6,7 +6,7 @@
 
 include::globus-update-certificate-dir-manual.adoc[]
 
-include::grid_cert_diagnostics-manual.adoc[]
+include::grid-cert-diagnostics-manual.adoc[]
 
 include::grid-cert-info-manual.adoc[]
 
@@ -16,11 +16,11 @@ include::grid-default-ca-manual.adoc[]
 
 include::grid-change-pass-phrase-manual.adoc[]
 
-include::grid_proxy_init-manual.adoc[]
+include::grid-proxy-init-manual.adoc[]
 
-include::grid_proxy_destroy-manual.adoc[]
+include::grid-proxy-destroy-manual.adoc[]
 
-include::grid_proxy_info-manual.adoc[]
+include::grid-proxy-info-manual.adoc[]
 
 include::grid-mapfile-add-entry-manual.adoc[]
 

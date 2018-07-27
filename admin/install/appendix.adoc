@@ -8,13 +8,13 @@ include::../../wascopied_frag.adoc[]
 include::../breadcrumb_frag.adoc[]
 
  
-include::advanced_build.adoc[]
+include::advanced_build_frag.adoc[]
 
  
-include::packaging.adoc[]
+include::packaging_frag.adoc[]
 
  
-include::env_vars.adoc[]
+include::env_vars_frag.adoc[]
 
  
 [[gtadmin-simpleca]]
@@ -22,19 +22,19 @@ include::env_vars.adoc[]
 
 :leveloffset: 1
 
-include::../../simpleca/admin/guide.adoc[]
+include::../../simpleca/admin/guide_frag.adoc[]
 
 :leveloffset: 0
  
-include::troubleshooting.adoc[]
+include::troubleshooting_frag.adoc[]
 
  
-include::advanced_config.adoc[]
+include::advanced_config_frag.adoc[]
 
  
-include::security_considerations.adoc[]
+include::security_considerations_frag.adoc[]
 
  
-include::usage_stats.adoc[]
+include::usage_stats_frag.adoc[]
 
   
