@@ -2,7 +2,7 @@
 +++++++++
 <?dbhtml filename="Usage_Stats.html" ?>
 +++++++++
-
+[[usagestats]]
 == Usage Statistics Collection by the Globus Alliance ==
 
 Beginning with GT 3.9.5, the Globus Toolkit has the capability to send usage

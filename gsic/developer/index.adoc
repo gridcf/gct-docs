@@ -217,7 +217,7 @@ include::../../Gridmap_Troubleshooting_Frag.adoc[]
 
 * http://www.faqs.org/rfcs/rfc2743.html[RFC 2743] GSSAPI
 
-* http://www.ggf.org/documents/GWD-I-E/GFD-E.024.pdf[GSSAPI Extensions]
+* http://www.ogf.org/documents/GFD.24.pdf[GFD 24] GSSAPI Extensions
 
 * http://www.faqs.org/rfcs/rfc2246.html[RFC 2246] TLS
 

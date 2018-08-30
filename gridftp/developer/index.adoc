@@ -239,4 +239,4 @@ include::GridFTP_Multicast_Frag.adoc[]
 
 [index]
 [[gridftp-developer-index]]
-= Index =
+== Index ==
