@@ -5,4 +5,4 @@ certificate authority to allow users to securely obtain credentials when
 and where needed. Users run **++myproxy-logon++** to authenticate and
 obtain credentials, including trusted CA certificates and Certificate
 Revocation Lists (CRLs). For more information about MyProxy, see the
-http://myproxy.ncsa.uiuc.edu/[MyProxy Home Page]. 
+http://grid.ncsa.illinois.edu/myproxy/[MyProxy Home Page]. 

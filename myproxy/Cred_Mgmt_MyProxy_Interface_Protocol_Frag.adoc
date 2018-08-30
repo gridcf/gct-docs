@@ -1,4 +1,4 @@
 
-Please refer to the http://myproxy.ncsa.uiuc.edu/protocol[MyProxy
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/protocol[MyProxy
 Protocol Specification]. 
 

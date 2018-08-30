@@ -14,7 +14,7 @@ This document provides information for GSI-OpenSSH developers.
 The changes to http://www.openssh.org/[OpenSSH] to add GSI support are
 limited, because we build on the existing GSSAPI support in OpenSSH for
 Kerberos. See the
-http://dev.globus.org/wiki/GSI-OpenSSH/Internals[GSI-OpenSSH Internals]
+https://github.com/globus/gsi-openssh/wiki/Internals[GSI-OpenSSH Internals]
 page for more details. 
 
 --
@@ -110,7 +110,7 @@ Troubleshooting Page] at NCSA.
 
 
 --
-Please see the http://grid.ncsa.uiuc.edu/ssh/[GSI-OpenSSH Home Page] at
+Please see the http://grid.ncsa.illinois.edu/ssh/[GSI-OpenSSH Home Page] at
 NCSA for more information.
 
 
