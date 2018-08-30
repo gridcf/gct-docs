@@ -132,7 +132,7 @@ the CA certificate, which can be found by running the command:
 
 
 --------
-$GLOBUS_LOCATION/bin/openssl x509 -hash -noout < ca_certificate
+openssl x509 -hash -noout < ca_certificate
 --------
 
 
