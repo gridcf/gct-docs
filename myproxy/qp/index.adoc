@@ -23,4 +23,4 @@ include::../Cred_Mgmt_MyProxy_Fixed_Bugs_Frag.adoc[]
 
 [[myproxy-qp-performance]]
 == Performance reports ==
-* http://myproxy.ncsa.uiuc.edu/scalability.html[MyProxy Scalability Information]
+* http://grid.ncsa.illinois.edu/myproxy/scalability.html[MyProxy Scalability Information]

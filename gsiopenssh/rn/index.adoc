@@ -42,6 +42,6 @@ include::../Util_OpenSSH_Associated_Standards_Frag.adoc[]
 [[gsiopenssh-rn-formoreinfo]]
 == For More Information ==
 
-See link:../../gsiopenssh/index.html[GSI OpenSSH] more information about this component. 
+See link:../../gsiopenssh/index.html[GSI OpenSSH] for more information about this component.
 
   

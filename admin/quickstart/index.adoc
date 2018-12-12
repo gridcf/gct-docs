@@ -452,7 +452,7 @@ Started GridFTP Server                                     [  OK  ]
 --------
 Now we can test it. 
 
-First, we'll retrive a proxy credential from the myproxy server so that
+First, we'll retrieve a proxy credential from the myproxy server so that
 the user on donkey can interact with the GCT services. Here we'll use
 the same passphrase as we used to create the **++quser++** credential. 
 

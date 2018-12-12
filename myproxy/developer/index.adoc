@@ -13,7 +13,7 @@ include::../breadcrumb_frag.adoc[]
 
 .Introduction
 --
-Please refer to the http://myproxy.ncsa.uiuc.edu/devguide.html[MyProxy
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/devguide.html[MyProxy
 Developer's Guide] on the MyProxy web site. 
 
 --
@@ -43,7 +43,7 @@ include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.adoc[]
 
 
 --
-Please refer to the http://myproxy.ncsa.uiuc.edu/userguide.html[MyProxy
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/userguide.html[MyProxy
 User Guide] for MyProxy usage scenarios. 
 
 
@@ -84,7 +84,7 @@ include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
 === Additional MyProxy Troubleshooting ===
 
 For additional information, see the
-http://myproxy.ncsa.uiuc.edu/troubleshooting.html[MyProxy
+http://grid.ncsa.illinois.edu/myproxy/troubleshooting.html[MyProxy
 Troubleshooting Page] at NCSA. 
 
  
@@ -94,7 +94,7 @@ Troubleshooting Page] at NCSA.
 
 --
 For additional information about MyProxy, see the
-http://myproxy.ncsa.uiuc.edu/[MyProxy Project Home Page] at NCSA. 
+http://grid.ncsa.illinois.edu/myproxy/[MyProxy Project Home Page] at NCSA.
 
 
 --

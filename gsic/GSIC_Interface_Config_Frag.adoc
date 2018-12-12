@@ -35,10 +35,7 @@ globus-gssapi-gsi-11.16 and the toolkit binary package version
 6.0.1430141288.
 
 The global security parameters for GSIC are included in the file
-++/etc/grid-security/gsi.conf++. This file contains the default values
-used by all GSI-enabled servers and clients. The format of the file is a
-sequence of lines containing a single NAME=VALUE pair, with comments
-beginning with the . This file contains the default values used by all
+++/etc/grid-security/gsi.conf++. This file contains the default values used by all
 GSI-enabled servers and clients. The format of the file is a sequence of
 lines containing a single NAME=VALUE pair, with comments beginning with
 the ++#++ character. All values in the default configuration file may be
@@ -135,7 +132,7 @@ the CA certificate, which can be found by running the command:
 
 
 --------
-$GLOBUS_LOCATION/bin/openssl x509 -hash -noout < ca_certificate
+openssl x509 -hash -noout < ca_certificate
 --------
 
 
@@ -500,48 +497,48 @@ globus_mapping      /opt/globus/lib/libglobus_gridmap_callout globus_gridmap_cal
 * End Entity Certificate (User, Host and Service) Certificates and the GSI
 Authorization Callout Configuration File: 
 
-* May not be executable
+** May not be executable
 
-* May not be writable by group and other
+** May not be writable by group and other
 
-* Must be either regular files or soft links
+** Must be either regular files or soft links
 
 * Private Keys and Proxy Credentials: 
 
-* Must be owned by the current (effective) user
+** Must be owned by the current (effective) user
 
-* May not be executable
+** May not be executable
 
-* May not be readable by group and other
+** May not be readable by group and other
 
-* May not be writable by group and other
+** May not be writable by group and other
 
-* Must be either regular files or soft links
+** Must be either regular files or soft links
 
 * CA Certificates, CA Signing Policy Files, the Grid Map File and the GAA
 Configuration File: 
 
-* Must be either regular files or soft links
+** Must be either regular files or soft links
 
-* GSI Authorization callout configuration files
+** GSI Authorization callout configuration files
 
-* Must exist
+** Must exist
 
-* Should be world readable
+** Should be world readable
 
-* Should not be writable by group and other
+** Should not be writable by group and other
 
-* Should be either a regular file or a soft link
+** Should be either a regular file or a soft link
 
-* GSI GAA configuration files
+* GSI GAA configuration files:
 
-* Must exist
+** Must exist
 
-* Should be world readable
+** Should be world readable
 
-* Should not be writable by group and other
+** Should not be writable by group and other
 
-* Should be either a regular file or a soft link
+** Should be either a regular file or a soft link
 
 
 

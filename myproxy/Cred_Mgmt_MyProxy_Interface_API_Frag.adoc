@@ -4,7 +4,7 @@
 
 
 --
-Please refer to the http://myproxy.ncsa.uiuc.edu/devguide.html[MyProxy
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/devguide.html[MyProxy
 Developer's Guide] for a list of available MyProxy APIs. 
 
 

@@ -14,7 +14,7 @@ include::../breadcrumb_frag.adoc[]
 
 
 --
-Please refer to the http://myproxy.ncsa.uiuc.edu/userguide.html[MyProxy
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/userguide.html[MyProxy
 User's Guide] on the MyProxy web site. 
 
 
@@ -34,7 +34,7 @@ include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
 === Additional MyProxy Troubleshooting ===
 
 For additional information, see the
-http://myproxy.ncsa.uiuc.edu/troubleshooting.html[MyProxy
+http://grid.ncsa.illinois.edu/myproxy/troubleshooting.html[MyProxy
 Troubleshooting Page] at NCSA. 
 
  
