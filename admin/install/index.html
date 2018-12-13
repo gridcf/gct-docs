@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Installing GCT 6.0</title>
+<title>Installing GCT 6.2</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,13 +432,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gtadmin" class="book toc2 toc-left">
 <div id="header">
-<h1>Installing GCT 6.0</h1>
+<h1>Installing GCT 6.2</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#gtadmin-before">Before you begin</a></li>
 <li><a href="#q-typography">Typographical Conventions</a></li>
-<li><a href="#gtadmin-install">Installing GCT 6.0</a>
+<li><a href="#gtadmin-install">Installing GCT 6.2</a>
 <ul class="sectlevel2">
 <li><a href="#install-bininst">Installing Binary Packages</a></li>
 <li><a href="#q-prereq">Prerequisites</a></li>
@@ -453,7 +453,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#gt-admin-firewall">Firewall configuration</a></li>
 </ul>
 </li>
-<li><a href="#gtadmin-basic-setup">Basic Setup for GCT 6.0</a></li>
+<li><a href="#gtadmin-basic-setup">Basic Setup for GCT 6.2</a></li>
 <li><a href="#gtadmin-platform">Platform Notes</a>
 <ul class="sectlevel2">
 <li><a href="#_platform_notes">Platform Notes</a></li>
@@ -483,14 +483,14 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">Admin Manuals</a> &#8594; Installing GCT 6.0</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">Admin Manuals</a> &#8594; Installing GCT 6.2</p>
 </div>
 <div id="gtadmin-intro" class="openblock">
 <div class="title">Introduction</div>
 <div class="content">
 <div class="paragraph">
 <p>This guide is the starting point for everyone who wants to install
-Grid Community Toolkit 6.0. It will take you through a basic installation that
+Grid Community Toolkit 6.2. It will take you through a basic installation that
 installs the following basic services: a security infrastructure (GSI),
 GridFTP, and Execution Services (GRAM5).
 This guide is also available as a <a href="installingGT.pdf">PDF</a>. However,
@@ -505,12 +505,12 @@ sometimes links to.</p>
 <h2 id="gtadmin-before">Before you begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before you start installing the Grid Community Toolkit 6.0, there are a few
+<p>Before you start installing the Grid Community Toolkit 6.2, there are a few
 things you should consider. The toolkit contains several components, and
 you may only be interested in some of them.</p>
 </div>
 <div class="paragraph">
-<p>The Grid Community Toolkit version 6.0 includes:</p>
+<p>The Grid Community Toolkit version 6.2 includes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -583,7 +583,7 @@ even though nothing will be printed to the screen.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-install">Installing GCT 6.0</h2>
+<h2 id="gtadmin-install">Installing GCT 6.2</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="install-bininst">Installing Binary Packages</h3>
@@ -592,7 +592,7 @@ even though nothing will be printed to the screen.</p>
 <div class="sect2">
 <h3 id="q-prereq">Prerequisites</h3>
 <div class="paragraph">
-<p>We distribute the Grid Community Toolkit 6 as a set of RPM and Debian packages
+<p>We distribute the Grid Community Toolkit 6.2 as a set of RPM and Debian packages
 for Linux systems, as an installable package for Mac OS X, as a .zip
 file for Windows and Cygwin, as well as a source installer which can be
 used on other operating systems. In this quickstart, we will be
@@ -609,7 +609,7 @@ guide.</p>
 repository. This repository contains the GCT software packages,
 signed by our build manager. We provide RPM and Debian packages that
 contain a source configuration file and the public key which can be used
-to verify the packages. If your distribution has GCT 6.0 packages
+to verify the packages. If your distribution has GCT 6.2 packages
 within its repository, you can skip to the next section.</p>
 </div>
 <div class="paragraph">
@@ -903,7 +903,7 @@ be sure you have all of the following prerequisites installed.</p>
 </div>
 <div class="paragraph">
 <p>This table shows specific package names (where available) for systems
-supported by GCT 6.0:</p>
+supported by GCT 6.2:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1230,7 +1230,7 @@ installation.</p>
 <div class="sect2">
 <h3 id="gtadmin-basic-host">Obtain host credentials</h3>
 <div class="paragraph">
-<p>You must have X.509 certificates to use the GCT 6.0 software securely
+<p>You must have X.509 certificates to use the GCT 6.2 software securely
 (referred to in this documentation as <strong>host certificates</strong>). For an
 overview of certificates for GSI (security) see
 <a href="../../gsic/admin/index.html#gsic-configuring">GSI Configuration
@@ -1691,7 +1691,7 @@ server to restrict its port range.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-basic-setup">Basic Setup for GCT 6.0</h2>
+<h2 id="gtadmin-basic-setup">Basic Setup for GCT 6.2</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">

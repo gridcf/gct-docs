@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>GCT 6.0 GridFTP : System Administrator&#8217;s Guide</title>
+<title>GCT 6.2 GridFTP : System Administrator&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gridftpAdmin" class="book toc2 toc-left">
 <div id="header">
-<h1>GCT 6.0 GridFTP : System Administrator&#8217;s Guide</h1>
+<h1>GCT 6.2 GridFTP : System Administrator&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -505,7 +505,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#globus-gridftp-server-setup-chroot">GLOBUS-GRIDFTP-SERVER-SETUP-CHROOT(8)</a></li>
 </ul>
 </li>
-<li><a href="#gridftp-SRB">Appendix B: GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</a>
+<li><a href="#gridftp-SRB">Appendix B: GCT 6.2 GridFTP: Setting up Storage Resource Broker (SRB)</a>
 <ul class="sectlevel2">
 <li><a href="#gridftp-SRB-intro">Introduction</a></li>
 <li><a href="#gridftp-SRB-architecture">Architecture</a></li>
@@ -549,7 +549,7 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GridFTP</a> &#8594; GCT 6.0 GridFTP : System Administrator&#8217;s Guide</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GridFTP</a> &#8594; GCT 6.2 GridFTP : System Administrator&#8217;s Guide</p>
 </div>
 <div class="openblock">
 <div class="title">Introduction</div>
@@ -567,7 +567,7 @@ server in some standard configurations.</p>
 <div class="paragraph">
 <p>This information is in addition to the basic Grid Community Toolkit prerequisite,
 overview, installation, security configuration instructions in the
-<a href="../../admin/install/index.html">Installing GCT 6.0</a>. Read through this guide
+<a href="../../admin/install/index.html">Installing GCT 6.2</a>. Read through this guide
 before continuing!</p>
 </div>
 <div class="openblock">
@@ -586,9 +586,9 @@ before continuing!</p>
 <div class="sect2">
 <h3 id="gridftp-building-installing">Building and Installing GridFTP</h3>
 <div class="paragraph">
-<p>GridFTP is built and installed as part of a default GCT 6.0 installation.
+<p>GridFTP is built and installed as part of a default GCT 6.2 installation.
 For basic installation instructions, see
-<a href="../../admin/install/index.html">Installing GCT 6.0</a>. No extra installation
+<a href="../../admin/install/index.html">Installing GCT 6.2</a>. No extra installation
 steps are
 required for this component.</p>
 </div>
@@ -624,7 +624,7 @@ following for configure and make:</p>
 <div class="sect2">
 <h3 id="gridftp-admin-installing-threaded">Enabling Threading in GridFTP</h3>
 <div class="paragraph">
-<p>In GCT 6.0 the GridFTP server and the client <em>globus-url-copy</em> are
+<p>In GCT 6.2 the GridFTP server and the client <em>globus-url-copy</em> are
 non-threaded by default. To enable threading, set the environment
 variable <em>GLOBUS_THREAD_MODEL=pthread</em>. On the server, threading can be
 enabled using command-line option <em>-threads 1</em> as well.</p>
@@ -1736,7 +1736,7 @@ available. This can be done in the GridFTP server by using the option:</p>
 <div class="content">
 <div class="paragraph">
 <p>It is assumed that the toolkit installation was successful. For more
-information, see the <a href="../../admin/install/index.html">Installing GCT 6.0</a>.
+information, see the <a href="../../admin/install/index.html">Installing GCT 6.2</a>.
 Also be sure
 to reference <a href="#gridftp-configuring">Configuring GridFTP</a> and
 <a href="../../gridftp/admin/index.html#globus-gridftp-server"><strong><code>globus-gridftp-server</code></strong></a>.</p>
@@ -2044,7 +2044,7 @@ modules:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In the GCT 6.0 implementation, the data transform module and the DSI have
+<p>In the GT 6.0 implementation, the data transform module and the DSI have
 been merged, although we plan to have separate, chainable, data
 transform modules in the future.</p>
 </div>
@@ -2289,9 +2289,9 @@ set up the globus environment, chdir to
 <div class="paragraph">
 <p>As of Globus 4.2.0, GridFTP server provides system administration logs
 in 2 different formats. The CEDPS best practices compliant format is a
-new format provided by GridFTP server available in Globus 6.0 and GCT. For more
+new format provided by GridFTP server available since GT 6.0. For more
 details on the CEDPS Logging format, see
-<a href="http://cedps.net/index.php/LoggingBestPractices">http://cedps.net/index.php/LoggingBestPractices</a>.</p>
+<a href="https://web.archive.org/web/20100927122333/http://www.cedps.net:80/index.php/LoggingBestPractices">https://web.archive.org/web/20100927122333/http://www.cedps.net:80/index.php/LoggingBestPractices</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_configuring_cedps_format_system_administration_logs">Configuring CEDPS format system administration logs</h4>
@@ -3704,7 +3704,7 @@ directory than the default [/etc/grid-security/certificates].</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gridftp-SRB">Appendix B: GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB)</h2>
+<h2 id="gridftp-SRB">Appendix B: GCT 6.2 GridFTP: Setting up Storage Resource Broker (SRB)</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -3750,7 +3750,7 @@ components:</p>
 <p><strong>SRB-DSI</strong> - This component is the bridge between GridFTP and SRB. All operation requests and data are routed through this component. The GridFTP server makes requests of it, then it translates these requests into SRB client commands.</p>
 </li>
 <li>
-<p><strong>GridFTP Server</strong> - A standard GridFTP 6.0 server is loaded with the SRB-DSI. Clients contact this server to access data in a SRB resource. The server passes the request to the SRB-DSI which, as described above, passes the request on to the SRB server. The responses to the requests return along the same path.</p>
+<p><strong>GridFTP Server</strong> - A stock GridFTP server is loaded with the SRB-DSI. Clients contact this server to access data in a SRB resource. The server passes the request to the SRB-DSI which, as described above, passes the request on to the SRB server. The responses to the requests return along the same path.</p>
 </li>
 <li>
 <p><strong>GridFTP Client </strong>- A stock GridFTP client (like <strong><code>globus-url-copy</code></strong>). No modifications to the client are needed.</p>
@@ -3766,7 +3766,7 @@ components:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Grid Community Toolkit</strong> - You need the GridFTP distributed with GT or GCT (compatible with 4.0.1 or later). You can find that <a href="http://www.globus.org/toolkit/downloads/6.0.0/">here</a>.</p>
+<p><strong>Grid Community Toolkit</strong> - You need the GridFTP distributed with GCT or GT (compatible with GT 4.0.1 or later and GCT 6.2 or later). You can find that <a href="http://www.globus.org/toolkit/downloads/6.0.0/">here</a>.</p>
 </li>
 <li>
 <p><strong>SRB Client 3.4.0</strong> - You only need the client libraries to build the SRB-DSI, but you will need access to a running SRB server and resource. You can find the client libraries <a href="http://www.sdsc.edu/srb/tarfiles/main.html">here</a>.</p>

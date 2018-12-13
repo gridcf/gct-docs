@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>GCT 6.0 GridFTP : Developer&#8217;s Guide</title>
+<title>GCT 6.2 GridFTP : Developer&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gridftpDeveloper" class="book toc2 toc-left">
 <div id="header">
-<h1>GCT 6.0 GridFTP : Developer&#8217;s Guide</h1>
+<h1>GCT 6.2 GridFTP : Developer&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -578,7 +578,7 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GridFTP</a> &#8594; GCT 6.0 GridFTP : Developer&#8217;s Guide</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GridFTP</a> &#8594; GCT 6.2 GridFTP : Developer&#8217;s Guide</p>
 </div>
 <div class="openblock">
 <div class="title">Introduction</div>
@@ -599,12 +599,12 @@ samples.</p>
 <div class="sect2">
 <h3 id="gridftp-featuresummary">Feature Summary</h3>
 <div class="paragraph">
-<p>Features new in GT 6.0:</p>
+<p>Features new in GCT 6.2:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Wider support for UDT</p>
+<p>None.</p>
 </li>
 </ul>
 </div>
@@ -681,7 +681,7 @@ transfer).</p>
 <p>Server-side computation (Extended Retrieve (ERET) / Extended Store (ESTO) commands).</p>
 </li>
 <li>
-<p>Based on Standards: RFC 959, RFC 2228, RFC 2389, IETF Draft MLST-16 , GGF GFD.020.</p>
+<p>Based on Standards: RFC 959, RFC 2228, RFC 2389, IETF Draft MLST-16, GGF GFD.020.</p>
 </li>
 </ul>
 </div>
@@ -807,7 +807,7 @@ interested in hearing reports of success or bug reports on any platform.</p>
 <div class="sect2">
 <h3 id="gridftp-backward-compatibility">Backward compatibility summary</h3>
 <div class="paragraph">
-<p>Protocol changes since GT 5.2</p>
+<p>Protocol changes since GT 6.0</p>
 </div>
 <div class="ulist">
 <ul>
@@ -817,7 +817,7 @@ interested in hearing reports of success or bug reports on any platform.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>API changes since GT 5.2</p>
+<p>API changes since GT 6.0</p>
 </div>
 <div class="ulist">
 <ul>
@@ -827,7 +827,7 @@ interested in hearing reports of success or bug reports on any platform.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Exception changes since GT 5.2</p>
+<p>Exception changes since GT 6.0</p>
 </div>
 <div class="ulist">
 <ul>
@@ -837,7 +837,7 @@ interested in hearing reports of success or bug reports on any platform.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Schema changes since GT 5.2</p>
+<p>Schema changes since GT 6.0</p>
 </div>
 <div class="ulist">
 <ul>
@@ -989,7 +989,7 @@ Hannover, Germany at a sustained rate of 80 MB/s.</p>
 <div class="content">
 <div class="paragraph">
 <p>GCT implemention of GridFTP is based on the following standards: RFC
-959, RFC 2228, RFC 2389, IETF Draft MLST-16 , OGF GFD.020. In addition
+959, RFC 2228, RFC 2389, IETF Draft MLST-16, OGF GFD.020. In addition
 to these standards, some additional commands are implemented as well.
 The specification for one such command Data Channel Security Context
 (DCSC) is available at <a href="#dcsc-spec">DCSC Specification</a>.</p>
@@ -1094,7 +1094,7 @@ modules:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In the GCT 6.0 implementation, the data transform module and the DSI have
+<p>In the GT 6.0 implementation, the data transform module and the DSI have
 been merged, although we plan to have separate, chainable, data
 transform modules in the future.</p>
 </div>
@@ -1276,11 +1276,11 @@ to run it on a different grid.</p>
 <div class="paragraph">
 <p>All applications which use the Globus FTP Client API must include the
 header file <code>globus_ftp_client.h</code> and activate the  and activate the
-<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5factivation.html">GLOBUS_FTP_CLIENT_MODULE</a>.</p>
+<a href="http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5factivation.html">GLOBUS_FTP_CLIENT_MODULE</a>.</p>
 </div>
 <div class="paragraph">
 <p>To use the Globus FTP Client API, one must create an
-<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fhandle.html">FTP
+<a href="http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fhandle.html">FTP
 Client handle</a>. This structure contains:</p>
 </div>
 <div class="ulist">
@@ -1298,13 +1298,13 @@ Client handle</a>. This structure contains:</p>
 </div>
 <div class="paragraph">
 <p>The specifics of the connection caching and plugins are found in the
-"http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fhandleattr.html[Handle
+"http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fhandleattr.html[Handle
 Attributes]" section of the API documentation.</p>
 </div>
 <div class="paragraph">
 <p>Once the handle is created, one may begin transferring files or doing
 other FTP operations by calling the functions in the
-"http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5foperations.html[FTP
+"http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5foperations.html[FTP
 Operations]" section of the API documentation. In addition to whole-file
 transfers, the API supports partial file transfers, restarting transfers
 from a known point, and various FTP directory management commands. All
@@ -1312,7 +1312,7 @@ FTP operations may have a set of attributes, defined in the
 operationattr section, associated with them to tune various FTP
 parameters. The data structures and functions needed to restart a file
 transfer are described in the
-"http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5frestart%5f%5fmarker.html[Restart
+"http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5frestart%5f%5fmarker.html[Restart
 Markers]" section of the API documentation. For operations which require
 the user to send to or receive data from an FTP server they must call
 the functions described in the "globus_ftp_client_data" section of the
@@ -1331,10 +1331,10 @@ extensions for parallel, striped, and partial data transfer.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fclient/html/index.html">C Client Library API</a></p>
+<p><a href="http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fclient/html/index.html">C Client Library API</a></p>
 </li>
 <li>
-<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fftp%5fcontrol/html/index.html">C Control Library API</a></p>
+<p><a href="http://www.globus.org/api/c-globus-6.0/globus%5fftp%5fcontrol/html/index.html">C Control Library API</a></p>
 </li>
 </ul>
 </div>
