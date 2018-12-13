@@ -1,6 +1,6 @@
 [[simplecaRN,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes: SimpleCA =
+= GCT 6.2 Release Notes: SimpleCA =
 
 include::../../wascopied_frag.adoc[]
 

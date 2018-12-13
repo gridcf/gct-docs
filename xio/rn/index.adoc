@@ -1,6 +1,6 @@
 [[xioRN,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes: XIO =
+= GCT 6.2 Release Notes: XIO =
 
 include::../../wascopied_frag.adoc[]
 

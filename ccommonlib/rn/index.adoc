@@ -1,6 +1,6 @@
 [[ccommonlibRN,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes: C Common Libraries =
+= GCT 6.2 Release Notes: C Common Libraries =
 
 include::../../wascopied_frag.adoc[]
 

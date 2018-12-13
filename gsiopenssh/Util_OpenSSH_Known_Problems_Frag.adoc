@@ -2,5 +2,5 @@
 [[gsiopenssh-outstanding]]
 === Known Problems in GSI OpenSSH ===
 
-None.
+* None.
 

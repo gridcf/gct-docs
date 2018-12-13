@@ -1,6 +1,6 @@
 [[gsiopensshRN,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes: GSI-OpenSSH =
+= GCT 6.2 Release Notes: GSI-OpenSSH =
 
 include::../../wascopied_frag.adoc[]
 

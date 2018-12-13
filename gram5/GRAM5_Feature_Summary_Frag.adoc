@@ -3,10 +3,9 @@
 === Feature summary ===
 
 indexterm:[features]
-New Features new since 5.2: 
+Features new in GCT 6.2:
 
-* Bug fixes and improved testing
-
+* None.
 
 Other Standard Supported Features
 

@@ -1,6 +1,6 @@
 [[gridftpRN,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes: GridFTP =
+= GCT 6.2 Release Notes: GridFTP =
 indexterm:[release notes (GridFTP)]
 
 include::../../wascopied_frag.adoc[]

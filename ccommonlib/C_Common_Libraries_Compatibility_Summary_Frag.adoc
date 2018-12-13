@@ -1,8 +1,8 @@
 [[ccommonlib-compatibility-summary]]
 == Backward compatibility summary ==
 
-API changes since GT version 5.2
+API changes since GT version 6.0
 
 None.
 
-All of the GT 3.2 API is still functional in GCT 6.0.
+All of the GT 3.2 API is still functional in GCT 6.2.

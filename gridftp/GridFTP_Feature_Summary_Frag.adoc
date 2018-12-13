@@ -2,11 +2,9 @@
 [[gridftp-featuresummary]]
 === Feature Summary ===
 
-Features new in GT 6.0: 
+Features new in GCT 6.2:
 
-* Wider support for UDT
-
-
+* None.
 
 Features that continue to be supported from previous versions 
 

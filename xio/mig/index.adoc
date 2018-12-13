@@ -1,6 +1,6 @@
 [[xioMig,Migrating Guide]]
 :doctype: article
-= GCT 6.0 Migrating Guide for XIO =
+= GCT 6.2 Migrating Guide for XIO =
 
 include::../../wascopied_frag.adoc[]
 
@@ -88,7 +88,7 @@ own. Here are some examples:
 
 
 
-6.0 No other differences will be noticed by those previously familiar
+For GCT 6.2 no other differences will be noticed by those previously familiar
 with globus_xio. 
 
  
@@ -96,7 +96,7 @@ with globus_xio.
 == Migrating XIO from GT3 ==
 
 Globus XIO has made very few changes in the API since its introduction.
-Users of GCT or GT 6.0 who are previously familiar with globus_xio will notice
+Users of GCT 6.2 who are previously familiar with globus_xio will notice
 no difference. 
 
  

@@ -1,6 +1,6 @@
 [[gsiopensshMig,Migrating Guide]]
 :doctype: article
-= GCT 6.0 Migrating Guide for GSI-OpenSSH =
+= GCT 6.2 Migrating Guide for GSI-OpenSSH =
 
 include::../../wascopied_frag.adoc[]
 

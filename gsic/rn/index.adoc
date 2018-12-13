@@ -1,6 +1,6 @@
 [[gsicRN,Release Notes]]
 :doctype: article
-= GT 6.0 GSI C Release Notes =
+= GCT 6.2 GSI C Release Notes =
 
 include::../../wascopied_frag.adoc[]
 
