@@ -1,7 +1,7 @@
 
 [[gram5Admin, System Administrator's Guide]]
 :doctype: book
-= GCT 6.0 GRAM5: System Administrator's Guide =
+= GCT 6.2 GRAM5: System Administrator's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -39,7 +39,7 @@ link:../../gridftp/index.html[GridFTP] services to stage files to compute resour
 their respective Administrator's guides for information about
 installing, configuring, and managing those systems. In particular, you
 must understand the tasks in
-link:../../admin/install/index.html#gtadmin-install[Installing GCT 6.0] and
+link:../../admin/install/index.html#gtadmin-install[Installing GCT 6.2] and
 install the
 basic GRAM5 packages, and complete the tasks in
 link:../../admin/install/index.html#gtadmin-basic-security[Basic Security
@@ -66,7 +66,7 @@ start via an internet superserver such as **++inetd++** or
 
 ==== Choosing an LRM Adapter ====
 
-GRAM5 in GCT 6.0 supports the following LRM adapters: Condor, PBS,
+GRAM5 in GCT 6.2 supports the following LRM adapters: Condor, PBS,
 GridEngine, and Fork. These LRM adapters translate GRAM5 job
 specifications into LRM-specific job descriptions and scripts to run
 them, as well as interfaces to the LRM to determine job termination
@@ -110,16 +110,16 @@ Not all LRM adapters provide an interface to the **++globus-scheduler-event-gene
 [[gram5-admin-installing-lrm-packages]]
 === Installing LRM Adapter Packages ===
 
-There are several LRM adapters included in the GCT 6.0. For some, there
+There are several LRM adapters included in the GCT 6.2. For some, there
 is a ++-setup-poll++ and ++-setup-seg++ package which installs the
 adapter and configuration file needed for job status via polling or the
 **++globus-scheduler-event-generator++** program. 
 
 There are three ways to get LRM adapters: as RPM packages, as Debian
 packages, and from the source installer. These installation methods are
-described in link:../../admin/install/index.html[Installing GCT 6.0]. 
+described in link:../../admin/install/index.html[Installing GCT 6.2].
 
-LRM adapter packages included in the GCT 6.0 release are: 
+LRM adapter packages included in the GCT 6.2 release are:
 
 [options="header"]
 .GRAM5 LRM Adapters
@@ -153,7 +153,7 @@ included in the **++globus-job-manager++** program, but not the
 
 
 --
-There are several tools provided with GCT 6.0 to manage GRAM5, as well as
+There are several tools provided with GCT 6.2 to manage GRAM5, as well as
 OS-specific tools to start and stop some of the services. There are
 tools to manage user authorization, which services are enabled, which
 scheduler event generator modules are enabled, and to test the

@@ -23,7 +23,7 @@ Make sure you have the following users on your machine:
 
 SimpleCA can be installed in three ways, from a debian package, from an
 RPM package, and from the source installer. These installation methods
-are described in link:../../admin/install/index.html[Installing GCT 6.0].
+are described in link:../../admin/install/index.html[Installing GCT 6.2].
 
 To install SimpleCA from binary packages, install the packages
 **++globus-simple-ca++** and **++globus-gsi-cert-utils-progs++** and

@@ -1,6 +1,6 @@
 [[gtdeveloper]]
 :doctype: book
-= Grid Community Toolkit 6.0 Developer's Guide =
+= Grid Community Toolkit 6.2 Developer's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -10,7 +10,7 @@ include::../breadcrumb_frag.adoc[]
 --
 [NOTE]
 --
-Please note that the Best Practices need to be updated for GCT 6 and are not being published at this time. 
+Please note that the Best Practices need to be updated for GCT 6.2 and are not being published at this time.
 --
 
 You can download the link:gtDeveloperGuide.pdf[PDF version here].

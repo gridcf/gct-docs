@@ -1,6 +1,6 @@
 [[ccommonlibDeveloper,Developer's Guide]]
 :doctype: book
-= GCT 6.0 C Common Libraries: Developer's Guide =
+= GCT 6.2 C Common Libraries: Developer's Guide =
 
 include::../../wascopied_frag.adoc[]
 

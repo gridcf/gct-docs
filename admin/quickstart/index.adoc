@@ -1,6 +1,6 @@
 [[quickstart]]
 :doctype: article
-= GCT 6 Quickstart =
+= GCT 6.2 Quickstart =
 
 include::../../wascopied_frag.adoc[]
 
@@ -526,6 +526,5 @@ this point successfully, you should have enough knowledge to enable additional
 hosts to use your grid by repeating the tasks in link:#q-second[Setting up your
 second machine]. Also, by repeating the tasks in link:#q-user-credential[User
 Credentials ] and link:#q-gridmap[User Authorization ] you can enable
-additional users to access your compute and data resources. 
+additional users to access your compute and data resources.
 
-  

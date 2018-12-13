@@ -1,6 +1,6 @@
 
 [[errors]]
-== Grid Community Toolkit 6.0 Errors ==
+== Grid Community Toolkit 6.2 Errors ==
 
 include::../breadcrumb_frag.adoc[]
 

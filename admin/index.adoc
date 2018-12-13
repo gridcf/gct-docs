@@ -1,6 +1,6 @@
 [[admin,Admin Manuals]]
 :doctype: book
-= GCT 6.0: Admin Manuals =
+= GCT 6.2: Admin Manuals =
 
 include::../wascopied_frag.adoc[]
 

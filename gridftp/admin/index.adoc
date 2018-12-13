@@ -1,6 +1,6 @@
 [[gridftpAdmin,System Administrator's Guide]]
 :doctype: book
-= GCT 6.0 GridFTP : System Administrator's Guide =
+= GCT 6.2 GridFTP : System Administrator's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -18,7 +18,7 @@ server in some standard configurations.
 --
 This information is in addition to the basic Grid Community Toolkit prerequisite,
 overview, installation, security configuration instructions in the
-link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide
+link:../../admin/install/index.html[Installing GCT 6.2]. Read through this guide
 before continuing!
 --
 
@@ -206,7 +206,7 @@ available. This can be done in the GridFTP server by using the option:
 
 --
 It is assumed that the toolkit installation was successful. For more
-information, see the link:../../admin/install/index.html[Installing GCT 6.0].
+information, see the link:../../admin/install/index.html[Installing GCT 6.2].
 Also be sure
 to reference link:#gridftp-configuring[Configuring GridFTP] and
 link:../../gridftp/admin/index.html#globus-gridftp-server[**++globus-gridftp-server++**].

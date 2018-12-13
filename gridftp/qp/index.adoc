@@ -1,6 +1,6 @@
 [[gridftpQP,Quality Profile]]
 :doctype: article
-= GCT 6.0 GridFTP: Quality Profile =
+= GCT 6.2 GridFTP: Quality Profile =
 
 include::../../wascopied_frag.adoc[]
 

@@ -4,7 +4,7 @@
 --
 
 This is a document to specify the existing RSL v1.0 implementation and
-interfaces, as they are provided in the GCT 6.0 release. This document
+interfaces, as they are provided in the GCT 6.2 release. This document
 serves as a reference, and more introductory text.
 
 

@@ -1,6 +1,6 @@
 
 [[gtadmin-advanced-build]]
-== Advanced Installation for GCT 6.0 ==
+== Advanced Installation for GCT 6.2 ==
 
 
 --

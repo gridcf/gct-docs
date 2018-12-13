@@ -1,6 +1,6 @@
 [appendix]
 [[gridftp-SRB,Setting up SRB for use with GridFTP]]
-= GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB) =
+= GCT 6.2 GridFTP: Setting up Storage Resource Broker (SRB) =
 
 include::../../wascopied_frag.adoc[]
 

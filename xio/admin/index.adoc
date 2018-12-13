@@ -1,7 +1,7 @@
 
 [[xioAdmin,System Administrator's Guide]]
 :doctype: book
-= GCT 6.0 XIO: System Administrator's Guide =
+= GCT 6.2 XIO: System Administrator's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -13,11 +13,11 @@ include::../breadcrumb_frag.adoc[]
 --
 Globus XIO is a development API. The only administration required is to
 install it according to the
-link:../../admin/install/index.html#gtadmin-install[GT6.0 installation
+link:../../admin/install/index.html#gtadmin-install[GCT 6.2 installation
 instructions].
 [IMPORTANT]
 --
-This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide before continuing!
+This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in the link:../../admin/install/index.html[Installing GCT 6.2]. Read through this guide before continuing!
 --
 
 
@@ -29,8 +29,8 @@ This information is in addition to the basic Grid Community Toolkit prerequisite
 
 
 --
-XIO is built and installed with a default GCT 6.0 installation, see the
-link:../../admin/install/index.html#gtadmin-install[Installing GCT 6.0].
+XIO is built and installed with a default GCT 6.2 installation, see the
+link:../../admin/install/index.html#gtadmin-install[Installing GCT 6.2].
 
 
 --

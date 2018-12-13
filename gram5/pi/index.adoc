@@ -1,6 +1,6 @@
 [[gram5PI, Guide to Public Interfaces]]
 :doctype: book
-= GCT 6.0 Component Guide to Public Interfaces: GRAM5 =
+= GCT 6.2 Component Guide to Public Interfaces: GRAM5 =
 
 include::../../wascopied_frag.adoc[]
 

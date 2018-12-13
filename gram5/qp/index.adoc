@@ -1,6 +1,6 @@
 [[gram5QP,Quality Profile]]
 :doctype: article
-= GCT 6.0 GRAM5: Quality Profile =
+= GCT 6.2 GRAM5: Quality Profile =
 
 include::../../wascopied_frag.adoc[]
 

@@ -1,6 +1,6 @@
 [[gridftp,GridFTP]]
 :doctype: article
-= GCT 6.0 GridFTP =
+= GCT 6.2 GridFTP =
 
 include::../wascopied_frag.adoc[]
 
@@ -33,7 +33,7 @@ The following guides are available for this component:
 2+| Other information available for this component are:
 
 | link:rn/index.html[**Release Notes**]
-| What's new with the 6.0 release for this component.  
+| What's new with the 6.2 release for this component.
   [link:rn/gridftpReleaseNotes.pdf[pdf]]
 
 | link:pi/index.html[**Public Interface Guide**]

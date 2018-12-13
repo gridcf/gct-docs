@@ -1,6 +1,6 @@
 [[gtadmin]]
 :doctype: book
-= Installing GCT 6.0 =
+= Installing GCT 6.2 =
 
 include::../../wascopied_frag.adoc[]
 

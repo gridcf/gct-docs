@@ -1,7 +1,7 @@
 
 [[gram5Key,GRAM5 Key Concepts]]
 :doctype: book
-= GCT 6.0 GRAM5 Key Concepts =
+= GCT 6.2 GRAM5 Key Concepts =
 
 include::../../wascopied_frag.adoc[]
 

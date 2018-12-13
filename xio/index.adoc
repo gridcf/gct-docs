@@ -1,6 +1,6 @@
 [[xio,XIO]]
 :doctype: article
-= GCT 6.0: XIO =
+= GCT 6.2: XIO =
 
 include::../wascopied_frag.adoc[]
 
@@ -28,7 +28,7 @@ include::XIO_Overview_Brief_Frag.adoc[]
 2+| Other information available for this component are:
 
 | link:rn/index.html[**Release Notes**]
-| What's new with the 6.0 release for this component.
+| What's new with the 6.2 release for this component.
   [link:developer/xioDeveloperGuide.pdf[pdf]]
 
 | link:pi/index.html[**Public Interface Guide**]

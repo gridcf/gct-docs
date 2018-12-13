@@ -1,6 +1,6 @@
 [[myproxyQP,Quality Profile]]
 :doctype: article
-= GCT 6.0 MyProxy: Quality Profile =
+= GCT 6.2 MyProxy: Quality Profile =
 
 include::../../wascopied_frag.adoc[]
 

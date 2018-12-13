@@ -1,6 +1,6 @@
 
 [[globus-async-example1,Asynchronous Event Handling: Example 1]]
-== GCT 6.0: Asynchronous Event Handling: Example 1 ==
+== GCT 6.2: Asynchronous Event Handling: Example 1 ==
 
 
 --

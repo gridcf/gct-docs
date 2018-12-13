@@ -1,7 +1,7 @@
 
 [[ccommonlibPI,Public Interface Guide]]
 :doctype: book
-= GCT 6.0 Component Guide to Public Interfaces: C Common Libraries =
+= GCT 6.2 Component Guide to Public Interfaces: C Common Libraries =
 
 include::../../wascopied_frag.adoc[]
 

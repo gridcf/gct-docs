@@ -1,5 +1,5 @@
 [[globus-async]]
-== GCT 6.0: Asynchronous Event Handling ==
+== GCT 6.2: Asynchronous Event Handling ==
 
 
 --

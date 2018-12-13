@@ -6,7 +6,7 @@
 [[gtadmin-basic-host]]
 === Obtain host credentials ===
 
-You must have X.509 certificates to use the GCT 6.0 software securely
+You must have X.509 certificates to use the GCT 6.2 software securely
 (referred to in this documentation as **host certificates**). For an
 overview of certificates for GSI (security) see
 link:../../gsic/admin/index.html#gsic-configuring[GSI Configuration

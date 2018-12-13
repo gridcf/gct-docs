@@ -1,7 +1,7 @@
 
 [[myproxyDeveloper,Developer's Guide]]
 :doctype: book
-= GCT 6.0 MyProxy: Developer's Guide =
+= GCT 6.2 MyProxy: Developer's Guide =
 
 include::../../wascopied_frag.adoc[]
 

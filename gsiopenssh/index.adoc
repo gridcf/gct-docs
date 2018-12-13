@@ -1,6 +1,6 @@
 [[gsiopenssh,GSI-OpenSSH]]
 :doctype: article
-= GCT 6.0: GSI-OpenSSH =
+= GCT 6.2: GSI-OpenSSH =
 
 include::../wascopied_frag.adoc[]
 
@@ -35,7 +35,7 @@ The following guides are available for this component:
 2+| Other information available for this component are:
 
 | link:rn/index.html[**Release Notes**]
-| What's new with the 6.0 release for this component.
+| What's new with the 6.2 release for this component.
   [link:rn/gsiopensshReleaseNotes.pdf[pdf]]
 
 | link:pi/index.html[**Public Interface Guide**]
