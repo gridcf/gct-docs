@@ -5,7 +5,7 @@
 [[myproxy-usage-stats]]
 === MyProxy usage statistics collection ===
 
-Deactivated by default since v6.0.
+Deactivated by default since MyProxy v6.0.
 
 When activated, the myproxy-server will send a UDP packet containing usage
 information to usage-stats.cilogon.org:4810 after serving each request.

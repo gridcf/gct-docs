@@ -53,7 +53,7 @@ Features that continue to be supported from previous versions
 
 * Server-side computation (Extended Retrieve (ERET) / Extended Store (ESTO) commands).
 
-* Based on Standards: RFC 959, RFC 2228, RFC 2389, IETF Draft MLST-16 , GGF GFD.020.
+* Based on Standards: RFC 959, RFC 2228, RFC 2389, IETF Draft MLST-16, GGF GFD.020.
 
 
 
