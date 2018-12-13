@@ -1,0 +1,11 @@
+:doctype: article
+= Grid Community Toolkit Legal information =
+
+include::../wascopied_frag.adoc[]
+
+ifdef::backend-html5[link:../index.html[GCT] -> Legal information]
+
+The following links point to licenses for this distribution:
+
+* link:https://www.apache.org/licenses/LICENSE-2.0[Apache Public License, Version 2.0]
+* link:3rd_party/index.html[Third Party Licenses]

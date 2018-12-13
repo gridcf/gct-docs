@@ -1,0 +1,134 @@
+:doctype: book
+= Grid Community Toolkit 6.2 3rd Party Licenses =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+A number of third party products are used in the development of the Grid Community Toolkit
+and the associated Third Party Software Notices and/or additional Terms and Conditions are
+provided below. The source material is copyright of the original publishers.
+
+Also, some portions of the Grid Community Toolkit contain contributions that hold separate
+copyright notices and licenses in some cases. These are included below as well.
+
+== OpenSSL ==
+
+The OpenSSL Toolkit is used in several places in the toolkit, most notably in the GSI
+implementation. It is included in the binary distributions for Linux and Windows.
+
+URL: http://www.openssl.org
+
+License Type: BSD-style Open Source License
+
+----
+include::OpenSSL.LICENSE[]
+----
+
+
+== GNU Libtool ==
+
+The libltdl library source code from GNU Libtool is included in the GT 6 source
+installer. A binary version of library is also included in the binary installers for Mac
+OS X, Linux, and Windows
+
+URL: http://www.gnu.org/software/libtool/
+
+License Type: LGPL version 2.1
+
+----
+include::libtool.LICENSE[]
+----
+
+
+== UDT ==
+
+Binary versions of the Globus XIO UDT driver which we distribute include the UDT library
+
+URL: http://udt.sourceforge.net
+
+License Type: BSD-style Open Source License
+
+----
+include::udt.LICENSE[]
+----
+
+
+== libffi ==
+
+Binary installers which contain the Globus XIO UDT driver include the libffi library
+
+URL: https://sourceware.org/libffi/
+
+License Type: Other
+
+----
+include::libffi.LICENSE[]
+----
+
+
+== OpenSSH ==
+
+The gsi-openssh component of the Globus Toolkit is derived from the OpenSSH software
+package, and also incorporates patches from NoMachine.
+
+URL: http://www.openssh.org https://www.nomachine.com/NoMachine-OSS-ports
+
+License Type: Other
+
+----
+include::OpenSSH.LICENSE[]
+----
+
+
+== MyProxy ==
+
+The myproxy component of the Globus Toolkit is developed by the University of Illinois.
+It contains separate license terms included below.
+
+URL: http://grid.ncsa.illinois.edu/myproxy/
+
+License Type: Other
+
+----
+include::MyProxy.LICENSE[]
+----
+
+
+== GRAM5 GridEngine Resource Manager ==
+
+Portions of the GRAM5 Univa Grid Engine implementation was contributed to the original
+Globus - now - Grid Community Toolkit under the LGPL version 2.1 by various authors.
+
+Author: The file sge.pm has the following authors:
+
+* Marko Krznaric
+  London eScience Centre
+  June 2003
+* Contributions by David McBride
+  London eScience Centre
+  Oct 2003
+* Contributions by Jeff Porter
+  Lawrence Berkeley National Laboratory
+  Sept 2007
+
+License Type: LGPL version 2.1
+
+----
+include::sge.pm.LICENSE[]
+----
+
+
+== GRAM5 Simple Linux Utility for Resource Management (Slurm) Resource Manager ==
+
+The Slurm resource manager implementation was contributed by Kurakin Roman under a BSD-style open source License
+
+Component: GRAM5 SLURM LRM
+
+Author: The file slurm.pm is Copyright 2010-2011 Kurakin Roman
+
+License Type: BSD-style Open Source License
+
+----
+include::slurm.pm.LICENSE[]
+----
