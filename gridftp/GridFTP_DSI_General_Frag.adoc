@@ -18,7 +18,7 @@ modules:
 * the Data Storage Interface (DSI).
 
 
-In the GCT 6.0 implementation, the data transform module and the DSI have
+In the GT 6.0 implementation, the data transform module and the DSI have
 been merged, although we plan to have separate, chainable, data
 transform modules in the future.
 
