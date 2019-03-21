@@ -1,7 +1,7 @@
 
 [[gram5User,User's Guide]]
 :doctype: book
-= GCT 6.0 GRAM5: User's Guide =
+= GCT 6.2 GRAM5: User's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -714,7 +714,7 @@ manager and a job.
 
 [NOTE]
 --
-In GCT 6.0, **++globusrun++** does not print any diagnostics when given
+In GCT 6.2, **++globusrun++** does not print any diagnostics when given
 the '-refresh-proxy' command-line option. Therefore, check the exit code
 as above to ensure that the refresh is successful. 
 

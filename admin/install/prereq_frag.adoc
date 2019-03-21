@@ -12,7 +12,7 @@ http://www.globus.org/toolkit/downloads/{version}[download page], and
 be sure you have all of the following prerequisites installed. 
 
 This table shows specific package names (where available) for systems
-supported by GCT 6.0: 
+supported by GCT 6.2:
 
 [options='header']
 |=======================================================================

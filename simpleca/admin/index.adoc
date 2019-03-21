@@ -1,6 +1,6 @@
 [[simplecaAdmin,Admin Guide]]
 :doctype: book
-= GCT 6.0 SimpleCA: Admin Guide =
+= GCT 6.2 SimpleCA: Admin Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -21,10 +21,10 @@ installation.
 
 [IMPORTANT]
 --
-This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in the link:../..//admin/install/index.html[Installing GCT 6.0]. Read through this guide before continuing!
+This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in the link:../..//admin/install/index.html[Installing GCT 6.2]. Read through this guide before continuing!
 --
 The following are instructions for how to use SimpleCA to request and
-sign a certificate for a GCT 6.0 installation. 
+sign a certificate for a GCT 6.2 installation.
 SimpleCA provides an easy way to create and package a Certificate
 Authority
 (CA), as well as tools for requesting and signing user and

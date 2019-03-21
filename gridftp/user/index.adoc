@@ -1,6 +1,6 @@
 [[gridftpUser,User's Guide ]]
 :doctype: book
-= GCT 6.0 GridFTP: User's Guide =
+= GCT 6.2 GridFTP: User's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -221,7 +221,7 @@ globus-url-copy -vb -p 4 gsiftp://other.machine.my.edu/tmp/foo gsiftp://remote.m
 
 If you want more information and details on URLs and the
 link:../../gridftp/user/index.html#globus-url-copy-commandlineoptions[command
-line options], the link:../../gridftp/key/index.html[GCT 6.0 GridFTP Key
+line options], the link:../../gridftp/key/index.html[GCT 6.2 GridFTP Key
 Concepts] gives basic
 definitions and an overview of the GridFTP protocol as well as our
 implementation of it.

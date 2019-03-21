@@ -1,6 +1,6 @@
 [[simpleca,SimpleCA]]
 :doctype: article
-= GCT 6.0: SimpleCA =
+= GCT 6.2: SimpleCA =
 
 include::../wascopied_frag.adoc[]
 
@@ -25,7 +25,7 @@ include::Cred_Mgmt_SimpleCA_Overview_Brief_Frag.adoc[]
   [link:admin/simplecaAdminGuide.pdf[pdf]]
 
 | link:rn/index.html[**Release Notes**]
-| What's new with the 6.0 
+| What's new with the 6.2
   release for this component.  [link:rn/simplecaReleaseNotes.pdf[pdf]] 
 
 | link:simpleca.pdf[**All SimpleCA Guides (PDF only)**]

@@ -8,7 +8,7 @@ potential security exploits via the wuftpd server, and has a protocol
 incompatibility with later versions due to an error in the security
 code. Your GT 2.2 clients will not work with newer servers (GT 2.4.0 and
 greater) and new clients will not work with GT 2.2 servers. You should
-immediately upgrade to GCT 6.0.
+immediately upgrade to GCT 6.2.
 
 If you are running GT 2.4.0 or greater, the migration for GridFTP is
 relatively painless. There were only new features added. No changes were

@@ -2,7 +2,7 @@
 [[gsic-features]]
 === Feature summary ===
 
-Features new in GT 6.0 
+Features new in GCT 6.2
 
 * None.
 

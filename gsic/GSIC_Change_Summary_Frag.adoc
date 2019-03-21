@@ -7,7 +7,7 @@
 
 
 
-* globus-gssapi-gsi-11.16: Add new configuration options
+* None.
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-* More test cases
+* None
 
 
 

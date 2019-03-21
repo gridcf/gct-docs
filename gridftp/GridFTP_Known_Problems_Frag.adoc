@@ -2,8 +2,6 @@
 [[gridftp-outstanding]]
 === Known Problems in GridFTP ===
 
-
-
 * http://jira.globus.org/browse/GRIDFTP-178[GRIDFTP-178]: Hanging server processes with GT5.0.4 striped GridFTP servers
 
 * http://jira.globus.org/browse/GT-2[GT-2]: GUC will treat directory as if its a file for the purpose of sync comparison
@@ -28,8 +26,6 @@
 
 * http://jira.globus.org/browse/GT-284[GT-284]: GridFTP pipelining and reliability issues
 
-* http://jira.globus.org/browse/GT-318[GT-318]: globus-url-copy (guc) and "-do" option inconsistency
-
 * http://jira.globus.org/browse/GT-374[GT-374]: Can't share files in a path structure with symlinks: 'path not allowed' error
 
 * http://jira.globus.org/browse/GT-397[GT-397]: gridftp doesn't error if file with unrepresentable name is used (MLSC)
@@ -38,11 +34,6 @@
 
 * http://jira.globus.org/browse/GT-414[GT-414]: globus-gridftp-server closing connection before returning cksm value
 
-* http://jira.globus.org/browse/GT-428[GT-428]: Improve handling of hanging GridFTP server processes
-
 * http://jira.globus.org/browse/GT-450[GT-450]: extra newline in PASV error message
-
-* http://jira.globus.org/browse/GT-472[GT-472]: GridFTP server fails to detect client disconnection with piplining
-
 
 

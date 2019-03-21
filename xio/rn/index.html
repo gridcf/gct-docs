@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>GT 6.0 Release Notes: XIO</title>
+<title>GCT 6.2 Release Notes: XIO</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="xioRN" class="book toc2 toc-left">
 <div id="header">
-<h1>GT 6.0 Release Notes: XIO</h1>
+<h1>GCT 6.2 Release Notes: XIO</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -472,7 +472,7 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">XIO</a> &#8594; GT 6.0 Release Notes: XIO</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">XIO</a> &#8594; GCT 6.2 Release Notes: XIO</p>
 </div>
 </div>
 </div>
@@ -483,7 +483,7 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 <p>Globus XIO is an extensible input/output library written in C for the
 Grid Community Toolkit. It provides a single API (open/close/read/write) that
 supports multiple wire protocols, with protocol implementations
-encapsulated as drivers. The XIO drivers distributed with 6.0 include
+encapsulated as drivers. The XIO drivers distributed with 6.2 include
 TCP, UDP, file, HTTP, GSI, GSSAPI_FTP, TELNET and queuing. In addition,
 Globus XIO provides a driver development interface for use by protocol
 developers. This interface allows the developer to concentrate on
@@ -561,15 +561,19 @@ individual protocols.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>None</p>
+<p>None.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_improvements_xio">Improvements: XIO</h4>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>None.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -578,7 +582,7 @@ individual protocols.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://jira.globus.org/browse/GT-546">GT-546</a>: HTTP transfers larger than 4GB fail</p>
+<p>None.</p>
 </li>
 </ul>
 </div>
@@ -708,7 +712,7 @@ individual protocols.</p>
 <div class="sect2">
 <h3 id="xio-compatibility">Backward compatibility summary</h3>
 <div class="paragraph">
-<p>Protocol changes since GT version 5.2</p>
+<p>Protocol changes since GT version 6.0</p>
 </div>
 <div class="ulist">
 <ul>
@@ -718,21 +722,12 @@ individual protocols.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>API changes since GT version 5.2</p>
+<p>API changes since GT version 6.0</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>globus_xio_stack_copy</code> added to the API. This allows a user to duplicated a configured stack.</p>
-</li>
-<li>
-<p><code>globus_xio_driver_set_eof_received</code> added to the driver API. This function allows drivers to have multiple outstanding reads at one time.</p>
-</li>
-<li>
-<p><code>globus_xio_driver_eof_received</code> added to the driver API. Working in conjunction with <code>globus_xio_driver_set_eof_received</code> to allow drivers to have multiple outstanding reads.</p>
-</li>
-<li>
-<p>Users can now pass in a NULL callback for timeouts and it is assumed that when time expires the user wants the operation to timeout. Previously a user callback was required where the user would decide if they wanted the timeout.</p>
+<p>None.</p>
 </li>
 </ul>
 </div>

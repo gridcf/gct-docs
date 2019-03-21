@@ -1,6 +1,6 @@
 [[ccommonlib,C Common Libraries]]
 :doctype: article
-= GCT 6.0: C Common Libraries =
+= GCT 6.2: C Common Libraries =
 
 include::../wascopied_frag.adoc[]
 
@@ -18,7 +18,7 @@ The following guides are available for this component:
   [link:developer/ccommonlibDevelopersGuide.pdf[pdf]]
 2+| Other information available for this component are:
 | link:rn/index.html[**Release Notes**]
-| What's new with the 6.0 release for this component
+| What's new with the 6.2 release for this component
     [link:rn/ccommonlibReleaseNotes.pdf[pdf]].
 | link:pi/index.html[**Public Interface Guide**]
 | Information for all public interfaces (including APIs, commands, etc).

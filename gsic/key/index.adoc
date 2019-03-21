@@ -1,7 +1,7 @@
 
 [[gsicKey,GSI C Security Key Concepts]]
 :doctype: book
-= GCT 6.0 GSI C Security: Key Concepts =
+= GCT 6.2 GSI C Security: Key Concepts =
 
 include::../../wascopied_frag.adoc[]
 

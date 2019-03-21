@@ -1,7 +1,7 @@
 
 [[gridftpKey,GridFTP Key Concepts]]
 :doctype: book
-= GCT 6.0 GridFTP Key Concepts =
+= GCT 6.2 GridFTP Key Concepts =
 
 include::../../wascopied_frag.adoc[]
 

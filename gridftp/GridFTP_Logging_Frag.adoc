@@ -5,9 +5,9 @@ indexterm:[logging]
 
 As of Globus 4.2.0, GridFTP server provides system administration logs
 in 2 different formats. The CEDPS best practices compliant format is a
-new format provided by GridFTP server available in Globus 6.0 and GCT. For more
+new format provided by GridFTP server available since GT 6.0. For more
 details on the CEDPS Logging format, see
-http://cedps.net/index.php/LoggingBestPractices[http://cedps.net/index.php/LoggingBestPractices].
+https://web.archive.org/web/20100927122333/http://www.cedps.net:80/index.php/LoggingBestPractices[https://web.archive.org/web/20100927122333/http://www.cedps.net:80/index.php/LoggingBestPractices].
 
 
 ==== Configuring CEDPS format system administration logs ====

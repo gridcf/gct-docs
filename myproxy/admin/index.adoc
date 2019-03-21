@@ -1,5 +1,5 @@
 [[myproxyAdmin,System Administrator's Guide]]
-= GCT 6.0 MyProxy: System Administrator's Guide =
+= GCT 6.2 MyProxy: System Administrator's Guide =
 :doctype: book
 
 include::../../wascopied_frag.adoc[]
@@ -15,7 +15,7 @@ information on procedures typically performed by system administrators,
 including installation, configuring, deploying, and testing the
 installation.
 [IMPORTANT]
-This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide before continuing!
+This information is in addition to the basic Grid Community Toolkit prerequisite, overview, installation, security configuration instructions in link:../../admin/install/index.html[Installing GCT 6.2]. Read through this guide before continuing!
 
 A typical MyProxy configuration has one dedicated myproxy-server for the
 site, with MyProxy clients installed on all systems where other Grid Community
@@ -24,15 +24,15 @@ Toolkit client software is installed.
 [[myproxy-admin-installing]]
 == Building and Installing ==
 --
-MyProxy is built and installed as part of a default GCT 6.0 installation.
+MyProxy is built and installed as part of a default GCT 6.2 installation.
 For basic installation instructions, see
-link:../../admin/install/index.html[Installing GCT 6.0]. No extra installation
+link:../../admin/install/index.html[Installing GCT 6.2]. No extra installation
 steps are
 required for this component.
 
 If you wish to install MyProxy without installing the rest of the Grid Community
 Toolkit, follow the instructions in
-link:../../admin/install/index.html[Installing GCT 6.0] with the following
+link:../../admin/install/index.html[Installing GCT 6.2] with the following
 changes. First,
 you do not need Ant, a JDK, or a JDBC database to build only MyProxy.
 Second, instead of running "make", run:

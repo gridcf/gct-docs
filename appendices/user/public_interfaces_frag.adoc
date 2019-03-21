@@ -1,12 +1,12 @@
 [[public-interfaces]]
 [appendix]
-= Grid Community Toolkit 6.0 Public Interface Guides =
+= Grid Community Toolkit 6.2 Public Interface Guides =
 
 include::../../wascopied_frag.adoc[]
 
 include::../breadcrumb_frag.adoc[]
 
-This page contains links to each GCT 6.0 component's Public Interfaces
+This page contains links to each GCT 6.2 component's Public Interfaces
 Guide.
 
 * link:../../gridftp/pi/index.html[GridFTP]

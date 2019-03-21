@@ -5,10 +5,10 @@
 
 ==== New Features: GSI OpenSSH ====
 
-None.
+* None.
 
 
 ==== Improvements: GSI OpenSSH ====
 
-None.
+* None.
 

@@ -1,6 +1,6 @@
 [[ccommonlibMig,Migrating Guide]]
 :doctype: article
-= GCT 6.0 Migrating Guide for C Common Libraries =
+= GCT 6.2 Migrating Guide for C Common Libraries =
 
 include::../../wascopied_frag.adoc[]
 
@@ -13,12 +13,17 @@ previous versions of the Globus Toolkit.
 
 --
 
+[[ccommonlib-migrating-GT6.0]]
+== Migrating C Common Libraries from GT6.0 ==
+
+GCT6.2 is API (source) and ABI (binary) compatible with GT6.0.
+
  
 [[ccommonlib-migrating-GT5.2]]
 == Migrating C Common Libraries from GT5.2 ==
 
-GT6 is API (source) and ABI (binary) compatible with GT 5.2. Dependency
-resolution for GT6 is done with pkg-config only, not pkg-config or GPT.
+GCT6.2 is API (source) and ABI (binary) compatible with GT5.2. Dependency
+resolution for GCT6.2 is done with pkg-config only, not pkg-config or GPT.
 
  
 [[ccommonlib-migrating-GT5.0]]
@@ -58,4 +63,3 @@ the C common libraries.
 No changes need to be made in applications using version 2.x releases of
 the C common libraries.
 
- 

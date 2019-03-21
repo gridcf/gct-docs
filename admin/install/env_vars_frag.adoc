@@ -1,6 +1,6 @@
 
 [[gtadmin-env-var]]
-== Environment Variables in GCT 6.0 ==
+== Environment Variables in GCT 6.2 ==
 
 
 === Common Runtime Environmental Variables ===

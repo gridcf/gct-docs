@@ -6,9 +6,9 @@ indexterm:[building and installing,general instructions]
 [[gridftp-building-installing]]
 === Building and Installing GridFTP ===
 
-GridFTP is built and installed as part of a default GCT 6.0 installation.
+GridFTP is built and installed as part of a default GCT 6.2 installation.
 For basic installation instructions, see
-link:../../admin/install/index.html[Installing GCT 6.0]. No extra installation
+link:../../admin/install/index.html[Installing GCT 6.2]. No extra installation
 steps are
 required for this component.
 
@@ -43,7 +43,7 @@ globus% make gpt globus_gridftp_server
 [[gridftp-admin-installing-threaded]]
 === Enabling Threading in GridFTP ===
 
-In GCT 6.0 the GridFTP server and the client 'globus-url-copy' are
+In GCT 6.2 the GridFTP server and the client 'globus-url-copy' are
 non-threaded by default. To enable threading, set the environment
 variable 'GLOBUS_THREAD_MODEL=pthread'. On the server, threading can be
 enabled using command-line option '-threads 1' as well. 

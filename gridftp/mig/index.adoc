@@ -1,6 +1,6 @@
 [[gridftpMig,Migrating Guide]]
 :doctype: article
-= GCT 6.0 Migrating Guide for GridFTP =
+= GCT 6.2 Migrating Guide for GridFTP =
 
 include::../../wascopied_frag.adoc[]
 
@@ -13,16 +13,21 @@ previous versions of the Globus Toolkit.
  
 --
 
+[[gridftp-migrating-GT6.0]]
+== Migrating GridFTP from GT6.0 ==
+
+No changes needed
+
 [[gridftp-migrating-GT5.0]]
 == Migrating GridFTP from GT5.0 ==
 
-FIXME
+No changes needed
 
  
 [[gridftp-migrating-GT4.2]]
 == Migrating GridFTP from GT4.2 ==
 
-FIXME
+No changes needed
 
  
 [[gridftp-migrating-GT3-GT4]]

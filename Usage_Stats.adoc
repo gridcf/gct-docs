@@ -5,6 +5,11 @@
 [[usagestats]]
 == Usage Statistics Collection by the Globus Alliance ==
 
+[NOTE]
+====
+The Usage Statistics Collection is deactivated by default since GCT 6.2!
+====
+
 Beginning with GT 3.9.5, the Globus Toolkit has the capability to send usage
 statistics back to the Globus Alliance.
 

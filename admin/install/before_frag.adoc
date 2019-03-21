@@ -1,11 +1,11 @@
 [[gtadmin-before]]
 == Before you begin ==
 
-Before you start installing the Grid Community Toolkit 6.0, there are a few
+Before you start installing the Grid Community Toolkit 6.2, there are a few
 things you should consider. The toolkit contains several components, and
 you may only be interested in some of them. 
 
-The Grid Community Toolkit version 6.0 includes:
+The Grid Community Toolkit version 6.2 includes:
 
 * link:../../gsic/index.html[GSI]: security
 * link:../../gridftp/index.html[GridFTP]: file transfer

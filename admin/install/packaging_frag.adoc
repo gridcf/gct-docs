@@ -36,7 +36,7 @@ globus-makefile-header that can be used to assemble the cflags and link
 line information when linking a program with libraries included in the
 toolkit. This script would walk the package metadata dependency tree to
 ensure that all needed flags were included, without duplicates. This
-method worked, and continues to work in GCT 6.0, but we consider it to be
+method worked, and continues to work in GCT 6.2, but we consider it to be
 obsolete, as we have added support for using link:
 http://www.freedesktop.org/wiki/Software/pkg-config[pkg-config] 
 

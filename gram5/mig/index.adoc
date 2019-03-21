@@ -1,7 +1,7 @@
 
 [[gram5Mig,Migrating Guide]]
 :doctype: book
-= GCT 6.0 Migrating Guide for GRAM5 =
+= GCT 6.2 Migrating Guide for GRAM5 =
 
 include::../../wascopied_frag.adoc[]
 

@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>GCT 6.0 Installation Appendix</title>
+<title>GCT 6.2 Installation Appendix</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,11 +432,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gtadminappendix" class="book toc2 toc-left">
 <div id="header">
-<h1>GCT 6.0 Installation Appendix</h1>
+<h1>GCT 6.2 Installation Appendix</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#gtadmin-advanced-build">Advanced Installation for GCT 6.0</a>
+<li><a href="#gtadmin-advanced-build">Advanced Installation for GCT 6.2</a>
 <ul class="sectlevel2">
 <li><a href="#gtadmin-install-nondefault">Advanced Installation</a></li>
 </ul>
@@ -447,7 +447,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_linking_with_grid_community_toolkit_libraries">Linking with Grid Community Toolkit Libraries</a></li>
 </ul>
 </li>
-<li><a href="#gtadmin-env-var">Environment Variables in GCT 6.0</a>
+<li><a href="#gtadmin-env-var">Environment Variables in GCT 6.2</a>
 <ul class="sectlevel2">
 <li><a href="#_common_runtime_environmental_variables">Common Runtime Environmental Variables</a></li>
 <li><a href="#_security_environmental_variables">Security Environmental Variables</a></li>
@@ -464,7 +464,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#gtadmin-troubleshooting">Troubleshooting your installation</a></li>
 <li><a href="#gtadmin-config-details">Detailed Configuration by Component</a></li>
-<li><a href="#gtadmin-sec-considerations">Security Considerations in GCT 6.0</a>
+<li><a href="#gtadmin-sec-considerations">Security Considerations in GCT 6.2</a>
 <ul class="sectlevel2">
 <li><a href="#gtadmin-sec-consid-common-runtime">Common Runtime</a></li>
 <li><a href="#gtadmin-sec-consid-security">Security</a></li>
@@ -501,12 +501,12 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">Admin Manuals</a> &#8594; GCT 6.0 Installation Appendix</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">Admin Manuals</a> &#8594; GCT 6.2 Installation Appendix</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-advanced-build">Advanced Installation for GCT 6.0</h2>
+<h2 id="gtadmin-advanced-build">Advanced Installation for GCT 6.2</h2>
 <div class="sectionbody">
 <div class="openblock">
 <div class="content">
@@ -618,7 +618,7 @@ globus-makefile-header that can be used to assemble the cflags and link
 line information when linking a program with libraries included in the
 toolkit. This script would walk the package metadata dependency tree to
 ensure that all needed flags were included, without duplicates. This
-method worked, and continues to work in GCT 6.0, but we consider it to be
+method worked, and continues to work in GCT 6.2, but we consider it to be
 obsolete, as we have added support for using link:
 <a href="http://www.freedesktop.org/wiki/Software/pkg-config">pkg-config</a></p>
 </div>
@@ -648,7 +648,7 @@ homepage.</a></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-env-var">Environment Variables in GCT 6.0</h2>
+<h2 id="gtadmin-env-var">Environment Variables in GCT 6.2</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_common_runtime_environmental_variables">Common Runtime Environmental Variables</h3>
@@ -1120,7 +1120,7 @@ described below may be useful.</p>
 <div class="paragraph">
 <p>SimpleCA can be installed in three ways, from a debian package, from an
 RPM package, and from the source installer. These installation methods
-are described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>.</p>
+are described in <a href="../../admin/install/index.html">Installing GCT 6.2</a>.</p>
 </div>
 <div class="paragraph">
 <p>To install SimpleCA from binary packages, install the packages
@@ -1792,7 +1792,7 @@ detailed configuration for each component.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="gtadmin-sec-considerations">Security Considerations in GCT 6.0</h2>
+<h2 id="gtadmin-sec-considerations">Security Considerations in GCT 6.2</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="gtadmin-sec-consid-common-runtime">Common Runtime</h3>
@@ -1847,7 +1847,7 @@ of the names being compared may contain the hyphen character in the host name.</
 </table>
 </div>
 <div class="paragraph">
-<p>In GCT or GT 6.0, it is possible to disable this behavior, by setting the enviornment variable <code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code> to <code>STRICT_RFC2818</code>.</p>
+<p>In GCT 6.2, it is possible to disable this behavior, by setting the enviornment variable <code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code> to <code>STRICT_RFC2818</code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1888,7 +1888,7 @@ page.</p>
 <div class="paragraph">
 <p>There are various ways to configure your GridFTP server that provide
 varying levels of security. For more information, see
-<a href="../../gridftp/admin/index.html">Installing GCT 6.0</a>.</p>
+<a href="../../gridftp/admin/index.html">Installing GCT 6.2</a>.</p>
 </div>
 </div>
 <div class="sect4">

@@ -13,9 +13,7 @@ include::GridFTP_Change_Summary_Minor_Frag.adoc[]
 
 ==== Improvements: GridFTP ====
 
-
-
-* Improved testing
+* None.
 
 
 

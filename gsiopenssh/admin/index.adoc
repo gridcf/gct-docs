@@ -1,7 +1,7 @@
 
 [[gsiopensshAdmin,System Administrator's Guide]]
 :doctype: book
-= GCT 6.0 GSI-OpenSSH: System Administrator's Guide =
+= GCT 6.2 GSI-OpenSSH: System Administrator's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -22,7 +22,7 @@ installation.
 --
 This information is in addition to the basic Grid Community Toolkit prerequisite,
 overview, installation, security configuration instructions in
-link:../../admin/install/index.html[Installing GCT 6.0]. Read through this guide
+link:../../admin/install/index.html[Installing GCT 6.2]. Read through this guide
 before continuing!
 --
 
@@ -39,9 +39,9 @@ OpenSSH.
 
 
 --
-GSI-OpenSSH is built and installed as part of a default GCT 6.0
+GSI-OpenSSH is built and installed as part of a default GCT 6.2
 installation. For basic installation instructions, see
-link:../../admin/install/index.html[Installing GCT 6.0]. No extra installation
+link:../../admin/install/index.html[Installing GCT 6.2]. No extra installation
 steps are required for this component. 
 
 
@@ -52,7 +52,7 @@ steps are required for this component.
 
 You can optionally pass build-time configure options to the GSI-OpenSSH
 package using the --with-gsiopensshargs option when running configure
-for your GCT 6.0 installation. For example:
+for your GCT 6.2 installation. For example:
 
 ***********************************************************************
 
@@ -112,7 +112,7 @@ functionality is turned on by default.
 
 If you wish to install GSI-OpenSSH without installing the rest of the
 Grid Community Toolkit, follow the instructions in
-link:../../admin/install/index.html[Installing GCT 6.0] with the following
+link:../../admin/install/index.html[Installing GCT 6.2] with the following
 changes.
 First, you do not need Ant, a JDK, or a JDBC database to build only
 GSI-OpenSSH. Second, instead of running "make", run: 

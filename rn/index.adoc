@@ -1,6 +1,6 @@
 [[rn,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes =
+= GCT 6.2 Release Notes =
 
 include::../wascopied_frag.adoc[]
 
@@ -9,24 +9,19 @@ ifdef::backend-html5[link:../index.html[GCT] -> Release Notes]
 [[rn-intro]]
 == Introduction ==
 
-The GT development team is pleased to make a new stable release of the
-Globus Toolkit available for download. 
+The Grid Community Toolkit (GCT) development team is pleased to make the 6.2 release of the
+GCT available for download.
 
 By following the link:../admin/quickstart/index.html[Quickstart]
-guide, you can easily install and setup a full GT environment in
+guide, you can easily install and setup a full GCT environment in
 minutes.
 
 Highlights of this release include:
 
 * Overall
-** Migrate from CVS to https://github.com/globus/globus-toolkit
-** Simplified package by eliminating GPT and library flavors
-** Integrate tests into native package build process
-** Porting to windows -- mingw (partial) and cygwin
-** Add support for el7 (CentOS 7, RHEL 7)
-** Add binary package for Mac OS X
-** Make binaries and scripts more easily relocatable (don't need to set
-   GLOBUS_LOCATION for most cases)
+** The Grid Community Forum took over development of the former Globus - now - Grid Community Toolkit
+** Integration of community patches and patches from the Globus team
+** Deactivation of usage statistics collection by default
 * GridFTP
 include::../gridftp/GridFTP_Change_Summary_Highlights_Frag.adoc[]
 * C Common Libraries
@@ -38,10 +33,10 @@ Component].
 [[rn-software]]
 == Obtaining and Installing Software ==
 
-To download this release, go to the link:/toolkit/downloads/6.0[Downloads Page].
+To download this release, go to the link:https://github.com/gridcf/gct/releases/latest[GCT Releases page on GitHub].
 
 For information on installing this release, go to the
-link:../admin/install/index.html[6.0 Installation Guide].
+link:../admin/install/index.html[6.2 Installation Guide].
 
 
 :leveloffset: 1
@@ -68,28 +63,26 @@ http://jira.globus.org[JIRA] (the "Documentation" project).
 [[rn-support]]
 == Support ==
 
-An overview on GT support can be found
+An overview on GCT support can be found
 http://www.globus.org/toolkit/support.html[here].
 
  
 [[rn-license]]
 == Licensing ==
 
-The Globus Toolkit is distributed and licensed for use under the terms
-of the http://www.apache.org/licenses/LICENSE-2.0[Apache License,
+The Grid Community Toolkit is distributed and licensed for use under the terms
+of the https://www.apache.org/licenses/LICENSE-2.0[Apache License,
 Version 2.0].
 
 To view the licenses of the 3rd party software used by the developers of
-the Globus Toolkit, click
-http://www.globus.org/toolkit/docs/6.0/licenses/[here].
+the Grid Community Toolkit, see link:../licenses/3rd_party/index.html[3rd Party Licenses].
 
  
 [[rn-usagestats]]
 == Usage Statistics ==
 
-For full information about usage statistics collected by GT 6.0 and how
-to opt-out, see link:../Usage_Stats.html[Usage Statistics Collection by
-the Globus Alliance].
+This is deactivated by default since GCT 6.2. For more information about usage
+statistics collection, see link:../Usage_Stats.html[Usage Statistics Collection].
 
  
 [[rn-bycomponents]]

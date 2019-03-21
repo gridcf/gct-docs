@@ -1,6 +1,6 @@
 
 [[gram5-approach,GRAM5 Approach]]
-== GCT 6.0 GRAM5 Approach ==
+== GCT 6.2 GRAM5 Approach ==
 
 
 [[gram5-approach-intro]]
@@ -15,7 +15,7 @@ following the POSIX programming and security model.
 === Component architecture approach ===
 
 GRAM5's job management services interact with local resource managers
-(LRMs) and other service components of GCT 6.0 in order to support job
+(LRMs) and other service components of GCT 6.2 in order to support job
 execution with coordinated file staging. 
 
 

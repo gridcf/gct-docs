@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>GCT 6.0 GRAM5: System Administrator&#8217;s Guide</title>
+<title>GCT 6.2 GRAM5: System Administrator&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="gram5Admin" class="book toc2 toc-left">
 <div id="header">
-<h1>GCT 6.0 GRAM5: System Administrator&#8217;s Guide</h1>
+<h1>GCT 6.2 GRAM5: System Administrator&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -521,7 +521,7 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GRAM 5</a> &#8594; GCT 6.0 GRAM5: System Administrator&#8217;s Guide</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GRAM 5</a> &#8594; GCT 6.2 GRAM5: System Administrator&#8217;s Guide</p>
 </div>
 <div class="openblock">
 <div class="title">Introduction</div>
@@ -559,7 +559,7 @@ interacts with
 their respective Administrator&#8217;s guides for information about
 installing, configuring, and managing those systems. In particular, you
 must understand the tasks in
-<a href="../../admin/install/index.html#gtadmin-install">Installing GCT 6.0</a> and
+<a href="../../admin/install/index.html#gtadmin-install">Installing GCT 6.2</a> and
 install the
 basic GRAM5 packages, and complete the tasks in
 <a href="../../admin/install/index.html#gtadmin-basic-security">Basic Security
@@ -588,7 +588,7 @@ start via an internet superserver such as <strong><code>inetd</code></strong> or
 <div class="sect3">
 <h4 id="_choosing_an_lrm_adapter">Choosing an LRM Adapter</h4>
 <div class="paragraph">
-<p>GRAM5 in GCT 6.0 supports the following LRM adapters: Condor, PBS,
+<p>GRAM5 in GCT 6.2 supports the following LRM adapters: Condor, PBS,
 GridEngine, and Fork. These LRM adapters translate GRAM5 job
 specifications into LRM-specific job descriptions and scripts to run
 them, as well as interfaces to the LRM to determine job termination
@@ -639,7 +639,7 @@ process LRM state changes. [NOTE]</p>
 <div class="sect2">
 <h3 id="gram5-admin-installing-lrm-packages">Installing LRM Adapter Packages</h3>
 <div class="paragraph">
-<p>There are several LRM adapters included in the GCT 6.0. For some, there
+<p>There are several LRM adapters included in the GCT 6.2. For some, there
 is a <code>-setup-poll</code> and <code>-setup-seg</code> package which installs the
 adapter and configuration file needed for job status via polling or the
 <strong><code>globus-scheduler-event-generator</code></strong> program.</p>
@@ -647,10 +647,10 @@ adapter and configuration file needed for job status via polling or the
 <div class="paragraph">
 <p>There are three ways to get LRM adapters: as RPM packages, as Debian
 packages, and from the source installer. These installation methods are
-described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>.</p>
+described in <a href="../../admin/install/index.html">Installing GCT 6.2</a>.</p>
 </div>
 <div class="paragraph">
-<p>LRM adapter packages included in the GCT 6.0 release are:</p>
+<p>LRM adapter packages included in the GCT 6.2 release are:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. GRAM5 LRM Adapters</caption>
@@ -704,7 +704,7 @@ described in <a href="../../admin/install/index.html">Installing GCT 6.0</a>.</p
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>There are several tools provided with GCT 6.0 to manage GRAM5, as well as
+<p>There are several tools provided with GCT 6.2 to manage GRAM5, as well as
 OS-specific tools to start and stop some of the services. There are
 tools to manage user authorization, which services are enabled, which
 scheduler event generator modules are enabled, and to test the

@@ -2,5 +2,5 @@
 [[gsiopenssh-fixed-bugs]]
 === Fixed Bugs for GSI OpenSSH ===
 
-None.
+* None.
 

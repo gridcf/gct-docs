@@ -1,6 +1,6 @@
 [[gsic,GSI C]]
 :doctype: article
-= GCT 6.0: Grid Security Infrastructure in C (GSI C) =
+= GCT 6.2: Grid Security Infrastructure in C (GSI C) =
 
 include::../wascopied_frag.adoc[]
 

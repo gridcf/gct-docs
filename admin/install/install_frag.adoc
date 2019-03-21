@@ -1,6 +1,6 @@
 
 [[gtadmin-install]]
-== Installing GCT 6.0 ==
+== Installing GCT 6.2 ==
 
 
 [[install-bininst]]

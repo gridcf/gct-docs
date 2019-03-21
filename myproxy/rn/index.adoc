@@ -1,6 +1,6 @@
 [[myproxyRN,Release Notes]]
 :doctype: article
-= GT 6.0 Release Notes: MyProxy =
+= GCT 6.2 Release Notes: MyProxy =
 
 include::../../wascopied_frag.adoc[]
 

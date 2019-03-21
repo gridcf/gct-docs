@@ -4,7 +4,7 @@
 .Introduction
 --
 This guide is the starting point for everyone who wants to install
-Grid Community Toolkit 6.0. It will take you through a basic installation that
+Grid Community Toolkit 6.2. It will take you through a basic installation that
 installs the following basic services: a security infrastructure (GSI),
 GridFTP, and Execution Services (GRAM5). 
 This guide is also available as a link:installingGT.pdf[PDF]. However,

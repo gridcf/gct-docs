@@ -1,6 +1,6 @@
 [[gridftpDeveloper,Developer's Guide]]
 :doctype: book
-= GCT 6.0 GridFTP : Developer's Guide =
+= GCT 6.2 GridFTP : Developer's Guide =
 
 include::../../wascopied_frag.adoc[]
 
@@ -121,7 +121,7 @@ indexterm:[specification]
 
 --
 GCT implemention of GridFTP is based on the following standards: RFC
-959, RFC 2228, RFC 2389, IETF Draft MLST-16 , OGF GFD.020. In addition
+959, RFC 2228, RFC 2389, IETF Draft MLST-16, OGF GFD.020. In addition
 to these standards, some additional commands are implemented as well.
 The specification for one such command Data Channel Security Context
 (DCSC) is available at link:#dcsc-spec[DCSC Specification]. 

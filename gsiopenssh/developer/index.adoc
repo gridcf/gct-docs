@@ -1,5 +1,5 @@
 [[gsiopensshDeveloper,Developer's Guide]]
-= GCT 6.0 GSI-OpenSSH: Developer's Guide =
+= GCT 6.2 GSI-OpenSSH: Developer's Guide =
 :doctype: book
 
 include::../../wascopied_frag.adoc[]

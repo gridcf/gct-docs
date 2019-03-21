@@ -1,6 +1,6 @@
 [[gram5,GRAM5]]
 :doctype: article
-= GCT 6.0 GRAM5 =
+= GCT 6.2 GRAM5 =
 
 include::../wascopied_frag.adoc[]
 
@@ -32,7 +32,7 @@ The following guides are available for this component:
     [link:developer/gram5DeveloperGuide.pdf[pdf]]
 2+| Other information available for this component are:
 | link:rn/index.html[**Release Notes**]
-| What's new with the 6.0
+| What's new with the 6.2
     release for this component [link:rn/gram5ReleaseNotes.pdf[pdf]]
 | link:pi/index.html[**Public Interfaces**]
 | Information for all public interfaces (including APIs,

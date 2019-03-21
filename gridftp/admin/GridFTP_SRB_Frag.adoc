@@ -1,6 +1,6 @@
 [appendix]
 [[gridftp-SRB,Setting up SRB for use with GridFTP]]
-= GCT 6.0 GridFTP: Setting up Storage Resource Broker (SRB) =
+= GCT 6.2 GridFTP: Setting up Storage Resource Broker (SRB) =
 
 include::../../wascopied_frag.adoc[]
 
@@ -28,7 +28,7 @@ components:
 
 * **SRB-DSI** - This component is the bridge between GridFTP and SRB. All operation requests and data are routed through this component. The GridFTP server makes requests of it, then it translates these requests into SRB client commands.
 
-* **GridFTP Server** - A standard GridFTP 6.0 server is loaded with the SRB-DSI. Clients contact this server to access data in a SRB resource. The server passes the request to the SRB-DSI which, as described above, passes the request on to the SRB server. The responses to the requests return along the same path.
+* **GridFTP Server** - A stock GridFTP server is loaded with the SRB-DSI. Clients contact this server to access data in a SRB resource. The server passes the request to the SRB-DSI which, as described above, passes the request on to the SRB server. The responses to the requests return along the same path.
 
 * **GridFTP Client **- A stock GridFTP client (like **++globus-url-copy++**). No modifications to the client are needed.
 
@@ -42,7 +42,7 @@ You need the following items to use the SRB-DSI:
 
 
 
-* **Grid Community Toolkit** - You need the GridFTP distributed with GT or GCT (compatible with 4.0.1 or later). You can find that http://www.globus.org/toolkit/downloads/{version}/[here].
+* **Grid Community Toolkit** - You need the GridFTP distributed with GCT or GT (compatible with GT 4.0.1 or later and GCT 6.2 or later). You can find that http://www.globus.org/toolkit/downloads/{version}/[here].
 
 * **SRB Client 3.4.0** - You only need the client libraries to build the SRB-DSI, but you will need access to a running SRB server and resource. You can find the client libraries http://www.sdsc.edu/srb/tarfiles/main.html[here].
 

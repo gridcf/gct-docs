@@ -1,4 +1,4 @@
-= Grid Community Toolkit 6.0 Key Concepts =
+= Grid Community Toolkit 6.2 Key Concepts =
 :doctype: book
 
 include::../../wascopied_frag.adoc[]

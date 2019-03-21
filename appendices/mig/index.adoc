@@ -1,13 +1,13 @@
 [[mig,Migrating Guides]]
 :doctype: article
-= GCT 6.0 Migrating Guides =
+= GCT 6.2 Migrating Guides =
 
 include::../../wascopied_frag.adoc[]
 
 include::../breadcrumb_frag.adoc[]
 
   
-This page contains links to each GCT 6.0 component's Migrating Guide.
+This page contains links to each GCT 6.2 component's Migrating Guide.
 
 [NOTE]
 --

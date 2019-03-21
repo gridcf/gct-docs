@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>GCT 6.0 XIO : Developer&#8217;s Guide</title>
+<title>GCT 6.2 XIO : Developer&#8217;s Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body id="xioDeveloper" class="book toc2 toc-left">
 <div id="header">
-<h1>GCT 6.0 XIO : Developer&#8217;s Guide</h1>
+<h1>GCT 6.2 XIO : Developer&#8217;s Guide</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -523,7 +523,7 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 </table>
 </div>
 <div class="paragraph">
-<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">XIO</a> &#8594; GCT 6.0 XIO : Developer&#8217;s Guide</p>
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">XIO</a> &#8594; GCT 6.2 XIO : Developer&#8217;s Guide</p>
 </div>
 <div id="xio-developer-introduction" class="openblock">
 <div class="title">Introduction</div>
@@ -696,7 +696,7 @@ samples.</p>
 <div class="sect2">
 <h3 id="xio-compatibility">Backward compatibility summary</h3>
 <div class="paragraph">
-<p>Protocol changes since GT version 5.2</p>
+<p>Protocol changes since GT version 6.0</p>
 </div>
 <div class="ulist">
 <ul>
@@ -706,21 +706,12 @@ samples.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>API changes since GT version 5.2</p>
+<p>API changes since GT version 6.0</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>globus_xio_stack_copy</code> added to the API. This allows a user to duplicated a configured stack.</p>
-</li>
-<li>
-<p><code>globus_xio_driver_set_eof_received</code> added to the driver API. This function allows drivers to have multiple outstanding reads at one time.</p>
-</li>
-<li>
-<p><code>globus_xio_driver_eof_received</code> added to the driver API. Working in conjunction with <code>globus_xio_driver_set_eof_received</code> to allow drivers to have multiple outstanding reads.</p>
-</li>
-<li>
-<p>Users can now pass in a NULL callback for timeouts and it is assumed that when time expires the user wants the operation to timeout. Previously a user callback was required where the user would decide if they wanted the timeout.</p>
+<p>None.</p>
 </li>
 </ul>
 </div>
@@ -1667,7 +1658,7 @@ each run. Otherwise, the output will be appended to the existing file.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The environment variable <code>GLOBUS_LOCATION</code> must be set to a valid GCT 6.0 installation.</p>
+<p>The environment variable <code>GLOBUS_LOCATION</code> must be set to a valid GCT 6.2 installation.</p>
 </li>
 <li>
 <p>Various other environment variables must be set in order to easily use the GlobusXIO application. The proper environment can be established by running: <code>source $GLOBUS_LOCATION/etc/globus-user-env.sh</code> or <code>source $GLOBUS_LOCATION/etc/globus-user-env.csh</code> depending on the shell you are using.</p>
