@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Grid Community Toolkit Official Documentation</title>
+<title>Grid Community Toolkit</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,21 +430,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="book toc2 toc-left">
+<body id="gt" class="book">
 <div id="header">
-<h1>Grid Community Toolkit Official Documentation</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_intro">Intro</a></li>
-<li><a href="#_release_documentation">Release Documentation</a></li>
-</ul>
-</div>
+<h1>Grid Community Toolkit</h1>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_intro">Intro</h2>
+<div id="preamble">
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Grid Community Toolkit documentation was taken from the Globus Toolkit 6.0 documentation.
+As a result, there may be inaccuracies and outdated information.
+Please report any problems to the Grid Community Forums as <a href="https://github.com/gridcf/gct-docs/issues">GitHub issues</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The Grid Community Toolkit (GCT) is an open-source fork by the <a href="https://gridcf.org">Grid Community Forum</a> of the venerable <a href="http://toolkit.globus.org/toolkit">Globus Toolkit</a> created by the <a href="https://globus.org">Globus Alliance</a>.
 The GCT was created in response to the <a href="https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md">end-of-support</a> of the Globus Toolkit in January 2018.</p>
@@ -452,15 +460,100 @@ The GCT was created in response to the <a href="https://github.com/globus/globus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_release_documentation">Release Documentation</h2>
+<h2 id="_gct_6_2_release_manuals">GCT 6.2 Release Manuals</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The following documents are good places to start with GCT 6.2:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="./latest/index.html">Latest release</a></p>
+<p>For everyone:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./rn/index.html">GCT 6.2 Release Notes</a></p>
 </li>
 <li>
-<p><a href="./6.2/index.html">6.2 Release Documentation</a></p>
+<p><a href="./appendices/commands/index.html">GCT Commands</a></p>
+</li>
+<li>
+<p><a href="./licenses/index.html">Legal information</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For system administrators and those installing GCT:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./admin/install/index.html">Installation Guide</a></p>
+</li>
+<li>
+<p><a href="./admin/quickstart/index.html">Quickstart</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For End Users:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./rn/index.html#java-api-download">Java API Download</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Developers:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./appendices/developer/index.html">GCT Developer&#8217;s Guide</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>GCT 6.2 release manuals are divided into the following areas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong> <a href="./gridftp/index.html">GridFTP</a> for Data Management </strong></p>
+<div class="paragraph">
+<p>GridFTP provides high-performance and reliable data transport.</p>
+</div>
+</li>
+<li>
+<p><strong> <a href="./gram5/index.html">GRAM5</a> for Jobs Management </strong></p>
+<div class="paragraph">
+<p>The Grid Resource Allocation and Management (GRAM5) interface as a basic
+mechanism for initiation, monitoring, management, scheduling, and/or
+coordination of remote computations.</p>
+</div>
+</li>
+<li>
+<p><strong> <a href="./gsic/index.html">GSI C</a>, <a href="./myproxy/index.html">MyProxy</a> and <a href="./gsiopenssh/index.html">GSI-OpenSSH</a> for Grid Security </strong></p>
+<div class="paragraph">
+<p>These components establish the identity of users or services (authentication),
+protect communications, and determine who is allowed to perform what actions
+(authorization), as well as manage user credentials.</p>
+</div>
+</li>
+<li>
+<p><strong> Other Components </strong></p>
+<div class="paragraph">
+<p>GCT 6.2 also includes a set of <a href="./ccommonlib/index.html">C Common libraries</a>
+needed for building grid infrastructure, <a href="./xio/index.html">XIO</a>, a
+sophisticated and extensible I/O library suitable for the dynamic needs of grid
+applications and <a href="./simpleca/index.html">SimpleCA</a>, a simple certificate
+authority available for testing purposes.</p>
+</div>
 </li>
 </ul>
 </div>
