@@ -1,0 +1,21 @@
+
+[[xio-driver-netlog]]
+=== Netlogger Driver ===
+
+This driver observes IO events on a driver stack and uses netlogger to
+log these events.
+
+String Options
+
+
+
+
+* filename=
+
+* mask=
+
+* type=
+
+* id=
+
+

@@ -1,0 +1,52 @@
+[[gram5PI, Guide to Public Interfaces]]
+:doctype: book
+= GCT 6.0 Component Guide to Public Interfaces: GRAM5 =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+  
+include::../GRAM5_Interface_API_Frag.adoc[]
+
+ 
+include::../GRAM5_Interface_RSL_Frag.adoc[]
+
+ 
+include::../GRAM5_Interface_RVF_Frag.adoc[]
+
+ 
+include::../GRAM5_Interface_Commandline_Frag.adoc[]
+
+ 
+include::../GRAM5_Interface_Config_Frag.adoc[]
+
+== Job description ==
+
+
+--
+Jobs are described in GRAM5's job description language. For detailed
+schema information see the link:#gram5-rsl[GRAM5 RSL documentation]. For
+more information and examples please check the
+link:../../gram5/user/index.html#gram5-user-globusrun[Globusrun section]
+in the link:../../gram5/user/index.html[GRAM5 Users's guide]. 
+
+
+--
+ 
+[[gram5-pi-protocols]]
+== Semantics and syntax of protocols ==
+
+
+include::../GRAM5_Interface_Protocol_Frag.adoc[]
+
+ 
+[[gram5-pi-error-codes]]
+== Errors ==
+
+indexterm:[errors]
+
+include::../GRAM5_Errors_Frag.adoc[]
+
+[index]
+[[gram5-pi-index]]
+= Index =

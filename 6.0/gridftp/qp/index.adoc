@@ -1,0 +1,32 @@
+[[gridftpQP,Quality Profile]]
+:doctype: article
+= GCT 6.0 GridFTP: Quality Profile =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+  
+[[gridftp-qp-test]]
+== Test coverage reports ==
+
+There are no test coverage reports available at this time.
+
+ 
+[[gridftp-qp-code]]
+== Code analysis reports ==
+
+There are no code analysis reports available at this time.
+
+ 
+include::../GridFTP_Known_Problems_Frag.adoc[]
+
+ 
+include::../GridFTP_Fixed_Bugs_Frag.adoc[]
+
+ 
+[[gridftp-qp-performance]]
+== Performance reports ==
+indexterm:performance reports (GridFTP)
+* link:../gridftp_performance.doc[Performance of Globus Striped GridFTP Server
+  on TeraGrid]
+* link:../gridftp_scalability.doc[GridFTP Scalability and Performance Results]

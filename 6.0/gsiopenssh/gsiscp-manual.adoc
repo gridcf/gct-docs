@@ -1,0 +1,20 @@
+[[gsiscp]]
+= GSISCP(1) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+gsiscp - Secure remote file copy
+
+== SYNOPSIS ==
+**++gsiscp++** 
+
+== Tool description ==
+
+Use the **gsiscp** command to securely copy files to or from a remote
+machine.
+
+
+== Command syntax ==
+
+**gsiscp** [-P port] [[user@]host1:]file1 [...] [[user@]host2:]destfile 

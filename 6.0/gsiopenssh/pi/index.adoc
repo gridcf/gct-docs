@@ -1,0 +1,31 @@
+
+[[gsiopensshPI,Public Interface Guide]]
+:doctype: book
+= GCT 6.0 Component Guide to Public Interfaces: GSI-OpenSSH =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+include::../Util_OpenSSH_Interface_Commandline_Frag.adoc[]
+
+ 
+include::../Util_OpenSSH_Interface_Config_Frag.adoc[]
+
+ 
+[[gsiopenssh-pi-env]]
+== Environment variable interface ==
+
+
+include::../Util_OpenSSH_Interface_Env_Frag.adoc[]
+
+ 
+[[gsiopenssh-pi-error-codes]]
+== Errors ==
+
+
+include::../Util_OpenSSH_Errors_Frag.adoc[]
+
+  

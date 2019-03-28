@@ -1,0 +1,26 @@
+
+[[xioPI,Public Interface Guide]]
+:doctype: book
+= GCT 6.0 Component Guide to Public Interfaces: XIO =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+include::../XIO_Interface_API_Frag.adoc[]
+
+ 
+[[xio-pi-env-vars]]
+== Environmental variables ==
+
+
+include::../XIO_Interface_Env_Frag.adoc[]
+
+ 
+[appendix]
+[[xio-pi-error-codes]]
+== Errors ==
+
+include::../XIO_Errors_Frag.adoc[]

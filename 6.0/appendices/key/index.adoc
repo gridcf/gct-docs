@@ -1,0 +1,16 @@
+= Grid Community Toolkit 6.0 Key Concepts =
+:doctype: book
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+:leveloffset: 1
+
+include::../../gridftp/key/index.adoc[]
+
+include::../../gram5/key/index.adoc[]
+
+include::../../gsic/key/index.adoc[]
+
+:leveloffset: 0

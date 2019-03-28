@@ -1,0 +1,7 @@
+
+[[xio-driver-skeleton]]
+=== Skeleton Driver ===
+
+This is a very simple driver to serve as an example and base for writing
+additional drivers. It does nothing but pass operations along the stack
+

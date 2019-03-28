@@ -1,0 +1,29 @@
+
+=== Usability Summary ===
+
+The following areas have received substantial effort in order to make
+using GridFTP easier, more enjoyable, etc:
+
+
+
+
+* 100% protocol compatibility with previous versions. Any client/server combination since 2.4.0 should work (barring a new client trying to invoke new functionality on an old server).
+
+* Greatly improved documentation. It is not complete, and we will continue to develop it, but it is far better than past versions.
+
+* For GT 4.0.0 there is a completely new server implementation that
+provides the following benefits: 
+
+* More stable (one project went from on the order of 1000 failures in a large workflow with the 2.4.3 server to zero failures with the new server).
+
+* More scalable (we had a single server supporting 1800 clients).
+
+* Easier to extend and modify. The Data Storage Interface (DSI) allows a clean way to access things other than POSIX file systems, such as tape systems, custom storage systems, etc.
+
+* Ability to run threaded servers (previous versions of the server did not support this).
+
+* striping is now available (allows multi-Gigabit speeds).
+
+* Easier server configuration.
+
+

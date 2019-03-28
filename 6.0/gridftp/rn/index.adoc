@@ -1,0 +1,34 @@
+[[gridftpRN,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes: GridFTP =
+indexterm:[release notes (GridFTP)]
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+   
+[[gridftp-rn-overview]]
+== Component Overview ==
+
+include::../GridFTP_Overview_Brief_Frag.adoc[]
+ 
+include::../GridFTP_Feature_Summary_Frag.adoc[]
+ 
+include::../GridFTP_Change_Summary_Frag.adoc[]
+ 
+include::../GridFTP_Fixed_Bugs_Frag.adoc[]
+ 
+include::../GridFTP_Known_Problems_Frag.adoc[]
+ 
+include::../GridFTP_Dependencies_Summary_Frag.adoc[]
+ 
+include::../GridFTP_Platform_Summary_Frag.adoc[]
+ 
+include::../GridFTP_Compatibility_Summary_Frag.adoc[]
+ 
+include::../GridFTP_Associated_Standards_Frag.adoc[]
+ 
+[[gridftp-rn-formoreinfo]]
+== For More Information ==
+
+See link:../../gridftp/index.html[GridFTP] for more information about this component. 

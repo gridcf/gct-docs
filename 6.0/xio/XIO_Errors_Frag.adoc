@@ -1,0 +1,78 @@
+[[xio-error-codes]]
+=== Errors ===
+
+[options='header']
+.XIO Errors
+|=======================================================================
+| Error Code | Definition | Possible Solutions
+| ++Operation was canceled++
+| An I/O operation has been canceled by a close or a cancel
+| In most cases this will be intentionally performed by the
+  application developer.  In unexpected cases the applciation
+  developer should verify that there is not a race condition
+  relating to closing a handle.
+
+| ++Operation timed out++
+| Occurs when the application developer associates a timeout with
+  a handle's I/O operations.  If no I/O is performed before the
+  timeout expires this error will be triggered.
+|  The remote side of connection might be hung and busy.  The network
+   could have higher latencies than expected.  The filesystem might
+   be over worked.
+
+| ++An end of file occurred++
+| This occurs when and EOF is detected on the file descriptor
+| When doing file I/O this like means you read to the end of the file
+  and thus you are finished and should now close it.  On network
+  connections however it means the socket was closed on the remote
+  end.  This can happen it the remote side suddenly dies (seg-fault
+  is common here) or if the remote side chooses to close the connection.
+
+| ++Contact string invalid++
+| A poorly formed contact string was passed in to open
+| Verify the format of the contact string with the documentation of
+  the drivers in use.
+
+| ++Memory allocation failed on XXXX++
+| malloc failed.  The system is likely quite overloaded
+| Free up memory in your application
+
+| ++ System error in XXXX++
+| A low level system error occurred.  The errno and errstring should
+    indicate more information.
+| 
+
+| ++Invalid stack++
+| The requested stack does not meet XIO standards
+| Most likely a transport driver is not on the bottom of the stack,
+  or 2 transport drivers are in the stack.
+
+| ++Operation already registered++
+| With certain common drivers like TCP and FILE, only one specific
+  operations can be registered at a time (1 read, 1 write).  If
+  another operation of the same type is posted to the handle before
+  receiving the previous operations callback, this error can occur.
+| Restructure the application code so that it waits for the callback
+  before registering the next IO operation.
+
+| ++Unexpected state++
+| The internal logic of XIO came across a logical path that should
+  not be possible.  Often times this is due to application memory
+  corruption or trying to perform an IO operation on a closed or
+  otherwise invalid handle.
+| Use valgrind or some sort of memory managment tool to verify there
+  is no memory corruption.  Try to recreate the problem in a small 
+  program.  Submit the program and the memory trace to the
+  http://jira.globus.org[Globus bug tracker].
+
+| ++Driver in handle has been unloaded++
+| A driver associated with the offending operation has already been
+  unloaded by the application code.
+| Verify that you are not unloading drivers until they are no longer
+  in use.
+
+| ++Module not activated++
+| globus_module_activate(GLOBUS_XIO_MODULE); has not been called.
+| Call this before making any other XIO API calls.
+|=======================================================================
+

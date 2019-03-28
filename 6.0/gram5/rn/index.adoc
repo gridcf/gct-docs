@@ -1,0 +1,43 @@
+[[gram5RN,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes: GRAM5 =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+  
+[[gram5-rn-overview]]
+== Component Overview ==
+
+
+include::../GRAM5_Overview_Brief_Frag.adoc[]
+
+ 
+include::../GRAM5_Feature_Summary_Frag.adoc[]
+
+ 
+include::../GRAM5_Change_Summary_Frag.adoc[]
+
+ 
+include::../GRAM5_Fixed_Bugs_Frag.adoc[]
+
+ 
+include::../GRAM5_Known_Problems_Frag.adoc[]
+
+ 
+include::../GRAM5_Dependencies_Summary_Frag.adoc[]
+
+ 
+include::../GRAM5_Platform_Summary_Frag.adoc[]
+
+ 
+include::../GRAM5_Compatibility_Summary_Frag.adoc[]
+
+ 
+include::../GRAM5_Associated_Standards_Frag.adoc[]
+
+ 
+[[gram5-rn-formoreinfo]]
+== For More Information ==
+
+See link:../../gram5/index.html[GRAM5 Documentation] for more information about this component. 

@@ -1,0 +1,38 @@
+
+[[myproxy-features]]
+=== Feature summary ===
+
+Supported Features
+
+
+
+
+* Users can obtain certificates and trust roots from the MyProxy CA using **++myproxy-logon++**.
+
+* Users can store and retrieve multiple X.509 proxy credentials using **++myproxy-init++** and **++myproxy-logon++**.
+
+* Users can store and retrieve multiple X.509 end-entity credentials using **++myproxy-store++** and **++myproxy-retrieve++**.
+
+* Users and administrators can manage trustroots (CA certificates and CRLs) using **++myproxy-logon++** and **++myproxy-get-trustroots++**.
+
+* Administrators can load the repository with X.509 end-entity credentials on the users' behalf using **++myproxy-admin-load-credential++**.
+
+* Administrators can use the **++myproxy-admin-adduser++** command to create user credentials and load them into the MyProxy repository.
+
+* Administrators can use the **++myproxy-admin-addservice++** command to create host credentials and load them into the MyProxy repository.
+
+* Users and administrators can set access control policies on the credentials in the repository.
+
+* If allowed by policy, job managers (such as Condor-G) can renew credentials before they expire.
+
+* The MyProxy server enforces local site passphrase policies using a configurable external call-out.
+
+
+Deprecated Features
+
+
+
+
+* None
+
+

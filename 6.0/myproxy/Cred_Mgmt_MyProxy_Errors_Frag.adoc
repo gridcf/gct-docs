@@ -1,0 +1,58 @@
+
+[[myproxy-error-codes]]
+=== Errors ===
+
+[options='header']
+.MyProxy Errors
+|=======================================================================
+| Error Code | Definition | Possible Solutions
+| ++MyProxy server name does not match expected name++
+| This error appears as a mutual authentication failure or a server authentication failure, and the error message should list two names: the expected name of the MyProxy server and the actual authenticated name.
++
+By default, the MyProxy clients expect the MyProxy server to be running with a
+host certificate that matches the target hostname.  This error can occur when
+running the MyProxy server under a non-host certificate or if the server is
+running on a machine with multiple hostnames.</simpara> The MyProxy clients
+authenticate the identity of the MyProxy server to avoid sending passphrases
+and credentials to rogue servers.
++
+If the expected name contains an IP address, your system is unable to do a
+reverse lookup on that address to get the canonical hostname of the server,
+indicating either a problem with that machine's DNS record or a problem with
+the resolver on your system.
+| If the server name shown in the error message is acceptable, set the ++MYPROXY_SERVER_DN++ environment variable to that name to resolve the problem.
+| ++Error in bind(): Address already in use++
+| This error indicates that the myproxy-server port (default: 7512) is in use
+  by another process, probably another myproxy-server instance. You cannot run
+  multiple instances of the myproxy-server on the same network port.
+| If you want to run multiple instances of the myproxy-server on a machine, you
+  can specify different ports with the '-p' option, and then give the same '-p'
+  option to the MyProxy commands to tell them to use the myproxy-server on that
+  port.
+| ++grid-proxy-init failed++
+| This error indicates that the grid-proxy-init command failed when
+   myproxy-init attempted to run it, which implies a problem with the
+   underlying GCT installation.
+| Run **++grid-proxy-init -debug -verify++** for more information. 
+| ++User not authorized++
+| An error from the myproxy-server saying you are "not authorized" to complete
+  an operation typically indicates that the ++myproxy-server.config++ file
+  settings are restricting your access to the myproxy-server. It is possible
+  that the myproxy-server is running with the default ++myproxy-server.config++
+  file, which does not authorize any operations.
+| See link:../myproxy/admin/index.html#myproxy-configuring[Configuring MyProxy]
+  for more information.
+  
+| ++Unable to verify remote side's credentials++
+| An error saying "Unable to verify remote side's credentials," "Couldn't
+  verify the remote certificate," or "alert bad certificate" often indicates
+  that the client or server's certificate is signed by
+    an untrusted Certification Authority (CA). The client must have a CA
+    certificate and signing policy file installed in
+    ++/etc/grid-security/certificates++ for the CA that signed the server's
+    certificate. Likewise, the server must have a CA certificate and
+    signing policy file installed in ++/etc/grid-security/certificates++ for
+    the CA that signed the client's certificate.
+| See link:../../gsic/admin/index.html#gsic-configuring[Configuring
+    Certificates] for more information.
+|=======================================================================

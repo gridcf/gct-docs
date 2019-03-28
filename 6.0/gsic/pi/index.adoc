@@ -1,0 +1,43 @@
+
+[[gsicPI,Public Interfaces]]
+:doctype: book
+= GCT 6.0 GSI C Public Interfaces =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+include::../GSIC_Interface_API_Frag.adoc[]
+
+ 
+include::../GSIC_Interface_Protocol_Frag.adoc[]
+
+ 
+include::../GSIC_Interface_Commandline_Frag.adoc[]
+
+ 
+include::../GSIC_Interface_Config_Frag.adoc[]
+
+ 
+[[gsic-pi-env]]
+== Environment variable interface ==
+
+
+include::../GSIC_Interface_Env_Frag.adoc[]
+
+ 
+[[gsic-error-codes]]
+== Errors ==
+
+
+include::../../Credential_Troubleshooting_Frag.adoc[]
+
+
+include::../../Gridmap_Troubleshooting_Frag.adoc[]
+
+  
+[index]
+[[gsic-pi-index]]
+= Index =

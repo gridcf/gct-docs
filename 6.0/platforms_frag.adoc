@@ -1,0 +1,20 @@
+[[tested-platforms]]
+[options='header']
+.Tested Platforms
+|=======================================================================
+| Operating System | Distribution | Version(s) | Architecture(s)
+.10+| Linux .2+| CentOS | 5, 6 | i386, x86_64
+| 7 | x86_64
+| Fedora | 20, 21, 22 | i386, x86_64
+.2+| Red Hat Enterprise Linux | 5, 6 | i386, x86_64
+| 7 | x86_64
+.2+| Scientific Linux | 5, 6 | i386, x86_64
+| 7 | x86_64
+| SUSE Linux Enterprise Server | 11SP3 | x86_64
+| Debian | 6, 7, 8 | i386, amd64
+| Ubuntu | 12.04LTS, 14.04LTS, 14.10, 15.04 | i386, amd64
+2+| Mac OS X | 10.6-10.10 | i386, x86_64
+| Solaris | OmniOS | r151006 | x86_64
+.2+| Windows 7 2+| Cygwin | i386, x86_64
+2+| MingW64 | i386, x86_64
+|=======================================================================

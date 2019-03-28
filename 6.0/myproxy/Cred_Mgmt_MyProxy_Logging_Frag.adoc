@@ -1,0 +1,15 @@
+
+[[myproxy-logging]]
+=== Logging ===
+
+The myproxy-server logs to the system logger (syslog) LOG_DAEMON
+facility. Alternatively, run 
+
+
+***********************************************************************
+**++myproxy-server -d++**
+
+***********************************************************************
+from a terminal. In that mode, the myproxy-server will write debugging
+messages to the terminal and exit after servicing a single request. 
+

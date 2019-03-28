@@ -1,0 +1,4 @@
+[[gridftp-protocols]]
+== Semantics and syntax of protocols ==
+
+http://toolkit.globus.org/alliance/publications/papers/GFD-R.0201.pdf[GridFTP: Protocol Extensions to FTP for the Grid]

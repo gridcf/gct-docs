@@ -1,0 +1,16 @@
+[[gsiopensshMig,Migrating Guide]]
+:doctype: article
+= GCT 6.0 Migrating Guide for GSI-OpenSSH =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+--
+No special procedures are required for upgrading GSI-OpenSSH
+installations. GSI-OpenSSH is backward compatible.
+
+ 
+--

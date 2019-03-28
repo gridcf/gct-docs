@@ -1,0 +1,16 @@
+
+[[gsiopenssh-associatedstandards]]
+=== Associated Standards ===
+
+Associated standards for GSI-OpenSSH: 
+
+
+
+
+* http://www.ietf.org/rfc/rfc2743.txt[RFC 2743] GSSAPI
+
+* http://www.ietf.org/rfc/rfc2744.txt[RFC 2744] GSSAPI: C-bindings
+
+* http://www.ietf.org/rfc/rfc4462.txt[RFC 4462] GSSAPI Authentication and Key Exchange for the SSH Protocol
+
+

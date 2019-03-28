@@ -1,0 +1,6 @@
+[NOTE]
+====
+The Grid Community Toolkit documentation was taken from the Globus Toolkit 6.0 documentation.
+As a result, there may be inaccuracies and outdated information.
+Please report any problems to the Grid Community Forums as https://github.com/gridcf/gct-docs/issues[GitHub issues].
+====

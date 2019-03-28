@@ -1,0 +1,166 @@
+[[gram5-reports-throughput]]
+=== GRAM5 Throughput Tests ===
+indexterm:[GRAM5 Throughput Test Results]
+
+
+
+[[gram5-reports-throughput-configuration]]
+==== Experiment Hardware and Software Configuration ====
+
+The following experiments were run on the **++nomer.mcs.anl.gov++**
+virtual cluster. The cluster consists of 6 partitions, each having a
+single **++Intel(R) Xeon(R) CPU E5430 @ 2.66GHz++** core, and 2GB RAM.
+The virtual machines in the cluster each had a single virtual network
+interface. The cluster was configured as follows: 
+
+* 1 node: Master node
+
+* 5 nodes: Test/execution nodes
+
+
+
+All nodes ran an **++apache2++** http server, **++gmond++** (ganglia
+monitoring), and **++pbs_mom++** (torque LRM). 
+
+The master node also ran a **++globus-gatekeeper++**,
+**++globus-gridftp-server++**,
+**++globus-job-manager-event-generator++**, **++gmetad++** (Ganglia Meta
+Daemon), **++pbs_sched++** (Torque LRM scheduler), **++pbs_server++**
+(Torque LRM server), and **++nfsd++** linux kernel NFSv4 server for the
+execution nodes. 
+
+The test nodes (1 for single-client tests, 5 for multiple client tests)
+ran the **++gram-throughput-tester++** program. All 5 test/execution
+nodes executed the test job executables as scheduled by the LRM. 
+
+These tests were done with GT 5.0.2 beta1. The throughput tester was
+compiled from CVS trunk October 30, 2009. 
+
+
+==== Experiment Scenarios ====
+
+The first set of tests submitted jobs to the GRAM5 service for one hour.
+After one hour elapsed, the client would terminate any jobs which were
+being managed by the GRAM5 service. The test client recorded the time of
+the experiment start, the time of the termination start, and the time
+after which all jobs had reached a DONE or FAILED state. 
+
+The throughput test client would generate a maximum of 50 simultaneous
+job requests. For all but the **uncapped** test below, a maximum of 2000
+jobs were managed by the job manager at any given time (pending or
+active). Once the client had submitted 2000 jobs, it would stop
+submissions until a job completed. A total of 10 execution slots were
+available for the LRM to schedule jobs into, so many were in the GRAM5
+PENDING state during the duration of the test. 
+
+The different **++gram-throughput-tester++** experiments consisted of: 
+
+.GRAM5 Throughput Tester Experiments
+[options='header']
+|=======================================================================
+| Experiment Name | LRM monitoring method | Number of clients | Number of users | Maximum number of simultaneous jobs / client
+| 1-client-poll
+| POLL
+| 1
+| 1
+| 2000
+
+| 1-client-seg
+| SEG
+| 1
+| 1
+| 2000
+
+| 1-client-seg-uncapped
+| SEG
+| 1
+| 1
+| unlimited
+
+| 5-client-seg
+| SEG
+| 5
+| 1
+| 2000
+
+| 5-client-seg-diffusers
+| SEG
+| 5
+| 5
+| 2000
+|=======================================================================
+
+
+
+==== Throughput Test Results ====
+
+The following table contains a summary of the results of these
+experiments. The columns contain the following information: 
+
+**Experiment**::
+     Experiment name, the same as in the previous section
+
+**Total Jobs**::
+     The total number of GRAM jobs that were **submitted** to the GRAM5 service by the throughput tester in one hour.
+
+**Termination Tasks After 1 Hour**::
+     The total number of jobs that were being managed by the GRAM5 service when the one hour test period elapsed. These jobs were terminated using the GRAM5 cancel protocol message by the throughput tester.
+
+**Termination Duration (hh:mm:ss)**::
+     The amount of time it took for the termination tasks to complete and all jobs to reach the ++DONE++ or ++FAILED++ state.
+
+**Master Node Max 1 min. Load Average**::
+     The maximum value of the one-minute load average on the master node, that is, the node running the GRAM5 and Torque service.
+
+**Master Node Average 1 min. Load Average**::
+     The average value of the one-minute load average on the master node over the duration of the test.
+
+**Errors**::
+     Description of any errors which occurred on the client side that prevented operations from completing as expected.
+
+
+[options='header']
+.GRAM5 Throughput Tester Results Summary
+|=======================================================================
+| Experiment | Total Jobs | Termination Tasks  After 1 Hour | Termination Duration (hh:mm:ss) | Master Node Max 1 min. Load Average | Master Node Average 1 min. Load Average | Errors
+
+| 1-client-poll
+| 2110
+| 2000
+| 00:14:18
+| 11.46
+| 7.96
+| None
+
+| 1-client-seg
+| 2110
+| 2000
+| 00:10:36
+| 2.82
+| 0.93
+| None
+
+| 1-client-seg-uncapped
+| 6664
+| 6584
+| 00:42:46
+| 3.26
+| 2.75
+| None
+
+| 5-client-seg
+| 6800
+| 6434
+| 00:57:20
+| 3.19
+| 2.49
+| Connection refused during termination
+
+| 5-client-seg-diffusers
+| 7226
+| 6720
+| 00:45:41
+| 3.79
+| 3.13
+| None
+|=======================================================================

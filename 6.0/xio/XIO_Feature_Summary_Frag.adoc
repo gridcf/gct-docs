@@ -1,0 +1,44 @@
+
+[[xio-features]]
+=== Feature summary ===
+
+Supported Features
+
+
+
+
+* Driver specific string attributes. Set values like **tcp buffer size** via string at runtime.
+
+* UDT driver.
+
+* Mode E Driver
+
+* Telnet Driver
+
+* Queuing Driver
+
+* Ordering Driver
+
+* Dynamically loadable drivers.
+
+* Single API to swappable IO implementations.
+
+* Asynchronous IO support.
+
+* Native timeout support.
+
+* Data descriptors for providing driver specific hints.
+
+* Modular driver stacks to maximize code reuse.
+
+* TCP, UDP, file, HTTP, telnet, mode E, GSI drivers.
+
+
+Deprecated Features
+
+
+
+
+* GSSAPI_FTP driver now distributed with the GridFTP Server
+
+

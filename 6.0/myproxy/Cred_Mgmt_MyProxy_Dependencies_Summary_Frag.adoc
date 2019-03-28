@@ -1,0 +1,6 @@
+[[myproxy-dependencies]]
+=== Technology dependencies ===
+
+MyProxy depends on the following GCT component:
+
+* link:gsic[GSI C]

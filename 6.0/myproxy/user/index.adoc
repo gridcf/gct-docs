@@ -1,0 +1,43 @@
+
+[[myproxyUser,User's Guide]]
+:doctype: book
+= GCT 6.0 MyProxy: User's Guide =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+[[myproxy-user-introduction]]
+== Introduction ==
+
+
+--
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/userguide.html[MyProxy
+User's Guide] on the MyProxy web site. 
+
+
+--
+ 
+include::../Cred_Mgmt_MyProxy_Interface_Commandline_Frag.adoc[]
+
+ 
+[[myproxy-user-troubleshooting]]
+== Troubleshooting ==
+
+
+include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
+
+
+[[myproxy-errors]]
+=== Additional MyProxy Troubleshooting ===
+
+For additional information, see the
+http://grid.ncsa.illinois.edu/myproxy/troubleshooting.html[MyProxy
+Troubleshooting Page] at NCSA. 
+
+ 
+include::../Cred_Mgmt_MyProxy_Usage_Statistics_Frag.adoc[]
+
+  

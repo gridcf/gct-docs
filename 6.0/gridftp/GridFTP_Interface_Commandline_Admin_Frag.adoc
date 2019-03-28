@@ -1,0 +1,12 @@
+[[gridftp-command-server]]
+:doctype: book
+
+:leveloffset: 1
+
+include::globus-gridftp-server-manual.adoc[]
+
+include::globus-gridftp-server-setup-chroot-manual.adoc[]
+
+:leveloffset: 0
+
+:doctype: book

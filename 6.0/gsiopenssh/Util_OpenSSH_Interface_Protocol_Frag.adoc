@@ -1,0 +1,4 @@
+
+GSI-OpenSSH implements http://www.ietf.org/rfc/rfc4462.txt[RFC 4462]
+GSSAPI Authentication and Key Exchange for the SSH Protocol. 
+

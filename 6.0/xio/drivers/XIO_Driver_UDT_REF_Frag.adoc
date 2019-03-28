@@ -1,0 +1,7 @@
+
+[[xio-driver-udt_ref]]
+=== UDT Reference Implementation Driver ===
+
+This driver uses the reference implementation of UDT provided at LINK
+and the Globus XIO wrapblock feature to create a Globus XIO UDT driver. 
+

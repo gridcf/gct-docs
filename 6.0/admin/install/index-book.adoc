@@ -1,0 +1,55 @@
+
+[[gtadmin]]
+:doctype: book
+= Installing GCT 6.0 =
+
+include::../../wascopied_frag.adoc[]
+
+ 
+include::intro.adoc[]
+
+ 
+include::before.adoc[]
+
+ 
+include::install.adoc[]
+
+ 
+include::basic_security.adoc[]
+
+ 
+include::basic_setup.adoc[]
+
+ 
+include::platform.adoc[]
+
+ 
+include::advanced_build.adoc[]
+
+ 
+include::packaging.adoc[]
+
+ 
+include::env_vars.adoc[]
+
+ 
+[[gtadminbook-simpleca]]
+== Installing SimpleCA ==
+
+:leveloffset: 1
+include::../../simpleca/admin/guide.adoc[]
+:leveloffset: 0
+
+ 
+include::troubleshooting.adoc[]
+
+ 
+include::advanced_config.adoc[]
+
+ 
+include::security_considerations.adoc[]
+
+ 
+include::usage_stats.adoc[]
+
+  

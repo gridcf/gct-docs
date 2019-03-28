@@ -1,0 +1,62 @@
+[[Globus::GRAM::JobState]]
+= GLOBUS::GRAM::JOBSTATE(3pm) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+Globus::GRAM::JobState - GRAM Protocol JobState Constants
+
+[[ID-419977e2b3d9757b513072e147336574]]
+== DESCRIPTION ==
+
+The Globus::GRAM::JobState module defines symbolic names for the
+JobState constants in the GRAM Protocol. 
+
+
+
+--------
+
+--------
+
+
+[[ID-578427db2c7ceece9803b48cb0e9fe8c]]
+=== Methods ===
+
+
+***********************************************************************
+--------
+
+--------
+
+***********************************************************************
+
+
+**$value = Globus::GRAM::PENDING()**::
+     Return the value of the PENDING constant.
+
+**$value = Globus::GRAM::ACTIVE()**::
+     Return the value of the ACTIVE constant.
+
+**$value = Globus::GRAM::FAILED()**::
+     Return the value of the FAILED constant.
+
+**$value = Globus::GRAM::DONE()**::
+     Return the value of the DONE constant.
+
+**$value = Globus::GRAM::SUSPENDED()**::
+     Return the value of the SUSPENDED constant.
+
+**$value = Globus::GRAM::UNSUBMITTED()**::
+     Return the value of the UNSUBMITTED constant.
+
+**$value = Globus::GRAM::STAGE_IN()**::
+     Return the value of the STAGE_IN constant.
+
+**$value = Globus::GRAM::STAGE_OUT()**::
+     Return the value of the STAGE_OUT constant.
+
+**$value = Globus::GRAM::ALL()**::
+     Return the value of the ALL constant.
+
+
+

@@ -1,0 +1,18 @@
+
+[[gridftp-associatedstandards]]
+=== Associated Standards ===
+
+Associated standards for GridFTP: 
+
+
+
+
+* http://rfc.net/rfc959.html[RFC 959 Base FTP protocol]
+
+* http://rfc.net/rfc2228.html[RFC 2228 gssapi security extensions] for FTP RFC 2389 FEAT, OPTS, etc.
+
+* http://www.ietf.org/internet-drafts/draft-ietf-ftpext-mlst-16.txt[extensions to FTP (IETF FTP Working group draft)] for structured directory listings, SIZE, MDTM commands.
+
+* http://www.ggf.org/documents/GWD-R/GFD-R.020.pdf[GFD.020 GridFTP extensions]
+
+

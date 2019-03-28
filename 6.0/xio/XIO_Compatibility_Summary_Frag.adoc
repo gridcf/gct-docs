@@ -1,0 +1,26 @@
+
+[[xio-compatibility]]
+=== Backward compatibility summary ===
+
+Protocol changes since GT version 5.2
+
+
+
+
+* None.
+
+
+API changes since GT version 5.2
+
+
+
+
+* ++globus_xio_stack_copy++ added to the API. This allows a user to duplicated a configured stack.
+
+* ++globus_xio_driver_set_eof_received++ added to the driver API. This function allows drivers to have multiple outstanding reads at one time.
+
+* ++globus_xio_driver_eof_received++ added to the driver API. Working in conjunction with ++globus_xio_driver_set_eof_received++ to allow drivers to have multiple outstanding reads.
+
+* Users can now pass in a NULL callback for timeouts and it is assumed that when time expires the user wants the operation to timeout. Previously a user callback was required where the user would decide if they wanted the timeout.
+
+

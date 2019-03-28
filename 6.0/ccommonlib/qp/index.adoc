@@ -1,0 +1,33 @@
+[[ccommonlibQP,Quality Profile]]
+:doctype: article
+= GCT 6.0 C Common Libraries: Quality Profile =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+  
+[[ccommonlib-qp-test]]
+== Test coverage reports ==
+
+There are no reports on this component.
+
+ 
+[[ccommonlib-qp-code]]
+== Code analysis reports ==
+
+There are no reports on this component.
+
+ 
+include::../C_Common_Libraries_Known_Problems_Frag.adoc[]
+
+ 
+include::../C_Common_Libraries_Fixed_Bugs_Frag.adoc[]
+
+ 
+[[ccommonlib-qp-performance]]
+== Performance reports ==
+
+There are no reports on this component.
+
+ 

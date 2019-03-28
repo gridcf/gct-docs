@@ -1,0 +1,22 @@
+
+[[simpleca-changes-summary]]
+=== Summary of Changes in SimpleCA ===
+
+
+==== New Features: SimpleCA ====
+
+
+
+
+* None.
+
+
+
+==== Improvements: SimpleCA ====
+
+
+
+
+* None.
+
+

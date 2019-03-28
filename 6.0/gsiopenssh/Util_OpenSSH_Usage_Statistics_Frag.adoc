@@ -1,0 +1,15 @@
+
+[[gsiopenssh-usage]]
+== Usage statistics collection ==
+
+
+[[gsiopenssh-usage-stats]]
+=== GSI-OpenSSH usage statistics collection ===
+
+By default, the GSI-OpenSSH server (sshd) will send a UDP packet
+containing usage information to usage-stats.cilogon.org:4810 after
+serving each request. See the
+http://grid.ncsa.illinois.edu/ssh/privacy.html[Privacy Policy] for
+details. You can see the Globus Usage Statistics policy
+link:/toolkit/docs/latest-stable/Usage_Stats.html[here]. 
+

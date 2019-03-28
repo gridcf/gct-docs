@@ -1,0 +1,58 @@
+
+[[gsicUser,User's Guide]]
+:doctype: book
+= Security: GSI C User's Guide =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+[[gsic-user-introduction]]
+
+.Introduction
+--
+Authentication in the Grid Community Toolkit is based on X.509 certificates.
+This document describes how to acquire and use the certificates that you
+will need to authenticate yourself to GCT services.
+
+--
+
+  
+[[gsic-user-usagescenarios]]
+== Usage scenarios ==
+
+
+[[gsic-user-basic-procedure]]
+=== Basic procedure for using GSI C ===
+
+In most cases, an individual will do the following: 
+
+* Acquire a user certificate from a certification authority (CA) with link:../../gsic/user/index.html#grid-cert-request[grid-cert-request]. This certificate will typically be valid for a year or more and will be stored in a file in the individual's home directory.
++
+It is important to keep in mind when your cert will expire - after your user certificate expires, you may not be able to use secure services in GCT!
+
+* Use the end-user certificate to create a proxy certificate using link:../../gsic/user/index.html#grid-proxy-init[grid-proxy-init]. This will be used to authenticate the individual to grid services. Proxy certificates typically have a much shorter lifetime than end-user certificates (usually 12 hours). Once your proxy certificate expires, simply rerun **++grid-proxy-init++**.
+
+
+include::../GSIC_Interface_Commandline_Frag.adoc[]
+
+ 
+[[gsic-user-troubleshooting]]
+== Troubleshooting ==
+
+--
+The following includes common errors for credentials and gridmap files.
+For information about system administrator logs, see
+link:../../gsic/admin/index.html#gsic-admin-debugging[Debugging] in the GSI C
+Admin Guide.
+
+
+--
+
+include::../../Credential_Troubleshooting_Frag.adoc[]
+
+
+include::../../Gridmap_Troubleshooting_Frag.adoc[]
+

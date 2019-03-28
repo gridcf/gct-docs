@@ -9,3 +9,4 @@ The GCT was created in response to the link:https://github.com/globus/globus-too
 
 * link:./latest/index.html[Latest release]
 * link:./6.2/index.html[6.2 Release Documentation]
+* link:./6.0/index.html[6.0 Release Documentation] (not supported)

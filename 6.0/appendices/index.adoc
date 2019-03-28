@@ -1,0 +1,13 @@
+[[appendices,Appendices]]
+:doctype: article
+= GCT 6.0: Appendices =
+
+include::../wascopied_frag.adoc[]
+
+ifdef::backend-html5[link:../index.html[GCT] -> Appendices]
+--
+* link:commands/index.html[Grid Community Toolkit 6.0 Commandline Tools] [link:commands/gtCommands.pdf[PDF]]
+* link:developer/index.html[Grid Community Toolkit 6.0 Developer's Guide] [link:developer/gtDeveloperGuide.pdf[PDF]]
+* link:key/index.html[Grid Community Toolkit 6.0 Key Concepts] [link:key/gtKeyConcepts.pdf[PDF]]
+* link:mig/index.html[GCT 6.0 Migrating Guides] [link:mig/gtMigratingGuide.pdf[PDF]]
+--

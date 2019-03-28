@@ -1,0 +1,85 @@
+
+[[gsiopenssh-configuring]]
+== Configuring ==
+
+
+--
+The GSI-enabled OpenSSH software is installed with a default set of
+configuration files, described below. You may want to modify the
+++ssh_config++ file before using the clients and the  file before using
+the clients and the ++sshd_config++ file before using the server.  file
+before using the server. 
+
+If the GSI-enabled OpenSSH install script finds existing SSH key pairs,
+it will create symbolic links to them rather than generating new key
+pairs. The SSH key pairs are not required for GSI authentication.
+However, if you wish to support other SSH authentication methods, make
+sure the sshd (running as root) can read the key pair files (i.e.,
+beware of NFS mounts with root_squash). If running multiple sshds on a
+system, we recommend configuring them so they all use the same key pairs
+(i.e., use symbolic links) to avoid client-side confusion. 
+
+
+* ++$GLOBUS_LOCATION/etc/ssh/moduli++
+***********************************************************************
+moduli
+is a crypto parameter for generating
+keys.
+***********************************************************************
+
+* ++$GLOBUS_LOCATION/etc/ssh/ssh_config++
+***********************************************************************
+ssh_config
+contains options that are read by ssh, scp, and sftp at run-time. The
+installed version is the default provided by OpenSSH, with GSI
+authentication and X11Forwarding enabled. You may need to customize this
+file for compatibility with your system SSH installation (i.e., compare
+it with
+/etc/ssh/ssh_config).
+***********************************************************************
+
+* ++$GLOBUS_LOCATION/etc/ssh/ssh_host_key[.pub]++
+***********************************************************************
+Your
+system's RSA public-/private-key pair for SSH protocol 1
+communications.
+***********************************************************************
+
+* ++$GLOBUS_LOCATION/etc/ssh/ssh_host_dsa[.pub]++
+***********************************************************************
+Your
+system's DSA public-/private-key pair for SSH protocol 2
+communications.
+***********************************************************************
+
+* ++$GLOBUS_LOCATION/etc/ssh/ssh_host_rsa[.pub]++
+***********************************************************************
+Your
+system's RSA public-/private-key pair for SSH protocol 2
+communications.
+***********************************************************************
+
+* ++$GLOBUS_LOCATION/etc/ssh/ssh_prng_cmds++
+***********************************************************************
+ssh_prng_cmds
+contains paths to a number of files that ssh-keygen may need to use if
+your system does not have a built-in entropy pool (like
+/dev/random).
+***********************************************************************
+
+* ++$GLOBUS_LOCATION/etc/ssh/sshd_config++ 
+
+***********************************************************************
+sshd_config
+contains options that are read by sshd when it starts up. The installed
+version is the default provided by OpenSSH, with X11Forwarding enabled.
+You may need to customize this file for compatibility with your system
+SSH installation (i.e., compare it with /etc/ssh/sshd_config). For
+example, to enable PAM authentication, you may need to set "UsePAM yes"
+in this
+file.
+***********************************************************************
+
+
+
+--

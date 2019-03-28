@@ -1,0 +1,31 @@
+
+[[gsic-features]]
+=== Feature summary ===
+
+Features new in GT 6.0 
+
+* None.
+
+
+
+Other Supported Features 
+
+* Uses internet-standard GSSAPI for security operations.
+
+* Supports certificate-based authentication, using both standard X.509 End Entity and Proxy
+        Certificates.
+
+* Supports delegation of user rights to services using standard X.509 Proxy Certificates.
+
+* Supports authorization based on client certificate chains, including support for X.509v3 certificate extensions.
+
+* Provides tools for managing certificates, proxies, trust roots, and credential identity mapping tables.
+
+
+
+Deprecated Features 
+
+* None
+
+
+

@@ -1,0 +1,11 @@
+
+[[xio-configuring]]
+== Configuring ==
+
+
+--
+Globus XIO is a development API; therefore, configuration details are
+largely in the hands of the applications using it.
+
+
+--

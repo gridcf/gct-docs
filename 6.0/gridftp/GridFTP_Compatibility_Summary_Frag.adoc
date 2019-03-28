@@ -1,0 +1,36 @@
+
+[[gridftp-backward-compatibility]]
+=== Backward compatibility summary ===
+
+Protocol changes since GT 5.2
+
+
+
+
+* None
+
+
+API changes since GT 5.2
+
+
+
+
+* None
+
+
+Exception changes since GT 5.2
+
+
+
+
+* Not Applicable (GridFTP is not Java-based)
+
+
+Schema changes since GT 5.2
+
+
+
+
+* Not Applicable (GridFTP is not SOAP-based)
+
+

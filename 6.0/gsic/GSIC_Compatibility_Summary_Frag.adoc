@@ -1,0 +1,36 @@
+
+[[gsic-compatibility]]
+=== Backward compatibility summary ===
+
+Protocol changes in GSI C since GT 5.2
+
+
+
+
+* None
+
+
+API changes since GT 5.2
+
+
+
+
+* None
+
+
+Exception changes since GT 5.2
+
+
+
+
+* Not applicable
+
+
+Schema changes since GT 5.2
+
+
+
+
+* Not applicable
+
+

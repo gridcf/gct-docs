@@ -1,0 +1,7 @@
+
+[[xio-associatedstandards]]
+=== Associated Standards ===
+
+Adoption of standards in XIO is determined by the drivers. All drivers
+distributed by XIO are compliant with the protocol they implement.
+

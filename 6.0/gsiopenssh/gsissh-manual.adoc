@@ -1,0 +1,19 @@
+[[gsissh]]
+= GSISSH(1) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+gsissh - Secure remote login
+
+== SYNOPSIS ==
+**++gsissh++** 
+
+== Tool description ==
+
+Use the **gsissh** command to securely login to a remote machine.
+
+
+== Command syntax ==
+
+**gsissh** [-l login_name] hostname | user@hostname [command] 

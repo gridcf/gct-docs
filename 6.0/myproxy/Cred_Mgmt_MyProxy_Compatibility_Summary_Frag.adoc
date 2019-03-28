@@ -1,0 +1,6 @@
+
+[[myproxy-compatibility]]
+=== Backward compatibility summary ===
+
+All MyProxy versions are fully backwards compatible.
+

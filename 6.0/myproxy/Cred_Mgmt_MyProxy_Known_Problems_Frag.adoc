@@ -1,0 +1,26 @@
+
+[[myproxy-knownproblems]]
+=== Known Problems ===
+
+The following problems and limitations are known to exist for MyProxy at
+the time of the 6.0 release:
+
+
+==== Limitations ====
+
+
+
+
+* No known limitations exist.
+
+
+
+[[myproxy-outstanding]]
+==== Outstanding bugs ====
+
+
+
+
+* http://bugzilla.globus.org/globus/show%5fbug.cgi?id=2709[Bug 2709:] The MyProxy package isn't internationalized.
+
+
