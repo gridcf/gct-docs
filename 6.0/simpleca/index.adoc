@@ -1,0 +1,33 @@
+[[simpleca,SimpleCA]]
+:doctype: article
+= GCT 6.0: SimpleCA =
+
+include::../wascopied_frag.adoc[]
+
+ifdef::backend-html5[link:../index.html[GCT] -> SimpleCA]
+  
+include::Cred_Mgmt_SimpleCA_Overview_Brief_Frag.adoc[]
+
+ 
+[cols="2",frame="none"]
+|=======================================================================
+2+| The following guides are available for this component:
+
+| link:../gsic/key/index.html[**Security Key Concepts**]
+| For important general concepts.  [link:../gsic/key/gsicKeyConcepts.pdf[pdf]]
+
+| link:admin/index.html[**Admin Guide**]
+| For system administrators and those installing, building and deploying GCT.
+  You should already have read the 
+  link:../admin/index.html[Installation Guide] and 
+  link:../admin/quickstart/index.html[Quickstart] which contains an example
+  of using SimpleCA.
+  [link:admin/simplecaAdminGuide.pdf[pdf]]
+
+| link:rn/index.html[**Release Notes**]
+| What's new with the 6.0 
+  release for this component.  [link:rn/simplecaReleaseNotes.pdf[pdf]] 
+
+| link:simpleca.pdf[**All SimpleCA Guides (PDF only)**]
+|  Includes all SimpleCA guides
+|=======================================================================

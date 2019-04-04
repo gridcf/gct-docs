@@ -1,0 +1,65 @@
+[[gram5-cmd-globus-job-clean]]
+= GLOBUS-JOB-CLEAN(1) =
+:doctype: manpage
+:man source: University of Chicago
+
+== NAME ==
+globus-job-clean - Cancel and clean up a GRAM batch job
+
+== SYNOPSIS ==
+**++globus-job-clean++** ++-r++ 'RESOURCE' | ++-resource++ 'RESOURCE'  +
+ +
+ ++-f++  | ++-force++  ++-q++  | ++-quiet++  'JOBID' 
+
+== Description ==
+
+The **++globus-job-clean++** program cancels the job named by 'JOBID' if
+it is still running, and then removes any cached files on the GRAM
+service node related to that job. In order to do the file clean up, it
+submits a job which removes the cache files. By default this cleanup job
+is submitted to the default GRAM resource running on the same host as
+the job. This behavior can be controlled by specifying a resource
+manager contact string as the parameter to the '-r' or '-resource'
+option. 
+
+By default, **++globus-job-clean++** prompts the user prior to canceling
+the job. This behavior can be overridden by specifying the '-f' or
+'-force' command-line options. 
+
+
+== Options ==
+
+The full set of options to **++globus-job-clean++** are: 
+
+**-help, -usage**::
+     Display a help message to standard error and exit.
+
+**-version**::
+     Display the software version of the **++globus-job-clean++** program to standard output.
+
+**-version**::
+     Display the software version of the **++globus-job-clean++** program including DiRT information to standard output.
+
+**-resource 'RESOURCE', -r 'RESOURCE'**::
+     Submit the clean-up job to the resource named by 'RESOURCE' instead of the default GRAM service on the same host as the job contact.
+
+**-force, -f**::
+     Do not prompt to confirm job cancel and clean-up.
+
+**-quiet, -q**::
+     Do not print diagnostics for succesful clean-up. Implies '-f'
+
+
+
+== ENVIRONMENT ==
+
+If the following variables affect the execution of
+**++globus-job-clean++**. 
+
+**++X509_USER_PROXY++**::
+     Path to proxy credential.
+
+**++X509_CERT_DIR++**::
+     Path to trusted certificate directory.
+
+

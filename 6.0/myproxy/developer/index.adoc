@@ -1,0 +1,101 @@
+
+[[myproxyDeveloper,Developer's Guide]]
+:doctype: book
+= GCT 6.0 MyProxy: Developer's Guide =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+[[myproxy-developer-introduction]]
+
+.Introduction
+--
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/devguide.html[MyProxy
+Developer's Guide] on the MyProxy web site. 
+
+--
+
+  
+[[myproxy-developer-beforeyoubegin]]
+== Before you begin ==
+
+
+include::../Cred_Mgmt_MyProxy_Feature_Summary_Frag.adoc[]
+
+
+include::../Cred_Mgmt_MyProxy_Platform_Summary_Frag.adoc[]
+
+
+include::../Cred_Mgmt_MyProxy_Compatibility_Summary_Frag.adoc[]
+
+
+include::../Cred_Mgmt_MyProxy_Dependencies_Summary_Frag.adoc[]
+
+
+include::../Cred_Mgmt_MyProxy_Security_Considerations_Frag.adoc[]
+
+ 
+[[myproxy-developer-scenarios]]
+== Usage scenarios ==
+
+
+--
+Please refer to the http://grid.ncsa.illinois.edu/myproxy/userguide.html[MyProxy
+User Guide] for MyProxy usage scenarios. 
+
+
+--
+ 
+[[myproxy-developer-tutorials]]
+== Tutorials ==
+
+
+--
+There are no tutorials available at this time.
+
+
+--
+ 
+[[myproxy-developer-archdes]]
+== Architecture and design overview ==
+
+
+--
+The MyProxy system architecture and design is described in the following
+two publications: 
+
+
+* J. Basney, M. Humphrey, and V. Welch. http://www.ncsa.uiuc.edu/~jbasney/myproxy-spe.pdf[The MyProxy Online Credential Repository]. Software: Practice and Experience, 2005.
+
+* J. Novotny, S. Tuecke, and V. Welch. http://www.globus.org/alliance/publications/papers/myproxy.pdf[An Online Credential Repository for the Grid: MyProxy]. Proceedings of the Tenth International Symposium on High Performance Distributed Computing (HPDC-10), IEEE Press, August 2001.
+
+
+
+--
+ 
+== Troubleshooting ==
+
+include::../Cred_Mgmt_MyProxy_Errors_Frag.adoc[]
+
+[[myproxy-errors]]
+=== Additional MyProxy Troubleshooting ===
+
+For additional information, see the
+http://grid.ncsa.illinois.edu/myproxy/troubleshooting.html[MyProxy
+Troubleshooting Page] at NCSA. 
+
+ 
+[[myproxy-developer-relateddocs]]
+== Related Documentation ==
+
+
+--
+For additional information about MyProxy, see the
+http://grid.ncsa.illinois.edu/myproxy/[MyProxy Project Home Page] at NCSA.
+
+
+--
+  

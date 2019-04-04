@@ -1,0 +1,55 @@
+[[gram5-cmd-globus-job-cancel]]
+= GLOBUS-JOB-CANCEL(1) =
+:doctype: manpage
+:man source: University of Chicago
+
+== NAME ==
+globus-job-cancel - Cancel a GRAM batch job
+
+== SYNOPSIS ==
+**++globus-job-cancel++** ++-f++  | ++-force++  ++-q++  | ++-quiet++  'JOBID' 
+
+== Description ==
+
+The **++globus-job-cancel++** program cancels the job named by 'JOBID'.
+Any cached files associated with the job will remain until
+**++globus-job-clean++** is executed for the job. 
+
+By default, **++globus-job-cancel++** prompts the user prior to
+canceling the job. This behavior can be overridden by specifying the
+'-f' or '-force' command-line options. 
+
+
+== Options ==
+
+The full set of options to **++globus-job-cancel++** are: 
+
+**-help, -usage**::
+     Display a help message to standard error and exit.
+
+**-version**::
+     Display the software version of the **++globus-job-cancel++** program to standard output.
+
+**-version**::
+     Display the software version of the **++globus-job-cancel++** program including DiRT information to standard output.
+
+**-force, -f**::
+     Do not prompt to confirm job cancel and clean-up.
+
+**-quiet, -q**::
+     Do not print diagnostics for succesful cancel. Implies '-f'
+
+
+
+== ENVIRONMENT ==
+
+If the following variables affect the execution of
+**++globus-job-cancel++**. 
+
+**++X509_USER_PROXY++**::
+     Path to proxy credential.
+
+**++X509_CERT_DIR++**::
+     Path to trusted certificate directory.
+
+

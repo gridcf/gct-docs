@@ -1,0 +1,4 @@
+** UDT Support for Wide-Area, Lossy Networks
+** UDT NAT Traversal, supported by Globus Connect Personal for
+** S3/HTTP support, allowing GridFTP transfers to and from Amazon S3
+** DCSC for cross-domain transfers without mutual trust

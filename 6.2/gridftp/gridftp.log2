@@ -1,0 +1,18 @@
+[20797] Mon Jun 30 18:42:04 2008 :: GFork functionality not enabled: globus_gfork_child_worker_start() failed:
+globus_gfork: GFork error: Env not set
+
+[20797] Mon Jun 30 18:42:04 2008 :: No configuration file found.
+[20797] Mon Jun 30 18:42:04 2008 :: Server started in daemon mode.
+[20800] Mon Jun 30 18:42:16 2008 :: GFork functionality not enabled: globus_gfork_child_worker_start() failed:
+globus_gfork: GFork error: Env not set
+
+[20800] Mon Jun 30 18:42:16 2008 :: No configuration file found.
+[20800] Mon Jun 30 18:42:16 2008 :: Server started in inetd mode.
+[20800] Mon Jun 30 18:42:16 2008 :: New connection from: localhost:39823
+[20800] Mon Jun 30 18:42:16 2008 :: DN /DC=org/DC=doegrids/OU=People/CN=Somebody  successfully authorized.
+[20800] Mon Jun 30 18:42:16 2008 :: User someuser successfully authorized.
+[20800] Mon Jun 30 18:42:16 2008 :: Starting to transfer "/tmp/x".
+[20800] Mon Jun 30 18:42:16 2008 :: Finished transferring "/tmp/x".
+[20800] Mon Jun 30 18:42:16 2008 :: Closed connection from localhost:39823
+[20797] Mon Jun 30 18:42:16 2008 :: Child process 20800 ended with rc = 0
+[20797] Mon Jun 30 18:42:39 2008 :: Server is shutting down...

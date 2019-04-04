@@ -1,0 +1,26 @@
+[[myproxyQP,Quality Profile]]
+:doctype: article
+= GCT 6.0 MyProxy: Quality Profile =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+[[myproxy-qp-test]]
+== Test coverage reports ==
+
+Not yet available. 
+
+[[myproxy-qp-code]]
+== Code analysis reports ==
+
+Not yet available. 
+
+include::../Cred_Mgmt_MyProxy_Known_Problems_Frag.adoc[]
+
+include::../Cred_Mgmt_MyProxy_Fixed_Bugs_Frag.adoc[]
+
+[[myproxy-qp-performance]]
+== Performance reports ==
+* http://grid.ncsa.illinois.edu/myproxy/scalability.html[MyProxy Scalability Information]

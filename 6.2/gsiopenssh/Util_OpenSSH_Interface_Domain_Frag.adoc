@@ -1,0 +1,3 @@
+
+GSI-enabled OpenSSH does not provide any domain-specific interfaces.
+

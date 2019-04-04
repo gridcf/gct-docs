@@ -1,0 +1,13 @@
+[[admin,Admin Manuals]]
+:doctype: book
+= GCT 6.0: Admin Manuals =
+
+include::../wascopied_frag.adoc[]
+
+ifdef::backend-html5[link:../index.html[GCT] -> Admin Manuals]
+
+--
+* link:../admin/install/index.html[Installation Guide] [link:install/installingGT.pdf[PDF]]
+* link:../admin/quickstart/index.html[QuickStart Guide] [link:quickstart/gtQuickstart.pdf[PDF]]
+* link:../admin/install/appendix.html[Installation Appendix] [link:install/installationAppendix.pdf[PDF]]
+--

@@ -1,0 +1,96 @@
+# Disable a large number of RSL attributes
+Attribute: executable
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: directory
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: environment
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: file_clean_up
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: file_stage_in
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: file_stage_out
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: file_stage_in_shared
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: gass_cache
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: gram_my_job
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: host_count
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: library_path
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: max_cpu_time
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: min_memory
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: project
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: queue
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: remote_io_url
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: scratch_dir
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: stdin
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: stdout
+ValidWhen: ""
+RequiredWhen: ""
+
+Attribute: stderr 
+ValidWhen: ""
+RequiredWhen: ""
+
+# Add a new attribute max_queue_time
+Attribute: max_queue_time
+ValidWhen: GLOBUS_GRAM_JOB_SUBMIT
+DefaultWhen: GLOBUS_GRAM_JOB_SUBMIT 
+RequiredWhen: GLOBUS_GRAM_JOB_SUBMIT 
+Description: "Maximum time a fake job will be in pending, in seconds. The
+              default value is 1200 seconds (20 minutes)"
+Default: 1200
+
+# Add a default value and requirement for max_wall_time
+Attribute: max_wall_time
+DefaultWhen: GLOBUS_GRAM_JOB_SUBMIT 
+RequiredWhen: GLOBUS_GRAM_JOB_SUBMIT 
+Default: 300
+Description: "Maximum time a fake job will be in the ACTIVE state"

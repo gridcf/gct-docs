@@ -1,0 +1,365 @@
+
+[[gram5-extensions]]
+== Job Description Extensions Support ==
+
+
+--
+The GRAM5 job description schema includes a section for extending the
+job description with custom elements. To make sense of this in the
+resource manager adapter Perl scripts, a Perl module named
+++Globus::GRAM::ExtensionsHandler++ is provided to turn these custom
+elements into parameters that the adapter scripts can understand. 
+
+[NOTE]
+--
+Although only non-GRAM XML elements are allowed in the ++<extensions>++
+element of the job description, the extensions handler makes no
+distinction based on namespace. Thus, ++<foo:myparam>++ and
+++<bar:myparam>++ will both be treated as just ++<myparam>++. 
+
+--
+
+Familiarity with the adapter scripts is assumed in the following
+sub-sections. 
+
+
+--
+
+[[gram5-extensions-requirements]]
+=== Requirements for Extensions Support ===
+
+
+
+* XML::Parser Perl module
+
+
+
+
+[[gram5-extensions-constructs]]
+=== Supported Extension Constructs ===
+
+
+[[gram5-extensions-constructs-simple]]
+==== Simple String Parameters ====
+
+Simple string extension elements are converted into single-element
+arrays with the name of the unqualified tag name of the extension
+element as the array's key name in the Perl job description hash. Simple
+string extension elements can be considered a special case of the string
+array construct in the next section. 
+
+For example, adding the following element to the ++<extensions>++
+element of the job description as follows: 
+
+
+
+--------
+
+    <extensions>
+        <myparam>yahoo!</myparam>
+    </extensions>
+
+--------
+
+will cause the ++$description->myparam()++ to return the following
+value: 
+
+
+
+--------
+
+    'yahoo!'
+
+--------
+
+
+[[gram5-extensions-constructs-array]]
+==== String Array Parameters ====
+
+String arrays are a simple iteration of the simple string element
+construct. If you specify more than one simple string element in the job
+description, these will be assembled into a multi-element array with the
+unqualified tag name of the extension elements as the array's key name
+in the Perl job description hash. 
+
+For example: 
+
+
+
+--------
+
+<extensions>
+  <myparams>Hello</myparams>
+  <myparams>World!</myparams>
+</extensions>
+
+--------
+
+will cause the ++$description->myparams()++ to return the following
+value: 
+
+
+
+--------
+
+[ 'Hello', 'World!' ]
+
+--------
+
+
+[[gram5-extensions-constructs-namevalue]]
+==== Name/Value Parameters ====
+
+Name/value extension elements can be thought of as string arrays with an
+XML attribute 'name'. This will cause the creation of a two-dimensional
+array with the unqualified extension element tag name as the name of the
+array in the Perl job description hash. 
+
+For example: 
+
+
+
+--------
+
+<extensions>
+  <myvars name="pi">3.14159</myvars>
+  <myvars name="mole">6.022 x 10^23</myvars>
+</extensions>
+
+--------
+
+will cause the ++$description->myvars()++ to return the following value:
+
+
+
+
+--------
+
+        [ [ 'pi', '3.14159'], ['mole', '6.022 x 10^23'] ]
+
+--------
+
+
+[[gram5-extensions-constructs-nodes]]
+==== PBS Node Selection Parameters ====
+
+Node selection constraints in PBS can be specified in one of the
+following ways:
+
+
+
+
+* generally, using a construct intended to eventually apply to all
+resource managers which support node selection
+
+* explicitly. by specifying a simple string element.
+
+
+The former will be more portable, but the latter will appeal to those
+familiar with specifying node constraints for PBS jobs. 
+
+To specify PBS node selection constraints explicitly, one can simply
+constuct a single, simple string extension element named ++nodes++ with
+a value that conforms to the ++#PBS -l nodes=...++ PBS job description
+directive. The ++Globus::GRAM::ExtensionsHandler++ module will make this
+available to the PBS adapter script by invoking
+++$description->{nodes}++. The updated PBS adapter package checks for
+this value and will create a directive in the PBS job description using
+this value. 
+
+To use the generic construct for specifying node selection constraints,
+use the ++resourceAllocationGroup++ element: 
+
+
+
+--------
+
+        <extensions>
+        <resourceAllocationGroup>
+        <!-- Optionally select hosts by type and number... -->
+        <hostType>...</hostType>
+        <hostCount>...</hostCount>
+        
+        <!-- *OR* by host names -->
+        
+        <hostName>...</hostName>
+        <hostName>...</hostName>
+        . . .
+        
+        
+        <!-- With a total CPU count for this group... -->
+        <cpuCount>...</cpuCount>
+        
+        <!-- *OR* an explicit number of CPUs per node... -->
+        <cpusPerHost>...</cpusPerHost>
+        . . .
+        
+        
+        <!-- And a total process count for this group... -->
+        <processCount>...</processCount>
+        
+        <!-- *OR* an explicit number of processes per node... -->
+        <processesPerHost>...</processesPerHost>
+        </resourceAllocationGroup>
+        </extensions>
+
+--------
+
+Extension elements specified according to the above pseudo-schema will
+be converted to an appropriate ++nodes++ parameter which will be treated
+as if an explicit ++nodes++ extension element were specified.
+
+Multiple ++resourceAllocationGroup++ elements may be specified. This
+will simply append the constraints to the ++nodes++ paramater with a '+'
+separator.
+
+[NOTE]
+--
+You cannot specify both ++hostType/hostCount++ and ++hostName++
+elements. Similarly, one cannot specify both ++processCount++ and
+++processesPerHost++ elements. 
+
+--
+Here are some examples of using ++resourceAllocationGroup++: 
+
+
+
+--------
+
+        <!-- #PBS -l nodes=1:ppn=10 -->
+        <!-- 10 processes -->
+        <extensions>
+        <resourceAllocationGroup>
+        <cpuCount>10</cpuCount>
+        <processCount>10</processCount>
+        </resourceAllocationGroup>
+        </extensions>
+        
+        <!-- #PBS -l nodes=activemural:ppn=10+5:ia64-compute:ppn=2 -->
+        <!-- 1 process (process default) -->
+        <extensions>
+        <resourceAllocationGroup>
+        <hostType>activemural</hostType>
+        <cpuCount>10</cpuCount>
+        </resourceAllocationGroup>
+        <resourceAllocationGroup>
+        <hostType>ia64-compute</hostType>
+        <hostCount>5</hostCount>
+        <cpusPerHost>2</cpusPerHost>
+        </resourceAllocationGroup>
+        </extensions>
+        
+        <!-- #PBS -l nodes=vis001:ppn=5+vis002:ppn=5+comp014:ppn=2+comp015:ppn=2 -->
+        <!-- 15 total processes -->
+        <extensions>
+        <resourceAllocationGroup>
+        <hostName>vis001</hostName>
+        <hostName>vis002</hostName>
+        <cpuCount>10</cpuCount>
+        <processesPerHost>5</processesPerHost>
+        </resourceAllocationGroup>
+        <resourceAllocationGroup>
+        <hostName>comp014</hostName>
+        <hostName>comp015</hostName>
+        <cpusPerHost>2</cpusPerHost>
+        <processCount>5</processCount>
+        </resourceAllocationGroup>
+        </extensions>
+
+--------
+
+
+[[gram5-extensions-customizing]]
+=== Customizing Extensions Support ===
+
+Two Perl modules must be edited to customize extensions support.
+
+
+
+
+* The first is ++ExtensionsHandler.pm++. This is where the GRAM5 job
+description XML of the ++extensions++ element is parsed and entries are
+added or appended to the Perl job description hash.
+
+* The second module that needs to be edited is the particular resource
+manager adapter module that will use any new hash entries to either
+alter its behavior or create additional parameters in the resource
+manager job description.
+
+
+
+[[gram5-extensions-customizing-handler]]
+==== Customizing ExtensionsHandler.pm ====
+
+This module logs various things to the log file specified in the
+++logfile++ extension element. If you place this element at the start of
+the extensions for which you are creating support, then you can look at
+the specified log file to get some idea of what the handler is doing.
+You can add new logging lines by using the ++$self->log()++ function.
+This simply takes a string that gets appended to the log file with a
+prefix of "++<date string> EXTENSIONS HANDLER:++". 
+
+There are three main subroutines that are used to handle parsing events
+and process them accordingly:
+
+
+
+
+* ++Char()++
+
+* ++StartTag()++
+
+* ++EndTag()++
+
+
+More handlers can be specified for other specific events when creating
+the ++XML::Parser++ instance in ++new()++ (see the
+http://search.cpan.org/~coopercl/XML-Parser-2.31/Parser.pm[XML::Parser]
+documentation for details). 
+
+The following list describes what the three main subroutines currently
+do. Modify the subroutines as necessary to achieve your specific goal. 
+
+
+
+**++Char()++**::
+     Doesn't do anything but collect CDATA found between the current
+element's start and end tags. You can access the CDATA for the current
+element by using ++$self->{CDATA}++.
+
+**++StartTag()++**::
+     Responsible for collecting the attributes associated with the element.
+It also increments the counter, which keeps track of the number of child
+elements to the current extension element, and pushes the current
+element name onto the ++@scope++ queue for later use.
+
+**++EndTag()++**::
+     Takes the CDATA collected by ++Char()++ and creates new Perl job
+description hash entries. This is most likely where you will need to do
+most of your work when adding support for new extension elements. Two
+useful variables are ++$currentScope++ and ++$parentScope++. These
+indicate the current element that is being parsed and the parent of the
+element being parsed respectively. This is useful for establishing a
+context from which to work. The ++@scope++ queue is piped at the end of
+this subroutine.
+
+
+
+[[gram5-extensions-customizing-adapter]]
+==== Customizing the Adapter Module ====
+
+Each adapter and each extension's purpose is different, so there aren't
+any specific instructions for modifying the resource manager/scheduler
+adapter module. It is suggested that you spend some time trying to
+understand what the adapter does and how before making your changes. 
+
+Any new hash entries you created in ++ExtensionsHandler.pm++ (see the
+"Customizing ExtensionsHandler.pm" section above) can be accessed by
+calling ++$description->entryname()++ from the adapter module, where
+'entryname' is the name of the entry that was added. 
+
+See the <<gram5-extensions-constructs>>[construct documentation] above
+for more details on generic constructs that are already supported in
+ExtensionsHandler.pm. This is often an easier route to implementing your
+extensions than creating a custom construct. 
+

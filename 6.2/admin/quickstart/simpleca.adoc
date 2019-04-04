@@ -1,0 +1,9 @@
+root@elephant:~# ls /var/lib/globus/
+simple_ca
+root@elephant:~# ls /var/lib/globus/simpleCA/
+cacert.pem  newcerts
+certs       grid-ca-ssl.conf                             private
+crl         index.txt                                    serial
+root@elephant:~# ls ./globus_simple_ca*
+globus_simple_ca_b11443f0.tar.gz
+

@@ -1,0 +1,9 @@
+
+[[gsi-openssh-security-considerations]]
+=== GSI-OpenSSH Security Considerations ===
+
+GSI-OpenSSH is a modified version of http://www.openssh.org/[OpenSSH]
+and includes full OpenSSH functionality. For more information on OpenSSH
+security, see the http://www.openssh.org/security.html[OpenSSH Security]
+page. 
+

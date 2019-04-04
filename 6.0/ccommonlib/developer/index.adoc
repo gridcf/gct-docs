@@ -1,0 +1,95 @@
+[[ccommonlibDeveloper,Developer's Guide]]
+:doctype: book
+= GCT 6.0 C Common Libraries: Developer's Guide =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+:numbered!:
+[preface]
+== Introduction ==
+The C Common Libraries provide an abstraction layer for data types, libc
+system calls, and data structures used throughout the Grid Community Toolkit and
+useful for applications that use the Grid Community Toolkit. 
+
+::numbered:
+
+[[ccommonlib-developer-beforeyoubegin]]
+== Before you begin ==
+
+:leveloffset: 1 
+
+include::../C_Common_Libraries_Feature_Summary_Frag.adoc[]
+
+include::../C_Common_Libraries_Platform_Summary_Frag.adoc[]
+
+include::../C_Common_Libraries_Compatibility_Summary_Frag.adoc[]
+
+include::../C_Common_Libraries_Dependencies_Summary_Frag.adoc[]
+
+include::../C_Common_Libraries_Security_Considerations_Frag.adoc[]
+
+:leveloffset: 0
+ 
+[[ccommonlib-developer-scenarios]]
+== Usage scenarios ==
+
+
+--
+C Common libraries will need to be used if virtually any other toolkit
+component is used, since many data types are abstract and require the C
+common libraries to manipulate.
+
+
+--
+ 
+[[ccommonlib-developer-archdes]]
+== Architecture and design overview ==
+
+
+--
+Not available at this time.
+
+
+--
+ 
+include::../C_Common_Libraries_Interface_API_Frag.adoc[]
+
+ 
+[[ccommonlib-developer-env]]
+== Environment variable interface ==
+
+
+include::../C_Common_Libraries_Interface_Env_Frag.adoc[]
+
+ 
+[[ccommonlib-developer-debugging]]
+== Debugging ==
+
+
+--
+General C debugging techniques apply when developing with the C common
+libraries.
+
+
+--
+ 
+[[ccommonlib-developer-troubleshooting]]
+== Troubleshooting ==
+
+
+--
+There are no specific troubleshooting techniques for the C common
+libraries.
+
+
+--
+ 
+[[ccommonlib-developer-relateddocs]]
+== Related Documentation ==
+
+
+See the
+http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fcommon.html[C
+API Pages] for more information about this component. 

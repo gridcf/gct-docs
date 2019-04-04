@@ -1,0 +1,29 @@
+[[gtadmin]]
+:doctype: book
+= Installing GCT 6.0 =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+ 
+include::intro_frag.adoc[]
+
+ 
+include::before_frag.adoc[]
+
+ 
+include::install_frag.adoc[]
+
+ 
+include::basic_security_frag.adoc[]
+
+ 
+include::basic_setup_frag.adoc[]
+
+ 
+include::platform_frag.adoc[]
+
+ 
+include::appendixptr_frag.adoc[]
+
+  

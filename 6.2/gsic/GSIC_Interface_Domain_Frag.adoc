@@ -1,0 +1,12 @@
+
+
+==== Interface introduction ====
+
+[provide an overview of the purpose and structure of the domain-specific
+interface]
+
+
+==== Syntax of the interface ====
+
+[list and describe detailed information here]
+

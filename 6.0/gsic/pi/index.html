@@ -1,0 +1,3583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<title>GCT 6.0 GSI C Public Interfaces</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body id="gsicPI" class="book toc2 toc-left">
+<div id="header">
+<h1>GCT 6.0 GSI C Public Interfaces</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#gsic-apis">APIs</a></li>
+<li><a href="#gsic-protocol">Protocol Specifications</a>
+<ul class="sectlevel2">
+<li><a href="#_gsi_message_specification">GSI Message Specification</a></li>
+</ul>
+</li>
+<li><a href="#gsic-cmd">GSI Commands</a>
+<ul class="sectlevel1">
+<li><a href="#_globus_update_certificate_dir8">GLOBUS-UPDATE-CERTIFICATE-DIR(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name">NAME</a></li>
+<li><a href="#_synopsis">SYNOPSIS</a></li>
+<li><a href="#_description">Description</a></li>
+<li><a href="#_environment">Environment</a></li>
+</ul>
+</li>
+<li><a href="#grid-cert-diagnostics">GRID-CERT-DIAGNOSTICS(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_2">NAME</a></li>
+<li><a href="#_synopsis_2">SYNOPSIS</a></li>
+<li><a href="#_description_2">Description</a></li>
+<li><a href="#_examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#grid-cert-info">GRID-CERT-INFO(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_3">NAME</a></li>
+<li><a href="#_synopsis_3">SYNOPSIS</a></li>
+<li><a href="#_description_3">Description</a></li>
+<li><a href="#_examples_2">Examples</a></li>
+<li><a href="#_environment_variables">Environment Variables</a></li>
+</ul>
+</li>
+<li><a href="#grid-cert-request">GRID-CERT-REQUEST(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_4">NAME</a></li>
+<li><a href="#_synopsis_4">SYNOPSIS</a></li>
+<li><a href="#_description_4">Description</a></li>
+<li><a href="#_examples_3">Examples</a></li>
+<li><a href="#_environment_variables_2">Environment Variables</a></li>
+<li><a href="#_files">Files</a></li>
+</ul>
+</li>
+<li><a href="#grid-default-ca">GRID-DEFAULT-CA(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_5">NAME</a></li>
+<li><a href="#_synopsis_5">SYNOPSIS</a></li>
+<li><a href="#_description_5">Description</a></li>
+<li><a href="#_examples_4">Examples</a></li>
+<li><a href="#_environment_variables_3">Environment Variables</a></li>
+<li><a href="#_bugs">Bugs</a></li>
+<li><a href="#_see_also">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-change-pass-phrase">GRID-CHANGE-PASS-PHRASE(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_6">NAME</a></li>
+<li><a href="#_synopsis_6">SYNOPSIS</a></li>
+<li><a href="#_description_6">Description</a></li>
+<li><a href="#_examples_5">Examples</a></li>
+<li><a href="#_environment_variables_4">Environment Variables</a></li>
+</ul>
+</li>
+<li><a href="#grid-proxy-init">GRID-PROXY-INIT(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_7">NAME</a></li>
+<li><a href="#_synopsis_7">SYNOPSIS</a></li>
+<li><a href="#_description_7">Description</a></li>
+<li><a href="#_examples_6">Examples</a></li>
+<li><a href="#_environment_variables_5">Environment Variables</a></li>
+<li><a href="#_files_2">Files</a></li>
+<li><a href="#_compatibility">Compatibility</a></li>
+<li><a href="#_see_also_2">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-proxy-destroy">GRID-PROXY-DESTROY(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_8">NAME</a></li>
+<li><a href="#_synopsis_8">SYNOPSIS</a></li>
+<li><a href="#_description_8">Description</a></li>
+<li><a href="#_environment_variables_6">Environment Variables</a></li>
+<li><a href="#_see_also_3">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-proxy-info">GRID-PROXY-INFO(1)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_9">NAME</a></li>
+<li><a href="#_synopsis_9">SYNOPSIS</a></li>
+<li><a href="#_description_9">Description</a></li>
+<li><a href="#_environment_variables_7">Environment Variables</a></li>
+<li><a href="#_see_also_4">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-mapfile-add-entry">GRID-MAPFILE-ADD-ENTRY(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_10">NAME</a></li>
+<li><a href="#_synopsis_10">SYNOPSIS</a></li>
+<li><a href="#_description_10">Description</a></li>
+<li><a href="#_examples_7">Examples</a></li>
+<li><a href="#_environment_variables_8">Environment Variables</a></li>
+<li><a href="#_files_3">Files</a></li>
+<li><a href="#_see_also_5">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-mapfile-check-consistency">GRID-MAPFILE-CHECK-CONSISTENCY(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_11">NAME</a></li>
+<li><a href="#_synopsis_11">SYNOPSIS</a></li>
+<li><a href="#_description_11">Description</a></li>
+<li><a href="#_examples_8">Examples</a></li>
+<li><a href="#_environment_variables_9">Environment Variables</a></li>
+<li><a href="#_files_4">Files</a></li>
+<li><a href="#_see_also_6">See Also</a></li>
+</ul>
+</li>
+<li><a href="#grid-mapfile-delete-entry">GRID-MAPFILE-DELETE-ENTRY(8)</a>
+<ul class="sectlevel2">
+<li><a href="#_name_12">NAME</a></li>
+<li><a href="#_synopsis_12">SYNOPSIS</a></li>
+<li><a href="#_description_12">Description</a></li>
+<li><a href="#_examples_9">Examples</a></li>
+<li><a href="#_environment_variables_10">Environment Variables</a></li>
+<li><a href="#_files_5">Files</a></li>
+<li><a href="#_see_also_7">See Also</a></li>
+</ul>
+</li>
+<li><a href="#gsic-configuring">Configuring GSI</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-configuring-global-security-parameters">Configuring Global Security Parameters</a></li>
+<li><a href="#gsic-configuring-trustCA">Configuring GCT to Trust a Particular Certificate Authority</a></li>
+<li><a href="#_configuring_gct_to_create_appropriate_certificate_requests">Configuring GCT to Create Appropriate Certificate Requests</a></li>
+<li><a href="#_requesting_service_certificates">Requesting Service Certificates</a></li>
+<li><a href="#setting-up-gridmap">Configuring Credential Mappings</a></li>
+<li><a href="#gsic-config-permissions">GSI File Permissions Requirements</a></li>
+</ul>
+</li>
+<li><a href="#gsic-pi-env">Environment variable interface</a>
+<ul class="sectlevel2">
+<li><a href="#gsic-env-var">Environmental Variables for GSI C</a></li>
+</ul>
+</li>
+<li><a href="#gsic-error-codes">Errors</a>
+<ul class="sectlevel2">
+<li><a href="#security-credential-troubleshooting">Credential Troubleshooting</a></li>
+<li><a href="#security-gridmap-troubleshooting">Grid map Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#gsic-pi-index">Index</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Grid Community Toolkit documentation was taken from the Globus Toolkit 6.0 documentation.
+As a result, there may be inaccuracies and outdated information.
+Please report any problems to the Grid Community Forums as <a href="https://github.com/gridcf/gct-docs/issues">GitHub issues</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="../../index.html">GCT</a> &#8594; <a href="../index.html">GSI C</a> &#8594; GCT 6.0 GSI C Public Interfaces</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gsic-apis">APIs</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Documentation for the APIs in this component can be found here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/gaa%5fcore/html/index.html#%5ftop">gaa_core</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/gaa%5fcore/html/main.html#%5ftop">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/gaa%5fgss%5fgeneric/html/index.html#%5ftop">gaa_gss_generic</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/gaa%5fgss%5fgeneric/html/main.html#%5ftop">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/gaa%5fplugin/html/index.html#%5ftop">gaa_plugin</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/gaa%5fplugin/html/main.html#%5ftop">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fauthz/html/index.html#%5ftop">globus_authz</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fauthz/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fauthz%5fcallout%5ferror/html/index.html#%5ftop">globus_authz_callout_error</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fauthz%5fcallout%5ferror/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgridmap%5fcallout%5ferror/html/index.html#%5ftop">globus_gridmap_callout_error</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgridmap%5fcallout%5ferror/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fcallback/html/index.html#%5ftop">globus_gsi_callback</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fcallback/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fcert%5futils/html/index.html#%5ftop">globus_gsi_cert_utils</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fcert%5futils/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fcredential/html/index.html#%5ftop">globus_gsi_credential</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fcredential/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fopenssl%5ferror/html/index.html#%5ftop">globus_gsi_openssl_error</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fopenssl%5ferror/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fproxy%5fcore/html/index.html#%5ftop">globus_gsi_proxy_core</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fproxy%5fcore/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fproxy%5fssl/html/index.html#%5ftop">globus_gsi_proxy_ssl</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fproxy%5fssl/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fsysconfig/html/index.html#%5ftop">globus_gsi_sysconfig</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgsi%5fsysconfig/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgss%5fassist/html/index.html#%5ftop">globus_gss_assist</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgss%5fassist/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgssapi%5fgsi/html/index.html#%5ftop">globus_gssapi_gsi</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fgssapi%5fgsi/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fopenssl%5fmodule/html/index.html#%5ftop">globus_openssl_module</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/globus%5fopenssl%5fmodule/html/main.html">no frames</a>]</p>
+</li>
+<li>
+<p><a href="http://www.globus.org/api/c-globus-6.0.0/gssapi%5ferror/html/index.html#%5ftop">gssapi_error</a> [<a href="http://www.globus.org/api/c-globus-6.0.0/gssapi%5ferror/html/main.html">no frames</a>]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For information on the internationalization API, see the
+<a href="../../ccommonlib/pi/index.html#ccommonlib-apis">CCommon Libraries
+Public Interface</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gsic-protocol">Protocol Specifications</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_gsi_message_specification">GSI Message Specification</h3>
+<div class="paragraph">
+<p>The GSSAPI implementation contained in this component produces security
+tokens that follow an extended version of the SSL/TLS protocol. More
+information about the protocol can be found
+<a href="../GSI-message-specification-02.doc">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<h1 id="gsic-cmd" class="sect0">GSI Commands</h1>
+<div class="sect1">
+<h2 id="_globus_update_certificate_dir8">GLOBUS-UPDATE-CERTIFICATE-DIR(8)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name">NAME</h3>
+<div class="paragraph">
+<p>globus-update-certificate-dir - Update symlinks in the trusted CA directory</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>globus-update-certificate-dir</code></strong> [<code>-help</code> ] [<code>-d</code> <em>DIRECTORY</em>]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>globus-update-certificate-dir</code></strong> program creates symlinks
+between files (CA certificates, certificate revocation lists, signing
+policy, and certificate request configuration files) using the
+certificate hash the installed version of OpenSSL uses. OpenSSL 1.0.0
+uses a different name hashing algorithm than previous versions, so CA
+distributions created with older versions of OpenSSL might not be able
+to locate trusted CAs and related files. Running
+<strong><code>globus-update-certificate-dir</code></strong> against a trusted CA directory
+will add symlinks to the files to the hash if needed.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to
+<strong><code>globus-update-certificate-dir</code></strong> consists of:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help</strong></dt>
+<dd>
+<p>Display a help message to standard output and exit</p>
+</dd>
+<dt class="hdlist1"><strong>-d <em>DIRECTORY</em></strong></dt>
+<dd>
+<p>Create links in the trusted CA directory <em>DIRECTORY</em> instead of using the default search path.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment">Environment</h3>
+<div class="paragraph">
+<p>If the following variables affect the execution of
+<strong><code>globus-update-certificate-dir</code></strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
+<dd>
+<p>Default trusted certificate directory.</p>
+</dd>
+<dt class="hdlist1"><strong><code>HOME</code></strong></dt>
+<dd>
+<p>Path to the current user&#8217;s home directory.</p>
+</dd>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
+<dd>
+<p>Path to the GCT installation.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-cert-diagnostics">GRID-CERT-DIAGNOSTICS(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_2">NAME</h3>
+<div class="paragraph">
+<p>grid-cert-diagnostics - Print diagnostic information about certificates and keys</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_2">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-cert-diagnostics</code></strong> [<code>-h</code> ] | [<code>-help</code> ] [<code>-p</code> ] [<code>-n</code> ] [<code>-c</code> <em>CERTIFICATE</em>]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_2">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-cert-diagnostics</code></strong> program displays information about the
+current user&#8217;s security environment, including information about
+security-related environment variables, security directory search path,
+personal key and certificates, and trusted certificates. It is intended
+to provide information to help diagnose problems using GSIC.</p>
+</div>
+<div class="paragraph">
+<p>By default, <strong><code>grid-cert-diagnostics</code></strong> prints out information
+regarding the environment and trusted certificate directory. If the <em>-p</em>
+command-line option is used, then additional information about the
+current user&#8217;s default certificate and key will be printed.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-cert-diagnostics</code></strong>
+consists of:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-h, -help</strong></dt>
+<dd>
+<p>Display a help message and exit.</p>
+</dd>
+<dt class="hdlist1"><strong>-p</strong></dt>
+<dd>
+<p>Display information about the personal certificate and key that is the current user&#8217;s default credential.</p>
+</dd>
+<dt class="hdlist1"><strong>-n</strong></dt>
+<dd>
+<p>Check time synchronization with the <strong><code>ntpdate</code></strong> command.</p>
+</dd>
+<dt class="hdlist1"><strong>-c <em>CERTIFICATE</em>, -c -</strong></dt>
+<dd>
+<p>Check the validity of the certificate in the file named by <em>CERTIFICATE</em> or standard input if the parameter to <em>-c</em> is <code>-</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="paragraph">
+<p>In this example, we see the default mode of checking the default
+security environment for the system, without processing the user&#8217;s key
+and certificate. Note the user receives a warning about a
+<code>cog.properties</code> and about an expired CA certificate.  and about an
+expired CA certificate.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-diagnostics
+
+Checking Environment Variables
+==============================
+Checking if X509_CERT_DIR is set... no
+Checking if X509_USER_CERT is set... no
+Checking if X509_USER_KEY is set... no
+Checking if X509_USER_PROXY is set... no
+
+Checking Security Directories
+=======================
+Determining trusted cert path... /etc/grid-security/certificates
+Checking for cog.properties... found
+    WARNING: If the cog.properties file contains security properties,
+             Java apps will ignore the security paths described in the GSI
+             documentation
+
+Checking trusted certificates...
+================================
+Getting trusted certificate list...
+Checking CA file /etc/grid-security/certificates/1c4f4c48.0... ok
+Verifying certificate chain for "/etc/grid-security/certificates/1c3f2ca8.0"... ok
+Checking CA file /etc/grid-security/certificates/9d8788eb.0... ok
+Verifying certificate chain for "/etc/grid-security/certificates/9d8753eb.0"... failed
+    globus_credential: Error verifying credential: Failed to verify credential
+    globus_gsi_callback_module: Could not verify credential
+    globus_gsi_callback_module: The certificate has expired:
+    Credential with subject: /DC=org/DC=example/OU=grid/CN=CA has expired.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, we show a user with a mismatched private key and
+certificate:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-diagnostics -p
+
+Checking Environment Variables
+==============================
+Checking if X509_CERT_DIR is set... no
+Checking if X509_USER_CERT is set... no
+Checking if X509_USER_KEY is set... no
+Checking if X509_USER_PROXY is set... no
+
+Checking Security Directories
+=======================
+Determining trusted cert path... /etc/grid-security/certificates
+Checking for cog.properties... not found
+
+Checking Default Credentials
+==============================
+Determining certificate and key file names... ok
+Certificate Path: "/home/juser/.globus/usercert.pem"
+Key Path: "/home/juser/.globus/userkey.pem"
+Reading certificate... ok
+Reading private key...
+ok
+Checking Certificate Subject...
+"/O=Grid/OU=Example/OU=User/CN=Joe User"
+Checking cert... ok
+Checking key... ok
+Checking that certificate contains an RSA key... ok
+Checking that private key is an RSA key... ok
+Checking that public and private keys have the same modulus... failed
+Private key modulus: D294849E37F048C3B5ACEEF2CCDF97D88B679C361E29D5CB5
+219C3E948F3E530CFC609489759E1D751F0ACFF0515A614276A0F4C11A57D92D7165B8
+FA64E3140155DE448D45C182F4657DA13EDA288423F5B9D169DFF3822EFD81EB2E6403
+CE3CB4CCF96B65284D92592BB1673A18354DA241B9AFD7F494E54F63A93E15DCAE2
+Public key modulus : C002C7B329B13BFA87BAF214EACE3DC3D490165ACEB791790
+600708C544175D9193C9BAC5AED03B7CB49BB6AE6D29B7E635FAC751E9A6D1CEA98022
+6F1B63002902D6623A319E4682E7BFB0968DCE962CF218AAD95FAAD6A0BA5C42AA9AAF
+7FDD32B37C6E2B2FF0E311310AA55FFB9EAFDF5B995C7D9EEAD8D5D81F3531E0AE5
+Certificate and and private key don't match</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-cert-info">GRID-CERT-INFO(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_3">NAME</h3>
+<div class="paragraph">
+<p>grid-cert-info - Display information about a certificate</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_3">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-cert-info</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_3">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-cert-info</code></strong> program displays information contained within
+a certificate file. By default it shows a text representation of the
+entire certificate. Specific facts about the certificate can be shown
+instead by using command-line options. If any of those options are used,
+then the default display is suppressed. This can be added to the output
+by using the <em>-all</em> command-line option.</p>
+</div>
+<div class="paragraph">
+<p>If multiple display options are included on the command-line, the facts
+related to those will be displayed on separate lines in the order that
+they occur. If an option is specified multiple time, that fact will be
+displayed multiple times.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-cert-info</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-cert-info</code></strong> and exit.</p>
+</dd>
+<dt class="hdlist1"><strong>-version, -versions</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-cert-info</code></strong> command. The second form includes more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-file <em>CERTIFICATE-FILE</em></strong></dt>
+<dd>
+<p>Display information about the first certificate contained in the file named by <em>CERTIFICATE-FILE</em> instead of the default user certificate.</p>
+</dd>
+<dt class="hdlist1"><strong>-rfc2253</strong></dt>
+<dd>
+<p>Display X.509 distinguished names using the string representation defined in RFC 2253 instead of the default OpenSSL oneline format.</p>
+</dd>
+<dt class="hdlist1"><strong>-all</strong></dt>
+<dd>
+<p>Display the text representation of the entire certificate in addition to any other facts requested by command-line options. This is the default if no fact-specific command-line options are used.</p>
+</dd>
+<dt class="hdlist1"><strong>-subject, -s</strong></dt>
+<dd>
+<p>Display the subject name of the X.509 certificate.</p>
+</dd>
+<dt class="hdlist1"><strong>-issuer, -i</strong></dt>
+<dd>
+<p>Display the issuer name of the X.509 certificate.</p>
+</dd>
+<dt class="hdlist1"><strong>-issuerhash, -ih</strong></dt>
+<dd>
+<p>Display the default hash of the issuer name of the X.509 certificate. This can be used to locate which CA certificate in the trusted certificate directory issued the certifcate being inspected.</p>
+</dd>
+<dt class="hdlist1"><strong>-startdate, -sd</strong></dt>
+<dd>
+<p>Display a string representation of the date and time when the certificate is valid from. This is displayed in the format used by the OpenSSL <strong><code>x509</code></strong> command.</p>
+</dd>
+<dt class="hdlist1"><strong>-enddate, -dd</strong></dt>
+<dd>
+<p>Display a string representation of the date and time when the certificate is valid until. This is displayed in the format used by the OpenSSL <strong><code>x509</code></strong> command.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_2">Examples</h3>
+<div class="paragraph">
+<p>Display the validity times for the default certificate</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-info -sd -ed
+Aug 31 12:33:47 2009 GMT
+Aug 31 12:33:47 2010 GMT</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Display the same information about a different certificate specified on
+the command-line</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-info -sd -ed -f /etc/grid-security/hostcert.pem
+Jan 21 12:24:48 2003 GMT
+Jul 15 11:30:57 2020 GMT</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Display the subject of a certificate in both the default and the RFC
+2253 forms.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-info -subject
+/DC=org/DC=example/DC=grid/CN=Joe User
+%  grid-cert-info -subject -rfc2253
+CN=Joe User,DC=grid,DC=example,DC=org</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-cert-info</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_USER_CERT</code></strong></dt>
+<dd>
+<p>Path to the default certificate file to inspect.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-cert-request">GRID-CERT-REQUEST(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_4">NAME</h3>
+<div class="paragraph">
+<p>grid-cert-request - Generate a X.509 certificate request and corresponding private
+    key</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_4">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-cert-request</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-?</code> ] [<code>-usage</code> ] <br>
+<br>
+ [<code>-version</code> ] [<code>-versions</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_4">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-cert-request</code></strong> program generates an X.509 Certificate
+Request and corresponding private key for the specified name, host, or
+service. It is intended to be used with a CA implemented using the
+<strong><code>globus_simple_ca</code></strong> package.</p>
+</div>
+<div class="paragraph">
+<p>The default behavior of <strong><code>grid-cert-request</code></strong> is to generate a
+certificate request and private key for the user running the command.
+The subject name is derived from the gecos information in the local
+system&#8217;s password database, unless the <em>-commonname</em>, <em>-cn</em>, or <em>-host</em>
+command-line options are used.</p>
+</div>
+<div class="paragraph">
+<p>By default, <strong><code>grid-cert-request</code></strong> writes user certificate requests
+and keys to the <code>$HOME/.globus</code> directory, and host and service
+certificate requests and keys to  directory, and host and service
+certificate requests and keys to <code>/etc/grid-security</code>. This can be
+overridden by using the . This can be overridden by using the <em>-dir</em>
+command-line option.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-cert-request</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -h, -?, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-cert-request</code></strong> and exit.</p>
+</dd>
+<dt class="hdlist1"><strong>-version, -versions</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-cert-request</code></strong> command. The second form includes more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-cn <em>NAME</em>, -commonname <em>NAME</em></strong></dt>
+<dd>
+<p>Create a certificate request with the common name component of the subject set to <em>NAME</em>. This is used to create user identity certificates.</p>
+</dd>
+<dt class="hdlist1"><strong>-dir <em>DIRECTORY</em></strong></dt>
+<dd>
+<p>Write the certificate request and key to files in the directory specified by <em>DIRECTORY</em>.</p>
+</dd>
+<dt class="hdlist1"><strong>-prefix <em>PREFIX</em></strong></dt>
+<dd>
+<p>Use the string <em>PREFIX</em> as the base name of the certificate, certificate_request, and key files instead of the default. For a user certificate request, this would mean creating files <code>$HOME/.globus/PREFIXcert_request.pem</code>, , <code>$HOME/.globus/PREFIXcert.pem</code>, and , and <code>$HOME/.globus/PREFIXkey.pem</code>..</p>
+</dd>
+<dt class="hdlist1"><strong>-ca <em>CA-HASH</em></strong></dt>
+<dd>
+<p>Use the certificate request configuration for the CA with the name hash <em>CA-HASH</em> instead of the default CA chosen by running <strong><code>grid-default-ca</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-verbose</strong></dt>
+<dd>
+<p>Keep the output from the OpenSSL certificate request command visible after it completes, instead of clearing the screen..</p>
+</dd>
+<dt class="hdlist1"><strong>-interactive, -int</strong></dt>
+<dd>
+<p>Prompt for each component of the subject name of the request, instead of generating the common name from other command-line options. Note that CAs may not sign certificates for subject names that don&#8217;t match their signing policies.</p>
+</dd>
+<dt class="hdlist1"><strong>-force</strong></dt>
+<dd>
+<p>Overwrite any existing certificate request and private key with a new one.</p>
+</dd>
+<dt class="hdlist1"><strong>-nopw, -nodes, -nopassphrase</strong></dt>
+<dd>
+<p>Create an unencrypted private key for the certificate instead of prompting for a passphrase. This is the default behavior for host or service certificates, but not recommended for user certificates.</p>
+</dd>
+<dt class="hdlist1"><strong>-host <em>FQDN</em></strong></dt>
+<dd>
+<p>Create a certificate request for use on a particular host. This option also causes the private key assoicated with the certificate request to be unencrypted. The <em>FQDN</em> argument to this option should be the fully qualified domain name of the host that will use this certificate. The subject name of the certificate will be derived from the <em>FQDN</em> and the service option if specified by the <em>-service</em> command-line option. If the host for the certificate has multiple names, then use either the <em>-dns</em> or <em>-ip</em> command-line options to add alternate names or addresses to the certificates.</p>
+</dd>
+<dt class="hdlist1"><strong>-service <em>SERVICE</em></strong></dt>
+<dd>
+<p>Create a certificate request for a particular service on a host. The subject name of the certificate will be derived from the <em>FQDN</em> passed as the argument to the <em>-host</em> command-line option and the <em>SERVICE</em> string.</p>
+</dd>
+<dt class="hdlist1"><strong>-dns <em>FQDN,&#8230;&#8203;</em></strong></dt>
+<dd>
+<p>Create a certificate request containing a <code>subjectAltName</code> extension containing one or more host names. This is used when a certificate may be used by multiple virtual servers or if a host has different names when contacted within or outside a private network. Multiple DNS names can be included in the extension by separating then with a comma.</p>
+</dd>
+<dt class="hdlist1"><strong>-ip <em>IP-ADDRESS,&#8230;&#8203;</em></strong></dt>
+<dd>
+<p>Create a certificate request containing a <code>subjectAltName</code> extension containing the IP addresses named by the <em>IP-ADDRESS</em> strings. This is used when a certificate may be used by services listening on multiple networks. Multiple IP addresses can be included in the extension by separating then with a comma.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_3">Examples</h3>
+<div class="paragraph">
+<p>Create a user certificate request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-request
+A certificate request and private key is being created.
+You will be asked to enter a PEM pass phrase.
+This pass phrase is akin to your account password,
+and is used to protect your key file.
+If you forget your pass phrase, you will need to
+obtain a new certificate.
+A private key and a certificate request has been generated with the subject:
+
+/O=org/OU=example/OU=grid/CN=Joe User
+
+If the CN=Joe User is not appropriate, rerun this
+script with the -force -cn "Common Name" options.
+
+Your private key is stored in /home/juser/.globus/userkey.pem
+Your request is stored in /home/juser/.globus/usercert_request.pem
+
+Please e-mail the request to the Example CA ca@grid.example.org
+You may use a command similar to the following:
+
+  cat /home/juser/.globus/usercert_request.pem | mail ca@grid.example.org
+
+Only use the above if this machine can send AND receive e-mail. if not, please
+mail using some other method.
+
+Your certificate will be mailed to you within two working days.
+If you receive no response, contact Example CA at ca@grid.example.org</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a host certificate for a host with two names.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-request -host grid.example.org -dns grid.example.org,grid-internal.example.org
+
+A private host key and a certificate request has been generated
+with the subject:
+
+/O=org/OU=example/OU=grid/CN=host/grid.example.org
+
+ ----------------------------------------------------------
+
+The private key is stored in /etc/grid-security/hostkey.pem
+The request is stored in /etc/grid-security/hostcert_request.pem
+
+Please e-mail the request to the Example CA ca@grid.example.org
+You may use a command similar to the following:
+
+ cat /etc/grid-security/hostcert_request.pem | mail ca@grid.example.org
+
+Only use the above if this machine can send AND receive e-mail. if not, please
+mail using some other method.
+
+Your certificate will be mailed to you within two working days.
+If you receive no response, contact Example CA at
+ca@grid.example.org</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_2">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-cert-request</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
+<dd>
+<p>Path to the directory containing SSL configuration files for generating certificate requests.</p>
+</dd>
+<dt class="hdlist1"><strong><code>GRID_SECURITY_DIR</code></strong></dt>
+<dd>
+<p>Path to the directory containing SSL configuration files for generating certificate requests. This value is used if <code>X509_CERT_DIR</code> is not set.</p>
+</dd>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
+<dd>
+<p>Path to the directory containing the Grid Community Toolkit. This is searched if neither the <code>X509_CERT_DIR</code> nor the <code>GRID_SECURITY_DIR</code> environment variables are set.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_files">Files</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercert_request.pem</code></strong></dt>
+<dd>
+<p>Default path to write a user certificate request.</p>
+</dd>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercert.pem</code></strong></dt>
+<dd>
+<p>Default path to write a user certificate.</p>
+</dd>
+<dt class="hdlist1"><strong><code>$HOME/.globus/userkey.pem</code></strong></dt>
+<dd>
+<p>Default path to write a user private key.</p>
+</dd>
+<dt class="hdlist1"><strong><code>/etc/grid-security/hostcert_request.pem</code></strong></dt>
+<dd>
+<p>Default path to write a host certificate request.</p>
+</dd>
+<dt class="hdlist1"><strong><code>/etc/grid-security/hostcert.pem</code></strong></dt>
+<dd>
+<p>Default path to write a host certificate.</p>
+</dd>
+<dt class="hdlist1"><strong><code>/etc/grid-security/hostkey.pem</code></strong></dt>
+<dd>
+<p>Default path to write a host private key.</p>
+</dd>
+<dt class="hdlist1"><strong><code>TRUSTED-CERT-DIR/globus-user-ssl.conf</code>, <code>TRUSTED-CERT-DIR/globus-user-ssl.conf.CA-HASH</code></strong></dt>
+<dd>
+<p>SSL configuration file for requesting a user certificate. The first form is the default location, the second form is used when the <em>-ca</em> command-line option is specified.</p>
+</dd>
+<dt class="hdlist1"><strong><code>TRUSTED-CERT-DIR/globus-host-ssl.conf</code>, <code>TRUSTED-CERT-DIR/globus-host-ssl.conf.CA-HASH</code></strong></dt>
+<dd>
+<p>SSL configuration file for requesting a host or service certificate. The first form is the default location, the second form is used when the <em>-ca</em> command-line option is specified.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-default-ca">GRID-DEFAULT-CA(8)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_5">NAME</h3>
+<div class="paragraph">
+<p>grid-default-ca - Select default CA for certificate requests</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_5">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-default-ca</code></strong> [<code>-help</code> ] [<code>-h</code> ] [<code>-usage</code> ] [<code>-u</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_5">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-default-ca</code></strong> program sets the default certificate
+authority to use when the <strong><code>grid-cert-request</code></strong> script is run. The
+CA&#8217;s certificate, configuration, and signing policy must be installed in
+the trusted certificate directory to be able to request certificates
+from that CA. Note that some CAs have different policies and use other
+tools to handle certificate requests. Please consult your CA&#8217;s support
+staff if you unsure. The <strong><code>grid-default-ca</code></strong> is designed to work
+with CAs implemented using the <strong><code>globus_simple_ca</code></strong> package.</p>
+</div>
+<div class="paragraph">
+<p>By default, the <strong><code>grid-default-ca</code></strong> program displays a list of
+installed CA certificates and the prompts the user for which one to set
+as the default. If invoked with the <em>-list</em> command-line option,
+<strong><code>grid-default-ca</code></strong> will print the list and not prompt nor set the
+default CA. If invoked with the <em>-ca</em> option, it will not list or
+prompt, but set the default CA to the one with the hash that matches the
+<em>CA-HASH</em> argument to that option. If <strong><code>grid-default-ca</code></strong> is used to
+set the default CA, the caller of this program must have write
+permissions to the trusted certificate directory.</p>
+</div>
+<div class="paragraph">
+<p>The <strong><code>grid-default-ca</code></strong> program sets the CA in the one of the grid
+security directories. It looks in the directory named by the
+<code>GRID_SECURITY_DIR</code> environment, the <code>X509_CERT_DIR</code>,
+<code>/etc/grid-security</code>, and , and
+<code>$GLOBUS_LOCATION/share/certificates</code>. .</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-default-ca</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -h, -usage, -u</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-default-ca</code></strong> and exit.</p>
+</dd>
+<dt class="hdlist1"><strong>-version, -versions</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-default-ca</code></strong> command. The second form includes more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-dir <em>CA-DIRECTORY</em></strong></dt>
+<dd>
+<p>Use the trusted certificate directory named by <em>CA-DIRECTORY</em> instead of the default.</p>
+</dd>
+<dt class="hdlist1"><strong>-list</strong></dt>
+<dd>
+<p>Instead of changing the default CA, print out a list of all available CA certificates in the trusted certificate directory</p>
+</dd>
+<dt class="hdlist1"><strong>-ca <em>CA-HASH</em></strong></dt>
+<dd>
+<p>Set the default CA without displaying the list of choices or prompting. The CA file named by <em>CA-HASH</em> must exist.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_4">Examples</h3>
+<div class="paragraph">
+<p>List the contents of the trusted certificate directory that contain the
+string Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-default-ca | grep Example
+15) cd1186ff -  /DC=org/DC=Example/DC=Grid/CN=Example CA</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Choose that CA as the default:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-default-ca -ca cd1186ff
+
+setting the default CA to: /DC=org/DC=Example/DC=Grid/CN=Example CA
+
+linking /etc/grid-security/certificates/grid-security.conf.cd1186ff to
+        /etc/grid-security/certificates/grid-security.conf
+
+linking /etc/grid-security/certificates/grid-host-ssl.conf.cd1186ff  to
+        /etc/grid-security/certificates/grid-host-ssl.conf
+
+linking /etc/grid-security/certificates/grid-user-ssl.conf.cd1186ff  to
+        /etc/grid-security/certificates/grid-user-ssl.conf
+
+...done.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_3">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-default-ca</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>GRID_SECURITY_DIRECTORY</code></strong></dt>
+<dd>
+<p>Path to the default trusted certificate directory.</p>
+</dd>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
+<dd>
+<p>Path to the default trusted certificate directory.</p>
+</dd>
+<dt class="hdlist1"><strong><code>GLOBUS_LOCATION</code></strong></dt>
+<dd>
+<p>Path to the Grid Community Toolkit installation directory.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bugs">Bugs</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-default-ca</code></strong> program displays CAs from all of the
+directories in its search list; however, <strong><code>grid-cert-request</code></strong> only
+uses the first which contains a grid security configuration.</p>
+</div>
+<div class="paragraph">
+<p>The <strong><code>grid-default-ca</code></strong> program may display the same CA multiple
+times if it is located in multiple directories in its search path.
+However, it does not provide any information about which one would
+actually be used by the <strong><code>grid-cert-request</code></strong> command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also">See Also</h3>
+<div class="paragraph">
+<p><code>grid-cert-request(1)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-change-pass-phrase">GRID-CHANGE-PASS-PHRASE(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_6">NAME</h3>
+<div class="paragraph">
+<p>grid-change-pass-phrase - Change the passphrase of a private key</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_6">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-change-pass-phrase</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_6">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-change-pass-phrase</code></strong> program changes the passphrase
+protecting a private key or PKCS12 bundle containing a private key and
+certificate. By default, <strong><code>grid-change-pass-phrase</code></strong> uses the
+<code>X509_USER_KEY</code> environment variable to locate the private key. If
+that is not set, then it looks for <code>$HOME/.globus/userkey.pem</code> and
+and <code>$HOME/.globus/usercred.p12</code> in succession. The path to a key can
+be specified by using the  in succession. The path to a key can be
+specified by using the <em>-file</em> command-line option.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-change-pass-phrase</code></strong>
+are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-change-pass-phrase</code></strong> and exit.</p>
+</dd>
+<dt class="hdlist1"><strong>-version, -versions</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-change-pass-phrase</code></strong> command. The second form includes more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-file <em>PRIVATE-KEY</em></strong></dt>
+<dd>
+<p>Change the passphrase of the private key named by <em>PRIVATE-KEY</em> instead of the default.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_5">Examples</h3>
+<div class="paragraph">
+<p>Change the passphrase of the default private key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-change-pass-phrase
+
+Enter pass phrase for /home/juser/.globus/userkey.pem:
+writing RSA key
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_4">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-change-pass-phrase</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_USER_KEY</code></strong></dt>
+<dd>
+<p>Path to the default private key file.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-proxy-init">GRID-PROXY-INIT(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_7">NAME</h3>
+<div class="paragraph">
+<p>grid-proxy-init - Generate a new proxy certificate</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_7">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-proxy-init</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_7">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-proxy-init</code></strong> program generates X.509 proxy certificates
+derived from the currently available certificate files. By default, this
+command generates a <a href="http://www.ietf.org/rfc/rfc3820.txt">RFC 3820</a> Proxy
+Certificate with a 512 bit key valid for 12 hours in a file named
+<code>/tmp/x509up_uUID</code>. Command-line options and variables can modify the
+format, strength, lifetime, and location of the generated proxy
+certificate. . Command-line options and variables can modify the format,
+strength, lifetime, and location of the generated proxy certificate.</p>
+</div>
+<div class="paragraph">
+<p>X.509 proxy certificates are short-lived certificates, signed usually by
+a user&#8217;s identity certificate or another proxy certificate. The key
+associated with a proxy certificate is unencrypted, so applications can
+authenticate using a proxy identity without providing a passphrase.</p>
+</div>
+<div class="paragraph">
+<p>Proxy certificates provide a convenient alternative to constantly
+entering passwords, but are also less secure than the user&#8217;s normal
+security credential. Therefore, they should always be user-readable only
+(this is enforced by the GSI libraries), and should be deleted after
+they are no longer needed.</p>
+</div>
+<div class="paragraph">
+<p>This version of <strong><code>grid-proxy-init</code></strong> supports three different proxy
+formats: the old proxy format used in early releases of the Globus
+Toolkit up to version 2.4.x, an IETF draft version of X.509 Proxy
+Certificate profile used in Globus Toolkit 3.0.x and 3.2.x, and the RFC
+3820 profile used in Globus Toolkit Version 4.0.x and 4.2.x. By default,
+this version of <strong><code>grid-proxy-init</code></strong> creates an RFC 3820 compliant
+proxy. To create a proxy compatible with older versions of the Globus
+Toolkit, use the <em>-old</em> or <em>-draft</em> command-line options.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-proxy-init</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-proxy-init</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-version</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-proxy-init</code></strong> command</p>
+</dd>
+<dt class="hdlist1"><strong>-debug</strong></dt>
+<dd>
+<p>Display information about the path to the certificate and key used to generate the proxy certificate, the path to the trusted certificate directory, and verbose error messages</p>
+</dd>
+<dt class="hdlist1"><strong>-q</strong></dt>
+<dd>
+<p>Suppress all output from <strong><code>grid-proxy-init</code></strong> except for passphrase prompts.</p>
+</dd>
+<dt class="hdlist1"><strong>-verify</strong></dt>
+<dd>
+<p>Perform certificate chain validity checks on the generated proxy.</p>
+</dd>
+<dt class="hdlist1"><strong>-valid <em>HOURS</em>:'MINUTES', -hours <em>HOURS</em></strong></dt>
+<dd>
+<p>Create a certificate that is valid for <em>HOURS</em> hours and <em>MINUTES</em> minutes. If not specified, the default of twelve hours and no minutes is used.</p>
+</dd>
+<dt class="hdlist1"><strong>-cert <em>CERTFILE</em>, -key <em>KEYFILE</em></strong></dt>
+<dd>
+<p>Create a proxy certificate signed by the certificate located in <code>CERTFILE</code> using the key located in  using the key located in <code>KEYFILE</code>. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.</p>
+</dd>
+<dt class="hdlist1"><strong>-certdir <em>CERTDIR</em></strong></dt>
+<dd>
+<p>Search <em>CERTDIR</em> for trusted certificates if verifying the proxy certificate. If not specified, the default trusted certificate search path is used. This overrides the value of the <code>X509_CERT_DIR</code> environment variable</p>
+</dd>
+<dt class="hdlist1"><strong>-out <em>PROXYPATH</em></strong></dt>
+<dd>
+<p>Write the generated proxy certificate file to <em>PROXYPATH</em> instead of the default path of <code>/tmp/x509up_uUID</code>..</p>
+</dd>
+<dt class="hdlist1"><strong>-bits <em>BITS</em></strong></dt>
+<dd>
+<p>When creating the proxy certificate, use a <em>BITS</em> bit key instead of the default 512 bit keys.</p>
+</dd>
+<dt class="hdlist1"><strong>-policy <em>POLICYFILE</em></strong></dt>
+<dd>
+<p>Add the certificate policy data described in <em>POLICYFILE</em> as the ProxyCertInfo X.509 extension to the generated proxy certificate.</p>
+</dd>
+<dt class="hdlist1"><strong>-pl <em>POLICY-OID</em>, -policy-language <em>POLICY-OID</em></strong></dt>
+<dd>
+<p>Set the policy language identifier of the policy data specified by the <em>-policy</em> command-line option to the oid specified by the <em>POLICY-OID</em> string.</p>
+</dd>
+<dt class="hdlist1"><strong>-path-length <em>MAXIMUM</em></strong></dt>
+<dd>
+<p>Set the maximum length of the chain of proxies that can be created by the generated proxy to <em>MAXIMUM</em>. If not set, the default of an unlimited proxy chain length is used.</p>
+</dd>
+<dt class="hdlist1"><strong>-pwstdin</strong></dt>
+<dd>
+<p>Read the private key&#8217;s passphrase from stdin instead of reading input from the controlling tty. This is useful when scripting <strong><code>grid-proxy-init</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-limited</strong></dt>
+<dd>
+<p>Create a limited proxy. Limited proxies are generally refused by process-creating services, but may be used to authorize with other services.</p>
+</dd>
+<dt class="hdlist1"><strong>-independent</strong></dt>
+<dd>
+<p>Create an independent proxy. An independent proxy is not treated as an impersonation proxy but as a separate identity for authorization purposes.</p>
+</dd>
+<dt class="hdlist1"><strong>-draft</strong></dt>
+<dd>
+<p>Create a IETF draft proxy instead of the default RFC 3280-compliant proxy. This type of proxy uses a non-standard proxy policy identifier. This might be useful for authenticating with older versions of the Globus Toolkit.</p>
+</dd>
+<dt class="hdlist1"><strong>-old</strong></dt>
+<dd>
+<p>Create a legacy proxy instead of the default RFC 3280-compliant proxy. This type of proxy uses a non-standard method of indicating that the certificate is a proxy and whether it is limited. This might be useful for authenticating with older versions of the Globus Toolkit.</p>
+</dd>
+<dt class="hdlist1"><strong>-rfc</strong></dt>
+<dd>
+<p>Create an RFC 3820-compliant proxy certificate. This is the default for this version of <strong><code>grid-proxy-init</code></strong>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_6">Examples</h3>
+<div class="paragraph">
+<p>To create a proxy with the default lifetime and format, run the
+<strong><code>grid-proxy-init</code></strong> program with no arguments. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-proxy-init
+Your identity: /DC=org/DC=example/CN=Joe User
+Enter GRID pass phrase for this identity: Creating proxy .................................. Done
+Your proxy is valid until: Thu Mar 18 03:48:05 2010</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create a stronger proxy that lasts for only 8 hours, use the <em>-hours</em>
+and <em>-bits</em> command-line options to <strong><code>grid-proxy-init</code></strong>. For
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-proxy-init -hours 8 -bits 1024
+Your identity: /DC=org/DC=example/CN=Joe User
+Enter GRID pass phrase for this identity: Creating proxy .................................. Done
+Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_5">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-proxy-init</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_USER_CERT</code></strong></dt>
+<dd>
+<p>Path to the certificate to use as issuer of the new proxy.</p>
+</dd>
+<dt class="hdlist1"><strong><code>X509_USER_KEY</code></strong></dt>
+<dd>
+<p>Path to the key to use to sign the new proxy.</p>
+</dd>
+<dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
+<dd>
+<p>Path to the directory containing trusted certifiate certificates and signing policies.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_files_2">Files</h3>
+<div class="paragraph">
+<p>The following files affect the execution of <strong><code>grid-proxy-init</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercert.pem</code></strong></dt>
+<dd>
+<p>Default path to the certificate to use as issuer of the new proxy.</p>
+</dd>
+<dt class="hdlist1"><strong><code>$HOME/.globus/userkey.pem</code></strong></dt>
+<dd>
+<p>Default path to the key to use to sign the new proxy.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_compatibility">Compatibility</h3>
+<div class="paragraph">
+<p>For more information about proxy certificate types and their
+compatibility in GT and GCT, see
+<a href="http://dev.globus.org/wiki/Security/ProxyCertTypes">http://dev.globus.org/wiki/Security/ProxyCertTypes</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also_2">See Also</h3>
+<div class="paragraph">
+<p><code>grid-proxy-destroy(1)</code>, <code>grid-proxy-info(1)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-proxy-destroy">GRID-PROXY-DESTROY(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_8">NAME</h3>
+<div class="paragraph">
+<p>grid-proxy-destroy - Destroy the default proxy certificate</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_8">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-proxy-destroy</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_8">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-proxy-destroy</code></strong> program removes X.509 proxy files from
+the local filesystem. It overwrites the data in the files and removes
+the files from the filesystem. By default, it removes the current user&#8217;s
+default proxy (either <code>/tmp/x509up_uUID</code> where  where <em>UID</em> is the
+current POSIX user id, or the file pointed to by the <code>X509_USER_PROXY</code>
+environment variable) unless a list of proxy file paths are included as
+part of the command line.</p>
+</div>
+<div class="paragraph">
+<p>Use the <code>--</code> command-line option to separate a list of proxy paths
+from command line options if the proxy file begins with the <code>-</code>
+character.</p>
+</div>
+<div class="paragraph">
+<p>The full list of command-line options to <strong><code>grid-proxy-destroy</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-proxy-destroy</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-version</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-proxy-destroy</code></strong> command</p>
+</dd>
+<dt class="hdlist1"><strong>-debug</strong></dt>
+<dd>
+<p>Display verbose error messages.</p>
+</dd>
+<dt class="hdlist1"><strong>-dryrun</strong></dt>
+<dd>
+<p>Do not remove the proxy, but display the path of the files that would have been removed, or the directory where they would have been removed from if the <em>-all</em> command-line option is used.</p>
+</dd>
+<dt class="hdlist1"><strong>-default</strong></dt>
+<dd>
+<p>Remove the default proxy in addition to the files included on the command-line. Only needed if other paths are included on the command-line.</p>
+</dd>
+<dt class="hdlist1"><strong>-all</strong></dt>
+<dd>
+<p>Remove the default proxy and all delegated proxies in the temporary file directory.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_6">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-proxy-destroy</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_USER_PROXY</code></strong></dt>
+<dd>
+<p>Path to the default user proxy.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also_3">See Also</h3>
+<div class="paragraph">
+<p><code>grid-proxy-init(1)</code>, <code>grid-proxy-info(1)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-proxy-info">GRID-PROXY-INFO(1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_9">NAME</h3>
+<div class="paragraph">
+<p>grid-proxy-info - Display information about a proxy certificate</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_9">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-proxy-info</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_9">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-proxy-info</code></strong> program extracts information from an X.509
+proxy certificates, and optionally displays or returns an exit code
+based on that information.</p>
+</div>
+<div class="paragraph">
+<p>The default mode of operation is to print the following facts about the
+current user&#8217;s default proxy: subject, issuer, identity, type, strength,
+path, and time left. If the command-line option <em>-exists</em> or <em>-e</em> is
+included in the command-line, nothing is printed unless one of the print
+options is specified. Instead, <strong><code>grid-proxy-info</code></strong> determines if a
+valid proxy exists and, if so, exits with the exit code <code>0</code>; if a
+proxy does not exist or is not valid, <strong><code>grid-proxy-info</code></strong> exits with
+the exit code <code>1</code>. Additional validity criteria can be added by using
+the <em>-valid</em>, <em>-v</em>, <em>-hours</em>, <em>-h</em>, <em>-bits</em>, or <em>-b</em> command-line
+options. If used, these options must occur <strong>after</strong> the <em>-e</em> or
+<em>-exists</em> command-line options. Those options are only valid if one of
+the <em>-e</em> or <em>-exists</em> command-line options is used.</p>
+</div>
+<div class="paragraph">
+<p>The complete set of command-line options to <strong><code>grid-proxy-info</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-proxy-info</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-version</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-proxy-info</code></strong> command</p>
+</dd>
+<dt class="hdlist1"><strong>-debug</strong></dt>
+<dd>
+<p>Display verbose error messages.</p>
+</dd>
+<dt class="hdlist1"><strong>-file <em>PROXYFILE</em>, -f <em>PROXYFILE</em></strong></dt>
+<dd>
+<p>Read the proxy located in the file <em>PROXYFILE</em> instead of using the default proxy.</p>
+</dd>
+<dt class="hdlist1"><strong>-subject, -s</strong></dt>
+<dd>
+<p>Display the proxy certificate&#8217;s subject distinguished name.</p>
+</dd>
+<dt class="hdlist1"><strong>-issuer, -i</strong></dt>
+<dd>
+<p>Display the proxy certificate issuer&#8217;s distinguished name.</p>
+</dd>
+<dt class="hdlist1"><strong>-identity</strong></dt>
+<dd>
+<p>Display the proxy certificate&#8217;s identity. For non-independent proxies, the identity is the subject of the certificate which issued the first proxy in the proxy chain.</p>
+</dd>
+<dt class="hdlist1"><strong>-type</strong></dt>
+<dd>
+<p>Display the type of proxy certificate. The type string includes the format ("legacy", "draft", or RFC 3280 compliant), identity type ("impersonation" or "independent"), and policy ("limited" or "full"). See <code>grid-proxy-init(1)</code> for information about how to create different types of proxies.</p>
+</dd>
+<dt class="hdlist1"><strong>-timeleft</strong></dt>
+<dd>
+<p>Display the number of seconds remaining until the proxy certificate expires.</p>
+</dd>
+<dt class="hdlist1"><strong>-strength</strong></dt>
+<dd>
+<p>Display the strength (in bits) of the key associated with the proxy certificate.</p>
+</dd>
+<dt class="hdlist1"><strong>-all</strong></dt>
+<dd>
+<p>Display the default information for the proxy when also using the <em>-e</em> or <em>-exists</em> command-line option.</p>
+</dd>
+<dt class="hdlist1"><strong>-text</strong></dt>
+<dd>
+<p>Display the proxy certificate contents to standard output, including policy information, issuer, public key, and modulus.</p>
+</dd>
+<dt class="hdlist1"><strong>-path</strong></dt>
+<dd>
+<p>Display the path to the file containing the default proxy certificate.</p>
+</dd>
+<dt class="hdlist1"><strong>-rfc2253</strong></dt>
+<dd>
+<p>Display distinguished names for the subject, issuer, and identity using the string representation described in RFC 2253, instead of the legacy format.</p>
+</dd>
+<dt class="hdlist1"><strong>-exists, -e</strong></dt>
+<dd>
+<p>Perform an existence and validity check for the proxy. If a valid proxy exists and matches the criteria described by other command-line options (if any), exit with 0; otherwise, exit with 1. This option must be before other validity check predicate in the command-line options. If this option is specified, the output of the default facts about the proxy is disabled. Use the <em>-all</em> option to have the information displayed as well as the exit code set.</p>
+</dd>
+<dt class="hdlist1"><strong>-valid <em>HOURS</em>:'MINUTES', -v <em>HOURS</em>:'MINUTES', -hours <em>HOURS</em>, -h <em>HOURS</em></strong></dt>
+<dd>
+<p>Check that the proxy certificate is valid for at least <em>HOURS</em> hours and <em>MINUTES</em> minutes. If it is not, <strong><code>grid-proxy-info</code></strong> will exit with exit code <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><strong>-bits <em>BITS</em>, -b <em>BITS</em></strong></dt>
+<dd>
+<p>Check that the proxy certificate key strength is at least <em>BITS</em> bits.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_7">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-proxy-info</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>X509_USER_PROXY</code></strong></dt>
+<dd>
+<p>Path to the default user proxy.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also_4">See Also</h3>
+<div class="paragraph">
+<p><code>grid-proxy-init(1)</code>, <code>grid-proxy-destroy(1)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-mapfile-add-entry">GRID-MAPFILE-ADD-ENTRY(8)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_10">NAME</h3>
+<div class="paragraph">
+<p>grid-mapfile-add-entry - Add an entry to a gridmap file</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_10">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-mapfile-add-entry</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_10">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-mapfile-add-entry</code></strong> program adds a new mapping from an
+X.509 distinguished name to a local POSIX user name to a gridmap file.
+Gridmap files are used as a simple authorization method for services
+such as GRAM5 or GridFTP.</p>
+</div>
+<div class="paragraph">
+<p>The <strong><code>grid-mapfile-add-entry</code></strong> program verifies that the
+<em>LOCAL-NAME</em> is a valid user name on the system on which it was run, and
+that the mapping between <em>DISTINGUISHED-NAME</em> and <em>LOCAL-NAME</em> does not
+already exist in the gridmap file.</p>
+</div>
+<div class="paragraph">
+<p>By default, <strong><code>grid-mapfile-add-entry</code></strong> will modify the gridmap file
+named by the <code>GRIDMAP</code> environment variable if present, or the file
+<code>/etc/grid-security/grid-mapfile</code> if not. This can be changed by the
+use of the  if not. This can be changed by the use of the <em>-mapfile</em> or
+<em>-f</em> command-line options.</p>
+</div>
+<div class="paragraph">
+<p>If the gridmap file does not exist, <strong><code>grid-mapfile-add-entry</code></strong> will
+create it. If it already exists, <strong><code>grid-mapfile-add-entry</code></strong> will
+save the current contents of the file to a new file with the string
+<code>.old</code> appended to the file name.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to <strong><code>grid-mapfile-add-entry</code></strong>
+are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-mapfile-add-entry</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-version, -versions</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-mapfile-add-entry</code></strong> command. The second form includes more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-dn <em>DISTINGUISHED-NAME</em></strong></dt>
+<dd>
+<p>The X.509 distinguished name to add a mapping for. The name should be in OpenSSL&#8217;s <code>oneline</code> format.</p>
+</dd>
+<dt class="hdlist1"><strong>-ln <em>LOCAL-NAME</em>&#8230;&#8203;</strong></dt>
+<dd>
+<p>The POSIX user name to map the distinguished name to. This name must be a valid username. Add multiple <em>LOCAL-NAME</em> strings after the <em>-ln</em> command-line option. If any of the local names are invalid, no changes will be made to the gridmap file. Note that if multiple occurances of the <em>-ln</em> command-line option are present, only the the last one will be added.</p>
+</dd>
+<dt class="hdlist1"><strong>-d, -dryrun</strong></dt>
+<dd>
+<p>Verify local names and display diagnostics about what would be added to the gridmap file, but don&#8217;t actually modify the file.</p>
+</dd>
+<dt class="hdlist1"><strong>-mapfile <em>MAPFILE</em>, -f <em>MAPFILE</em></strong></dt>
+<dd>
+<p>Modify the gridmap file named by <em>MAPFILE</em> instead of the default.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_7">Examples</h3>
+<div class="paragraph">
+<p>Add a mapping between the current user&#8217;s certificate to the current user
+id to a gridmap file in <code>$HOME/.gridmap</code>: :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-mapfile-add-entry -f $HOME/.gridmap -dn "`grid-cert-info -subject`" -ln "`id -un`"
+Modifying /home/juser/.gridmap ...
+/home/juser/.gridmap does not exist... Attempting to create /home/juser/.gridmap
+New entry:
+"/DC=org/DC=example/DC=grid/CN=Joe User" juser
+(1) entry added</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add a mapping between the a distinguished name and multiple local names:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-mapfile-add-entry -dn "/DC=org/DC=example/DC=grid/CN=Joe User" juser" local1 local2
+Modifying /home/juser/.gridmap ...
+/home/juser/.gridmap does not exist... Attempting to create /home/juser/.gridmap
+New entry:
+"/DC=org/DC=example/DC=grid/CN=Joe User" local1,local2
+(1) entry added</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_8">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-mapfile-add-entry</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>GRIDMAP</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to modify.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_files_3">Files</h3>
+<div class="paragraph">
+<p>The following files affect the execution of
+<strong><code>grid-mapfile-add-entry</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>/etc/grid-security/grid-mapfile</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to modify if <code>GRIDMAP</code> environment variable is not set.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also_5">See Also</h3>
+<div class="paragraph">
+<p><code>grid-mapfile-check-consistency(8)</code>, <code>grid-mapfile-delete-entry(8)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-mapfile-check-consistency">GRID-MAPFILE-CHECK-CONSISTENCY(8)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_11">NAME</h3>
+<div class="paragraph">
+<p>grid-mapfile-check-consistency - Add an entry to a grid map file</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_11">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-mapfile-check-consistency</code></strong> [<code>-h</code> ] [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_11">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-mapfile-check-consistency</code></strong> program performs basic checks
+for validity of a gridmap file. These checks include checks for
+existence, duplication of entries, and valid local user names. If the
+gridmap file is valid, <strong><code>grid-mapfile-check-consistency</code></strong> exits with
+a zero exit code, otherwise it exits with a non-zero exit code. In
+either case, it displays information about its progress as it parses and
+validates the gridmap file.</p>
+</div>
+<div class="paragraph">
+<p>By default, <strong><code>grid-mapfile-check-consistency</code></strong> will check the
+gridmap file named by the <code>GRIDMAP</code> environment variable if present.
+If that variable is not set, it will check the file <code>$HOME/.gridmap</code>
+for non-root users if present. If that doesn&#8217;t exist or  for non-root
+users if present. If that doesn&#8217;t exist or
+<strong><code>grid-mapfile-check-consistency</code></strong> is run as root, it will then
+check <code>/etc/grid-security/grid-mapfile</code>. This can be changed by the
+use of the . This can be changed by the use of the <em>-mapfile</em> or <em>-f</em>
+command-line options.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to
+<strong><code>grid-mapfile-check-consistency</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -h, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-mapfile-check-consistency</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-version</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-mapfile-check-consistency</code></strong> command.</p>
+</dd>
+<dt class="hdlist1"><strong>-mapfile <em>MAPFILE</em>, -f <em>MAPFILE</em></strong></dt>
+<dd>
+<p>Check the gridmap file named by <em>MAPFILE</em> instead of the default.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_8">Examples</h3>
+<div class="paragraph">
+<p>Check that the gridmap file in <code>/etc/grid-security</code> is valid:  is
+valid:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-mapfile-check-consistency -f /etc/grid-security/grid-mapfile
+Checking /etc/grid-security/grid-mapfile
+Verifying grid mapfile existence...OK
+Checking for duplicate entries...OK
+Checking for valid user names...OK</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check a gridmap file that has an invalid local user name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-mapfile-check-consistency -f /etc/grid-security/grid-mapfile
+Checking /etc/grid-security/grid-mapfile
+Verifying grid mapfile existence...OK
+Checking for duplicate entries...OK
+ERROR: baduser is not a valid local username
+ERROR: Found 1 invalid username(s)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_9">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-mapfile-check-consistency</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>GRIDMAP</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to check.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_files_4">Files</h3>
+<div class="paragraph">
+<p>The following files affect the execution of
+<strong><code>grid-mapfile-check-consistency</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>$HOME/.gridmap</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to check if the <code>GRIDMAP</code> environment variable is not set for non-root users.</p>
+</dd>
+<dt class="hdlist1"><strong><code>/etc/grid-security/grid-mapfile</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to check if <code>GRIDMAP</code> environment variable is not set and the above file does not exist.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also_6">See Also</h3>
+<div class="paragraph">
+<p><code>grid-mapfile-add-entry(8)</code>, <code>grid-mapfile-delete-entry(8)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grid-mapfile-delete-entry">GRID-MAPFILE-DELETE-ENTRY(8)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_12">NAME</h3>
+<div class="paragraph">
+<p>grid-mapfile-delete-entry - Remove entries from a gridmap file</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synopsis_12">SYNOPSIS</h3>
+<div class="paragraph">
+<p><strong><code>grid-mapfile-delete-entry</code></strong> [<code>-help</code> ] [<code>-usage</code> ] [<code>-version</code> ] [<code>-versions</code> ]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_12">Description</h3>
+<div class="paragraph">
+<p>The <strong><code>grid-mapfile-delete-entry</code></strong> program deletes mappings from a
+gridmap file. If both the <em>-dn</em> and <em>-ln</em>&gt; options are specified,
+<strong><code>grid-mapfile-delete-entry</code></strong> removes entries which meet both
+criteria (remove entries mapping <em>DISTINGUISHED-NAME</em> to <em>LOCAL-NAME</em>
+for each <em>LOCAL-NAME</em> specified). If only <em>-dn</em> or <em>-ln</em> is specified
+<strong>all</strong> entries for that <em>DISTINGUISHED-NAME</em> or <em>LOCAL-NAME</em> are
+removed.</p>
+</div>
+<div class="paragraph">
+<p>By default, <strong><code>grid-mapfile-delete-entry</code></strong> will modify the gridmap
+file named by the <code>GRIDMAP</code> environment variable if present, or the
+file <code>/etc/grid-security/grid-mapfile</code> if not. This can be changed by
+the use of the  if not. This can be changed by the use of the <em>-mapfile</em>
+or <em>-f</em> command-line options.</p>
+</div>
+<div class="paragraph">
+<p>Prior to modifying a gridmap file, <strong><code>grid-mapfile-delete-entry</code></strong>
+saves its current contents to a file with the string <code>.old</code> appended
+to the original file name.</p>
+</div>
+<div class="paragraph">
+<p>The full set of command-line options to
+<strong><code>grid-mapfile-delete-entry</code></strong> are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-help, -usage</strong></dt>
+<dd>
+<p>Display the command-line options to <strong><code>grid-mapfile-delete-entry</code></strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>-version, -versions</strong></dt>
+<dd>
+<p>Display the version number of the <strong><code>grid-mapfile-delete-entry</code></strong> command. The second form includes more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-dn <em>DISTINGUISHED-NAME</em></strong></dt>
+<dd>
+<p>The X.509 distinguished name to remove from the gridmap file. If the <em>-ln</em> option is not specified, remove all entries for this name; otherwise, remove entries that match both this name and the local name. The name should be in OpenSSL&#8217;s <code>oneline</code> format.</p>
+</dd>
+<dt class="hdlist1"><strong>-ln <em>LOCAL-NAME</em>&#8230;&#8203;</strong></dt>
+<dd>
+<p>The POSIX user name to remove from the gridmap file. Include multiple <em>LOCAL-NAME</em> strings after the <em>-ln</em> command-line option to remove multiple names from the gridmap. If the <em>-dn</em> option is not specifeid, remove all entries for these names; otherwise, remove entries that match the <em>DISTINGUISHED-NAME</em> and any of the <em>LOCAL-NAME</em> values.</p>
+</dd>
+<dt class="hdlist1"><strong>-d, -dryrun</strong></dt>
+<dd>
+<p>Display diagnostics about what would be removed from the gridmap file, but don&#8217;t actually modify the file.</p>
+</dd>
+<dt class="hdlist1"><strong>-mapfile <em>MAPFILE</em>, -f <em>MAPFILE</em></strong></dt>
+<dd>
+<p>Modify the gridmap file named by <em>MAPFILE</em> instead of the default.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_9">Examples</h3>
+<div class="paragraph">
+<p>Remove all mappings for a distinguished name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-mapfile-delete-entry "/DC=org/DC=example/DC=grid/CN=Joe User"
+Modifying /etc/grid-security/grid-mapfile ...
+Deleting entry: "/DC=org/DC=example/DC=grid/CN=Joe User" juser,juser2
+(1) entry deleted</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remove the mapping between a distinguished name and a single local
+username:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-mapfile-delete-entry "/DC=org/DC=example/DC=grid/CN=Joe User" -ln juser2
+Modifying /etc/grid-security/grid-mapfile ...
+Current entry: "/DC=org/DC=example/DC=grid/CN=Joe User" juser
+(1) mapping removed: (juser2), (0) not present and ignored
+(0) entries deleted</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_variables_10">Environment Variables</h3>
+<div class="paragraph">
+<p>The following environment variables affect the execution of
+<strong><code>grid-mapfile-delete-entry</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>GRIDMAP</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to modify.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_files_5">Files</h3>
+<div class="paragraph">
+<p>The following files affect the execution of
+<strong><code>grid-mapfile-delete-entry</code></strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong><code>/etc/grid-security/grid-mapfile</code></strong></dt>
+<dd>
+<p>Path to the default gridmap to modify if <code>GRIDMAP</code> environment variable is not set.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also_7">See Also</h3>
+<div class="paragraph">
+<p><code>grid-mapfile-add-entry(8)</code>, <code>grid-mapfile-check-consistency(8)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gsic-configuring">Configuring GSI</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This section describes the configuration steps required to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configure SSL/TLS security parameters</p>
+<div class="paragraph">
+<p>determine whether or not to trust certificates issued by a particular Certificate Authority (CA),</p>
+</div>
+</li>
+<li>
+<p>provide appropriate default values for use by the <a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a> command, which is used to generate certificates,</p>
+</li>
+<li>
+<p>request service certificates, used by services to authenticate themselves to users, and</p>
+</li>
+<li>
+<p>specify identity mapping information.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In general, GCT tools will look for a configuration file in a
+user-specific location first, and in a system-wide location if no
+user-specific file was found. The configuration commands described here
+may be run by administrators to create system-wide defaults and by
+individuals to override those defaults.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gsic-configuring-global-security-parameters">Configuring Global Security Parameters</h3>
+<div class="paragraph">
+<p>The configuration file described here was added with the package
+globus-gssapi-gsi-11.16 and the toolkit binary package version
+6.0.1430141288.</p>
+</div>
+<div class="paragraph">
+<p>The global security parameters for GSIC are included in the file
+<code>/etc/grid-security/gsi.conf</code>. This file contains the default values used by all
+GSI-enabled servers and clients. The format of the file is a sequence of
+lines containing a single NAME=VALUE pair, with comments beginning with
+the <code>#</code> character. All values in the default configuration file may be
+overridden by setting the corresponding environment variable for a
+particular process.</p>
+</div>
+<div class="paragraph">
+<p>The NAME strings that are currently understood are</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. GSI Configuration Values</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Configuration Entry</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Environment Override</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FORCE_TLS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A flag to choose whether to force TLS or
+  to allow SSLv3 as well. Set this to <code>true</code> to
+  disable SSLv3, or <code>false</code> to allow either to be
+  negotiated.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GLOBUS_GSSAPI_FORCE_TLS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NAME_COMPATIBILITY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GSSAPI Name compatibility mode when trying to
+  determine if a host certificate is legitimate. GSI predates
+  <a href="http://tools.ietf.org/html/rfc2818">RFC2818</a>,
+  so old versions of GSI use some old, less-secure,
+  practices. The possible values are described in
+  <a href="../../gsic/pi/index.html#gsic-env-name">GLOBUS_GSSAPI_NAME_COMPATIBILITY</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HYBRID</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CIPHERS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenSSL Cipher List. This is an preference-ordered list of OpenSSL cipher
+  names. See the <a href="https://www.openssl.org/docs/apps/ciphers.html">OpenSSL cipher
+  documentation</a> for information on the syntax of this string.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GLOBUS_GSSAPI_CIPHERS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HIGH</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="gsic-configuring-trustCA">Configuring GCT to Trust a Particular Certificate Authority</h3>
+<div class="sect3">
+<h4 id="_trusted_certificates_directory">Trusted certificates directory</h4>
+<div class="paragraph">
+<p>The GCT tools will trust certificates issued by a CA if (and only if)
+it can find information about the CA in the trusted certificates
+directory.</p>
+</div>
+<div class="paragraph">
+<p>The trusted certificates directory is located as described below and
+exists either on a per-machine or on a per-installation basis.</p>
+</div>
+<div class="paragraph">
+<p><code>X509_CERT_DIR</code> is the environment variable used to specify the path
+to the trusted certificates directory. This directory contains
+information about which CAs are trusted (including the CA certificates
+themselves) and, in some cases, configuration information used by
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
+to formulate certificate requests. The location of the trusted
+certificates directory is looked for in the following order:
+. value of the <code>X509_CERT_DIR</code> environment variable</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>$HOME/.globus/certificates</code></p>
+</li>
+<li>
+<p><code>/etc/grid-security/certificates</code> exists exists</p>
+</li>
+<li>
+<p><code>$GLOBUS_LOCATION/share/certificates</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_trusted_certificates_files">Trusted certificates files</h4>
+<div class="paragraph">
+<p>The following two files must exist in the directory for each trusted CA:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>cert_hash</em><code>.0</code></dt>
+<dd>
+<p>The trusted CA Certificate.</p>
+</dd>
+<dt class="hdlist1"><em>cert_hash</em><code>.signing_policy</code></dt>
+<dd>
+<p>A configuration file defining the distinguished names of certificates
+signed by the CA.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>GCT components will honor a certificate only if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>its CA certificate exists (with the appropriate name) in the <strong>TRUSTED_CA</strong> directory, and</p>
+</li>
+<li>
+<p>the certificate&#8217;s distinguished name matches the pattern described in the signing policy file.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hash_of_the_ca_certificate">Hash of the CA certificate</h4>
+<div class="paragraph">
+<p>The <strong>cert_hash</strong> that appears in the file names above is the hash of
+the CA certificate, which can be found by running the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>openssl x509 -hash -noout &lt; ca_certificate</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_signing_policy_by_hand">Creating a signing policy by hand</h4>
+<div class="paragraph">
+<p>Some CAs provide tools to install their CA certificates and signing
+policy files into the trusted certificates directory. You can, however,
+create a signing policy file by hand; the signing policy file has the
+following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>access_id_CA X509 'CA Distinguished Name'
+pos_rights globus CA:sign
+cond_subjects globus '"Distinguished Name Pattern"'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above, the <strong>CA Distinguished Name</strong> is the subject name of the
+CA certificate, and the <strong>Distinguished Name Pattern</strong> is a string used
+to match the distinguished names of certificates granted by the CA.</p>
+</div>
+<div class="paragraph">
+<p>Some very simple wildcard matching is done: if the <strong>Distinguished Name
+Pattern</strong> ends with a <em><strong></em>, then any distinguished name that matches the
+part of the CA subject name before the <em></strong></em> is considered a match.</p>
+</div>
+<div class="paragraph">
+<p>Note: the cond_subjects line may contain a space-separated list of
+distinguished name patterns.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_repository_of_cas">Repository of CAs</h4>
+<div class="paragraph">
+<p>A repository of CA certificates that are widely used in academic and
+research settings can be found <a href="https://www.tacar.org/certs.html">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_gct_to_create_appropriate_certificate_requests">Configuring GCT to Create Appropriate Certificate Requests</h3>
+<div class="paragraph">
+<p>The
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
+command, which is used to create certificates, uses the following
+configuration files:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>globus-user-ssl.conf</code></dt>
+<dd>
+<p>Defines the distinguished name to use for a user&#8217;s certificate request. The
+format is described
+<a href="http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT">here</a>.</p>
+</dd>
+<dt class="hdlist1"><code>globus-host-ssl.conf</code></dt>
+<dd>
+<p>    Defines the distinguished name for a host (or service) certificate request.
+    The format is described
+    <a href="http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT">here</a>.
+<code>grid-security.conf</code>:
+    A base configuration file that contains the name and email address for the
+    CA.
+<code>directions</code>:
+    An optional file that may contain directions on using the CA.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Many CAs provide tools to install configuration files with the following
+names in the Trusted Certificates directory:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>globus-user-ssl.conf.</code><em>cert_hash</em></p>
+</li>
+<li>
+<p><code>globus-host-ssl.conf.</code><em>cert_hash</em></p>
+</li>
+<li>
+<p><code>grid_security.conf.</code><em>cert_hash</em></p>
+</li>
+<li>
+<p><code>directions.</code><em>cert_hash</em></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_certificate_request_for_a_specific_ca">Creating a certificate request for a specific CA</h4>
+<div class="paragraph">
+<p>The command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>grid-cert-request -ca cert_hash</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will create a certificate request based on the specified CA&#8217;s
+configuration files.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_listing_available_cas">Listing available CAs</h4>
+<div class="paragraph">
+<p>The command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>grid-cert-request -ca</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will list the available CAs and let the user choose which one to create
+a request for.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specifying_a_default_ca_for_certificate_requests">Specifying a default CA for certificate requests</h4>
+<div class="paragraph">
+<p>The default CA is the CA that will be used for certificate requests if
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
+is invoked without the <em>-ca</em> flag.</p>
+</div>
+<div class="paragraph">
+<p>You can specify a default CA by invoking the
+<a href="../../gsic/pi/index.html#grid-default-ca"><strong><code>grid-default-ca</code></strong></a>
+command (follow the link for examples of using the command).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_directions_file_file"><code>directions</code> file file</h4>
+<div class="paragraph">
+<p>The <code>directions</code> file may contain specific directions on how to use
+the CA. There are three types of printed messages:  file may contain
+specific directions on how to use the CA. There are three types of
+printed messages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>REQUEST HEADER</strong>, printed to a certificate request file,</p>
+</li>
+<li>
+<p><strong>USER INSTRUCTIONS</strong>, printed on the screen when one requests a user certificate,</p>
+</li>
+<li>
+<p><strong>NONUSER INSTRUCTIONS</strong>, printed on the screen when one requests a certificate for a service.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each message is delimited from others with lines <strong>----- BEGIN message
+type TEXT -----</strong> and <strong>----- END message type TEXT -----</strong>. For
+example, the <code>directions</code> file would contain the following lines: file
+would contain the following lines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>----- BEGIN REQUEST HEADER TEXT -----
+This is a Certificate Request file
+
+It should be mailed to ${GSI_CA_EMAIL_ADDR}
+ ----- END REQUEST HEADER TEXT -----</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this file does not exist, the default messages are printed.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requesting_service_certificates">Requesting Service Certificates</h3>
+<div class="paragraph">
+<p>Different CAs use different mechanisms for issuing end-user
+certificates; some use mechanisms that are entirely web-based, while
+others require you to generate a certificate request and send it to the
+CA. If you need to create a certificate request for a service
+certificate, you can do so by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>grid-cert-request -host hostname -service service_name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <strong>hostname</strong> is the fully-qualified name of the host on which the
+service will be running, and <strong>service_name</strong> is the name of the
+service. This will create the following three files:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>GRID_SECURITY/service_name/service_name</em><code>cert.pem</code></dt>
+<dd>
+<p>An empty file. When you receive your actual service certificate from your
+CA, you should place it in this file.</p>
+</dd>
+<dt class="hdlist1"><em>GRID_SECURITY/service_name/service_name</em><code>cert_request.pem</code></dt>
+<dd>
+<p>The certificate request, which you should send to your CA.</p>
+</dd>
+<dt class="hdlist1"><em>GRID_SECURITY/service_name/service_name</em><code>key.pem</code></dt>
+<dd>
+<p>The private key associated with your certificate request, encrypted with
+the pass phrase that you entered when prompted by
+<strong><code>grid-cert-request</code></strong>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The
+<a href="../../gsic/pi/index.html#grid-cert-request"><strong><code>grid-cert-request</code></strong></a>
+command recognizes several other useful options; you can list these
+with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>grid-cert-request -help</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-gridmap">Configuring Credential Mappings</h3>
+<div class="paragraph">
+<p>Several GCT services map certificates to local unix usernames to be
+used with unix services. The default implementation uses a gridmap file
+to map the distinguished name of the identity of the client&#8217;s
+certificate to a local login name. Administrators can modify the
+contents of the gridmap file to control what certificate identities are
+allowed to access GCT services, as well as configure, via an
+environment variable, what gridmap file a particular service uses.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the identity-based mapping done via the gridmap file,
+administrators can configure GCT services to to use arbitrary mapping
+functions. These may use other criteria, such as SAML assertions, to map
+a certificate to a local account, or may map certificates to temporary
+accounts. Administrators can install different mapping implementations
+and configure services to use them by creating appropriate configuration
+files and setting environment variables.</p>
+</div>
+<div class="sect3">
+<h4 id="_configuring_identity_mappings_using_gridmap_files_files">Configuring Identity Mappings Using <code>gridmap</code> Files Files</h4>
+<div class="paragraph">
+<p>Gridmap files contain a database of entries mapping distinguished names
+to local user names. These may be manipulated by using the following
+tools.</p>
+</div>
+<div class="sect4">
+<h5 id="_adding_an_entry_to_a_gridmap_file">Adding an entry to a gridmap file</h5>
+<div class="paragraph">
+<p>To add an entry to the gridmap file, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$GLOBUS_LOCATION/sbin/grid-mapfile-add-entry \
+        -dn "Distinguished Name" \
+        -ln local_name</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_deleting_an_entry_from_a_gridmap_file">Deleting an entry from a gridmap file</h5>
+<div class="paragraph">
+<p>To delete an entry from the gridmap file, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$GLOBUS_LOCATION/sbin/grid-mapfile-delete-entry \
+        -dn "Distinguished Name" \
+        -ln local_name</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_checking_consistency_of_a_gridmap_file">Checking consistency of a gridmap file</h5>
+<div class="paragraph">
+<p>To check the consistency of the gridmap file, run</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$GLOBUS_LOCATION/sbin/grid-mapfile-check-consistency</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configuring_per_service_gridmap_files">Configuring per-service gridmap files</h5>
+<div class="paragraph">
+<p>To configure a service to use a particular gridmap file, set the
+<code>GRIDMAP</code> variable in the service&#8217;s environment to the path of the
+gridmap file. In this way, you can grant different access rights to
+different certificate identities on a per-service basis by setting the
+<code>GRIDMAP</code> variable in different service environments.</p>
+</div>
+<div class="paragraph">
+<p>You can use tools described above to operate on different gridmap files
+by either setting the <code>GRIDMAP</code> environment variable prior to invoking
+them, or by using the <em>-mapfile</em> command-line option.</p>
+</div>
+<div class="paragraph">
+<p>For reference, the GSI C code looks for the gridmap in these locations:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>GRIDMAP</code> environment variable</dt>
+<dd>
+<p>Default</p>
+</dd>
+<dt class="hdlist1"><code>/etc/grid-security/grid-mapfile</code></dt>
+<dd>
+<p>    For services running as root. &lt;/simpara&gt;
+<code>HOME/.gridmap</code>:
+    For services not running as root.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_gridmap_formats">Gridmap formats</h5>
+<div class="paragraph">
+<p>A gridmap line of the form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"Distinguished Name" local_name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>maps the distinguished name <em>Distinguished Name</em> to the local name
+<em>local_name</em>.</p>
+</div>
+<div class="paragraph">
+<p>A gridmap line of the form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"Distinguished Name" local_name1,local_name2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>maps <em>Distinguished Name</em> to both <em>local_name1</em> and <em>local_name2</em>; any
+number of local user names may occur in the comma-separated local name
+list.</p>
+</div>
+<div class="paragraph">
+<p>For more detailed information about the gridmap file see the
+<a href="https://dev.globus.org/wiki/Gridmap">file description and grammars</a> on
+dev.globus.org.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configuring_alternate_credential_mappings">Configuring Alternate Credential Mappings</h4>
+<div class="paragraph">
+<p>To use an alternative credential mapping, you create a
+<code>gsi-authz.conf</code> file containing information about how the mapping
+functions are called from the authorization library.  file containing
+information about how the mapping functions are called from the
+authorization library.</p>
+</div>
+<div class="paragraph">
+<p>To configure a per-service authorization configuration file, set the
+<code>GSI_AUTHZ_CONF</code> variable to the path to the configuration file in the
+environment of the service.</p>
+</div>
+<div class="paragraph">
+<p>For reference, the GSI C code looks for the authorization configuration
+file in these locations (in the given order):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>GSI_AUTHZ_CONF</code> environment variable</p>
+</li>
+<li>
+<p><code>/etc/grid-security/gsi-authz.conf</code></p>
+</li>
+<li>
+<p><code>GLOBUS_LOCATION/etc/gsi-authz.conf</code></p>
+</li>
+<li>
+<p><code>HOME/.gsi-authz.conf</code></p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_callout_file_format">Callout File Format</h5>
+<div class="paragraph">
+<p>The authorization file defines a set of callouts, one per line. Each
+callout is defined by an <strong>abstract type</strong>, <strong>library</strong>, and <strong>symbol</strong>
+separated by whitespace. Comments begin with the <strong>#</strong> character and
+continue to the end of line.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>abstract type</em></dt>
+<dd>
+<p>Type of the callout: <strong>globus_mapping</strong> is used for credential mapping
+callouts</p>
+</dd>
+<dt class="hdlist1"><em>library</em></dt>
+<dd>
+<p>Path to the shared object containing the callout implementation. The
+library name may be a literal filename, or a partial filename to which the
+compilation flavor of the service is appended to the filename before its
+extension.</p>
+</dd>
+<dt class="hdlist1"><em>symbol</em></dt>
+<dd>
+<p>The exported symbol containing the entry point to the callout
+implementation.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Here is a sample <code>gsi-authz.conf</code> file that configures a  file that
+configures a <strong>globus_mapping</strong> callout to use the
+<strong>globus_gridmap_callout</strong> function in the
+<code>/usr/local/globus/lib/libglobus_gridmap_callout</code> shared
+object:  shared object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># abstract-type     library                                            symbol
+
+globus_mapping      /opt/globus/lib/libglobus_gridmap_callout globus_gridmap_callout</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gsic-config-permissions">GSI File Permissions Requirements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>End Entity Certificate (User, Host and Service) Certificates and the GSI
+Authorization Callout Configuration File:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>May not be executable</p>
+</li>
+<li>
+<p>May not be writable by group and other</p>
+</li>
+<li>
+<p>Must be either regular files or soft links</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Private Keys and Proxy Credentials:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Must be owned by the current (effective) user</p>
+</li>
+<li>
+<p>May not be executable</p>
+</li>
+<li>
+<p>May not be readable by group and other</p>
+</li>
+<li>
+<p>May not be writable by group and other</p>
+</li>
+<li>
+<p>Must be either regular files or soft links</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CA Certificates, CA Signing Policy Files, the Grid Map File and the GAA
+Configuration File:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Must be either regular files or soft links</p>
+</li>
+<li>
+<p>GSI Authorization callout configuration files</p>
+</li>
+<li>
+<p>Must exist</p>
+</li>
+<li>
+<p>Should be world readable</p>
+</li>
+<li>
+<p>Should not be writable by group and other</p>
+</li>
+<li>
+<p>Should be either a regular file or a soft link</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>GSI GAA configuration files:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Must exist</p>
+</li>
+<li>
+<p>Should be world readable</p>
+</li>
+<li>
+<p>Should not be writable by group and other</p>
+</li>
+<li>
+<p>Should be either a regular file or a soft link</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gsic-pi-env">Environment variable interface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="gsic-env-var">Environmental Variables for GSI C</h3>
+<div class="sect3">
+<h4 id="gsic-env-credentials">Credentials</h4>
+<div class="paragraph">
+<p>Credentials are looked for in the following order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>service credential</p>
+</li>
+<li>
+<p>host credential</p>
+</li>
+<li>
+<p>proxy credential</p>
+</li>
+<li>
+<p>user credential</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>X509_USER_PROXY</code> specifies the path to the proxy credential. If
+<code>X509_USER_PROXY</code> is not set, the proxy credential is created (by
+<strong><code>grid-proxy-init</code></strong>) and searched for (by client programs) in an
+operating-system-dependent local temporary file.</p>
+</div>
+<div class="paragraph">
+<p><code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> specify the path to the end
+entity (user, service, or host) certificate and corresponding private
+key. The paths to the certificate and key files are determined as
+follows:</p>
+</div>
+<div class="paragraph">
+<p>For service credentials:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If <code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>/etc/grid-security/service/servicecert.pem</code> and  and <code>/etc/grid-security/service/servicekey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>$GLOBUS_LOCATION/etc/grid-security/service/servicecert.pem</code> and  and <code>$GLOBUS_LOCATION/etc/grid-security/service/servicekey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>service/servicecert.pem</code> and  and <code>service/servicekey.pem</code> in the user&#8217;s  in the user&#8217;s <code>.globus</code> directory exist and contain a valid certificate and key, those files are used. directory exist and contain a valid certificate and key, those files are used.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For host credentials:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If <code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>/etc/grid-security/hostcert.pem</code> and  and <code>/etc/grid-security/hostkey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>$GLOBUS_LOCATION/etc/hostcert.pem</code> and  and <code>$GLOBUS_LOCATION/etc/hostkey.pem</code> exist and contain a valid certificate and key, those files are used. exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>hostcert.pem</code> and  and <code>hostkey.pem</code> in the user&#8217;s  in the user&#8217;s <code>.globus</code> directory, exist and contain a valid certificate and key, those files are used. directory, exist and contain a valid certificate and key, those files are used.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For user credentials:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If <code>X509_USER_CERT</code> and <code>X509_USER_KEY</code> exist and contain a valid certificate and key, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if the files <code>usercert.pem</code> and  and <code>userkey.pem</code> exist in the user&#8217;s  exist in the user&#8217;s <code>.globus</code> directory, those files are used. directory, those files are used.</p>
+</li>
+<li>
+<p>Otherwise, if a PKCS-12 file called <code>usercred.p12</code> exists in the user&#8217;s  exists in the user&#8217;s <code>.globus</code> directory, the certificate and key are read from that file. directory, the certificate and key are read from that file.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-gridmapfile">Gridmap file</h4>
+<div class="paragraph">
+<p><code>GRIDMAP</code> specifies the path to the grid map file, which is used to
+map distinguished names (found in certificates) to local names (such as
+login accounts). The location of the grid map file is determined as
+follows:
+. If the <code>GRIDMAP</code> environment variable is set, the grid map file location is the value of that environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the user is root (uid 0), then the grid map file is <code>/etc/grid-security/grid-mapfile</code>..</p>
+</li>
+<li>
+<p>Otherwise, the grid map file is <code>$HOME/.gridmap</code>..</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-trustedca">Trusted CAs directory</h4>
+<div class="paragraph">
+<p><code>X509_CERT_DIR</code> is used to specify the path to the trusted
+certificates directory. This directory contains information about which
+CAs are trusted (including the CA certificates themselves) and, in some
+cases, configuration information used by <strong><code>grid-cert-request</code></strong> to
+formulate certificate requests. The location of the trusted certificates
+directory is determined as follows:
+. If the <code>X509_CERT_DIR</code> environment variable is set, the trusted certificates directory is the value of that environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise, if <code>$HOME/.globus/certificates</code> exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
+</li>
+<li>
+<p>Otherwise, if <code>/etc/grid-security/certificates</code> exists, that directory is the trusted certificates directory. exists, that directory is the trusted certificates directory.</p>
+</li>
+<li>
+<p>Finally, if <code>$GLOBUS_LOCATION/share/certificates</code> exists, then it is the trusted certificates directory. exists, then it is the trusted certificates directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-gsiauthz">GSI authorization callout configuration file</h4>
+<div class="paragraph">
+<p><code>GSI_AUTHZ_CONF</code> is used to specify the path to the GSI authorization
+callout configuration file. This file is used to configure authorization
+callouts used by both the gridmap and the authorization API. The
+location of the GSI authorization callout configuration file is
+determined as follows:
+. If the <code>GSI_AUTHZ_CONF</code> environment variable is set, the authorization callout configuration file location is the value of this environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise, if <code>/etc/grid-security/gsi-authz.conf</code> exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Otherwise, if <code>$GLOBUS_LOCATION/etc/gsi-authz.conf</code> exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Finally, if <code>$HOME/.gsi-authz.conf</code> exists, then this file is used. exists, then this file is used.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-gaaauthz">GAA (Generic Authorization and Access control) configuration file</h4>
+<div class="paragraph">
+<p><code>GSI_GAA_CONF</code> is used to specify the path to the GSI GAA (Generic
+Authorization and Access control)
+        configuration file. This file
+is used to configure policy language specific plugins to the GAA-API.
+The location of the GSI GAA configuration file is determined as follows:
+. If the <code>GSI_GAA_CONF</code> environment variable is set, the GAA configuration file location is the value of this environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Otherwise, if <code>/etc/grid-security/gsi-gaa.conf</code> exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Otherwise, if <code>$GLOBUS_LOCATION/etc/gsi-gaa.conf</code> exists, then this file is used. exists, then this file is used.</p>
+</li>
+<li>
+<p>Finally, if <code>$HOME/.gsi-gaa.conf</code> exists, then this file is used. exists, then this file is used.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-gridsecurity">Grid security directory</h4>
+<div class="paragraph">
+<p><code>GRID_SECURITY_DIR</code> specifies a path to a directory containing
+configuration files that specify default values to be placed in
+certificate requests. This environment variable is used only by the
+<strong><code>grid-cert-request</code></strong> and <strong><code>grid-default-ca</code></strong> commands.</p>
+</div>
+<div class="paragraph">
+<p>The location of the grid security directory is determined as follows:
+. If the <code>GRID_SECURITY_DIR</code> environment variable is set, the grid security directory is the value of that environment variable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If the configuration files exist in <code>/etc/grid-security</code>, the grid security directory is that directory., the grid security directory is that directory.</p>
+</li>
+<li>
+<p>if the configuration files exist in <code>$GLOBUS_LOCATION/etc</code>, the grid security directory is that directory., the grid security directory is that directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-tls">Using TLS</h4>
+<div class="paragraph">
+<p><code>GLOBUS_GSSAPI_FORCE_TLS</code> specifies whether to use TLS by default when
+establishing a security context. The default behavior if this is not set
+is to use SSLv3.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gsic-env-name">Name Comparisons</h4>
+<div class="paragraph">
+<p><code>GLOBUS_GSSAPI_NAME_COMPATIBILITY</code> specifies what name matching
+algorithms are supported by GSSAPI for mutual authentication and
+<strong><code>gss_compare_name</code></strong>. This variable may be set to any of the
+following values:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>STRICT_GT2</code></dt>
+<dd>
+<p>Strictly backward-compatible with GT 2.0 name matching. X.509
+subjectAltName values are ignored. Names with hyphens are treated as
+wildcarded as described in the
+<a href="../../gsic/admin/index.html#gsic-security-considerations">security
+considerations</a> documentation. Name matching will rely on canonical host
+name associated with connection IP addresses.</p>
+</dd>
+<dt class="hdlist1"><code>STRICT_RFC2818</code></dt>
+<dd>
+<p>    Support <a href="http://www.ietf.org/rfc/rfc2818.txt">RFC 2818</a> server identity
+    processing. Hyphen characters are treated as normal part of a host name.
+    DNSName and IPAddress subjectAltName extensions are matched against the
+    host and port passed to GSSAPI. If subjectAltName is present, X.509
+    SubjectName is ignored.
+<code>HYBRID</code>:
+    Support a hybrid of the two previous name matching algorithms, liberally
+    matching both hyphen wildcards, canonical names associated with IP
+    addresses, and subjectAltName extensions.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>If this variable is not set, the <code>HYBRID</code> behavior is used.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gsic-error-codes">Errors</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="security-credential-troubleshooting">Credential Troubleshooting</h3>
+<div class="sect3">
+<h4 id="security-credential-errors">Credential Errors</h4>
+<div class="paragraph">
+<p>The following are some common problems that may cause clients or servers
+to report that credentials are invalid:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Credential Errors</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Error Code</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Possible Solutions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Your proxy credential may have expired</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your proxy credential may have expired.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="gsic/pi/index.html#grid-proxy-info">grid-proxy-info</a> to check
+whether the proxy credential has actually expired. If it has,
+generate a new proxy with <a href="gsic/pi/index.html#grid-proxy-init">grid-proxy-init</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The system clock on either the local or remote system
+is wrong.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This may cause the server or client to conclude that a
+credential has expired.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check the system clocks on the local and remote
+system.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Your end-user certificate may have
+expired</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your end-user certificate may have expired</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="gsic/pi/index.html#grid-cert-info">grid-cert-info</a> to check your
+certificate&#8217;s expiration date. If it has expired, follow your CA&#8217;s
+procedures to get a new one.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The permissions may be wrong on your proxy
+file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your proxy file are too lax (for
+example, if others can read your proxy file), Grid Community Toolkit
+clients will not use that file to authenticate.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You can "fix" this problem by changing the permissions on
+the file or by destroying it (with <a href="gsic/pi/index.html#grid-proxy-destroy">grid-proxy-destroy</a>) and creating a new one (with <a href="gsic/pi/index.html#grid-proxy-init">grid-proxy-init</a>).</p>
+<p class="tableblock">[IMPORTANT]</p>
+<p class="tableblock">However, it
+is still possible that someone else has made a copy of that file
+during the time that the permissions were wrong. In that case,
+they will be able to impersonate you until the proxy file expires
+or your permissions or end-user certificate are revoked, whichever
+happens first.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The permissions may be wrong on your private key
+file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the permissions on your end user certificate private key
+file are too lax (for example, if others can read the file),
+grid-proxy-init will refuse to create a proxy certificate.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You can "fix" this by changing the permissions on the
+private key file.</p>
+<p class="tableblock">[IMPORTANT]</p>
+<p class="tableblock">However, you will still have a
+much more serious problem: it is possible that someone has made a
+copy of your private key file. Although this file is encrypted, it
+is possible that someone will be able to decrypt the private key,
+at which point they will be able to impersonate you as long as
+your end user certificate is valid. You should contact your CA to
+have your end-user certificate revoked and get a new
+one.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The remote system may not trust your
+CA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The remote system may not trust your CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the remote system is configured to trust the CA
+that issued your end-entity certificate. See link:admin/install/index.html for details.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>You may not trust the remote system&#8217;s
+CA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You may not trust the remote system&#8217;s CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that your system is configured to trust the remote
+CA (or that your environment is set up to trust the remote CA).
+See admin/install/index.html for details.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>There may be something wrong with the remote
+service&#8217;s credentials</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There may be something wrong with the remote service&#8217;s
+credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is sometimes difficult to distinguish between errors
+reported by the remote service regarding your credentials and
+errors reported by the client interface regarding the remote
+service&#8217;s credentials. If you cannot find anything wrong with your
+credentials, check for the same conditions on the remote system
+(or ask a remote administrator to do so) .</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="security-credential-troubleshooting-tools">Some tools to validate certificate setup</h4>
+<div class="sect4">
+<h5 id="_grid_cert_diagnostics">grid-cert-diagnostics</h5>
+<div class="paragraph">
+<p>The
+<a href="../../gsic/user/index.html#grid-cert-diagnostics"><strong><code>grid-cert-diagnostics</code></strong></a>
+program checks prints diagnostics about the user&#8217;s certificates, and
+host security environment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>%  grid-cert-diagnostics -p</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_check_that_the_user_certificate_is_valid">Check that the user certificate is valid</h5>
+<div class="listingblock">
+<div class="content">
+<pre>openssl verify -CApath /etc/grid-security/certificates
+  -purpose sslclient ~/.globus/usercert.pem</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_connect_to_the_server_using_s_client">Connect to the server using s_client</h5>
+<div class="listingblock">
+<div class="content">
+<pre>openssl s_client -ssl3 -cert ~/.globus/usercert.pem -key
+  ~/.globus/userkey.pem -CApath /etc/grid-security/certificates
+  -connect &lt;host:port&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <em>&lt;host:port&gt;</em> denotes the server and port you connect to.</p>
+</div>
+<div class="paragraph">
+<p>If it prints an error and puts you back at the command prompt, then it
+typically means that the <strong>server</strong> has closed the connection, i.e. that
+the server was not happy with the client&#8217;s certificate and verification.
+Check the SSL log on the server.</p>
+</div>
+<div class="paragraph">
+<p>If the command "hangs" then it has actually opened a telnet style (but
+secure) socket, and you can "talk" to the server.</p>
+</div>
+<div class="paragraph">
+<p>You should be able to scroll up and see the subject names of the
+server&#8217;s verification chain:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>depth=2 /DC=net/DC=ES/O=ESnet/OU=Certificate Authorities/CN=ESnet Root CA 1
+verify return:1
+depth=1 /DC=org/DC=DOEGrids/OU=Certificate Authorities/CN=DOEGrids CA 1
+verify return:1
+depth=0 /DC=org/DC=doegrids/OU=Services/CN=wiggum.mcs.anl.gov
+verify return:1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, there were no errors. Errors would give you an extra line
+next to the subject name of the certificate that caused the error.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_check_that_the_server_certificate_is_valid">Check that the server certificate is valid</h5>
+<div class="paragraph">
+<p>Requires root login on server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    openssl verify -CApath /etc/grid-security/certificates -purpose sslserver
+     /etc/grid-security/hostcert.pem</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="security-gridmap-troubleshooting">Grid map Troubleshooting</h3>
+<div class="sect3">
+<h4 id="_grid_map_errors">Grid map errors</h4>
+<div class="paragraph">
+<p>The following are some common problems that may cause clients or servers
+to report that user are not authorized:</p>
+</div>
+<table id="gridmap-errors-table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Gridmap Errors</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Error Code</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Possible Solutions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The content of the grid map file does not conform to the expected format</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The content of the grid map file does not conform to the expected format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <a href="../../gsic/pi/index.html#grid-mapfile-check-consistency"><strong><code>grid-mapfile-check-consistency</code></strong></a> to make sure that your gridmap file conforms to the expected format.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The grid map file does not contain a entry for your DN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The grid map file does not contain a entry for your DN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <a href="../../gsic/pi/index.html#grid-mapfile-add-entry"><strong><code>grid-mapfile-add-entry</code></strong></a> to add the relevant entry.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gsic-pi-index">Index</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

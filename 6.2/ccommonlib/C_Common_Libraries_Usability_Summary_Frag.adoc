@@ -1,0 +1,4 @@
+
+There are no usability issues with the C common libraries as they are
+only intended for development.
+

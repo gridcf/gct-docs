@@ -1,0 +1,6 @@
+
+Usability improvements for MyProxy: 
+
+Please see the https://github.com/gridcf/gct/blob/globus_6_branch/myproxy/source/VERSION[MyProxy
+Release Notes] for details on this and other MyProxy versions.
+

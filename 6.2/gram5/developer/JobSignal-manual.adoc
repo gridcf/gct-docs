@@ -1,0 +1,65 @@
+[[Globus::GRAM::JobSignal]]
+= GLOBUS::GRAM::JOBSIGNAL(3pm) =
+:doctype: manpage
+:man source: 
+
+== NAME ==
+Globus::GRAM::JobSignal - GRAM Protocol JobSignal Constants
+
+[[ID-dde2a5ed0f147b3205232afefdde1cf6]]
+== DESCRIPTION ==
+
+The Globus::GRAM::JobSignal module defines symbolic names for the
+JobSignal constants in the GRAM Protocol. 
+
+
+
+--------
+
+--------
+
+
+[[ID-0b9db17dce2bf5bf77e6e0e93adbbea3]]
+=== Methods ===
+
+
+***********************************************************************
+--------
+
+--------
+
+***********************************************************************
+
+
+**$value = Globus::GRAM::CANCEL()**::
+     Return the value of the CANCEL constant.
+
+**$value = Globus::GRAM::SUSPEND()**::
+     Return the value of the SUSPEND constant.
+
+**$value = Globus::GRAM::RESUME()**::
+     Return the value of the RESUME constant.
+
+**$value = Globus::GRAM::PRIORITY()**::
+     Return the value of the PRIORITY constant.
+
+**$value = Globus::GRAM::COMMIT_REQUEST()**::
+     Return the value of the COMMIT_REQUEST constant.
+
+**$value = Globus::GRAM::COMMIT_EXTEND()**::
+     Return the value of the COMMIT_EXTEND constant.
+
+**$value = Globus::GRAM::STDIO_UPDATE()**::
+     Return the value of the STDIO_UPDATE constant.
+
+**$value = Globus::GRAM::STDIO_SIZE()**::
+     Return the value of the STDIO_SIZE constant.
+
+**$value = Globus::GRAM::STOP_MANAGER()**::
+     Return the value of the STOP_MANAGER constant.
+
+**$value = Globus::GRAM::COMMIT_END()**::
+     Return the value of the COMMIT_END constant.
+
+
+

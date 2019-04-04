@@ -1,0 +1,21 @@
+s=2008-06-30T23:40:28.478631Z id=20787 event=globus-gridftp-server.configuration.start
+ts=2008-06-30T23:40:28.478784Z id=20787 event=globus-gridftp-server.configuration.end configfile=none status=0
+ts=2008-06-30T23:40:28.479035Z id=20787 event=globus-gridftp-server.start mode=inetd contact=localhost:5678
+ts=2008-06-30T23:40:28.479229Z id=20787 event=globus-gridftp-server.session.start remotehost=localhost:39820
+ts=2008-06-30T23:40:28.479485Z id=20787 event=globus-gridftp-server.session.authn.start
+ts=2008-06-30T23:40:28.561627Z id=20787 event=globus-gridftp-server.session.authn.end user=:globus-mapping: DN="/DC=org/DC=doegrids/OU=People/CN=Somebody" status=0
+ts=2008-06-30T23:40:28.561695Z id=20787 event=globus-gridftp-server.session.authz.start user=:globus-mapping: DN="/DC=org/DC=doegrids/OU=People/CN=Somebody"
+ts=2008-06-30T23:40:28.564776Z id=20787 event=globus-gridftp-server.session.authz.end localuser=someuser DN="/DC=org/DC=doegrids/OU=People/CN=Somebody" status=0
+ts=2008-06-30T23:40:28.719876Z id=20787 event=globus-gridftp-server.transfer.start file="/tmp/x"
+ts=2008-06-30T23:40:28.723936Z id=20787 event=globus-gridftp-server.transfer.end
+localuser=someuser file=/tmp/x tcpbuffer=87872 blocksize=262144 bytes=262144 streams=1 stripes=1 remoteIP=127.0.0.1 type=RETR  status=0
+ts=2008-06-30T23:40:28.761623Z id=20787 event=globus-gridftp-server.session.end remotehost=localhost:39820 status=0
+ts=2008-06-30T23:40:28.761764Z id=20787 event=globus-gridftp-server.end status=0
+ts=2008-06-30T23:40:23.993925Z id=20784 event=globus-gridftp-server.configuration.start
+ts=2008-06-30T23:40:23.994095Z id=20784 event=globus-gridftp-server.configuration.end configfile=none status=0
+ts=2008-06-30T23:40:23.994666Z id=20784 event=globus-gridftp-server.start mode=daemon contact=localhost:5678
+ts=2008-06-30T23:40:28.467512Z id=20784 event=globus-gridftp-server.child.start c.id=20787
+ts=2008-06-30T23:40:28.763239Z id=20784 event=globus-gridftp-server.child.end c.id=20787 exitcode=0 status=0
+ts=2008-06-30T23:40:55.286246Z id=20784 event=globus-gridftp-server.cleanup.start
+ts=2008-06-30T23:40:55.286356Z id=20784 event=globus-gridftp-server.cleanup.end status=0
+ts=2008-06-30T23:40:55.286507Z id=20784 event=globus-gridftp-server.end status=0

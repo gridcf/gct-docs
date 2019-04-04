@@ -1,0 +1,10 @@
+
+[[gsic-outstanding]]
+=== Known Problems in GSIC ===
+
+
+
+* http://jira.globus.org/browse/GT-106[GT-106]: Free requirement for cred_get_subject_name not in API docs
+
+
+

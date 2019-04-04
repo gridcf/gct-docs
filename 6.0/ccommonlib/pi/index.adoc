@@ -1,0 +1,20 @@
+
+[[ccommonlibPI,Public Interface Guide]]
+:doctype: book
+= GCT 6.0 Component Guide to Public Interfaces: C Common Libraries =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+  
+include::../C_Common_Libraries_Interface_API_Frag.adoc[]
+
+ 
+[[ccommonlib-pi-env]]
+== Environment variable interface ==
+
+
+include::../C_Common_Libraries_Interface_Env_Frag.adoc[]
+
+ 

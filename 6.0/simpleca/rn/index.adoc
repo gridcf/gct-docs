@@ -1,0 +1,46 @@
+[[simplecaRN,Release Notes]]
+:doctype: article
+= GT 6.0 Release Notes: SimpleCA =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+[[simpleca-rn-overview]]
+== Component Overview ==
+
+
+include::../Cred_Mgmt_SimpleCA_Overview_Brief_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Feature_Summary_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Change_Summary_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Fixed_Bugs_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Known_Problems_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Dependencies_Summary_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Platform_Summary_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Compatibility_Summary_Frag.adoc[]
+
+ 
+include::../Cred_Mgmt_SimpleCA_Associated_Standards_Frag.adoc[]
+
+ 
+[[simpleca-rn-formoreinfo]]
+== For More Information ==
+
+See link:../../admin/install/appendix.html#gtadmin-simpleca[Installing
+SimpleCA] for more information about this component. 

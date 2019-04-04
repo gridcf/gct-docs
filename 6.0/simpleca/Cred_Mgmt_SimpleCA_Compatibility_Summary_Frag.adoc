@@ -1,0 +1,36 @@
+
+[[simpleca-compatibilitysummary]]
+=== Backward Compatibility Summary ===
+
+Protocol changes for SimpleCA since GT 5.2
+
+
+
+
+* Not applicable
+
+
+API changes since GT 5.2
+
+
+
+
+* Not applicable
+
+
+Exception changes since GT 5.2
+
+
+
+
+* Not applicable
+
+
+Schema changes since GT 5.2
+
+
+
+
+* Not applicable
+
+

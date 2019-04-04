@@ -1,0 +1,86 @@
+[[gram5-cmd-globus-job-status]]
+= GLOBUS-JOB-STATUS(1) =
+:doctype: manpage
+:man source: University of Chicago
+
+== NAME ==
+globus-job-status - Check the status of a GRAM5 job
+
+== SYNOPSIS ==
+**++globus-job-status++** 'JOBID' 
+
+== Description ==
+
+The **++globus-job-status++** program checks the status of a GRAM job by
+sending a status request to the job manager contact for that job
+specifed by the 'JOBID' parameter. If successful, it will print the job
+status to standard output. The states supported by
+**++globus-job-status++** are: 
+
+**PENDING**::
+     The job has been submitted to the LRM but has not yet begun execution.
+
+**ACTIVE**::
+     The job has begun execution.
+
+**FAILED**::
+     The job has failed.
+
+**SUSPENDED**::
+     The job is currently suspended by the LRM.
+
+**DONE**::
+     The job has completed.
+
+**UNSUBMITTED**::
+     The job has been accepted by GRAM, but not yet submitted to the LRM.
+
+**STAGE_IN**::
+     The job has been accepted by GRAM and is currently staging files prior
+to being submitted to the LRM.
+
+**STAGE_OUT**::
+     The job has completed execution and is currently staging files from the
+service node to other http, GASS, or GridFTP servers.
+
+
+
+== Options ==
+
+The full set of options to **++globus-job-status++** are: 
+
+**-help, -usage**::
+     Display a help message to standard error and exit.
+
+**-version**::
+     Display the software version of the **++globus-job-status++** program to standard output.
+
+**-versions**::
+     Display the software version of the **++globus-job-status++** program including DiRT information to standard output.
+
+
+
+== ENVIRONMENT ==
+
+If the following variables affect the execution of
+**++globus-job-status++**. 
+
+**X509_USER_PROXY**::
+     Path to proxy credential.
+
+**X509_CERT_DIR**::
+     Path to trusted certificate directory.
+
+
+
+== Bugs ==
+
+The **++globus-job-status++** program can not distinguish between the
+case of the job manager terminating for any reason and the job being in
+the ++DONE++ state. 
+
+
+== See Also ==
+
+++globusrun(1)++ 
+

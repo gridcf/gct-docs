@@ -1,0 +1,6 @@
+
+[[simpleca-associatedstandards]]
+=== Associated Standards ===
+
+Globus SimpleCA generates X.509v3 certificates
+

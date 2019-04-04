@@ -1,0 +1,18 @@
+
+[[gsiopenssh-platforms]]
+=== Tested platforms ===
+
+Tested Platforms for GSI-OpenSSH
+
+
+
+
+* Mac OS X 10.5
+
+* x86/x86_64 GNU/Linux
+
+* PPC AIX 5.3
+
+* Sun4u Solaris 5.10
+
+

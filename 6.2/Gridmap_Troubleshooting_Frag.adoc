@@ -1,0 +1,25 @@
+
+[[security-gridmap-troubleshooting]]
+=== Grid map Troubleshooting ===
+
+
+==== Grid map errors ====
+
+The following are some common problems that may cause clients or servers
+to report that user are not authorized: 
+
+
+[[gridmap-errors-table]]
+[options='header']
+.Gridmap Errors
+|=======================================================================
+| Error Code | Definition | Possible Solutions
+
+| ++The content of the grid map file does not conform to the expected format++
+| The content of the grid map file does not conform to the expected format
+| Run link:../../gsic/pi/index.html#grid-mapfile-check-consistency[**++grid-mapfile-check-consistency++**] to make sure that your gridmap file conforms to the expected format.
+| ++The grid map file does not contain a entry for your DN++
+| The grid map file does not contain a entry for your DN
+| Use link:../../gsic/pi/index.html#grid-mapfile-add-entry[**++grid-mapfile-add-entry++**] to add the relevant entry.
+|=======================================================================
+

@@ -1,0 +1,47 @@
+[[gsicRN,Release Notes]]
+:doctype: article
+= GT 6.0 GSI C Release Notes =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+
+  
+[[gsic-rn-overview]]
+== Component Overview ==
+
+
+include::../GSIC_Overview_Brief_Frag.adoc[]
+
+ 
+include::../GSIC_Feature_Summary_Frag.adoc[]
+
+ 
+include::../GSIC_Change_Summary_Frag.adoc[]
+
+ 
+include::../GSIC_Fixed_Bugs_Frag.adoc[]
+
+ 
+include::../GSIC_Known_Problems_Frag.adoc[]
+
+ 
+include::../GSIC_Dependencies_Summary_Frag.adoc[]
+
+ 
+include::../GSIC_Platform_Summary_Frag.adoc[]
+
+ 
+include::../GSIC_Compatibility_Summary_Frag.adoc[]
+
+ 
+include::../GSIC_Associated_Standards_Frag.adoc[]
+
+ 
+[[gsic-rn-formoreinfo]]
+== For More Information ==
+
+See link:../../gsic/index.html[GSI C] for more information about this component. 
+
+  

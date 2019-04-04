@@ -1,0 +1,21 @@
+
+[[xio-driver-popen]]
+=== Pipe Open Driver ===
+
+This driver will run an executable program with pipes connecting STDIN
+and STDOUT of the program to this Globus XIO driver. In this way buffers
+are routed from Globus XIO to the executable. This driver is most
+notably used with ssh for running remote programs over a secure link.
+
+String Options
+
+
+
+
+* blocking=
+
+* pass_env=
+
+* argv=
+
+

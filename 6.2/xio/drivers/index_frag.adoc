@@ -1,0 +1,31 @@
+[appendix]
+[[xio-driver-addons,Add-on]]
+= Add on =
+
+[[xio-drivers-addon-intro]]
+== Introduction ==
+
+Here we describe a GPT bundle of some useful GlobusXIO drivers. The
+drivers are not packaged with the standard globus release because they
+require external dependencies, or are otherwise best distributed in a
+separate release. Here you can get each driver individually, or a bundle
+of all the drivers.
+
+
+include::XIO_Driver_UDT_REF_Frag.adoc[]
+
+
+include::XIO_Driver_Token_Bucket_Frag.adoc[]
+
+
+include::XIO_Driver_Popen_Frag.adoc[]
+
+
+include::XIO_Driver_BIDI_Frag.adoc[]
+
+
+include::XIO_Driver_Netlog_Frag.adoc[]
+
+
+include::XIO_Driver_Skeleton_Frag.adoc[]
+

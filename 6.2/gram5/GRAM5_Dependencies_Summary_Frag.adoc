@@ -1,0 +1,9 @@
+
+[[gram5-dependencies]]
+=== Technology dependencies ===
+
+indexterm:[dependencies]
+GRAM depends on the following GCT components:
+* Globus Common
+* GSI C
+* GridFTP server

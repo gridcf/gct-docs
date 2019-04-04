@@ -1,0 +1,11 @@
+
+[[xio-security-considerations]]
+=== Security considerations for XIO ===
+
+Globus XIO is a framework for creating network protocols. Several
+existing protocols, such as TCP, come built into the framework. XIO
+itself introduces no known security risks. However, all network
+applications expose systems to the risks inherent when outsiders can
+connect to them. Also included in the XIO distribution is the GSI
+driver, which provides a driver that allows for secure connections. 
+

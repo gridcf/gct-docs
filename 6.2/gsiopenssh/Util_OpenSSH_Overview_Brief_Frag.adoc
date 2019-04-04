@@ -1,0 +1,11 @@
+GSI-OpenSSH is a modified version of OpenSSH that adds support for X.509
+proxy certificate authentication and delegation, providing a single
+sign-on remote login and file transfer service. GSI-OpenSSH can be used
+to login to remote systems and transfer files between systems without
+entering a password, relying instead on a valid proxy credential for
+authentication. GSI-OpenSSH forwards proxy credentials to the remote
+system on login, so commands requiring proxy credentials (including
+GSI-OpenSSH commands) can be used on the remote system without the need
+to manually create a new proxy credential on that system. For more
+information about GSI-OpenSSH, see the
+http://grid.ncsa.illinois.edu/ssh/[GSI-OpenSSH Home Page]. 

@@ -1,0 +1,73 @@
+[[globus-gatekeeper-admin]]
+= GLOBUS-GATEKEEPER-ADMIN(8) =
+:doctype: manpage
+:man source: University of Chicago
+
+== NAME ==
+globus-gatekeeper-admin - Manage globus-gatekeeper services
+
+== SYNOPSIS ==
+**++globus-gatekeeper-admin++** [++-h++ ] 
+
+== Description ==
+
+The **++globus-gatekeeper-admin++** program manages service entries
+which are used by the **++globus-gatekeeper++** to execute services.
+Service entries are located in the ++/etc/grid-services++ directory. The
+directory. The **++globus-gatekeeper-admin++** can list, enable, or
+disable specific services, or set a service as the default. The '-h'
+command-line option shows a brief usage message. 
+
+
+=== Listing services ===
+
+The '-l' command-line option to **++globus-gatekeeper-admin++** will
+cause it to list all of the services which are available to be run by
+the **++globus-gatekeeper++**. In the output, the service name will be
+followed by its status in brackets. Possible status strings are
+++ENABLED++, ++DISABLED++, and ++ALIAS to ++, where 'NAME' is another
+service name. 
+
+If the '-n ' is used, then only information about the service named
+'NAME' is printed. 
+
+
+
+=== Enabling services ===
+
+The '-e ' command-line option to **++globus-gatekeeper-admin++** will
+cause it to enable a service so that it may be run by the
+**++globus-gatekeeper++**. 
+
+If the '-n ' option is used as well, then the service will be enabled
+with the alias 'NAME'. 
+
+
+
+=== Enabling a default service ===
+
+The '-E' command-line option to **++globus-gatekeeper-admin++** will
+cause it to enable a service alias with the name ++jobmanager++. The
+**++globus-gatekeeper-admin++** program will choose the first service it
+finds as the default. To enable a particular service as the default, use
+the '-e' parameter described above with the '-n' parameter. 
+
+
+
+=== Disabling services ===
+
+The '-d ' command-line option to **++globus-gatekeeper-admin++** will
+cause it to disable a service so that it may not be run by the
+**++globus-gatekeeper++**. All aliases to a disabled service are also
+disabled. 
+
+
+
+== Files ==
+
+
+
+**++/etc/grid-services++  **::
+     Default location of enabled gatekeeper service descriptions.
+
+

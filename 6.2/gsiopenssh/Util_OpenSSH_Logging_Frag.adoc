@@ -1,0 +1,23 @@
+
+[[gsiopenssh-logging]]
+=== Logging ===
+
+The GSI-OpenSSH server logs to the system logger (syslog). Log messages
+from OpenSSH are unmodified in GSI-OpenSSH. GSI-specific log messages
+include: 
+
+
+
+--------
+
+failed to map GSI user DN
+GSI user DN mapped to target user username
+GSI user DN is authorized as target user username
+GSI user DN is not authorized as target user username
+
+--------
+
+In the messages above, DN is replaced with the client certificate
+subject distinguished name, and username is replaced with the local Unix
+username. 
+

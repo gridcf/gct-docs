@@ -1,0 +1,58 @@
+[[gsicAdmin,Admin Guide]]
+:doctype: book
+= GCT 6.0: GSI C Admin Guide =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+  
+[[gsic-admin-introduction]]
+
+.Introduction
+--
+This guide contains advanced configuration information for system
+administrators working with GSI C. It provides references to information
+on procedures typically performed by system administrators, including
+installation, configuring, deploying, and testing the installation.
+
+The security tools are installed as part of the Grid Community Toolkit
+installation process. For instructions on basic installation of the
+Grid Community Toolkit, see the link:../../admin/install/index.html[Grid Community Toolkit
+Installation Guide].
+
+Authentication in the Grid Community Toolkit is based on X.509 certificates.
+This document describes the configuration steps required to:
+
+* determine whether or not to trust certificates issued by a particular
+  Certificate Authority (CA),
+* provide appropriate default values for use by the **++grid-cert-request++**
+  command, which is used to generate certificates, 
+* request service certificates, used by services to authenticate themselves to
+  users, and 
+* specify identity mapping information.
+--
+
+include::../GSIC_Interface_Config_Frag.adoc[]
+
+[[gsic-admin-testing]]
+== Testing ==
+
+--
+There is no content available at this time.
+--
+ 
+[[gsic-admin-security_considerations]]
+== Security Considerations ==
+include::../GSIC_Security_Considerations_Frag.adoc[]
+
+[[gsic-admin-debugging]]
+== Debugging ==
+include::../GSIC_Logging_Frag.adoc[]
+ 
+[[gsic-admin-troubleshooting]]
+== Troubleshooting ==
+
+include::../../Credential_Troubleshooting_Frag.adoc[]
+
+include::../../Gridmap_Troubleshooting_Frag.adoc[]

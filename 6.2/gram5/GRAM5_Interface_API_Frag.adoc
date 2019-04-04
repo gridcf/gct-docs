@@ -1,0 +1,44 @@
+[[gram5-apis]]
+== APIs ==
+
+
+=== C API Documentation Links ===
+
+
+indexterm:[apis,overview]
+**http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fprotocol.html[GRAM Protocol]**::
+     Low-level functions for processing GRAM protocol messages. Symbolic constants for RSL attributes, signals, and job states.
+
+**http://www.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fclient.html[GRAM Client]**::
+     Functions for submitting job requests, sending signals, and listening for job state updates.
+
+**http://www.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5frsl.html[RSL]**::
+     Functions for parsing and manipulating job specifications in the RSL language.
+
+**http://www.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fscheduler%5f%5fevent%5f%5fgenerator.html[Scheduler Event Generator]**::
+     Functions for generating and parsing LRM-independent job state change events.
+
+
+
+=== GRAM5 Perl API Reference ===
+
+GRAM5 also provides a Perl API for creating LRM interface implementations.
+
+:leveloffset: 3
+
+include::developer/Error-manual.adoc[]
+
+
+include::developer/JobDescription-manual.adoc[]
+
+
+include::developer/JobManager-manual.adoc[]
+
+
+include::developer/JobSignal-manual.adoc[]
+
+
+include::developer/JobState-manual.adoc[]
+
+:leveloffset: 0
+:doctype: book

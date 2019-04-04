@@ -1,0 +1,11 @@
+
+[[gtadmin-appendixptr]]
+== Appendix ==
+
+
+--
+The Install Guide appendix can be found
+link:../../admin/install/appendix.html[here.]
+
+
+--

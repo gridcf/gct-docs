@@ -1,0 +1,63 @@
+
+[[gtadmin-prereq-chap]]
+== Software Prerequisites ==
+
+
+[[gtadmin-prereq]]
+=== Required software ===
+
+To build the Grid Community Toolkit from the source installer, first download
+the source from
+http://www.globus.org/toolkit/downloads/{version}[download page], and
+be sure you have all of the following prerequisites installed. 
+
+This table shows specific package names (where available) for systems
+supported by GCT 6.0: 
+
+[options='header']
+|=======================================================================
+| Prerequisite | Reason | RedHat-based Systems | Debian-based Systems | Solaris 11 | Mac OS X
+
+| C Compiler | Most of the toolkit is written in C, using C99 and POSIX.1 features and libraries.  | gcc | gcc | pkg:/developer/gcc-45 or http://www.oracle.com/technetwork/server-storage/solarisstudio/downloads/index.html[Solaris Studio] 12.3
+| https://developer.apple.com/xcode/[XCode]
+| GNU or BSD sed
+| Standard sed does not support long enough lines to process autoconf-generated
+  scripts and Makefiles
+| sed
+| sed
+| pkg:/text/gnu-sed
+| (included in OS)
+| GNU Make
+| Standard make does not support long enough lines to process
+  autoconf-generated makefiles
+| make
+| make
+| pkg:/developer/build/gnu-make
+| (included in XCode)
+| OpenSSL 0.9.8 or higher
+| GSI security uses OpenSSL's implementation of the SSL protocol and X.509
+  certificates.
+| openssl-devel
+| libssl-dev
+| pkg:/library/security/openssl
+| (included in base OS)
+| Perl 5.10 or higher
+| Parts of GRAM5 are written in Perl, as are many test scripts
+| perl
+| perl
+| pkg:/runtime/perl-512
+| (included in base OS)
+| pkg-config
+| Parts of GRAM5 are written in Perl
+| pkgconfig
+| pkg-config
+| pkg:/developer/gnome/gettext
+| Download and install from http://pkgconfig.freedesktop.org/releases/[freedesktop.org source packages]
+|=======================================================================
+
+[NOTE]
+--
+In order to use the GNU versions of sed, tar, and make on Solaris, put ++/usr/gnu/bin++ at the head of your path. Also, to use all of the perl executables, add  at the head of your path. Also, to use all of the perl executables, add ++/usr/perl5/bin++ to your path. to your path.
+--
+
+

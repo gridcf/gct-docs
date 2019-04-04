@@ -1,0 +1,544 @@
+
+[[gsic-configuring]]
+== Configuring GSI ==
+
+
+--
+This section describes the configuration steps required to:
+
+* Configure SSL/TLS security parameters
++
+determine whether or not to trust certificates issued by a particular Certificate Authority (CA),
+
+* provide appropriate default values for use by the link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**] command, which is used to generate certificates,
+
+* request service certificates, used by services to authenticate themselves to users, and
+
+* specify identity mapping information.
+
+
+
+In general, GCT tools will look for a configuration file in a
+user-specific location first, and in a system-wide location if no
+user-specific file was found. The configuration commands described here
+may be run by administrators to create system-wide defaults and by
+individuals to override those defaults.
+
+
+--
+
+[[gsic-configuring-global-security-parameters]]
+=== Configuring Global Security Parameters ===
+
+The configuration file described here was added with the package
+globus-gssapi-gsi-11.16 and the toolkit binary package version
+6.0.1430141288.
+
+The global security parameters for GSIC are included in the file
+++/etc/grid-security/gsi.conf++. This file contains the default values used by all
+GSI-enabled servers and clients. The format of the file is a sequence of
+lines containing a single NAME=VALUE pair, with comments beginning with
+the ++#++ character. All values in the default configuration file may be
+overridden by setting the corresponding environment variable for a
+particular process. 
+
+The NAME strings that are currently understood are 
+
+[options='header']
+.GSI Configuration Values
+|=======================================================================
+| Configuration Entry | Description | Environment Override | Default Value
+| ++FORCE_TLS++
+| A flag to choose whether to force TLS or
+  to allow SSLv3 as well. Set this to ++true++ to
+  disable SSLv3, or ++false++ to allow either to be
+  negotiated.
+| ++GLOBUS_GSSAPI_FORCE_TLS++
+| ++false++
+| ++NAME_COMPATIBILITY++
+| GSSAPI Name compatibility mode when trying to
+  determine if a host certificate is legitimate. GSI predates
+  http://tools.ietf.org/html/rfc2818[RFC2818],
+  so old versions of GSI use some old, less-secure,
+  practices. The possible values are described in
+  link:../../gsic/pi/index.html#gsic-env-name[GLOBUS_GSSAPI_NAME_COMPATIBILITY]
+| ++GLOBUS_GSSAPI_NAME_COMPATIBILITY++
+| ++HYBRID++
+| ++CIPHERS++
+| OpenSSL Cipher List. This is an preference-ordered list of OpenSSL cipher
+  names. See the https://www.openssl.org/docs/apps/ciphers.html[OpenSSL cipher
+  documentation] for information on the syntax of this string.
+| ++GLOBUS_GSSAPI_CIPHERS++
+| ++HIGH++
+|=======================================================================
+
+
+
+[[gsic-configuring-trustCA]]
+=== Configuring GCT to Trust a Particular Certificate Authority ===
+
+
+==== Trusted certificates directory ====
+
+The GCT tools will trust certificates issued by a CA if (and only if)
+it can find information about the CA in the trusted certificates
+directory.
+
+The trusted certificates directory is located as described below and
+exists either on a per-machine or on a per-installation basis. 
+
+++X509_CERT_DIR++ is the environment variable used to specify the path
+to the trusted certificates directory. This directory contains
+information about which CAs are trusted (including the CA certificates
+themselves) and, in some cases, configuration information used by
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+to formulate certificate requests. The location of the trusted
+certificates directory is looked for in the following order: 
+. value of the ++X509_CERT_DIR++ environment variable
+
+. ++$HOME/.globus/certificates++
+
+. ++/etc/grid-security/certificates++ exists exists
+
+. ++$GLOBUS_LOCATION/share/certificates++
+
+
+
+
+==== Trusted certificates files ====
+
+The following two files must exist in the directory for each trusted CA:
+
+'cert_hash'++.0++::
+    The trusted CA Certificate.
+'cert_hash'++.signing_policy++::
+    A configuration file defining the distinguished names of certificates
+    signed by the CA.
+
+GCT components will honor a certificate only if: 
+
+* its CA certificate exists (with the appropriate name) in the **TRUSTED_CA** directory, and
+
+* the certificate's distinguished name matches the pattern described in the signing policy file.
+
+
+
+
+==== Hash of the CA certificate ====
+
+The **cert_hash** that appears in the file names above is the hash of
+the CA certificate, which can be found by running the command:
+
+
+
+--------
+openssl x509 -hash -noout < ca_certificate
+--------
+
+
+==== Creating a signing policy by hand ====
+
+Some CAs provide tools to install their CA certificates and signing
+policy files into the trusted certificates directory. You can, however,
+create a signing policy file by hand; the signing policy file has the
+following format:
+
+
+
+--------
+access_id_CA X509 'CA Distinguished Name'
+pos_rights globus CA:sign
+cond_subjects globus '"Distinguished Name Pattern"'
+--------
+
+In the above, the **CA Distinguished Name** is the subject name of the
+CA certificate, and the **Distinguished Name Pattern** is a string used
+to match the distinguished names of certificates granted by the CA. 
+
+Some very simple wildcard matching is done: if the **Distinguished Name
+Pattern** ends with a '*', then any distinguished name that matches the
+part of the CA subject name before the '*' is considered a match. 
+
+Note: the cond_subjects line may contain a space-separated list of
+distinguished name patterns.
+
+
+==== Repository of CAs ====
+
+A repository of CA certificates that are widely used in academic and
+research settings can be found https://www.tacar.org/certs.html[here].
+
+
+=== Configuring GCT to Create Appropriate Certificate Requests ===
+
+The
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+command, which is used to create certificates, uses the following
+configuration files:
+
+
+
+++globus-user-ssl.conf++::
+    Defines the distinguished name to use for a user's certificate request. The
+    format is described 
+    http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT[here].
+++globus-host-ssl.conf++::
+    Defines the distinguished name for a host (or service) certificate request.
+    The format is described 
+    http://www.openssl.org/docs/apps/req.html#CONFIGURATION_FILE_FORMAT[here].
+++grid-security.conf++:
+    A base configuration file that contains the name and email address for the
+    CA.
+++directions++:
+    An optional file that may contain directions on using the CA.
+
+Many CAs provide tools to install configuration files with the following
+names in the Trusted Certificates directory:
+
+* ++globus-user-ssl.conf.++'cert_hash'
+* ++globus-host-ssl.conf.++'cert_hash'
+* ++grid_security.conf.++'cert_hash'
+* ++directions.++'cert_hash'
+
+
+
+==== Creating a certificate request for a specific CA ====
+
+The command:
+
+
+
+--------
+grid-cert-request -ca cert_hash
+--------
+
+will create a certificate request based on the specified CA's
+configuration files. 
+
+
+==== Listing available CAs ====
+
+The command:
+
+
+
+--------
+grid-cert-request -ca
+--------
+
+will list the available CAs and let the user choose which one to create
+a request for.
+
+
+==== Specifying a default CA for certificate requests ====
+
+The default CA is the CA that will be used for certificate requests if
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+is invoked without the '-ca' flag. 
+
+You can specify a default CA by invoking the
+link:../../gsic/pi/index.html#grid-default-ca[**++grid-default-ca++**]
+command (follow the link for examples of using the command).
+
+
+==== ++directions++ file file ====
+
+The ++directions++ file may contain specific directions on how to use
+the CA. There are three types of printed messages:  file may contain
+specific directions on how to use the CA. There are three types of
+printed messages: 
+
+* **REQUEST HEADER**, printed to a certificate request file,
+
+* **USER INSTRUCTIONS**, printed on the screen when one requests a user certificate,
+
+* **NONUSER INSTRUCTIONS**, printed on the screen when one requests a certificate for a service.
+
+
+
+Each message is delimited from others with lines **----- BEGIN message
+type TEXT -----** and **----- END message type TEXT -----**. For
+example, the ++directions++ file would contain the following lines: file
+would contain the following lines:
+
+
+
+--------
+----- BEGIN REQUEST HEADER TEXT -----
+This is a Certificate Request file
+
+It should be mailed to ${GSI_CA_EMAIL_ADDR}
+ ----- END REQUEST HEADER TEXT -----
+--------
+
+If this file does not exist, the default messages are printed.
+
+
+=== Requesting Service Certificates ===
+
+Different CAs use different mechanisms for issuing end-user
+certificates; some use mechanisms that are entirely web-based, while
+others require you to generate a certificate request and send it to the
+CA. If you need to create a certificate request for a service
+certificate, you can do so by running:
+
+
+
+--------
+grid-cert-request -host hostname -service service_name
+--------
+
+where **hostname** is the fully-qualified name of the host on which the
+service will be running, and **service_name** is the name of the
+service. This will create the following three files:
+
+
+
+'GRID_SECURITY/service_name/service_name'++cert.pem++::
+    An empty file. When you receive your actual service certificate from your
+    CA, you should place it in this file.
+'GRID_SECURITY/service_name/service_name'++cert_request.pem++::
+    The certificate request, which you should send to your CA.
+'GRID_SECURITY/service_name/service_name'++key.pem++::
+    The private key associated with your certificate request, encrypted with
+    the pass phrase that you entered when prompted by
+    **++grid-cert-request++**.
+
+The
+link:../../gsic/pi/index.html#grid-cert-request[**++grid-cert-request++**]
+command recognizes several other useful options; you can list these
+with:
+
+
+
+--------
+grid-cert-request -help
+--------
+
+
+[[setting-up-gridmap]]
+=== Configuring Credential Mappings ===
+
+Several GCT services map certificates to local unix usernames to be
+used with unix services. The default implementation uses a gridmap file
+to map the distinguished name of the identity of the client's
+certificate to a local login name. Administrators can modify the
+contents of the gridmap file to control what certificate identities are
+allowed to access GCT services, as well as configure, via an
+environment variable, what gridmap file a particular service uses. 
+
+In addition to the identity-based mapping done via the gridmap file,
+administrators can configure GCT services to to use arbitrary mapping
+functions. These may use other criteria, such as SAML assertions, to map
+a certificate to a local account, or may map certificates to temporary
+accounts. Administrators can install different mapping implementations
+and configure services to use them by creating appropriate configuration
+files and setting environment variables. 
+
+
+==== Configuring Identity Mappings Using ++gridmap++ Files Files ====
+
+Gridmap files contain a database of entries mapping distinguished names
+to local user names. These may be manipulated by using the following
+tools. 
+
+
+===== Adding an entry to a gridmap file =====
+
+To add an entry to the gridmap file, run:
+
+
+
+--------
+$GLOBUS_LOCATION/sbin/grid-mapfile-add-entry \
+        -dn "Distinguished Name" \
+        -ln local_name
+--------
+
+
+===== Deleting an entry from a gridmap file =====
+
+To delete an entry from the gridmap file, run:
+
+
+
+--------
+$GLOBUS_LOCATION/sbin/grid-mapfile-delete-entry \
+        -dn "Distinguished Name" \
+        -ln local_name
+--------
+
+
+===== Checking consistency of a gridmap file =====
+
+To check the consistency of the gridmap file, run
+
+
+
+--------
+$GLOBUS_LOCATION/sbin/grid-mapfile-check-consistency
+--------
+
+
+===== Configuring per-service gridmap files =====
+
+To configure a service to use a particular gridmap file, set the
+++GRIDMAP++ variable in the service's environment to the path of the
+gridmap file. In this way, you can grant different access rights to
+different certificate identities on a per-service basis by setting the
+++GRIDMAP++ variable in different service environments. 
+
+You can use tools described above to operate on different gridmap files
+by either setting the ++GRIDMAP++ environment variable prior to invoking
+them, or by using the '-mapfile' command-line option. 
+
+For reference, the GSI C code looks for the gridmap in these locations: 
+
+++GRIDMAP++ environment variable::
+    Default
+++/etc/grid-security/grid-mapfile++::
+    For services running as root. </simpara>
+++HOME/.gridmap++:
+    For services not running as root.
+
+
+
+===== Gridmap formats =====
+
+A gridmap line of the form:
+
+
+
+--------
+"Distinguished Name" local_name
+--------
+
+maps the distinguished name 'Distinguished Name' to the local name
+'local_name'. 
+
+A gridmap line of the form:
+
+
+
+--------
+"Distinguished Name" local_name1,local_name2
+--------
+
+maps 'Distinguished Name' to both 'local_name1' and 'local_name2'; any
+number of local user names may occur in the comma-separated local name
+list.
+
+For more detailed information about the gridmap file see the
+https://dev.globus.org/wiki/Gridmap[file description and grammars] on
+dev.globus.org.
+
+
+==== Configuring Alternate Credential Mappings ====
+
+To use an alternative credential mapping, you create a
+++gsi-authz.conf++ file containing information about how the mapping
+functions are called from the authorization library.  file containing
+information about how the mapping functions are called from the
+authorization library. 
+
+To configure a per-service authorization configuration file, set the
+++GSI_AUTHZ_CONF++ variable to the path to the configuration file in the
+environment of the service. 
+
+For reference, the GSI C code looks for the authorization configuration
+file in these locations (in the given order): 
+
+. ++GSI_AUTHZ_CONF++ environment variable
+. ++/etc/grid-security/gsi-authz.conf++
+. ++GLOBUS_LOCATION/etc/gsi-authz.conf++
+. ++HOME/.gsi-authz.conf++
+
+
+===== Callout File Format =====
+
+The authorization file defines a set of callouts, one per line. Each
+callout is defined by an **abstract type**, **library**, and **symbol**
+separated by whitespace. Comments begin with the **#** character and
+continue to the end of line. 
+
+'abstract type'::
+    Type of the callout: **globus_mapping** is used for credential mapping
+    callouts
+'library'::
+    Path to the shared object containing the callout implementation. The
+    library name may be a literal filename, or a partial filename to which the
+    compilation flavor of the service is appended to the filename before its
+    extension.
+'symbol'::
+    The exported symbol containing the entry point to the callout
+    implementation.
+
+Here is a sample ++gsi-authz.conf++ file that configures a  file that
+configures a **globus_mapping** callout to use the
+**globus_gridmap_callout** function in the
+++/usr/local/globus/lib/libglobus_gridmap_callout++ shared
+object:  shared object: 
+
+--------
+
+# abstract-type     library                                            symbol
+
+globus_mapping      /opt/globus/lib/libglobus_gridmap_callout globus_gridmap_callout
+
+--------
+
+
+
+[[gsic-config-permissions]]
+=== GSI File Permissions Requirements ===
+
+
+
+* End Entity Certificate (User, Host and Service) Certificates and the GSI
+Authorization Callout Configuration File: 
+
+** May not be executable
+
+** May not be writable by group and other
+
+** Must be either regular files or soft links
+
+* Private Keys and Proxy Credentials: 
+
+** Must be owned by the current (effective) user
+
+** May not be executable
+
+** May not be readable by group and other
+
+** May not be writable by group and other
+
+** Must be either regular files or soft links
+
+* CA Certificates, CA Signing Policy Files, the Grid Map File and the GAA
+Configuration File: 
+
+** Must be either regular files or soft links
+
+** GSI Authorization callout configuration files
+
+** Must exist
+
+** Should be world readable
+
+** Should not be writable by group and other
+
+** Should be either a regular file or a soft link
+
+* GSI GAA configuration files:
+
+** Must exist
+
+** Should be world readable
+
+** Should not be writable by group and other
+
+** Should be either a regular file or a soft link
+
+
+

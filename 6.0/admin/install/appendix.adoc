@@ -1,0 +1,40 @@
+[[gtadminappendix]]
+:doctype: book
+
+= GCT 6.0 Installation Appendix =
+
+include::../../wascopied_frag.adoc[]
+
+include::../breadcrumb_frag.adoc[]
+
+ 
+include::advanced_build_frag.adoc[]
+
+ 
+include::packaging_frag.adoc[]
+
+ 
+include::env_vars_frag.adoc[]
+
+ 
+[[gtadmin-simpleca]]
+== Installing SimpleCA ==
+
+:leveloffset: 1
+
+include::../../simpleca/admin/guide_frag.adoc[]
+
+:leveloffset: 0
+ 
+include::troubleshooting_frag.adoc[]
+
+ 
+include::advanced_config_frag.adoc[]
+
+ 
+include::security_considerations_frag.adoc[]
+
+ 
+include::usage_stats_frag.adoc[]
+
+  
