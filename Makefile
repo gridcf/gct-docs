@@ -1,7 +1,7 @@
 default: all
 
 PDF_FILES = index.pdf
-HTML_FILES = index.html
+HTML_FILES = index.html 404.html
 
 SUBDIRS= 6.2
 
