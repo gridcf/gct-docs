@@ -42,7 +42,7 @@ You need the following items to use the SRB-DSI:
 
 
 
-* **Grid Community Toolkit** - You need the GridFTP distributed with GCT or GT (compatible with GT 4.0.1 or later and GCT 6.2 or later). You can find that http://www.globus.org/toolkit/downloads/{version}/[here].
+* **Grid Community Toolkit** - You need the GridFTP distributed with GCT or GT (compatible with GT 4.0.1 or later and GCT 6.2 or later). You can find that link:https://github.com/gridcf/gct/releases/latest[here].
 
 * **SRB Client 3.4.0** - You only need the client libraries to build the SRB-DSI, but you will need access to a running SRB server and resource. You can find the client libraries http://www.sdsc.edu/srb/tarfiles/main.html[here].
 

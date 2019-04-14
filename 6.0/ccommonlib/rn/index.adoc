@@ -41,7 +41,7 @@ include::../C_Common_Libraries_Associated_Standards_Frag.adoc[]
 [[ccommonlib-rn-formoreinfo]]
 == For More Information ==
 
-See the http://www.globus.org/api/c-globus-{version}/[C API pages] for
+See the http://toolkit.globus.org/api/c-globus-6.0/[C API pages] for
 more information about this component. 
 
  

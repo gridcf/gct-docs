@@ -148,6 +148,6 @@ and every 1 hour during the job manager lifetime:
 
 
 Also, please see our
-link:/toolkit/docs/latest-stable/Usage_Stats.html[policy statement] on
+link:../../Usage_Stats.html[policy statement] on
 the collection of usage statistics. 
 
