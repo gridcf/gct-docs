@@ -39,7 +39,7 @@ would transfer a file from a remote host to the locally accessible path
 specified in the second URL.
 
 The Grid Community Toolkit also provides
-http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fapi.html[FTP
+https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fftp%5f%5fclient%5f%5fapi.html[FTP
 client libraries in C] and the
 https://github.com/jglobus/JGlobus[jGlobus] provides Java client
 libraries for building custom GridFTP clients. 

@@ -6,16 +6,16 @@
 
 
 indexterm:[apis,overview]
-**http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fprotocol.html[GRAM Protocol]**::
+**https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgram%5f%5fprotocol.html[GRAM Protocol]**::
      Low-level functions for processing GRAM protocol messages. Symbolic constants for RSL attributes, signals, and job states.
 
-**http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fgram%5f%5fclient.html[GRAM Client]**::
+**https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgram%5f%5fclient.html[GRAM Client]**::
      Functions for submitting job requests, sending signals, and listening for job state updates.
 
-**http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5frsl.html[RSL]**::
+**https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5frsl.html[RSL]**::
      Functions for parsing and manipulating job specifications in the RSL language.
 
-**http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fscheduler%5f%5fevent%5f%5fgenerator.html[Scheduler Event Generator]**::
+**https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fscheduler%5f%5fevent%5f%5fgenerator.html[Scheduler Event Generator]**::
      Functions for generating and parsing LRM-independent job state change events.
 
 

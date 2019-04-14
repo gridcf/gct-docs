@@ -75,7 +75,7 @@ typedef globus_result_t
 --------
 
 See
-http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fxio%5f%5fgridftp%5f%5fdriver.html[driver
+https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fxio%5f%5fgridftp%5f%5fdriver.html[driver
 API doc] for more information. 
 
 We shall now take our first look at the file

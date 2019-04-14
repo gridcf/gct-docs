@@ -467,6 +467,6 @@ the Grid Community Toolkit.
 * http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html[Posix
 Threads API]
 * https://msdn.microsoft.com/en-us/library/windows/desktop/aa365198(v=vs.85).aspx[MSDN: Completion Ports and Thread Pooling]
-* http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fcommon.html[Globus Common API]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fcommon.html[Globus Common API]
 * http://www.cs.bgu.ac.il/~elhadad/se/events.html[Documentation on
 Programming with Events]

@@ -5,6 +5,6 @@
 
 === Component API ===
 
-See the http://toolkit.globus.org/api/c-globus-6.0/[C API pages] for
+See the https://gridcf.org/gct-docs/api/6.2/[C API pages] for
 other API documentation on globus_common.
 
