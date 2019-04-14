@@ -16,14 +16,14 @@ ADOC_TO_PDF = asciidoctor-pdf -d book -o $@ $< \
                --attribute=compat-mode \
                --attribute=last-update-label\! \
                --attribute=toc=left@ \
-               --attribute=version=6.0.0 \
-               --attribute=shortversion=6.0
+               --attribute=version=$(VERSION) \
+               --attribute=shortversion=$(SHORTVERSION)
 ADOC_TO_HTML = asciidoctor -d book -o $@ $< \
                --attribute=compat-mode \
                --attribute=last-update-label\! \
                --attribute=toc=left@ \
-               --attribute=version=6.0.0 \
-               --attribute=shortversion=6.0
+               --attribute=version=$(VERSION) \
+               --attribute=shortversion=$(SHORTVERSION)
 CONCAT_PDFS = gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=$@ $(filter %.pdf,$^)
 
 # default rule
