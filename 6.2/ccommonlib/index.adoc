@@ -27,7 +27,4 @@ The following guides are available for this component:
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
     version of GT or GCT
-| link:ccommonlib.pdf[**All C Common Libraries Guides (PDF only)**]
-| Includes all C Common Libraries guides except Public Interfaces (which is a
-    subset of the Developer's Guide).
 |=======================================================================

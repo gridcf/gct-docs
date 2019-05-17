@@ -45,7 +45,4 @@ The following guides are available for this component:
 | Information for migrating to this version if you were using a previous
   version of GCT.
 
-| link:gridftp.pdf[**All GridFTP Guides (PDF only)**]
-| Includes all GridFTP guides except Public Interfaces (which is a subset of
-  the Developer's Guide)
 |=======================================================================

@@ -43,7 +43,4 @@ include::GSIC_Overview_Brief_Frag.adoc[]
 | Information for migrating to this version if you were using a previous
     version of GT or GCT.
 
-| link:gsic.pdf[**All GSI C Guides (PDF only)**]
-| Includes all GSI C guides except Public Interfaces (which is a subset of
-    the Developer's Guide)
 |=======================================================================

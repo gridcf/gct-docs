@@ -6,10 +6,6 @@ include::../../wascopied_frag.adoc[]
 
 include::../breadcrumb_frag.adoc[]
 
---
-You can also download a link:gtCommands.pdf[PDF version here].
---
- 
 include::../../gsic/GSIC_Interface_Commandline_Frag.adoc[]
 
 :doctype: book

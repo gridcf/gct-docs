@@ -41,7 +41,4 @@ include::Cred_Mgmt_MyProxy_Overview_Brief_Frag.adoc[]
 | link:mig/index.html[**Migrating Guide**]
 | Information for migrating to this version if you were using a previous
   version of GT or GCT.
-| link:myproxy.pdf[**All GT/GCT MyProxy Guides (PDF only)**]
-| Includes all GT or GCT MyProxy guides except Public Interfaces
-  (which is a subset of the Developer's Guide)
 |=======================================================================
