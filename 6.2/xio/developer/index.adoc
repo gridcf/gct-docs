@@ -134,7 +134,7 @@ include::../XIO_Troubleshooting_Admin_Frag.adoc[]
 
 --
 
-* http://www-unix.mcs.anl.gov/~kettimut/xio/XIO%5fPerformance.pdf[Performance]
+* https://www.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf[Performance]
 
 
 --

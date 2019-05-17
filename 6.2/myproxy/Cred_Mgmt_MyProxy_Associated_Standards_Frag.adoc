@@ -7,7 +7,7 @@ Associated standards for MyProxy:
 
 
 
-* http://www.ggf.org/documents/GFD.54.pdf[GFD-E.054] MyProxy Protocol
+* http://www.ogf.org/documents/GFD.54.pdf[GFD-E.054] MyProxy Protocol
 
 * http://www.faqs.org/rfcs/rfc3820.html[RFC 3820] Proxy Certificates
 

@@ -40,7 +40,7 @@ include::../XIO_Fixed_Bugs_Frag.adoc[]
 
 
 
-* http://www-unix.mcs.anl.gov/%7ekettimut/xio/XIO%5fPerformance.pdf[http://www-unix.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf]
+* https://www.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf[https://www.mcs.anl.gov/~kettimut/xio/XIO_Performance.pdf]
 
 
  
