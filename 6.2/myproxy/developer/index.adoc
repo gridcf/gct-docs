@@ -68,9 +68,9 @@ The MyProxy system architecture and design is described in the following
 two publications: 
 
 
-* J. Basney, M. Humphrey, and V. Welch. http://www.ncsa.uiuc.edu/~jbasney/myproxy-spe.pdf[The MyProxy Online Credential Repository]. Software: Practice and Experience, 2005.
+* J. Basney, M. Humphrey, and V. Welch. http://www.ncsa.illinois.edu/People/jbasney/myproxy-spe.pdf[The MyProxy Online Credential Repository]. Software: Practice and Experience, 2005.
 
-* J. Novotny, S. Tuecke, and V. Welch. http://www.globus.org/alliance/publications/papers/myproxy.pdf[An Online Credential Repository for the Grid: MyProxy]. Proceedings of the Tenth International Symposium on High Performance Distributed Computing (HPDC-10), IEEE Press, August 2001.
+* J. Novotny, S. Tuecke, and V. Welch. http://toolkit.globus.org/alliance/publications/papers/myproxy.pdf[An Online Credential Repository for the Grid: MyProxy]. Proceedings of the Tenth International Symposium on High Performance Distributed Computing (HPDC-10), IEEE Press, August 2001.
 
 
 

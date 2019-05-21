@@ -6,8 +6,8 @@ include::../wascopied_frag.adoc[]
 
 ifdef::backend-html5[link:../index.html[GCT] -> Appendices]
 --
-* link:commands/index.html[Grid Community Toolkit 6.2 Commandline Tools] [link:commands/gctCommands.pdf[PDF]]
-* link:developer/index.html[Grid Community Toolkit 6.2 Developer's Guide] [link:developer/gctDeveloperGuide.pdf[PDF]]
-* link:key/index.html[Grid Community Toolkit 6.2 Key Concepts] [link:key/gctKeyConcepts.pdf[PDF]]
-* link:mig/index.html[GCT 6.2 Migrating Guides] [link:mig/gctMigratingGuide.pdf[PDF]]
+* link:commands/index.html[Grid Community Toolkit 6.2 Commandline Tools]
+* link:developer/index.html[Grid Community Toolkit 6.2 Developer's Guide]
+* link:key/index.html[Grid Community Toolkit 6.2 Key Concepts]
+* link:mig/index.html[GCT 6.2 Migrating Guides]
 --
