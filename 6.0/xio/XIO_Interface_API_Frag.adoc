@@ -17,7 +17,7 @@ When the event completes, the given callback is called.
 
 You can find documentation of the XIO library at: 
 
-http://www.globus.org/api/c/globus%5fxio/html/index.html[http://www.globus.org/api/c/globus_xio/html/index.html]
+http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fxio.html[http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fxio.html]
 
 
 For information on the internationalization API, see

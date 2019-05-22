@@ -11,5 +11,5 @@ containing usage information to usage-stats.cilogon.org:4810 after
 serving each request. See the
 http://grid.ncsa.illinois.edu/ssh/privacy.html[Privacy Policy] for
 details. You can see the Globus Usage Statistics policy
-link:/toolkit/docs/latest-stable/Usage_Stats.html[here]. 
+link:../../Usage_Stats.html[here].
 

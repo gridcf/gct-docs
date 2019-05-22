@@ -91,5 +91,5 @@ libraries.
 
 
 See the
-http://toolkit.globus.org/api/c-globus-6.0/group%5f%5fglobus%5f%5fcommon.html[C
+https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fcommon.html[C
 API Pages] for more information about this component. 

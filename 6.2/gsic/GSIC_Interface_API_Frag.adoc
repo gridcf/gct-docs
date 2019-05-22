@@ -7,39 +7,31 @@
 Documentation for the APIs in this component can be found here:
 
 
-* http://www.globus.org/api/c-globus-{version}/gaa%5fcore/html/index.html#%5ftop[gaa_core] [http://www.globus.org/api/c-globus-{version}/gaa%5fcore/html/main.html#%5ftop[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fauthz.html[globus_authz] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fauthz.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/gaa%5fgss%5fgeneric/html/index.html#%5ftop[gaa_gss_generic] [http://www.globus.org/api/c-globus-{version}/gaa%5fgss%5fgeneric/html/main.html#%5ftop[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fauthz%5f%5fcallout%5f%5ferror.html[globus_authz_callout_error] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fauthz%5f%5fcallout%5f%5ferror.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/gaa%5fplugin/html/index.html#%5ftop[gaa_plugin] [http://www.globus.org/api/c-globus-{version}/gaa%5fplugin/html/main.html#%5ftop[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fcallback.html[globus_gsi_callback] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fcallback.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fauthz/html/index.html#%5ftop[globus_authz] [http://www.globus.org/api/c-globus-{version}/globus%5fauthz/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fcert%5f%5futils.html[globus_gsi_cert_utils] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fcert%5f%5futils.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fauthz%5fcallout%5ferror/html/index.html#%5ftop[globus_authz_callout_error] [http://www.globus.org/api/c-globus-{version}/globus%5fauthz%5fcallout%5ferror/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fcredential.html[globus_gsi_credential] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fcredential.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgridmap%5fcallout%5ferror/html/index.html#%5ftop[globus_gridmap_callout_error] [http://www.globus.org/api/c-globus-{version}/globus%5fgridmap%5fcallout%5ferror/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fopenssl%5f%5ferror%5f%5fapi.html[globus_gsi_openssl_error] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fopenssl%5f%5ferror%5f%5fapi.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fcallback/html/index.html#%5ftop[globus_gsi_callback] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fcallback/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fproxy.html[globus_gsi_proxy_core] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fproxy.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fcert%5futils/html/index.html#%5ftop[globus_gsi_cert_utils] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fcert%5futils/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fproxy%5f%5fssl%5f%5fapi.html[globus_gsi_proxy_ssl] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fproxy%5f%5fssl%5f%5fapi.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fcredential/html/index.html#%5ftop[globus_gsi_credential] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fcredential/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fsysconfig.html[globus_gsi_sysconfig] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgsi%5f%5fsysconfig.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fopenssl%5ferror/html/index.html#%5ftop[globus_gsi_openssl_error] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fopenssl%5ferror/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgss%5f%5fassist.html[globus_gss_assist] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgss%5f%5fassist.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fproxy%5fcore/html/index.html#%5ftop[globus_gsi_proxy_core] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fproxy%5fcore/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fxio%5f%5fgsi%5f%5fdriver.html[globus_gssapi_gsi] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fxio%5f%5fgsi%5f%5fdriver.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fproxy%5fssl/html/index.html#%5ftop[globus_gsi_proxy_ssl] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fproxy%5fssl/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fopenssl%5f%5fmodule.html[globus_openssl_module] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fopenssl%5f%5fmodule.html[no frames]]
 
-* http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fsysconfig/html/index.html#%5ftop[globus_gsi_sysconfig] [http://www.globus.org/api/c-globus-{version}/globus%5fgsi%5fsysconfig/html/main.html[no frames]]
-
-* http://www.globus.org/api/c-globus-{version}/globus%5fgss%5fassist/html/index.html#%5ftop[globus_gss_assist] [http://www.globus.org/api/c-globus-{version}/globus%5fgss%5fassist/html/main.html[no frames]]
-
-* http://www.globus.org/api/c-globus-{version}/globus%5fgssapi%5fgsi/html/index.html#%5ftop[globus_gssapi_gsi] [http://www.globus.org/api/c-globus-{version}/globus%5fgssapi%5fgsi/html/main.html[no frames]]
-
-* http://www.globus.org/api/c-globus-{version}/globus%5fopenssl%5fmodule/html/index.html#%5ftop[globus_openssl_module] [http://www.globus.org/api/c-globus-{version}/globus%5fopenssl%5fmodule/html/main.html[no frames]]
-
-* http://www.globus.org/api/c-globus-{version}/gssapi%5ferror/html/index.html#%5ftop[gssapi_error] [http://www.globus.org/api/c-globus-{version}/gssapi%5ferror/html/main.html[no frames]]
+* https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgssapi%5f%5ferror%5f%5fapi.html[globus_gssapi_error] [https://gridcf.org/gct-docs/api/6.2/group%5f%5fglobus%5f%5fgssapi%5f%5ferror%5f%5fapi.html[no frames]]
 
 
 For information on the internationalization API, see the
