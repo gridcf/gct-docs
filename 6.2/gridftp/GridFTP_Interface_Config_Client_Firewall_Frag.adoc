@@ -20,7 +20,7 @@ opened a range of (local) ports, set the environment variable
 GLOBUS_TCP_SOURCE_RANGE: 
 +
 --------
-export GLOBUS_TCP_PORT_RANGE=min,max 
+export GLOBUS_TCP_SOURCE_RANGE=min,max 
 --------
 +
 where min,max specify the port range that you have opened for the
