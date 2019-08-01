@@ -32,4 +32,4 @@ port would remain the same for each connection but the connecting port
 would be different for each connection.
 
 Additional information on Grid Community Toolkit Firewall Requirements is
-available http://www.globus.org/toolkit/security/firewalls/[here].
+available https://web.archive.org/web/20140716211230/http://dev.globus.org/wiki/FirewallHowTo[here].
