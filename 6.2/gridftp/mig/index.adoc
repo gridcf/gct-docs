@@ -13,6 +13,11 @@ previous versions of the Globus Toolkit.
  
 --
 
+[[gridftp-migrating-GCT6.0]]
+== Migrating GridFTP from GCT6.0 ==
+
+No changes needed
+
 [[gridftp-migrating-GT6.0]]
 == Migrating GridFTP from GT6.0 ==
 
