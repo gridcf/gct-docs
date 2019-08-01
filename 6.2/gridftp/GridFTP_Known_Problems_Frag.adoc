@@ -4,36 +4,36 @@
 
 * http://jira.globus.org/browse/GRIDFTP-178[GRIDFTP-178]: Hanging server processes with GT5.0.4 striped GridFTP servers
 
-* http://jira.globus.org/browse/GT-2[GT-2]: GUC will treat directory as if its a file for the purpose of sync comparison
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_2[GT-2]: GUC will treat directory as if its a file for the purpose of sync comparison
 
-* http://jira.globus.org/browse/GT-4[GT-4]: Can't build gridftp server with alternate CC, needed by LTA
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_4[GT-4]: Can't build gridftp server with alternate CC, needed by LTA
 
-* http://jira.globus.org/browse/GT-5[GT-5]: globus-url-copy doesn't pipeline url input from a file
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_5[GT-5]: globus-url-copy doesn't pipeline url input from a file
 
-* http://jira.globus.org/browse/GT-6[GT-6]: GridFTP installation on OpenBSD 4.9
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_6[GT-6]: GridFTP installation on OpenBSD 4.9
 
-* http://jira.globus.org/browse/GT-7[GT-7]: Issues with netlogger style logs
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_7[GT-7]: Issues with netlogger style logs
 
-* http://jira.globus.org/browse/GT-8[GT-8]: globus-url-copy -rst ... -st ... segfault if the options are not correctly synchronized
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_8[GT-8]: globus-url-copy -rst ... -st ... segfault if the options are not correctly synchronized
 
-* http://jira.globus.org/browse/GT-10[GT-10]: Problem checking directory permissions with MLST
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_10[GT-10]: Problem checking directory permissions with MLST
 
-* http://jira.globus.org/browse/GT-11[GT-11]: globus-url-copy -rst segfault if the network is not working
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_11[GT-11]: globus-url-copy -rst segfault if the network is not working
 
-* http://jira.globus.org/browse/GT-12[GT-12]: GUC exits with zero when it hits a stall-timeout
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_12[GT-12]: GUC exits with zero when it hits a stall-timeout
 
-* http://jira.globus.org/browse/GT-273[GT-273]: can discover user names even with restrict path
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_273[GT-273]: can discover user names even with restrict path
 
-* http://jira.globus.org/browse/GT-284[GT-284]: GridFTP pipelining and reliability issues
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_284[GT-284]: GridFTP pipelining and reliability issues
 
-* http://jira.globus.org/browse/GT-374[GT-374]: Can't share files in a path structure with symlinks: 'path not allowed' error
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_374[GT-374]: Can't share files in a path structure with symlinks: 'path not allowed' error
 
-* http://jira.globus.org/browse/GT-397[GT-397]: gridftp doesn't error if file with unrepresentable name is used (MLSC)
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_397[GT-397]: gridftp doesn't error if file with unrepresentable name is used (MLSC)
 
-* http://jira.globus.org/browse/GT-413[GT-413]: Clarify errors whenever sharing file operations fail
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_413[GT-413]: Clarify errors whenever sharing file operations fail
 
-* http://jira.globus.org/browse/GT-414[GT-414]: globus-gridftp-server closing connection before returning cksm value
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_414[GT-414]: globus-gridftp-server closing connection before returning cksm value
 
-* http://jira.globus.org/browse/GT-450[GT-450]: extra newline in PASV error message
+* https://gridcf.org/gct-docs/gt-jira-archive/#globus_toolkit_gt_450[GT-450]: extra newline in PASV error message
 
 
