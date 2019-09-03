@@ -808,7 +808,7 @@ resource named by <strong><code>grid.example.org/jobmanager-pbs</code></strong>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs /bin/hostname
 node1.grid.example.org</pre>
 </div>
 </div>
@@ -826,7 +826,7 @@ hosts that the job ran on. The <em>-np ' option causes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs -np 4 /bin/hostname
 node1.grid.example.org
 node3.grid.example.org
 node2.grid.example.org
@@ -849,7 +849,7 @@ the GRAM resource.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs -s my-executable
 node1.grid.example.org</pre>
 </div>
 </div>
@@ -867,7 +867,7 @@ indicates this path.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs -stdin inputfile.txt /bin/cat
 Hello, Grid</pre>
 </div>
 </div>
@@ -886,7 +886,7 @@ staging example.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs -stdin -s inputfile.txt /bin/cat
 Hello, staged input on the Grid</pre>
 </div>
 </div>
@@ -901,7 +901,7 @@ for sending the <code>SIGINT</code> signal) can be used to cancel a GRAM job.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs /bin/sleep 90
 
 GRAM Job failed because the user cancelled the job (error code 8)</pre>
 </div>
@@ -922,11 +922,15 @@ environment variables.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs -env TEST=1 -env GRID=1 /usr/bin/env
 HOME=/home/juser
 LOGNAME=juser
 GLOBUS_GRAM_JOB_CONTACT=https://client.example.org:3882/16001579536700793196/5295612977485997184/
-GLOBUS_LOCATION=/opt/globus-</pre>
+GLOBUS_LOCATION=/opt/globus
+GLOBUS_GASS_CACHE_DEFAULT=/home/juser/.globus/.gass_cache
+TEST=1
+X509_USER_PROXY=/home/juser/.globus/job/mactop.local/16001579536700793196.5295612977485997184/x509_user_proxy
+GRID=1</pre>
 </div>
 </div>
 </div>
@@ -987,17 +991,19 @@ you have GRAM tools installed and your security environment set up.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-submit
+<pre>%  globus-job-submit grid.example.org/jobmanager-pbs /bin/hostname
 https://grid.example.org:38843/16001600430615223386/5295612977486013582/
-%  globus-job-status
+%  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 PENDING
-%  globus-job-status
+%  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 ACTIVE
-%  globus-job-status
+%  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 DONE
-%  globus-job-get-output
+%  globus-job-get-output -r grid.example.org/jobmanager-fork \
+     https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 node1.grid.example.org
-%  globus-job-clean
+%  globus-job-clean -r grid.example.org/jobmanager-fork \
+     https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 
     WARNING: Cleaning a job means:
         - Kill the job if it still running, and
@@ -1026,7 +1032,7 @@ via this method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run
+<pre>%  globus-job-run grid.example.org/jobmanager-pbs -np 5 -x '&amp;(jobtype=mpi)' a.out
 Hello, MPI (rank: 0, count: 5)
 Hello, MPI (rank: 3, count: 5)
 Hello, MPI (rank: 1, count: 5)
@@ -1048,7 +1054,7 @@ be run later.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  globus-job-run -dumprsl
+<pre>%  globus-job-run -dumprsl grid.example.org/jobmanager-pbs -np 5 -x '&amp;(jobtype=mpi)' a.out
  &amp;(jobtype=mpi)
     (executable="a.out")
     (environment= ("GRID" "1") ("TEST" "1"))
