@@ -896,13 +896,13 @@ Hello, staged input on the Grid</pre>
 <div class="title">Example 6. Canceling an interactive job</div>
 <div class="content">
 <div class="paragraph">
-<p>This example shows how using the  (or other system-specific mechanism
+<p>This example shows how using the Ctrl + C key combination (or other system-specific mechanism
 for sending the <code>SIGINT</code> signal) can be used to cancel a GRAM job.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>%  globus-job-run grid.example.org/jobmanager-pbs /bin/sleep 90
-
+^C
 GRAM Job failed because the user cancelled the job (error code 8)</pre>
 </div>
 </div>
