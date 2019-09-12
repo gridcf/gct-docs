@@ -461,7 +461,8 @@ PENDING
 ACTIVE
 %  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 DONE
-%  globus-job-get-output 
+%  globus-job-get-output -r grid.example.org/jobmanager-fork \
+     https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 node1.grid.example.org
 %  globus-job-clean -r grid.example.org/jobmanager-fork \
      https://grid.example.org:38843/16001600430615223386/5295612977486013582/
@@ -492,7 +493,7 @@ The following command line submits an mpi job using
 ++mpi++. Any RSL attribute understood by the LRM can be added to a job
 via this method. 
 --------
-%  globus-job-run grid.example.org/jobmanager-pbs -np 5 -x '&amp;(jobtype=mpi)' a.out
+%  globus-job-run grid.example.org/jobmanager-pbs -np 5 -x '&(jobtype=mpi)' a.out
 Hello, MPI (rank: 0, count: 5)
 Hello, MPI (rank: 3, count: 5)
 Hello, MPI (rank: 1, count: 5)
@@ -514,7 +515,7 @@ example combines some of the features above and prints out the resulting
 RSL. This RSL string can be passed to tools such as **++globusrun++** to
 be run later. 
 --------
-%  globus-job-run -dumprsl grid.example.org/jobmanager-pbs -np 5 -x '&amp;(jobtype=mpi)' a.out
+%  globus-job-run -dumprsl grid.example.org/jobmanager-pbs -np 5 -x '&(jobtype=mpi)' a.out
  &(jobtype=mpi)
     (executable="a.out")
     (environment= ("GRID" "1") ("TEST" "1"))
