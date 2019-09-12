@@ -277,7 +277,7 @@ The following command line submits a single instance of the
 resource named by **++grid.example.org/jobmanager-pbs++**. 
 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs /bin/hostname
 node1.grid.example.org
 --------
 
@@ -296,7 +296,7 @@ hosts that the job ran on. The '-np ' option causes
 **++globus-job-run++** to run 'COUNT' instances of the executable. 
 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs -np 4 /bin/hostname
 node1.grid.example.org
 node3.grid.example.org
 node2.grid.example.org
@@ -320,7 +320,7 @@ https-based protocol) from the machine running **++globus-job-run++** to
 the GRAM resource. 
 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs -s my-executable
 node1.grid.example.org
 --------
 
@@ -339,7 +339,7 @@ which is located on the GRAM resource. The '-stdin' command-line option
 indicates this path. 
 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs -stdin inputfile.txt /bin/cat
 Hello, Grid
 --------
 
@@ -359,7 +359,7 @@ combination causes the input to be staged in the above executable
 staging example. 
 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs -stdin -s inputfile.txt /bin/cat
 Hello, staged input on the Grid
 --------
 
@@ -371,11 +371,11 @@ Hello, staged input on the Grid
 
 .Canceling an interactive job
 =======================================================================
-This example shows how using the  (or other system-specific mechanism
+This example shows how using the Ctrl + C key combination (or other system-specific mechanism
 for sending the ++SIGINT++ signal) can be used to cancel a GRAM job. 
 --------
-%  globus-job-run 
-
+%  globus-job-run grid.example.org/jobmanager-pbs /bin/sleep 90
+^C
 GRAM Job failed because the user cancelled the job (error code 8)
 --------
 
@@ -395,11 +395,15 @@ may be present multiple times in the command-line to set multiple
 environment variables. 
 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs -env TEST=1 -env GRID=1 /usr/bin/env
 HOME=/home/juser
 LOGNAME=juser
 GLOBUS_GRAM_JOB_CONTACT=https://client.example.org:3882/16001579536700793196/5295612977485997184/
-GLOBUS_LOCATION=/opt/globus-
+GLOBUS_LOCATION=/opt/globus
+GLOBUS_GASS_CACHE_DEFAULT=/home/juser/.globus/.gass_cache
+TEST=1
+X509_USER_PROXY=/home/juser/.globus/job/mactop.local/16001579536700793196.5295612977485997184/x509_user_proxy
+GRID=1
 --------
 
 
@@ -449,17 +453,18 @@ Also, note, that the job contact returned from **++globus-job-submit++**
 can be used to get information about the job from any computer, provided
 you have GRAM tools installed and your security environment set up. 
 --------
-%  globus-job-submit 
+%  globus-job-submit grid.example.org/jobmanager-pbs /bin/hostname
 https://grid.example.org:38843/16001600430615223386/5295612977486013582/
-%  globus-job-status 
+%  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 PENDING
-%  globus-job-status 
+%  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 ACTIVE
-%  globus-job-status 
+%  globus-job-status https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 DONE
 %  globus-job-get-output 
 node1.grid.example.org
-%  globus-job-clean 
+%  globus-job-clean -r grid.example.org/jobmanager-fork \
+     https://grid.example.org:38843/16001600430615223386/5295612977486013582/
 
     WARNING: Cleaning a job means:
         - Kill the job if it still running, and
@@ -487,7 +492,7 @@ The following command line submits an mpi job using
 ++mpi++. Any RSL attribute understood by the LRM can be added to a job
 via this method. 
 --------
-%  globus-job-run 
+%  globus-job-run grid.example.org/jobmanager-pbs -np 5 -x '&amp;(jobtype=mpi)' a.out
 Hello, MPI (rank: 0, count: 5)
 Hello, MPI (rank: 3, count: 5)
 Hello, MPI (rank: 1, count: 5)
@@ -509,7 +514,7 @@ example combines some of the features above and prints out the resulting
 RSL. This RSL string can be passed to tools such as **++globusrun++** to
 be run later. 
 --------
-%  globus-job-run -dumprsl 
+%  globus-job-run -dumprsl grid.example.org/jobmanager-pbs -np 5 -x '&amp;(jobtype=mpi)' a.out
  &(jobtype=mpi)
     (executable="a.out")
     (environment= ("GRID" "1") ("TEST" "1"))
