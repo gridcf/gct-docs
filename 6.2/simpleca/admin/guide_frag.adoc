@@ -443,7 +443,7 @@ about how to control the CRL lifetime and other options.
 .Create CRL
 =======================================================================
 --------
-simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -gencrl > 
+simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -gencrl > CAHASH.crl
 Using configuration from /home/simpleca/.globus/simpleCA/grid-ca-ssl.conf
 Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:
 
@@ -454,10 +454,7 @@ Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:
 
 The output file ++CAHASH.crl++ (based on the hash of your CA subject
 name) should be distributed to sites which trust your CA, so that they
-can install it into the trusted certificate directory.  (based on the
-hash of your CA subject name) should be distributed to sites which trust
-your CA, so that they can install it into the trusted certificate
-directory. 
+can install it into the trusted certificate directory.
 
 
 === Renewing a CA ===
