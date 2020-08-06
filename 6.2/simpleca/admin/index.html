@@ -1060,7 +1060,7 @@ about how to control the CRL lifetime and other options.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre>simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -gencrl &gt;
+<pre>simpleca% openssl ca -config ~/.globus/simpleCA/grid-ca-ssl.conf -gencrl &gt; CAHASH.crl
 Using configuration from /home/simpleca/.globus/simpleCA/grid-ca-ssl.conf
 Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:</pre>
 </div>
@@ -1070,10 +1070,7 @@ Enter pass phrase for /home/simpleca/.globus/simpleCA/private/cakey.pem:</pre>
 <div class="paragraph">
 <p>The output file <code>CAHASH.crl</code> (based on the hash of your CA subject
 name) should be distributed to sites which trust your CA, so that they
-can install it into the trusted certificate directory.  (based on the
-hash of your CA subject name) should be distributed to sites which trust
-your CA, so that they can install it into the trusted certificate
-directory.</p>
+can install it into the trusted certificate directory.</p>
 </div>
 </div>
 <div class="sect2">
