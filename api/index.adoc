@@ -4,9 +4,9 @@
 
 * link:./latest/index.html[Latest release]
 * link:./6.2/index.html[Latest 6.2 release]
+* link:./6.2.1629922860/index.html[6.2.1629922860] (tag: v6.2.20210826)
 * link:./6.2.1607800521/index.html[6.2.1607800521] (tag: v6.2.20201212)
 * link:./6.2.1567772254/index.html[6.2.1567772254] (tag: v6.2.20190906)
 * link:./6.2.1566487665/index.html[6.2.1566487665] (tag: v6.2.20190829)
 * link:./6.2.1550507116/index.html[6.2.1550507116] (tag: v6.2.20190226)
 * link:./6.2.1541705016/index.html[6.2.1541705016] (tag: v6.2.20181115)
-

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['reading_20and_20writing_20data',['Reading and Writing Data',['../group__globus__ftp__client__data.html',1,'']]],
+  ['restart_20markers',['Restart Markers',['../group__globus__ftp__client__restart__marker.html',1,'']]],
+  ['restart_20marker_20plugin',['Restart Marker Plugin',['../group__globus__ftp__client__restart__marker__plugin.html',1,'']]],
+  ['restart_20plugin',['Restart Plugin',['../group__globus__ftp__client__restart__plugin.html',1,'']]],
+  ['referrals',['Referrals',['../group__globus__gass__transfer__referral.html',1,'']]],
+  ['request_20handles',['Request Handles',['../group__globus__gass__transfer__request.html',1,'']]],
+  ['request_20attributes',['Request Attributes',['../group__globus__gass__transfer__requestattr.html',1,'']]],
+  ['request_20flags',['Request Flags',['../group__globus__gsi__gss__requested__context__flags.html',1,'']]],
+  ['return_20flags',['Return Flags',['../group__globus__gsi__gss__returned__context__flags.html',1,'']]],
+  ['rsl_20accessor_20functions',['RSL Accessor Functions',['../group__globus__rsl__accessor.html',1,'']]],
+  ['rsl_20helper_20functions',['RSL Helper Functions',['../group__globus__rsl__assist.html',1,'']]],
+  ['rsl_20constructors',['RSL Constructors',['../group__globus__rsl__constructors.html',1,'']]],
+  ['rsl_20memory_20management',['RSL Memory Management',['../group__globus__rsl__memory.html',1,'']]],
+  ['rsl_20value_20accessors',['RSL Value Accessors',['../group__globus__rsl__param.html',1,'']]],
+  ['rsl_20predicates',['RSL Predicates',['../group__globus__rsl__predicates.html',1,'']]],
+  ['rsl_20display',['RSL Display',['../group__globus__rsl__print.html',1,'']]],
+  ['reading_2fwriting',['Reading/Writing',['../group__globus__xio__file__driver__io.html',1,'']]],
+  ['reading_2fwriting',['Reading/Writing',['../group__globus__xio__http__driver__io.html',1,'']]],
+  ['reading_2fwriting',['Reading/Writing',['../group__globus__xio__mode__e__driver__io.html',1,'']]],
+  ['reading_2fwriting',['Reading/Writing',['../group__globus__xio__ordering__driver__io.html',1,'']]],
+  ['reading_2fwriting',['Reading/Writing',['../group__globus__xio__tcp__driver__io.html',1,'']]],
+  ['reading_2fwriting',['Reading/Writing',['../group__globus__xio__udp__driver__io.html',1,'']]]
+];
