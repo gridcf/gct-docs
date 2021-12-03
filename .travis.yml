@@ -1,0 +1,26 @@
+dist: focal
+arch:
+  - ppc64le
+
+script:
+  - sudo apt-get update
+  - sudo apt-get -y install asciidoctor rsync
+  - sleep 5
+  - travis-ci/build-site.sh
+
+deploy:
+  # Use Github pages deploy process
+  provider: pages
+  # Keep builded pages
+  skip-cleanup: true
+  # Directory where your generated files are located
+  local_dir: html
+  # Github security/auth token
+  github-token: $GITHUB_TOKEN
+  # Incremental commit to keep old build/files from previous deployments
+  keep-history: true
+  # Git branch on which it should deploy (master, gh-pages, foo...)
+  target_branch: gh-pages-html-only
+  on:
+    # Which branch on commit/push will trigger deployment
+    branch: add-ci
