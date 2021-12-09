@@ -11,16 +11,19 @@ script:
 deploy:
   # Use Github pages deploy process
   provider: pages
-  # Keep builded pages
+  # Keep built pages
   skip-cleanup: true
   # Directory where your generated files are located
   local_dir: html
-  # Github security/auth token
-  github-token: $GITHUB_TOKEN
+  deploy-key: /tmp/travis/github_deploy_key
   # Incremental commit to keep old build/files from previous deployments
   keep-history: true
-  # Git branch on which it should deploy (master, gh-pages, foo...)
-  target_branch: gh-pages-html-only
+  # Git branch on which it should deploy
+  target_branch: gh-pages
   on:
-    # Which branch on commit/push will trigger deployment
-    branch: add-ci
+    branch: adoc
+before_install:
+  - touch /tmp/travis/github_deploy_key
+  - chmod 0600 /tmp/travis/github_deploy_key
+  - openssl aes-256-cbc -K $encrypted_c5cf824259e5_key -iv $encrypted_c5cf824259e5_iv
+    -in travis-ci/github_deploy_key.enc -d > /tmp/travis/github_deploy_key
