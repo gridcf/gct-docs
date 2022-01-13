@@ -1,0 +1,6 @@
+.*
+html
+travis-ci
+Makefile
+rules.mk
+*.adoc
