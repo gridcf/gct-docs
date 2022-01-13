@@ -4,7 +4,7 @@ arch:
 
 script:
   - sudo apt-get update
-  - sudo apt-get -y install asciidoctor rsync
+  - sudo apt-get -y install asciidoctor rsync openssh-client
   - sleep 5
   - travis-ci/build-site.sh
 
@@ -28,3 +28,5 @@ before_install:
   - chmod 0600 /tmp/travis/github_deploy_key
   - openssl aes-256-cbc -K $encrypted_2d31d0fdb65c_key -iv $encrypted_2d31d0fdb65c_iv
     -in travis-ci/github_deploy_key.enc -d > /tmp/travis/github_deploy_key
+  - mkdir -p ~/.ssh
+  - ssh-keyscan github.com >> ~/.ssh/known_hosts
