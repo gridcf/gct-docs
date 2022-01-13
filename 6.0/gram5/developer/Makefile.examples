@@ -1,0 +1,30 @@
+CFLAGS=$(GLOBUS_INCLUDES) $(GLOBUS_CFLAGS)
+CC=$(GLOBUS_LIBTOOL) --mode=link $(GLOBUS_CC)
+LDFLAGS=$(GLOBUS_LDFLAGS) $(GLOBUS_PKG_LIBS)
+
+progs=gram_ping_example gram_version_example gram_submit_example \
+      gram_submit_and_wait_example gram_poll_example \
+      gram_refresh_example gram_nonblocking_submit_example \
+      gram_rsl_example gram_attr_example gram_cancel_example
+
+all: makefile.header $(progs)
+
+include makefile.header
+
+gram_ping_example: gram_ping_example.c
+gram_version_example: gram_version_example.c
+gram_submit_example: gram_submit_example.c
+gram_submit_and_wait_example: gram_submit_and_wait_example.c
+gram_poll_example: gram_poll_example.c
+gram_refresh_example: gram_refresh_example.c
+gram_nonblocking_submit_example: gram_nonblocking_submit_example.c
+gram_rsl_example: gram_rsl_example.c
+gram_attr_example: gram_attr_example.c
+gram_cancel_example: gram_cancel_example.c
+
+clean:
+	rm -f $(progs)
+
+makefile.header:
+	flavor=`ls -1 $$GLOBUS_LOCATION/etc/globus_packages/globus_gram_client/*dev.format | head -1 | sed -e "s,.*/,," -e "s,dev.format,,"` ; globus-makefile-header -flavor $$flavor globus_gram_client > makefile.header	
+

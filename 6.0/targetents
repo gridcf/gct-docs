@@ -1,0 +1,92 @@
+<!-- target database entities (used in olinkdb.xml) using catalog to rewrite uri -->
+<!ENTITY gtTarget SYSTEM "target.db">
+<!ENTITY adminTarget SYSTEM "admin/target.db">
+       <!ENTITY gtadminTarget SYSTEM "admin/install/target.db">
+       <!ENTITY gtadminappendixTarget SYSTEM "admin/install/appendixtarget.db">
+       <!ENTITY quickstartTarget SYSTEM "admin/quickstart/target.db">
+       
+       <!-- Appendices Targets-->
+       <!ENTITY appendicesTarget SYSTEM "appendices/target.db">
+       <!ENTITY gtcommandsTarget SYSTEM "appendices/commands/target.db">
+       <!ENTITY gtuserTarget SYSTEM "appendices/user/target.db">
+       <!ENTITY gtdeveloperTarget SYSTEM "appendices/developer/target.db">
+       <!ENTITY keyTarget SYSTEM "appendices/key/target.db">
+       <!ENTITY migTarget SYSTEM "appendices/mig/target.db">
+       <!ENTITY piTarget SYSTEM "appendices/pi/target.db">
+       
+        
+       <!ENTITY ccommonlibTarget SYSTEM "ccommonlib/target.db">
+       <!ENTITY ccommonlibAdminTarget SYSTEM "ccommonlib/admin/target.db">
+       <!ENTITY ccommonlibDeveloperTarget SYSTEM "ccommonlib/developer/target.db">
+       <!ENTITY ccommonlibMigTarget SYSTEM "ccommonlib/mig/target.db">
+       <!ENTITY ccommonlibPITarget SYSTEM "ccommonlib/pi/target.db">
+       <!ENTITY ccommonlibQPTarget SYSTEM "ccommonlib/qp/target.db">
+       <!ENTITY ccommonlibRNTarget SYSTEM "ccommonlib/rn/target.db">
+ 
+       <!ENTITY gram5Target SYSTEM "gram5/target.db">
+       <!ENTITY gram5AdminTarget SYSTEM "gram5/admin/target.db">
+       <!ENTITY gram5DeveloperTarget SYSTEM "gram5/developer/target.db">
+       <!ENTITY gram5KeyTarget SYSTEM "gram5/key/target.db">
+       <!ENTITY gram5MigTarget SYSTEM "gram5/mig/target.db">
+       <!ENTITY gram5PITarget SYSTEM "gram5/pi/target.db">
+       <!ENTITY gram5QPTarget SYSTEM "gram5/qp/target.db">
+       <!ENTITY gram5RNTarget SYSTEM "gram5/rn/target.db">
+       <!ENTITY gram5UserTarget SYSTEM "gram5/user/target.db">
+       
+      
+       <!ENTITY gridftpTarget SYSTEM "gridftp/target.db">
+       <!ENTITY gridftpAdminTarget SYSTEM "gridftp/admin/target.db">
+       <!ENTITY gridftpDeveloperTarget SYSTEM "gridftp/developer/target.db">
+       <!ENTITY gridftpKeyTarget SYSTEM "gridftp/key/target.db">
+       <!ENTITY gridftpMigTarget SYSTEM "gridftp/mig/target.db">
+       <!ENTITY gridftpPITarget SYSTEM "gridftp/pi/target.db">
+       <!ENTITY gridftpQPTarget SYSTEM "gridftp/qp/target.db">
+       <!ENTITY gridftpRNTarget SYSTEM "gridftp/rn/target.db">
+       <!ENTITY gridftpUserTarget SYSTEM "gridftp/user/target.db">
+       
+       <!ENTITY gsicTarget SYSTEM "gsic/target.db">
+       <!ENTITY gsicAdminTarget SYSTEM "gsic/admin/target.db">
+       <!ENTITY gsicDeveloperTarget SYSTEM "gsic/developer/target.db">
+       <!ENTITY gsicKeyTarget SYSTEM "gsic/key/target.db">
+       <!ENTITY gsicMigTarget SYSTEM "gsic/mig/target.db">
+       <!ENTITY gsicPITarget SYSTEM "gsic/pi/target.db">
+       <!ENTITY gsicQPTarget SYSTEM "gsic/qp/target.db">
+       <!ENTITY gsicRNTarget SYSTEM "gsic/rn/target.db">
+       <!ENTITY gsicUserTarget SYSTEM "gsic/user/target.db">
+       
+       <!ENTITY myproxyTarget SYSTEM "myproxy/target.db">
+       <!ENTITY myproxyAdminTarget SYSTEM "myproxy/admin/target.db">
+       <!ENTITY myproxyDeveloperTarget SYSTEM "myproxy/developer/target.db">
+       <!ENTITY myproxyMigTarget SYSTEM "myproxy/mig/target.db">
+       <!ENTITY myproxyPITarget SYSTEM "myproxy/pi/target.db">
+       <!ENTITY myproxyQPTarget SYSTEM "myproxy/qp/target.db">
+       <!ENTITY myproxyRNTarget SYSTEM "myproxy/rn/target.db">
+       <!ENTITY myproxyUserTarget SYSTEM "myproxy/user/target.db">
+       
+       <!ENTITY gsiopensshTarget SYSTEM "gsiopenssh/target.db">
+       <!ENTITY gsiopensshAdminTarget SYSTEM "gsiopenssh/admin/target.db">
+       <!ENTITY gsiopensshDeveloperTarget SYSTEM "gsiopenssh/developer/target.db">
+       <!ENTITY gsiopensshMigTarget SYSTEM "gsiopenssh/mig/target.db">
+       <!ENTITY gsiopensshPITarget SYSTEM "gsiopenssh/pi/target.db">
+       <!ENTITY gsiopensshQPTarget SYSTEM "gsiopenssh/qp/target.db">
+       <!ENTITY gsiopensshRNTarget SYSTEM "gsiopenssh/rn/target.db">
+       <!ENTITY gsiopensshUserTarget SYSTEM "gsiopenssh/user/target.db">
+       
+       <!ENTITY rnTarget SYSTEM "rn/target.db">
+       
+       <!ENTITY simplecaTarget SYSTEM "simpleca/target.db">
+       <!ENTITY simplecaAdminTarget SYSTEM "simpleca/admin/target.db">
+       <!ENTITY simplecaDeveloperTarget SYSTEM "simpleca/developer/target.db">
+       <!ENTITY simplecaMigTarget SYSTEM "simpleca/mig/target.db">
+       <!ENTITY simplecaPITarget SYSTEM "simpleca/pi/target.db">
+       <!ENTITY simplecaQPTarget SYSTEM "simpleca/qp/target.db">
+       <!ENTITY simplecaRNTarget SYSTEM "simpleca/rn/target.db">
+       <!ENTITY simplecaUserTarget SYSTEM "simpleca/user/target.db">
+       
+       <!ENTITY xioTarget SYSTEM "xio/target.db">
+       <!ENTITY xioAdminTarget SYSTEM "xio/admin/target.db">
+       <!ENTITY xioDeveloperTarget SYSTEM "xio/developer/target.db">
+       <!ENTITY xioMigTarget SYSTEM "xio/mig/target.db">
+       <!ENTITY xioPITarget SYSTEM "xio/pi/target.db">
+       <!ENTITY xioQPTarget SYSTEM "xio/qp/target.db">
+       <!ENTITY xioRNTarget SYSTEM "xio/rn/target.db">
