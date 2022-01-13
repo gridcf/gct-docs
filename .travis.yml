@@ -11,6 +11,7 @@ script:
 deploy:
   # Use Github pages deploy process
   provider: pages
+  edge: true
   # Keep built pages
   skip-cleanup: true
   # Directory where your generated files are located
