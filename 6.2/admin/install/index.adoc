@@ -21,9 +21,6 @@ include::basic_security_frag.adoc[]
 include::basic_setup_frag.adoc[]
 
  
-include::platform_frag.adoc[]
-
- 
 include::appendixptr_frag.adoc[]
 
   
