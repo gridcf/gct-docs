@@ -9,11 +9,12 @@ include::../breadcrumb_frag.adoc[]
 [abstract]
 --
 .Introduction
-This is a quickstart that shows a full installation of the Toolkit on
-two Fedora Linux machines, named **++elephant++** and **++donkey++**. It
-shows the installation of prereqs, installation of the toolkit, creation
-of certificates, and configuration of services. It is designed to
-supplement the link:../../admin/install/index.html[main admin guide], 
+This is a quickstart that shows a full installation of the Grid Community
+Toolkit (GCT) on two CentOS driven machines, named **++elephant++** and
+**++donkey++**. It shows the installation of prereqs, installation of the
+toolkit, creation of certificates, and configuration of services. It is
+designed to supplement the 
+link:../../admin/install/index.html[main admin guide], 
 Scenarios are shown for running GridFTP and GRAM5 services, and using
 GridFTP and GRAM clients. 
 --
@@ -32,8 +33,11 @@ include::prereq_frag.adoc[]
 Install packages: 
 
 --------
-root# yum install globus-gridftp globus-gram5 globus-gsi myproxy \
-    myproxy-server myproxy-admin
+root# yum install \
+    globus-gridftp-server-progs globus-gass-copy-progs globus-common-progs globus-gsi-cert-utils-progs globus-gss-assist-progs globus-proxy-utils \
+    globus-gatekeeper globus-gram-job-manager globus-gram-job-manager-scripts globus-gram-job-manager-fork-setup-poll globus-gram-client-tools globus-gass-cache-program globus-gass-server-ez-progs \
+    globus-simple-ca \
+    myproxy myproxy-server myproxy-admin
 --------
 
 
@@ -43,7 +47,7 @@ users to run the GCT services.
 
 [NOTE]
 --
-For Debian and Ubuntu systems, use **++apt-get++** or **++aptitude++** or another package manager to install the same packages as in the **++yum++** command above. 
+For Debian and Ubuntu systems, use **++apt[-get]++** or **++aptitude++** or another package manager to install the same packages as in the **++yum++** command above. 
 --
 
 
@@ -149,7 +153,9 @@ Nov 02 09:07:51 elephant.globus.org runuser[1210]: pam_unix(runuser:session):...
 Nov 02 09:07:51 elephant.globus.org myproxy-server[1205]: Starting myproxy-se...
 --------
 The important thing to see in the above is that the process is in the
-++active (running)++ state. [NOTE]
+++active (running)++ state.
+
+[NOTE]
 --
 For other Linux distributions which are not using systemd, the output will be different. You should still see some information indicating the service is running. 
 --
@@ -346,7 +352,10 @@ See link:#q-prereq[Prereqs].
 Install packages as before: 
 
 --------
-root@donkey# yum install globus-gridftp myproxy globus-gram5
+root@donkey# yum install \
+    globus-gridftp-server-progs globus-gass-copy-progs globus-common-progs globus-gsi-cert-utils-progs globus-gss-assist-progs globus-proxy-utils \
+    globus-gatekeeper globus-gram-job-manager globus-gram-job-manager-scripts globus-gram-job-manager-fork-setup-poll globus-gram-client-tools globus-gass-cache-program globus-gass-server-ez-progs \
+    myproxy myproxy-server myproxy-admin
 --------
 
 
