@@ -156,8 +156,8 @@ CA certificate, and the **Distinguished Name Pattern** is a string used
 to match the distinguished names of certificates granted by the CA. 
 
 Some very simple wildcard matching is done: if the **Distinguished Name
-Pattern** ends with a '*', then any distinguished name that matches the
-part of the CA subject name before the '*' is considered a match. 
+Pattern** ends with a `*`, then any distinguished name that matches the
+part of the CA subject name before the `*` is considered a match.
 
 Note: the cond_subjects line may contain a space-separated list of
 distinguished name patterns.
