@@ -492,11 +492,12 @@ Please report any problems to the Grid Community Forums as <a href="https://gith
 <blockquote>
 <div class="paragraph">
 <div class="title">Introduction</div>
-<p>This is a quickstart that shows a full installation of the Toolkit on
-two Fedora Linux machines, named <strong><code>elephant</code></strong> and <strong><code>donkey</code></strong>. It
-shows the installation of prereqs, installation of the toolkit, creation
-of certificates, and configuration of services. It is designed to
-supplement the <a href="../../admin/install/index.html">main admin guide</a>,
+<p>This is a quickstart that shows a full installation of the Grid Community
+Toolkit (GCT) on two CentOS driven machines, named <strong><code>elephant</code></strong> and
+<strong><code>donkey</code></strong>. It shows the installation of prereqs, installation of the
+toolkit, creation of certificates, and configuration of services. It is
+designed to supplement the
+<a href="../../admin/install/index.html">main admin guide</a>,
 Scenarios are shown for running GridFTP and GRAM5 services, and using
 GridFTP and GRAM clients.</p>
 </div>
@@ -545,108 +546,60 @@ even though nothing will be printed to the screen.</p>
 <h2 id="q-prereq">Prerequisites</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We distribute the Grid Community Toolkit 6.2 as a set of RPM and Debian packages
-for Linux systems, as an installable package for Mac OS X, as a .zip
-file for Windows and Cygwin, as well as a source installer which can be
-used on other operating systems. In this quickstart, we will be
-installing RPM packages. Thus, it is a prerequisite for following this
-quickstart that you are running a distribution for which we provide
-RPMs. If you are running a supported Debian or Ubuntu system, the
-process is very similar, but you&#8217;ll need to use the <strong><code>apt-get</code></strong> or
-similar tools to install the packages. For the source installer, there
-is more work involved, and you&#8217;ll need to consult the full installation
-guide.</p>
+<p>The Grid Community Toolkit 6.2 is available as a set of RPM packages provided
+by EPEL and Fedora package repositories and Debian packages provided by Debian
+and Ubuntu package repositories for Linux distributions as well as a source
+installer for the whole GCT and separate source packages for each GCT component
+provided by the GridCF from
+<a href="https://repo.gridcf.org/gct6/">our repository</a>
+which can be used both on Linux and on other operating systems.
+Please see the bottom of the
+<a href="https://github.com/gridcf/gct/releases/latest">GCT release page</a>
+for information about the supported Linux distributions.
+In this quickstart, we will be installing RPM packages. Thus, it is a
+prerequisite for following this quickstart that you are running a distribution
+for which RPMs are available. If you are running a supported Debian or Ubuntu
+system, the process is very similar, but you&#8217;ll need to use the <strong><code>apt[-get]</code></strong>
+command or similar tools to install the packages. For the source installer,
+there is more work involved, and you&#8217;ll need to consult
+<a href="../install/index.html">the full installation guide</a>.</p>
 </div>
 <div class="paragraph">
-<p>First, we will to set up our system to use the Globus package
-repository. This repository contains the GCT software packages,
-signed by our build manager. We provide RPM and Debian packages that
-contain a source configuration file and the public key which can be used
-to verify the packages. If your distribution has GCT 6.2 packages
-within its repository, you can skip to the next section.</p>
+<p>First, we will set up our system to use the EPEL package
+repository. This repository contains the GCT software packages for Linux
+distributions like Red Hat Enterprise Linux (RHEL) 7, 8 and 9, Community
+Enterprise Operating System (CentOS) 7 and CentOS Stream 8 and 9, RockyLinux 8
+or Scientific Linux 7. If your distribution has GCT 6.2 packages within its
+default repositories - like Fedora has - you can skip to the next section.</p>
 </div>
 <div class="paragraph">
-<p>The globus toolkit package repo RPM can be downloaded from
-<a href="http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo-latest.noarch.rpm">the
-repo RPM package on globus.org</a>.</p>
+<p>The respective EPEL repo RPMs for the respective OS versions are linked from
+<a href="https://docs.fedoraproject.org/en-US/epel/">the EPEL documentation website</a>.</p>
 </div>
 <div class="paragraph">
-<p>To install binary RPMs, download the globus-toolkit-repo package from
-the link above and install it with the command:</p>
+<p>To install binary RPMs, you first need to install the EPEL repo RPM matching
+your OS. E.g. like so:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root# rpm -hUv globus-toolkit-repo-latest.noarch.rpm</pre>
+<pre>root# yum install epel-release</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The globus toolkit package repo Debian file can be downloaded from
-<a href="http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo%5flatest%5fall.deb">the
-repo Debian package on globus.org</a>.</p>
+<p>&#8230;&#8203;for CentOS 7 which has it included in its default repositories.</p>
 </div>
 <div class="paragraph">
-<p>To install Debian or Ubuntu package, download the globus-toolkit-repo
-package from the link above and install it with the command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>root# dpkg -i globus-toolkit-repo_latest_all.deb</pre>
-</div>
+<p>For other OS versions follow
+<a href="https://docs.fedoraproject.org/en-US/epel/#_quickstart">the EPEL quickstart documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve installed the Globus repository package, you can use your
-operating system&#8217;s packaging tools: <strong><code>yum</code></strong> or <strong><code>apt-get</code></strong>, to
-install the Globus components.</p>
+<p>For Fedora and also Debian and Ubuntu the GCT packages are included in the
+default package repositories, so no further action is required there to be able
+to install GCT packages.</p>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>For operating systems based on RHEL (such as Red Hat Enterprise Linux,
-CentOS, and Scientific Linux), the compatible EPEL repository must be
-enabled before installing myproxy. For OS versions 5.x, install the
-<a href="http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm">EPEL
-5 package</a>, and for OS version 6.x, use
-<a href="http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-7.noarch.rpm">6
-package</a>.
-For information about installing these, see the
-<a href="http://fedoraproject.org/wiki/EPEL/FAQ#How%5fcan%5fI%5finstall%5fthe%5fpackages%5ffrom%5fthe%5fEPEL%5fsoftware%5frepository.3F">EPEL
-FAQ</a>.
-This step is not needed for Fedora, Debian, or Ubuntu systems.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>For SUSE Linux Enterprise Server systems which will be using
-globus-connect-server, a newer version of apache2 must be installed in
-order for myproxy-oauth to work. This is available by adding the Apache2
-and Apache2 Modules for SLES11 repositories from opensuse.org.
-These can be installed by running these commands:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>root# zypper ar http://download.opensuse.org/repositories/Apache/SLE_11_SP3/Apache.repo
-root# zypper ar http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_11_SP3/Apache:Modules.repo
-root# rpm --import http://download.opensuse.org/repositories/Apache/SLE_11_SP3/repodata/repomd.xml.key
-root# rpm --import http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_11_SP3/repodata/repomd.xml.key</pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
+<p>You can now use your operating system&#8217;s packaging tools: <strong><code>yum</code></strong> (or
+<strong><code>dnf</code></strong>) or <strong><code>apt[-get]</code></strong>, to install the GCT components.</p>
 </div>
 </div>
 </div>
@@ -660,8 +613,11 @@ root# rpm --import http://download.opensuse.org/repositories/Apache:/Modules/Apa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root# yum install globus-gridftp globus-gram5 globus-gsi myproxy \
-    myproxy-server myproxy-admin</pre>
+<pre>root# yum install \
+    globus-gridftp-server-progs globus-gass-copy-progs globus-common-progs globus-gsi-cert-utils-progs globus-gss-assist-progs globus-proxy-utils \
+    globus-gatekeeper globus-gram-job-manager globus-gram-job-manager-scripts globus-gram-job-manager-fork-setup-poll globus-gram-client-tools globus-gass-cache-program globus-gass-server-ez-progs \
+    globus-simple-ca \
+    myproxy myproxy-server myproxy-admin</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -677,7 +633,7 @@ users to run the GCT services.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For Debian and Ubuntu systems, use <strong><code>apt-get</code></strong> or <strong><code>aptitude</code></strong> or another package manager to install the same packages as in the <strong><code>yum</code></strong> command above.</p>
+<p>For Debian and Ubuntu systems, use <strong><code>apt[-get]</code></strong> or <strong><code>aptitude</code></strong> or another package manager to install the same packages as in the <strong><code>yum</code></strong> command above.</p>
 </div>
 </td>
 </tr>
@@ -825,14 +781,21 @@ Nov 02 09:07:51 elephant.globus.org myproxy-server[1205]: Starting myproxy-se...
 </div>
 <div class="paragraph">
 <p>The important thing to see in the above is that the process is in the
-<code>active (running)</code> state. [NOTE]</p>
+<code>active (running)</code> state.</p>
 </div>
-<div class="openblock">
-<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>For other Linux distributions which are not using systemd, the output will be different. You should still see some information indicating the service is running.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>As a final sanity check, we&#8217;ll make sure the myproxy TCP port <code>7512</code>
@@ -1038,7 +1001,10 @@ on another machine and add it to this little test grid.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root@donkey# yum install globus-gridftp myproxy globus-gram5</pre>
+<pre>root@donkey# yum install \
+    globus-gridftp-server-progs globus-gass-copy-progs globus-common-progs globus-gsi-cert-utils-progs globus-gss-assist-progs globus-proxy-utils \
+    globus-gatekeeper globus-gram-job-manager globus-gram-job-manager-scripts globus-gram-job-manager-fork-setup-poll globus-gram-client-tools globus-gass-cache-program globus-gass-server-ez-progs \
+    myproxy myproxy-server myproxy-admin</pre>
 </div>
 </div>
 </div>

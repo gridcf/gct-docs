@@ -460,11 +460,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#gtadmin-basic-setup">Basic Setup for GCT 6.2</a></li>
-<li><a href="#gtadmin-platform">Platform Notes</a>
-<ul class="sectlevel2">
-<li><a href="#_platform_notes">Platform Notes</a></li>
-</ul>
-</li>
 <li><a href="#gtadmin-appendixptr">Appendix</a></li>
 </ul>
 </div>
@@ -595,108 +590,60 @@ even though nothing will be printed to the screen.</p>
 <div class="sect2">
 <h3 id="q-prereq">Prerequisites</h3>
 <div class="paragraph">
-<p>We distribute the Grid Community Toolkit 6.2 as a set of RPM and Debian packages
-for Linux systems, as an installable package for Mac OS X, as a .zip
-file for Windows and Cygwin, as well as a source installer which can be
-used on other operating systems. In this quickstart, we will be
-installing RPM packages. Thus, it is a prerequisite for following this
-quickstart that you are running a distribution for which we provide
-RPMs. If you are running a supported Debian or Ubuntu system, the
-process is very similar, but you&#8217;ll need to use the <strong><code>apt-get</code></strong> or
-similar tools to install the packages. For the source installer, there
-is more work involved, and you&#8217;ll need to consult the full installation
-guide.</p>
+<p>The Grid Community Toolkit 6.2 is available as a set of RPM packages provided
+by EPEL and Fedora package repositories and Debian packages provided by Debian
+and Ubuntu package repositories for Linux distributions as well as a source
+installer for the whole GCT and separate source packages for each GCT component
+provided by the GridCF from
+<a href="https://repo.gridcf.org/gct6/">our repository</a>
+which can be used both on Linux and on other operating systems.
+Please see the bottom of the
+<a href="https://github.com/gridcf/gct/releases/latest">GCT release page</a>
+for information about the supported Linux distributions.
+In this quickstart, we will be installing RPM packages. Thus, it is a
+prerequisite for following this quickstart that you are running a distribution
+for which RPMs are available. If you are running a supported Debian or Ubuntu
+system, the process is very similar, but you&#8217;ll need to use the <strong><code>apt[-get]</code></strong>
+command or similar tools to install the packages. For the source installer,
+there is more work involved, and you&#8217;ll need to consult
+<a href="../install/index.html">the full installation guide</a>.</p>
 </div>
 <div class="paragraph">
-<p>First, we will to set up our system to use the Globus package
-repository. This repository contains the GCT software packages,
-signed by our build manager. We provide RPM and Debian packages that
-contain a source configuration file and the public key which can be used
-to verify the packages. If your distribution has GCT 6.2 packages
-within its repository, you can skip to the next section.</p>
+<p>First, we will set up our system to use the EPEL package
+repository. This repository contains the GCT software packages for Linux
+distributions like Red Hat Enterprise Linux (RHEL) 7, 8 and 9, Community
+Enterprise Operating System (CentOS) 7 and CentOS Stream 8 and 9, RockyLinux 8
+or Scientific Linux 7. If your distribution has GCT 6.2 packages within its
+default repositories - like Fedora has - you can skip to the next section.</p>
 </div>
 <div class="paragraph">
-<p>The globus toolkit package repo RPM can be downloaded from
-<a href="http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo-latest.noarch.rpm">the
-repo RPM package on globus.org</a>.</p>
+<p>The respective EPEL repo RPMs for the respective OS versions are linked from
+<a href="https://docs.fedoraproject.org/en-US/epel/">the EPEL documentation website</a>.</p>
 </div>
 <div class="paragraph">
-<p>To install binary RPMs, download the globus-toolkit-repo package from
-the link above and install it with the command:</p>
+<p>To install binary RPMs, you first need to install the EPEL repo RPM matching
+your OS. E.g. like so:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root# rpm -hUv globus-toolkit-repo-latest.noarch.rpm</pre>
+<pre>root# yum install epel-release</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The globus toolkit package repo Debian file can be downloaded from
-<a href="http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo%5flatest%5fall.deb">the
-repo Debian package on globus.org</a>.</p>
+<p>&#8230;&#8203;for CentOS 7 which has it included in its default repositories.</p>
 </div>
 <div class="paragraph">
-<p>To install Debian or Ubuntu package, download the globus-toolkit-repo
-package from the link above and install it with the command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>root# dpkg -i globus-toolkit-repo_latest_all.deb</pre>
-</div>
+<p>For other OS versions follow
+<a href="https://docs.fedoraproject.org/en-US/epel/#_quickstart">the EPEL quickstart documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve installed the Globus repository package, you can use your
-operating system&#8217;s packaging tools: <strong><code>yum</code></strong> or <strong><code>apt-get</code></strong>, to
-install the Globus components.</p>
+<p>For Fedora and also Debian and Ubuntu the GCT packages are included in the
+default package repositories, so no further action is required there to be able
+to install GCT packages.</p>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>For operating systems based on RHEL (such as Red Hat Enterprise Linux,
-CentOS, and Scientific Linux), the compatible EPEL repository must be
-enabled before installing myproxy. For OS versions 5.x, install the
-<a href="http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm">EPEL
-5 package</a>, and for OS version 6.x, use
-<a href="http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-7.noarch.rpm">6
-package</a>.
-For information about installing these, see the
-<a href="http://fedoraproject.org/wiki/EPEL/FAQ#How%5fcan%5fI%5finstall%5fthe%5fpackages%5ffrom%5fthe%5fEPEL%5fsoftware%5frepository.3F">EPEL
-FAQ</a>.
-This step is not needed for Fedora, Debian, or Ubuntu systems.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>For SUSE Linux Enterprise Server systems which will be using
-globus-connect-server, a newer version of apache2 must be installed in
-order for myproxy-oauth to work. This is available by adding the Apache2
-and Apache2 Modules for SLES11 repositories from opensuse.org.
-These can be installed by running these commands:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>root# zypper ar http://download.opensuse.org/repositories/Apache/SLE_11_SP3/Apache.repo
-root# zypper ar http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_11_SP3/Apache:Modules.repo
-root# rpm --import http://download.opensuse.org/repositories/Apache/SLE_11_SP3/repodata/repomd.xml.key
-root# rpm --import http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_11_SP3/repodata/repomd.xml.key</pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
+<p>You can now use your operating system&#8217;s packaging tools: <strong><code>yum</code></strong> (or
+<strong><code>dnf</code></strong>) or <strong><code>apt[-get]</code></strong>, to install the GCT components.</p>
 </div>
 <div class="sect3">
 <h4 id="install-toolkit">Installing the Toolkit on Linux</h4>
@@ -706,18 +653,19 @@ once. This section will show how to install various components, on both
 RPM based and Debian based Linux systems.</p>
 </div>
 <div class="paragraph">
-<p>For Fedora or Red Hat-based systems, used the <strong><code>yum</code></strong> command to
-install the GCT components and their dependencies. For SUSE Linux
-Enterprise Server systems, use <strong><code>zypper</code></strong>. For Debian-based systems,
-used the <strong><code>apt-get</code></strong> or <strong><code>aptitude</code></strong> commands.</p>
+<p>For Fedora or Red Hat-based systems, use the <strong><code>yum</code></strong> or <strong><code>dnf</code></strong> commands
+to install the GCT components and their dependencies. For SUSE Linux
+distributions, use <strong><code>zypper</code></strong>. For Debian-based systems, used the
+<strong><code>apt[-get]</code></strong> or <strong><code>aptitude</code></strong> commands.</p>
 </div>
 <div class="paragraph">
 <p>For example, to install the GridFTP client tools, do the following for
-RPM-based systems:</p>
+Red Hat-based systems:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root# yum install globus-data-management-client</pre>
+<pre>root# yum install \
+    globus-common-progs globus-gsi-cert-utils-progs globus-ftp-client globus-gass-copy-progs globus-proxy-utils</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -725,139 +673,31 @@ RPM-based systems:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root# apt-get install globus-data-management-client</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="install-packagegroups">Package Groups</h5>
-<div class="paragraph">
-<p>The Grid Community Toolkit distribution includes several high-level package
-groups that can be used to install multiple packages to enable full
-client or server functionality of some Grid Community Toolkit component.</p>
-</div>
-<div class="paragraph">
-<p>These packages are:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong><code>globus-gridftp</code></strong></dt>
-<dd>
-<p>GridFTP client and server tools</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-gram5</code></strong></dt>
-<dd>
-<p>GRAM5 client and server tools</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-gsi</code></strong></dt>
-<dd>
-<p>Globus Security Infrastructure tools for managing certificates and proxies</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-data-management-server</code></strong></dt>
-<dd>
-<p>Server tools for deploying a GridFTP server.</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-data-management-client</code></strong></dt>
-<dd>
-<p>Client Tools for data management, including the GridFTP client programs and globus-url-copy</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-data-management-sdk</code></strong></dt>
-<dd>
-<p>Development headers and documentation for writing applications using the GridFTP APIs.</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-resource-management-server</code></strong></dt>
-<dd>
-<p>Server tools for deploying a GRAM5 resource manager</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-resource-management-client</code></strong></dt>
-<dd>
-<p>Client tools for resource management, including the globusrun tool, and the globus-job-* tools.</p>
-</dd>
-<dt class="hdlist1"><strong><code>globus-resource-management-sdk</code></strong></dt>
-<dd>
-<p>Development headers and documentation for writing applications using the GRAM5 APIs.</p>
-</dd>
-</dl>
+<pre>root# apt-get install \
+    globus-common-progs globus-gsi-cert-utils-progs globus-ftp-client globus-gass-copy-progs globus-proxy-utils</pre>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_updating_a_gct_installation">Updating a GCT Installation</h5>
 <div class="paragraph">
-<p>In GCT 6, there are three Grid Community Toolkit package repositories:
-<strong>Stable</strong>, <strong>Testing</strong>, and <strong>Unstable</strong>. The <strong>Stable</strong> repository is
-enabled by default, and is updated to to include fixes for major bugs
-and security issues. These can be easily installed via <strong><code>yum</code></strong> or
-<strong><code>apt-get</code></strong>. These updates will be published in the
-<a href="http://www.globus.org/toolkit/rss/advisories/6.2.rss">GCT</a>.
-Also, this means that when the next point release is made, collecting
-other minor bug fixes, the upgrade can be done via <strong><code>yum</code></strong> or
-<strong><code>apt-get</code></strong> without installing a new repository definition package.</p>
+<p>For the GCT the package repositories in general always include the GCT component
+versions that were included in the latest available GCT version, except for
+Debian, where the package repositories for the stable distributions include the
+GCT component versions that were included in the latest GCT version that was
+available before the freeze for the respective stable version of Debian took
+place. Debian unstable (aka Sid) instead always includes the GCT component
+versions that were included in the latest available GCT version like the other
+Linux distributions.</p>
 </div>
 <div class="paragraph">
-<p>In addition, users may enable the <strong>Testing</strong> or <strong>Unstable</strong> package
-repositories. These have different levels of documentation and testing
-done to them.</p>
+<p>In addition fixes for broken GCT packages or security fixes for GCT components
+are included in the package repositories <strong>also</strong> in between GCT releases.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>Testing</strong> repository contains packages which have passed our
-automated test suite and are made available to people who are interested
-in the latest bug fixes. These packages will likely be migrated to the
-<strong>Stable</strong> repository once the package has been verified to fix a bug or
-issue and the documentation has been updated to include informtion about
-the issue.</p>
+<p>In general updating a GCT installation can hence be done via <strong><code>yum</code></strong> (or
+<strong><code>dnf</code></strong>) or <strong><code>apt[-get]</code></strong> manually or happens automatically during
+unattended OS upgrades.</p>
 </div>
-<div class="paragraph">
-<p>The <strong>Unstable</strong> repository contains packages which have compiled
-successfully, but may not have completed all tests or are experimental
-in some way. Packages from the <strong>Unstable</strong> will potentially make it to
-the <strong>Testing</strong> repository once they seem to be functional.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_installing_the_toolkit_on_mac_os_x">Installing the Toolkit on Mac OS X</h4>
-<div class="paragraph">
-<p>Download the Mac OS X Grid Community Toolkit Installation Package from the
-Grid Community Toolkit web site. Click on <code>globus_toolkit-6.0.pkg</code>, and follow
-the installation instructions. If you select the "Install for me only"
-option, your , and follow the installation instructions. If you select
-the "Install for me only" option, your <code>$HOME/.profile</code> is modified to
-add the Grid Community Toolkit components to your path. If you are using a
-different shell, you may need to incorporate those changes into your
-shell initialization file. If you install for all users, the global path
-will be updated.  is modified to add the Grid Community Toolkit components to
-your path. If you are using a different shell, you may need to
-incorporate those changes into your shell initialization file. If you
-install for all users, the global path will be updated.</p>
-</div>
-<div class="paragraph">
-<p>To uninstall the toolkit, run the <strong><code>globus-uninstall</code></strong> script which
-will remove the toolkit and revert the PATH changes.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_installing_the_toolkit_on_windows">Installing the Toolkit on Windows</h4>
-<div class="paragraph">
-<p>There are four options when installing the Grid Community Toolkit on Windows:
-either using cygwin (32- and 64- bit builds) or MingW (32- and 64- bit
-builds).</p>
-</div>
-<div class="paragraph">
-<p>The Cygwin installation requires the cygwin runtime (either 32-bit or
-64-bit) to be installed: see <a href="http://www.cygwin.com">cygwin.com</a> for
-details. To use the Grid Community Toolkit on cygwin, download the
-globus_toolkit-6.0-x86_64-pc-cygwin.zip or To use the Grid Community Toolkit on
-cygwin, download and unzip the globus_toolkit-6.0-i386-pc-cygwin.zip
-file and in the cygwin root directory. This will create files in
-/opt/globus</p>
-</div>
-<div class="paragraph">
-<p>The mingw installtion does not require a special runtime, but some parts
-of the toolkit do not work with it: (LIST PENDING). To install the MingW
-packages, download the globus_toolkit-6.0-x86_64-w64-mingw32.zip or To
-use the Grid Community Toolkit on cygwin, download and unzip the
-globus_toolkit-6.0-i386-w64-mingw32.zip file. Add the unzipped
-directory&#8217;s Globus\bin and Globus\sbin paths to your PATH environment to
-be able to use the Grid Community Toolkit.</p>
 </div>
 </div>
 </div>
@@ -873,22 +713,7 @@ be able to use the Grid Community Toolkit.</p>
 <div class="paragraph">
 <p>Installing using the Source Installer is only recommended on platforms
 for which native packages are not available. If you are installing onto
-a RedHat or Debian based Linux system, please see the section above.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Make you sure you check out <a href="#gtadmin-platform">Platform Notes</a> for
-specific installation information related to your platform.</p>
+a Red Hat or Debian based Linux system, please see the section above.</p>
 </div>
 </td>
 </tr>
@@ -1019,8 +844,8 @@ chown it to the <strong><code>globus</code></strong> user:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root# mkdir
-root# chown globus:globus</pre>
+<pre>root# mkdir &lt;INSTALL_DIR&gt;
+root# chown globus:globus &lt;INSTALL_DIR&gt;</pre>
 </div>
 </div>
 </td>
@@ -1051,21 +876,19 @@ Prerequisites</a>.</p>
 </li>
 <li>
 <p>The Grid Community Toolkit Source Installer sets the installation directory by
-default to <code>/usr/local/globus-6</code>, but you may replace , but you may
-replace <code>/usr/local/globus-6</code> with whatever directory you wish to
-install to, by setting the prefix when you configure. with whatever
-directory you wish to install to, by setting the prefix when you
+default to <code>/usr/local/globus-6</code>, but you may replace <code>/usr/local/globus-6</code>
+with whatever directory you wish to install to, by setting the prefix when you
 configure.</p>
 <div class="paragraph">
 <p>As the globus user, run:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>globus% ./configure --prefix=</pre>
+<pre>globus% ./configure --prefix=&lt;INSTALL_DIR&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can use command line arguments to ./configure for a more custom
+<p>You can use command line arguments to <strong><code>./configure</code></strong> for a more custom
 install.</p>
 </div>
 <div class="paragraph">
@@ -1156,7 +979,7 @@ a log file of the build, use <strong><code>tee</code></strong>:</p>
 </div>
 <div class="paragraph">
 <p>The syntax above assumes a Bourne shell. If you are using another shell,
-redirect stderr to stdout and then pipe it to <strong><code>tee</code></strong>.</p>
+redirect <strong><code>stderr</code></strong> to <strong><code>stdout</code></strong> and then pipe it to <strong><code>tee</code></strong>.</p>
 </div>
 </dd>
 </dl>
@@ -1174,11 +997,11 @@ redirect stderr to stdout and then pipe it to <strong><code>tee</code></strong>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>globus% make COMPONENT-check</pre>
+<pre>globus% make &lt;COMPONENT&gt;-check</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>where <em>COMPONENT</em> is the name of the package to test. As an example, you
+<p>where <em>&lt;COMPONENT&gt;</em> is the name of the package to test. As an example, you
 could run</p>
 </div>
 <div class="listingblock">
@@ -1202,12 +1025,11 @@ could run</p>
 configuration sections of the following chapters.</p>
 </div>
 <div class="paragraph">
-<p>We recommend that you install any security advisories available for your
-installation, which are available from the
-<a href="http://www.globus.org/toolkit/advisories.html?version=6.2">Advisories
-page</a>. You may also be interested in subscribing to some
-<a href="http://dev.globus.org/wiki/Mailing%5fLists">mailing lists</a> for general
-discussion and security-related announcements.</p>
+<p>We recommend that you keep your installation up to date and always use
+<a href="https://github.com/gridcf/gct/releases/latest">the latest version of the GCT</a>.
+You may also be interested in subscribing to the mailing lists listed under
+<strong>Contact</strong> and <strong>News</strong> on
+<a href="https://gridcf.org/">the GridCF website</a>.</p>
 </div>
 </li>
 </ol>
@@ -1217,11 +1039,11 @@ discussion and security-related announcements.</p>
 <h4 id="_updating_an_installation">Updating an Installation</h4>
 <div class="paragraph">
 <p>The updates available in the native packages described above are also
-published as source packages on the
-<a href="http://www.globus.org/toolkit/advisories.html?version=6.2">updates
-page</a>. To install update packages, follow their download link, untar
-them, and then configure them with the same prefix as your original
-installation.</p>
+published as source packages in
+<a href="https://repo.gridcf.org/gct6/">our repository</a>.
+To install update packages, follow their download link, untar
+them, then configure them with the same prefix as your original
+installation and install them as described above.</p>
 </div>
 </div>
 </div>
@@ -1701,55 +1523,6 @@ server to restrict its port range.</p>
 <div class="paragraph">
 <p>The <a href="../../admin/quickstart/index.html">Quickstart Guide</a> walks you
 through setting up basic services on multiple machines.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="gtadmin-platform">Platform Notes</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_platform_notes">Platform Notes</h3>
-<div class="sect3">
-<h4 id="gtadmin-platform-osx">Mac OS X 10.8+ (Mountain Lion, Mavericks, Yosemite )</h4>
-<div class="paragraph">
-<p>The GNU autotools and libtool is no longer distributed with OS X 10.8+.
-If you are building from git repository, you&#8217;ll need to install the
-latest versions of those tools. If you are building from the source
-installer, these do not need to be installed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://ftpmirror.gnu.org/autoconf/">GNU Autoconf</a></p>
-</li>
-<li>
-<p><a href="http://ftpmirror.gnu.org/automake/">GNU Automake</a></p>
-</li>
-<li>
-<p><a href="http://ftpmirror.gnu.org/libtool/">GNU Libtool</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Configure libtool with the configuration option
-<strong><code>--program-prefix=g</code></strong> to cause the libtool script to be named
-<strong><code>glibtool</code></strong> to avoid conflicts with the OS X libtool program which
-provides different functionality than GNU libtool. Install libtool (and
-the other tools) into the a common directory. If you do so, you&#8217;ll need
-to set the <code>LIBTOOLIZE</code> environment variable to the path to the
-<strong><code>glibtoolize</code></strong> program. You&#8217;ll need to include the autotools in
-your path to regenerate the configurable scripts and Makefile.in files
-for the toolkit.</p>
-</div>
-<div class="paragraph">
-<p>The Grid Community Toolkit build requires the <strong><code>pkg-config</code></strong> package to be
-installed. It is available from
-<a href="http://pkgconfig.freedesktop.org/releases/">freedesktop.org</a>.
-Additionally, you&#8217;ll need to set the environment variable
-<code>PKG_CONFIG_PATH</code> to <code>/usr/lib/pkgconfig</code> prior to running the
-configure script.  prior to running the configure script.</p>
 </div>
 </div>
 </div>
