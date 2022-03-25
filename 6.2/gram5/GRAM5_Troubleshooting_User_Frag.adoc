@@ -300,12 +300,12 @@ loaded.
 ==== Email Support ====
 
 If all else fails, please send information about your problem to
-gram-user@globus.org. You'll have to subscribe to a list before you can
-send an e-mail to it. See
-http://dev.globus.org/wiki/Mailing%5fLists[here] for general e-mail
-lists and information on how to subscribe to a list and
-http://dev.globus.org/wiki/GRAM#Mailing%5fLists[here] for GRAM specific
-lists. Depending on the problem, you may be requested to file a bug
-report to the globus project's http://jira.globus.org[Issue
-Tracker]. 
+discuss@gridcf.org. Subscription is not neccessary for making posts there, but
+your posts will be put on hold if you're unsubscribed and require moderation by
+the list moderators, which requires additional time and effort. See
+https://gridcf.org/#contact[Contact] and
+https://gridcf.org/#news[News] on https://gridcf.org/[the GridCF website] for
+general email lists and information on how to subscribe to a list. Depending on
+the problem, you may be requested to create an issue in the GCT project's
+https://github.com/gridcf/gct/issues[Issue Tracker].
 
