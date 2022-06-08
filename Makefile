@@ -3,7 +3,7 @@ default: all
 PDF_FILES = index.pdf
 HTML_FILES = index.html
 
-SUBDIRS = 6.2
+SUBDIRS = 6.2 api
 
 index.pdf: index.adoc
 	$(ADOC_TO_PDF)
