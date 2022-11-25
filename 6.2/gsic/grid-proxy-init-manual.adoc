@@ -140,6 +140,8 @@ The following environment variables affect the execution of
 **++X509_USER_KEY++**::
      Path to the key to use to sign the new proxy.
 
+To use a PKCS#12 keystore instead of PEM files for certificate and key, both **++X509_USER_CERT++** and **++X509_USER_KEY++** have to point to the PKCS#12 keystore.
+
 **++X509_CERT_DIR++**::
      Path to the directory containing trusted certifiate certificates and signing policies.
 
@@ -150,12 +152,13 @@ The following environment variables affect the execution of
 The following files affect the execution of **++grid-proxy-init++**: 
 
 **++$HOME/.globus/usercert.pem++**::
-     Default path to the certificate to use as issuer of the new proxy.
+     Default path to the certificate to use as issuer of the new proxy. If it exists it takes precendence over **++[...]/usercred.p12++** but also requires the presence of the matching key file (**++[...]/userkey.pem++**).
 
 **++$HOME/.globus/userkey.pem++**::
-     Default path to the key to use to sign the new proxy.
+     Default path to the key to use to sign the new proxy. If it exists it takes precendence over **++[...]/usercred.p12++** but also requires the presence of the matching certificate file (**++[...]/usercert.pem++**).
 
-
+**++$HOME/.globus/usercred.p12++**::
+     Default path to the PKCS#12 keystore that contains both the certificate to use as issuer of the new proxy and the key to use to sign the new proxy. To use a PKCS#12 keystore, neither **++[...]/usercert.pem++** nor **++[...]/userkey.pem++** must be present.
 
 == Compatibility ==
 
