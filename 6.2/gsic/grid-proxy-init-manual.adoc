@@ -62,8 +62,8 @@ The full set of command-line options to **++grid-proxy-init++** are:
 **-valid 'HOURS':'MINUTES', -hours 'HOURS'**::
      Create a certificate that is valid for 'HOURS' hours and 'MINUTES' minutes. If not specified, the default of twelve hours and no minutes is used.
 
-**-cert 'CERTFILE', -key 'KEYFILE'**::
-     Create a proxy certificate signed by the certificate located in ++CERTFILE++ using the key located in  using the key located in ++KEYFILE++. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.
+**-cert 'CERTFILE' -key 'KEYFILE'**::
+     Create a proxy certificate signed by the certificate located in ++CERTFILE++ using the key located in ++KEYFILE++. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.
 
 **-certdir 'CERTDIR'**::
      Search 'CERTDIR' for trusted certificates if verifying the proxy certificate. If not specified, the default trusted certificate search path is used. This overrides the value of the ++X509_CERT_DIR++ environment variable
