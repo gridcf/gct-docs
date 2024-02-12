@@ -4,6 +4,7 @@
 
 * link:./latest/index.html[Latest release]
 * link:./6.2/index.html[Latest 6.2 release]
+* link:./6.2.1705709074/index.html[6.2.1705709074] (tag: v6.2.20240202)
 * link:./6.2.1653033972/index.html[6.2.1653033972] (tag: v6.2.20220524)
 * link:./6.2.1629922860/index.html[6.2.1629922860] (tag: v6.2.20210826)
 * link:./6.2.1607800521/index.html[6.2.1607800521] (tag: v6.2.20201212)
