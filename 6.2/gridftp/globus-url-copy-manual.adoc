@@ -42,7 +42,7 @@ in the URL.
 
 *-f FILENAME*::
     Read a list of URL pairs from filename.  Each line should contain
-    sourceURL destURL. Enclose URLs with spaces in double qoutes (").
+    sourceURL destURL. Enclose URLs with spaces in double quotes (").
     Blank lines and lines beginning with # will be ignored.
 
 *-cd, -create-dest*::
@@ -305,9 +305,44 @@ to a server that does not support data channel encryption (e.g. dCache)!
     - Level 2 will transfer if the time stamp of the destination is older than
       the time stamp of the source.
     - Level 3 will perform a checksum of the source and destination and
-      transfer if the checksums do not match.
+      transfer if the checksums do not match.  The default algorithm used
+      for this checksum is MD5, but other algorithms can be specified
+      with the *-algo* parameter.
 
+*-checksum-alg CHECKSUM-ALGORITHM*::
+    Set the algorithm type to use for all checksum operations during the
+    transfer.
+
+*-verify-checksum*::
+    Perform a checksum on the source and destination after each
+    file transfer and compare the two.  If they do not match, fail the
+    transfer.  The default algorithm used for this checksum is MD5, but
+    other algorithms can be specified with the *-checksum-alg* parameter.
+
+[[globus-url-copy-ENVIRONMENT]]
+== ENVIRONMENT ==
+The following environment variables are recognized:
+
+*GLOBUS_HOSTNAME*::
+    Overrides client hostname communicated to the server
+
+*GLOBUS_DOMAIN_NAME*::
+    Overrides client domainname communicated to the server
+
+*GLOBUS_FTP_CLIENT_DATA_IP*::
+    Overwrites client IP address communicated to the server for the data
+    connection. Used when the receiver is behind a NAT and should be configured
+    to the external address of its gateway.
+
+*GLOBUS_FTP_CLIENT_SOURCE_PASV*::
+    Configures sender side (source) instead of receiver side (destination) to
+    open a data port and establishes the data connection from the receiver to
+    the sender. By default the data connection is established from sender to
+    receiver, but if the receiver is behind a NAT this doesn't work, because
+    the receiver will communicate its own address instead of the external
+    address of its gateway to the sender and its own address can't be reached
+    directly from the sender.
 
 [[globus-url-copy-AUTHOR]]
 == AUTHOR ==
-Copyright (C) 1999-2014 University of Chicago
+Copyright (C) 1999-2016 University of Chicago
