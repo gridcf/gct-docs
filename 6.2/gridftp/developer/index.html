@@ -476,6 +476,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#globus-url-copy-SYNOPSIS">SYNOPSIS</a></li>
 <li><a href="#globus-url-copy-DESCRIPTION">DESCRIPTION</a></li>
 <li><a href="#globus-url-copy-OPTIONS">OPTIONS</a></li>
+<li><a href="#globus-url-copy-ENVIRONMENT">ENVIRONMENT</a></li>
 <li><a href="#globus-url-copy-AUTHOR">AUTHOR</a></li>
 </ul>
 </li>
@@ -1405,7 +1406,7 @@ errors.</p>
 <dt class="hdlist1"><strong>-f FILENAME</strong></dt>
 <dd>
 <p>Read a list of URL pairs from filename.  Each line should contain
-sourceURL destURL. Enclose URLs with spaces in double qoutes (").
+sourceURL destURL. Enclose URLs with spaces in double quotes (").
 Blank lines and lines beginning with # will be ignored.</p>
 </dd>
 <dt class="hdlist1"><strong>-cd, -create-dest</strong></dt>
@@ -1756,10 +1757,58 @@ the time stamp of the source.</p>
 </li>
 <li>
 <p>Level 3 will perform a checksum of the source and destination and
-transfer if the checksums do not match.</p>
+transfer if the checksums do not match.  The default algorithm used
+for this checksum is MD5, but other algorithms can be specified
+with the <strong>-algo</strong> parameter.</p>
 </li>
 </ul>
 </div>
+</dd>
+<dt class="hdlist1"><strong>-checksum-alg CHECKSUM-ALGORITHM</strong></dt>
+<dd>
+<p>Set the algorithm type to use for all checksum operations during the
+transfer.</p>
+</dd>
+<dt class="hdlist1"><strong>-verify-checksum</strong></dt>
+<dd>
+<p>Perform a checksum on the source and destination after each
+file transfer and compare the two.  If they do not match, fail the
+transfer.  The default algorithm used for this checksum is MD5, but
+other algorithms can be specified with the <strong>-checksum-alg</strong> parameter.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="globus-url-copy-ENVIRONMENT">ENVIRONMENT</h3>
+<div class="paragraph">
+<p>The following environment variables are recognized:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>GLOBUS_HOSTNAME</strong></dt>
+<dd>
+<p>Overrides client hostname communicated to the server</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_DOMAIN_NAME</strong></dt>
+<dd>
+<p>Overrides client domainname communicated to the server</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_FTP_CLIENT_DATA_IP</strong></dt>
+<dd>
+<p>Overwrites client IP address communicated to the server for the data
+connection. Used when the receiver is behind a NAT and should be configured
+to the external address of its gateway.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_FTP_CLIENT_SOURCE_PASV</strong></dt>
+<dd>
+<p>Configures sender side (source) instead of receiver side (destination) to
+open a data port and establishes the data connection from the receiver to
+the sender. By default the data connection is established from sender to
+receiver, but if the receiver is behind a NAT this doesn&#8217;t work, because
+the receiver will communicate its own address instead of the external
+address of its gateway to the sender and its own address can&#8217;t be reached
+directly from the sender.</p>
 </dd>
 </dl>
 </div>
@@ -1767,7 +1816,7 @@ transfer if the checksums do not match.</p>
 <div class="sect2">
 <h3 id="globus-url-copy-AUTHOR">AUTHOR</h3>
 <div class="paragraph">
-<p>Copyright &#169; 1999-2014 University of Chicago</p>
+<p>Copyright &#169; 1999-2016 University of Chicago</p>
 </div>
 </div>
 </div>

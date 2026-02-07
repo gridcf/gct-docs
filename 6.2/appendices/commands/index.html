@@ -572,6 +572,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#globus-url-copy-SYNOPSIS">SYNOPSIS</a></li>
 <li><a href="#globus-url-copy-DESCRIPTION">DESCRIPTION</a></li>
 <li><a href="#globus-url-copy-OPTIONS">OPTIONS</a></li>
+<li><a href="#globus-url-copy-ENVIRONMENT">ENVIRONMENT</a></li>
 <li><a href="#globus-url-copy-AUTHOR">AUTHOR</a></li>
 </ul>
 </li>
@@ -1685,10 +1686,10 @@ Verifying - Enter PEM pass phrase:</pre>
 <p>The <strong><code>grid-proxy-init</code></strong> program generates X.509 proxy certificates
 derived from the currently available certificate files. By default, this
 command generates a <a href="http://www.ietf.org/rfc/rfc3820.txt">RFC 3820</a> Proxy
-Certificate with a 512 bit key valid for 12 hours in a file named
+Certificate with a 2048 bit key valid for 12 hours in a file named
 <code>/tmp/x509up_uUID</code>. Command-line options and variables can modify the
 format, strength, lifetime, and location of the generated proxy
-certificate. . Command-line options and variables can modify the format,
+certificate. Command-line options and variables can modify the format,
 strength, lifetime, and location of the generated proxy certificate.</p>
 </div>
 <div class="paragraph">
@@ -1743,9 +1744,9 @@ Toolkit, use the <em>-old</em> or <em>-draft</em> command-line options.</p>
 <dd>
 <p>Create a certificate that is valid for <em>HOURS</em> hours and <em>MINUTES</em> minutes. If not specified, the default of twelve hours and no minutes is used.</p>
 </dd>
-<dt class="hdlist1"><strong>-cert <em>CERTFILE</em>, -key <em>KEYFILE</em></strong></dt>
+<dt class="hdlist1"><strong>-cert <em>CERTFILE</em> -key <em>KEYFILE</em></strong></dt>
 <dd>
-<p>Create a proxy certificate signed by the certificate located in <code>CERTFILE</code> using the key located in  using the key located in <code>KEYFILE</code>. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.. If not specified the default certificate and key will be used. This overrides the values of environment variables described below.</p>
+<p>Create a proxy certificate signed by the certificate located in <code>CERTFILE</code> using the key located in <code>KEYFILE</code>. If not specified the default certificate and key will be used. This overrides the values of environment variables described below. When using a PKCS#12 keystore as source for certificate and key it must be provided as argument for both options.</p>
 </dd>
 <dt class="hdlist1"><strong>-certdir <em>CERTDIR</em></strong></dt>
 <dd>
@@ -1757,7 +1758,7 @@ Toolkit, use the <em>-old</em> or <em>-draft</em> command-line options.</p>
 </dd>
 <dt class="hdlist1"><strong>-bits <em>BITS</em></strong></dt>
 <dd>
-<p>When creating the proxy certificate, use a <em>BITS</em> bit key instead of the default 512 bit keys.</p>
+<p>When creating the proxy certificate, use a <em>BITS</em> bit key instead of the default 2048-bit keys.</p>
 </dd>
 <dt class="hdlist1"><strong>-policy <em>POLICYFILE</em></strong></dt>
 <dd>
@@ -1819,7 +1820,7 @@ example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>%  grid-proxy-init -hours 8 -bits 1024
+<pre>%  grid-proxy-init -hours 8 -bits 4096
 Your identity: /DC=org/DC=example/CN=Joe User
 Enter GRID pass phrase for this identity: Creating proxy .................................. Done
 Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
@@ -1842,6 +1843,13 @@ Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
 <dd>
 <p>Path to the key to use to sign the new proxy.</p>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>To use a PKCS#12 keystore instead of PEM files for certificate and key, both <strong><code>X509_USER_CERT</code></strong> and <strong><code>X509_USER_KEY</code></strong> have to point to the PKCS#12 keystore.</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><strong><code>X509_CERT_DIR</code></strong></dt>
 <dd>
 <p>Path to the directory containing trusted certifiate certificates and signing policies.</p>
@@ -1858,11 +1866,15 @@ Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
 <dl>
 <dt class="hdlist1"><strong><code>$HOME/.globus/usercert.pem</code></strong></dt>
 <dd>
-<p>Default path to the certificate to use as issuer of the new proxy.</p>
+<p>Default path to the certificate to use as issuer of the new proxy. If it exists it takes precendence over <strong><code>[&#8230;&#8203;]/usercred.p12</code></strong> but also requires the presence of the matching key file (<strong><code>[&#8230;&#8203;]/userkey.pem</code></strong>).</p>
 </dd>
 <dt class="hdlist1"><strong><code>$HOME/.globus/userkey.pem</code></strong></dt>
 <dd>
-<p>Default path to the key to use to sign the new proxy.</p>
+<p>Default path to the key to use to sign the new proxy. If it exists it takes precendence over <strong><code>[&#8230;&#8203;]/usercred.p12</code></strong> but also requires the presence of the matching certificate file (<strong><code>[&#8230;&#8203;]/usercert.pem</code></strong>).</p>
+</dd>
+<dt class="hdlist1"><strong><code>$HOME/.globus/usercred.p12</code></strong></dt>
+<dd>
+<p>Default path to the PKCS#12 keystore that contains both the certificate to use as issuer of the new proxy and the key to use to sign the new proxy. To use a PKCS#12 keystore, neither <strong><code>[&#8230;&#8203;]/usercert.pem</code></strong> nor <strong><code>[&#8230;&#8203;]/userkey.pem</code></strong> must be present.</p>
 </dd>
 </dl>
 </div>
@@ -1872,7 +1884,7 @@ Your proxy is valid until: Thu Mar 17 23:48:05 2010</pre>
 <div class="paragraph">
 <p>For more information about proxy certificate types and their
 compatibility in GT and GCT, see
-<a href="http://dev.globus.org/wiki/Security/ProxyCertTypes">http://dev.globus.org/wiki/Security/ProxyCertTypes</a>.</p>
+<a href="https://web.archive.org/web/20130817025920/http://dev.globus.org/wiki/Security/ProxyCertTypes">https://web.archive.org/web/20130817025920/http://dev.globus.org/wiki/Security/ProxyCertTypes</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2566,7 +2578,7 @@ errors.</p>
 <dt class="hdlist1"><strong>-f FILENAME</strong></dt>
 <dd>
 <p>Read a list of URL pairs from filename.  Each line should contain
-sourceURL destURL. Enclose URLs with spaces in double qoutes (").
+sourceURL destURL. Enclose URLs with spaces in double quotes (").
 Blank lines and lines beginning with # will be ignored.</p>
 </dd>
 <dt class="hdlist1"><strong>-cd, -create-dest</strong></dt>
@@ -2917,10 +2929,58 @@ the time stamp of the source.</p>
 </li>
 <li>
 <p>Level 3 will perform a checksum of the source and destination and
-transfer if the checksums do not match.</p>
+transfer if the checksums do not match.  The default algorithm used
+for this checksum is MD5, but other algorithms can be specified
+with the <strong>-algo</strong> parameter.</p>
 </li>
 </ul>
 </div>
+</dd>
+<dt class="hdlist1"><strong>-checksum-alg CHECKSUM-ALGORITHM</strong></dt>
+<dd>
+<p>Set the algorithm type to use for all checksum operations during the
+transfer.</p>
+</dd>
+<dt class="hdlist1"><strong>-verify-checksum</strong></dt>
+<dd>
+<p>Perform a checksum on the source and destination after each
+file transfer and compare the two.  If they do not match, fail the
+transfer.  The default algorithm used for this checksum is MD5, but
+other algorithms can be specified with the <strong>-checksum-alg</strong> parameter.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="globus-url-copy-ENVIRONMENT">ENVIRONMENT</h3>
+<div class="paragraph">
+<p>The following environment variables are recognized:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>GLOBUS_HOSTNAME</strong></dt>
+<dd>
+<p>Overrides client hostname communicated to the server</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_DOMAIN_NAME</strong></dt>
+<dd>
+<p>Overrides client domainname communicated to the server</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_FTP_CLIENT_DATA_IP</strong></dt>
+<dd>
+<p>Overwrites client IP address communicated to the server for the data
+connection. Used when the receiver is behind a NAT and should be configured
+to the external address of its gateway.</p>
+</dd>
+<dt class="hdlist1"><strong>GLOBUS_FTP_CLIENT_SOURCE_PASV</strong></dt>
+<dd>
+<p>Configures sender side (source) instead of receiver side (destination) to
+open a data port and establishes the data connection from the receiver to
+the sender. By default the data connection is established from sender to
+receiver, but if the receiver is behind a NAT this doesn&#8217;t work, because
+the receiver will communicate its own address instead of the external
+address of its gateway to the sender and its own address can&#8217;t be reached
+directly from the sender.</p>
 </dd>
 </dl>
 </div>
@@ -2928,7 +2988,7 @@ transfer if the checksums do not match.</p>
 <div class="sect2">
 <h3 id="globus-url-copy-AUTHOR">AUTHOR</h3>
 <div class="paragraph">
-<p>Copyright &#169; 1999-2014 University of Chicago</p>
+<p>Copyright &#169; 1999-2016 University of Chicago</p>
 </div>
 </div>
 </div>
