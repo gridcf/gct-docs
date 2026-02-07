@@ -137,9 +137,6 @@ build subsets of the Grid Community Toolkit:
 **gsi**::
      Security Libraries and Tools
 
-**gsi**::
-     Security Libraries and Tools
-
 **udt**::
      Globus XIO UDT Driver
 
