@@ -61,9 +61,7 @@ globus% make install
 --
 If you install the globus-simpleca Debian or RPM package, it will
 automatically create a **++simpleca++** user and a Simple CA in
-++/var/lib/globus/simple_ca++. If want to create a custom CA, or are
-using the source installer, you'll need to do the following. Otherwise,
-you can skip to the . If want to create a custom CA, or are using the
+++/var/lib/globus/simple_ca++. If you want to create a custom CA, or are using the
 source installer, you'll need to do the following. Otherwise, you can
 skip to the link:#simplecaAdmin-using[Using a SimpleCA]
 chapter of the SimpleCA documentation, as these steps have already been
@@ -74,7 +72,7 @@ done.
 
 === Create SimpleCA Administrator Account ===
 
-Create a user to adminster the SimpleCA. You can use the the
+Create a user to adminster the SimpleCA. You can use the
 **++globus++** user you used to build GCT, or another user that you
 create. For the purposes of this document, we'll assume a user named
 **++simpleca++**. Log in to that user, and run the
